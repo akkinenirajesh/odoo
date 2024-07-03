@@ -1,0 +1,22 @@
+xml
+<buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="AccountCheckPrintingLayout" type="Account.CheckPrintingLayout" label="Check Layout" default="Disabled"
+            help="Select the format corresponding to the check paper you will be printing your checks on. In order to disable the printing feature, select 'None'." />
+        <field name="AccountCheckPrintingDateLabel" type="bool" label="Print Date Label" default="true"
+            help="This option allows you to print the date label on the check as per CPA. Disable this if your pre-printed check includes the date label." />
+        <field name="AccountCheckPrintingMultiStub" type="bool" label="Multi-Pages Check Stub"
+            help="This option allows you to print check details (stub) on multiple pages if they don't fit on a single page." />
+        <field name="AccountCheckPrintingMarginTop" type="float" label="Check Top Margin" default="0.25"
+            help="Adjust the margins of generated checks to make it fit your printer's settings." />
+        <field name="AccountCheckPrintingMarginLeft" type="float" label="Check Left Margin" default="0.25"
+            help="Adjust the margins of generated checks to make it fit your printer's settings." />
+        <field name="AccountCheckPrintingMarginRight" type="float" label="Right Margin" default="0.25"
+            help="Adjust the margins of generated checks to make it fit your printer's settings." />
+    </model>
+
+    <optionset id="Account.CheckPrintingLayout" name="Check Printing Layout">
+        <option value="Disabled" name="None" />
+        <!-- Additional layout options can be added here -->
+    </optionset>
+</buvi>

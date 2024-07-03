@@ -1,0 +1,29 @@
+xml
+<buvi>
+    <model id="Barcodes.BarcodeRule" name="BarcodeRule" description="Barcode Rule">
+        <field name="Name" type="string" label="Rule Name" required="true" 
+               help="An internal identification for this barcode nomenclature rule" />
+        <field name="BarcodeNomenclature" type="Barcodes.BarcodeNomenclature" label="Barcode Nomenclature" />
+        <field name="Sequence" type="integer" label="Sequence" 
+               help="Used to order rules such that rules with a smaller sequence match first" />
+        <field name="Encoding" type="Barcodes.BarcodeEncoding" required="true" default="Any" 
+               help="This rule will apply only if the barcode is encoded with the specified encoding" />
+        <field name="Type" type="Barcodes.BarcodeRuleType" required="true" default="Product" />
+        <field name="Pattern" type="string" label="Barcode Pattern" required="true" default=".*" 
+               help="The barcode matching pattern" />
+        <field name="Alias" type="string" required="true" default="0" 
+               help="The matched pattern will alias to this barcode" />
+    </model>
+
+    <optionset id="Barcodes.BarcodeEncoding" name="Barcode Encoding">
+        <option value="Any" name="Any" />
+        <option value="EAN13" name="EAN-13" />
+        <option value="EAN8" name="EAN-8" />
+        <option value="UPCA" name="UPC-A" />
+    </optionset>
+
+    <optionset id="Barcodes.BarcodeRuleType" name="Barcode Rule Type">
+        <option value="Alias" name="Alias" />
+        <option value="Product" name="Unit Product" />
+    </optionset>
+</buvi>

@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Bus.ResPartner" name="ResPartner" description="Partner">
+        <field name="ImStatus" type="string" label="IM Status" computed="true" />
+    </model>
+</buvi>

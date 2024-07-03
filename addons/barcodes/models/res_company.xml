@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Barcodes.ResCompany" name="ResCompany" description="Company">
+        <field name="NomenclatureId" type="Barcodes.BarcodeNomenclature" label="Nomenclature" />
+    </model>
+</buvi>

@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="AccountTaxPython.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="AmountType" type="AccountTaxPython.AmountType" />
+        <field name="Formula" type="string" label="Formula" default="price_unit * 0.10"
+               help="Compute the amount of the tax.
+
+:param base: float, actual amount on which the tax is applied
+:param price_unit: float
+:param quantity: float
+:param product: A object representing the product" />
+    </model>
+
+    <optionset id="AccountTaxPython.AmountType" name="Tax Amount Type">
+        <option value="Percentage" name="Percentage" />
+        <option value="FixedAmount" name="Fixed Amount" />
+        <option value="Code" name="Custom Formula" />
+    </optionset>
+</buvi>

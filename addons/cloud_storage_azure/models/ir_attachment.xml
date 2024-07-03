@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="CloudStorage.IrAttachment" name="IrAttachment" description="Attachment with Cloud Storage Azure Support">
+        <field name="Url" type="string" />
+    </model>
+</buvi>

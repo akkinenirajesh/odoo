@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Crm.Users" name="Users" description="CRM Users">
+        <field name="TargetSalesWon" type="integer" label="Won in Opportunities Target" />
+        <field name="TargetSalesDone" type="integer" label="Activities Done Target" />
+    </model>
+</buvi>

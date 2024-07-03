@@ -1,0 +1,57 @@
+xml
+<buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Payments" inherits="Account.AccountMove">
+        <field name="MoveId" type="Account.AccountMove" required="true" readonly="true" label="Journal Entry" />
+        <field name="JournalId" type="Account.AccountJournal" required="true" label="Journal" />
+        <field name="CompanyId" type="Core.Company" required="true" label="Company" />
+        <field name="IsReconciled" type="bool" label="Is Reconciled" readonly="true" />
+        <field name="IsMatched" type="bool" label="Is Matched With a Bank Statement" readonly="true" />
+        <field name="AvailablePartnerBankIds" type="Core.ResPartnerBank[]" label="Available Partner Bank Accounts" />
+        <field name="PartnerBankId" type="Core.ResPartnerBank" label="Recipient Bank Account" />
+        <field name="IsInternalTransfer" type="bool" label="Internal Transfer" />
+        <field name="QrCode" type="string" label="QR Code URL" />
+        <field name="PairedInternalTransferPaymentId" type="Account.AccountPayment" label="Paired Internal Transfer Payment" />
+        <field name="PaymentMethodLineId" type="Account.AccountPaymentMethodLine" label="Payment Method" required="true" />
+        <field name="AvailablePaymentMethodLineIds" type="Account.AccountPaymentMethodLine[]" label="Available Payment Method Lines" />
+        <field name="PaymentMethodId" type="Account.AccountPaymentMethod" label="Method" />
+        <field name="AvailableJournalIds" type="Account.AccountJournal[]" label="Available Journals" />
+        <field name="Amount" type="decimal" label="Amount" />
+        <field name="PaymentType" type="Account.PaymentType" label="Payment Type" required="true" />
+        <field name="PartnerType" type="Account.PartnerType" label="Partner Type" required="true" />
+        <field name="PaymentReference" type="string" label="Payment Reference" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" />
+        <field name="PartnerId" type="Core.Partner" label="Customer/Vendor" />
+        <field name="OutstandingAccountId" type="Account.AccountAccount" label="Outstanding Account" />
+        <field name="DestinationAccountId" type="Account.AccountAccount" label="Destination Account" />
+        <field name="DestinationJournalId" type="Account.AccountJournal" label="Destination Journal" />
+        <field name="ReconciledInvoiceIds" type="Account.AccountMove[]" label="Reconciled Invoices" />
+        <field name="ReconciledInvoicesCount" type="integer" label="# Reconciled Invoices" />
+        <field name="ReconciledInvoicesType" type="Account.ReconciledInvoicesType" label="Reconciled Invoices Type" />
+        <field name="ReconciledBillIds" type="Account.AccountMove[]" label="Reconciled Bills" />
+        <field name="ReconciledBillsCount" type="integer" label="# Reconciled Bills" />
+        <field name="ReconciledStatementLineIds" type="Account.AccountBankStatementLine[]" label="Reconciled Statement Lines" />
+        <field name="ReconciledStatementLinesCount" type="integer" label="# Reconciled Statement Lines" />
+        <field name="PaymentMethodCode" type="string" label="Payment Method Code" />
+        <field name="PaymentReceiptTitle" type="string" label="Payment Receipt Title" />
+        <field name="ShowPartnerBankAccount" type="bool" label="Show Partner Bank Account" />
+        <field name="RequirePartnerBankAccount" type="bool" label="Require Partner Bank Account" />
+        <field name="CountryCode" type="string" label="Country Code" />
+        <field name="AmountSigned" type="decimal" label="Signed Amount" />
+        <field name="AmountCompanyCurrencySigned" type="decimal" label="Signed Amount in Company Currency" />
+    </model>
+
+    <optionset id="Account.PaymentType" name="Payment Type">
+        <option value="Outbound" name="Send" />
+        <option value="Inbound" name="Receive" />
+    </optionset>
+
+    <optionset id="Account.PartnerType" name="Partner Type">
+        <option value="Customer" name="Customer" />
+        <option value="Supplier" name="Vendor" />
+    </optionset>
+
+    <optionset id="Account.ReconciledInvoicesType" name="Reconciled Invoices Type">
+        <option value="CreditNote" name="Credit Note" />
+        <option value="Invoice" name="Invoice" />
+    </optionset>
+</buvi>

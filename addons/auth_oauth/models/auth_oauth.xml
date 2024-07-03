@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="Auth.OAuthProvider" name="OAuthProvider" description="OAuth2 provider">
+        <field name="Name" type="string" label="Provider name" required="true" />
+        <field name="ClientId" type="string" label="Client ID" />
+        <field name="AuthEndpoint" type="string" label="Authorization URL" required="true" />
+        <field name="Scope" type="string" default="openid profile email" />
+        <field name="ValidationEndpoint" type="string" label="UserInfo URL" required="true" />
+        <field name="DataEndpoint" type="string" />
+        <field name="Enabled" type="bool" label="Allowed" />
+        <field name="CssClass" type="string" label="CSS class" default="fa fa-fw fa-sign-in text-primary" />
+        <field name="Body" type="string" label="Login button label" required="true" translate="true" 
+               help="Link text in Login Dialog" />
+        <field name="Sequence" type="integer" default="10" />
+    </model>
+</buvi>

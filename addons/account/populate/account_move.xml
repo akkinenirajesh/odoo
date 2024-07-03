@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Journal Entries, Invoices and related models">
+        <field name="MoveType" type="Account.MoveType" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="Currency" type="Core.Currency" required="true" />
+        <field name="Journal" type="Account.Journal" required="true" />
+        <field name="Date" type="DateTime" required="true" />
+        <field name="InvoiceDate" type="DateTime" />
+        <field name="Partner" type="Core.Partner" />
+        <field name="Lines" type="Account.AccountMoveLine" multiple="true" />
+    </model>
+
+    <optionset id="Account.MoveType" name="Move Type">
+        <option value="Entry" name="Journal Entry" />
+        <option value="InInvoice" name="Customer Invoice" />
+        <option value="OutInvoice" name="Vendor Bill" />
+        <option value="InRefund" name="Customer Credit Note" />
+        <option value="OutRefund" name="Vendor Credit Note" />
+        <option value="InReceipt" name="Customer Receipt" />
+        <option value="OutReceipt" name="Vendor Receipt" />
+    </optionset>
+</buvi>

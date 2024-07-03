@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="AuthTotp.Device" name="Device" description="Auth TOTP Device">
+        <field name="Name" type="string" label="Device Name" required="true" />
+        <field name="User" type="Core.User" label="User" required="true" />
+        <!-- Add other fields as needed -->
+    </model>
+</buvi>

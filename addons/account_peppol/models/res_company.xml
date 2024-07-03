@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="AccountPeppolContactEmail" type="string" label="Primary contact email"
+            help="Primary contact email for Peppol-related communication" />
+        <field name="AccountPeppolMigrationKey" type="string" label="Migration Key" />
+        <field name="AccountPeppolPhoneNumber" type="string" label="Phone number"
+            help="You will receive a verification code to this phone number" />
+        <field name="AccountPeppolProxyState" type="Account.PeppolProxyState" label="PEPPOL status" required="true" default="NotRegistered" />
+        <field name="PeppolEas" type="string" label="PEPPOL EAS" />
+        <field name="PeppolEndpoint" type="string" label="PEPPOL Endpoint" />
+        <field name="PeppolPurchaseJournal" type="Account.AccountJournal" label="PEPPOL Purchase Journal" />
+    </model>
+
+    <optionset id="Account.PeppolProxyState" name="PEPPOL Proxy State">
+        <option value="NotRegistered" name="Not registered" />
+        <option value="InVerification" name="In verification" />
+        <option value="Sender" name="Can send but not receive" />
+        <option value="SmpRegistration" name="Can send, pending registration to receive" />
+        <option value="Receiver" name="Can send and receive" />
+        <option value="Rejected" name="Rejected" />
+    </optionset>
+</buvi>

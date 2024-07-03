@@ -1,0 +1,26 @@
+xml
+<buvi>
+    <model id="Analytic.AccountAnalyticPlan" name="AccountAnalyticPlan" description="Analytic Plans">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Description" type="string" label="Description" />
+        <field name="ParentId" type="Analytic.AccountAnalyticPlan" label="Parent" />
+        <field name="ParentPath" type="string" />
+        <field name="RootId" type="Analytic.AccountAnalyticPlan" label="Root" />
+        <field name="ChildrenIds" type="Analytic.AccountAnalyticPlan" label="Childrens" multiple="true" />
+        <field name="ChildrenCount" type="integer" label="Children Plans Count" computed="true" />
+        <field name="CompleteName" type="string" label="Complete Name" computed="true" stored="true" />
+        <field name="AccountIds" type="Account.AnalyticAccount" label="Accounts" multiple="true" />
+        <field name="AccountCount" type="integer" label="Analytic Accounts Count" computed="true" />
+        <field name="AllAccountCount" type="integer" label="All Analytic Accounts Count" computed="true" />
+        <field name="Color" type="integer" label="Color" default="DefaultColor" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="DefaultApplicability" type="Analytic.AnalyticPlanApplicability" label="Default Applicability" required="true" default="Optional" companyDependent="true" />
+        <field name="ApplicabilityIds" type="Analytic.AccountAnalyticApplicability" label="Applicability" multiple="true" />
+    </model>
+
+    <optionset id="Analytic.AnalyticPlanApplicability" name="Analytic Plan Applicability">
+        <option value="Optional" name="Optional" />
+        <option value="Mandatory" name="Mandatory" />
+        <option value="Unavailable" name="Unavailable" />
+    </optionset>
+</buvi>

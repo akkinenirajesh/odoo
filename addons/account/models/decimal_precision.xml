@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Account.DecimalPrecision" name="DecimalPrecision" description="Decimal Precision">
+        <!-- No additional fields are defined in the original Python code -->
+    </model>
+</buvi>

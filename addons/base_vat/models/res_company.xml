@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Base.ResCompany" name="ResCompany" description="Company">
+        <field name="VatCheckVies" type="bool" label="Verify VAT Numbers" />
+    </model>
+</buvi>

@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Auth.User" name="User" description="User">
+        <field name="TotpSecret" type="string" groups="NO_ACCESS" compute="_ComputeTotpSecret" inverse="_InverseToken" />
+        <field name="TotpEnabled" type="bool" label="Two-factor authentication" compute="_ComputeTotpEnabled" search="_TotpEnableSearch" />
+        <field name="TotpTrustedDeviceIds" type="Auth.Device" relation="many2many" label="Trusted Devices" />
+    </model>
+
+    <model id="Auth.Device" name="Device" description="Auth TOTP Device">
+        <field name="User" type="Auth.User" relation="many2one" />
+        <!-- Other fields for Auth.Device model would go here -->
+    </model>
+</buvi>

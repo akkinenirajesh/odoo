@@ -1,0 +1,75 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Journal">
+        <field name="Name" type="string" label="Journal Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Short Code" size="5" required="true" 
+            help="Shorter name used for display. The journal entries of this journal will also be named using this prefix by default." />
+        <field name="Active" type="bool" default="true" 
+            help="Set active to false to hide the Journal without removing it." />
+        <field name="Type" type="Account.AccountJournalType" required="true" 
+            help="Select 'Sale' for customer invoices journals. Select 'Purchase' for vendor bills journals. Select 'Cash' or 'Bank' for journals that are used in customer or vendor payments. Select 'General' for miscellaneous operations journals." />
+        <field name="AccountControlIds" type="Account.Account[]" label="Allowed accounts" />
+        <field name="DefaultAccountType" type="string" label="Default Account Type" />
+        <field name="DefaultAccountId" type="Account.Account" label="Default Account" />
+        <field name="SuspenseAccountId" type="Account.Account" label="Suspense Account" 
+            help="Bank statements transactions will be posted on the suspense account until the final reconciliation allowing finding the right account." />
+        <field name="RestrictModeHashTable" type="bool" label="Lock Sent Invoices with Hash" 
+            help="If ticked, when the invoice is sent, the hash chain will be computed from the last move hashed to the new move to be hashed. The hash can also be performed on demand." />
+        <field name="Sequence" type="integer" help="Used to order Journals in the dashboard view" default="10" />
+        <field name="InvoiceReferenceType" type="Account.InvoiceReferenceType" label="Communication Type" required="true" default="Invoice" 
+            help="You can set here the default communication that will appear on customer invoices, once validated, to help the customer to refer to that particular invoice when making the payment." />
+        <field name="InvoiceReferenceModel" type="Account.InvoiceReferenceModel" label="Communication Standard" required="true" 
+            help="You can choose different models for each type of reference. The default one is the Odoo reference." />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" 
+            help="The currency used to enter statement" />
+        <field name="CompanyId" type="Core.Company" label="Company" required="true" readonly="true" 
+            help="Company related to this journal" />
+        <field name="CountryCode" type="string" label="Country Code" readonly="true" />
+        <field name="RefundSequence" type="bool" label="Dedicated Credit Note Sequence" 
+            help="Check this box if you don't want to share the same sequence for invoices and credit notes made from this journal" default="false" />
+        <field name="PaymentSequence" type="bool" label="Dedicated Payment Sequence" 
+            help="Check this box if you don't want to share the same sequence on payments and bank transactions posted on this journal" />
+        <field name="SequenceOverrideRegex" type="string" label="Sequence Override Regex" 
+            help="Technical field used to enforce complex sequence composition that the system would normally misunderstand." />
+        <field name="InboundPaymentMethodLineIds" type="Account.PaymentMethodLine[]" label="Inbound Payment Methods" />
+        <field name="OutboundPaymentMethodLineIds" type="Account.PaymentMethodLine[]" label="Outbound Payment Methods" />
+        <field name="ProfitAccountId" type="Account.Account" label="Profit Account" 
+            help="Used to register a profit when the ending balance of a cash register differs from what the system computes" />
+        <field name="LossAccountId" type="Account.Account" label="Loss Account" 
+            help="Used to register a loss when the ending balance of a cash register differs from what the system computes" />
+        <field name="BankAccountId" type="Core.PartnerBank" label="Bank Account" />
+        <field name="BankStatementsSource" type="Account.BankStatementsSource" label="Bank Feeds" default="Undefined" 
+            help="Defines how the bank statements will be registered" />
+        <field name="BankAccNumber" type="string" label="Bank Account Number" />
+        <field name="BankId" type="Core.Bank" label="Bank" />
+        <field name="JournalGroupIds" type="Account.JournalGroup[]" label="Journal Groups" />
+        <unique>
+            <field name="Code" />
+            <field name="CompanyId" />
+            <message>Journal codes must be unique per company.</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.AccountJournalType" name="Account Journal Type">
+        <option value="Sale" name="Sales" />
+        <option value="Purchase" name="Purchase" />
+        <option value="Cash" name="Cash" />
+        <option value="Bank" name="Bank" />
+        <option value="General" name="Miscellaneous" />
+    </optionset>
+
+    <optionset id="Account.InvoiceReferenceType" name="Invoice Reference Type">
+        <option value="None" name="Open" />
+        <option value="Partner" name="Based on Customer" />
+        <option value="Invoice" name="Based on Invoice" />
+    </optionset>
+
+    <optionset id="Account.InvoiceReferenceModel" name="Invoice Reference Model">
+        <option value="Odoo" name="Odoo" />
+        <option value="Euro" name="European" />
+    </optionset>
+
+    <optionset id="Account.BankStatementsSource" name="Bank Statements Source">
+        <option value="Undefined" name="Undefined Yet" />
+    </optionset>
+</buvi>

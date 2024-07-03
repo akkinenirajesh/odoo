@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="res.lang" name="Res.Lang" track_created="true" track_update="true">
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="Code" label="Locale Code" type="string" required="true" copied="true"/>
+    <field name="DateFormat" label="Date Format" type="string" required="true" copied="true"/>
+    <field name="DecimalPoint" label="Decimal Separator" type="string" required="true" copied="true"/>
+    <field name="Direction" label="Direction" type="Res.LanguagesDirection" required="true" copied="true"/>
+    <field name="FlagImage" label="Image" type="binary" copied="true"/>
+    <field name="FlagImageUrl" label="Flag Image Url" type="string" readonly="true" transient="true"/>
+    <field name="Grouping" label="Separator Format" type="string" required="true" copied="true"/>
+    <field name="IsoCode" label="ISO code" type="string" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true"/>
+    <field name="ThousandsSep" label="Thousands Separator" type="string" copied="true"/>
+    <field name="TimeFormat" label="Time Format" type="string" required="true" copied="true"/>
+    <field name="UrlCode" label="URL Code" type="string" required="true" copied="true"/>
+    <field name="WeekStart" label="First Day of Week" type="Res.LanguagesFirstDayOfWeek" required="true" copied="true"/>
+  </model>
+</buvi>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="mail.notification" name="Mail.Notification">
+    <field name="MailMail" label="Mail" type="Mail.Mail" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="MailMessage" label="Message" type="Mail.Message" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Author" label="Author" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="ResPartner" label="Recipient" type="Res.Partner" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Sms" label="SMS" type="Sms.Sms" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="SmsTrackers" label="SMS Trackers" type="Sms.Tracker" collection="true"/>
+    <field name="Letter" label="Snailmail Letter" type="Snailmail.Letter" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="FailureReason" label="Failure reason" type="text"/>
+    <field name="FailureType" label="Failure type" type="Mail.MessageNotificationsFailureType" copied="true"/>
+    <field name="IsRead" label="Is Read" type="bool" indexed="true" copied="true"/>
+    <field name="NotificationStatus" label="Status" type="Mail.MessageNotificationsStatus" indexed="true" copied="true"/>
+    <field name="NotificationType" label="Notification Type" type="Mail.MessageNotificationsNotificationType" required="true" indexed="true" copied="true"/>
+    <field name="ReadDate" label="Read Date" type="datetime"/>
+    <field name="SmsIdInt" label="SMS ID" type="integer" indexed="true" copied="true"/>
+    <field name="SmsNumber" label="SMS Number" type="string" copied="true"/>
+  </model>
+</buvi>

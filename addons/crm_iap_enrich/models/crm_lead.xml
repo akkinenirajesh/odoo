@@ -1,0 +1,14 @@
+xml
+<buvi>
+    <model id="Crm.Lead" name="Lead" description="CRM Lead">
+        <field name="IapEnrichDone" type="bool" label="Enrichment done"
+            help="Whether IAP service for lead enrichment based on email has been performed on this lead." />
+        <field name="ShowEnrichButton" type="bool" label="Allow manual enrich" computed="true" />
+        <field name="EmailFrom" type="string" />
+        <field name="Probability" type="decimal" />
+        <field name="RevealId" type="string" />
+        <field name="Active" type="bool" />
+        <field name="EmailState" type="string" />
+        <field name="CreateDate" type="datetime" />
+    </model>
+</buvi>

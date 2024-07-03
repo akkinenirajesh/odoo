@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Crm.Lead" name="Lead" description="CRM Lead">
+        <field name="Name" type="string" label="Lead Name" required="true" />
+        <field name="Partner" type="Core.Partner" label="Customer" />
+        <field name="Street" type="string" label="Street" />
+        <field name="Street2" type="string" label="Street 2" />
+        <field name="City" type="string" label="City" />
+        <field name="Zip" type="string" label="ZIP" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="ContactName" type="string" label="Contact Name" />
+        <field name="Mobile" type="string" label="Mobile" />
+        <field name="Phone" type="string" label="Phone" />
+        <field name="User" type="Core.User" label="Salesperson" />
+        <field name="DateOpen" type="datetime" label="Opening Date" />
+        <field name="Type" type="Crm.LeadType" label="Type" />
+    </model>
+
+    <optionset id="Crm.LeadType" name="Lead Type">
+        <option value="Lead" name="Lead" />
+        <option value="Opportunity" name="Opportunity" />
+    </optionset>
+</buvi>

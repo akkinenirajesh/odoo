@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Analytic.AnalyticAccount" name="AnalyticAccount" description="Analytic Account">
+        <field name="CompanyId" type="Core.Company" label="Company" />
+        <field name="PlanId" type="Analytic.AnalyticPlan" label="Analytic Plan" />
+        <field name="Name" type="string" label="Account Name" required="true" />
+    </model>
+
+    <model id="Analytic.AnalyticPlan" name="AnalyticPlan" description="Analytic Plan">
+        <field name="Name" type="string" label="Plan Name" required="true" />
+    </model>
+</buvi>

@@ -1,0 +1,58 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Journal Entry">
+        <field name="Name" type="string" label="Number" readonly="true" copy="false" />
+        <field name="Ref" type="string" label="Reference" copy="false" />
+        <field name="Date" type="date" label="Date" required="true" />
+        <field name="State" type="Account.AccountMoveState" label="Status" required="true" readonly="true" default="Draft" />
+        <field name="MoveType" type="Account.AccountMoveType" label="Type" required="true" readonly="true" />
+        <field name="IsStorno" type="bool" label="Is Storno" />
+        <field name="Journal" type="Account.AccountJournal" label="Journal" required="true" />
+        <field name="Company" type="Core.Company" label="Company" required="true" />
+        <field name="Lines" type="Account.AccountMoveLine" label="Journal Items" relation="many2many" />
+        <field name="Payment" type="Account.Payment" label="Payment" relation="many2one" />
+        <field name="StatementLine" type="Account.BankStatementLine" label="Statement Line" relation="many2one" />
+        <field name="Statement" type="Account.BankStatement" label="Statement" relation="many2one" />
+        <field name="Currency" type="Core.Currency" label="Currency" required="true" />
+        <field name="Partner" type="Core.Partner" label="Partner" />
+        <field name="CommercialPartner" type="Core.Partner" label="Commercial Entity" readonly="true" />
+        <field name="FiscalPosition" type="Account.FiscalPosition" label="Fiscal Position" />
+        <field name="InvoiceDate" type="date" label="Invoice/Bill Date" />
+        <field name="InvoiceDateDue" type="date" label="Due Date" />
+        <field name="InvoicePaymentTerm" type="Account.PaymentTerm" label="Payment Terms" />
+        <field name="InvoiceOrigin" type="string" label="Origin" readonly="true" />
+        <field name="InvoiceUser" type="Core.User" label="Salesperson" />
+        <field name="AmountUntaxed" type="decimal" label="Untaxed Amount" readonly="true" />
+        <field name="AmountTax" type="decimal" label="Tax" readonly="true" />
+        <field name="AmountTotal" type="decimal" label="Total" readonly="true" />
+        <field name="AmountResidual" type="decimal" label="Amount Due" readonly="true" />
+        <field name="PaymentState" type="Account.PaymentState" label="Payment Status" readonly="true" />
+        <field name="Narration" type="string" label="Terms and Conditions" />
+        <field name="IsSent" type="bool" label="Is Sent" readonly="true" copy="false" />
+    </model>
+
+    <optionset id="Account.AccountMoveState" name="Account Move State">
+        <option value="Draft" name="Draft" />
+        <option value="Posted" name="Posted" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Account.AccountMoveType" name="Account Move Type">
+        <option value="Entry" name="Journal Entry" />
+        <option value="OutInvoice" name="Customer Invoice" />
+        <option value="OutRefund" name="Customer Credit Note" />
+        <option value="InInvoice" name="Vendor Bill" />
+        <option value="InRefund" name="Vendor Credit Note" />
+        <option value="OutReceipt" name="Sales Receipt" />
+        <option value="InReceipt" name="Purchase Receipt" />
+    </optionset>
+
+    <optionset id="Account.PaymentState" name="Payment State">
+        <option value="NotPaid" name="Not Paid" />
+        <option value="InPayment" name="In Payment" />
+        <option value="Paid" name="Paid" />
+        <option value="Partial" name="Partially Paid" />
+        <option value="Reversed" name="Reversed" />
+        <option value="InvoicingLegacy" name="Invoicing App Legacy" />
+    </optionset>
+</buvi>

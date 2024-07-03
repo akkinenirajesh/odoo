@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Base.Import" name="Import" description="Base Import">
+        <field name="ResModel" type="string" required="true" />
+        <field name="File" type="binary" label="File" 
+               help="File to check and/or import, raw binary (not base64)" />
+        <field name="FileName" type="string" label="File Name" />
+        <field name="FileType" type="string" label="File Type" />
+    </model>
+</buvi>

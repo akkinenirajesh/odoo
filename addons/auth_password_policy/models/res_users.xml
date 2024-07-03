@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Auth.ResUsers" name="ResUsers" description="Users">
+        <field name="Password" type="string" />
+        <!-- Other fields from res.users model would be listed here -->
+    </model>
+</buvi>

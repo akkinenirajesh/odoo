@@ -1,0 +1,32 @@
+xml
+<buvi>
+    <model id="Base.Base" name="Base" description="Base Model">
+        <!-- No fields to describe as this is an abstract model -->
+    </model>
+
+    <model id="Base.IrModelFields" name="IrModelFields" description="Fields">
+        <field name="Ttype" type="Base.IrModelFieldType" />
+        <field name="SerializationField" type="Base.IrModelFields" label="Serialization Field"
+            help="If set, this field will be stored in the sparse structure of the serialization field, instead of having its own database column. This cannot be changed after creation." />
+    </model>
+
+    <model id="Base.TestSparse" name="TestSparse" description="Sparse fields Test">
+        <field name="Data" type="string" /> <!-- Serialized field represented as string -->
+        <field name="Boolean" type="bool" sparse="Data" />
+        <field name="Integer" type="integer" sparse="Data" />
+        <field name="Float" type="float" sparse="Data" />
+        <field name="Char" type="string" sparse="Data" />
+        <field name="Selection" type="Base.TestSparseSelection" sparse="Data" />
+        <field name="Partner" type="Core.Partner" sparse="Data" />
+    </model>
+
+    <optionset id="Base.IrModelFieldType" name="Field Type">
+        <option value="Serialized" name="Serialized" />
+        <!-- Other existing options would be here -->
+    </optionset>
+
+    <optionset id="Base.TestSparseSelection" name="Test Sparse Selection">
+        <option value="One" name="One" />
+        <option value="Two" name="Two" />
+    </optionset>
+</buvi>

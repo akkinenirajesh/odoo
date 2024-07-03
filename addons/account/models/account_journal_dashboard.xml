@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="KanbanDashboard" type="string" compute="_KanbanDashboard" />
+        <field name="KanbanDashboardGraph" type="string" compute="_KanbanDashboardGraph" />
+        <field name="JsonActivityData" type="string" compute="_GetJsonActivityData" />
+        <field name="ShowOnDashboard" type="bool" default="true" label="Show journal on dashboard"
+            help="Whether this journal should be displayed on the dashboard or not" />
+        <field name="Color" type="integer" default="0" label="Color Index" />
+        <field name="CurrentStatementBalance" type="decimal" compute="_ComputeCurrentStatementBalance" />
+        <field name="HasStatementLines" type="bool" compute="_ComputeCurrentStatementBalance" />
+        <field name="EntriesCount" type="integer" compute="_ComputeEntriesCount" />
+        <field name="HasPostedEntries" type="bool" compute="_ComputeHasEntries" />
+        <field name="HasEntries" type="bool" compute="_ComputeHasEntries" />
+        <field name="HasSequenceHoles" type="bool" compute="_ComputeHasSequenceHoles" />
+        <field name="HasUnhashedEntries" type="bool" label="Unhashed Entries" compute="_ComputeHasUnhashedEntries" />
+        <field name="LastStatement" type="Account.BankStatement" compute="_ComputeLastBankStatement" />
+    </model>
+</buvi>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="hr.contract" name="Hr.Contract" track_created="true" track_update="true">
+    <field name="AnalyticAccount" label="Analytic Account" type="Account.AnalyticAccount" copied="true" on-delete="Clear"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="ContractType" label="Contract Type" type="Hr.ContractType" copied="true" on-delete="Clear"/>
+    <field name="Department" label="Department" type="Hr.Department" copied="true" on-delete="Clear"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Job" label="Job Position" type="Hr.Job" copied="true" on-delete="Clear"/>
+    <field name="StructureType" label="Salary Structure Type" type="Hr.PayrollStructureType" copied="true" on-delete="Clear"/>
+    <field name="TimeCreditType" label="Part Time Work Entry Type" type="Hr.WorkEntryType" copied="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" copied="true" on-delete="Restrict"/>
+    <field name="CompanyCountry" label="Company country" type="Res.Country" readonly="true" transient="true" related-field="Company.Country"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Company.Currency"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="HrResponsible" label="HR Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="ResourceCalendar" label="Working Schedule" type="Resource.Calendar" required="true" indexed="true" on-delete="Restrict"/>
+    <field name="StandardCalendar" label="Standard Calendar" type="Resource.Calendar" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="SignRequests" label="Requested Signatures" type="Sign.Request" collection="true" copied="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Hr.EmployeeContractActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Hr.EmployeeContractActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="CalendarChanged" label="Calendar Changed" type="bool" copied="true"/>
+    <field name="CalendarMismatch" label="Calendar Mismatch" type="bool" readonly="true" transient="true"/>
+    <field name="ContractWage" label="Contract Wage" type="monetary" readonly="true" transient="true"/>
+    <field name="ContractsCount" label="Contract Count" type="integer" readonly="true" transient="true" related-field="Employee.ContractsCount"/>
+    <field name="CountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="CompanyCountry.Code"/>
+    <field name="DateEnd" label="End Date" type="date" copied="true"/>
+    <field name="DateGeneratedFrom" label="Generated From" type="datetime" required="true" readonly="true"/>
+    <field name="DateGeneratedTo" label="Generated To" type="datetime" required="true" readonly="true"/>
+    <field name="DateStart" label="Start Date" type="date" required="true" indexed="true" copied="true"/>
+    <field name="FirstContractDate" label="First Contract Date" type="date" readonly="true" transient="true" related-field="Employee.FirstContractDate"/>
+    <field name="FullTimeRequiredHours" label="Company Full Time" type="float" readonly="true" transient="true" related-field="ResourceCalendar.FullTimeRequiredHours"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HourlyWage" label="Hourly Wage" type="monetary" copied="true"/>
+    <field name="HoursPerWeek" label="Hours per Week" type="float" readonly="true" transient="true" related-field="ResourceCalendar.HoursPerWeek"/>
+    <field name="IsFulltime" label="Is Full Time" type="bool" readonly="true" transient="true" related-field="ResourceCalendar.IsFulltime"/>
+    <field name="KanbanState" label="Kanban State" type="Hr.EmployeeContractKanbanState"/>
+    <field name="L10NInDriverSalay" label="Driver Salary" type="bool" copied="true"/>
+    <field name="L10NInEsicAmount" label="ESIC Amount" type="float" copied="true"/>
+    <field name="L10NInGratuity" label="Gratuity" type="float" copied="true"/>
+    <field name="L10NInHouseRentAllowanceMetroNonmetro" label="House Rent Allowance (%)" type="float" copied="true"/>
+    <field name="L10NInLeaveAllowance" label="Leave Allowance" type="float" copied="true"/>
+    <field name="L10NInMedicalInsurance" label="Medical Insurance" type="float" copied="true"/>
+    <field name="L10NInSupplementaryAllowance" label="Supplementary Allowance" type="float" copied="true"/>
+    <field name="L10NInTds" label="TDS" type="float" copied="true"/>
+    <field name="L10NInVoluntaryProvidentFund" label="Voluntary Provident Fund (%)" type="float" copied="true"/>
+    <field name="LastGenerationDate" label="Last Generation Date" type="date" readonly="true" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Contract Reference" type="string" required="true" copied="true"/>
+    <field name="Notes" label="Notes" type="html" copied="true"/>
+    <field name="PayslipsCount" label="# Payslips" type="integer" readonly="true" transient="true"/>
+    <field name="PermitNo" label="Work Permit No" type="string" transient="true" related-field="Employee.PermitNo"/>
+    <field name="SalaryAttachmentsCount" label="Salary Attachment Count" type="integer" readonly="true" transient="true" related-field="Employee.SalaryAttachmentCount"/>
+    <field name="SchedulePay" label="Schedule Pay" type="Hr.EmployeeContractSchedulePay" copied="true"/>
+    <field name="SignRequestCount" label="Sign Request Count" type="integer" readonly="true" transient="true"/>
+    <field name="State" label="Status" type="Hr.EmployeeContractStatus"/>
+    <field name="TimeCredit" label="Part Time" type="bool" copied="true"/>
+    <field name="TrialDateEnd" label="End of Trial Period" type="date" copied="true"/>
+    <field name="VisaNo" label="Visa No" type="string" transient="true" related-field="Employee.VisaNo"/>
+    <field name="Wage" label="Wage" type="monetary" required="true" copied="true"/>
+    <field name="WageType" label="Wage Type" type="Hr.EmployeeContractWageType" copied="true"/>
+    <field name="WorkEntrySource" label="Work Entry Source" type="Hr.EmployeeContractWorkEntrySource" required="true" copied="true"/>
+    <field name="WorkTimeRate" label="Work time rate" type="float" readonly="true"/>
+  </model>
+  <model id="fleet.vehicle.log.contract" name="Fleet.VehicleLogContract" track_created="true" track_update="true">
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="CostSubtype" label="Type" type="Fleet.ServiceType" copied="true" on-delete="Clear"/>
+    <field name="Services" label="Included Services" type="Fleet.ServiceType" collection="true" copied="true"/>
+    <field name="Vehicle" label="Vehicle" type="Fleet.Vehicle" required="true" copied="true" on-delete="Restrict"/>
+    <field name="PurchaserEmployee" label="Driver (Employee)" type="Hr.Employee" readonly="true" transient="true" related-field="Vehicle.DriverEmployee"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Company.Currency"/>
+    <field name="Insurer" label="Vendor" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Purchaser" label="Driver" type="Res.Partner" readonly="true" transient="true" related-field="Vehicle.Driver"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="User" label="Responsible" type="Res.Users" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Fleet.VehicleContractActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Fleet.VehicleContractActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="Amount" label="Cost" type="monetary" copied="true"/>
+    <field name="CostFrequency" label="Recurring Cost Frequency" type="Fleet.VehicleContractRecurringCostFrequency" required="true" copied="true"/>
+    <field name="CostGenerated" label="Recurring Cost" type="monetary" copied="true"/>
+    <field name="Date" label="Date" type="date" copied="true"/>
+    <field name="DaysLeft" label="Warning Date" type="integer" readonly="true" transient="true"/>
+    <field name="ExpirationDate" label="Contract Expiration Date" type="date" copied="true"/>
+    <field name="ExpiresToday" label="Expires Today" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="InsRef" label="Reference" type="string"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Name" type="string" copied="true"/>
+    <field name="Notes" label="Terms and Conditions" type="html"/>
+    <field name="StartDate" label="Contract Start Date" type="date" copied="true"/>
+    <field name="State" label="Status" type="Fleet.VehicleContractStatus"/>
+  </model>
+  <model id="publisher_warranty.contract" name="PublisherWarranty.Contract">
+  </model>
+</buvi>

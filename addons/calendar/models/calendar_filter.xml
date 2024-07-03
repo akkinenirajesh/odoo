@@ -1,0 +1,15 @@
+xml
+<buvi>
+    <model id="Calendar.CalendarFilters" name="CalendarFilters" description="Calendar Filters">
+        <field name="UserId" type="Core.ResUsers" label="Me" required="true" default="Env.User" index="true" ondelete="cascade" />
+        <field name="PartnerId" type="Core.ResPartner" label="Employee" required="true" index="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="PartnerChecked" type="bool" default="true" label="Checked" 
+               help="Used to know if the partner is checked in the filter of the calendar view for the user." />
+        <unique>
+            <field name="UserId" />
+            <field name="PartnerId" />
+            <message>A user cannot have the same contact twice.</message>
+        </unique>
+    </model>
+</buvi>

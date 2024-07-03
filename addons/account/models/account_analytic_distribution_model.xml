@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Account.AccountAnalyticDistributionModel" name="AccountAnalyticDistributionModel" description="Account Analytic Distribution Model">
+        <field name="AccountPrefix" type="string" label="Accounts Prefix"
+            help="This analytic distribution will apply to all financial accounts sharing the prefix specified." />
+        <field name="Product" type="Product.Product" label="Product"
+            help="Select a product for which the analytic distribution will be used (e.g. create new customer invoice or Sales order if we select this product, it will automatically take this as an analytic account)" />
+        <field name="ProductCategory" type="Product.Category" label="Product Category"
+            help="Select a product category which will use analytic account specified in analytic default (e.g. create new customer invoice or Sales order if we select this product, it will automatically take this as an analytic account)" />
+    </model>
+</buvi>

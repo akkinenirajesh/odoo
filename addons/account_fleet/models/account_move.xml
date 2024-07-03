@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <!-- No new fields defined in the original Python file -->
+    </model>
+
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="VehicleId" type="Fleet.Vehicle" label="Vehicle" index="btree_not_null" />
+        <field name="NeedVehicle" type="bool" label="Need Vehicle" compute="ComputeNeedVehicle" />
+        <field name="VehicleLogServiceIds" type="Fleet.VehicleLogServices" relation="many2many" />
+    </model>
+</buvi>

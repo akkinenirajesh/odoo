@@ -1,0 +1,102 @@
+xml
+<buvi>
+  <model id="Calendar.CalendarEvent" name="CalendarEvent" description="Calendar Event">
+    <field name="Name" type="string" label="Meeting Subject" required="true" />
+    <field name="Description" type="html" />
+    <field name="UserId" type="Core.User" label="Organizer" />
+    <field name="PartnerId" type="Core.Partner" label="Scheduled by" readonly="true" />
+    <field name="Location" type="string" />
+    <field name="VideocallLocation" type="string" label="Meeting URL" compute="ComputeVideocallLocation" store="true" />
+    <field name="AccessToken" type="string" label="Invitation Token" store="true" />
+    <field name="VideocallSource" type="Calendar.VideocallSource" compute="ComputeVideocallSource" />
+    <field name="VideocallChannelId" type="Discuss.DiscussChannel" label="Discuss Channel" />
+    <field name="Privacy" type="Calendar.EventPrivacy" label="Privacy" />
+    <field name="ShowAs" type="Calendar.EventShowAs" label="Show as" required="true" default="Busy" />
+    <field name="IsHighlighted" type="bool" label="Is the Event Highlighted" compute="ComputeIsHighlighted" />
+    <field name="IsOrganizerAlone" type="bool" label="Is the Organizer Alone" compute="ComputeIsOrganizerAlone" />
+    <field name="Active" type="bool" default="true" />
+    <field name="CategoryIds" type="Calendar.EventType" label="Tags" multiple="true" />
+    <field name="Start" type="datetime" required="true" />
+    <field name="Stop" type="datetime" required="true" compute="ComputeStop" readonly="false" store="true" />
+    <field name="DisplayTime" type="string" label="Event Time" compute="ComputeDisplayTime" />
+    <field name="AllDay" type="bool" default="false" />
+    <field name="StartDate" type="date" store="true" compute="ComputeDates" inverse="InverseDates" />
+    <field name="StopDate" type="date" store="true" compute="ComputeDates" inverse="InverseDates" />
+    <field name="Duration" type="float" compute="ComputeDuration" store="true" readonly="false" />
+    <field name="ResId" type="integer" label="Document ID" />
+    <field name="ResModelId" type="Core.Model" label="Document Model" />
+    <field name="ResModel" type="string" label="Document Model Name" readonly="true" store="true" />
+    <field name="ResModelName" type="string" />
+    <field name="ActivityIds" type="Mail.Activity" label="Activities" multiple="true" />
+    <field name="AttendeeIds" type="Calendar.Attendee" label="Participant" multiple="true" />
+    <field name="CurrentAttendee" type="Calendar.Attendee" compute="ComputeCurrentAttendee" />
+    <field name="CurrentStatus" type="Calendar.AttendeeStatus" label="Attending?" readonly="false" />
+    <field name="ShouldShowStatus" type="bool" compute="ComputeShouldShowStatus" />
+    <field name="PartnerIds" type="Core.Partner" label="Attendees" multiple="true" />
+    <field name="InvalidEmailPartnerIds" type="Core.Partner" compute="ComputeInvalidEmailPartnerIds" multiple="true" />
+    <field name="AlarmIds" type="Calendar.Alarm" label="Reminders" multiple="true" />
+    <field name="Recurrency" type="bool" label="Recurrent" />
+    <field name="RecurrenceId" type="Calendar.Recurrence" label="Recurrence Rule" />
+    <field name="FollowRecurrence" type="bool" default="false" />
+    <field name="RecurrenceUpdate" type="Calendar.RecurrenceUpdate" />
+    <field name="Rrule" type="string" label="Recurrent Rule" compute="ComputeRecurrence" readonly="false" />
+    <field name="RruleTypeUi" type="Calendar.RruleTypeUi" label="Repeat" compute="ComputeRruleTypeUi" readonly="false" />
+    <field name="RruleType" type="Calendar.RruleType" label="Recurrence" compute="ComputeRecurrence" readonly="false" />
+    <field name="EventTz" type="Calendar.Timezone" label="Timezone" compute="ComputeRecurrence" readonly="false" />
+    <field name="EndType" type="Calendar.EndType" label="Recurrence Termination" compute="ComputeRecurrence" readonly="false" />
+    <field name="Interval" type="integer" label="Repeat On" compute="ComputeRecurrence" readonly="false" />
+    <field name="Count" type="integer" label="Number of Repetitions" compute="ComputeRecurrence" readonly="false" />
+    <field name="Mon" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="Tue" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="Wed" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="Thu" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="Fri" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="Sat" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="Sun" type="bool" compute="ComputeRecurrence" readonly="false" />
+    <field name="MonthBy" type="Calendar.MonthBy" label="Option" compute="ComputeRecurrence" readonly="false" />
+    <field name="Day" type="integer" label="Date of month" compute="ComputeRecurrence" readonly="false" />
+    <field name="Weekday" type="Calendar.Weekday" compute="ComputeRecurrence" readonly="false" />
+    <field name="Byday" type="Calendar.Byday" label="By day" compute="ComputeRecurrence" readonly="false" />
+    <field name="Until" type="date" compute="ComputeRecurrence" readonly="false" />
+    <field name="DisplayDescription" type="bool" compute="ComputeDisplayDescription" />
+    <field name="AttendeesCount" type="integer" compute="ComputeAttendeesCount" />
+    <field name="AcceptedCount" type="integer" compute="ComputeAttendeesCount" />
+    <field name="DeclinedCount" type="integer" compute="ComputeAttendeesCount" />
+    <field name="TentativeCount" type="integer" compute="ComputeAttendeesCount" />
+    <field name="AwaitingCount" type="integer" compute="ComputeAttendeesCount" />
+    <field name="UserCanEdit" type="bool" compute="ComputeUserCanEdit" />
+  </model>
+
+  <optionset id="Calendar.VideocallSource" name="Videocall Source">
+    <option value="Discuss" name="Discuss" />
+    <option value="Custom" name="Custom" />
+  </optionset>
+
+  <optionset id="Calendar.EventPrivacy" name="Event Privacy">
+    <option value="Public" name="Public" />
+    <option value="Private" name="Private" />
+    <option value="Confidential" name="Only internal users" />
+  </optionset>
+
+  <optionset id="Calendar.EventShowAs" name="Event Show As">
+    <option value="Free" name="Available" />
+    <option value="Busy" name="Busy" />
+  </optionset>
+
+  <optionset id="Calendar.RecurrenceUpdate" name="Recurrence Update">
+    <option value="ThisEvent" name="This event" />
+    <option value="FutureEvents" name="This and following events" />
+    <option value="AllEvents" name="All events" />
+  </optionset>
+
+  <optionset id="Calendar.RruleTypeUi" name="Rrule Type UI">
+    <option value="Daily" name="Daily" />
+    <option value="Weekly" name="Weekly" />
+    <option value="Monthly" name="Monthly" />
+    <option value="Yearly" name="Yearly" />
+    <option value="Custom" name="Custom" />
+  </optionset>
+
+  <!-- Add other optionsets for RruleType, EndType, MonthBy, Weekday, Byday, etc. -->
+
+</buvi>

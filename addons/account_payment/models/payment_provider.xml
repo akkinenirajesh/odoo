@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="JournalId" type="Account.Journal" label="Payment Journal"
+            help="The journal in which the successful transactions are posted." 
+            domain="[("Type", "=", "bank")]" />
+    </model>
+</buvi>

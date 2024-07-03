@@ -1,0 +1,18 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="CompanyId" type="Core.Company" label="Company" required="true" />
+        <field name="Type" type="Account.JournalType" label="Type" required="true" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" />
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Code" type="string" label="Short Code" required="true" />
+    </model>
+
+    <optionset id="Account.JournalType" name="Journal Type">
+        <option value="Sale" name="Sale" />
+        <option value="Purchase" name="Purchase" />
+        <option value="Cash" name="Cash" />
+        <option value="Bank" name="Bank" />
+        <option value="General" name="General" />
+    </optionset>
+</buvi>

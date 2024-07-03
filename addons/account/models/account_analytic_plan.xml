@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="Account.AccountAnalyticApplicability" name="AccountAnalyticApplicability" description="Analytic Plan's Applicabilities">
+        <field name="BusinessDomain" type="Account.BusinessDomain" />
+        <field name="AccountPrefix" type="string" label="Financial Accounts Prefix"
+            help="Prefix that defines which accounts from the financial accounting this applicability should apply on." />
+        <field name="ProductCateg" type="Product.Category" label="Product Category" />
+        <field name="DisplayAccountPrefix" type="bool" compute="_ComputeDisplayAccountPrefix"
+            help="Defines if the field account prefix should be displayed" />
+    </model>
+
+    <optionset id="Account.BusinessDomain" name="Business Domain">
+        <option value="Invoice" name="Invoice" />
+        <option value="Bill" name="Vendor Bill" />
+    </optionset>
+</buvi>

@@ -1,0 +1,43 @@
+xml
+<buvi>
+    <model id="AccountEdiProxyClient.AccountEdiProxyClientUser" name="AccountEdiProxyClientUser" description="Account EDI proxy user">
+        <field name="Active" type="bool" default="true" />
+        <field name="IdClient" type="string" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="EdiIdentification" type="string" required="true" 
+               help="The unique id that identifies this user, typically the vat" />
+        <field name="PrivateKey" type="binary" required="true" 
+               help="The key to encrypt all the user's data" />
+        <field name="PrivateKeyFilename" type="string" computed="true" />
+        <field name="RefreshToken" type="string" />
+        <field name="ProxyType" type="AccountEdiProxyClient.ProxyType" required="true" />
+        <field name="EdiMode" type="AccountEdiProxyClient.EdiMode" label="EDI operating mode" />
+
+        <unique>
+            <field name="IdClient" />
+            <message>This id_client is already used on another user.</message>
+        </unique>
+        <unique>
+            <field name="EdiIdentification" />
+            <field name="ProxyType" />
+            <field name="EdiMode" />
+            <message>This edi identification is already assigned to an active user</message>
+        </unique>
+        <unique>
+            <field name="Company" />
+            <field name="ProxyType" />
+            <field name="EdiMode" />
+            <message>This company has an active user already created for this EDI type</message>
+        </unique>
+    </model>
+
+    <optionset id="AccountEdiProxyClient.ProxyType" name="Proxy Type">
+        <!-- Add options based on your requirements -->
+    </optionset>
+
+    <optionset id="AccountEdiProxyClient.EdiMode" name="EDI Mode">
+        <option value="Prod" name="Production mode" />
+        <option value="Test" name="Test mode" />
+        <option value="Demo" name="Demo mode" />
+    </optionset>
+</buvi>

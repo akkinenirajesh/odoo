@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Bus.BusPresence" name="BusPresence" description="User Presence">
+        <field name="UserId" type="Core.User" label="User" ondelete="cascade" />
+        <field name="LastPoll" type="datetime" label="Last Poll" default="DateTime.Now" />
+        <field name="LastPresence" type="datetime" label="Last Presence" default="DateTime.Now" />
+        <field name="Status" type="Bus.PresenceStatus" label="IM Status" default="Offline" />
+        <unique>
+            <field name="UserId" />
+            <message>A presence record already exists for this user.</message>
+        </unique>
+    </model>
+
+    <optionset id="Bus.PresenceStatus" name="Presence Status">
+        <option value="Online" name="Online" />
+        <option value="Away" name="Away" />
+        <option value="Offline" name="Offline" />
+    </optionset>
+</buvi>

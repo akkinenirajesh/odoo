@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="InvoiceIsUblCii" type="bool" label="Generate Peppol format by default" default="false" />
+    </model>
+</buvi>

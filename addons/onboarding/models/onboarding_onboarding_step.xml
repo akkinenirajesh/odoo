@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="hr.referral.onboarding" name="Hr.ReferralOnboarding" track_created="true" track_update="true">
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="Image" label="Image" type="binary" required="true" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="Text" label="Text" type="text" required="true" copied="true"/>
+  </model>
+  <model id="onboarding.onboarding" name="Onboarding.Onboarding" track_created="true" track_update="true">
+    <field name="Steps" label="Onboarding steps" type="Onboarding.OnboardingStep" collection="true" copied="true"/>
+    <field name="CurrentProgress" label="Onboarding Progress" type="Onboarding.Progress" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Progresss" label="Onboarding Progress Records" type="Onboarding.Progress" collection="true" readonly="true"/>
+    <field name="CurrentOnboardingState" label="Completion State" type="Onboarding.OnboardingCompletionState" readonly="true" transient="true"/>
+    <field name="IsOnboardingClosed" label="Was panel closed?" type="bool" readonly="true" transient="true"/>
+    <field name="IsPerCompany" label="Should be done per company?" type="bool" readonly="true" transient="true"/>
+    <field name="Name" label="Name of the onboarding" type="string" copied="true" translatable="true"/>
+    <field name="PanelCloseActionName" label="Closing action" type="string" copied="true"/>
+    <field name="RouteName" label="One word name" type="string" required="true" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="TextCompleted" label="Message at completion" type="string" copied="true"/>
+  </model>
+</buvi>

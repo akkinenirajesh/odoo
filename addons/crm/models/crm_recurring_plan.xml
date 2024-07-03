@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Crm.RecurringPlan" name="RecurringPlan" description="CRM Recurring revenue plans">
+        <field name="Name" type="string" label="Plan Name" required="true" translate="true" />
+        <field name="NumberOfMonths" type="integer" label="# Months" required="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" default="10" />
+        <constraint type="check">
+            <condition>NumberOfMonths >= 0</condition>
+            <message>The number of months can't be negative.</message>
+        </constraint>
+    </model>
+</buvi>

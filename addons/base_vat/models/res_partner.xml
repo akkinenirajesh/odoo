@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Base.Partner" name="Partner" description="Partner">
+        <field name="ViesValid" type="bool" label="Intra-Community Valid" compute="ComputeViesValid" store="true" readonly="false"
+            help="European VAT numbers are automatically checked on the VIES database." />
+        <field name="PerformViesValidation" type="bool" compute="ComputePerformViesValidation"
+            help="Technical field used to determine whether VIES validation is relevant for selecting a fiscal position on this partner" />
+        <field name="ViesVatToCheck" type="string" compute="ComputeViesVatToCheck"
+            help="Technical field used to determine the VAT to check" />
+        <field name="Vat" type="string" />
+        <field name="Country" type="Core.Country" />
+    </model>
+</buvi>

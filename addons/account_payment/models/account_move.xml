@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="TransactionIds" type="List<Payment.Transaction>" label="Transactions" readonly="true" />
+        <field name="AuthorizedTransactionIds" type="List<Payment.Transaction>" label="Authorized Transactions" readonly="true" compute="ComputeAuthorizedTransactionIds" />
+        <field name="TransactionCount" type="integer" label="Transaction Count" compute="ComputeTransactionCount" />
+        <field name="AmountPaid" type="decimal" label="Amount paid" compute="ComputeAmountPaid" />
+    </model>
+</buvi>

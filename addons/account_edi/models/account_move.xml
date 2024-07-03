@@ -1,0 +1,29 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="EdiDocumentIds" type="Account.EdiDocument" relation="many2many" inverse="MoveId" />
+        <field name="EdiState" type="Account.AccountMoveEdiState" compute="ComputeEdiState" store="true"
+            help="The aggregated state of all the EDIs with web-service of this move" />
+        <field name="EdiErrorCount" type="integer" compute="ComputeEdiErrorCount"
+            help="How many EDIs are in error for this move?" />
+        <field name="EdiBlockingLevel" type="Account.AccountMoveEdiBlockingLevel" compute="ComputeEdiErrorMessage" />
+        <field name="EdiErrorMessage" type="string" compute="ComputeEdiErrorMessage" />
+        <field name="EdiWebServicesToProcess" type="string" compute="ComputeEdiWebServicesToProcess"
+            help="Technical field to display the documents that will be processed by the CRON" />
+        <field name="EdiShowCancelButton" type="bool" compute="ComputeEdiShowCancelButton" />
+        <field name="EdiShowAbandonCancelButton" type="bool" compute="ComputeEdiShowAbandonCancelButton" />
+    </model>
+
+    <optionset id="Account.AccountMoveEdiState" name="Account Move EDI State">
+        <option value="ToSend" name="To Send" />
+        <option value="Sent" name="Sent" />
+        <option value="ToCancel" name="To Cancel" />
+        <option value="Cancelled" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Account.AccountMoveEdiBlockingLevel" name="Account Move EDI Blocking Level">
+        <option value="Info" name="Info" />
+        <option value="Warning" name="Warning" />
+        <option value="Error" name="Error" />
+    </optionset>
+</buvi>

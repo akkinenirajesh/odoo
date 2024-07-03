@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Crm.Digest" name="Digest" description="CRM Digest">
+        <field name="KpiCrmLeadCreated" type="bool" label="New Leads" />
+        <field name="KpiCrmLeadCreatedValue" type="integer" compute="_ComputeKpiCrmLeadCreatedValue" />
+        <field name="KpiCrmOpportunitiesWon" type="bool" label="Opportunities Won" />
+        <field name="KpiCrmOpportunitiesWonValue" type="integer" compute="_ComputeKpiCrmOpportunitiesWonValue" />
+    </model>
+</buvi>

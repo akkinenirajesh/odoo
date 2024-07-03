@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="change.password.user" name="Change.PasswordUser" track_created="true" track_update="true">
+    <field name="Wizard" label="Wizard" type="Change.PasswordWizard" required="true" copied="true" on-delete="Cascade"/>
+    <field name="User" label="User" type="Res.Users" required="true" copied="true" on-delete="Cascade"/>
+    <field name="NewPasswd" label="New Password" type="string" copied="true"/>
+    <field name="UserLogin" label="User Login" type="string" readonly="true" copied="true"/>
+  </model>
+  <model id="report.project.task.user" name="Report.ProjectTaskUser">
+    <field name="UserSkills" label="Skills" type="Hr.EmployeeSkill" collection="true" readonly="true" transient="true" related-field="Users.EmployeeSkills"/>
+    <field name="Milestone" label="Milestone" type="Project.Milestone" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Project" label="Project" type="Project.Project" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Tags" label="Tags" type="Project.Tags" collection="true" readonly="true" copied="true"/>
+    <field name="Dependents" label="Block" type="Project.Task" collection="true" readonly="true" copied="true"/>
+    <field name="Parent" label="Parent Task" type="Project.Task" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Task" label="Tasks" type="Project.Task" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="PersonalStageTypes" label="Personal Stage" type="Project.TaskType" collection="true" readonly="true" copied="true"/>
+    <field name="Stage" label="Stage" type="Project.TaskType" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Company" label="Company" type="Res.Company" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Partner" label="Customer" type="Res.Partner" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Users" label="Assignees" type="Res.Users" collection="true" readonly="true" copied="true"/>
+    <field name="SaleOrder" label="Sales Order" type="Sale.Order" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="SaleLine" label="Sales Order Item" type="Sale.OrderLine" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="WorksheetTemplate" label="Worksheet Template" type="Worksheet.Template" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" readonly="true" copied="true"/>
+    <field name="AllocatedHours" label="Allocated Time" type="float" readonly="true" copied="true"/>
+    <field name="CreateDate" label="Create Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DateAssign" label="Assignment Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DateDeadline" label="Deadline" type="datetime" readonly="true" copied="true"/>
+    <field name="DateEnd" label="Ending Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DateLastStageUpdate" label="Last Stage Update" type="datetime" readonly="true" copied="true"/>
+    <field name="DelayEndingsDays" label="Days to Deadline" type="float" readonly="true" copied="true"/>
+    <field name="Description" label="Description" type="text" readonly="true" copied="true"/>
+    <field name="EffectiveHours" label="Hours Spent" type="float" readonly="true" copied="true"/>
+    <field name="IsClosed" label="Closed state" type="bool" readonly="true" copied="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true" related-field="Task.MessageIsFollower"/>
+    <field name="Name" label="Task" type="string" readonly="true" copied="true"/>
+    <field name="Nbr" label="# of Tasks" type="integer" readonly="true" copied="true"/>
+    <field name="Overtime" label="Overtime" type="float" readonly="true" copied="true"/>
+    <field name="PlannedDateBegin" label="Start date" type="datetime" readonly="true" copied="true"/>
+    <field name="Priority" label="Priority" type="Report.TasksAnalysisPriority" readonly="true" copied="true"/>
+    <field name="Progress" label="Progress" type="float" readonly="true" copied="true"/>
+    <field name="RatingAvg" label="Average Rating (1-5)" type="float" readonly="true" copied="true"/>
+    <field name="RatingLastValue" label="Last Rating (1-5)" type="float" readonly="true" copied="true"/>
+    <field name="RemainingHours" label="Remaining Hours" type="float" readonly="true" copied="true"/>
+    <field name="RemainingHoursPercentage" label="Remaining Hours Percentage" type="float" readonly="true" copied="true"/>
+    <field name="RemainingHoursSo" label="Remaining Hours on SO" type="float" readonly="true" copied="true"/>
+    <field name="State" label="State" type="Report.TasksAnalysisState" readonly="true"/>
+    <field name="SubtaskEffectiveHours" label="Hours Spent on Sub-Tasks" type="float" copied="true"/>
+    <field name="TotalHoursSpent" label="Total Hours Spent" type="float" copied="true"/>
+    <field name="WorkingDaysClose" label="Working Days to Close" type="float" readonly="true" copied="true"/>
+    <field name="WorkingDaysOpen" label="Working Days to Assign" type="float" readonly="true" copied="true"/>
+    <field name="WorkingHoursClose" label="Working Hours to Close" type="float" readonly="true" copied="true"/>
+    <field name="WorkingHoursOpen" label="Working Hours to Assign" type="float" readonly="true" copied="true"/>
+  </model>
+  <model id="report.pos.order" name="Report.PosOrder">
+    <field name="Journal" label="Journal" type="Account.Journal" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Config" label="Point of Sale" type="Pos.Config" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Order" label="Order" type="Pos.Order" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Session" label="Session" type="Pos.Session" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="ProductCateg" label="Product Category" type="Product.Category" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Pricelist" label="Pricelist" type="Product.Pricelist" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Product" label="Product" type="Product.Product" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="ProductTmpl" label="Product Template" type="Product.Template" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Company" label="Company" type="Res.Company" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Partner" label="Customer" type="Res.Partner" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="User" label="User" type="Res.Users" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="AveragePrice" label="Average Price" type="float" readonly="true" copied="true"/>
+    <field name="Date" label="Order Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DelayValidation" label="Delay Validation" type="integer" readonly="true" copied="true"/>
+    <field name="Invoiced" label="Invoiced" type="bool" readonly="true" copied="true"/>
+    <field name="Margin" label="Margin" type="float" readonly="true" copied="true"/>
+    <field name="NbrLines" label="Sale Line Count" type="integer" readonly="true" copied="true"/>
+    <field name="PriceSubTotal" label="Subtotal w/o discount" type="float" readonly="true" copied="true"/>
+    <field name="PriceTotal" label="Total Price" type="float" readonly="true" copied="true"/>
+    <field name="ProductQty" label="Product Quantity" type="integer" readonly="true" copied="true"/>
+    <field name="State" label="Status" type="Report.PointOfSaleOrdersReportStatus" readonly="true"/>
+    <field name="TotalDiscount" label="Total Discount" type="float" readonly="true" copied="true"/>
+  </model>
+  <model id="res.partner" name="Res.Partner" track_created="true" track_update="true">
+    <field name="PropertyAccountPayable" label="Account Payable" type="Account.Account" required="true" transient="true" on-delete="Restrict"/>
+    <field name="PropertyAccountReceivable" label="Account Receivable" type="Account.Account" required="true" transient="true" on-delete="Restrict"/>
+    <field name="Contracts" label="Partner Contracts" type="Account.AnalyticAccount" collection="true" readonly="true"/>
+    <field name="PropertyAccountPosition" label="Fiscal Position" type="Account.FiscalPosition" transient="true" on-delete="Clear"/>
+    <field name="Invoices" label="Invoices" type="Account.Move" collection="true" readonly="true"/>
+    <field name="UnpaidInvoices" label="Unpaid Invoice" type="Account.Move" collection="true" readonly="true" transient="true"/>
+    <field name="UnreconciledAmls" label="Unreconciled Aml" type="Account.MoveLine" collection="true" transient="true"/>
+    <field name="PropertyPaymentMethod" label="Payment Method" type="Account.PaymentMethod" transient="true" on-delete="Clear"/>
+    <field name="PropertyPaymentTerm" label="Customer Payment Terms" type="Account.PaymentTerm" transient="true" on-delete="Clear"/>
+    <field name="PropertySupplierPaymentTerm" label="Vendor Payment Terms" type="Account.PaymentTerm" transient="true" on-delete="Clear"/>
+    <field name="FollowupLine" label="Follow-up Level" type="AccountFollowup.FollowupLine" transient="true" on-delete="Clear"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Meetings" label="Meetings" type="Calendar.Event" collection="true"/>
+    <field name="Opportunitys" label="Opportunities" type="Crm.Lead" collection="true"/>
+    <field name="Team" label="Sales Team" type="Crm.Team" copied="true" on-delete="Clear"/>
+    <field name="PropertyDeliveryCarrier" label="Delivery Method" type="Delivery.Carrier" transient="true" on-delete="Clear"/>
+    <field name="Channels" label="Channels" type="Discuss.Channel" collection="true"/>
+    <field name="Registrations" label="Event Registrations" type="Event.Registration" collection="true"/>
+    <field name="Slas" label="SLA Policies" type="Helpdesk.Sla" collection="true" copied="true"/>
+    <field name="Employees" label="Employees" type="Hr.Employee" collection="true"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="StarredMessages" label="Starred Message" type="Mail.Message" collection="true" copied="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Boms" label="BoMs for which the Partner is one of the subcontractors" type="Mrp.Bom" collection="true" readonly="true" transient="true"/>
+    <field name="Productions" label="MRP Productions for which the Partner is the subcontractor" type="Mrp.Production" collection="true" readonly="true" transient="true"/>
+    <field name="PaymentTokens" label="Payment Tokens" type="Payment.Token" collection="true"/>
+    <field name="PosOrders" label="Pos Order" type="Pos.Order" collection="true" readonly="true"/>
+    <field name="PropertyProductPricelist" label="Pricelist" type="Product.Pricelist" transient="true" on-delete="Clear"/>
+    <field name="Projects" label="Projects" type="Project.Project" collection="true"/>
+    <field name="Tasks" label="Tasks" type="Project.Task" collection="true"/>
+    <field name="PurchaseLines" label="Purchase Lines" type="Purchase.OrderLine" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="AccountRepresentedCompanys" label="Account Represented Company" type="Res.Company" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="RefCompanys" label="Companies that refers to partner" type="Res.Company" collection="true"/>
+    <field name="Country" label="Country" type="Res.Country" copied="true" on-delete="Restrict"/>
+    <field name="State" label="State" type="Res.CountryState" copied="true" on-delete="Restrict"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="PropertyPurchaseCurrency" label="Supplier Currency" type="Res.Currency" transient="true" on-delete="Clear"/>
+    <field name="Childs" label="Contact" type="Res.Partner" collection="true"/>
+    <field name="CommercialPartner" label="Commercial Entity" type="Res.Partner" indexed="true" readonly="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Parent" label="Related Company" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="SameCompanyRegistryPartner" label="Partner with same Company Registry" type="Res.Partner" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="SameVatPartner" label="Partner with same Tax ID" type="Res.Partner" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Self" label="Self" type="Res.Partner" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Banks" label="Banks" type="Res.PartnerBank" collection="true"/>
+    <field name="Category" label="Tags" type="Res.PartnerCategory" collection="true" copied="true"/>
+    <field name="Industry" label="Industry" type="Res.PartnerIndustry" copied="true" on-delete="Clear"/>
+    <field name="Title" label="Title" type="Res.PartnerTitle" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Buyer" label="Buyer" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="FollowupResponsible" label="Responsible" type="Res.Users" transient="true" on-delete="Clear"/>
+    <field name="User" label="Salesperson" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="Users" label="Users" type="Res.Users" collection="true"/>
+    <field name="LastWebsiteSo" label="Last Online Sales Order" type="Sale.Order" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="SaleOrders" label="Sales Order" type="Sale.Order" collection="true"/>
+    <field name="SddMandates" label="Sdd Mandate" type="Sdd.Mandate" collection="true"/>
+    <field name="SlideChannelCompleteds" label="Completed Courses" type="Slide.Channel" collection="true" readonly="true" transient="true"/>
+    <field name="SlideChannels" label="eLearning Courses" type="Slide.Channel" collection="true" readonly="true" transient="true"/>
+    <field name="PropertyStockCustomer" label="Customer Location" type="Stock.Location" transient="true" on-delete="Clear"/>
+    <field name="PropertyStockSubcontractor" label="Subcontractor Location" type="Stock.Location" transient="true" on-delete="Clear"/>
+    <field name="PropertyStockSupplier" label="Vendor Location" type="Stock.Location" transient="true" on-delete="Clear"/>
+    <field name="Pickings" label="Stock Pickings for which the Partner is the subcontractor" type="Stock.Picking" collection="true" readonly="true" transient="true"/>
+    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Visitors" label="Visitors" type="Website.Visitor" collection="true"/>
+    <field name="AccountSepaLei" label="LEI" type="string" copied="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="ActiveLangCount" label="Active Lang Count" type="integer" readonly="true" transient="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Res.ContactActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Res.ContactActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AdditionalInfo" label="Additional info" type="string" copied="true"/>
+    <field name="AmazonEmail" label="Amazon Email" type="string" copied="true"/>
+    <field name="Avatar1024" label="Avatar 1024" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar128" label="Avatar 128" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar1920" label="Avatar" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar256" label="Avatar 256" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar512" label="Avatar 512" type="binary" readonly="true" transient="true"/>
+    <field name="BankAccountCount" label="Bank" type="integer" readonly="true" transient="true"/>
+    <field name="Barcode" label="Barcode" type="string" transient="true"/>
+    <field name="BillMyAccount" label="Bill My Account" type="bool" readonly="true" transient="true" related-field="PropertyDeliveryCarrier.UpsBillMyAccount"/>
+    <field name="CalendarLastNotifAck" label="Last notification marked as read from base Calendar" type="datetime" copied="true"/>
+    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
+    <field name="CertificationsCompanyCount" label="Company Certifications Count" type="integer" readonly="true" transient="true"/>
+    <field name="CertificationsCount" label="Certifications Count" type="integer" readonly="true" transient="true"/>
+    <field name="City" label="City" type="string" copied="true"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Comment" label="Notes" type="html" copied="true"/>
+    <field name="CommercialCompanyName" label="Company Name Entity" type="string" readonly="true"/>
+    <field name="CompanyName" label="Company Name" type="string" copied="true"/>
+    <field name="CompanyRegistry" label="Company ID" type="string" copied="true"/>
+    <field name="CompanyType" label="Company Type" type="Res.ContactCompanyType" transient="true"/>
+    <field name="CompleteName" label="Complete Name" type="string" indexed="true" readonly="true"/>
+    <field name="ContactAddress" label="Complete Address" type="string" readonly="true" transient="true"/>
+    <field name="ContactAddressComplete" label="Contact Address Complete" type="string" readonly="true"/>
+    <field name="ContactAddressInline" label="Inlined Complete Address" type="string" readonly="true" transient="true"/>
+    <field name="CountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="Country.Code"/>
+    <field name="Credit" label="Total Receivable" type="monetary" readonly="true" transient="true"/>
+    <field name="CreditLimit" label="Credit Limit" type="float" transient="true"/>
+    <field name="CreditToInvoice" label="Credit To Invoice" type="monetary" readonly="true" transient="true"/>
+    <field name="CustomerRank" label="Customer Rank" type="integer"/>
+    <field name="DateLocalization" label="Geolocation Date" type="date" copied="true"/>
+    <field name="DaysSalesOutstanding" label="Days Sales Outstanding (DSO)" type="float" readonly="true" transient="true"/>
+    <field name="Debit" label="Total Payable" type="monetary" readonly="true" transient="true"/>
+    <field name="DebitLimit" label="Payable Limit" type="monetary" copied="true"/>
+    <field name="DisplayPanWarning" label="Display pan warning" type="bool" readonly="true" transient="true"/>
+    <field name="DocumentCount" label="Document Count" type="integer" readonly="true" transient="true"/>
+    <field name="DuplicatedBankAccountPartnersCount" label="Duplicated Bank Account Partners Count" type="integer" readonly="true" transient="true"/>
+    <field name="Ebay" label="eBay User ID" type="string" copied="true"/>
+    <field name="Email" label="Email" type="string" copied="true"/>
+    <field name="EmailFormatted" label="Formatted Email" type="string" readonly="true" transient="true"/>
+    <field name="EmailNormalized" label="Normalized Email" type="string" readonly="true"/>
+    <field name="Employee" label="Employee" type="bool" copied="true"/>
+    <field name="EmployeesCount" label="Employees Count" type="integer" readonly="true" transient="true"/>
+    <field name="EventCount" label="# Events" type="integer" readonly="true" transient="true"/>
+    <field name="FiscalCountryCodes" label="Fiscal Country Codes" type="string" readonly="true" transient="true"/>
+    <field name="FollowupNextActionDate" label="Next reminder" type="date" transient="true"/>
+    <field name="FollowupReminderType" label="Reminders" type="Res.ContactReminders" copied="true"/>
+    <field name="FollowupStatus" label="Follow-up Status" type="Res.ContactFollow-UpStatus" readonly="true" transient="true"/>
+    <field name="Function" label="Job Position" type="string" copied="true"/>
+    <field name="HasCallInQueue" label="Is in the Call Queue" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasUnreconciledEntries" label="Has Unreconciled Entries" type="bool" readonly="true" transient="true"/>
+    <field name="IapEnrichInfo" label="IAP Enrich Info" type="text" readonly="true" transient="true"/>
+    <field name="IapSearchDomain" label="Search Domain / Email" type="string" readonly="true" transient="true"/>
+    <field name="IgnoreAbnormalInvoiceAmount" label="Ignore Abnormal Invoice Amount" type="bool" transient="true"/>
+    <field name="IgnoreAbnormalInvoiceDate" label="Ignore Abnormal Invoice Date" type="bool" transient="true"/>
+    <field name="ImStatus" label="IM Status" type="string" readonly="true" transient="true"/>
+    <field name="Image1024" label="Image 1024" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image128" label="Image 128" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image1920" label="Image" type="binary" copied="true"/>
+    <field name="Image256" label="Image 256" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image512" label="Image 512" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="ImageMedium" label="Medium-sized image" type="binary" readonly="true" transient="true" related-field="Avatar128"/>
+    <field name="InvoiceWarn" label="Invoice" type="Res.ContactInvoice" copied="true"/>
+    <field name="InvoiceWarnMsg" label="Message for Invoice" type="text" copied="true"/>
+    <field name="IsBlacklisted" label="Blacklist" type="bool" readonly="true" transient="true"/>
+    <field name="IsCompany" label="Is a Company" type="bool" copied="true"/>
+    <field name="IsPublic" label="Is Public" type="bool" readonly="true" transient="true"/>
+    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
+    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
+    <field name="IsSubcontractor" label="Subcontractor" type="bool" readonly="true" transient="true"/>
+    <field name="JournalItemCount" label="Journal Items" type="integer" readonly="true" transient="true"/>
+    <field name="L10NInGstTreatment" label="GST Treatment" type="Res.ContactGstTreatment" copied="true"/>
+    <field name="L10NInPan" label="PAN" type="string" copied="true"/>
+    <field name="LastTimeEntriesChecked" label="Latest Invoices &amp; Payments Matching Date" type="datetime" readonly="true"/>
+    <field name="LoyaltyCardCount" label="Active loyalty cards" type="integer" readonly="true" transient="true"/>
+    <field name="MeetingCount" label="# Meetings" type="integer" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageBounce" label="Bounce" type="integer" copied="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="Mobile" label="Mobile" type="string" copied="true"/>
+    <field name="MobileBlacklisted" label="Blacklisted Phone Is Mobile" type="bool" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Name" type="string" indexed="true" copied="true"/>
+    <field name="OcnToken" label="OCN Token" type="string" readonly="true"/>
+    <field name="OnTimeRate" label="On-Time Delivery Rate" type="float" readonly="true" transient="true"/>
+    <field name="OnlinePartnerInformation" label="Online Partner Information" type="string" readonly="true" copied="true"/>
+    <field name="OpportunityCount" label="Opportunity" type="integer" readonly="true" transient="true"/>
+    <field name="ParentName" label="Parent name" type="string" readonly="true" transient="true" related-field="Parent.Name"/>
+    <field name="PartnerGid" label="Company database ID" type="integer" copied="true"/>
+    <field name="PartnerLatitude" label="Geo Latitude" type="float" copied="true"/>
+    <field name="PartnerLongitude" label="Geo Longitude" type="float" copied="true"/>
+    <field name="PartnerShare" label="Share Partner" type="bool" readonly="true"/>
+    <field name="PaymentTokenCount" label="Payment Token Count" type="integer" readonly="true" transient="true"/>
+    <field name="PeppolEndpoint" label="Peppol Endpoint" type="string" copied="true"/>
+    <field name="PerformViesValidation" label="Perform Vies Validation" type="bool" readonly="true" transient="true"/>
+    <field name="Phone" label="Phone" type="string" copied="true"/>
+    <field name="PhoneBlacklisted" label="Blacklisted Phone is Phone" type="bool" readonly="true" transient="true"/>
+    <field name="PhoneMobileSearch" label="Phone/Mobile" type="string" copied="true" transient="true"/>
+    <field name="PhoneSanitized" label="Sanitized Number" type="string" readonly="true"/>
+    <field name="PhoneSanitizedBlacklisted" label="Phone Blacklisted" type="bool" readonly="true" transient="true"/>
+    <field name="PickingWarn" label="Stock Picking" type="Res.ContactStockPicking" copied="true"/>
+    <field name="PickingWarnMsg" label="Message for Stock Picking" type="text" copied="true"/>
+    <field name="PlanToChangeBike" label="Plan To Change Bike" type="bool" copied="true"/>
+    <field name="PlanToChangeCar" label="Plan To Change Car" type="bool" copied="true"/>
+    <field name="PosOrderCount" label="Pos Order Count" type="integer" readonly="true" transient="true"/>
+    <field name="PropertyUpsCarrierAccount" label="UPS Account Number" type="string" transient="true"/>
+    <field name="PurchaseOrderCount" label="Purchase Order Count" type="integer" readonly="true" transient="true"/>
+    <field name="PurchaseWarn" label="Purchase Order" type="Res.ContactPurchaseOrder" copied="true"/>
+    <field name="PurchaseWarnMsg" label="Message for Purchase Order" type="text" copied="true"/>
+    <field name="ReceiptReminderEmail" label="Receipt Reminder" type="bool" transient="true"/>
+    <field name="Ref" label="Reference" type="string" indexed="true" copied="true"/>
+    <field name="ReminderDateBeforeReceipt" label="Days Before Receipt" type="integer" transient="true"/>
+    <field name="SaleOrderCount" label="Sale Order Count" type="integer" readonly="true" transient="true"/>
+    <field name="SaleWarn" label="Sales Warnings" type="Res.ContactSalesWarnings" copied="true"/>
+    <field name="SaleWarnMsg" label="Message for Sales Order" type="text" copied="true"/>
+    <field name="SddCount" label="SDD count" type="integer" readonly="true" transient="true"/>
+    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
+    <field name="ShowCreditLimit" label="Show Credit Limit" type="bool" readonly="true" transient="true"/>
+    <field name="SignatureCount" label="# Signatures" type="integer" readonly="true" transient="true"/>
+    <field name="SignupExpiration" label="Signup Expiration" type="datetime"/>
+    <field name="SignupToken" label="Signup Token" type="string" transient="true"/>
+    <field name="SignupType" label="Signup Token Type" type="string"/>
+    <field name="SignupUrl" label="Signup URL" type="string" readonly="true" transient="true"/>
+    <field name="SignupValid" label="Signup Token is Valid" type="bool" readonly="true" transient="true"/>
+    <field name="SlideChannelCompanyCount" label="Company Course Count" type="integer" readonly="true" transient="true"/>
+    <field name="SlideChannelCount" label="Course Count" type="integer" readonly="true" transient="true"/>
+    <field name="StaticMapUrl" label="Static Map Url" type="string" readonly="true" transient="true"/>
+    <field name="StaticMapUrlIsValid" label="Static Map Url Is Valid" type="bool" readonly="true" transient="true"/>
+    <field name="Street" label="Street" type="string" copied="true"/>
+    <field name="Street2" label="Street2" type="string" copied="true"/>
+    <field name="SubscriptionCount" label="Subscriptions" type="integer" readonly="true" transient="true"/>
+    <field name="SupplierInvoiceCount" label="# Vendor Bills" type="integer" readonly="true" transient="true"/>
+    <field name="SupplierRank" label="Supplier Rank" type="integer"/>
+    <field name="TaskCount" label="# Tasks" type="integer" readonly="true" transient="true"/>
+    <field name="TicketCount" label="Tickets" type="integer" readonly="true" transient="true"/>
+    <field name="TotalDue" label="Total Due" type="monetary" readonly="true" transient="true"/>
+    <field name="TotalInvoiced" label="Total Invoiced" type="monetary" readonly="true" transient="true"/>
+    <field name="TotalOverdue" label="Total Overdue" type="monetary" readonly="true" transient="true"/>
+    <field name="Trust" label="Degree of trust you have in this debtor" type="Res.ContactDegreeOfTrustYouHaveInThisDebtor" transient="true"/>
+    <field name="Type" label="Address Type" type="Res.ContactAddressType" copied="true"/>
+    <field name="TzOffset" label="Timezone offset" type="string" readonly="true" transient="true"/>
+    <field name="UblCiiFormat" label="Format" type="Res.ContactFormat" copied="true"/>
+    <field name="UnpaidInvoicesCount" label="Unpaid Invoices Count" type="integer" readonly="true" transient="true"/>
+    <field name="UsePartnerCreditLimit" label="Partner Limit" type="bool" transient="true"/>
+    <field name="UserLivechatUsername" label="User Livechat Username" type="string" readonly="true" transient="true"/>
+    <field name="Vat" label="Tax ID" type="string" indexed="true" copied="true"/>
+    <field name="ViesValid" label="Intra-Community Valid" type="bool" copied="true"/>
+    <field name="ViesVatToCheck" label="Vies Vat To Check" type="string" readonly="true" transient="true"/>
+    <field name="Website" label="Website Link" type="string" copied="true"/>
+    <field name="WebsiteDescription" label="Website Partner Full Description" type="html" copied="true" translatable="true"/>
+    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
+    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
+    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
+    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
+    <field name="WebsiteShortDescription" label="Website Partner Short Description" type="text" copied="true" translatable="true"/>
+    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
+    <field name="Zip" label="Zip" type="string" copied="true"/>
+  </model>
+  <model id="crm.lead2opportunity.partner" name="Crm.Lead2OpportunityPartner" track_created="true" track_update="true">
+    <field name="DuplicatedLeads" label="Opportunities" type="Crm.Lead" collection="true" copied="true"/>
+    <field name="Lead" label="Associated Lead" type="Crm.Lead" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Team" label="Sales Team" type="Crm.Team" copied="true" on-delete="Clear"/>
+    <field name="Partner" label="Customer" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="User" label="Salesperson" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="ForceAssignment" label="Force assignment" type="bool" copied="true"/>
+  </model>
+  <model id="crm.quotation.partner" name="Crm.QuotationPartner" track_created="true" track_update="true">
+    <field name="Lead" label="Associated Lead" type="Crm.Lead" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Partner" label="Customer" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="Action" label="Quotation Customer" type="Crm.CreateNewOrUseExistingCustomerOnNewQuotationQuotationCustomer" required="true" copied="true"/>
+  </model>
+  <model id="gamification.badge.user" name="Gamification.BadgeUser" track_created="true" track_update="true">
+    <field name="Badge" label="Badge" type="Gamification.Badge" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Challenge" label="Challenge" type="Gamification.Challenge" copied="true" on-delete="Clear"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Sender" label="Sender" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="User" label="User" type="Res.Users" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="BadgeName" label="Badge Name" type="string" transient="true" translatable="true" related-field="Badge.Name"/>
+    <field name="Comment" label="Comment" type="text" copied="true"/>
+  </model>
+  <model id="helpdesk.create.fsm.task" name="Helpdesk.CreateFsmTask" track_created="true" track_update="true">
+    <field name="HelpdeskTicket" label="Related ticket" type="Helpdesk.Ticket" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Project" label="Project" type="Project.Project" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Company" label="Company" type="Res.Company" readonly="true" transient="true" related-field="HelpdeskTicket.Company"/>
+    <field name="Partner" label="Customer" type="Res.Partner" required="true" copied="true" on-delete="Cascade"/>
+    <field name="WorksheetTemplate" label="Worksheet Template" type="Worksheet.Template" copied="true" on-delete="Clear"/>
+    <field name="AllowWorksheets" label="Worksheets" type="bool" readonly="true" transient="true" related-field="Project.AllowWorksheets"/>
+    <field name="Name" label="Title" type="string" required="true" copied="true"/>
+  </model>
+  <model id="lunch.order" name="Lunch.Order" track_created="true" track_update="true">
+    <field name="LunchLocation" label="Lunch Location" type="Lunch.Location" copied="true" on-delete="Clear"/>
+    <field name="Product" label="Product" type="Lunch.Product" required="true" copied="true" on-delete="Restrict"/>
+    <field name="Category" label="Product Category" type="Lunch.ProductCategory" readonly="true" related-field="Product.Category"/>
+    <field name="Supplier" label="Vendor" type="Lunch.Supplier" indexed="true" readonly="true" related-field="Product.Supplier"/>
+    <field name="ToppingIds1" label="Extras 1" type="Lunch.Topping" collection="true" copied="true"/>
+    <field name="ToppingIds2" label="Extras 2" type="Lunch.Topping" collection="true" copied="true"/>
+    <field name="ToppingIds3" label="Extras 3" type="Lunch.Topping" collection="true" copied="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" related-field="Company.Currency"/>
+    <field name="User" label="User" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="AvailableToday" label="This is True when if the supplier is available today" type="bool" readonly="true" transient="true" related-field="Supplier.AvailableToday"/>
+    <field name="AvailableToppings1" label="Available Toppings 1" type="bool" readonly="true" transient="true"/>
+    <field name="AvailableToppings2" label="Available Toppings 2" type="bool" readonly="true" transient="true"/>
+    <field name="AvailableToppings3" label="Available Toppings 3" type="bool" readonly="true" transient="true"/>
+    <field name="Date" label="Order Date" type="date" required="true" copied="true"/>
+    <field name="DisplayReorderButton" label="Display Reorder Button" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayToppings" label="Extras" type="text" readonly="true"/>
+    <field name="Image128" label="Image 128" type="binary" readonly="true" transient="true"/>
+    <field name="Image1920" label="Image 1920" type="binary" readonly="true" transient="true"/>
+    <field name="Name" label="Product Name" type="string" readonly="true" transient="true" translatable="true" related-field="Product.Name"/>
+    <field name="Note" label="Notes" type="text" copied="true"/>
+    <field name="Notified" label="Notified" type="bool" copied="true"/>
+    <field name="OrderDeadlinePassed" label="Order Deadline Passed" type="bool" readonly="true" transient="true" related-field="Supplier.OrderDeadlinePassed"/>
+    <field name="Price" label="Total Price" type="monetary" readonly="true"/>
+    <field name="ProductDescription" label="Description" type="html" readonly="true" transient="true" translatable="true" related-field="Product.Description"/>
+    <field name="Quantity" label="Quantity" type="float" required="true" copied="true"/>
+    <field name="State" label="Status" type="Lunch.LunchOrderStatus" indexed="true" readonly="true"/>
+    <field name="ToppingLabel1" label="Extra 1 Label" type="string" readonly="true" transient="true" related-field="Product.Supplier.ToppingLabel1"/>
+    <field name="ToppingLabel2" label="Extra 2 Label" type="string" readonly="true" transient="true" related-field="Product.Supplier.ToppingLabel2"/>
+    <field name="ToppingLabel3" label="Extra 3 Label" type="string" readonly="true" transient="true" related-field="Product.Supplier.ToppingLabel3"/>
+  </model>
+  <model id="mail.resend.partner" name="Mail.ResendPartner" track_created="true" track_update="true">
+    <field name="Notification" label="Notification" type="Mail.Notification" required="true" copied="true" on-delete="Cascade"/>
+    <field name="ResendWizard" label="Resend wizard" type="Mail.ResendMessage" copied="true" on-delete="Clear"/>
+    <field name="Partner" label="Partner" type="Res.Partner" readonly="true" transient="true" related-field="Notification.ResPartner"/>
+    <field name="Email" label="Email Address" type="string" transient="true" related-field="Partner.Email"/>
+    <field name="FailureReason" label="Failure Reason" type="text" readonly="true" transient="true" related-field="Notification.FailureReason"/>
+    <field name="Message" label="Error message" type="string" copied="true"/>
+    <field name="Name" label="Recipient Name" type="string" transient="true" related-field="Partner.Name"/>
+    <field name="PartnerReadonly" label="Partner Readonly" type="bool" readonly="true" transient="true" related-field="ResendWizard.PartnerReadonly"/>
+    <field name="Resend" label="Try Again" type="bool" copied="true"/>
+  </model>
+  <model id="pos.order" name="Pos.Order" track_created="true" track_update="true">
+    <field name="FiscalPosition" label="Fiscal Position" type="Account.FiscalPosition" copied="true" on-delete="Clear"/>
+    <field name="SaleJournal" label="Sales Journal" type="Account.Journal" readonly="true" related-field="Session.Config.Journal" on-delete="Restrict"/>
+    <field name="AccountMove" label="Invoice" type="Account.Move" indexed="true" readonly="true" on-delete="Clear"/>
+    <field name="SessionMove" label="Session Journal Entry" type="Account.Move" readonly="true" transient="true" related-field="Session.Move"/>
+    <field name="CrmTeam" label="Sales Team" type="Crm.Team" copied="true" on-delete="Clear"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" copied="true" on-delete="Clear"/>
+    <field name="Config" label="Point of Sale" type="Pos.Config" related-field="Session.Config"/>
+    <field name="RefundedOrder" label="Refunded Order" type="Pos.Order" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Lines" label="Order Lines" type="Pos.OrderLine" collection="true" copied="true"/>
+    <field name="Payments" label="Payments" type="Pos.Payment" collection="true" readonly="true"/>
+    <field name="OnlinePaymentMethod" label="Online Payment Method" type="Pos.PaymentMethod" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Session" label="Session" type="Pos.Session" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="ProcurementGroup" label="Procurement Group" type="Procurement.Group" on-delete="Clear"/>
+    <field name="Pricelist" label="Pricelist" type="Product.Pricelist" copied="true" on-delete="Clear"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" readonly="true" copied="true" on-delete="Restrict"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Config.Currency"/>
+    <field name="Partner" label="Customer" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="User" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="Table" label="Table" type="Restaurant.Table" indexed="true" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Pickings" label="Picking" type="Stock.Picking" collection="true"/>
+    <field name="PickingType" label="Operation Type" type="Stock.PickingType" transient="true" related-field="Session.Config.PickingType"/>
+    <field name="AccessToken" label="Security Token" type="string"/>
+    <field name="AccessUrl" label="Portal Access URL" type="string" readonly="true" transient="true"/>
+    <field name="AccessWarning" label="Access warning" type="text" readonly="true" transient="true"/>
+    <field name="AmountPaid" label="Paid" type="float" required="true" copied="true"/>
+    <field name="AmountReturn" label="Returned" type="float" required="true" readonly="true" copied="true"/>
+    <field name="AmountTax" label="Taxes" type="float" required="true" readonly="true" copied="true"/>
+    <field name="AmountTotal" label="Total" type="float" required="true" readonly="true" copied="true"/>
+    <field name="Cashier" label="Cashier" type="string" readonly="true"/>
+    <field name="CountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="Company.AccountFiscalCountry.Code"/>
+    <field name="CurrencyRate" label="Currency Rate" type="float" readonly="true"/>
+    <field name="CustomerCount" label="Guests" type="integer" readonly="true" copied="true"/>
+    <field name="DateOrder" label="Date" type="datetime" indexed="true" readonly="true" copied="true"/>
+    <field name="FailedPickings" label="Failed Pickings" type="bool" readonly="true" transient="true"/>
+    <field name="HasRefundableLines" label="Has Refundable Lines" type="bool" readonly="true" transient="true"/>
+    <field name="IsInvoiced" label="Is Invoiced" type="bool" readonly="true" transient="true"/>
+    <field name="IsTipped" label="Is this already tipped?" type="bool" readonly="true" copied="true"/>
+    <field name="IsTotalCostComputed" label="Is Total Cost Computed" type="bool" readonly="true" transient="true"/>
+    <field name="LastOrderPreparationChange" label="Last preparation change" type="string" copied="true"/>
+    <field name="Margin" label="Margin" type="monetary" readonly="true" transient="true"/>
+    <field name="MarginPercent" label="Margin (%)" type="float" readonly="true" transient="true"/>
+    <field name="Name" label="Order Ref" type="string" required="true" readonly="true"/>
+    <field name="NbPrint" label="Number of Print" type="integer" readonly="true"/>
+    <field name="NextOnlinePaymentAmount" label="Next online payment amount to pay" type="float" copied="true"/>
+    <field name="Note" label="Internal Notes" type="text" copied="true"/>
+    <field name="PickingCount" label="Picking Count" type="integer" readonly="true" transient="true"/>
+    <field name="PosReference" label="Receipt Number" type="string" indexed="true" readonly="true"/>
+    <field name="RefundOrdersCount" label="Number of Refund Orders" type="integer" readonly="true" transient="true"/>
+    <field name="SaleOrderCount" label="Sale Order Count" type="integer" readonly="true" transient="true"/>
+    <field name="SequenceNumber" label="Sequence Number" type="integer" copied="true"/>
+    <field name="ShippingDate" label="Shipping Date" type="date" copied="true"/>
+    <field name="State" label="Status" type="Pos.PointOfSaleOrdersStatus" indexed="true" readonly="true"/>
+    <field name="TableStandNumber" label="Table Stand Number" type="string" copied="true"/>
+    <field name="Takeaway" label="Take Away" type="bool" copied="true"/>
+    <field name="TicketCode" label="Ticket Code" type="string" copied="true"/>
+    <field name="TipAmount" label="Tip Amount" type="float" readonly="true" copied="true"/>
+    <field name="ToInvoice" label="To invoice" type="bool"/>
+    <field name="TrackingNumber" label="Order Number" type="string" readonly="true" transient="true"/>
+    <field name="UseSelfOrderOnlinePayment" label="Use Self Order Online Payment" type="bool" readonly="true"/>
+  </model>
+  <model id="pos_preparation_display.order" name="PosPreparationDisplay.Order" track_created="true" track_update="true">
+    <field name="PosConfig" label="Point of Sale" type="Pos.Config" readonly="true" transient="true" related-field="PosOrder.Config"/>
+    <field name="PosOrder" label="Pos Order" type="Pos.Order" copied="true" on-delete="Clear"/>
+    <field name="OrderStages" label="Order Stage" type="PosPreparationDisplay.OrderStage" collection="true"/>
+    <field name="PreparationDisplayOrderLines" label="Order Lines" type="PosPreparationDisplay.Orderline" collection="true" readonly="true"/>
+    <field name="PosTable" label="Pos Table" type="Restaurant.Table" copied="true" on-delete="Clear"/>
+    <field name="Displayed" label="Order is displayed" type="bool" copied="true"/>
+    <field name="PosTableStandNumber" label="Table Stand Number" type="string" copied="true"/>
+    <field name="PosTakeaway" label="Take Away" type="bool" copied="true"/>
+  </model>
+  <model id="portal.wizard.user" name="Portal.WizardUser" track_created="true" track_update="true">
+    <field name="Wizard" label="Wizard" type="Portal.Wizard" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Partner" label="Contact" type="Res.Partner" required="true" readonly="true" copied="true" on-delete="Cascade"/>
+    <field name="User" label="User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Email" label="Email" type="string" copied="true"/>
+    <field name="EmailState" label="Status" type="Portal.PortalUserConfigStatus" readonly="true" transient="true"/>
+    <field name="IsInternal" label="Is Internal" type="bool" readonly="true" transient="true"/>
+    <field name="IsPortal" label="Is Portal" type="bool" readonly="true" transient="true"/>
+    <field name="LoginDate" label="Latest Authentication" type="datetime" readonly="true" transient="true" related-field="User.LoginDate"/>
+  </model>
+  <model id="project.task" name="Project.Task" track_created="true" track_update="true">
+    <field name="AnalyticAccount" label="Analytic Account" type="Account.AnalyticAccount" copied="true" on-delete="Clear"/>
+    <field name="SoAnalyticAccount" label="Sale Order Analytic Account" type="Account.AnalyticAccount" readonly="true" transient="true" related-field="SaleOrder.AnalyticAccount"/>
+    <field name="Timesheets" label="Timesheets" type="Account.AnalyticLine" collection="true"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Documents" label="Documents" type="Documents.Document" collection="true"/>
+    <field name="SharedDocuments" label="Shared Documents" type="Documents.Document" collection="true" readonly="true" transient="true"/>
+    <field name="DocumentsFolder" label="Workspace" type="Documents.Folder" readonly="true" transient="true" related-field="Project.DocumentsFolder"/>
+    <field name="HelpdeskTicket" label="Original Ticket" type="Helpdesk.Ticket" indexed="true" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="UserSkills" label="Skills" type="Hr.EmployeeSkill" collection="true" readonly="true" transient="true" related-field="Users.EmployeeSkills"/>
+    <field name="Attachments" label="Main Attachments" type="Ir.Attachment" collection="true" readonly="true" transient="true"/>
+    <field name="DisplayedImage" label="Cover Image" type="Ir.Attachment" copied="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Pricelist" label="Pricelist" type="Product.Pricelist" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="TimesheetProduct" label="Timesheet Product" type="Product.Product" readonly="true" transient="true" related-field="Project.TimesheetProduct"/>
+    <field name="Milestone" label="Milestone" type="Project.Milestone" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Project" label="Project" type="Project.Project" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Tags" label="Tags" type="Project.Tags" collection="true" copied="true"/>
+    <field name="Childs" label="Sub-tasks" type="Project.Task" collection="true"/>
+    <field name="DependOns" label="Blocked By" type="Project.Task" collection="true"/>
+    <field name="Dependents" label="Block" type="Project.Task" collection="true"/>
+    <field name="Parent" label="Parent Task" type="Project.Task" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Recurrence" label="Recurrence" type="Project.TaskRecurrence" on-delete="Clear"/>
+    <field name="PersonalStage" label="Personal Stage State" type="Project.TaskStagePersonal" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="PersonalStageType" label="Personal Stage" type="Project.TaskType" transient="true" on-delete="Clear"/>
+    <field name="PersonalStageTypes" label="Personal Stages" type="Project.TaskType" collection="true"/>
+    <field name="Stage" label="Stage" type="Project.TaskType" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="PartnerCountry" label="Country" type="Res.Country" readonly="true" transient="true" related-field="Partner.Country"/>
+    <field name="PartnerState" label="Customer State" type="Res.CountryState" readonly="true" transient="true" related-field="Partner.State"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Partner" label="Customer" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Users" label="Assignees" type="Res.Users" collection="true" copied="true"/>
+    <field name="ProjectSaleOrder" label="Project's sale order" type="Sale.Order" readonly="true" transient="true" related-field="Project.SaleOrder"/>
+    <field name="SaleOrder" label="Sales Order" type="Sale.Order" readonly="true" on-delete="Clear"/>
+    <field name="SaleLine" label="Sales Order Item" type="Sale.OrderLine" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="UserTimer" label="User Timer" type="Timer.Timer" collection="true" readonly="true" transient="true"/>
+    <field name="WorksheetTemplate" label="Worksheet Template" type="Worksheet.Template" copied="true" on-delete="Clear"/>
+    <field name="AccessToken" label="Security Token" type="string"/>
+    <field name="AccessUrl" label="Portal Access URL" type="string" readonly="true" transient="true"/>
+    <field name="AccessWarning" label="Access warning" type="text" readonly="true" transient="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Project.TaskActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Project.TaskActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AllocatedHours" label="Allocated Time" type="float" copied="true"/>
+    <field name="AllowBillable" label="Billable" type="bool" readonly="true" transient="true" related-field="Project.AllowBillable"/>
+    <field name="AllowMaterial" label="Products on Tasks" type="bool" readonly="true" transient="true" related-field="Project.AllowMaterial"/>
+    <field name="AllowMilestones" label="Milestones" type="bool" readonly="true" transient="true" related-field="Project.AllowMilestones"/>
+    <field name="AllowQuotations" label="Extra Quotations" type="bool" readonly="true" transient="true" related-field="Project.AllowQuotations"/>
+    <field name="AllowTaskDependencies" label="Task Dependencies" type="bool" readonly="true" transient="true" related-field="Project.AllowTaskDependencies"/>
+    <field name="AllowTimesheets" label="Allow timesheets" type="bool" readonly="true" transient="true"/>
+    <field name="AllowWorksheets" label="Worksheets" type="bool" readonly="true" transient="true" related-field="Project.AllowWorksheets"/>
+    <field name="AnalyticAccountActive" label="Active Analytic Account" type="bool" readonly="true" transient="true"/>
+    <field name="ClosedSubtaskCount" label="Closed Sub-tasks Count" type="integer" readonly="true" transient="true"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="CurrentUserSameCompanyPartner" label="Current User Same Company Partner" type="bool" readonly="true" transient="true"/>
+    <field name="DateAssign" label="Assigning Date" type="datetime" readonly="true"/>
+    <field name="DateDeadline" label="Deadline" type="datetime" indexed="true" copied="true"/>
+    <field name="DateEnd" label="Ending Date" type="datetime" indexed="true"/>
+    <field name="DateLastStageUpdate" label="Last Stage Update" type="datetime" indexed="true" readonly="true"/>
+    <field name="DependOnCount" label="Depending on Tasks" type="integer" readonly="true" transient="true"/>
+    <field name="DependencyWarning" label="Dependency Warning" type="html" readonly="true" transient="true"/>
+    <field name="DependentTasksCount" label="Dependent Tasks" type="integer" readonly="true" transient="true"/>
+    <field name="Description" label="Description" type="html" copied="true"/>
+    <field name="DisplayCreateInvoicePrimary" label="Display Create Invoice Primary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayCreateInvoiceSecondary" label="Display Create Invoice Secondary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayEnabledConditionsCount" label="Display Enabled Conditions Count" type="integer" readonly="true" transient="true"/>
+    <field name="DisplayHelpdeskTicketButton" label="Display Ticket" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayInProject" label="Display In Project" type="bool" readonly="true" copied="true"/>
+    <field name="DisplayMarkAsDonePrimary" label="Display Mark As Done Primary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayMarkAsDoneSecondary" label="Display Mark As Done Secondary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayParentTaskButton" label="Display Parent Task Button" type="bool" readonly="true" transient="true"/>
+    <field name="DisplaySaleOrderButton" label="Display Sales Order" type="bool" readonly="true" transient="true"/>
+    <field name="DisplaySatisfiedConditionsCount" label="Display Satisfied Conditions Count" type="integer" readonly="true" transient="true"/>
+    <field name="DisplaySendReportPrimary" label="Display Send Report Primary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplaySendReportSecondary" label="Display Send Report Secondary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplaySignReportPrimary" label="Display Sign Report Primary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplaySignReportSecondary" label="Display Sign Report Secondary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTimerPause" label="Display Timer Pause" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTimerResume" label="Display Timer Resume" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTimerStartPrimary" label="Display Timer Start Primary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTimerStartSecondary" label="Display Timer Start Secondary" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTimerStop" label="Display Timer Stop" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTimesheetTimer" label="Display Timesheet Time" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayWarningDependencyInGantt" label="Display Warning Dependency In Gantt" type="bool" readonly="true" transient="true"/>
+    <field name="DocumentCount" label="Number of documents in Task" type="integer" readonly="true" transient="true"/>
+    <field name="DurationTracking" label="Status time" type="json" readonly="true" transient="true"/>
+    <field name="EffectiveHours" label="Hours Spent" type="float" readonly="true"/>
+    <field name="EmailCc" label="Email cc" type="string" copied="true"/>
+    <field name="EncodeUomInDays" label="Encode Uom In Days" type="bool" readonly="true" transient="true"/>
+    <field name="FsmDone" label="Task Done" type="bool"/>
+    <field name="FsmIsSent" label="Is Worksheet sent" type="bool" readonly="true"/>
+    <field name="HasLateAndUnreachedMilestone" label="Has Late And Unreached Milestone" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasMultiSol" label="Has Multi Sol" type="bool" readonly="true" transient="true"/>
+    <field name="HtmlFieldHistory" label="History data" type="json" copied="true"/>
+    <field name="HtmlFieldHistoryMetadata" label="History metadata" type="json" readonly="true" transient="true"/>
+    <field name="InvoiceCount" label="Number of invoices" type="integer" readonly="true" transient="true" related-field="SaleOrder.InvoiceCount"/>
+    <field name="IsAbsent" label="Employees on Time Off" type="bool" readonly="true" transient="true"/>
+    <field name="IsClosed" label="Closed state" type="bool" readonly="true" transient="true"/>
+    <field name="IsFsm" label="Field Service" type="bool" readonly="true" transient="true" related-field="Project.IsFsm"/>
+    <field name="IsProjectMapEmpty" label="Is Project map empty" type="bool" readonly="true" transient="true"/>
+    <field name="IsTaskPhoneUpdate" label="Is Task Phone Update" type="bool" readonly="true" transient="true"/>
+    <field name="IsTimeoffTask" label="Is Time off Task" type="bool" readonly="true" transient="true"/>
+    <field name="IsTimerRunning" label="Is Timer Running" type="bool" readonly="true" transient="true" related-field="UserTimer.IsTimerRunning"/>
+    <field name="LeaveTypesCount" label="Time Off Types Count" type="integer" readonly="true" transient="true"/>
+    <field name="LeaveWarning" label="Leave Warning" type="string" readonly="true" transient="true"/>
+    <field name="MaterialLineProductCount" label="Material Line Product Count" type="integer" readonly="true" transient="true"/>
+    <field name="MaterialLineTotalPrice" label="Material Line Total Price" type="float" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Title" type="string" required="true" indexed="true" copied="true"/>
+    <field name="Overtime" label="Overtime" type="float" readonly="true"/>
+    <field name="PartnerCity" label="City" type="string" transient="true" related-field="Partner.City"/>
+    <field name="PartnerPhone" label="Phone" type="string"/>
+    <field name="PartnerStreet" label="Street" type="string" readonly="true" transient="true" related-field="Partner.Street"/>
+    <field name="PartnerStreet2" label="Street2" type="string" readonly="true" transient="true" related-field="Partner.Street2"/>
+    <field name="PartnerZip" label="ZIP" type="string" readonly="true" transient="true" related-field="Partner.Zip"/>
+    <field name="PlannedDateBegin" label="Start date" type="datetime" copied="true"/>
+    <field name="PlannedDateStart" label="Planned Date Start" type="datetime" transient="true"/>
+    <field name="PlanningOverlap" label="Planning Overlap" type="html" readonly="true" transient="true"/>
+    <field name="PortalEffectiveHours" label="Portal Effective Hours" type="float" readonly="true" transient="true"/>
+    <field name="PortalInvoiceCount" label="Invoice Count" type="integer" readonly="true" transient="true"/>
+    <field name="PortalProgress" label="Portal Progress" type="float" readonly="true" transient="true"/>
+    <field name="PortalQuotationCount" label="Portal Quotation Count" type="integer" readonly="true" transient="true"/>
+    <field name="PortalRemainingHours" label="Portal Remaining Hours" type="float" readonly="true" transient="true"/>
+    <field name="PortalSubtaskEffectiveHours" label="Portal Subtask Effective Hours" type="float" readonly="true" transient="true"/>
+    <field name="PortalTotalHoursSpent" label="Portal Total Hours Spent" type="float" readonly="true" transient="true"/>
+    <field name="PortalUserNames" label="Portal User Names" type="string" readonly="true" transient="true"/>
+    <field name="Priority" label="Priority" type="Project.TaskPriority" indexed="true" copied="true"/>
+    <field name="Progress" label="Progress" type="float" readonly="true"/>
+    <field name="ProjectUseDocuments" label="Use Documents" type="bool" readonly="true" transient="true" related-field="Project.UseDocuments"/>
+    <field name="QuotationCount" label="Quotation Count" type="integer" readonly="true" transient="true"/>
+    <field name="RatingActive" label="Project Rating Status" type="bool" readonly="true" transient="true" related-field="Project.RatingActive"/>
+    <field name="RatingAvg" label="Average Rating" type="float" readonly="true" transient="true"/>
+    <field name="RatingAvgText" label="Rating Avg Text" type="Project.TaskRatingAvgText" readonly="true" transient="true"/>
+    <field name="RatingCount" label="Rating count" type="integer" readonly="true" transient="true"/>
+    <field name="RatingLastFeedback" label="Rating Last Feedback" type="text" readonly="true" transient="true" related-field="Ratings.Feedback"/>
+    <field name="RatingLastImage" label="Rating Last Image" type="binary" readonly="true" transient="true" related-field="Ratings.RatingImage"/>
+    <field name="RatingLastValue" label="Rating Last Value" type="float" readonly="true"/>
+    <field name="RatingPercentageSatisfaction" label="Rating Satisfaction" type="float" readonly="true" transient="true"/>
+    <field name="RecurringCount" label="Tasks in Recurrence" type="integer" readonly="true" transient="true"/>
+    <field name="RecurringTask" label="Recurrent" type="bool" copied="true"/>
+    <field name="RemainingHours" label="Remaining Hours" type="float" readonly="true"/>
+    <field name="RemainingHoursAvailable" label="Remaining Hours Available" type="bool" readonly="true" transient="true" related-field="SaleLine.RemainingHoursAvailable"/>
+    <field name="RemainingHoursPercentage" label="Remaining Hours Percentage" type="float" readonly="true" transient="true"/>
+    <field name="RemainingHoursSo" label="Remaining Hours on SO" type="float" readonly="true" transient="true"/>
+    <field name="RepeatInterval" label="Repeat Every" type="integer" transient="true"/>
+    <field name="RepeatType" label="Until" type="Project.TaskUntil" transient="true"/>
+    <field name="RepeatUnit" label="Repeat Unit" type="Project.TaskRepeatUnit" transient="true"/>
+    <field name="RepeatUntil" label="End Date" type="date" transient="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="SharedDocumentCount" label="Shared Documents Count" type="integer" readonly="true" transient="true"/>
+    <field name="State" label="State" type="Project.TaskState" required="true" indexed="true"/>
+    <field name="StockMoveCustomerProductCount" label="Stock Move Customer Product Count" type="integer" readonly="true" transient="true"/>
+    <field name="SubtaskAllocatedHours" label="Sub-tasks Allocated Time" type="float" readonly="true" transient="true"/>
+    <field name="SubtaskCount" label="Sub-task Count" type="integer" readonly="true" transient="true"/>
+    <field name="SubtaskEffectiveHours" label="Hours Spent on Sub-tasks" type="float" readonly="true"/>
+    <field name="TaskProperties" label="Properties" type="properties" copied="true"/>
+    <field name="TaskToInvoice" label="To invoice" type="bool" readonly="true" transient="true"/>
+    <field name="TimerPause" label="Timer Last Pause" type="datetime" readonly="true" transient="true" related-field="UserTimer.TimerPause"/>
+    <field name="TimerStart" label="Timer Start" type="datetime" readonly="true" transient="true" related-field="UserTimer.TimerStart"/>
+    <field name="TotalHoursSpent" label="Total Hours" type="float" readonly="true"/>
+    <field name="UserNames" label="User Names" type="string" readonly="true" transient="true"/>
+    <field name="WarningMessage" label="Warning Message" type="string" readonly="true" transient="true"/>
+    <field name="WorkingDaysClose" label="Working Days to Close" type="float" readonly="true"/>
+    <field name="WorkingDaysOpen" label="Working Days to Assign" type="float" readonly="true"/>
+    <field name="WorkingHoursClose" label="Working Hours to Close" type="float" readonly="true"/>
+    <field name="WorkingHoursOpen" label="Working Hours to Assign" type="float" readonly="true"/>
+    <field name="WorksheetCount" label="Worksheet Count" type="integer" readonly="true" transient="true"/>
+    <field name="WorksheetSignature" label="Signature" type="binary"/>
+    <field name="WorksheetSignedBy" label="Signed By" type="string"/>
+  </model>
+  <model id="purchase.order" name="Purchase.Order" track_created="true" track_update="true">
+    <field name="FiscalPosition" label="Fiscal Position" type="Account.FiscalPosition" copied="true" on-delete="Clear"/>
+    <field name="Incoterm" label="Incoterm" type="Account.Incoterms" copied="true" on-delete="Clear"/>
+    <field name="Invoices" label="Bills" type="Account.Move" collection="true" readonly="true"/>
+    <field name="PaymentTerm" label="Payment Terms" type="Account.PaymentTerm" copied="true" on-delete="Clear"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Group" label="Procurement Group" type="Procurement.Group" on-delete="Clear"/>
+    <field name="Product" label="Product" type="Product.Product" readonly="true" transient="true" related-field="OrderLine.Product"/>
+    <field name="OrderLine" label="Order Lines" type="Purchase.OrderLine" collection="true" copied="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="TaxCountry" label="Tax Country" type="Res.Country" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Currency" label="Currency" type="Res.Currency" required="true" copied="true" on-delete="Restrict"/>
+    <field name="DestAddress" label="Dropship Address" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Partner" label="Vendor" type="Res.Partner" required="true" copied="true" on-delete="Restrict"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="User" label="Buyer" type="Res.Users" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="AutoSaleOrder" label="Source Sales Order" type="Sale.Order" readonly="true" on-delete="Clear"/>
+    <field name="Pickings" label="Receptions" type="Stock.Picking" collection="true" readonly="true"/>
+    <field name="PickingType" label="Deliver To" type="Stock.PickingType" required="true" copied="true" on-delete="Restrict"/>
+    <field name="AccessToken" label="Security Token" type="string"/>
+    <field name="AccessUrl" label="Portal Access URL" type="string" readonly="true" transient="true"/>
+    <field name="AccessWarning" label="Access warning" type="text" readonly="true" transient="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Purchase.PurchaseOrderActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Purchase.PurchaseOrderActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AmountTax" label="Taxes" type="monetary" readonly="true"/>
+    <field name="AmountTotal" label="Total" type="monetary" readonly="true"/>
+    <field name="AmountUntaxed" label="Untaxed Amount" type="monetary" readonly="true"/>
+    <field name="AutoGenerated" label="Auto Generated Purchase Order" type="bool"/>
+    <field name="CountryCode" label="Country code" type="string" readonly="true" transient="true" related-field="Company.AccountFiscalCountry.Code"/>
+    <field name="CurrencyRate" label="Currency Rate" type="float" readonly="true"/>
+    <field name="DateApprove" label="Confirmation Date" type="datetime" indexed="true" readonly="true"/>
+    <field name="DateCalendarStart" label="Date Calendar Start" type="datetime" readonly="true"/>
+    <field name="DateOrder" label="Order Deadline" type="datetime" required="true" indexed="true"/>
+    <field name="DatePlanned" label="Expected Arrival" type="datetime" indexed="true"/>
+    <field name="DatePlannedMps" label="Scheduled Date" type="datetime" indexed="true" readonly="true"/>
+    <field name="EffectiveDate" label="Arrival" type="datetime" readonly="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="IncomingPickingCount" label="Incoming Shipment count" type="integer" readonly="true" transient="true"/>
+    <field name="IncotermLocation" label="Incoterm Location" type="string" copied="true"/>
+    <field name="InvoiceCount" label="Bill Count" type="integer" readonly="true"/>
+    <field name="InvoiceStatus" label="Billing Status" type="Purchase.PurchaseOrderBillingStatus" readonly="true"/>
+    <field name="IsShipped" label="Is Shipped" type="bool" readonly="true" transient="true"/>
+    <field name="L10NInGstTreatment" label="GST Treatment" type="Purchase.PurchaseOrderGstTreatment" readonly="true"/>
+    <field name="MailReceptionConfirmed" label="Reception Confirmed" type="bool" readonly="true"/>
+    <field name="MailReminderConfirmed" label="Reminder Confirmed" type="bool" readonly="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MrpProductionCount" label="Count of MO Source" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Order Reference" type="string" required="true" indexed="true"/>
+    <field name="Notes" label="Terms and Conditions" type="html" copied="true"/>
+    <field name="OnTimeRate" label="On-Time Delivery Rate" type="float" readonly="true" transient="true" related-field="Partner.OnTimeRate"/>
+    <field name="Origin" label="Source Document" type="string"/>
+    <field name="PartnerRef" label="Vendor Reference" type="string"/>
+    <field name="Priority" label="Priority" type="Purchase.PurchaseOrderPriority" indexed="true" copied="true"/>
+    <field name="ReceiptReminderEmail" label="Receipt Reminder Email" type="bool" readonly="true" transient="true"/>
+    <field name="ReceiptStatus" label="Receipt Status" type="Purchase.PurchaseOrderReceiptStatus" readonly="true"/>
+    <field name="ReminderDateBeforeReceipt" label="Days Before Receipt" type="integer" readonly="true" transient="true"/>
+    <field name="SaleOrderCount" label="Number of Source Sale" type="integer" readonly="true" transient="true"/>
+    <field name="State" label="Status" type="Purchase.PurchaseOrderStatus" indexed="true" readonly="true"/>
+    <field name="SubcontractingResupplyPickingCount" label="Count of Subcontracting Resupply" type="integer" readonly="true" transient="true"/>
+    <field name="TaxTotals" label="Tax Totals" type="binary" readonly="true" transient="true"/>
+  </model>
+  <model id="repair.order" name="Repair.Order" track_created="true" track_update="true">
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="ProcurementGroup" label="Procurement Group" type="Procurement.Group" on-delete="Clear"/>
+    <field name="PickingProduct" label="Product" type="Product.Product" readonly="true" transient="true" related-field="Picking.Product"/>
+    <field name="PickingProducts" label="Picking Product" type="Product.Product" collection="true" readonly="true" transient="true"/>
+    <field name="Product" label="Product to Repair" type="Product.Product" copied="true" on-delete="Clear"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Tags" label="Tags" type="Repair.Tags" collection="true" copied="true"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" readonly="true" copied="true" on-delete="Restrict"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Partner" label="Customer" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="User" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="SaleOrder" label="Sale Order" type="Sale.Order" readonly="true" on-delete="Clear"/>
+    <field name="SaleOrderLine" label="Sale Order Line" type="Sale.OrderLine" readonly="true" on-delete="Clear"/>
+    <field name="LocationDest" label="Added Parts Destination Location" type="Stock.Location" required="true" indexed="true" readonly="true" related-field="PickingType.DefaultLocationDest"/>
+    <field name="Location" label="Location" type="Stock.Location" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="PartsLocation" label="Removed Parts Destination Location" type="Stock.Location" required="true" indexed="true" readonly="true" related-field="PickingType.DefaultRemoveLocationDest"/>
+    <field name="RecycleLocation" label="Recycled Parts Destination Location" type="Stock.Location" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Lot" label="Lot/Serial" type="Stock.Lot" readonly="true" on-delete="Clear"/>
+    <field name="Move" label="Inventory Move" type="Stock.Move" readonly="true" on-delete="Clear"/>
+    <field name="Moves" label="Parts" type="Stock.Move" collection="true" copied="true"/>
+    <field name="Picking" label="Return" type="Stock.Picking" on-delete="Clear"/>
+    <field name="PickingType" label="Operation Type" type="Stock.PickingType" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="ProductUomCategory" label="Category" type="Uom.Category" readonly="true" transient="true" related-field="Product.Uom.Category"/>
+    <field name="ProductUom" label="Product Unit of Measure" type="Uom.Uom" readonly="true" on-delete="Clear"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Repair.RepairOrderActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Repair.RepairOrderActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="InternalNotes" label="Internal Notes" type="html" copied="true"/>
+    <field name="IsPartsAvailable" label="All Parts are available" type="bool" readonly="true"/>
+    <field name="IsPartsLate" label="Any Part is late" type="bool" readonly="true"/>
+    <field name="IsReturned" label="Returned" type="bool" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Repair Reference" type="string" required="true" indexed="true" readonly="true"/>
+    <field name="PartsAvailability" label="Component Status" type="string" readonly="true" transient="true"/>
+    <field name="PartsAvailabilityState" label="Parts Availability State" type="Repair.RepairOrderPartsAvailabilityState" readonly="true" transient="true"/>
+    <field name="Priority" label="Priority" type="Repair.RepairOrderPriority" copied="true"/>
+    <field name="ProductQty" label="Product Quantity" type="float" copied="true"/>
+    <field name="RepairRequest" label="Repair Request" type="text" readonly="true" transient="true" related-field="SaleOrderLine.Name"/>
+    <field name="ReserveVisible" label="Allowed to Reserve Production" type="bool" readonly="true" transient="true"/>
+    <field name="ScheduleDate" label="Scheduled Date" type="datetime" required="true" indexed="true"/>
+    <field name="State" label="Status" type="Repair.RepairOrderStatus" indexed="true" readonly="true"/>
+    <field name="UnderWarranty" label="Under Warranty" type="bool" copied="true"/>
+    <field name="UnreserveVisible" label="Allowed to Unreserve Production" type="bool" readonly="true" transient="true"/>
+  </model>
+  <model id="sale.order" name="Sale.Order" track_created="true" track_update="true">
+    <field name="AnalyticAccount" label="Analytic Account" type="Account.AnalyticAccount" on-delete="Clear"/>
+    <field name="FiscalPosition" label="Fiscal Position" type="Account.FiscalPosition" copied="true" on-delete="Clear"/>
+    <field name="Incoterm" label="Incoterm" type="Account.Incoterms" copied="true" on-delete="Clear"/>
+    <field name="Journal" label="Invoicing Journal" type="Account.Journal" copied="true" on-delete="Clear"/>
+    <field name="Invoices" label="Invoices" type="Account.Move" collection="true" readonly="true" transient="true"/>
+    <field name="PaymentTerm" label="Payment Terms" type="Account.PaymentTerm" copied="true" on-delete="Clear"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Opportunity" label="Opportunity" type="Crm.Lead" copied="true" on-delete="Clear"/>
+    <field name="Tags" label="Tags" type="Crm.Tag" collection="true" copied="true"/>
+    <field name="Team" label="Sales Team" type="Crm.Team" copied="true" on-delete="Clear"/>
+    <field name="Carrier" label="Delivery Method" type="Delivery.Carrier" copied="true" on-delete="Clear"/>
+    <field name="EventBooths" label="Booths" type="Event.Booth" collection="true"/>
+    <field name="Expenses" label="Expenses" type="Hr.Expense" collection="true" readonly="true"/>
+    <field name="AppliedCoupons" label="Manually Applied Coupons" type="Loyalty.Card" collection="true"/>
+    <field name="DisabledAutoRewards" label="Disabled Auto Rewards" type="Loyalty.Reward" collection="true" copied="true"/>
+    <field name="CodeEnabledRules" label="Manually Triggered Rules" type="Loyalty.Rule" collection="true"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="PendingEmailTemplate" label="Pending Email Template" type="Mail.Template" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="MrpProductions" label="Manufacturing orders associated with this sales order." type="Mrp.Production" collection="true" readonly="true" transient="true"/>
+    <field name="PaymentToken" label="Payment Token" type="Payment.Token" on-delete="Clear"/>
+    <field name="AuthorizedTransactions" label="Authorized Transactions" type="Payment.Transaction" collection="true" readonly="true" transient="true"/>
+    <field name="Transactions" label="Transactions" type="Payment.Transaction" collection="true" readonly="true"/>
+    <field name="PosOrderLines" label="Order lines Transfered to Point of Sale" type="Pos.OrderLine" collection="true" readonly="true"/>
+    <field name="ProcurementGroup" label="Procurement Group" type="Procurement.Group" on-delete="Clear"/>
+    <field name="Pricelist" label="Pricelist" type="Product.Pricelist" copied="true" on-delete="Clear"/>
+    <field name="ArchivedProducts" label="Archived Products" type="Product.Product" collection="true" readonly="true" transient="true"/>
+    <field name="GridProductTmpl" label="Grid Product Tmpl" type="Product.Template" copied="true" transient="true" on-delete="Clear"/>
+    <field name="Project" label="Project" type="Project.Project" copied="true" on-delete="Clear"/>
+    <field name="Projects" label="Projects" type="Project.Project" collection="true" readonly="true" transient="true"/>
+    <field name="Task" label="Task" type="Project.Task" copied="true" on-delete="Clear"/>
+    <field name="Taskss" label="Tasks associated with this sale" type="Project.Task" collection="true" readonly="true" transient="true"/>
+    <field name="AutoPurchaseOrder" label="Source Purchase Order" type="Purchase.Order" readonly="true" on-delete="Clear"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="RepairOrders" label="Repair Order" type="Repair.Order" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="TaxCountry" label="Tax Country" type="Res.Country" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" on-delete="Restrict"/>
+    <field name="CommercialPartner" label="Commercial Entity" type="Res.Partner" readonly="true" transient="true" related-field="Partner.CommercialPartner"/>
+    <field name="L10NInResellerPartner" label="Reseller" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Partner" label="Customer" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="PartnerInvoice" label="Invoice Address" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="PartnerShipping" label="Delivery Address" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="StarredUsers" label="Members" type="Res.Users" collection="true" copied="true"/>
+    <field name="TeamUser" label="Team Leader" type="Res.Users" transient="true" related-field="Team.User"/>
+    <field name="User" label="Salesperson" type="Res.Users" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="NoteOrder" label="Note Order" type="Sale.Order" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="OriginOrder" label="First contract" type="Sale.Order" indexed="true" readonly="true" on-delete="Restrict"/>
+    <field name="SubscriptionChilds" label="Subscription Child" type="Sale.Order" collection="true"/>
+    <field name="Subscription" label="Parent Contract" type="Sale.Order" indexed="true" on-delete="Restrict"/>
+    <field name="CloseReason" label="Close Reason" type="Sale.OrderCloseReason" on-delete="Clear"/>
+    <field name="CouponPoints" label="Coupon Point" type="Sale.OrderCouponPoints" collection="true"/>
+    <field name="OrderLine" label="Order Lines" type="Sale.OrderLine" collection="true" copied="true"/>
+    <field name="PlanningFirstSaleLine" label="Planning First Sale Line" type="Sale.OrderLine" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="WebsiteOrderLine" label="Order Lines displayed on Website" type="Sale.OrderLine" collection="true" readonly="true" transient="true"/>
+    <field name="OrderLogs" label="Subscription Logs" type="Sale.OrderLog" collection="true" readonly="true"/>
+    <field name="SaleOrderOptions" label="Optional Products Lines" type="Sale.OrderOption" collection="true" copied="true"/>
+    <field name="SaleOrderTemplate" label="Quotation Template" type="Sale.OrderTemplate" copied="true" on-delete="Clear"/>
+    <field name="Plan" label="Recurring Plan" type="Sale.SubscriptionPlan" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="SignRequests" label="Signature Requests" type="Sign.Request" collection="true"/>
+    <field name="Pickings" label="Transfers" type="Stock.Picking" collection="true"/>
+    <field name="Warehouse" label="Warehouse" type="Stock.Warehouse" required="true" copied="true" on-delete="Restrict"/>
+    <field name="TimesheetEncodeUom" label="Timesheet Encoding Unit" type="Uom.Uom" readonly="true" transient="true" related-field="Company.TimesheetEncodeUom"/>
+    <field name="Campaign" label="Campaign" type="Utm.Campaign" copied="true" on-delete="Clear"/>
+    <field name="Medium" label="Medium" type="Utm.Medium" copied="true" on-delete="Clear"/>
+    <field name="Source" label="Source" type="Utm.Source" copied="true" on-delete="Clear"/>
+    <field name="Website" label="Website" type="Website." readonly="true" copied="true" on-delete="Clear"/>
+    <field name="AccessPointAddress" label="Delivery Point Address" type="json" copied="true"/>
+    <field name="AccessToken" label="Security Token" type="string"/>
+    <field name="AccessUrl" label="Portal Access URL" type="string" readonly="true" transient="true"/>
+    <field name="AccessWarning" label="Access warning" type="text" readonly="true" transient="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Sale.SalesOrderActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Sale.SalesOrderActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AmazonChannel" label="Fulfillment Channel" type="Sale.SalesOrderFulfillmentChannel" copied="true"/>
+    <field name="AmazonOrderRef" label="Amazon Reference" type="string" readonly="true" copied="true"/>
+    <field name="AmountDelivery" label="Delivery Amount" type="monetary" readonly="true" transient="true"/>
+    <field name="AmountInvoiced" label="Already invoiced" type="monetary" readonly="true" transient="true"/>
+    <field name="AmountPaid" label="Amount Paid" type="float" readonly="true" transient="true"/>
+    <field name="AmountTax" label="Taxes" type="monetary" readonly="true"/>
+    <field name="AmountToInvoice" label="Amount to invoice" type="monetary" readonly="true"/>
+    <field name="AmountTotal" label="Total" type="monetary" readonly="true"/>
+    <field name="AmountUndiscounted" label="Amount Before Discount" type="float" readonly="true" transient="true"/>
+    <field name="AmountUnpaid" label="Unpaid Amount" type="monetary" readonly="true"/>
+    <field name="AmountUntaxed" label="Untaxed Amount" type="monetary" readonly="true"/>
+    <field name="ArchivedProductCount" label="Archived Product" type="integer" readonly="true" transient="true"/>
+    <field name="AttendeeCount" label="Attendee Count" type="integer" readonly="true" transient="true"/>
+    <field name="AutoGenerated" label="Auto Generated Sales Order" type="bool"/>
+    <field name="CalendarEventCount" label="Meetings" type="integer" readonly="true" transient="true"/>
+    <field name="CartQuantity" label="Cart Quantity" type="integer" readonly="true" transient="true"/>
+    <field name="CartRecoveryEmailSent" label="Cart recovery email already sent" type="bool" copied="true"/>
+    <field name="ClientOrderRef" label="Customer Reference" type="string"/>
+    <field name="CommitmentDate" label="Delivery Date" type="datetime"/>
+    <field name="CountryCode" label="Country code" type="string" readonly="true" transient="true" related-field="Company.AccountFiscalCountry.Code"/>
+    <field name="CurrencyRate" label="Currency Rate" type="float" readonly="true"/>
+    <field name="DateOrder" label="Order Date" type="datetime" required="true"/>
+    <field name="DeliveryCount" label="Delivery Orders" type="integer" readonly="true" transient="true"/>
+    <field name="DeliveryMessage" label="Delivery Message" type="string" readonly="true"/>
+    <field name="DeliveryRatingSuccess" label="Delivery Rating Success" type="bool"/>
+    <field name="DeliverySet" label="Delivery Set" type="bool" readonly="true" transient="true"/>
+    <field name="DeliveryStatus" label="Delivery Status" type="Sale.SalesOrderDeliveryStatus" readonly="true"/>
+    <field name="DisplayLate" label="Display Late" type="bool" readonly="true" transient="true"/>
+    <field name="DurationDays" label="Duration in days" type="integer" readonly="true" transient="true"/>
+    <field name="EffectiveDate" label="Effective Date" type="datetime" readonly="true"/>
+    <field name="EndDate" label="End Date" type="date" copied="true"/>
+    <field name="EventBoothCount" label="Booth Count" type="integer" readonly="true" transient="true"/>
+    <field name="ExpectedDate" label="Expected Date" type="datetime" readonly="true" transient="true"/>
+    <field name="ExpenseCount" label="# of Expenses" type="integer" readonly="true" transient="true"/>
+    <field name="FirstContractDate" label="First Contract Date" type="date" readonly="true"/>
+    <field name="Grid" label="Matrix local storage" type="string" copied="true" transient="true"/>
+    <field name="GridUpdate" label="Grid Update" type="bool" copied="true" transient="true"/>
+    <field name="HasActivePricelist" label="Has Active Pricelist" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasPickableLines" label="Has Pickable Lines" type="bool" readonly="true" transient="true"/>
+    <field name="HasRecurringLine" label="Has Recurring Line" type="bool" readonly="true" transient="true"/>
+    <field name="HasRentedProducts" label="Has Rented Products" type="bool" readonly="true" transient="true"/>
+    <field name="HasReturnableLines" label="Has Returnable Lines" type="bool" readonly="true" transient="true"/>
+    <field name="Health" label="Health" type="Sale.SalesOrderHealth"/>
+    <field name="HistoryCount" label="History Count" type="integer" readonly="true" transient="true"/>
+    <field name="IncotermLocation" label="Incoterm Location" type="string" copied="true"/>
+    <field name="InternalNote" label="Internal Note" type="html" copied="true"/>
+    <field name="InternalNoteDisplay" label="Internal Note Display" type="html" transient="true"/>
+    <field name="InvoiceCount" label="Invoice Count" type="integer" readonly="true" transient="true"/>
+    <field name="InvoiceStatus" label="Invoice Status" type="Sale.SalesOrderInvoiceStatus" readonly="true"/>
+    <field name="IsAbandonedCart" label="Abandoned Cart" type="bool" readonly="true" transient="true"/>
+    <field name="IsAllService" label="Service Product" type="bool" readonly="true" transient="true"/>
+    <field name="IsBatch" label="Is Batch" type="bool"/>
+    <field name="IsExpired" label="Is Expired" type="bool" readonly="true" transient="true"/>
+    <field name="IsInvoiceCron" label="Is a Subscription invoiced in cron" type="bool"/>
+    <field name="IsLate" label="Is overdue" type="bool" readonly="true" transient="true"/>
+    <field name="IsProductMilestone" label="Is Product Milestone" type="bool" readonly="true" transient="true"/>
+    <field name="IsRenewing" label="Is Renewing" type="bool" readonly="true" transient="true"/>
+    <field name="IsRentalOrder" label="Created In App Rental" type="bool" copied="true"/>
+    <field name="IsSubscription" label="Recurring" type="bool" indexed="true" readonly="true"/>
+    <field name="IsUpselling" label="Is Upselling" type="bool" readonly="true" transient="true"/>
+    <field name="JsonPopover" label="JSON data for the popover widget" type="string" readonly="true" transient="true"/>
+    <field name="Kpi1MonthMrrDelta" label="KPI 1 Month MRR Delta" type="float" copied="true"/>
+    <field name="Kpi1MonthMrrPercentage" label="KPI 1 Month MRR Percentage" type="float" copied="true"/>
+    <field name="Kpi3MonthsMrrDelta" label="KPI 3 months MRR Delta" type="float" copied="true"/>
+    <field name="Kpi3MonthsMrrPercentage" label="KPI 3 Months MRR Percentage" type="float" copied="true"/>
+    <field name="L10NInGstTreatment" label="GST Treatment" type="Sale.SalesOrderGstTreatment" copied="true"/>
+    <field name="LastInvoiceDate" label="Last invoice date" type="date" readonly="true" transient="true"/>
+    <field name="Locked" label="Locked" type="bool"/>
+    <field name="Margin" label="Margin" type="monetary" readonly="true"/>
+    <field name="MarginPercent" label="Margin (%)" type="float" readonly="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MilestoneCount" label="Milestone Count" type="integer" readonly="true" transient="true"/>
+    <field name="MrpProductionCount" label="Count of MO generated" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Order Reference" type="string" required="true" indexed="true"/>
+    <field name="NextActionDate" label="Next Action" type="datetime" readonly="true"/>
+    <field name="NextInvoiceDate" label="Next Invoice" type="date"/>
+    <field name="NonRecurringTotal" label="Total Non Recurring Revenue" type="monetary" readonly="true" transient="true"/>
+    <field name="Note" label="Terms and conditions" type="html" copied="true"/>
+    <field name="OnlyServices" label="Only Services" type="bool" readonly="true" transient="true"/>
+    <field name="Origin" label="Source Document" type="string" copied="true"/>
+    <field name="PartnerCreditWarning" label="Partner Credit Warning" type="text" readonly="true" transient="true"/>
+    <field name="PartnerUpsCarrierAccount" label="UPS account number" type="string" transient="true"/>
+    <field name="PaymentException" label="Contract in exception" type="bool"/>
+    <field name="PendingTransaction" label="Pending Transaction" type="bool"/>
+    <field name="PercentageSatisfaction" label="% Happy" type="integer" readonly="true"/>
+    <field name="PickingPolicy" label="Shipping Policy" type="Sale.SalesOrderShippingPolicy" required="true" copied="true"/>
+    <field name="PlanningHoursPlanned" label="Planning Hours Planned" type="float" readonly="true" transient="true"/>
+    <field name="PlanningHoursToPlan" label="Planning Hours To Plan" type="float" readonly="true" transient="true"/>
+    <field name="PlanningInitialDate" label="Planning Initial Date" type="date" readonly="true" transient="true"/>
+    <field name="PosOrderCount" label="Pos Order Count" type="integer" readonly="true" transient="true"/>
+    <field name="PrepaymentPercent" label="Prepayment percentage" type="float" copied="true"/>
+    <field name="ProjectCount" label="Number of Projects" type="integer" readonly="true" transient="true"/>
+    <field name="PurchaseOrderCount" label="Number of Purchase Order Generated" type="integer" readonly="true" transient="true"/>
+    <field name="RatingAvg" label="Average Rating" type="float" readonly="true" transient="true"/>
+    <field name="RatingAvgText" label="Rating Avg Text" type="Sale.SalesOrderRatingAvgText" readonly="true" transient="true"/>
+    <field name="RatingCount" label="Rating count" type="integer" readonly="true" transient="true"/>
+    <field name="RatingLastFeedback" label="Rating Last Feedback" type="text" readonly="true" transient="true" related-field="Ratings.Feedback"/>
+    <field name="RatingLastImage" label="Rating Last Image" type="binary" readonly="true" transient="true" related-field="Ratings.RatingImage"/>
+    <field name="RatingLastValue" label="Rating Last Value" type="float" readonly="true"/>
+    <field name="RatingPercentageSatisfaction" label="Rating Satisfaction" type="float" readonly="true" transient="true"/>
+    <field name="RecomputeDeliveryPrice" label="Delivery cost should be recomputed" type="bool" copied="true"/>
+    <field name="RecurringDetails" label="Recurring Details" type="html" readonly="true" transient="true"/>
+    <field name="RecurringMonthly" label="Monthly Recurring" type="monetary" readonly="true"/>
+    <field name="RecurringTotal" label="Total Recurring" type="monetary" readonly="true"/>
+    <field name="Reference" label="Payment Ref." type="string"/>
+    <field name="RemainingHours" label="Remaining duration in hours" type="integer" readonly="true" transient="true"/>
+    <field name="RenewalCount" label="Renewal Count" type="integer" readonly="true" transient="true"/>
+    <field name="RentalReturnDate" label="Rental Return Date" type="datetime" copied="true"/>
+    <field name="RentalStartDate" label="Rental Start Date" type="datetime" copied="true"/>
+    <field name="RentalStatus" label="Rental Status" type="Sale.SalesOrderRentalStatus" readonly="true"/>
+    <field name="RepairCount" label="Repair Order(s)" type="integer" readonly="true" transient="true"/>
+    <field name="ReportGrids" label="Print Variant Grids" type="bool" copied="true"/>
+    <field name="RequirePayment" label="Online payment" type="bool" copied="true"/>
+    <field name="RequireSignature" label="Online signature" type="bool" copied="true"/>
+    <field name="RewardAmount" label="Reward Amount" type="float" readonly="true" transient="true"/>
+    <field name="ShippingWeight" label="Shipping Weight" type="float" copied="true"/>
+    <field name="ShopWarning" label="Warning" type="string" copied="true"/>
+    <field name="ShowCreateProjectButton" label="Show Create Project Button" type="bool" readonly="true" transient="true"/>
+    <field name="ShowHoursRecordedButton" label="Show Hours Recorded Button" type="bool" readonly="true" transient="true"/>
+    <field name="ShowJsonPopover" label="Has late picking" type="bool" readonly="true" transient="true"/>
+    <field name="ShowProjectButton" label="Show Project Button" type="bool" readonly="true" transient="true"/>
+    <field name="ShowTaskButton" label="Show Task Button" type="bool" readonly="true" transient="true"/>
+    <field name="ShowUpdateDuration" label="Has Duration Changed" type="bool" copied="true" transient="true"/>
+    <field name="ShowUpdateFpos" label="Has Fiscal Position Changed" type="bool" copied="true" transient="true"/>
+    <field name="ShowUpdatePricelist" label="Has Pricelist Changed" type="bool" copied="true" transient="true"/>
+    <field name="SignRequestCount" label="# of Signature Requests" type="integer" readonly="true" transient="true"/>
+    <field name="Signature" label="Signature" type="binary"/>
+    <field name="SignedBy" label="Signed By" type="string"/>
+    <field name="SignedOn" label="Signed On" type="datetime"/>
+    <field name="Starred" label="Show Subscription on dashboard" type="bool" transient="true"/>
+    <field name="StartDate" label="Start Date" type="date" copied="true"/>
+    <field name="State" label="Status" type="Sale.SalesOrderStatus" indexed="true" readonly="true"/>
+    <field name="SubscriptionState" label="Subscription Status" type="Sale.SalesOrderSubscriptionStatus" indexed="true" copied="true"/>
+    <field name="TasksCount" label="Tasks" type="integer" readonly="true" transient="true"/>
+    <field name="TaxTotals" label="Tax Totals" type="binary" readonly="true" transient="true"/>
+    <field name="TimesheetCount" label="Timesheet activities" type="float" readonly="true" transient="true"/>
+    <field name="TimesheetTotalDuration" label="Timesheet Total Duration" type="integer" readonly="true" transient="true"/>
+    <field name="TypeName" label="Type Name" type="string" readonly="true" transient="true"/>
+    <field name="UpsBillMyAccount" label="Bill My Account" type="bool" readonly="true" transient="true" related-field="Carrier.UpsBillMyAccount"/>
+    <field name="UpsellCount" label="Upsell Count" type="integer" readonly="true" transient="true"/>
+    <field name="UserClosable" label="Closable" type="bool" readonly="true" transient="true" related-field="Plan.UserClosable"/>
+    <field name="UserExtend" label="Renew" type="bool" readonly="true" transient="true" related-field="Plan.UserExtend"/>
+    <field name="UserQuantity" label="Add Products" type="bool" readonly="true" transient="true" related-field="Plan.UserQuantity"/>
+    <field name="ValidityDate" label="Expiration" type="date"/>
+    <field name="VisibleProject" label="Display project" type="bool" readonly="true" transient="true"/>
+  </model>
+  <model id="slide.channel.partner" name="Slide.ChannelPartner" track_created="true" track_update="true">
+    <field name="Partner" label="Partner" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="ChannelUser" label="Responsible" type="Res.Users" readonly="true" transient="true" related-field="Channel.User"/>
+    <field name="Channel" label="Course" type="Slide.Channel" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="NextSlide" label="Next Lesson" type="Slide.Slide" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="ChannelWebsite" label="Website" type="Website." readonly="true" transient="true" related-field="Channel.Website"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="CompletedSlidesCount" label="# Completed Contents" type="integer" copied="true"/>
+    <field name="Completion" label="% Completed Contents" type="integer" copied="true"/>
+    <field name="InvitationLink" label="Invitation Link" type="string" readonly="true" transient="true"/>
+    <field name="LastInvitationDate" label="Last Invitation Date" type="datetime" copied="true"/>
+    <field name="NbrCertification" label="Number of Certifications" type="integer" readonly="true" transient="true" related-field="Channel.NbrCertification"/>
+    <field name="PartnerEmail" label="Email" type="string" readonly="true" transient="true" related-field="Partner.Email"/>
+    <field name="SurveyCertificationSuccess" label="Certified" type="bool" copied="true"/>
+  </model>
+  <model id="slide.slide.partner" name="Slide.SlidePartner" track_created="true" track_update="true">
+    <field name="Partner" label="Partner" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Channel" label="Channel" type="Slide.Channel" indexed="true" readonly="true" related-field="Slide.Channel" on-delete="Cascade"/>
+    <field name="Slide" label="Content" type="Slide.Slide" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="UserInputs" label="Certification attempts" type="Survey.UserInput" collection="true"/>
+    <field name="Completed" label="Completed" type="bool" copied="true"/>
+    <field name="QuizAttemptsCount" label="Quiz attempts count" type="integer" copied="true"/>
+    <field name="SurveyScoringSuccess" label="Certification Succeeded" type="bool" readonly="true"/>
+    <field name="Vote" label="Vote" type="integer" copied="true"/>
+  </model>
+</buvi>

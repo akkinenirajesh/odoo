@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="event.quiz" name="Event.Quiz" track_created="true" track_update="true">
+    <field name="Event" label="Event" type="Event.Event" readonly="true" related-field="EventTrack.Event"/>
+    <field name="Questions" label="Questions" type="Event.QuizQuestion" collection="true"/>
+    <field name="EventTrack" label="Event Track" type="Event.Track" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Repeatable" label="Unlimited Tries" type="bool" copied="true"/>
+  </model>
+</buvi>

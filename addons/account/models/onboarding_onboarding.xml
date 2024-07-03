@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Account.Onboarding" name="Onboarding" description="Onboarding">
+        <field name="Name" type="string" label="Name" required="true" />
+        <!-- Add other fields as needed -->
+    </model>
+</buvi>

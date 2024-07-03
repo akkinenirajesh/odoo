@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+        <field name="CountryId" type="Core.Country" label="Country" />
+        <field name="ForeignVat" type="string" label="Foreign VAT" />
+        <field name="Name" type="string" label="Name" />
+    </model>
+</buvi>

@@ -1,0 +1,30 @@
+xml
+<buvi>
+    <model id="Account.BankStatementLine" name="BankStatementLine" description="Bank Statement Line">
+        <field name="MoveId" type="Account.Move" required="true" readonly="true" ondelete="cascade" />
+        <field name="JournalId" type="Account.Journal" required="true" readonly="false" precompute="true" />
+        <field name="CompanyId" type="Core.Company" required="true" readonly="false" precompute="true" />
+        <field name="StatementId" type="Account.BankStatement" />
+        <field name="PaymentIds" type="Account.Payment" relation="AccountPaymentAccountBankStatementLineRel" />
+        <field name="Sequence" type="integer" default="1" />
+        <field name="PartnerId" type="Core.Partner" ondelete="restrict" />
+        <field name="AccountNumber" type="string" label="Bank Account Number" />
+        <field name="PartnerName" type="string" />
+        <field name="TransactionType" type="string" />
+        <field name="PaymentRef" type="string" label="Label" />
+        <field name="CurrencyId" type="Core.Currency" label="Journal Currency" compute="ComputeCurrencyId" store="true" />
+        <field name="Amount" type="decimal" />
+        <field name="RunningBalance" type="decimal" compute="ComputeRunningBalance" />
+        <field name="ForeignCurrencyId" type="Core.Currency" label="Foreign Currency" />
+        <field name="AmountCurrency" type="decimal" compute="ComputeAmountCurrency" store="true" readonly="false" label="Amount in Currency" />
+        <field name="AmountResidual" type="decimal" label="Residual Amount" compute="ComputeIsReconciled" store="true" />
+        <field name="CountryCode" type="string" related="CompanyId.AccountFiscalCountryId.Code" />
+        <field name="InternalIndex" type="string" label="Internal Reference" compute="ComputeInternalIndex" store="true" />
+        <field name="IsReconciled" type="bool" label="Is Reconciled" compute="ComputeIsReconciled" store="true" />
+        <field name="StatementComplete" type="bool" related="StatementId.IsComplete" />
+        <field name="StatementValid" type="bool" related="StatementId.IsValid" />
+        <field name="StatementBalanceEndReal" type="decimal" related="StatementId.BalanceEndReal" />
+        <field name="StatementName" type="string" label="Statement Name" related="StatementId.Name" />
+        <field name="TransactionDetails" type="string" readonly="true" />
+    </model>
+</buvi>

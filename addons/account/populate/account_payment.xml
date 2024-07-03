@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="PaymentType" type="Account.PaymentType" required="true" />
+        <field name="PartnerType" type="Account.PartnerType" required="true" />
+        <field name="Journal" type="Account.Journal" required="true" />
+        <field name="PaymentMethodLine" type="Account.PaymentMethodLine" required="true" />
+        <field name="Partner" type="Core.Partner" required="true" />
+        <field name="Amount" type="decimal" required="true" />
+        <field name="Date" type="datetime" required="true" />
+    </model>
+
+    <optionset id="Account.PaymentType" name="Payment Type">
+        <option value="Inbound" name="Inbound" />
+        <option value="Outbound" name="Outbound" />
+    </optionset>
+
+    <optionset id="Account.PartnerType" name="Partner Type">
+        <option value="Customer" name="Customer" />
+        <option value="Supplier" name="Supplier" />
+    </optionset>
+</buvi>

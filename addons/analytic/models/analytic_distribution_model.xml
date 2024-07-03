@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Analytic.AccountAnalyticDistributionModel" name="AccountAnalyticDistributionModel" description="Analytic Distribution Model">
+        <field name="Partner" type="Core.Partner" label="Partner" ondelete="cascade"
+            help="Select a partner for which the analytic distribution will be used (e.g. create new customer invoice or Sales order if we select this partner, it will automatically take this as an analytic account)" />
+        <field name="PartnerCategory" type="Core.PartnerCategory" label="Partner Category" ondelete="cascade"
+            help="Select a partner category for which the analytic distribution will be used (e.g. create new customer invoice or Sales order if we select this partner, it will automatically take this as an analytic account)" />
+        <field name="Company" type="Core.Company" label="Company" ondelete="cascade"
+            help="Select a company for which the analytic distribution will be used (e.g. create new customer invoice or Sales order if we select this company, it will automatically take this as an analytic account)" />
+        <field name="CreateDate" type="datetime" label="Create Date" />
+    </model>
+</buvi>

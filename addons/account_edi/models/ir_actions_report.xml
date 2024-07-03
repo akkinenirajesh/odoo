@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Account.IrActionsReport" name="IrActionsReport" description="IR Actions Report">
+        <!-- No new fields are defined in the provided Python code -->
+    </model>
+</buvi>

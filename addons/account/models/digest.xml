@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Account.Digest" name="Digest" description="Digest">
+        <field name="KpiAccountTotalRevenue" type="bool" label="Revenue" />
+        <field name="KpiAccountTotalRevenueValue" type="decimal" label="Revenue Value" compute="ComputeKpiAccountTotalRevenueValue" />
+    </model>
+</buvi>

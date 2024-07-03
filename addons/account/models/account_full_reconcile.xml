@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Account.AccountFullReconcile" name="AccountFullReconcile" description="Full Reconcile">
+        <field name="PartialReconcileIds" type="Account.AccountPartialReconcile" relation="many2many" 
+               label="Reconciliation Parts" inverse="FullReconcileId" />
+        <field name="ReconciledLineIds" type="Account.AccountMoveLine" relation="many2many" 
+               label="Matched Journal Items" inverse="FullReconcileId" />
+        <field name="ExchangeMoveId" type="Account.AccountMove" relation="many2one" index="btree_not_null" />
+    </model>
+</buvi>

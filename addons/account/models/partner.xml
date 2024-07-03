@@ -1,0 +1,38 @@
+xml
+<buvi>
+    <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Fiscal Position">
+        <field name="Sequence" type="integer" />
+        <field name="Name" type="string" label="Fiscal Position" required="true" translate="true" />
+        <field name="Active" type="bool" default="true"
+            help="By unchecking the active field, you may hide a fiscal position without deleting it." />
+        <field name="Company" type="Core.Company" required="true" readonly="true" />
+        <field name="AccountMappings" type="Account.AccountFiscalPositionAccount[]" label="Account Mapping" />
+        <field name="AccountMap" type="byte[]" compute="ComputeAccountMap" />
+        <field name="TaxMappings" type="Account.AccountFiscalPositionTax[]" label="Tax Mapping" />
+        <field name="TaxMap" type="byte[]" compute="ComputeTaxMap" />
+        <field name="Note" type="string" label="Notes" translate="true" 
+            help="Legal mentions that have to be printed on the invoices." />
+        <field name="AutoApply" type="bool" label="Detect Automatically" 
+            help="Apply tax &amp; account mappings on invoices automatically if the matching criterias (VAT/Country) are met." />
+        <field name="VatRequired" type="bool" label="VAT required" 
+            help="Apply only if partner has a VAT number." />
+        <field name="CompanyCountry" type="Core.Country" label="Company Country" />
+        <field name="FiscalCountryCodes" type="string" label="Company Fiscal Country Code" />
+        <field name="Country" type="Core.Country" label="Country" 
+            help="Apply only if delivery country matches." />
+        <field name="CountryGroup" type="Core.CountryGroup" label="Country Group" 
+            help="Apply only if delivery country matches the group." />
+        <field name="States" type="Core.State[]" label="Federal States" />
+        <field name="ZipFrom" type="string" label="Zip Range From" />
+        <field name="ZipTo" type="string" label="Zip Range To" />
+        <field name="StatesCount" type="integer" compute="ComputeStatesCount" />
+        <field name="ForeignVat" type="string" label="Foreign Tax ID" 
+            help="The tax ID of your company in the region mapped by this fiscal position." />
+        <field name="ForeignVatHeaderMode" type="Account.ForeignVatHeaderMode" compute="ComputeForeignVatHeaderMode" />
+    </model>
+
+    <optionset id="Account.ForeignVatHeaderMode" name="Foreign VAT Header Mode">
+        <option value="TemplatesFound" name="Templates Found" />
+        <option value="NoTemplate" name="No Template" />
+    </optionset>
+</buvi>

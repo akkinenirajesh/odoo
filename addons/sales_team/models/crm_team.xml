@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="account.account.tag" name="Account.AccountTag" track_created="true" track_update="true">
+    <field name="Country" label="Country" type="Res.Country" copied="true" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="Applicability" label="Applicability" type="Account.AccountTagApplicability" required="true" copied="true"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="TaxNegate" label="Negate Tax Balance" type="bool" copied="true"/>
+  </model>
+  <model id="hr.appraisal.goal.tag" name="Hr.AppraisalGoalTag" track_created="true" track_update="true">
+    <field name="Color" label="Color" type="integer" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="crm.tag" name="Crm.Tag" track_created="true" track_update="true">
+    <field name="Color" label="Color" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="documents.tag" name="Documents.Tag" track_created="true" track_update="true">
+    <field name="Facet" label="Category" type="Documents.Facet" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Folder" label="Workspace" type="Documents.Folder" related-field="Facet.Folder"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+  </model>
+  <model id="event.tag" name="Event.Tag" track_created="true" track_update="true">
+    <field name="Category" label="Category" type="Event.TagCategory" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
+    <field name="CategorySequence" label="Category Sequence" type="integer" readonly="true" related-field="Category.Sequence"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
+    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
+  </model>
+  <model id="event.track.tag" name="Event.TrackTag" track_created="true" track_update="true">
+    <field name="Tracks" label="Tracks" type="Event.Track" collection="true" copied="true"/>
+    <field name="Category" label="Category" type="Event.TrackTagCategory" copied="true" on-delete="Clear"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+  </model>
+  <model id="fleet.vehicle.tag" name="Fleet.VehicleTag" track_created="true" track_update="true">
+    <field name="Color" label="Color" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="forum.tag" name="Forum.Tag" track_created="true" track_update="true">
+    <field name="Forum" label="Forum" type="Forum.Forum" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Posts" label="Posts" type="Forum.Post" collection="true" copied="true"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true"/>
+    <field name="PostsCount" label="Number of Posts" type="integer" readonly="true"/>
+    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
+    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
+    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteUrl" label="Link to questions with the tag" type="string" readonly="true" transient="true"/>
+  </model>
+  <model id="helpdesk.tag" name="Helpdesk.Tag" track_created="true" track_update="true">
+    <field name="Color" label="Color" type="integer" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="mrp.workcenter.tag" name="Mrp.WorkcenterTag" track_created="true" track_update="true">
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true"/>
+  </model>
+  <model id="mrp.eco.tag" name="Mrp.EcoTag" track_created="true" track_update="true">
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true"/>
+  </model>
+  <model id="product.tag" name="Product.Tag" track_created="true" track_update="true">
+    <field name="Products" label="All Product Variants using this Tag" type="Product.Product" collection="true" readonly="true" transient="true"/>
+    <field name="ProductProducts" label="Product Variants" type="Product.Product" collection="true" copied="true"/>
+    <field name="ProductTemplates" label="Product Templates" type="Product.Template" collection="true" copied="true"/>
+    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Color" label="Color" type="string" copied="true"/>
+    <field name="Image" label="Image" type="binary" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="VisibleOnEcommerce" label="Visible on eCommerce" type="bool" copied="true"/>
+  </model>
+  <model id="quality.tag" name="Quality.Tag" track_created="true" track_update="true">
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true"/>
+  </model>
+  <model id="sign.template.tag" name="Sign.TemplateTag" track_created="true" track_update="true">
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Tag Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="slide.channel.tag" name="Slide.ChannelTag" track_created="true" track_update="true">
+    <field name="Channels" label="Channels" type="Slide.Channel" collection="true" copied="true"/>
+    <field name="Group" label="Group" type="Slide.ChannelTagGroup" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="GroupSequence" label="Group sequence" type="integer" indexed="true" readonly="true" related-field="Group.Sequence"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Sequence" label="Sequence" type="integer" required="true" indexed="true" copied="true"/>
+  </model>
+  <model id="slide.tag" name="Slide.Tag" track_created="true" track_update="true">
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="utm.tag" name="Utm.Tag" track_created="true" track_update="true">
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+  </model>
+  <model id="x_menu_tag" name="XMenuTag." track_created="true" track_update="true">
+    <field name="XColor" label="Color" type="integer" copied="true"/>
+    <field name="XName" label="Name" type="string" required="true" copied="true"/>
+  </model>
+</buvi>

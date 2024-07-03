@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="CloudStorage.CloudStorageAttachment" name="CloudStorageAttachment" description="Cloud Storage Attachment" inherits="Core.IrAttachment">
+        <field name="Type" type="CloudStorage.AttachmentType" />
+    </model>
+
+    <optionset id="CloudStorage.AttachmentType" name="Attachment Type" extends="Core.AttachmentType">
+        <option value="CloudStorage" name="Cloud Storage" />
+    </optionset>
+</buvi>

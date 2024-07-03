@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="CheckManualSequencing" type="bool" label="Manual Numbering" default="false"
+            help="Check this option if your pre-printed checks are not numbered." />
+        <field name="CheckSequence" type="Core.Sequence" label="Check Sequence" readonly="true"
+            help="Checks numbering sequence." />
+        <field name="CheckNextNumber" type="string" label="Next Check Number" compute="ComputeCheckNextNumber"
+            inverse="InverseCheckNextNumber" help="Sequence number of the next printed check." />
+        <field name="BankCheckPrintingLayout" type="Account.CheckPrintingLayout" label="Check Layout" />
+    </model>
+
+    <optionset id="Account.CheckPrintingLayout" name="Check Printing Layout">
+        <!-- Options will be dynamically populated based on company settings -->
+    </optionset>
+</buvi>

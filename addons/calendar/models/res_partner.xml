@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Calendar.Partner" name="Partner" description="Partner" inherit="Core.Partner">
+        <field name="MeetingCount" type="integer" label="# Meetings" compute="ComputeMeetingCount" />
+        <field name="Meetings" type="Calendar.Event" relation="many2many" 
+               relationTable="calendar_event_res_partner_rel" 
+               column1="res_partner_id" column2="calendar_event_id" />
+        <field name="CalendarLastNotifAck" type="datetime" label="Last Notification Ack" 
+               default="DateTime.Now" 
+               help="Last notification marked as read from base Calendar" />
+    </model>
+</buvi>

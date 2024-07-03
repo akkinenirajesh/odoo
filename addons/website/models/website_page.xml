@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="ir.ui.menu" name="Ir.UiMenu" track_created="true" track_update="true">
+    <field name="Child" label="Child IDs" type="Ir.UiMenu" collection="true"/>
+    <field name="Parent" label="Parent Menu" type="Ir.UiMenu" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Groups" label="Groups" type="Res.Groups" collection="true" copied="true"/>
+    <field name="Action" label="Action" type="reference" copied="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="CompleteName" label="Full Path" type="string" readonly="true" transient="true"/>
+    <field name="IsStudioConfiguration" label="Studio Configuration Menu" type="bool" readonly="true" copied="true"/>
+    <field name="Name" label="Menu" type="string" required="true" copied="true" translatable="true"/>
+    <field name="ParentPath" label="Parent Path" type="string" indexed="true" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="WebIcon" label="Web Icon File" type="string" copied="true"/>
+    <field name="WebIconData" label="Web Icon Image" type="binary" copied="true"/>
+  </model>
+  <model id="theme.website.menu" name="Theme.WebsiteMenu" track_created="true" track_update="true">
+    <field name="Parent" label="Parent" type="Theme.WebsiteMenu" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Page" label="Page" type="Theme.WebsitePage" copied="true" on-delete="Cascade"/>
+    <field name="Copys" label="Menu using a copy of me" type="Website.Menu" collection="true" readonly="true"/>
+    <field name="MegaMenuClasses" label="Mega Menu Classes" type="string" copied="true"/>
+    <field name="MegaMenuContent" label="Mega Menu Content" type="html" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="NewWindow" label="New Window" type="bool" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="Url" label="Url" type="string" copied="true"/>
+    <field name="UseMainMenuAsParent" label="Use Main Menu As Parent" type="bool" copied="true"/>
+  </model>
+  <model id="website.event.menu" name="Website.EventMenu" track_created="true" track_update="true">
+    <field name="Event" label="Event" type="Event.Event" copied="true" on-delete="Cascade"/>
+    <field name="View" label="View" type="Ir.UiView" copied="true" on-delete="Cascade"/>
+    <field name="Menu" label="Menu" type="Website.Menu" copied="true" on-delete="Cascade"/>
+    <field name="MenuType" label="Menu Type" type="Website.WebsiteEventMenuMenuType" required="true" copied="true"/>
+  </model>
+  <model id="website.menu" name="Website.Menu" track_created="true" track_update="true">
+    <field name="ThemeTemplate" label="Theme Template" type="Theme.WebsiteMenu" on-delete="Clear"/>
+    <field name="Website" label="Website" type="Website." copied="true" on-delete="Cascade"/>
+    <field name="ControllerPage" label="Related Model Page" type="Website.ControllerPage" copied="true" on-delete="Cascade"/>
+    <field name="Child" label="Child Menus" type="Website.Menu" collection="true"/>
+    <field name="Parent" label="Parent Menu" type="Website.Menu" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Page" label="Related Page" type="Website.Page" copied="true" on-delete="Cascade"/>
+    <field name="IsMegaMenu" label="Is Mega Menu" type="bool" transient="true"/>
+    <field name="IsVisible" label="Is Visible" type="bool" readonly="true" transient="true"/>
+    <field name="MegaMenuClasses" label="Mega Menu Classes" type="string" copied="true"/>
+    <field name="MegaMenuContent" label="Mega Menu Content" type="html" copied="true" translatable="true"/>
+    <field name="Name" label="Menu" type="string" required="true" copied="true" translatable="true"/>
+    <field name="NewWindow" label="New Window" type="bool" copied="true"/>
+    <field name="ParentPath" label="Parent Path" type="string" indexed="true" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="Url" label="Url" type="string" copied="true"/>
+  </model>
+  <model id="x_menu" name="XMenu." track_created="true" track_update="true">
+    <field name="XStudioMany2OneField7Hd1I154Orn4" label="New Many2One" type="Account.Account" copied="true" on-delete="Clear"/>
+    <field name="XStudioMany2ManyField5P51I1765H97" label="New Many2Many" type="Account.AnalyticAccount" collection="true" copied="true"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="XStudioCurrency" label="Currency" type="Res.Currency" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="XStudioPartner" label="Contact" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="XStudioUser" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="XMenuLineIdsB7Bc8" label="New Lines" type="XMenuLine20829." collection="true"/>
+    <field name="XStudioOne2ManyField62D1I174Rod0" label="New One2Many" type="XMenuLine20829." collection="true"/>
+    <field name="XStudioStage" label="Stage" type="XMenuStage." required="true" copied="true" on-delete="Restrict"/>
+    <field name="XStudioTags" label="Tags" type="XMenuTag." collection="true" copied="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="XMenu.MenuActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="XMenu.MenuActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="XActive" label="Active" type="bool" copied="true"/>
+    <field name="XColor" label="Color" type="integer" copied="true"/>
+    <field name="XName" label="Description" type="string" required="true" copied="true" translatable="true"/>
+    <field name="XStudioCharField1F41I1766879" label="New Text" type="string" copied="true"/>
+    <field name="XStudioCharFieldE71I1763A72" label="New Text" type="string" copied="true"/>
+    <field name="XStudioDate" label="Date" type="date" copied="true"/>
+    <field name="XStudioDateStart" label="Start Date" type="datetime" copied="true"/>
+    <field name="XStudioDateStop" label="End Date" type="datetime" copied="true"/>
+    <field name="XStudioImage" label="Image" type="binary" copied="true"/>
+    <field name="XStudioKanbanState" label="Kanban State" type="XMenu.MenuKanbanState" copied="true"/>
+    <field name="XStudioNotes" label="Notes" type="html" copied="true"/>
+    <field name="XStudioPartnerEmail" label="Email" type="string" related-field="XStudioPartner.Email"/>
+    <field name="XStudioPartnerPhone" label="Phone" type="string" related-field="XStudioPartner.Phone"/>
+    <field name="XStudioPriority" label="High Priority" type="bool" copied="true"/>
+    <field name="XStudioSelection" label="Selection Badge" type="XMenu.MenuSelectionBadge" copied="true"/>
+    <field name="XStudioSelectionField3S81I153Tve1" label="New Selection" type="XMenu.MenuNewSelection" copied="true"/>
+    <field name="XStudioSequence" label="Sequence" type="integer" copied="true"/>
+    <field name="XStudioTextField4Tr1I1767U86" label="New Multine Text" type="text" copied="true"/>
+    <field name="XStudioValue" label="Value" type="monetary" copied="true"/>
+  </model>
+</buvi>

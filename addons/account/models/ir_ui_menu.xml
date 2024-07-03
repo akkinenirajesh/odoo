@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Account.IrUiMenu" name="IrUiMenu" description="UI Menu">
+        <field name="Name" type="string" label="Menu Name" required="true" translate="true" />
+        <!-- Add other fields from ir.ui.menu model here -->
+    </model>
+</buvi>

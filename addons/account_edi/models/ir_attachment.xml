@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Core.IrAttachment" name="IrAttachment" description="Attachment">
+        <field name="Name" type="string" label="Name" required="true" />
+        <!-- Add other existing fields from ir.attachment model -->
+        
+        <!-- No new fields are introduced in the given Python code -->
+    </model>
+</buvi>

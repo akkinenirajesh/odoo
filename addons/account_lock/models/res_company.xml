@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="PeriodLockDate" type="datetime" label="Lock Date for Non-Advisers" />
+        <field name="FiscalyearLockDate" type="datetime" label="Lock Date for All Users" />
+        <field name="TaxLockDate" type="datetime" label="Tax Lock Date" />
+    </model>
+</buvi>

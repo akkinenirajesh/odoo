@@ -1,0 +1,33 @@
+xml
+<buvi>
+    <model id="Account.AccountPaymentTerm" name="AccountPaymentTerm" description="Payment Terms">
+        <field name="Name" type="string" label="Payment Terms" required="true" translate="true" />
+        <field name="Active" type="bool" default="true"
+            help="If the active field is set to False, it will allow you to hide the payment terms without removing it." />
+        <field name="Note" type="html" label="Description on the Invoice" translate="true" />
+        <field name="LineIds" type="Account.AccountPaymentTermLine" relation="many2many" />
+        <field name="Company" type="Core.Company" />
+        <field name="FiscalCountryCodes" type="string" compute="ComputeFiscalCountryCodes" />
+        <field name="Sequence" type="integer" required="true" default="10" />
+        <field name="Currency" type="Core.Currency" compute="ComputeCurrencyId" />
+        <field name="DisplayOnInvoice" type="bool" label="Show installment dates" default="true" />
+        <field name="ExampleAmount" type="decimal" currency_field="Currency" default="1000" store="false" readonly="true" />
+        <field name="ExampleDate" type="date" label="Date example" default="DefaultExampleDate" store="false" />
+        <field name="ExampleInvalid" type="bool" compute="ComputeExampleInvalid" />
+        <field name="ExamplePreview" type="html" compute="ComputeExamplePreview" />
+        <field name="ExamplePreviewDiscount" type="html" compute="ComputeExamplePreview" />
+        <field name="DiscountPercentage" type="float" label="Discount %" default="2.0"
+            help="Early Payment Discount granted for this payment term" />
+        <field name="DiscountDays" type="integer" label="Discount Days" default="10"
+            help="Number of days before the early payment proposition expires" />
+        <field name="EarlyPayDiscountComputation" type="Account.EarlyPayDiscountComputation" 
+            compute="ComputeDiscountComputation" readonly="false" store="true" />
+        <field name="EarlyDiscount" type="bool" label="Early Discount" />
+    </model>
+
+    <optionset id="Account.EarlyPayDiscountComputation" name="Early Pay Discount Computation">
+        <option value="Included" name="On early payment" />
+        <option value="Excluded" name="Never" />
+        <option value="Mixed" name="Always (upon invoice)" />
+    </optionset>
+</buvi>

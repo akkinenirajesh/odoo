@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Base.ResPartner" name="ResPartner" description="Partner" inherit="true">
+        <field name="DateLocalization" type="date" label="Geolocation Date" />
+    </model>
+</buvi>

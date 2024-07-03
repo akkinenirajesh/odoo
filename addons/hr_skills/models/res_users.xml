@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="appointment.resource" name="Appointment.Resource" track_created="true" track_update="true">
+    <field name="DestinationResources" label="Destination combination" type="Appointment.Resource" collection="true" copied="true"/>
+    <field name="LinkedResources" label="Linked Resource" type="Appointment.Resource" collection="true" transient="true"/>
+    <field name="SourceResources" label="Source combination" type="Appointment.Resource" collection="true" copied="true"/>
+    <field name="AppointmentTypes" label="Available in" type="Appointment.Type" collection="true" copied="true"/>
+    <field name="Company" label="Company" type="Res.Company" indexed="true" related-field="Resource.Company"/>
+    <field name="ResourceCalendar" label="Working Hours" type="Resource.Calendar" indexed="true" related-field="Resource.Calendar"/>
+    <field name="Resource" label="Resource" type="Resource.Resource" required="true" indexed="true" on-delete="Restrict"/>
+    <field name="Active" label="Active" type="bool" related-field="Resource.Active"/>
+    <field name="Avatar1024" label="Avatar 1024" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar128" label="Avatar 128" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar1920" label="Avatar" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar256" label="Avatar 256" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar512" label="Avatar 512" type="binary" readonly="true" transient="true"/>
+    <field name="Capacity" label="Capacity" type="integer" required="true" copied="true"/>
+    <field name="Description" label="Description" type="html" copied="true" translatable="true"/>
+    <field name="Image1024" label="Image 1024" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image128" label="Image 128" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image1920" label="Image" type="binary" copied="true"/>
+    <field name="Image256" label="Image 256" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image512" label="Image 512" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Name" label="Appointment Resource" type="string" required="true" related-field="Resource.Name"/>
+    <field name="Sequence" label="Sequence" type="integer" required="true" copied="true"/>
+    <field name="Shareable" label="Shareable" type="bool" copied="true"/>
+  </model>
+  <model id="resource.resource" name="Resource.Resource" track_created="true" track_update="true">
+    <field name="Department" label="Department" type="Hr.Department" readonly="true" transient="true" related-field="Employee.Department"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" collection="true"/>
+    <field name="EmployeeSkills" label="Skills" type="Hr.EmployeeSkill" collection="true" readonly="true" transient="true" related-field="Employee.EmployeeSkills"/>
+    <field name="DefaultRole" label="Default Role" type="Planning.Role" copied="true" on-delete="Clear"/>
+    <field name="Roles" label="Roles" type="Planning.Role" collection="true" copied="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="User" label="User" type="Res.Users" on-delete="Clear"/>
+    <field name="Calendar" label="Working Time" type="Resource.Calendar" copied="true" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="Avatar128" label="Avatar 128" type="binary" readonly="true" transient="true"/>
+    <field name="Color" label="Color" type="integer" copied="true"/>
+    <field name="Email" label="Email" type="string" readonly="true" transient="true" related-field="User.Email"/>
+    <field name="ImStatus" label="IM Status" type="string" readonly="true" transient="true" related-field="User.ImStatus"/>
+    <field name="JobTitle" label="Job Title" type="string" readonly="true" transient="true" related-field="Employee.JobTitle"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true"/>
+    <field name="Phone" label="Phone" type="string" readonly="true" transient="true" related-field="User.Phone"/>
+    <field name="ResourceType" label="Type" type="Resource.ResourcesType" required="true" copied="true"/>
+    <field name="Share" label="Share User" type="bool" readonly="true" transient="true" related-field="User.Share"/>
+    <field name="ShowHrIconDisplay" label="Show Hr Icon Display" type="bool" readonly="true" transient="true" related-field="Employee.ShowHrIconDisplay"/>
+    <field name="TimeEfficiency" label="Efficiency Factor" type="float" required="true" copied="true"/>
+    <field name="WorkEmail" label="Work Email" type="string" readonly="true" transient="true" related-field="Employee.WorkEmail"/>
+    <field name="WorkPhone" label="Work Phone" type="string" readonly="true" transient="true" related-field="Employee.WorkPhone"/>
+  </model>
+  <model id="slide.slide.resource" name="Slide.SlideResource" track_created="true" track_update="true">
+    <field name="Slide" label="Slide" type="Slide.Slide" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Data" label="Resource" type="binary" copied="true"/>
+    <field name="DownloadUrl" label="Download URL" type="string" readonly="true" transient="true"/>
+    <field name="FileName" label="File Name" type="string" copied="true"/>
+    <field name="Link" label="Link" type="string" copied="true"/>
+    <field name="Name" label="Name" type="string" copied="true"/>
+    <field name="ResourceType" label="Resource Type" type="Slide.AdditionalResourceForAParticularSlideResourceType" required="true" copied="true"/>
+  </model>
+</buvi>

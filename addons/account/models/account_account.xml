@@ -1,0 +1,66 @@
+xml
+<buvi>
+    <model id="Account.Account" name="Account" description="Account">
+        <field name="Name" type="string" label="Account Name" required="true" translate="true" />
+        <field name="CurrencyId" type="Core.Currency" label="Account Currency" />
+        <field name="Code" type="string" size="64" required="true" />
+        <field name="Deprecated" type="bool" default="false" />
+        <field name="AccountType" type="Account.AccountType" required="true" 
+               help="Account Type is used for information purpose, to generate country-specific legal reports, and set the rules to close a fiscal year and generate opening entries." />
+        <field name="InternalGroup" type="Account.InternalGroup" compute="ComputeInternalGroup" />
+        <field name="Reconcile" type="bool" label="Allow Reconciliation" 
+               help="Check this box if this account allows invoices &amp; payments matching of journal items." />
+        <field name="TaxIds" type="Account.Tax" relation="many2many" label="Default Taxes" />
+        <field name="Note" type="string" label="Internal Notes" />
+        <field name="CompanyId" type="Core.Company" required="true" />
+        <field name="TagIds" type="Account.AccountTag" relation="many2many" label="Tags" 
+               help="Optional tags you may want to assign for custom reporting" />
+        <field name="GroupId" type="Account.Group" compute="ComputeAccountGroup" readonly="true" 
+               help="Account prefixes can determine account groups." />
+        <field name="RootId" type="Account.Root" compute="ComputeAccountRoot" />
+        <field name="AllowedJournalIds" type="Account.Journal" relation="many2many" label="Allowed Journals" 
+               help="Define in which journals this account can be used. If empty, can be used in all journals." />
+        <field name="OpeningDebit" type="decimal" label="Opening Debit" compute="ComputeOpeningDebitCredit" />
+        <field name="OpeningCredit" type="decimal" label="Opening Credit" compute="ComputeOpeningDebitCredit" />
+        <field name="OpeningBalance" type="decimal" label="Opening Balance" compute="ComputeOpeningDebitCredit" />
+        <field name="CurrentBalance" type="decimal" compute="ComputeCurrentBalance" />
+        <field name="RelatedTaxesAmount" type="integer" compute="ComputeRelatedTaxesAmount" />
+        <field name="NonTrade" type="bool" default="false" 
+               help="If set, this account will belong to Non Trade Receivable/Payable in reports and filters. If not, this account will belong to Trade Receivable/Payable in reports and filters." />
+        <unique>
+            <field name="Code" />
+            <field name="CompanyId" />
+            <message>The code of the account must be unique per company!</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.AccountType" name="Account Type">
+        <option value="AssetReceivable" name="Receivable" />
+        <option value="AssetCash" name="Bank and Cash" />
+        <option value="AssetCurrent" name="Current Assets" />
+        <option value="AssetNonCurrent" name="Non-current Assets" />
+        <option value="AssetPrepayments" name="Prepayments" />
+        <option value="AssetFixed" name="Fixed Assets" />
+        <option value="LiabilityPayable" name="Payable" />
+        <option value="LiabilityCreditCard" name="Credit Card" />
+        <option value="LiabilityCurrent" name="Current Liabilities" />
+        <option value="LiabilityNonCurrent" name="Non-current Liabilities" />
+        <option value="Equity" name="Equity" />
+        <option value="EquityUnaffected" name="Current Year Earnings" />
+        <option value="Income" name="Income" />
+        <option value="IncomeOther" name="Other Income" />
+        <option value="Expense" name="Expenses" />
+        <option value="ExpenseDepreciation" name="Depreciation" />
+        <option value="ExpenseDirectCost" name="Cost of Revenue" />
+        <option value="OffBalance" name="Off-Balance Sheet" />
+    </optionset>
+
+    <optionset id="Account.InternalGroup" name="Internal Group">
+        <option value="Equity" name="Equity" />
+        <option value="Asset" name="Asset" />
+        <option value="Liability" name="Liability" />
+        <option value="Income" name="Income" />
+        <option value="Expense" name="Expense" />
+        <option value="Off" name="Off Balance" />
+    </optionset>
+</buvi>

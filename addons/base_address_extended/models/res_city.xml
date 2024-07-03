@@ -1,0 +1,14 @@
+xml
+<buvi>
+    <model id="Base.City" name="City" description="City">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Zipcode" type="string" label="Zip" />
+        <field name="Country" type="Core.Country" label="Country" required="true" />
+        <field name="State" type="Base.CountryState" label="State" />
+        <unique>
+            <field name="Name" />
+            <field name="Zipcode" />
+            <message>A city with the same name and zipcode already exists.</message>
+        </unique>
+    </model>
+</buvi>

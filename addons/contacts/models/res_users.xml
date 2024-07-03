@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Core.ResUsers" name="ResUsers" description="Users">
+        <field name="Name" type="string" label="Name" required="true" />
+        <!-- Add other fields from res.users model here -->
+    </model>
+</buvi>

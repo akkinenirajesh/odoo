@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Account.PaymentTransaction" name="PaymentTransaction" description="Payment Transaction">
+        <field name="PaymentId" type="Account.Payment" label="Payment" readonly="true" />
+        <field name="InvoiceIds" type="Account.Move" label="Invoices" readonly="true" copyable="false">
+            <domain>[('MoveType', 'in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]</domain>
+        </field>
+        <field name="InvoicesCount" type="integer" label="Invoices Count" computed="true" />
+    </model>
+</buvi>

@@ -1,0 +1,25 @@
+xml
+<buvi>
+    <model id="Account.ResPartnerBank" name="ResPartnerBank" description="Partner Bank Account">
+        <field name="JournalId" type="Account.AccountJournal" label="Account Journal" readonly="true" />
+        <field name="HasIbanWarning" type="bool" compute="_ComputeDisplayAccountWarning" store="true"
+            help="Technical field used to display a warning if the IBAN country is different than the holder country." />
+        <field name="PartnerCountryName" type="string" related="Partner.Country.Name" />
+        <field name="HasMoneyTransferWarning" type="bool" compute="_ComputeDisplayAccountWarning" store="true"
+            help="Technical field used to display a warning if the account is a transfer service account." />
+        <field name="MoneyTransferService" type="string" compute="_ComputeMoneyTransferServiceName" />
+        <field name="PartnerSupplierRank" type="integer" related="Partner.SupplierRank" />
+        <field name="PartnerCustomerRank" type="integer" related="Partner.CustomerRank" />
+        <field name="RelatedMoves" type="Account.AccountMove" />
+        <field name="BankId" type="Core.Bank" tracking="true" />
+        <field name="Active" type="bool" tracking="true" />
+        <field name="AccNumber" type="string" tracking="true" />
+        <field name="AccHolderName" type="string" tracking="true" />
+        <field name="Partner" type="Core.Partner" tracking="true" />
+        <field name="UserHasGroupValidateBankAccount" type="bool" compute="_ComputeUserHasGroupValidateBankAccount" />
+        <field name="AllowOutPayment" type="bool" tracking="true"
+            help="Sending fake invoices with a fraudulent account number is a common phishing practice. To protect yourself, always verify new bank account numbers, preferably by calling the vendor, as phishing usually happens when their emails are compromised. Once verified, you can activate the ability to send money." />
+        <field name="Currency" type="Core.Currency" tracking="true" />
+        <field name="LockTrustFields" type="bool" compute="_ComputeLockTrustFields" />
+    </model>
+</buvi>

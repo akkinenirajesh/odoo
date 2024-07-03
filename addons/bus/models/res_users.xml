@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Bus.ResUsers" name="ResUsers" description="Users">
+        <field name="ImStatus" type="string" label="IM Status" compute="ComputeImStatus" />
+    </model>
+</buvi>

@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="PreferredPaymentMethod" type="Account.AccountPaymentMethod" label="Preferred Payment Method" />
+    </model>
+</buvi>

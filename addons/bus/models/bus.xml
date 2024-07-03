@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Bus.Bus" name="Bus" description="Communication Bus">
+        <field name="Channel" type="string" label="Channel" />
+        <field name="Message" type="string" label="Message" />
+    </model>
+</buvi>

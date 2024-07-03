@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Mail.ActivityType" name="ActivityType" description="Mail Activity Type">
+        <field name="Category" type="Mail.ActivityTypeCategory" />
+    </model>
+
+    <optionset id="Mail.ActivityTypeCategory" name="Activity Type Category">
+        <option value="Meeting" name="Meeting" />
+        <!-- Other existing options should be added here -->
+    </optionset>
+</buvi>

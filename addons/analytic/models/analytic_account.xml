@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Account.AccountAnalyticAccount" name="AccountAnalyticAccount" description="Analytic Account">
+        <field name="Name" type="string" label="Analytic Account" required="true" translate="true" />
+        <field name="Code" type="string" label="Reference" />
+        <field name="Active" type="bool" default="true" label="Active"
+            help="Deactivate the account." />
+        <field name="Plan" type="Account.AccountAnalyticPlan" required="true" />
+        <field name="RootPlan" type="Account.AccountAnalyticPlan" label="Root Plan" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Lines" type="Account.AccountAnalyticLine[]" label="Analytic Lines" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="Partner" type="Core.Partner" label="Customer" />
+        <field name="Balance" type="decimal" label="Balance" />
+        <field name="Debit" type="decimal" label="Debit" />
+        <field name="Credit" type="decimal" label="Credit" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+    </model>
+</buvi>

@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="TaxLineId" type="Account.Tax" label="Tax" />
+        <field name="GroupTaxId" type="Account.Tax" label="Group Tax" />
+        <field name="TaxRepartitionLineId" type="Account.TaxRepartitionLine" label="Tax Repartition Line" />
+        <field name="Balance" type="decimal" label="Balance" />
+        <field name="AmountCurrency" type="decimal" label="Amount Currency" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+        <field name="CompanyCurrency" type="Core.Currency" label="Company Currency" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="Move" type="Account.Move" label="Move" />
+        <field name="Partner" type="Core.Partner" label="Partner" />
+        <field name="Account" type="Account.Account" label="Account" />
+        <field name="AnalyticDistribution" type="string" label="Analytic Distribution" />
+        <field name="Quantity" type="decimal" label="Quantity" />
+        <field name="DisplayType" type="string" label="Display Type" />
+    </model>
+</buvi>

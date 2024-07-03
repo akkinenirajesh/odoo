@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="calendar.event" name="Calendar.Event" track_created="true" track_update="true">
+    <field name="AppointmentAnswerInputs" label="Appointment Answers" type="Appointment.AnswerInput" collection="true"/>
+    <field name="BookingLines" label="Booking Lines" type="Appointment.BookingLine" collection="true"/>
+    <field name="AppointmentInvite" label="Appointment Invitation" type="Appointment.Invite" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="AppointmentResources" label="Appointment Resources" type="Appointment.Resource" collection="true" readonly="true" copied="true"/>
+    <field name="OnLeaveResources" label="Resources intersecting with leave time" type="Appointment.Resource" collection="true" readonly="true" transient="true"/>
+    <field name="Resources" label="Resources" type="Appointment.Resource" collection="true" transient="true"/>
+    <field name="AppointmentType" label="Appointment" type="Appointment.Type" copied="true" on-delete="Clear"/>
+    <field name="Alarms" label="Reminders" type="Calendar.Alarm" collection="true" copied="true"/>
+    <field name="Attendees" label="Participant" type="Calendar.Attendee" collection="true"/>
+    <field name="CurrentAttendee" label="Current Attendee" type="Calendar.Attendee" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Categs" label="Tags" type="Calendar.EventType" collection="true" copied="true"/>
+    <field name="Recurrence" label="Recurrence Rule" type="Calendar.Recurrence" copied="true" on-delete="Clear"/>
+    <field name="Opportunity" label="Opportunity" type="Crm.Lead" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="VideocallChannel" label="Discuss Channel" type="Discuss.Channel" copied="true" on-delete="Clear"/>
+    <field name="Applicant" label="Applicant" type="Hr.Applicant" indexed="true" related-field="AppointmentInvite.Applicant" on-delete="Clear"/>
+    <field name="ResModel" label="Document Model" type="Ir.Model" copied="true" on-delete="Cascade"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="AppointmentBooker" label="Person who is booking the appointment" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="InvalidEmailPartners" label="Invalid Email Partner" type="Res.Partner" collection="true" readonly="true" transient="true"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="OnLeavePartners" label="Unavailable Partners" type="Res.Partner" collection="true" readonly="true" transient="true"/>
+    <field name="Partner" label="Scheduled by" type="Res.Partner" readonly="true" transient="true" related-field="User.Partner"/>
+    <field name="Partners" label="Attendees" type="Res.Partner" collection="true" copied="true"/>
+    <field name="User" label="Organizer" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="AcceptedCount" label="Accepted Count" type="integer" readonly="true" transient="true"/>
+    <field name="AccessToken" label="Access Token" type="string" indexed="true" readonly="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="Allday" label="All Day" type="bool" copied="true"/>
+    <field name="AppointmentAttended" label="Attendees Arrived" type="bool" copied="true"/>
+    <field name="AppointmentTypeManageCapacity" label="Manage Capacities" type="bool" readonly="true" transient="true" related-field="AppointmentType.ResourceManageCapacity"/>
+    <field name="AttendeesCount" label="Attendees Count" type="integer" readonly="true" transient="true"/>
+    <field name="AwaitingCount" label="Awaiting Count" type="integer" readonly="true" transient="true"/>
+    <field name="Byday" label="By day" type="Calendar.CalendarEventByDay" transient="true"/>
+    <field name="Count" label="Number of Repetitions" type="integer" transient="true"/>
+    <field name="Day" label="Date of month" type="integer" transient="true"/>
+    <field name="DeclinedCount" label="Declined Count" type="integer" readonly="true" transient="true"/>
+    <field name="Description" label="Description" type="html" copied="true"/>
+    <field name="DisplayDescription" label="Display Description" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayTime" label="Event Time" type="string" readonly="true" transient="true"/>
+    <field name="Duration" label="Duration" type="float" copied="true"/>
+    <field name="EndType" label="Recurrence Termination" type="Calendar.CalendarEventRecurrenceTermination" transient="true"/>
+    <field name="FollowRecurrence" label="Follow Recurrence" type="bool" copied="true"/>
+    <field name="Fri" label="Fri" type="bool" transient="true"/>
+    <field name="Google" label="Google Calendar Event Id" type="string"/>
+    <field name="GuestsReadonly" label="Guests Event Modification Permission" type="bool" copied="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="Interval" label="Repeat On" type="integer" transient="true"/>
+    <field name="IsHighlighted" label="Is the Event Highlighted" type="bool" readonly="true" transient="true"/>
+    <field name="IsOrganizerAlone" label="Is the Organizer Alone" type="bool" readonly="true" transient="true"/>
+    <field name="Location" label="Location" type="string" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="Microsoft" label="Organizer event Id" type="string" indexed="true"/>
+    <field name="MicrosoftRecurrenceMaster" label="Microsoft Recurrence Master Id" type="string" copied="true"/>
+    <field name="Mon" label="Mon" type="bool" transient="true"/>
+    <field name="MonthBy" label="Option" type="Calendar.CalendarEventOption" transient="true"/>
+    <field name="MsUniversalEvent" label="Universal event Id" type="string" indexed="true"/>
+    <field name="Name" label="Meeting Subject" type="string" required="true" copied="true"/>
+    <field name="NeedSync" label="Need Sync" type="bool"/>
+    <field name="NeedSyncM" label="Need Sync M" type="bool"/>
+    <field name="Privacy" label="Privacy" type="Calendar.CalendarEventPrivacy" required="true" copied="true"/>
+    <field name="RecurrenceUpdate" label="Recurrence Update" type="Calendar.CalendarEventRecurrenceUpdate" transient="true"/>
+    <field name="Recurrency" label="Recurrent" type="bool" copied="true"/>
+    <field name="Res" label="Document ID" type="many2one_reference" copied="true"/>
+    <field name="ResModel" label="Document Model Name" type="string" readonly="true" related-field="ResModel.Model"/>
+    <field name="ResModelName" label="Model Description" type="string" readonly="true" transient="true" translatable="true" related-field="ResModel.Name"/>
+    <field name="ResourceTotalCapacityReserved" label="Total Capacity Reserved" type="integer" transient="true"/>
+    <field name="ResourceTotalCapacityUsed" label="Total Capacity Used" type="integer" readonly="true" transient="true"/>
+    <field name="Rrule" label="Recurrent Rule" type="string" transient="true"/>
+    <field name="RruleType" label="Recurrence" type="Calendar.CalendarEventRecurrence" transient="true"/>
+    <field name="RruleTypeUi" label="Repeat" type="Calendar.CalendarEventRepeat" transient="true"/>
+    <field name="Sat" label="Sat" type="bool" transient="true"/>
+    <field name="ShouldShowStatus" label="Should Show Status" type="bool" readonly="true" transient="true"/>
+    <field name="ShowAs" label="Show as" type="Calendar.CalendarEventShowAs" required="true" copied="true"/>
+    <field name="Start" label="Start" type="datetime" required="true" copied="true"/>
+    <field name="StartDate" label="Start Date" type="date"/>
+    <field name="Stop" label="Stop" type="datetime" required="true" copied="true"/>
+    <field name="StopDate" label="End Date" type="date"/>
+    <field name="Sun" label="Sun" type="bool" transient="true"/>
+    <field name="TentativeCount" label="Tentative Count" type="integer" readonly="true" transient="true"/>
+    <field name="Thu" label="Thu" type="bool" transient="true"/>
+    <field name="Tue" label="Tue" type="bool" transient="true"/>
+    <field name="Until" label="Until" type="date" transient="true"/>
+    <field name="UserCanEdit" label="User Can Edit" type="bool" readonly="true" transient="true"/>
+    <field name="VideocallLocation" label="Meeting URL" type="string" readonly="true" copied="true"/>
+    <field name="VideocallRedirection" label="Meeting redirection URL" type="string" readonly="true" transient="true"/>
+    <field name="VideocallSource" label="Videocall Source" type="Calendar.CalendarEventVideocallSource" readonly="true" transient="true"/>
+    <field name="Wed" label="Wed" type="bool" transient="true"/>
+    <field name="Weekday" label="Weekday" type="Calendar.CalendarEventWeekday" transient="true"/>
+  </model>
+  <model id="event.event" name="Event.Event" track_created="true" track_update="true">
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Leads" label="Leads" type="Crm.Lead" collection="true"/>
+    <field name="EventBooths" label="Booths" type="Event.Booth" collection="true" copied="true"/>
+    <field name="EventBoothCategoryAvailables" label="Event Booth Category Available" type="Event.BoothCategory" collection="true" readonly="true" transient="true"/>
+    <field name="EventBoothCategorys" label="Event Booth Category" type="Event.BoothCategory" collection="true" readonly="true" transient="true"/>
+    <field name="EventTickets" label="Event Ticket" type="Event.EventTicket" collection="true" copied="true"/>
+    <field name="EventMails" label="Mail Schedule" type="Event.Mail" collection="true" copied="true"/>
+    <field name="MeetingRooms" label="Meeting rooms" type="Event.MeetingRoom" collection="true"/>
+    <field name="GeneralQuestions" label="General Questions" type="Event.Question" collection="true"/>
+    <field name="Questions" label="Questions" type="Event.Question" collection="true" copied="true"/>
+    <field name="SpecificQuestions" label="Specific Questions" type="Event.Question" collection="true"/>
+    <field name="Registrations" label="Attendees" type="Event.Registration" collection="true"/>
+    <field name="Sponsors" label="Sponsors" type="Event.Sponsor" collection="true"/>
+    <field name="Stage" label="Stage" type="Event.Stage" on-delete="Restrict"/>
+    <field name="Tags" label="Tags" type="Event.Tag" collection="true" copied="true"/>
+    <field name="Tracks" label="Tracks" type="Event.Track" collection="true"/>
+    <field name="AllowedTrackTags" label="Available Track Tags" type="Event.TrackTag" collection="true" copied="true"/>
+    <field name="TracksTags" label="Track Tags" type="Event.TrackTag" collection="true" readonly="true"/>
+    <field name="EventType" label="Template" type="Event.Type" copied="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="Country" label="Country" type="Res.Country" related-field="Address.Country"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Company.Currency"/>
+    <field name="Address" label="Venue" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="AddressSearch" label="Address" type="Res.Partner" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Organizer" label="Organizer" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="User" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="SaleOrderLiness" label="All sale order lines pointing to this event" type="Sale.OrderLine" collection="true"/>
+    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="BoothMenus" label="Event Booths Menus" type="Website.EventMenu" collection="true"/>
+    <field name="CommunityMenus" label="Event Community Menus" type="Website.EventMenu" collection="true"/>
+    <field name="ExhibitorMenus" label="Exhibitors Menus" type="Website.EventMenu" collection="true"/>
+    <field name="IntroductionMenus" label="Introduction Menus" type="Website.EventMenu" collection="true"/>
+    <field name="LocationMenus" label="Location Menus" type="Website.EventMenu" collection="true"/>
+    <field name="RegisterMenus" label="Register Menus" type="Website.EventMenu" collection="true"/>
+    <field name="TrackMenus" label="Event Tracks Menus" type="Website.EventMenu" collection="true"/>
+    <field name="TrackProposalMenus" label="Event Proposals Menus" type="Website.EventMenu" collection="true"/>
+    <field name="Menu" label="Event Menu" type="Website.Menu" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Event.EventActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Event.EventActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AddressInline" label="Venue (formatted for one line uses)" type="string" readonly="true" transient="true"/>
+    <field name="AddressName" label="Name" type="string" readonly="true" transient="true" related-field="Address.Name"/>
+    <field name="BadgeFormat" label="Badge Dimension" type="Event.EventBadgeDimension" required="true" copied="true"/>
+    <field name="BadgeImage" label="Badge Background" type="binary" copied="true"/>
+    <field name="BoothMenu" label="Booth Register" type="bool" copied="true"/>
+    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
+    <field name="CommunityMenu" label="Community Menu" type="bool" copied="true"/>
+    <field name="CoverProperties" label="Cover Properties" type="text" copied="true"/>
+    <field name="DateBegin" label="Start Date" type="datetime" required="true" copied="true"/>
+    <field name="DateBeginLocated" label="Start Date Located" type="string" readonly="true" transient="true"/>
+    <field name="DateEnd" label="End Date" type="datetime" required="true" copied="true"/>
+    <field name="DateEndLocated" label="End Date Located" type="string" readonly="true" transient="true"/>
+    <field name="Description" label="Description" type="html" copied="true" translatable="true"/>
+    <field name="EventBoothCount" label="Total Booths" type="integer" readonly="true" transient="true"/>
+    <field name="EventBoothCountAvailable" label="Available Booths" type="integer" readonly="true" transient="true"/>
+    <field name="EventRegisterUrl" label="Event Registration Link" type="string" readonly="true" transient="true"/>
+    <field name="EventRegistrationsOpen" label="Registration open" type="bool" readonly="true" transient="true"/>
+    <field name="EventRegistrationsSoldOut" label="Sold Out" type="bool" readonly="true" transient="true"/>
+    <field name="EventRegistrationsStarted" label="Registrations started" type="bool" readonly="true" transient="true"/>
+    <field name="ExhibitionMap" label="Exhibition Map" type="binary" copied="true"/>
+    <field name="ExhibitorMenu" label="Showcase Exhibitors" type="bool" copied="true"/>
+    <field name="FirebaseEnablePushNotifications" label="Enable Web Push Notifications" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="IntroductionMenu" label="Introduction Menu" type="bool" copied="true"/>
+    <field name="IsDone" label="Is Done" type="bool" readonly="true" transient="true"/>
+    <field name="IsFinished" label="Is Finished" type="bool" readonly="true" transient="true"/>
+    <field name="IsOneDay" label="Is One Day" type="bool" readonly="true" transient="true"/>
+    <field name="IsOngoing" label="Is Ongoing" type="bool" readonly="true" transient="true"/>
+    <field name="IsParticipating" label="Is Participating" type="bool" readonly="true" transient="true"/>
+    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
+    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
+    <field name="IsVisibleOnWebsite" label="Visible On Website" type="bool" readonly="true" transient="true"/>
+    <field name="KanbanState" label="Kanban State" type="Event.EventKanbanState"/>
+    <field name="KanbanStateLabel" label="Kanban State Label" type="string" readonly="true"/>
+    <field name="LeadCount" label="# Leads" type="integer" readonly="true" transient="true"/>
+    <field name="LegendBlocked" label="Kanban Blocked Explanation" type="string" readonly="true" transient="true" translatable="true" related-field="Stage.LegendBlocked"/>
+    <field name="LegendDone" label="Kanban Valid Explanation" type="string" readonly="true" transient="true" translatable="true" related-field="Stage.LegendDone"/>
+    <field name="LegendNormal" label="Kanban Ongoing Explanation" type="string" readonly="true" transient="true" translatable="true" related-field="Stage.LegendNormal"/>
+    <field name="LocationMenu" label="Location Menu" type="bool" copied="true"/>
+    <field name="MeetingRoomAllowCreation" label="Allow Room Creation" type="bool" copied="true"/>
+    <field name="MeetingRoomCount" label="Room count" type="integer" readonly="true" transient="true"/>
+    <field name="MenuRegisterCta" label="Extra Register Button" type="bool" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Event" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Note" label="Note" type="html" copied="true"/>
+    <field name="RegisterMenu" label="Register Menu" type="bool" copied="true"/>
+    <field name="RegistrationPropertiesDefinition" label="Registration Properties" type="properties_definition" copied="true"/>
+    <field name="SalePriceSubtotal" label="Sales (Tax Excluded)" type="monetary" readonly="true" transient="true"/>
+    <field name="SeatsAvailable" label="Available Seats" type="integer" readonly="true" transient="true"/>
+    <field name="SeatsLimited" label="Limit Attendees" type="bool" required="true" copied="true"/>
+    <field name="SeatsMax" label="Maximum Attendees" type="integer" copied="true"/>
+    <field name="SeatsReserved" label="Number of Registrations" type="integer" readonly="true" transient="true"/>
+    <field name="SeatsTaken" label="Number of Taken Seats" type="integer" readonly="true" transient="true"/>
+    <field name="SeatsUsed" label="Number of Attendees" type="integer" readonly="true" transient="true"/>
+    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
+    <field name="SponsorCount" label="Sponsor Count" type="integer" readonly="true" transient="true"/>
+    <field name="StartRemaining" label="Remaining before start" type="integer" readonly="true" transient="true"/>
+    <field name="StartSaleDatetime" label="Start sale date" type="datetime" readonly="true" transient="true"/>
+    <field name="StartToday" label="Start Today" type="bool" readonly="true" transient="true"/>
+    <field name="Subtitle" label="Event Subtitle" type="string" copied="true" translatable="true"/>
+    <field name="TicketInstructions" label="Ticket Instructions" type="html" copied="true" translatable="true"/>
+    <field name="TrackCount" label="Track Count" type="integer" readonly="true" transient="true"/>
+    <field name="TrackGanttInitialDate" label="Track Gantt Initial Date" type="date" readonly="true" transient="true"/>
+    <field name="TrackGanttScale" label="Track Gantt Scale" type="string" readonly="true" transient="true"/>
+    <field name="UseBarcode" label="Use Barcode" type="bool" readonly="true" transient="true"/>
+    <field name="WebsiteMenu" label="Website Menu" type="bool" copied="true"/>
+    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
+    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
+    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
+    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
+    <field name="WebsiteTrack" label="Tracks on Website" type="bool" copied="true"/>
+    <field name="WebsiteTrackProposal" label="Proposals on Website" type="bool" copied="true"/>
+    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
+    <field name="WebsiteVisibility" label="Website Visibility" type="Event.EventWebsiteVisibility" required="true" copied="true"/>
+  </model>
+</buvi>

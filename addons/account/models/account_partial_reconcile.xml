@@ -1,0 +1,21 @@
+xml
+<buvi>
+    <model id="Account.AccountPartialReconcile" name="AccountPartialReconcile" description="Partial Reconcile">
+        <field name="DebitMoveId" type="Account.AccountMoveLine" label="Debit Move" required="true" />
+        <field name="CreditMoveId" type="Account.AccountMoveLine" label="Credit Move" required="true" />
+        <field name="FullReconcileId" type="Account.AccountFullReconcile" label="Full Reconcile" />
+        <field name="ExchangeMoveId" type="Account.AccountMove" label="Exchange Move" />
+        <field name="CompanyCurrencyId" type="Core.Currency" label="Company Currency" />
+        <field name="DebitCurrencyId" type="Core.Currency" label="Currency of the debit journal item" />
+        <field name="CreditCurrencyId" type="Core.Currency" label="Currency of the credit journal item" />
+        <field name="Amount" type="decimal" label="Amount" 
+               help="Always positive amount concerned by this matching expressed in the company currency." />
+        <field name="DebitAmountCurrency" type="decimal" label="Debit Amount Currency" 
+               help="Always positive amount concerned by this matching expressed in the debit line foreign currency." />
+        <field name="CreditAmountCurrency" type="decimal" label="Credit Amount Currency" 
+               help="Always positive amount concerned by this matching expressed in the credit line foreign currency." />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+        <field name="MaxDate" type="date" label="Max Date of Matched Lines" 
+               help="Used to determine at which date this reconciliation needs to be shown on the aged receivable/payable reports" />
+    </model>
+</buvi>

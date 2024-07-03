@@ -1,0 +1,28 @@
+xml
+<buvi>
+    <model id="Calendar.Attendee" name="Attendee" description="Calendar Attendee Information">
+        <field name="Event" type="Calendar.Event" label="Meeting linked" required="true" />
+        <field name="Recurrence" type="Calendar.Recurrence" />
+        <field name="Partner" type="Core.Partner" label="Attendee" required="true" readonly="true" />
+        <field name="Email" type="string" />
+        <field name="Phone" type="string" />
+        <field name="CommonName" type="string" label="Common name" />
+        <field name="AccessToken" type="string" label="Invitation Token" />
+        <field name="MailTz" type="string" label="Mail Timezone" 
+               help="Timezone used for displaying time in the mail template" />
+        <field name="State" type="Calendar.AttendeeState" default="NeedsAction" />
+        <field name="Availability" type="Calendar.AttendeeAvailability" label="Available/Busy" readonly="true" />
+    </model>
+
+    <optionset id="Calendar.AttendeeState" name="Attendee State">
+        <option value="NeedsAction" name="Needs Action" />
+        <option value="Tentative" name="Maybe" />
+        <option value="Declined" name="No" />
+        <option value="Accepted" name="Yes" />
+    </optionset>
+
+    <optionset id="Calendar.AttendeeAvailability" name="Attendee Availability">
+        <option value="Free" name="Available" />
+        <option value="Busy" name="Busy" />
+    </optionset>
+</buvi>

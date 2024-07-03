@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment" inherit="Account.AccountPayment">
+        <field name="PaymentTransactionId" type="Payment.Transaction" label="Payment Transaction" readonly="true" />
+        <field name="PaymentTokenId" type="Payment.Token" label="Saved Payment Token"
+            domain="[('Id', 'in', SuitablePaymentTokenIds)]"
+            help="Note that only tokens from providers allowing to capture the amount are available." />
+        <field name="AmountAvailableForRefund" type="decimal" label="Amount Available for Refund" compute="ComputeAmountAvailableForRefund" />
+        <field name="SuitablePaymentTokenIds" type="Payment.Token[]" compute="ComputeSuitablePaymentTokenIds" computeSudo="true" />
+        <field name="UseElectronicPaymentMethod" type="bool" compute="ComputeUseElectronicPaymentMethod" />
+        <field name="SourcePaymentId" type="Account.AccountPayment" label="Source Payment"
+            help="The source payment of related refund payments"
+            related="PaymentTransactionId.SourceTransactionId.PaymentId" readonly="true" store="true" />
+        <field name="RefundsCount" type="integer" label="Refunds Count" compute="ComputeRefundsCount" />
+    </model>
+</buvi>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="stock.picking" name="Stock.Picking" track_created="true" track_update="true">
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Carrier" label="Carrier" type="Delivery.Carrier" copied="true" on-delete="Clear"/>
+    <field name="ReturnLabels" label="Return Label" type="Ir.Attachment" collection="true" readonly="true" transient="true"/>
+    <field name="L10NInEwaybill" label="Ewaybill" type="L10N.InEwaybill" collection="true"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Productions" label="Production" type="Mrp.Production" collection="true" readonly="true" transient="true"/>
+    <field name="PosOrder" label="Pos Order" type="Pos.Order" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="PosSession" label="Pos Session" type="Pos.Session" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Group" label="Procurement Group" type="Procurement.Group" readonly="true" related-field="Moves.Group"/>
+    <field name="Product" label="Product" type="Product.Product" readonly="true" transient="true" related-field="Moves.Product"/>
+    <field name="Purchase" label="Purchase Orders" type="Purchase.Order" readonly="true" transient="true" related-field="Moves.PurchaseLine.Order"/>
+    <field name="QualityAlerts" label="Alerts" type="Quality.Alert" collection="true"/>
+    <field name="Checks" label="Checks" type="Quality.Check" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Repairs" label="Repair" type="Repair.Order" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" indexed="true" readonly="true" related-field="PickingType.Company"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Owner" label="Assign Owner" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Partner" label="Contact" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="User" label="Responsible" type="Res.Users" on-delete="Clear"/>
+    <field name="Sale" label="Sales Order" type="Sale.Order" indexed="true" readonly="true" related-field="Group.Sale"/>
+    <field name="LocationDest" label="Destination Location" type="Stock.Location" required="true" copied="true" on-delete="Restrict"/>
+    <field name="Location" label="Source Location" type="Stock.Location" required="true" copied="true" on-delete="Restrict"/>
+    <field name="Lot" label="Lot/Serial Number" type="Stock.Lot" readonly="true" transient="true" related-field="MoveLines.Lot"/>
+    <field name="Moves" label="Stock Moves" type="Stock.Move" collection="true" copied="true"/>
+    <field name="MoveIdsWithoutPackage" label="Stock move" type="Stock.Move" collection="true"/>
+    <field name="MoveLines" label="Operations" type="Stock.MoveLine" collection="true"/>
+    <field name="MoveLineIdsWithoutPackage" label="Operations without package" type="Stock.MoveLine" collection="true"/>
+    <field name="PackageLevels" label="Package Level" type="Stock.PackageLevel" collection="true"/>
+    <field name="PackageLevelIdsDetails" label="Package Level Ids Details" type="Stock.PackageLevel" collection="true"/>
+    <field name="Backorder" label="Back Order of" type="Stock.Picking" indexed="true" readonly="true" on-delete="Clear"/>
+    <field name="Backorders" label="Back Orders" type="Stock.Picking" collection="true"/>
+    <field name="Return" label="Return of" type="Stock.Picking" indexed="true" readonly="true" on-delete="Clear"/>
+    <field name="Returns" label="Returns" type="Stock.Picking" collection="true"/>
+    <field name="PickingType" label="Operation Type" type="Stock.PickingType" required="true" indexed="true" readonly="true" copied="true" on-delete="Restrict"/>
+    <field name="Packages" label="Packages" type="Stock.QuantPackage" collection="true" readonly="true" transient="true"/>
+    <field name="Website" label="Website" type="Website." readonly="true" related-field="Sale.Website"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Stock.TransferActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Stock.TransferActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AmazonFeedRef" label="Amazon Feed Reference" type="string" readonly="true" copied="true"/>
+    <field name="AmazonSyncStatus" label="Amazon Synchronization Status" type="Stock.TransferAmazonSynchronizationStatus" readonly="true" copied="true"/>
+    <field name="CarrierPrice" label="Shipping Cost" type="float" copied="true"/>
+    <field name="CarrierTrackingRef" label="Tracking Reference" type="string"/>
+    <field name="CarrierTrackingUrl" label="Tracking URL" type="string" readonly="true" transient="true"/>
+    <field name="CountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="Company.AccountFiscalCountry.Code"/>
+    <field name="Date" label="Creation Date" type="datetime" copied="true"/>
+    <field name="DateDeadline" label="Deadline" type="datetime" readonly="true"/>
+    <field name="DateDone" label="Date of Transfer" type="datetime" readonly="true"/>
+    <field name="DelayAlertDate" label="Delay Alert Date" type="datetime" readonly="true" transient="true"/>
+    <field name="DestinationCountryCode" label="Destination Country" type="string" readonly="true" transient="true" related-field="Partner.Country.Code"/>
+    <field name="EpOrderRef" label="Easypost Order Reference" type="string"/>
+    <field name="EwayBillNumber" label="EWay Bill" type="string"/>
+    <field name="HasDeadlineIssue" label="Is late" type="bool" readonly="true"/>
+    <field name="HasKits" label="Has Kits" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasPackages" label="Has Packages" type="bool" readonly="true" transient="true"/>
+    <field name="HasScrapMove" label="Has Scrap Moves" type="bool" readonly="true" transient="true"/>
+    <field name="HasTracking" label="Has Tracking" type="bool" readonly="true" transient="true"/>
+    <field name="HidePickingType" label="Hide Picking Type" type="bool" readonly="true" transient="true"/>
+    <field name="IsLocked" label="Is Locked" type="bool" copied="true"/>
+    <field name="IsRepairable" label="Is Repairable" type="bool" readonly="true" transient="true"/>
+    <field name="IsReturnPicking" label="Is Return Picking" type="bool" readonly="true" transient="true"/>
+    <field name="IsSigned" label="Is Signed" type="bool" readonly="true" transient="true"/>
+    <field name="JsonPopover" label="JSON data for the popover widget" type="string" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MoveLineExist" label="Has Pack Operations" type="bool" readonly="true" transient="true"/>
+    <field name="MoveType" label="Shipping Policy" type="Stock.TransferShippingPolicy" required="true" copied="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Reference" type="string" indexed="true" readonly="true"/>
+    <field name="NbrRepairs" label="Number of repairs linked to this picking" type="integer" readonly="true" transient="true"/>
+    <field name="Note" label="Notes" type="html" copied="true"/>
+    <field name="Origin" label="Source Document" type="string" indexed="true" copied="true"/>
+    <field name="PickingProperties" label="Properties" type="properties" copied="true"/>
+    <field name="PickingTypeEntirePacks" label="Move Entire Packages" type="bool" readonly="true" transient="true" related-field="PickingType.ShowEntirePacks"/>
+    <field name="Printed" label="Printed" type="bool"/>
+    <field name="Priority" label="Priority" type="Stock.TransferPriority" copied="true"/>
+    <field name="ProductionCount" label="Count of MO generated" type="integer" readonly="true" transient="true"/>
+    <field name="ProductsAvailability" label="Product Availability" type="string" readonly="true" transient="true"/>
+    <field name="ProductsAvailabilityState" label="Products Availability State" type="Stock.TransferProductsAvailabilityState" readonly="true" transient="true"/>
+    <field name="QualityAlertCount" label="Quality Alert Count" type="integer" readonly="true" transient="true"/>
+    <field name="QualityCheckFail" label="Quality Check Fail" type="bool" readonly="true" transient="true"/>
+    <field name="QualityCheckTodo" label="Pending checks" type="bool" readonly="true" transient="true"/>
+    <field name="ReturnCount" label="# Returns" type="integer" readonly="true" transient="true"/>
+    <field name="ScheduledDate" label="Scheduled Date" type="datetime" indexed="true"/>
+    <field name="SendcloudParcelRef" label="Sendcloud Parcel Reference" type="json"/>
+    <field name="SendcloudReturnParcelRef" label="Sendcloud Return Parcel Ref" type="json"/>
+    <field name="ShippingWeight" label="Weight for Shipping" type="float" readonly="true" transient="true"/>
+    <field name="ShiprocketOrders" label="Shiprocket Order(s)" type="string" readonly="true"/>
+    <field name="ShowAllocation" label="Show Allocation" type="bool" readonly="true" transient="true"/>
+    <field name="ShowCheckAvailability" label="Show Check Availability" type="bool" readonly="true" transient="true"/>
+    <field name="ShowLotsText" label="Show Lots Text" type="bool" readonly="true" transient="true"/>
+    <field name="ShowOperations" label="Show Detailed Operations" type="bool" readonly="true" transient="true" related-field="PickingType.ShowOperations"/>
+    <field name="Signature" label="Signature" type="binary"/>
+    <field name="StarshipitParcelReference" label="Starshipit Parcel Reference" type="string"/>
+    <field name="StarshipitReturnParcelReference" label="Starshipit Return Parcel Reference" type="string"/>
+    <field name="State" label="Status" type="Stock.TransferStatus" indexed="true" readonly="true"/>
+    <field name="SubcontractingSourcePurchaseCount" label="Number of subcontracting PO Source" type="integer" readonly="true" transient="true"/>
+    <field name="UseCreateLots" label="Create New Lots/Serial Numbers" type="bool" readonly="true" transient="true" related-field="PickingType.UseCreateLots"/>
+    <field name="UseExistingLots" label="Use Existing Lots/Serial Numbers" type="bool" readonly="true" transient="true" related-field="PickingType.UseExistingLots"/>
+    <field name="Weight" label="Weight" type="float" readonly="true"/>
+    <field name="WeightBulk" label="Bulk Weight" type="float" readonly="true" transient="true"/>
+    <field name="WeightUomName" label="Weight unit of measure label" type="string" readonly="true" transient="true"/>
+  </model>
+  <model id="stock.return.picking" name="Stock.ReturnPicking" track_created="true" track_update="true">
+    <field name="Company" label="Company" type="Res.Company" readonly="true" transient="true" related-field="Picking.Company"/>
+    <field name="Location" label="Return Location" type="Stock.Location" copied="true" on-delete="Clear"/>
+    <field name="OriginalLocation" label="Original Location" type="Stock.Location" readonly="true" on-delete="Clear"/>
+    <field name="ParentLocation" label="Parent Location" type="Stock.Location" readonly="true" on-delete="Clear"/>
+    <field name="SubcontractLocation" label="Subcontract Location" type="Stock.Location" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Picking" label="Picking" type="Stock.Picking" copied="true" on-delete="Clear"/>
+    <field name="ProductReturnMoves" label="Moves" type="Stock.ReturnPickingLine" collection="true"/>
+    <field name="MoveDestExists" label="Chained Move Exists" type="bool" readonly="true"/>
+  </model>
+</buvi>

@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="DebitOriginId" type="Account.AccountMove" label="Original Invoice Debited" readonly="true" copy="false" index="btree_not_null" />
+        <field name="DebitNoteIds" type="Account.AccountMove[]" label="Debit Notes" help="The debit notes created for this invoice" />
+        <field name="DebitNoteCount" type="integer" label="Number of Debit Notes" compute="ComputeDebitCount" />
+    </model>
+</buvi>

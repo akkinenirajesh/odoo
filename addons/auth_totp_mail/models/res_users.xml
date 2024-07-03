@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Auth.ResUsers" name="ResUsers" description="Users">
+        <field name="TotpSecret" type="string" />
+        <field name="TotpEnabled" type="bool" />
+    </model>
+</buvi>

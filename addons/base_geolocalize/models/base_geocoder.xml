@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="BaseGeolocalize.GeoProvider" name="GeoProvider" description="Geo Provider">
+        <field name="TechName" type="string" label="Technical Name" />
+        <field name="Name" type="string" />
+    </model>
+
+    <model id="BaseGeolocalize.GeoCoder" name="GeoCoder" description="Geo Coder" abstract="true">
+        <!-- No fields defined in the original model -->
+    </model>
+</buvi>

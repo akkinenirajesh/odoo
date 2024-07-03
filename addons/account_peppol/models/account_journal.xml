@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="AccountPeppolProxyState" type="Account.PeppolProxyState" related="Company.AccountPeppolProxyState" />
+        <field name="IsPeppolJournal" type="bool" label="Account used for Peppol" default="false" />
+    </model>
+
+    <optionset id="Account.PeppolProxyState" name="Peppol Proxy State">
+        <option value="Receiver" name="Receiver" />
+        <!-- Add other options as needed -->
+    </optionset>
+</buvi>

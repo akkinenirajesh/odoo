@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Auth.IrConfigParameter" name="IrConfigParameter" description="Configuration Parameters">
+        <field name="Key" type="string" label="Key" required="true" />
+        <field name="Value" type="string" label="Value" />
+    </model>
+</buvi>

@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Account.ResGroups" name="ResGroups" description="User Groups">
+        <field name="Name" type="string" label="Group Name" required="true" translate="true" />
+        <!-- Add other fields as needed -->
+    </model>
+</buvi>

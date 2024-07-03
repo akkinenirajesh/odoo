@@ -1,0 +1,27 @@
+xml
+<buvi>
+    <model id="Account.ReconcileModel" name="ReconcileModel" description="Account Reconcile Model">
+        <field name="Name" type="string" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="RuleType" type="Account.ReconcileModelRuleType" required="true" />
+        <field name="AutoReconcile" type="bool" />
+    </model>
+
+    <optionset id="Account.ReconcileModelRuleType" name="Reconcile Model Rule Type">
+        <option value="WriteoffButton" name="Writeoff Button" />
+        <option value="WriteoffSuggestion" name="Writeoff Suggestion" />
+    </optionset>
+
+    <model id="Account.ReconcileModelLine" name="ReconcileModelLine" description="Account Reconcile Model Line">
+        <field name="Model" type="Account.ReconcileModel" required="true" />
+        <field name="AmountType" type="Account.ReconcileModelLineAmountType" required="true" />
+        <field name="AmountString" type="string" required="true" />
+        <field name="Account" type="Account.Account" required="true" />
+    </model>
+
+    <optionset id="Account.ReconcileModelLineAmountType" name="Reconcile Model Line Amount Type">
+        <option value="Fixed" name="Fixed" />
+        <option value="Percentage" name="Percentage" />
+        <option value="Regex" name="Regex" />
+    </optionset>
+</buvi>

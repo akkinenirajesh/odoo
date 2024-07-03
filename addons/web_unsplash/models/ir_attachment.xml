@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="web_tour.tour" name="WebTour.Tour">
+    <field name="User" label="Consumed by" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="Name" label="Tour name" type="string" required="true" copied="true"/>
+  </model>
+</buvi>

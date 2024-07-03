@@ -1,0 +1,79 @@
+xml
+<buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Tax">
+        <field name="Name" type="string" label="Tax Name" required="true" translate="true" />
+        <field name="TypeTaxUse" type="Account.TypeTaxUse" label="Tax Type" required="true" default="Sale"
+            help="Determines where the tax is selectable. Note: 'None' means a tax can't be used by itself, however it can still be used in a group. 'adjustment' is used to perform tax adjustment." />
+        <field name="TaxScope" type="Account.TaxScope" label="Tax Scope" 
+            help="Restrict the use of taxes to a type of product." />
+        <field name="AmountType" type="Account.TaxAmountType" label="Tax Computation" required="true" default="Percent" />
+        <field name="Active" type="bool" default="true" 
+            help="Set active to false to hide the tax without removing it." />
+        <field name="Company" type="Core.Company" required="true" readonly="true" default="lambda self: self.Env.Company" />
+        <field name="ChildrenTaxes" type="Account.AccountTax" relation="many2many" />
+        <field name="Sequence" type="integer" required="true" default="1"
+            help="The sequence field is used to define order in which the tax lines are applied." />
+        <field name="Amount" type="decimal" required="true" digits="(16, 4)" default="0.0" />
+        <field name="Description" type="string" translate="true" />
+        <field name="InvoiceLabel" type="string" label="Label on Invoices" translate="true" />
+        <field name="PriceInclude" type="bool" label="Included in Price" default="false"
+            help="Check this if the price you use on the product and invoices includes this tax." />
+        <field name="IncludeBaseAmount" type="bool" label="Affect Base of Subsequent Taxes" default="false"
+            help="If set, taxes with a higher sequence than this one will be affected by it, provided they accept it." />
+        <field name="IsBaseAffected" type="bool" label="Base Affected by Previous Taxes" default="true"
+            help="If set, taxes with a lower sequence might affect this one, provided they try to do it." />
+        <field name="Analytic" type="bool" label="Include in Analytic Cost" 
+            help="If set, the amount computed by this tax will be assigned to the same analytic account as the invoice line (if any)" />
+        <field name="TaxGroup" type="Account.AccountTaxGroup" label="Tax Group" required="true" 
+            domain="[('Country', 'in', (Country, null))]" />
+        <field name="HideTaxExigibility" type="bool" label="Hide Use Cash Basis Option" readonly="true" />
+        <field name="TaxExigibility" type="Account.TaxExigibility" label="Tax Due" default="OnInvoice" />
+        <field name="CashBasisTransitionAccount" type="Account.Account" label="Cash Basis Transition Account"
+            domain="[('Deprecated', '=', false)]"
+            help="Account used to transition the tax amount for cash basis taxes. It will contain the tax amount as long as the original invoice has not been reconciled ; at reconciliation, this amount cancelled on this account and put on the regular tax account." />
+        <field name="InvoiceRepartitionLines" type="Account.AccountTaxRepartitionLine" relation="one2many" inverse="Tax"
+            domain="[('DocumentType', '=', 'Invoice')]"
+            help="Distribution when the tax is used on an invoice" />
+        <field name="RefundRepartitionLines" type="Account.AccountTaxRepartitionLine" relation="one2many" inverse="Tax"
+            domain="[('DocumentType', '=', 'Refund')]"
+            help="Distribution when the tax is used on a refund" />
+        <field name="Country" type="Core.Country" label="Country" required="true"
+            help="The country for which this tax is applicable." />
+        <field name="CountryCode" type="string" readonly="true" />
+        <field name="IsUsed" type="bool" label="Tax used" />
+        <field name="RepartitionLinesStr" type="string" label="Repartition Lines" />
+        <field name="InvoiceLegalNotes" type="string" label="Legal Notes" 
+            help="Legal mentions that have to be printed on the invoices." />
+        <unique>
+            <field name="Name" />
+            <field name="TypeTaxUse" />
+            <field name="TaxScope" />
+            <field name="Country" />
+            <field name="Company" />
+            <message>Tax names must be unique!</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.TypeTaxUse" name="Tax Type">
+        <option value="Sale" name="Sales" />
+        <option value="Purchase" name="Purchases" />
+        <option value="None" name="None" />
+    </optionset>
+
+    <optionset id="Account.TaxScope" name="Tax Scope">
+        <option value="Service" name="Services" />
+        <option value="Consu" name="Goods" />
+    </optionset>
+
+    <optionset id="Account.TaxAmountType" name="Tax Computation">
+        <option value="Group" name="Group of Taxes" />
+        <option value="Fixed" name="Fixed" />
+        <option value="Percent" name="Percentage" />
+        <option value="Division" name="Percentage Tax Included" />
+    </optionset>
+
+    <optionset id="Account.TaxExigibility" name="Tax Due">
+        <option value="OnInvoice" name="Based on Invoice" />
+        <option value="OnPayment" name="Based on Payment" />
+    </optionset>
+</buvi>

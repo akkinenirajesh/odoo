@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Account.ResCurrency" name="ResCurrency" description="Currency">
+        <field name="DisplayRoundingWarning" type="bool" label="Display Rounding Warning" 
+               help="The warning informs a rounding factor change might be dangerous on res.currency's form view." />
+        <field name="FiscalCountryCodes" type="string" />
+        <field name="Rounding" type="decimal" />
+    </model>
+</buvi>

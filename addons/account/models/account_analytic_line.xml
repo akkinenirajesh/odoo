@@ -1,0 +1,20 @@
+xml
+<buvi>
+    <model id="Account.AccountAnalyticLine" name="AccountAnalyticLine" description="Analytic Line">
+        <field name="ProductId" type="Product.Product" label="Product" check-company="true" />
+        <field name="GeneralAccountId" type="Account.Account" label="Financial Account" ondelete="restrict"
+               domain="[('Deprecated', '=', false)]" check-company="true" compute="_ComputeGeneralAccountId" store="true" readonly="false" />
+        <field name="JournalId" type="Account.Journal" label="Financial Journal" check-company="true" readonly="true"
+               related="MoveLineId.JournalId" store="true" />
+        <field name="PartnerId" type="Core.Partner" readonly="false" compute="_ComputePartnerId" store="true" />
+        <field name="MoveLineId" type="Account.MoveLine" label="Journal Item" ondelete="cascade" index="true" check-company="true" />
+        <field name="Code" type="string" size="8" />
+        <field name="Ref" type="string" label="Ref." />
+        <field name="Category" type="Account.AnalyticLineCategory" />
+    </model>
+
+    <optionset id="Account.AnalyticLineCategory" name="Analytic Line Category">
+        <option value="Invoice" name="Customer Invoice" />
+        <option value="VendorBill" name="Vendor Bill" />
+    </optionset>
+</buvi>

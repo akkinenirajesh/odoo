@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="project.project" name="Project.Project" track_created="true" track_update="true">
+    <field name="AnalyticAccount" label="Analytic Account" type="Account.AnalyticAccount" on-delete="Clear"/>
+    <field name="Timesheets" label="Associated Timesheets" type="Account.AnalyticLine" collection="true"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="SharedDocuments" label="Shared Documents" type="Documents.Document" collection="true" readonly="true" transient="true"/>
+    <field name="DocumentsFolder" label="Workspace" type="Documents.Folder" on-delete="Clear"/>
+    <field name="DocumentsTags" label="Default Tags" type="Documents.Tag" collection="true" copied="true"/>
+    <field name="AliasModel" label="Aliased Model" type="Ir.Model" required="true" copied="true" transient="true" related-field="Alias.AliasModel"/>
+    <field name="AliasParentModel" label="Parent Model" type="Ir.Model" copied="true" transient="true" related-field="Alias.AliasParentModel"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="Alias" label="Alias" type="Mail.Alias" required="true" on-delete="Restrict"/>
+    <field name="AliasDomain" label="Alias Domain" type="Mail.AliasDomain" transient="true" related-field="Alias.AliasDomain"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="TimesheetProduct" label="Timesheet Product" type="Product.Product" copied="true" on-delete="Clear"/>
+    <field name="Collaborators" label="Collaborators" type="Project.Collaborator" collection="true"/>
+    <field name="Milestones" label="Milestone" type="Project.Milestone" collection="true" copied="true"/>
+    <field name="NextMilestone" label="Next Milestone" type="Project.Milestone" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Stage" label="Stage" type="Project.ProjectStage" indexed="true" on-delete="Restrict"/>
+    <field name="SaleLineEmployees" label="Sale line/Employee map" type="Project.SaleLineEmployeeMap" collection="true"/>
+    <field name="Tags" label="Tags" type="Project.Tags" collection="true" copied="true"/>
+    <field name="Tasks" label="Tasks" type="Project.Task" collection="true"/>
+    <field name="Tasks" label="Task Activities" type="Project.Task" collection="true"/>
+    <field name="Types" label="Tasks Stages" type="Project.TaskType" collection="true" copied="true"/>
+    <field name="LastUpdate" label="Last Update" type="Project.Update" on-delete="Clear"/>
+    <field name="Updates" label="Update" type="Project.Update" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="Partner" label="Customer" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="FavoriteUsers" label="Members" type="Res.Users" collection="true" copied="true"/>
+    <field name="User" label="Project Manager" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="ResourceCalendar" label="Working Time" type="Resource.Calendar" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="SaleOrder" label="Sales Order" type="Sale.Order" readonly="true" transient="true" related-field="SaleLine.Order"/>
+    <field name="SaleLine" label="Sales Order Item" type="Sale.OrderLine" indexed="true" on-delete="Clear"/>
+    <field name="TimesheetEncodeUom" label="Timesheet Encode Uom" type="Uom.Uom" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="WorksheetTemplate" label="Default Worksheet" type="Worksheet.Template" copied="true" on-delete="Clear"/>
+    <field name="AccessInstructionMessage" label="Access Instruction Message" type="string" readonly="true" transient="true"/>
+    <field name="AccessToken" label="Security Token" type="string"/>
+    <field name="AccessUrl" label="Portal Access URL" type="string" readonly="true" transient="true"/>
+    <field name="AccessWarning" label="Access warning" type="text" readonly="true" transient="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Project.ProjectActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Project.ProjectActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AliasBouncedContent" label="Custom Bounced Message" type="html" copied="true" transient="true" translatable="true" related-field="Alias.AliasBouncedContent"/>
+    <field name="AliasDefaults" label="Default Values" type="text" required="true" readonly="true" transient="true" related-field="Alias.AliasDefaults"/>
+    <field name="AliasDomain" label="Alias Domain Name" type="string" readonly="true" transient="true" related-field="Alias.AliasDomain"/>
+    <field name="AliasEmail" label="Email Alias" type="string" readonly="true" transient="true"/>
+    <field name="AliasForceThread" label="Record Thread ID" type="integer" copied="true" transient="true" related-field="Alias.AliasForceThread"/>
+    <field name="AliasFullName" label="Alias Email" type="string" readonly="true" transient="true" related-field="Alias.AliasFullName"/>
+    <field name="AliasIncomingLocal" label="Local-part based incoming detection" type="bool" copied="true" transient="true" related-field="Alias.AliasIncomingLocal"/>
+    <field name="AliasName" label="Alias Name" type="string" transient="true" related-field="Alias.AliasName"/>
+    <field name="AliasParentThread" label="Parent Record Thread ID" type="integer" copied="true" transient="true" related-field="Alias.AliasParentThread"/>
+    <field name="AllocatedHours" label="Allocated Hours" type="float"/>
+    <field name="AllowBillable" label="Billable" type="bool" copied="true"/>
+    <field name="AllowMaterial" label="Products on Tasks" type="bool" copied="true"/>
+    <field name="AllowMilestones" label="Milestones" type="bool" copied="true"/>
+    <field name="AllowQuotations" label="Extra Quotations" type="bool" copied="true"/>
+    <field name="AllowTaskDependencies" label="Task Dependencies" type="bool" copied="true"/>
+    <field name="AllowTimesheets" label="Timesheets" type="bool" copied="true"/>
+    <field name="AllowWorksheets" label="Worksheets" type="bool" copied="true"/>
+    <field name="AnalyticAccountBalance" label="Balance" type="monetary" readonly="true" transient="true" related-field="AnalyticAccount.Balance"/>
+    <field name="AssetsCount" label="# Assets" type="integer" readonly="true" transient="true"/>
+    <field name="BillingType" label="Billing Type" type="Project.ProjectBillingType" required="true" copied="true"/>
+    <field name="BomCount" label="BoM Count" type="integer" readonly="true" transient="true" related-field="AnalyticAccount.BomCount"/>
+    <field name="Budget" label="Total planned amount" type="integer" readonly="true" transient="true"/>
+    <field name="CanMarkMilestoneAsDone" label="Can Mark Milestone As Done" type="bool" readonly="true" transient="true"/>
+    <field name="CollaboratorCount" label="# Collaborators" type="integer" readonly="true" transient="true"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="ContractsCount" label="# Contracts" type="integer" readonly="true" transient="true"/>
+    <field name="Date" label="Expiration Date" type="date" indexed="true" copied="true"/>
+    <field name="DateStart" label="Start Date" type="date" copied="true"/>
+    <field name="Description" label="Description" type="html" copied="true"/>
+    <field name="DisplaySalesStatButtons" label="Display Sales Stat Buttons" type="bool" readonly="true" transient="true"/>
+    <field name="DocumentCount" label="Number of documents in Project" type="integer" readonly="true" transient="true"/>
+    <field name="EffectiveHours" label="Hours Spent" type="float" readonly="true" transient="true"/>
+    <field name="EncodeUomInDays" label="Encode Uom In Days" type="bool" readonly="true" transient="true"/>
+    <field name="HasAnySoToInvoice" label="Has SO to Invoice" type="bool" readonly="true" transient="true"/>
+    <field name="HasAnySoWithNothingToInvoice" label="Has a SO with an invoice status of No" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="InvoiceCount" label="Invoice Count" type="integer" readonly="true" transient="true"/>
+    <field name="IsFavorite" label="Show Project on Dashboard" type="bool" transient="true"/>
+    <field name="IsFsm" label="Field Service" type="bool" copied="true"/>
+    <field name="IsInternalProject" label="Is Internal Project" type="bool" readonly="true" transient="true"/>
+    <field name="IsMilestoneDeadlineExceeded" label="Is Milestone Deadline Exceeded" type="bool" readonly="true" transient="true"/>
+    <field name="IsMilestoneExceeded" label="Is Milestone Exceeded" type="bool" readonly="true" transient="true"/>
+    <field name="IsProjectOvertime" label="Project in Overtime" type="bool" readonly="true" transient="true"/>
+    <field name="LabelTasks" label="Use Tasks as" type="string" copied="true" translatable="true"/>
+    <field name="LastUpdateColor" label="Last Update Color" type="integer" readonly="true" transient="true"/>
+    <field name="LastUpdateStatus" label="Last Update Status" type="Project.ProjectLastUpdateStatus" required="true" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MilestoneCount" label="Milestone Count" type="integer" readonly="true" transient="true"/>
+    <field name="MilestoneCountReached" label="Milestone Count Reached" type="integer" readonly="true" transient="true"/>
+    <field name="MilestoneProgress" label="Milestones Reached" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Name" type="string" required="true" indexed="true" copied="true" translatable="true"/>
+    <field name="OpenTaskCount" label="Open Task Count" type="integer" readonly="true" transient="true"/>
+    <field name="PricingType" label="Pricing" type="Project.ProjectPricing" readonly="true" transient="true"/>
+    <field name="PrivacyVisibility" label="Visibility" type="Project.ProjectVisibility" required="true" copied="true"/>
+    <field name="PrivacyVisibilityWarning" label="Privacy Visibility Warning" type="string" readonly="true" transient="true"/>
+    <field name="ProductionCount" label="Manufacturing Orders Count" type="integer" readonly="true" transient="true" related-field="AnalyticAccount.ProductionCount"/>
+    <field name="PurchaseOrdersCount" label="# Purchase Orders" type="integer" readonly="true" transient="true"/>
+    <field name="RatingActive" label="Customer Ratings" type="bool" copied="true"/>
+    <field name="RatingAvg" label="Average Rating" type="float" readonly="true" transient="true"/>
+    <field name="RatingAvgPercentage" label="Average Rating (%)" type="float" readonly="true" transient="true"/>
+    <field name="RatingCount" label="# Ratings" type="integer" readonly="true" transient="true"/>
+    <field name="RatingPercentageSatisfaction" label="Rating Satisfaction" type="integer" readonly="true" transient="true"/>
+    <field name="RatingRequestDeadline" label="Rating Request Deadline" type="datetime" readonly="true"/>
+    <field name="RatingStatus" label="Customer Ratings Status" type="Project.ProjectCustomerRatingsStatus" required="true" copied="true"/>
+    <field name="RatingStatusPeriod" label="Rating Frequency" type="Project.ProjectRatingFrequency" required="true" copied="true"/>
+    <field name="RemainingHours" label="Remaining Hours" type="float" readonly="true" transient="true"/>
+    <field name="SaleOrderCount" label="Sale Order Count" type="integer" readonly="true" transient="true"/>
+    <field name="SaleOrderLineCount" label="Sale Order Line Count" type="integer" readonly="true" transient="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="SharedDocumentCount" label="Shared Documents Count" type="integer" readonly="true" transient="true"/>
+    <field name="TaskCount" label="Task Count" type="integer" readonly="true" transient="true"/>
+    <field name="TaskPropertiesDefinition" label="Task Properties" type="properties_definition" copied="true"/>
+    <field name="TotalBudgetProgress" label="Budget Spent" type="monetary" readonly="true" transient="true"/>
+    <field name="TotalPlannedAmount" label="Total Planned Amount" type="monetary" readonly="true" transient="true"/>
+    <field name="TotalPracticalAmount" label="Total Practical Amount" type="monetary" readonly="true" transient="true" related-field="AnalyticAccount.TotalPracticalAmount"/>
+    <field name="TotalTimesheetTime" label="Total Timesheet Time" type="integer" readonly="true" transient="true"/>
+    <field name="UseDocuments" label="Documents" type="bool" copied="true"/>
+    <field name="VendorBillCount" label="Vendor Bill Count" type="integer" readonly="true" transient="true" related-field="AnalyticAccount.VendorBillCount"/>
+    <field name="WarningEmployeeRate" label="Warning Employee Rate" type="bool" readonly="true" transient="true"/>
+    <field name="WorkorderCount" label="Work Order Count" type="integer" readonly="true" transient="true" related-field="AnalyticAccount.WorkorderCount"/>
+  </model>
+</buvi>

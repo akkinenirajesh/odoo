@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Account.AccountIncoterms" name="AccountIncoterms" description="Incoterms">
+        <field name="Name" type="string" label="Name" required="true" translate="true"
+            help="Incoterms are series of sales terms. They are used to divide transaction costs and responsibilities between buyer and seller and reflect state-of-the-art transportation practices." />
+        <field name="Code" type="string" label="Code" size="3" required="true"
+            help="Incoterm Standard Code" />
+        <field name="Active" type="bool" default="true"
+            help="By unchecking the active field, you may hide an INCOTERM you will not use." />
+        <field name="DisplayName" type="string" computed="true" />
+    </model>
+</buvi>

@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Calendar.CalendarEvent" name="CalendarEvent" description="Calendar Event">
+        <!-- Existing fields would be defined here -->
+        
+        <!-- New fields might be added based on the methods' usage, for example: -->
+        <field name="AttendeeIds" type="Calendar.CalendarAttendee[]" label="Attendees" />
+        <field name="UserId" type="Core.User" label="Responsible User" />
+        <field name="PartnerIds" type="Core.Partner[]" label="Partners" />
+        <field name="Name" type="string" label="Event Name" />
+        <field name="DisplayTime" type="string" label="Display Time" />
+    </model>
+</buvi>

@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Contact.Partner" name="Partner" description="Contact Partner">
+        <field name="Name" type="string" label="Name" required="true" />
+        <!-- Add other fields from res.partner model here -->
+    </model>
+</buvi>

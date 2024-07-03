@@ -1,0 +1,29 @@
+xml
+<buvi>
+    <model id="Product.ProductCategory" name="ProductCategory" description="Product Category">
+        <field name="PropertyAccountIncomeCategId" type="Account.Account" label="Income Account" 
+               help="This account will be used when validating a customer invoice." tracking="true" />
+        <field name="PropertyAccountExpenseCategId" type="Account.Account" label="Expense Account" 
+               help="The expense is accounted for when a vendor bill is validated, except in anglo-saxon accounting with perpetual inventory valuation in which case the expense (Cost of Goods Sold account) is recognized at the customer invoice validation." 
+               tracking="true" />
+    </model>
+
+    <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="TaxesId" type="Account.Tax" label="Sales Taxes" multiple="true" 
+               help="Default taxes used when selling the product" />
+        <field name="TaxString" type="string" computed="true" />
+        <field name="SupplierTaxesId" type="Account.Tax" label="Purchase Taxes" multiple="true" 
+               help="Default taxes used when buying the product" />
+        <field name="PropertyAccountIncomeId" type="Account.Account" label="Income Account" 
+               help="Keep this field empty to use the default value from the product category." />
+        <field name="PropertyAccountExpenseId" type="Account.Account" label="Expense Account" 
+               help="Keep this field empty to use the default value from the product category. If anglo-saxon accounting with automated valuation method is configured, the expense account on the product category will be used." />
+        <field name="AccountTagIds" type="Account.AccountTag" label="Account Tags" multiple="true" 
+               help="Tags to be set on the base and tax journal items created for this product." />
+        <field name="FiscalCountryCodes" type="string" computed="true" />
+    </model>
+
+    <model id="Product.Product" name="Product" description="Product">
+        <field name="TaxString" type="string" computed="true" />
+    </model>
+</buvi>

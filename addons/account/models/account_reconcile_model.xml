@@ -1,0 +1,90 @@
+xml
+<buvi>
+    <model id="Account.AccountReconcileModel" name="AccountReconcileModel" description="Preset to create journal entries during invoices and payments matching">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" required="true" default="10" />
+        <field name="Company" type="Core.Company" required="true" readonly="true" />
+        <field name="RuleType" type="Account.ReconcileModelRuleType" default="WriteoffButton" required="true" />
+        <field name="AutoReconcile" type="bool" label="Auto-validate" 
+            help="Validate the statement line automatically (reconciliation based on your rule)." />
+        <field name="ToCheck" type="bool" label="To Check" default="false" 
+            help="This matching rule is used when the user is not certain of all the information of the counterpart." />
+        <field name="MatchingOrder" type="Account.ReconcileModelMatchingOrder" required="true" default="OldFirst" />
+        <field name="MatchTextLocationLabel" type="bool" default="true" 
+            help="Search in the Statement's Label to find the Invoice/Payment's reference" />
+        <field name="MatchTextLocationNote" type="bool" default="false" 
+            help="Search in the Statement's Note to find the Invoice/Payment's reference" />
+        <field name="MatchTextLocationReference" type="bool" default="false" 
+            help="Search in the Statement's Reference to find the Invoice/Payment's reference" />
+        <field name="MatchJournals" type="Account.Journal" multiple="true" label="Journals Availability" 
+            help="The reconciliation model will only be available from the selected journals." />
+        <field name="MatchNature" type="Account.ReconcileModelMatchNature" required="true" default="Both" />
+        <field name="MatchAmount" type="Account.ReconcileModelMatchAmount" />
+        <field name="MatchAmountMin" type="decimal" label="Amount Min Parameter" />
+        <field name="MatchAmountMax" type="decimal" label="Amount Max Parameter" />
+        <field name="MatchLabel" type="Account.ReconcileModelMatchCondition" />
+        <field name="MatchLabelParam" type="string" label="Label Parameter" />
+        <field name="MatchNote" type="Account.ReconcileModelMatchCondition" />
+        <field name="MatchNoteParam" type="string" label="Note Parameter" />
+        <field name="MatchTransactionType" type="Account.ReconcileModelMatchCondition" />
+        <field name="MatchTransactionTypeParam" type="string" label="Transaction Type Parameter" />
+        <field name="MatchSameCurrency" type="bool" label="Same Currency" default="true" 
+            help="Restrict to propositions having the same currency as the statement line." />
+        <field name="AllowPaymentTolerance" type="bool" label="Payment Tolerance" default="true" 
+            help="Difference accepted in case of underpayment." />
+        <field name="PaymentToleranceParam" type="decimal" label="Gap" 
+            help="The sum of total residual amount propositions matches the statement line amount under this amount/percentage." />
+        <field name="PaymentToleranceType" type="Account.ReconcileModelPaymentToleranceType" required="true" default="Percentage" />
+        <field name="MatchPartner" type="bool" label="Partner is Set" 
+            help="The reconciliation model will only be applied when a customer/vendor is set." />
+        <field name="MatchPartners" type="Core.Partner" multiple="true" label="Matching partners" 
+            help="The reconciliation model will only be applied to the selected customers/vendors." />
+        <field name="MatchPartnerCategories" type="Core.PartnerCategory" multiple="true" label="Matching categories" 
+            help="The reconciliation model will only be applied to the selected customer/vendor categories." />
+        <field name="Lines" type="Account.AccountReconcileModelLine" multiple="true" />
+        <field name="PartnerMappingLines" type="Account.AccountReconcileModelPartnerMapping" multiple="true" />
+        <field name="PastMonthsLimit" type="integer" label="Search Months Limit" default="18" 
+            help="Number of months in the past to consider entries from when applying this model." />
+        <field name="DecimalSeparator" type="string" />
+        <unique>
+            <field name="Name" />
+            <field name="Company" />
+            <message>A reconciliation model already bears this name.</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.ReconcileModelRuleType" name="Reconcile Model Rule Type">
+        <option value="WriteoffButton" name="Button to generate counterpart entry" />
+        <option value="WriteoffSuggestion" name="Rule to suggest counterpart entry" />
+        <option value="InvoiceMatching" name="Rule to match invoices/bills" />
+    </optionset>
+
+    <optionset id="Account.ReconcileModelMatchingOrder" name="Reconcile Model Matching Order">
+        <option value="OldFirst" name="Oldest first" />
+        <option value="NewFirst" name="Newest first" />
+    </optionset>
+
+    <optionset id="Account.ReconcileModelMatchNature" name="Reconcile Model Match Nature">
+        <option value="AmountReceived" name="Received" />
+        <option value="AmountPaid" name="Paid" />
+        <option value="Both" name="Paid/Received" />
+    </optionset>
+
+    <optionset id="Account.ReconcileModelMatchAmount" name="Reconcile Model Match Amount">
+        <option value="Lower" name="Is Lower Than" />
+        <option value="Greater" name="Is Greater Than" />
+        <option value="Between" name="Is Between" />
+    </optionset>
+
+    <optionset id="Account.ReconcileModelMatchCondition" name="Reconcile Model Match Condition">
+        <option value="Contains" name="Contains" />
+        <option value="NotContains" name="Not Contains" />
+        <option value="MatchRegex" name="Match Regex" />
+    </optionset>
+
+    <optionset id="Account.ReconcileModelPaymentToleranceType" name="Reconcile Model Payment Tolerance Type">
+        <option value="Percentage" name="in percentage" />
+        <option value="FixedAmount" name="in amount" />
+    </optionset>
+</buvi>

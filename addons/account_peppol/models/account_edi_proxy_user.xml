@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="AccountEdiProxyClient.User" name="AccountEdiProxyClientUser" description="Account EDI Proxy Client User">
+        <field name="PeppolVerificationCode" type="string" label="SMS verification code" />
+        <field name="ProxyType" type="AccountEdiProxyClient.ProxyType" />
+    </model>
+
+    <optionset id="AccountEdiProxyClient.ProxyType" name="Proxy Type">
+        <option value="Peppol" name="PEPPOL" />
+        <!-- Add other options from the original selection field -->
+    </optionset>
+</buvi>

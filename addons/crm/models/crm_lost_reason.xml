@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Crm.LostReason" name="LostReason" description="Opp. Lost Reason">
+        <field name="Name" type="string" label="Description" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="LeadsCount" type="integer" label="Leads Count" compute="ComputeLeadsCount" />
+    </model>
+</buvi>

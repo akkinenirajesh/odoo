@@ -1,0 +1,157 @@
+xml
+<buvi>
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Journal Item">
+        <field name="Move" type="Account.AccountMove" required="true" readonly="true" index="true"
+            help="Journal Entry" />
+        <field name="Journal" type="Account.AccountJournal" store="true" index="true" readonly="true"
+            help="Journal" />
+        <field name="Company" type="Core.Company" store="true" readonly="true" index="true"
+            help="Company" />
+        <field name="CompanyCurrency" type="Core.Currency" store="true" readonly="true"
+            help="Company Currency" />
+        <field name="MoveName" type="string" store="true" index="true" readonly="true"
+            help="Number" />
+        <field name="ParentState" type="string" store="true" readonly="true"
+            help="Parent State" />
+        <field name="Date" type="DateTime" store="true" index="true"
+            help="Date" />
+        <field name="InvoiceDate" type="DateTime" store="true"
+            help="Invoice Date" />
+        <field name="Ref" type="string" store="true" index="true"
+            help="Reference" />
+        <field name="IsStorno" type="bool"
+            help="Company Storno Accounting" />
+        <field name="Sequence" type="integer" store="true"
+            help="Sequence" />
+        <field name="MoveType" type="string"
+            help="Move Type" />
+        <field name="Account" type="Account.AccountAccount" store="true" index="true"
+            help="Account" />
+        <field name="Name" type="string" store="true"
+            help="Label" />
+        <field name="Debit" type="decimal" store="true"
+            help="Debit" />
+        <field name="Credit" type="decimal" store="true"
+            help="Credit" />
+        <field name="Balance" type="decimal" store="true"
+            help="Balance" />
+        <field name="CumulatedBalance" type="decimal"
+            help="Cumulated Balance" />
+        <field name="CurrencyRate" type="decimal"
+            help="Currency rate from company currency to document currency" />
+        <field name="AmountCurrency" type="decimal" store="true"
+            help="Amount in Currency" />
+        <field name="Currency" type="Core.Currency" store="true" required="true"
+            help="Currency" />
+        <field name="IsSameCurrency" type="bool"
+            help="Is Same Currency" />
+        <field name="Partner" type="Core.Partner" store="true"
+            help="Partner" />
+        <field name="ReconcileModel" type="Account.ReconcileModel"
+            help="Reconciliation Model" />
+        <field name="Payment" type="Account.Payment" store="true" index="true"
+            help="Originator Payment" />
+        <field name="StatementLine" type="Account.BankStatementLine" store="true" index="true"
+            help="Originator Statement Line" />
+        <field name="Statement" type="Account.BankStatement" store="true" index="true"
+            help="The bank statement used for bank reconciliation" />
+        <field name="Taxes" type="Account.AccountTax" multiple="true"
+            help="Taxes" />
+        <field name="GroupTax" type="Account.AccountTax" index="true"
+            help="Originator Group of Taxes" />
+        <field name="TaxLine" type="Account.AccountTax" store="true"
+            help="Originator Tax" />
+        <field name="TaxGroup" type="Account.AccountTaxGroup" store="true"
+            help="Originator tax group" />
+        <field name="TaxBaseAmount" type="decimal" readonly="true"
+            help="Base Amount" />
+        <field name="TaxRepartitionLine" type="Account.AccountTaxRepartitionLine"
+            help="Originator Tax Distribution Line" />
+        <field name="TaxTags" type="Account.AccountAccountTag" multiple="true"
+            help="Tags" />
+        <field name="TaxTagInvert" type="bool" store="true"
+            help="Invert Tags" />
+        <field name="AmountResidual" type="decimal" store="true"
+            help="Residual Amount" />
+        <field name="AmountResidualCurrency" type="decimal" store="true"
+            help="Residual Amount in Currency" />
+        <field name="Reconciled" type="bool" store="true"
+            help="Reconciled" />
+        <field name="FullReconcile" type="Account.AccountFullReconcile" index="true"
+            help="Matching" />
+        <field name="MatchedDebitIds" type="Account.AccountPartialReconcile" multiple="true"
+            help="Matched Debits" />
+        <field name="MatchedCreditIds" type="Account.AccountPartialReconcile" multiple="true"
+            help="Matched Credits" />
+        <field name="MatchingNumber" type="string" index="true"
+            help="Matching number for this line" />
+        <field name="IsAccountReconcile" type="bool"
+            help="Account Reconcile" />
+        <field name="AccountType" type="string"
+            help="Internal Type" />
+        <field name="AccountInternalGroup" type="string"
+            help="Account Internal Group" />
+        <field name="AccountRoot" type="Account.AccountAccount" store="true"
+            help="Account Root" />
+        <field name="ProductCategory" type="Product.ProductCategory"
+            help="Product Category" />
+        <field name="DisplayType" type="string" required="true" store="true"
+            help="Display Type" />
+        <field name="Product" type="Product.Product"
+            help="Product" />
+        <field name="ProductUom" type="Uom.Uom" store="true"
+            help="Unit of Measure" />
+        <field name="ProductUomCategory" type="Uom.Category"
+            help="Product UoM Category" />
+        <field name="Quantity" type="decimal" store="true"
+            help="Quantity" />
+        <field name="DateMaturity" type="DateTime" index="true"
+            help="Due Date" />
+        <field name="PriceUnit" type="decimal" store="true"
+            help="Unit Price" />
+        <field name="PriceSubtotal" type="decimal" store="true"
+            help="Subtotal" />
+        <field name="PriceTotal" type="decimal" store="true"
+            help="Total" />
+        <field name="Discount" type="decimal"
+            help="Discount (%)" />
+        <field name="TaxCalculationRoundingMethod" type="string" readonly="true"
+            help="Tax calculation rounding method" />
+        <field name="TermKey" type="byte[]"
+            help="Term Key" />
+        <field name="TaxKey" type="byte[]"
+            help="Tax Key" />
+        <field name="ComputeAllTax" type="byte[]"
+            help="Compute All Tax" />
+        <field name="ComputeAllTaxDirty" type="bool"
+            help="Compute All Tax Dirty" />
+        <field name="EpdKey" type="byte[]"
+            help="EPD Key" />
+        <field name="EpdNeeded" type="byte[]"
+            help="EPD Needed" />
+        <field name="EpdDirty" type="bool"
+            help="EPD Dirty" />
+        <field name="DiscountAllocationKey" type="byte[]"
+            help="Discount Allocation Key" />
+        <field name="DiscountAllocationNeeded" type="byte[]"
+            help="Discount Allocation Needed" />
+        <field name="DiscountAllocationDirty" type="bool"
+            help="Discount Allocation Dirty" />
+        <field name="AnalyticLines" type="Account.AccountAnalyticLine" multiple="true"
+            help="Analytic lines" />
+        <field name="AnalyticDistribution" type="string"
+            help="Analytic Distribution" />
+        <field name="DiscountDate" type="DateTime" store="true"
+            help="Discount Date" />
+        <field name="DiscountAmountCurrency" type="decimal" store="true"
+            help="Discount amount in Currency" />
+        <field name="DiscountBalance" type="decimal" store="true"
+            help="Discount Balance" />
+        <field name="PaymentDate" type="DateTime"
+            help="Next Payment Date" />
+        <field name="Blocked" type="bool" store="true"
+            help="No Follow-up" />
+        <field name="IsRefund" type="bool"
+            help="Is Refund" />
+    </model>
+</buvi>

@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="CloudStorage.IrAttachment" name="IrAttachment" description="Cloud Storage Google Attachment">
+        <field name="Url" type="string" />
+        <!-- Add other existing fields from ir.attachment model -->
+    </model>
+</buvi>

@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="Name" type="string" label="Journal Name" required="true" />
+        <!-- Add other existing fields from the AccountJournal model -->
+    </model>
+</buvi>

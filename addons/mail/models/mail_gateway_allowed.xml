@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="mail.followers" name="Mail.Followers">
+    <field name="Subtypes" label="Subtype" type="Mail.MessageSubtype" collection="true" copied="true"/>
+    <field name="Partner" label="Related Partner" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Email" label="Email" type="string" readonly="true" transient="true" related-field="Partner.Email"/>
+    <field name="IsActive" label="Is Active" type="bool" readonly="true" transient="true" related-field="Partner.Active"/>
+    <field name="Name" label="Name" type="string" readonly="true" transient="true" related-field="Partner.Name"/>
+    <field name="Res" label="Related Document ID" type="many2one_reference" indexed="true" copied="true"/>
+    <field name="ResModel" label="Related Document Model Name" type="string" required="true" indexed="true" copied="true"/>
+  </model>
+</buvi>

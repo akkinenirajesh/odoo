@@ -1,0 +1,24 @@
+xml
+<buvi>
+    <model id="BaseAutomation.ServerAction" name="ServerAction" description="Server Action">
+        <field name="Name" type="string" compute="ComputeName" store="true" readonly="false" />
+        <field name="Usage" type="BaseAutomation.ServerActionUsage" />
+        <field name="BaseAutomation" type="BaseAutomation.BaseAutomation" label="Automation Rule" />
+        <field name="Model" type="Core.Model" />
+        <field name="State" type="string" />
+        <field name="UpdateField" type="Core.Field" />
+        <field name="CrudModel" type="Core.Model" />
+        <field name="Value" type="string" />
+        <field name="EvaluationType" type="string" />
+        <field name="Template" type="Core.Template" />
+        <field name="Partners" type="Core.Partner[]" />
+        <field name="ActivitySummary" type="string" />
+        <field name="SmsTemplate" type="Core.SmsTemplate" />
+        <field name="WebhookUrl" type="string" />
+    </model>
+
+    <optionset id="BaseAutomation.ServerActionUsage" name="Server Action Usage">
+        <option value="BaseAutomation" name="Automation Rule" />
+        <!-- Add other options here -->
+    </optionset>
+</buvi>

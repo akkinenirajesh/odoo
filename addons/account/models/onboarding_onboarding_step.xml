@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Account.OnboardingStep" name="OnboardingStep" description="Onboarding Step" inherit="Core.OnboardingOnboardingStep">
+        <!-- No additional fields are defined in the original Python model -->
+    </model>
+</buvi>

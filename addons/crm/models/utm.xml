@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Utm.Campaign" name="Campaign" description="UTM Campaign">
+        <field name="UseLeads" type="bool" label="Use Leads" compute="_ComputeUseLeads" />
+        <field name="CrmLeadCount" type="integer" label="Leads/Opportunities count" compute="_ComputeCrmLeadCount" />
+    </model>
+</buvi>

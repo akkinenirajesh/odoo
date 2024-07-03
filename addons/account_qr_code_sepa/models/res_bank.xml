@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Account.ResPartnerBank" name="ResPartnerBank" description="Partner Bank Account">
+        <field name="AccHolderName" type="string" label="Account Holder Name" />
+        <field name="Partner" type="Core.Partner" label="Partner" />
+        <field name="BankBic" type="string" label="Bank BIC" />
+        <field name="SanitizedAccNumber" type="string" label="Sanitized Account Number" />
+        <field name="AccType" type="string" label="Account Type" />
+    </model>
+</buvi>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="forum.forum" name="Forum.Forum" track_created="true" track_update="true">
+    <field name="LastPost" label="Last Post" type="Forum.Post" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Posts" label="Posts" type="Forum.Post" collection="true"/>
+    <field name="Tags" label="Tags" type="Forum.Tag" collection="true"/>
+    <field name="TagMostUseds" label="Most used tags" type="Forum.Tag" collection="true" readonly="true" transient="true"/>
+    <field name="TagUnuseds" label="Unused tags" type="Forum.Tag" collection="true" readonly="true" transient="true"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="AuthorizedGroup" label="Authorized Group" type="Res.Groups" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="SlideChannel" label="Course" type="Slide.Channel" readonly="true" on-delete="Clear"/>
+    <field name="SlideChannels" label="Courses" type="Slide.Channel" collection="true"/>
+    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Menu" label="Menu" type="Website.Menu" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="AllowShare" label="Sharing Options" type="bool" copied="true"/>
+    <field name="CanModerate" label="Is a moderator" type="bool" readonly="true" transient="true"/>
+    <field name="CountFlaggedPosts" label="Number of flagged posts" type="integer" readonly="true" transient="true"/>
+    <field name="CountPostsWaitingValidation" label="Number of posts waiting for validation" type="integer" readonly="true" transient="true"/>
+    <field name="DefaultOrder" label="Default" type="Forum.ForumDefault" required="true" copied="true"/>
+    <field name="Description" label="Description" type="text" copied="true" translatable="true"/>
+    <field name="Faq" label="Guidelines" type="html" copied="true" translatable="true"/>
+    <field name="FilterForHelpdeskWizard" label="Filter For Helpdesk Wizard" type="bool" copied="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasPendingPost" label="Has pending post" type="bool" readonly="true" transient="true"/>
+    <field name="Image1024" label="Image 1024" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image128" label="Image 128" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image1920" label="Image" type="binary" copied="true"/>
+    <field name="Image256" label="Image 256" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image512" label="Image 512" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
+    <field name="KarmaAnswer" label="Answer questions" type="integer" copied="true"/>
+    <field name="KarmaAnswerAcceptAll" label="Accept an answer to all questions" type="integer" copied="true"/>
+    <field name="KarmaAnswerAcceptOwn" label="Accept an answer on own questions" type="integer" copied="true"/>
+    <field name="KarmaAsk" label="Ask questions" type="integer" copied="true"/>
+    <field name="KarmaCloseAll" label="Close all posts" type="integer" copied="true"/>
+    <field name="KarmaCloseOwn" label="Close own posts" type="integer" copied="true"/>
+    <field name="KarmaCommentAll" label="Comment all posts" type="integer" copied="true"/>
+    <field name="KarmaCommentConvertAll" label="Convert all comments to answers" type="integer" copied="true"/>
+    <field name="KarmaCommentConvertOwn" label="Convert own comments to answers" type="integer" copied="true"/>
+    <field name="KarmaCommentOwn" label="Comment own posts" type="integer" copied="true"/>
+    <field name="KarmaCommentUnlinkAll" label="Delete all comments" type="integer" copied="true"/>
+    <field name="KarmaCommentUnlinkOwn" label="Delete own comments" type="integer" copied="true"/>
+    <field name="KarmaDofollow" label="Nofollow links" type="integer" copied="true"/>
+    <field name="KarmaDownvote" label="Downvote" type="integer" copied="true"/>
+    <field name="KarmaEditAll" label="Edit all posts" type="integer" copied="true"/>
+    <field name="KarmaEditOwn" label="Edit own posts" type="integer" copied="true"/>
+    <field name="KarmaEditRetag" label="Change question tags" type="integer" copied="true"/>
+    <field name="KarmaEditor" label="Editor Features: image and links" type="integer" copied="true"/>
+    <field name="KarmaFlag" label="Flag a post as offensive" type="integer" copied="true"/>
+    <field name="KarmaGenAnswerAccept" label="Accepting an answer" type="integer" copied="true"/>
+    <field name="KarmaGenAnswerAccepted" label="Answer accepted" type="integer" copied="true"/>
+    <field name="KarmaGenAnswerDownvote" label="Answer downvoted" type="integer" copied="true"/>
+    <field name="KarmaGenAnswerFlagged" label="Answer flagged" type="integer" copied="true"/>
+    <field name="KarmaGenAnswerUpvote" label="Answer upvoted" type="integer" copied="true"/>
+    <field name="KarmaGenQuestionDownvote" label="Question downvoted" type="integer" copied="true"/>
+    <field name="KarmaGenQuestionNew" label="Asking a question" type="integer" copied="true"/>
+    <field name="KarmaGenQuestionUpvote" label="Question upvoted" type="integer" copied="true"/>
+    <field name="KarmaModerate" label="Moderate posts" type="integer" copied="true"/>
+    <field name="KarmaPost" label="Ask questions without validation" type="integer" copied="true"/>
+    <field name="KarmaTagCreate" label="Create new tags" type="integer" copied="true"/>
+    <field name="KarmaUnlinkAll" label="Delete all posts" type="integer" copied="true"/>
+    <field name="KarmaUnlinkOwn" label="Delete own posts" type="integer" copied="true"/>
+    <field name="KarmaUpvote" label="Upvote" type="integer" copied="true"/>
+    <field name="KarmaUserBio" label="Display detailed user biography" type="integer" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="Mode" label="Mode" type="Forum.ForumMode" required="true" copied="true"/>
+    <field name="Name" label="Forum Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="Privacy" label="Privacy" type="Forum.ForumPrivacy" copied="true"/>
+    <field name="RelevancyPostVote" label="First Relevance Parameter" type="float" copied="true"/>
+    <field name="RelevancyTimeDecay" label="Second Relevance Parameter" type="float" copied="true"/>
+    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+    <field name="Teaser" label="Teaser" type="text" readonly="true"/>
+    <field name="TotalAnswers" label="# Answers" type="integer" readonly="true" transient="true"/>
+    <field name="TotalFavorites" label="# Favorites" type="integer" readonly="true" transient="true"/>
+    <field name="TotalPosts" label="# Posts" type="integer" readonly="true" transient="true"/>
+    <field name="TotalViews" label="# Views" type="integer" readonly="true" transient="true"/>
+    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
+    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
+    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
+    <field name="WelcomeMessage" label="Welcome Message" type="html" copied="true" translatable="true"/>
+  </model>
+</buvi>

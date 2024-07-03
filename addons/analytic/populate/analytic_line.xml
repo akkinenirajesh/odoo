@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Analytic.AnalyticLine" name="AnalyticLine" description="Analytic Line">
+        <field name="Amount" type="decimal" label="Amount" />
+        <field name="Name" type="string" label="Description" />
+        <field name="Account" type="Analytic.AnalyticAccount" label="Analytic Account" />
+    </model>
+</buvi>

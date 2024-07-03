@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Auth.CompanyLDAP" name="CompanyLDAP" description="Company LDAP configuration">
+        <field name="Sequence" type="integer" default="10" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="LdapServer" type="string" label="LDAP Server address" required="true" default="127.0.0.1" />
+        <field name="LdapServerPort" type="integer" label="LDAP Server port" required="true" default="389" />
+        <field name="LdapBinddn" type="string" label="LDAP binddn"
+            help="The user account on the LDAP server that is used to query the directory. Leave empty to connect anonymously." />
+        <field name="LdapPassword" type="string" label="LDAP password"
+            help="The password of the user account on the LDAP server that is used to query the directory." />
+        <field name="LdapFilter" type="string" label="LDAP filter" required="true"
+            help="Filter used to look up user accounts in the LDAP database. It is an arbitrary LDAP filter in string representation. Any `%s` placeholder will be replaced by the login (identifier) provided by the user, the filter should contain at least one such placeholder. The filter must result in exactly one (1) result, otherwise the login will be considered invalid." />
+        <field name="LdapBase" type="string" label="LDAP base" required="true"
+            help="DN of the user search scope: all descendants of this base will be searched for users." />
+        <field name="User" type="Core.User" label="Template User"
+            help="User to copy when creating new users" />
+        <field name="CreateUser" type="bool" default="true"
+            help="Automatically create local user accounts for new users authenticating via LDAP" />
+        <field name="LdapTls" type="bool" label="Use TLS"
+            help="Request secure TLS/SSL encryption when connecting to the LDAP server. This option requires a server with STARTTLS enabled, otherwise all authentication attempts will fail." />
+    </model>
+</buvi>

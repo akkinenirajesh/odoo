@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Crm.Partner" name="Partner" description="Partner" inherit="Res.Partner">
+        <field name="OpportunityIds" type="Crm.Lead" relation="many2many" label="Opportunities" 
+               domain="[('Type', '=', 'opportunity')]" />
+        <field name="OpportunityCount" type="integer" label="Opportunity" compute="ComputeOpportunityCount" />
+    </model>
+</buvi>

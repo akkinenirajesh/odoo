@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Auth.Users" name="Users" description="Users">
+        <!-- Inheriting from res.users, so no fields are defined here -->
+    </model>
+</buvi>

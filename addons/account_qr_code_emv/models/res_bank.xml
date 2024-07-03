@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="Account.ResPartnerBank" name="ResPartnerBank" description="Partner Bank">
+        <field name="DisplayQrSetting" type="bool" compute="_ComputeDisplayQrSetting" />
+        <field name="IncludeReference" type="bool" label="Include Reference"
+            help="Include the reference in the QR code." />
+        <field name="ProxyType" type="Account.ProxyType" default="None" />
+        <field name="ProxyValue" type="string" label="Proxy Value" />
+        <field name="CountryCode" type="string" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" />
+    </model>
+
+    <optionset id="Account.ProxyType" name="Proxy Type">
+        <option value="None" name="None" />
+    </optionset>
+</buvi>

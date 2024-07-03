@@ -1,0 +1,107 @@
+xml
+<buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="FiscalyearLastDay" type="integer" default="31" required="true" />
+        <field name="FiscalyearLastMonth" type="Account.MonthSelection" default="12" required="true" />
+        <field name="PeriodLockDate" type="date" label="Journals Entries Lock Date"
+            help="Only users with the 'Adviser' role can edit accounts prior to and inclusive of this date. Use it for period locking inside an open fiscal year, for example." />
+        <field name="FiscalyearLockDate" type="date" label="All Users Lock Date"
+            help="No users, including Advisers, can edit accounts prior to and inclusive of this date. Use it for fiscal year locking for example." />
+        <field name="TaxLockDate" type="date" label="Tax Return Lock Date"
+            help="No users can edit journal entries related to a tax prior and inclusive of this date." />
+        <field name="TransferAccountId" type="Account.Account" label="Inter-Banks Transfer Account"
+            help="Intermediary account used when moving money from a liquidity account to another" />
+        <field name="ExpectsChartOfAccounts" type="bool" label="Expects a Chart of Accounts" default="true" />
+        <field name="ChartTemplate" type="Account.ChartTemplate" />
+        <field name="BankAccountCodePrefix" type="string" label="Prefix of the bank accounts" />
+        <field name="CashAccountCodePrefix" type="string" label="Prefix of the cash accounts" />
+        <field name="DefaultCashDifferenceIncomeAccountId" type="Account.Account" label="Cash Difference Income" />
+        <field name="DefaultCashDifferenceExpenseAccountId" type="Account.Account" label="Cash Difference Expense" />
+        <field name="AccountJournalSuspenseAccountId" type="Account.Account" label="Journal Suspense Account" />
+        <field name="AccountJournalPaymentDebitAccountId" type="Account.Account" label="Journal Outstanding Receipts" />
+        <field name="AccountJournalPaymentCreditAccountId" type="Account.Account" label="Journal Outstanding Payments" />
+        <field name="AccountJournalEarlyPayDiscountGainAccountId" type="Account.Account" label="Cash Discount Write-Off Gain Account" />
+        <field name="AccountJournalEarlyPayDiscountLossAccountId" type="Account.Account" label="Cash Discount Write-Off Loss Account" />
+        <field name="TransferAccountCodePrefix" type="string" label="Prefix of the transfer accounts" />
+        <field name="AccountSaleTaxId" type="Account.Tax" label="Default Sale Tax" />
+        <field name="AccountPurchaseTaxId" type="Account.Tax" label="Default Purchase Tax" />
+        <field name="TaxCalculationRoundingMethod" type="Account.TaxCalculationRoundingMethod" default="RoundPerLine" label="Tax Calculation Rounding Method" />
+        <field name="CurrencyExchangeJournalId" type="Account.Journal" label="Exchange Gain or Loss Journal" />
+        <field name="IncomeCurrencyExchangeAccountId" type="Account.Account" label="Gain Exchange Rate Account" />
+        <field name="ExpenseCurrencyExchangeAccountId" type="Account.Account" label="Loss Exchange Rate Account" />
+        <field name="AngloSaxonAccounting" type="bool" label="Use anglo-saxon accounting" />
+        <field name="BankJournalIds" type="Account.Journal" label="Bank Journals" multiple="true" />
+        <field name="IncotermId" type="Account.Incoterms" label="Default incoterm"
+            help="International Commercial Terms are a series of predefined commercial terms used in international transactions." />
+        <field name="QrCode" type="bool" label="Display QR-code on invoices" />
+        <field name="InvoiceIsEmail" type="bool" label="Email by default" default="true" />
+        <field name="InvoiceIsDownload" type="bool" label="Download by default" default="true" />
+        <field name="DisplayInvoiceAmountTotalWords" type="bool" label="Total amount of invoice in letters" />
+        <field name="DisplayInvoiceTaxCompanyCurrency" type="bool" label="Taxes in company currency" default="true" />
+        <field name="AccountUseCreditLimit" type="bool" label="Sales Credit Limit"
+            help="Enable the use of credit limit on partners." />
+        <field name="AccountOpeningMoveId" type="Account.Move" label="Opening Journal Entry"
+            help="The journal entry containing the initial balance of all this company's accounts." />
+        <field name="AccountOpeningJournalId" type="Account.Journal" label="Opening Journal"
+            help="Journal where the opening entry of this company's accounting has been posted." />
+        <field name="AccountOpeningDate" type="date" label="Opening Entry" required="true"
+            help="That is the date of the opening entry." />
+        <field name="InvoiceTerms" type="string" label="Default Terms and Conditions" />
+        <field name="TermsType" type="Account.TermsType" default="Plain" label="Terms &amp; Conditions format" />
+        <field name="InvoiceTermsHtml" type="string" label="Default Terms and Conditions as a Web page" />
+        <field name="AccountDefaultPosReceivableAccountId" type="Account.Account" label="Default PoS Receivable Account" />
+        <field name="ExpenseAccrualAccountId" type="Account.Account" label="Expense Accrual Account"
+            help="Account used to move the period of an expense" />
+        <field name="RevenueAccrualAccountId" type="Account.Account" label="Revenue Accrual Account"
+            help="Account used to move the period of a revenue" />
+        <field name="AutomaticEntryDefaultJournalId" type="Account.Journal" label="Default Journal for Automatic Entries"
+            help="Journal used by default for moving the period of an entry" />
+        <field name="AccountFiscalCountryId" type="Core.Country" label="Fiscal Country"
+            help="The country to use the tax reports from for this company" />
+        <field name="AccountEnabledTaxCountryIds" type="Core.Country" label="l10n-used countries" multiple="true"
+            help="Technical field containing the countries for which this company is using tax-related features (hence the ones for which l10n modules need to show tax-related fields)" />
+        <field name="TaxExigibility" type="bool" label="Use Cash Basis" />
+        <field name="TaxCashBasisJournalId" type="Account.Journal" label="Cash Basis Journal" />
+        <field name="AccountCashBasisBaseAccountId" type="Account.Account" label="Base Tax Received Account"
+            help="Account that will be set on lines created in cash basis journal entry and used to keep track of the tax base amount." />
+        <field name="AccountStorno" type="bool" label="Storno accounting" />
+        <field name="FiscalPositionIds" type="Account.FiscalPosition" label="Fiscal Positions" multiple="true" />
+        <field name="MultiVatForeignCountryIds" type="Core.Country" label="Foreign VAT countries" multiple="true"
+            help="Countries for which the company has a VAT number" />
+        <field name="QuickEditMode" type="Account.QuickEditMode" label="Quick encoding" />
+        <field name="AccountDiscountIncomeAllocationId" type="Account.Account" label="Separate account for income discount" />
+        <field name="AccountDiscountExpenseAllocationId" type="Account.Account" label="Separate account for expense discount" />
+        <field name="CheckAccountAuditTrail" type="bool" label="Audit Trail" />
+    </model>
+
+    <optionset id="Account.MonthSelection" name="Month Selection">
+        <option value="1" name="January" />
+        <option value="2" name="February" />
+        <option value="3" name="March" />
+        <option value="4" name="April" />
+        <option value="5" name="May" />
+        <option value="6" name="June" />
+        <option value="7" name="July" />
+        <option value="8" name="August" />
+        <option value="9" name="September" />
+        <option value="10" name="October" />
+        <option value="11" name="November" />
+        <option value="12" name="December" />
+    </optionset>
+
+    <optionset id="Account.TaxCalculationRoundingMethod" name="Tax Calculation Rounding Method">
+        <option value="RoundPerLine" name="Round per Line" />
+        <option value="RoundGlobally" name="Round Globally" />
+    </optionset>
+
+    <optionset id="Account.TermsType" name="Terms Type">
+        <option value="Plain" name="Add a Note" />
+        <option value="Html" name="Add a link to a Web Page" />
+    </optionset>
+
+    <optionset id="Account.QuickEditMode" name="Quick Edit Mode">
+        <option value="OutInvoices" name="Customer Invoices" />
+        <option value="InInvoices" name="Vendor Bills" />
+        <option value="OutAndInInvoices" name="Customer Invoices and Vendor Bills" />
+    </optionset>
+</buvi>

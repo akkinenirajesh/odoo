@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Account.AccountPaymentMethod" name="AccountPaymentMethod" description="Account Payment Method">
+        <!-- No fields are explicitly defined in the given Python code -->
+    </model>
+</buvi>

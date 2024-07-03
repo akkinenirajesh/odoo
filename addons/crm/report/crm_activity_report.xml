@@ -1,0 +1,30 @@
+xml
+<buvi>
+    <model id="Crm.ActivityReport" name="ActivityReport" description="CRM Activity Analysis">
+        <field name="Date" type="datetime" label="Completion Date" readonly="true" />
+        <field name="LeadCreateDate" type="datetime" label="Creation Date" readonly="true" />
+        <field name="DateConversion" type="datetime" label="Conversion Date" readonly="true" />
+        <field name="DateDeadline" type="date" label="Expected Closing" readonly="true" />
+        <field name="DateClosed" type="datetime" label="Closed Date" readonly="true" />
+        <field name="Author" type="Core.Partner" label="Assigned To" readonly="true" />
+        <field name="User" type="Core.User" label="Salesperson" readonly="true" />
+        <field name="Team" type="Crm.Team" label="Sales Team" readonly="true" />
+        <field name="Lead" type="Crm.Lead" label="Opportunity" readonly="true" />
+        <field name="Body" type="html" label="Activity Description" readonly="true" />
+        <field name="Subtype" type="Mail.MessageSubtype" label="Subtype" readonly="true" />
+        <field name="MailActivityType" type="Mail.ActivityType" label="Activity Type" readonly="true" />
+        <field name="Country" type="Core.Country" label="Country" readonly="true" />
+        <field name="Company" type="Core.Company" label="Company" readonly="true" />
+        <field name="Stage" type="Crm.Stage" label="Stage" readonly="true" />
+        <field name="Partner" type="Core.Partner" label="Customer" readonly="true" />
+        <field name="LeadType" type="Crm.LeadType" label="Type" readonly="true" 
+               help="Type is used to separate Leads and Opportunities" />
+        <field name="Active" type="bool" label="Active" readonly="true" />
+        <field name="Tags" type="Core.Tag" label="Tags" readonly="true" />
+    </model>
+
+    <optionset id="Crm.LeadType" name="Lead Type">
+        <option value="Lead" name="Lead" />
+        <option value="Opportunity" name="Opportunity" />
+    </optionset>
+</buvi>

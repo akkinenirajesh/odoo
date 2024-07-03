@@ -1,0 +1,20 @@
+xml
+<buvi>
+    <model id="Calendar.Alarm" name="Alarm" description="Calendar Alarm">
+        <field name="Name" type="string" label="Alarm Name" required="true" />
+        <field name="AlarmType" type="Calendar.AlarmType" label="Alarm Type" required="true" />
+        <field name="Duration" type="integer" label="Duration" required="true" />
+        <field name="Interval" type="Calendar.AlarmInterval" label="Interval" required="true" />
+    </model>
+
+    <optionset id="Calendar.AlarmType" name="Alarm Type">
+        <option value="Notification" name="Notification" />
+        <option value="Email" name="Email" />
+    </optionset>
+
+    <optionset id="Calendar.AlarmInterval" name="Alarm Interval">
+        <option value="Minutes" name="Minutes" />
+        <option value="Hours" name="Hours" />
+        <option value="Days" name="Days" />
+    </optionset>
+</buvi>

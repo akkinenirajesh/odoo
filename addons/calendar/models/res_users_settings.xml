@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Calendar.ResUsersSettings" name="ResUsersSettings" description="User Settings for Calendar">
+        <field name="CalendarDefaultPrivacy" type="Calendar.CalendarPrivacy" label="Calendar Default Privacy" required="true" default="Public"
+               help="Default privacy setting for whom the calendar events will be visible." />
+    </model>
+
+    <optionset id="Calendar.CalendarPrivacy" name="Calendar Privacy">
+        <option value="Public" name="Public" />
+        <option value="Private" name="Private" />
+        <option value="Confidential" name="Only internal users" />
+    </optionset>
+</buvi>

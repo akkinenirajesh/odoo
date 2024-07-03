@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="l10n.in.ewaybill" name="L10N.InEwaybill" track_created="true" track_update="true">
+    <field name="FiscalPosition" label="Fiscal Position" type="Account.FiscalPosition" copied="true" on-delete="Clear"/>
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Type" label="Document Type" type="L10N.InEwaybillType" required="true" copied="true" on-delete="Restrict"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" readonly="true" transient="true" related-field="Picking.Company"/>
+    <field name="CompanyCurrency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Company.Currency"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="PartnerBillFrom" label="Bill From" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="PartnerBillTo" label="Bill To" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="PartnerShipFrom" label="Dispatch From" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="PartnerShipTo" label="Ship To" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="Transporter" label="Transporter" type="Res.Partner" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Moves" label="Stock Moves" type="Stock.Move" collection="true" readonly="true" transient="true" related-field="Picking.Moves"/>
+    <field name="Picking" label="Stock Transfer" type="Stock.Picking" on-delete="Clear"/>
+    <field name="AccessToken" label="Security Token" type="string"/>
+    <field name="AccessUrl" label="Portal Access URL" type="string" readonly="true" transient="true"/>
+    <field name="AccessWarning" label="Access warning" type="text" readonly="true" transient="true"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="L10N.E-WaybillActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="L10N.E-WaybillActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="BlockingLevel" label="Blocking Level" type="L10N.E-WaybillBlockingLevel" readonly="true" copied="true"/>
+    <field name="CancelReason" label="Cancel reason" type="L10N.E-WaybillCancelReason"/>
+    <field name="CancelRemarks" label="Cancel remarks" type="string"/>
+    <field name="Content" label="Content" type="binary" readonly="true" transient="true"/>
+    <field name="Distance" label="Distance" type="integer" copied="true"/>
+    <field name="DocumentDate" label="Document Date" type="datetime" readonly="true" transient="true" related-field="Picking.DateDone"/>
+    <field name="DocumentNumber" label="Document" type="string" readonly="true" transient="true" related-field="Picking.Name"/>
+    <field name="ErrorMessage" label="Error Message" type="html" readonly="true" copied="true"/>
+    <field name="EwaybillDate" label="e-Waybill Date" type="date" readonly="true"/>
+    <field name="EwaybillExpiryDate" label="e-Waybill Valid Upto" type="date" readonly="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="IsBillFromEditable" label="Is Bill From Editable" type="bool" readonly="true" transient="true"/>
+    <field name="IsBillToEditable" label="Is Bill To Editable" type="bool" readonly="true" transient="true"/>
+    <field name="IsShipFromEditable" label="Is Ship From Editable" type="bool" readonly="true" transient="true"/>
+    <field name="IsShipToEditable" label="Is Ship To Editable" type="bool" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="Mode" label="Transportation Mode" type="L10N.E-WaybillTransportationMode"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="e-Waybill Number" type="string" readonly="true"/>
+    <field name="State" label="Status" type="L10N.E-WaybillStatus" required="true" readonly="true"/>
+    <field name="SubTypeCode" label="Sub-type Code" type="string" readonly="true" transient="true" related-field="Type.SubTypeCode"/>
+    <field name="SupplyType" label="Supply Type" type="L10N.E-WaybillSupplyType" readonly="true" transient="true"/>
+    <field name="TransportationDocDate" label="Transporter Doc Date" type="date"/>
+    <field name="TransportationDocNo" label="Transporter Doc No" type="string"/>
+    <field name="TypeDescription" label="Description" type="string" copied="true"/>
+    <field name="VehicleNo" label="Vehicle Number" type="string"/>
+    <field name="VehicleType" label="Vehicle Type" type="L10N.E-WaybillVehicleType"/>
+  </model>
+</buvi>

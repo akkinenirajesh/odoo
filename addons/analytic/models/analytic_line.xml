@@ -1,0 +1,22 @@
+xml
+<buvi>
+    <model id="Analytic.AnalyticLine" name="AnalyticLine" description="Analytic Line">
+        <field name="Name" type="string" label="Description" required="true" />
+        <field name="Date" type="date" label="Date" required="true" default="Today" />
+        <field name="Amount" type="decimal" label="Amount" required="true" default="0.0" />
+        <field name="UnitAmount" type="float" label="Quantity" default="0.0" />
+        <field name="ProductUom" type="Uom.Uom" label="Unit of Measure" />
+        <field name="ProductUomCategory" type="Uom.UomCategory" label="UoM Category" readonly="true" />
+        <field name="Partner" type="Res.Partner" label="Partner" />
+        <field name="User" type="Res.User" label="User" default="CurrentUser" />
+        <field name="Company" type="Res.Company" label="Company" required="true" readonly="true" default="CurrentCompany" />
+        <field name="Currency" type="Res.Currency" label="Currency" readonly="true" />
+        <field name="Category" type="Analytic.AnalyticLineCategory" default="Other" />
+        <field name="Account" type="Account.AnalyticAccount" label="Project Account" />
+        <field name="AutoAccount" type="Account.AnalyticAccount" label="Analytic Account" />
+    </model>
+
+    <optionset id="Analytic.AnalyticLineCategory" name="Analytic Line Category">
+        <option value="Other" name="Other" />
+    </optionset>
+</buvi>

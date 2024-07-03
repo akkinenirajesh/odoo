@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Crm.IapLeadHelpers" name="IapLeadHelpers" description="Helper methods for crm_iap_mine modules">
+        <!-- No fields defined in the original Python model -->
+    </model>
+</buvi>

@@ -1,0 +1,15 @@
+xml
+<buvi>
+    <model id="Crm.LeadScoringFrequency" name="LeadScoringFrequency" description="Lead Scoring Frequency">
+        <field name="Variable" type="string" label="Variable" required="true" />
+        <field name="Value" type="string" label="Value" />
+        <field name="WonCount" type="decimal" label="Won Count" digits="(16,1)" />
+        <field name="LostCount" type="decimal" label="Lost Count" digits="(16,1)" />
+        <field name="Team" type="Crm.Team" label="Sales Team" />
+    </model>
+
+    <model id="Crm.LeadScoringFrequencyField" name="LeadScoringFrequencyField" description="Fields that can be used for predictive lead scoring computation">
+        <field name="Name" type="string" label="Name" />
+        <field name="Field" type="Core.ModelField" label="Field" required="true" />
+    </model>
+</buvi>

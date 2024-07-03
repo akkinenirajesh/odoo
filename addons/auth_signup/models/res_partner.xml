@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Auth.ResPartner" name="ResPartner" description="Partner" inherits="Core.ResPartner">
+        <field name="SignupToken" type="string" groups="Base.GroupErpManager" compute="_ComputeToken" inverse="_InverseToken" />
+        <field name="SignupType" type="string" label="Signup Token Type" groups="Base.GroupErpManager" />
+        <field name="SignupExpiration" type="datetime" groups="Base.GroupErpManager" />
+        <field name="SignupValid" type="bool" label="Signup Token is Valid" compute="_ComputeSignupValid" />
+        <field name="SignupUrl" type="string" label="Signup URL" compute="_ComputeSignupUrl" />
+    </model>
+</buvi>

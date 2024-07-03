@@ -1,0 +1,96 @@
+xml
+<buvi>
+  <model id="Crm.Lead" name="Lead" description="Lead/Opportunity">
+    <field name="Name" type="string" label="Opportunity" required="true" translate="true" />
+    <field name="UserId" type="Core.User" label="Salesperson" />
+    <field name="UserCompanyIds" type="Core.Company[]" label="UX: Limit to lead company or all if no company" readonly="true" />
+    <field name="TeamId" type="Crm.Team" label="Sales Team" />
+    <field name="LeadProperties" type="Properties" label="Properties" />
+    <field name="CompanyId" type="Core.Company" label="Company" />
+    <field name="Referred" type="string" label="Referred By" />
+    <field name="Description" type="html" label="Notes" />
+    <field name="Active" type="bool" default="true" label="Active" />
+    <field name="Type" type="Crm.LeadType" required="true" />
+    <field name="Priority" type="Crm.PriorityType" />
+    <field name="StageId" type="Crm.Stage" label="Stage" />
+    <field name="TagIds" type="Crm.Tag[]" label="Tags" />
+    <field name="Color" type="integer" label="Color Index" default="0" />
+    <field name="ExpectedRevenue" type="decimal" label="Expected Revenue" />
+    <field name="ProratedRevenue" type="decimal" label="Prorated Revenue" readonly="true" />
+    <field name="RecurringRevenue" type="decimal" label="Recurring Revenues" />
+    <field name="RecurringPlan" type="Crm.RecurringPlan" label="Recurring Plan" />
+    <field name="RecurringRevenueMonthly" type="decimal" label="Expected MRR" readonly="true" />
+    <field name="RecurringRevenueMonthlyProrated" type="decimal" label="Prorated MRR" readonly="true" />
+    <field name="RecurringRevenueProrated" type="decimal" label="Prorated Recurring Revenues" readonly="true" />
+    <field name="CompanyCurrency" type="Core.Currency" label="Currency" readonly="true" />
+    <field name="DateClosed" type="datetime" label="Closed Date" readonly="true" />
+    <field name="DateAutomationLast" type="datetime" label="Last Action" readonly="true" />
+    <field name="DateOpen" type="datetime" label="Assignment Date" readonly="true" />
+    <field name="DayOpen" type="decimal" label="Days to Assign" readonly="true" />
+    <field name="DayClose" type="decimal" label="Days to Close" readonly="true" />
+    <field name="DateLastStageUpdate" type="datetime" label="Last Stage Update" readonly="true" />
+    <field name="DateConversion" type="datetime" label="Conversion Date" readonly="true" />
+    <field name="DateDeadline" type="date" label="Expected Closing" />
+    <field name="PartnerId" type="Core.Partner" label="Customer" />
+    <field name="PartnerIsBlacklisted" type="bool" label="Partner is blacklisted" readonly="true" />
+    <field name="ContactName" type="string" label="Contact Name" />
+    <field name="PartnerName" type="string" label="Company Name" />
+    <field name="Function" type="string" label="Job Position" />
+    <field name="Title" type="Core.PartnerTitle" label="Title" />
+    <field name="EmailFrom" type="string" label="Email" />
+    <field name="EmailNormalized" type="string" />
+    <field name="EmailDomainCriterion" type="string" label="Email Domain Criterion" readonly="true" />
+    <field name="Phone" type="string" label="Phone" />
+    <field name="Mobile" type="string" label="Mobile" />
+    <field name="PhoneSanitized" type="string" />
+    <field name="PhoneState" type="Crm.PhoneState" label="Phone Quality" readonly="true" />
+    <field name="EmailState" type="Crm.EmailState" label="Email Quality" readonly="true" />
+    <field name="Website" type="string" label="Website" />
+    <field name="LangId" type="Core.Language" label="Language" />
+    <field name="LangCode" type="string" readonly="true" />
+    <field name="LangActiveCount" type="integer" readonly="true" />
+    <field name="Street" type="string" label="Street" />
+    <field name="Street2" type="string" label="Street2" />
+    <field name="Zip" type="string" label="Zip" />
+    <field name="City" type="string" label="City" />
+    <field name="StateId" type="Core.State" label="State" />
+    <field name="CountryId" type="Core.Country" label="Country" />
+    <field name="Probability" type="decimal" label="Probability" />
+    <field name="AutomatedProbability" type="decimal" label="Automated Probability" readonly="true" />
+    <field name="IsAutomatedProbability" type="bool" label="Is automated probability?" readonly="true" />
+    <field name="LostReasonId" type="Crm.LostReason" label="Lost Reason" />
+    <field name="CalendarEventIds" type="Calendar.Event[]" label="Meetings" />
+    <field name="DuplicateLeadIds" type="Crm.Lead[]" label="Potential Duplicate Lead" readonly="true" />
+    <field name="DuplicateLeadCount" type="integer" label="Potential Duplicate Lead Count" readonly="true" />
+    <field name="MeetingDisplayDate" type="date" readonly="true" />
+    <field name="MeetingDisplayLabel" type="string" readonly="true" />
+    <field name="PartnerEmailUpdate" type="bool" label="Partner Email will Update" readonly="true" />
+    <field name="PartnerPhoneUpdate" type="bool" label="Partner Phone will Update" readonly="true" />
+    <field name="IsPartnerVisible" type="bool" label="Is Partner Visible" readonly="true" />
+    <field name="CampaignId" type="Utm.Campaign" />
+    <field name="MediumId" type="Utm.Medium" />
+    <field name="SourceId" type="Utm.Source" />
+  </model>
+
+  <optionset id="Crm.LeadType" name="Lead Type">
+    <option value="Lead" name="Lead" />
+    <option value="Opportunity" name="Opportunity" />
+  </optionset>
+
+  <optionset id="Crm.PriorityType" name="Priority Type">
+    <option value="0" name="Low" />
+    <option value="1" name="Medium" />
+    <option value="2" name="High" />
+    <option value="3" name="Very High" />
+  </optionset>
+
+  <optionset id="Crm.PhoneState" name="Phone State">
+    <option value="Correct" name="Correct" />
+    <option value="Incorrect" name="Incorrect" />
+  </optionset>
+
+  <optionset id="Crm.EmailState" name="Email State">
+    <option value="Correct" name="Correct" />
+    <option value="Incorrect" name="Incorrect" />
+  </optionset>
+</buvi>

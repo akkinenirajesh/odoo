@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Base.ResPartnerBank" name="ResPartnerBank" description="Partner Bank">
+        <field name="AccNumber" type="string" label="Account Number" required="true" />
+        <field name="AccType" type="string" label="Account Type" />
+    </model>
+</buvi>

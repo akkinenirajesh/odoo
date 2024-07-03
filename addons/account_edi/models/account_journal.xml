@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="EdiFormatIds" type="Account.AccountEdiFormat" label="Electronic invoicing" multiple="true"
+               help="Send XML/EDI invoices" domain="[('Id', 'in', CompatibleEdiIds)]" compute="ComputeEdiFormatIds" readonly="false" store="true" />
+        <field name="CompatibleEdiIds" type="Account.AccountEdiFormat" label="Compatible EDI Formats" multiple="true"
+               compute="ComputeCompatibleEdiIds" help="EDI format that support moves in this journal" />
+    </model>
+</buvi>

@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Account.IrModule" name="IrModule" description="IR Module">
+        <field name="AccountTemplates" type="binary" compute="ComputeAccountTemplates" exportable="false" />
+    </model>
+</buvi>

@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Account.AccountAnalyticAccount" name="AccountAnalyticAccount" description="Account Analytic Account">
+        <field name="InvoiceCount" type="integer" label="Invoice Count" compute="_ComputeInvoiceCount" />
+        <field name="VendorBillCount" type="integer" label="Vendor Bill Count" compute="_ComputeVendorBillCount" />
+        <field name="Debit" type="decimal" groups="account.group_account_readonly" />
+        <field name="Credit" type="decimal" groups="account.group_account_readonly" />
+    </model>
+</buvi>

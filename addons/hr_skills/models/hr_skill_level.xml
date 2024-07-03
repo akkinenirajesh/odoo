@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="hr.appraisal.skill" name="Hr.AppraisalSkill" track_created="true" track_update="true">
+    <field name="Appraisal" label="Appraisal" type="Hr.Appraisal" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" readonly="true" related-field="Appraisal.Employee"/>
+    <field name="Managers" label="Manager" type="Hr.Employee" collection="true" readonly="true"/>
+    <field name="EmployeeSkill" label="Employee Skill" type="Hr.EmployeeSkill" copied="true" on-delete="Clear"/>
+    <field name="Skill" label="Skill" type="Hr.Skill" required="true" copied="true" on-delete="Restrict"/>
+    <field name="PreviousSkillLevel" label="Previous Skill Level" type="Hr.SkillLevel" copied="true" on-delete="Clear"/>
+    <field name="SkillLevel" label="Skill Level" type="Hr.SkillLevel" required="true" copied="true" on-delete="Restrict"/>
+    <field name="SkillType" label="Skill Type" type="Hr.SkillType" copied="true" on-delete="Clear"/>
+    <field name="Justification" label="Justification" type="string" copied="true"/>
+    <field name="LevelProgress" label="Progress" type="integer" readonly="true" transient="true" related-field="SkillLevel.LevelProgress"/>
+  </model>
+  <model id="hr.employee.skill" name="Hr.EmployeeSkill" track_created="true" track_update="true">
+    <field name="Employee" label="Employee" type="Hr.Employee" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Skill" label="Skill" type="Hr.Skill" required="true" copied="true" on-delete="Cascade"/>
+    <field name="SkillLevel" label="Skill Level" type="Hr.SkillLevel" required="true" copied="true" on-delete="Cascade"/>
+    <field name="SkillType" label="Skill Type" type="Hr.SkillType" required="true" copied="true" on-delete="Cascade"/>
+    <field name="LevelProgress" label="Progress" type="integer" readonly="true" transient="true" related-field="SkillLevel.LevelProgress"/>
+  </model>
+  <model id="hr.applicant.skill" name="Hr.ApplicantSkill" track_created="true" track_update="true">
+    <field name="Applicant" label="Applicant" type="Hr.Applicant" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Skill" label="Skill" type="Hr.Skill" required="true" copied="true" on-delete="Restrict"/>
+    <field name="SkillLevel" label="Skill Level" type="Hr.SkillLevel" required="true" copied="true" on-delete="Restrict"/>
+    <field name="SkillType" label="Skill Type" type="Hr.SkillType" required="true" copied="true" on-delete="Restrict"/>
+    <field name="LevelProgress" label="Progress" type="integer" readonly="true" transient="true" related-field="SkillLevel.LevelProgress"/>
+  </model>
+  <model id="hr.skill" name="Hr.Skill" track_created="true" track_update="true">
+    <field name="SkillType" label="Skill Type" type="Hr.SkillType" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true"/>
+    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
+  </model>
+</buvi>

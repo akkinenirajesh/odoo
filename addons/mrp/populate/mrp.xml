@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="stock.warehouse.orderpoint" name="Stock.WarehouseOrderpoint" track_created="true" track_update="true">
+    <field name="Bom" label="Bill of Materials" type="Mrp.Bom" copied="true" on-delete="Clear"/>
+    <field name="Group" label="Procurement Group" type="Procurement.Group" on-delete="Clear"/>
+    <field name="ProductCategory" label="Product Category" type="Product.Category" readonly="true" related-field="Product.Categ"/>
+    <field name="Product" label="Product" type="Product.Product" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Supplier" label="Product Supplier" type="Product.Supplierinfo" copied="true" on-delete="Clear"/>
+    <field name="ProductTmpl" label="Product Template" type="Product.Template" readonly="true" transient="true" related-field="Product.ProductTmpl"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="Vendor" label="Vendor" type="Res.Partner" readonly="true" related-field="Supplier.Partner"/>
+    <field name="AllowedLocations" label="Allowed Location" type="Stock.Location" collection="true" readonly="true" transient="true"/>
+    <field name="Location" label="Location" type="Stock.Location" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Route" label="Route" type="Stock.Route" copied="true" on-delete="Clear"/>
+    <field name="Rules" label="Rules used" type="Stock.Rule" collection="true" readonly="true" transient="true"/>
+    <field name="Warehouse" label="Warehouse" type="Stock.Warehouse" required="true" copied="true" on-delete="Cascade"/>
+    <field name="ProductUom" label="Unit of Measure" type="Uom.Uom" readonly="true" transient="true" related-field="Product.Uom"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="DaysToOrder" label="Days To Order" type="float" readonly="true" transient="true"/>
+    <field name="LeadDaysDate" label="Lead Days Date" type="date" readonly="true" transient="true"/>
+    <field name="ManufacturingVisibilityDays" label="Manufacturing Visibility Days" type="float" copied="true"/>
+    <field name="Name" label="Name" type="string" required="true" readonly="true"/>
+    <field name="ProductMaxQty" label="Max Quantity" type="float" required="true" copied="true"/>
+    <field name="ProductMinQty" label="Min Quantity" type="float" required="true" copied="true"/>
+    <field name="ProductUomName" label="Product unit of measure label" type="string" readonly="true" transient="true" related-field="ProductUom.DisplayName"/>
+    <field name="PurchaseVisibilityDays" label="Purchase Visibility Days" type="float" copied="true"/>
+    <field name="QtyForecast" label="Forecast" type="float" readonly="true" transient="true"/>
+    <field name="QtyMultiple" label="Multiple Quantity" type="float" required="true" copied="true"/>
+    <field name="QtyOnHand" label="On Hand" type="float" readonly="true" transient="true"/>
+    <field name="QtyToOrder" label="To Order" type="float" copied="true"/>
+    <field name="ShowBom" label="Show BoM column" type="bool" readonly="true" transient="true"/>
+    <field name="ShowSupplier" label="Show supplier column" type="bool" readonly="true" transient="true"/>
+    <field name="SnoozedUntil" label="Snoozed" type="date" copied="true"/>
+    <field name="Trigger" label="Trigger" type="Stock.MinimumInventoryRuleTrigger" required="true" copied="true"/>
+    <field name="UnwantedReplenish" label="Unwanted Replenish" type="bool" readonly="true" transient="true"/>
+    <field name="VisibilityDays" label="Visibility Days" type="float" transient="true"/>
+  </model>
+</buvi>

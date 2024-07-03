@@ -1,0 +1,14 @@
+xml
+<buvi>
+    <model id="Calendar.CalendarAlarm" name="CalendarAlarm" description="Calendar Alarm">
+        <field name="AlarmType" type="Calendar.AlarmType" />
+        <field name="SmsTemplateId" type="Sms.SmsTemplate" label="SMS Template"
+               help="Template used to render SMS reminder content." />
+        <field name="SmsNotifyResponsible" type="bool" label="Notify Responsible" />
+    </model>
+
+    <optionset id="Calendar.AlarmType" name="Alarm Type">
+        <option value="Sms" name="SMS Text Message" />
+        <!-- Add other existing options here -->
+    </optionset>
+</buvi>

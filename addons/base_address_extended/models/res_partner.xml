@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Base.Partner" name="Partner" description="Partner">
+        <field name="StreetName" type="string" label="Street Name" compute="_ComputeStreetData" inverse="_InverseStreetData" store="true" />
+        <field name="StreetNumber" type="string" label="House" compute="_ComputeStreetData" inverse="_InverseStreetData" store="true" />
+        <field name="StreetNumber2" type="string" label="Door" compute="_ComputeStreetData" inverse="_InverseStreetData" store="true" />
+        <field name="CityId" type="Base.City" label="City ID" />
+        <field name="CountryEnforceCities" type="bool" related="Country.EnforceCities" />
+    </model>
+</buvi>

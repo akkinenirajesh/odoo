@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+        <field name="CheckAmountInWords" type="string" label="Amount in Words" 
+               compute="ComputeCheckAmountInWords" store="true" />
+        <field name="CheckManualSequencing" type="bool" related="Journal.CheckManualSequencing" />
+        <field name="CheckNumber" type="string" label="Check Number" readonly="true" 
+               compute="ComputeCheckNumber" inverse="InverseCheckNumber" 
+               help="The selected journal is configured to print check numbers. If your pre-printed check paper already has numbers or if the current numbering is wrong, you can change it in the journal configuration page." />
+        <field name="PaymentMethodLine" type="Account.PaymentMethodLine" />
+        <field name="ShowCheckNumber" type="bool" compute="ComputeShowCheckNumber" />
+    </model>
+</buvi>

@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Fleet.VehicleLogServices" name="VehicleLogServices" description="Fleet Vehicle Log Services">
+        <field name="AccountMoveLine" type="Account.MoveLine" label="Account Move Line" />
+        <field name="AccountMoveState" type="string" label="Account Move State" related="AccountMoveLine.ParentState" />
+        <field name="Amount" type="decimal" label="Cost" compute="_ComputeAmount" inverse="_InverseAmount" 
+               readonly="false" store="true" tracking="true" />
+        <field name="Vehicle" type="Fleet.Vehicle" label="Vehicle" compute="_ComputeVehicle" 
+               store="true" readonly="false" required="true" />
+    </model>
+</buvi>

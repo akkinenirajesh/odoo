@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Account.ResPartner" name="ResPartner" description="Partner">
+        <field name="PropertyPaymentMethod" type="Account.PaymentMethod" label="Payment Method"
+               companyDependent="true"
+               domain="[('PaymentType', '=', 'outbound')]"
+               help="Preferred payment method when paying this vendor. This is used to filter vendor bills by preferred payment method to register payments in mass. Use cases: create bank files for batch wires, check runs." />
+    </model>
+</buvi>

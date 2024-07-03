@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Calendar.EventType" name="EventType" description="Event Meeting Type">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Color" type="integer" label="Color" />
+        <unique>
+            <field name="Name" />
+            <message>Tag name already exists!</message>
+        </unique>
+    </model>
+</buvi>

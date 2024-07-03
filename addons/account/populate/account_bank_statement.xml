@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Account.BankStatement" name="BankStatement" description="Bank Statement">
+        <field name="Name" type="string" label="Statement Name" required="true" />
+        <field name="Journal" type="Account.Journal" label="Journal" required="true" />
+        <field name="Lines" type="Account.BankStatementLine" label="Statement Lines" multiple="true" />
+    </model>
+
+    <model id="Account.BankStatementLine" name="BankStatementLine" description="Bank Statement Line">
+        <field name="Statement" type="Account.BankStatement" label="Bank Statement" />
+        <field name="Journal" type="Account.Journal" label="Journal" required="true" />
+        <field name="Partner" type="Core.Partner" label="Partner" />
+        <field name="Date" type="datetime" label="Date" required="true" />
+        <field name="PaymentRef" type="string" label="Payment Reference" />
+        <field name="Amount" type="decimal" label="Amount" required="true" />
+        <field name="ForeignCurrency" type="Core.Currency" label="Foreign Currency" />
+        <field name="AmountCurrency" type="decimal" label="Amount in Currency" />
+    </model>
+</buvi>

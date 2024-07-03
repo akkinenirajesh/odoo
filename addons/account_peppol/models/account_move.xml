@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="PeppolMessageUuid" type="string" label="PEPPOL message ID" />
+        <field name="PeppolMoveState" type="Account.PeppolMoveState" label="PEPPOL status" />
+    </model>
+
+    <optionset id="Account.PeppolMoveState" name="PEPPOL Move State">
+        <option value="Ready" name="Ready to send" />
+        <option value="ToSend" name="Queued" />
+        <option value="Skipped" name="Skipped" />
+        <option value="Processing" name="Pending Reception" />
+        <option value="Done" name="Done" />
+        <option value="Error" name="Error" />
+    </optionset>
+</buvi>

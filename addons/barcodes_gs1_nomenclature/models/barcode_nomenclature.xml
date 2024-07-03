@@ -1,0 +1,9 @@
+xml
+<buvi>
+    <model id="Barcodes.BarcodeNomenclature" name="BarcodeNomenclature" description="Barcode Nomenclature">
+        <field name="IsGs1Nomenclature" type="bool" label="Is GS1 Nomenclature"
+            help="This Nomenclature use the GS1 specification, only GS1-128 encoding rules is accepted is this kind of nomenclature." />
+        <field name="Gs1SeparatorFnc1" type="string" label="FNC1 Separator" default="(Alt029|#|\x1D)"
+            help="Alternative regex delimiter for the FNC1. The separator must not match the begin/end of any related rules pattern." />
+    </model>
+</buvi>

@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Crm.Stage" name="Stage" description="CRM Stages">
+        <field name="Name" type="string" label="Stage Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" default="1" 
+               help="Used to order stages. Lower is better." />
+        <field name="IsWon" type="bool" label="Is Won Stage?" />
+        <field name="Requirements" type="string" 
+               help="Enter here the internal requirements for this stage (ex: Offer sent to customer). It will appear as a tooltip over the stage's name." />
+        <field name="Team" type="Crm.Team" label="Sales Team" 
+               help="Specific team that uses this stage. Other teams will not be able to see or use this stage." />
+        <field name="Fold" type="bool" label="Folded in Pipeline"
+               help="This stage is folded in the kanban view when there are no records in that stage to display." />
+        <field name="TeamCount" type="integer" compute="ComputeTeamCount" />
+    </model>
+
+    <optionset id="Crm.Priority" name="Available Priorities">
+        <option value="0" name="Low" />
+        <option value="1" name="Medium" />
+        <option value="2" name="High" />
+        <option value="3" name="Very High" />
+    </optionset>
+</buvi>

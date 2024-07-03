@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="account.budget.post" name="Account.BudgetPost" track_created="true" track_update="true">
+    <field name="Accounts" label="Accounts" type="Account.Account" collection="true" copied="true"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" copied="true" on-delete="Restrict"/>
+    <field name="Name" label="Name" type="string" required="true" copied="true"/>
+  </model>
+  <model id="forum.post" name="Forum.Post" track_created="true" track_update="true">
+    <field name="Forum" label="Forum" type="Forum.Forum" required="true" copied="true" on-delete="Restrict"/>
+    <field name="Childs" label="Post Answers" type="Forum.Post" collection="true"/>
+    <field name="Parent" label="Question" type="Forum.Post" indexed="true" readonly="true" copied="true" on-delete="Cascade"/>
+    <field name="ClosedReason" label="Reason" type="Forum.PostReason" on-delete="Clear"/>
+    <field name="Votes" label="Votes" type="Forum.PostVote" collection="true"/>
+    <field name="Tags" label="Tags" type="Forum.Tag" collection="true" copied="true"/>
+    <field name="Ticket" label="Ticket" type="Helpdesk.Ticket" copied="true" on-delete="Clear"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="ClosedUid" label="Closed by" type="Res.Users" readonly="true" on-delete="Clear"/>
+    <field name="Favourites" label="Favourite" type="Res.Users" collection="true" copied="true"/>
+    <field name="FlagUser" label="Flagged by" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="Moderator" label="Reviewed by" type="Res.Users" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Website" label="Website" type="Website." readonly="true" transient="true" related-field="Forum.Website"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="CanAccept" label="Can Accept" type="bool" readonly="true" transient="true"/>
+    <field name="CanAnswer" label="Can Answer" type="bool" readonly="true" transient="true"/>
+    <field name="CanAsk" label="Can Ask" type="bool" readonly="true" transient="true"/>
+    <field name="CanClose" label="Can Close" type="bool" readonly="true" transient="true"/>
+    <field name="CanComment" label="Can Comment" type="bool" readonly="true" transient="true"/>
+    <field name="CanCommentConvert" label="Can Convert to Comment" type="bool" readonly="true" transient="true"/>
+    <field name="CanDisplayBiography" label="Is the author's biography visible from his post" type="bool" readonly="true" transient="true"/>
+    <field name="CanDownvote" label="Can Downvote" type="bool" readonly="true" transient="true"/>
+    <field name="CanEdit" label="Can Edit" type="bool" readonly="true" transient="true"/>
+    <field name="CanFlag" label="Can Flag" type="bool" readonly="true" transient="true"/>
+    <field name="CanModerate" label="Can Moderate" type="bool" readonly="true" transient="true"/>
+    <field name="CanPost" label="Can Automatically be Validated" type="bool" readonly="true" transient="true"/>
+    <field name="CanUnlink" label="Can Unlink" type="bool" readonly="true" transient="true"/>
+    <field name="CanUpvote" label="Can Upvote" type="bool" readonly="true" transient="true"/>
+    <field name="CanUseFullEditor" label="Can Use Full Editor" type="bool" readonly="true" transient="true"/>
+    <field name="CanView" label="Can View" type="bool" readonly="true" transient="true"/>
+    <field name="ChildCount" label="Answers" type="integer" readonly="true"/>
+    <field name="ClosedDate" label="Closed on" type="datetime" readonly="true"/>
+    <field name="Content" label="Content" type="html" copied="true"/>
+    <field name="FavouriteCount" label="Favorite" type="integer" readonly="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasValidatedAnswer" label="Is answered" type="bool" readonly="true"/>
+    <field name="IsCorrect" label="Correct" type="bool" copied="true"/>
+    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
+    <field name="KarmaAccept" label="Convert comment to answer" type="integer" readonly="true" transient="true"/>
+    <field name="KarmaClose" label="Karma to close" type="integer" readonly="true" transient="true"/>
+    <field name="KarmaComment" label="Karma to comment" type="integer" readonly="true" transient="true"/>
+    <field name="KarmaCommentConvert" label="Karma to convert comment to answer" type="integer" readonly="true" transient="true"/>
+    <field name="KarmaEdit" label="Karma to edit" type="integer" readonly="true" transient="true"/>
+    <field name="KarmaFlag" label="Flag a post as offensive" type="integer" readonly="true" transient="true"/>
+    <field name="KarmaUnlink" label="Karma to unlink" type="integer" readonly="true" transient="true"/>
+    <field name="LastActivityDate" label="Last activity on" type="datetime" required="true" readonly="true" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="Name" label="Title" type="string" copied="true"/>
+    <field name="PlainContent" label="Plain Content" type="text" readonly="true"/>
+    <field name="Relevancy" label="Relevance" type="float" readonly="true"/>
+    <field name="SelfReply" label="Reply to own question" type="bool" readonly="true"/>
+    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
+    <field name="ShowTicket" label="Show Ticket" type="bool" readonly="true" transient="true"/>
+    <field name="State" label="Status" type="Forum.ForumPostStatus"/>
+    <field name="UidHasAnswered" label="Has Answered" type="bool" readonly="true" transient="true"/>
+    <field name="UserFavourite" label="Is Favourite" type="bool" readonly="true" transient="true"/>
+    <field name="UserVote" label="My Vote" type="integer" readonly="true" transient="true"/>
+    <field name="Views" label="Views" type="integer" readonly="true"/>
+    <field name="VoteCount" label="Total Votes" type="integer" readonly="true"/>
+    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
+    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
+    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
+    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
+  </model>
+  <model id="social.live.post" name="Social.LivePost" track_created="true" track_update="true">
+    <field name="Company" label="Company" type="Res.Company" readonly="true" transient="true" related-field="Account.Company"/>
+    <field name="Account" label="Social Account" type="Social.Account" required="true" readonly="true" copied="true" on-delete="Cascade"/>
+    <field name="Post" label="Social Post" type="Social.Post" required="true" readonly="true" copied="true" on-delete="Cascade"/>
+    <field name="ReachedVisitors" label="Reached Visitors" type="Website.Visitor" collection="true" copied="true"/>
+    <field name="Engagement" label="Engagement" type="integer" copied="true"/>
+    <field name="FacebookPost" label="Actual Facebook ID of the post" type="string" copied="true"/>
+    <field name="FailureReason" label="Failure Reason" type="text" readonly="true" copied="true"/>
+    <field name="InstagramPost" label="Instagram Post ID" type="string" readonly="true" copied="true"/>
+    <field name="LinkedinPost" label="Actual LinkedIn ID of the post" type="string" copied="true"/>
+    <field name="LivePostLink" label="Post Link" type="string" readonly="true" transient="true"/>
+    <field name="Message" label="Message" type="string" readonly="true" transient="true"/>
+    <field name="State" label="Status" type="Social.SocialLivePostStatus" required="true" readonly="true"/>
+    <field name="TwitterTweet" label="Twitter tweet id" type="string" copied="true"/>
+    <field name="YoutubeVideo" label="YouTube Video Id" type="string" readonly="true" transient="true" related-field="Post.YoutubeVideo"/>
+  </model>
+  <model id="social.post" name="Social.Post" track_created="true" track_update="true">
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="EventTrack" label="Linked Event Track" type="Event.Track" copied="true" on-delete="Cascade"/>
+    <field name="Images" label="Attach Images" type="Ir.Attachment" collection="true" copied="true"/>
+    <field name="InstagramImage" label="Instagram Image" type="Ir.Attachment" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="AccountAlloweds" label="Allowed Accounts" type="Social.Account" collection="true" readonly="true" transient="true"/>
+    <field name="Accounts" label="Social Accounts" type="Social.Account" collection="true" copied="true"/>
+    <field name="LivePosts" label="Posts By Account" type="Social.LivePost" collection="true" readonly="true"/>
+    <field name="Medias" label="Media" type="Social.Media" collection="true" readonly="true"/>
+    <field name="UtmCampaign" label="Campaign" type="Utm.Campaign" copied="true" on-delete="Clear"/>
+    <field name="Source" label="Source" type="Utm.Source" required="true" readonly="true" on-delete="Restrict"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Social.SocialPostActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Social.SocialPostActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="CalendarDate" label="Calendar Date" type="datetime" copied="true"/>
+    <field name="ClickCount" label="Number of clicks" type="integer" readonly="true" transient="true"/>
+    <field name="DisplayFacebookPreview" label="Display Facebook Preview" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayInstagramPreview" label="Display Instagram Preview" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayLinkedinPreview" label="Display LinkedIn Preview" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayPushNotificationAttributes" label="Display Push Notifications Attributes" type="bool" readonly="true" transient="true"/>
+    <field name="DisplayPushNotificationsPreview" label="Display Push Notifications Preview" type="bool" readonly="true" transient="true"/>
+    <field name="Engagement" label="Engagement" type="integer" readonly="true" transient="true"/>
+    <field name="FacebookPreview" label="Facebook Preview" type="html" readonly="true" transient="true"/>
+    <field name="HasActiveAccounts" label="Are Accounts Available?" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasPostErrors" label="There are post errors on sub-posts" type="bool" readonly="true" transient="true"/>
+    <field name="HasTwitterAccounts" label="Display Twitter Preview" type="bool" readonly="true" transient="true"/>
+    <field name="ImageUrls" label="Images URLs" type="text" readonly="true" transient="true"/>
+    <field name="InstagramAccessToken" label="Access Token" type="string"/>
+    <field name="InstagramPreview" label="Instagram Preview" type="html" readonly="true" transient="true"/>
+    <field name="IsHatched" label="Hatched" type="bool" readonly="true" transient="true"/>
+    <field name="IsTwitterPostLimitExceed" label="Is Twitter Post Limit Exceed" type="bool" readonly="true" transient="true"/>
+    <field name="LeadsOpportunitiesCount" label="Leads / Opportunities count" type="integer" readonly="true" transient="true"/>
+    <field name="LinkedinPreview" label="LinkedIn Preview" type="html" readonly="true" transient="true"/>
+    <field name="LivePostsByMedia" label="Live Posts by Social Media" type="string" readonly="true" transient="true"/>
+    <field name="Message" label="Message" type="text" copied="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageLength" label="Message Length" type="integer" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Name" type="string" transient="true" related-field="Source.Name"/>
+    <field name="PostMethod" label="When" type="Social.SocialPostWhen" required="true" copied="true"/>
+    <field name="PublishedDate" label="Published Date" type="datetime" readonly="true" copied="true"/>
+    <field name="PushNotificationImage" label="Push Icon Image" type="binary" copied="true"/>
+    <field name="PushNotificationTargetUrl" label="Push Target URL" type="string" copied="true"/>
+    <field name="PushNotificationTitle" label="Push Notification Title" type="string" copied="true"/>
+    <field name="PushNotificationsPreview" label="Push Notifications Preview" type="html" readonly="true" transient="true"/>
+    <field name="SaleInvoicedAmount" label="Invoiced Amount" type="integer" readonly="true" transient="true"/>
+    <field name="SaleQuotationCount" label="Quotation Count" type="integer" readonly="true" transient="true"/>
+    <field name="ScheduledDate" label="Scheduled Date" type="datetime" copied="true"/>
+    <field name="State" label="Status" type="Social.SocialPostStatus" required="true" readonly="true"/>
+    <field name="StreamPostsCount" label="Feed Posts Count" type="integer" readonly="true" transient="true"/>
+    <field name="TwitterPostLimitMessage" label="Twitter Post Limit Message" type="string" readonly="true" transient="true"/>
+    <field name="TwitterPreview" label="Twitter Preview" type="html" readonly="true" transient="true"/>
+    <field name="UseLeads" label="Use Leads" type="bool" readonly="true" transient="true"/>
+    <field name="UseVisitorTimezone" label="Send at Visitors' Timezone" type="bool" copied="true"/>
+    <field name="VisitorDomain" label="Visitor Domain" type="string" copied="true"/>
+    <field name="YoutubeAccessToken" label="YouTube Access Token" type="string" readonly="true" transient="true"/>
+    <field name="YoutubeAccountsCount" label="Selected YouTube Accounts" type="integer" readonly="true" transient="true"/>
+    <field name="YoutubeAccountsOtherCount" label="Selected Other Accounts" type="integer" readonly="true" transient="true"/>
+    <field name="YoutubeDescription" label="YouTube Video Description" type="text" copied="true"/>
+    <field name="YoutubePreview" label="YouTube Preview" type="html" readonly="true" transient="true"/>
+    <field name="YoutubeThumbnailUrl" label="YouTube Thumbnail Url" type="string" readonly="true" transient="true"/>
+    <field name="YoutubeTitle" label="YouTube Video Title" type="string" copied="true"/>
+    <field name="YoutubeVideo" label="YouTube Video" type="string" copied="true"/>
+    <field name="YoutubeVideoCategory" label="YouTube Category Id" type="string" copied="true"/>
+    <field name="YoutubeVideo" label="YouTube Video Id" type="string" copied="true"/>
+    <field name="YoutubeVideoPrivacy" label="Video Privacy" type="Social.SocialPostVideoPrivacy" required="true" copied="true"/>
+    <field name="YoutubeVideoUrl" label="YouTube Video Url" type="string" readonly="true" transient="true"/>
+  </model>
+  <model id="social.stream.post" name="Social.StreamPost" track_created="true" track_update="true">
+    <field name="Company" label="Company" type="Res.Company" readonly="true" transient="true" related-field="Account.Company"/>
+    <field name="Account" label="Related social Account" type="Social.Account" readonly="true" transient="true" related-field="Stream.Account"/>
+    <field name="Stream" label="Social Stream" type="Social.Stream" copied="true" on-delete="Cascade"/>
+    <field name="StreamPostImages" label="Stream Post Images" type="Social.StreamPostImage" collection="true"/>
+    <field name="AuthorLink" label="Author Link" type="string" readonly="true" transient="true"/>
+    <field name="AuthorName" label="Author Name" type="string" copied="true"/>
+    <field name="FacebookAuthor" label="Facebook Author ID" type="string" copied="true"/>
+    <field name="FacebookCommentsCount" label="Comments" type="integer" copied="true"/>
+    <field name="FacebookIsEventPost" label="Is event post" type="bool" copied="true"/>
+    <field name="FacebookLikesCount" label="Likes" type="integer" copied="true"/>
+    <field name="FacebookPost" label="Facebook Post ID" type="string" indexed="true" copied="true"/>
+    <field name="FacebookReach" label="Reach" type="integer" copied="true"/>
+    <field name="FacebookSharesCount" label="Shares" type="integer" copied="true"/>
+    <field name="FacebookUserLikes" label="User Likes" type="bool" copied="true"/>
+    <field name="FormattedPublishedDate" label="Formatted Published Date" type="string" readonly="true" transient="true"/>
+    <field name="InstagramCommentsCount" label="Instagram Comments" type="integer" copied="true"/>
+    <field name="InstagramFacebookAuthor" label="Instagram Facebook Author ID" type="string" copied="true"/>
+    <field name="InstagramLikesCount" label="Instagram Likes" type="integer" copied="true"/>
+    <field name="InstagramPost" label="Instagram Post ID" type="string" indexed="true" copied="true"/>
+    <field name="InstagramPostLink" label="Instagram Post URL" type="string" copied="true"/>
+    <field name="IsAuthor" label="Is Author" type="bool" readonly="true" transient="true"/>
+    <field name="LinkDescription" label="Link Description" type="text" copied="true"/>
+    <field name="LinkImageUrl" label="Link Image URL" type="string" copied="true"/>
+    <field name="LinkTitle" label="Link Title" type="text" copied="true"/>
+    <field name="LinkUrl" label="Link URL" type="string" copied="true"/>
+    <field name="LinkedinAuthor" label="LinkedIn author ID" type="string" readonly="true" transient="true"/>
+    <field name="LinkedinAuthorImageUrl" label="LinkedIn author image URL" type="string" copied="true"/>
+    <field name="LinkedinAuthorUrn" label="LinkedIn author URN" type="string" copied="true"/>
+    <field name="LinkedinAuthorVanityName" label="LinkedIn Vanity Name" type="string" copied="true"/>
+    <field name="LinkedinCommentsCount" label="LinkedIn Comments" type="integer" copied="true"/>
+    <field name="LinkedinLikesCount" label="LinkedIn Likes" type="integer" copied="true"/>
+    <field name="LinkedinPostUrn" label="LinkedIn post URN" type="string" copied="true"/>
+    <field name="Message" label="Message" type="text" copied="true"/>
+    <field name="PostLink" label="Post Link" type="string" readonly="true" transient="true"/>
+    <field name="PublishedDate" label="Published date" type="datetime" copied="true"/>
+    <field name="StreamPostImageUrls" label="Stream Post Images URLs" type="text" readonly="true" transient="true"/>
+    <field name="TwitterAuthor" label="Twitter Author ID" type="string" copied="true"/>
+    <field name="TwitterCanRetweet" label="Twitter Can Retweet" type="bool" readonly="true" transient="true"/>
+    <field name="TwitterCommentsCount" label="Twitter Comments" type="integer" copied="true"/>
+    <field name="TwitterConversation" label="Twitter Conversation ID" type="string" copied="true"/>
+    <field name="TwitterLikesCount" label="Twitter Likes" type="integer" copied="true"/>
+    <field name="TwitterProfileImageUrl" label="Twitter Profile Image URL" type="string" copied="true"/>
+    <field name="TwitterQuotedTweetAuthorLink" label="Quoted tweet author Link" type="string" copied="true"/>
+    <field name="TwitterQuotedTweetAuthorName" label="Quoted tweet author Name" type="string" copied="true"/>
+    <field name="TwitterQuotedTweetIdStr" label="Twitter Quoted Tweet ID" type="string" copied="true"/>
+    <field name="TwitterQuotedTweetMessage" label="Quoted tweet message" type="text" copied="true"/>
+    <field name="TwitterQuotedTweetProfileImageUrl" label="Quoted tweet profile image URL" type="string" copied="true"/>
+    <field name="TwitterRetweetCount" label="Re-tweets" type="integer" copied="true"/>
+    <field name="TwitterRetweetedTweetIdStr" label="Twitter Retweet ID" type="string" copied="true"/>
+    <field name="TwitterScreenName" label="Twitter Screen Name" type="string" copied="true"/>
+    <field name="TwitterTweet" label="Twitter Tweet ID" type="string" indexed="true" copied="true"/>
+    <field name="TwitterUserLikes" label="Twitter User Likes" type="bool" copied="true"/>
+    <field name="YoutubeCommentsCount" label="YouTube Comments Count" type="integer" copied="true"/>
+    <field name="YoutubeDislikesCount" label="YouTube Dislikes" type="integer" copied="true"/>
+    <field name="YoutubeLikesCount" label="YouTube Likes" type="integer" copied="true"/>
+    <field name="YoutubeThumbnailUrl" label="YouTube Thumbnail Url" type="string" readonly="true" transient="true"/>
+    <field name="YoutubeVideo" label="YouTube Video ID" type="string" indexed="true" copied="true"/>
+    <field name="YoutubeViewsCount" label="YouTube Views" type="integer" copied="true"/>
+  </model>
+</buvi>

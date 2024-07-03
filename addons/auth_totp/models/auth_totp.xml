@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Auth.TotpDevice" name="TotpDevice" description="Authentication Device">
+        <field name="Name" type="string" label="Device Name" required="true" />
+        <field name="Key" type="string" label="Device Key" required="true" />
+        <field name="Scope" type="string" label="Scope" required="true" />
+        <field name="User" type="Core.User" label="User" required="true" />
+        <field name="CreateDate" type="datetime" label="Creation Date" required="true" />
+    </model>
+</buvi>

@@ -1,0 +1,16 @@
+xml
+<buvi>
+    <model id="AccountPayment.AccountPaymentMethodLine" name="AccountPaymentMethodLine" description="Account Payment Method Line">
+        <field name="PaymentProviderId" type="Payment.Provider" label="Payment Provider"
+               compute="ComputePaymentProviderId" store="true" readonly="false"
+               domain="[('Code', '=', Code)]" />
+        <field name="PaymentProviderState" type="Payment.ProviderState" 
+               related="PaymentProviderId.State" />
+    </model>
+
+    <optionset id="Payment.ProviderState" name="Payment Provider State">
+        <option value="Enabled" name="Enabled" />
+        <option value="Test" name="Test" />
+        <!-- Add other states as needed -->
+    </optionset>
+</buvi>

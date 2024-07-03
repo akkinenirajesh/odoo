@@ -1,0 +1,28 @@
+xml
+<buvi>
+    <model id="Account.AccountCashRounding" name="AccountCashRounding" description="Account Cash Rounding">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Rounding" type="float" label="Rounding Precision" required="true" default="0.01"
+            help="Represent the non-zero value smallest coinage (for example, 0.05)." />
+        <field name="Strategy" type="Account.CashRoundingStrategy" label="Rounding Strategy" default="AddInvoiceLine" required="true"
+            help="Specify which way will be used to round the invoice amount to the rounding precision" />
+        <field name="ProfitAccount" type="Account.Account" label="Profit Account"
+            help="Company-dependent account for rounding profits" />
+        <field name="LossAccount" type="Account.Account" label="Loss Account"
+            help="Company-dependent account for rounding losses" />
+        <field name="RoundingMethod" type="Account.RoundingMethod" label="Rounding Method" required="true" default="HalfUp"
+            help="The tie-breaking rule used for float rounding operations" />
+        <field name="Company" type="Core.Company" label="Company" />
+    </model>
+
+    <optionset id="Account.CashRoundingStrategy" name="Cash Rounding Strategy">
+        <option value="BiggestTax" name="Modify tax amount" />
+        <option value="AddInvoiceLine" name="Add a rounding line" />
+    </optionset>
+
+    <optionset id="Account.RoundingMethod" name="Rounding Method">
+        <option value="Up" name="UP" />
+        <option value="Down" name="DOWN" />
+        <option value="HalfUp" name="HALF-UP" />
+    </optionset>
+</buvi>

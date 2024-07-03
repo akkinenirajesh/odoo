@@ -1,0 +1,31 @@
+xml
+<buvi>
+    <model id="Account.AccountPaymentMethod" name="AccountPaymentMethod" description="Payment Methods">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" required="true" 
+            help="For internal identification" />
+        <field name="PaymentType" type="Account.PaymentType" required="true" />
+        <unique>
+            <field name="Code" />
+            <field name="PaymentType" />
+            <message>The combination code/payment type already exists!</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.PaymentType" name="Payment Type">
+        <option value="Inbound" name="Inbound" />
+        <option value="Outbound" name="Outbound" />
+    </optionset>
+
+    <model id="Account.AccountPaymentMethodLine" name="AccountPaymentMethodLine" description="Payment Methods">
+        <field name="Name" type="string" label="Name" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="PaymentMethod" type="Account.AccountPaymentMethod" label="Payment Method" required="true" />
+        <field name="PaymentAccount" type="Account.AccountAccount" label="Payment Account" />
+        <field name="Journal" type="Account.AccountJournal" label="Journal" />
+        <field name="Code" type="string" label="Code" />
+        <field name="PaymentType" type="Account.PaymentType" label="Payment Type" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="AvailablePaymentMethods" type="Account.AccountPaymentMethod" multiple="true" label="Available Payment Methods" />
+    </model>
+</buvi>

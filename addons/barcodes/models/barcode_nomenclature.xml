@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Barcodes.BarcodeNomenclature" name="BarcodeNomenclature" description="Barcode Nomenclature">
+        <field name="Name" type="string" label="Barcode Nomenclature" required="true" 
+               help="An internal identification of the barcode nomenclature" />
+        <field name="Rules" type="Barcodes.BarcodeRule" relation="many2many" 
+               help="The list of barcode rules" />
+        <field name="UpcEanConv" type="Barcodes.UpcEanConversion" required="true" default="Always"
+               label="UPC/EAN Conversion"
+               help="UPC Codes can be converted to EAN by prefixing them with a zero. This setting determines if a UPC/EAN barcode should be automatically converted in one way or another when trying to match a rule with the other encoding." />
+    </model>
+
+    <optionset id="Barcodes.UpcEanConversion" name="UPC EAN Conversion">
+        <option value="None" name="Never" />
+        <option value="Ean2Upc" name="EAN-13 to UPC-A" />
+        <option value="Upc2Ean" name="UPC-A to EAN-13" />
+        <option value="Always" name="Always" />
+    </optionset>
+</buvi>

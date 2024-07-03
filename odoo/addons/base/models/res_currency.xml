@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="res.country" name="Res.Country" track_created="true" track_update="true">
+    <field name="AddressView" label="Input View" type="Ir.UiView" copied="true" on-delete="Clear"/>
+    <field name="CountryGroups" label="Country Groups" type="Res.CountryGroup" collection="true" copied="true"/>
+    <field name="States" label="States" type="Res.CountryState" collection="true"/>
+    <field name="Currency" label="Currency" type="Res.Currency" copied="true" on-delete="Clear"/>
+    <field name="AddressFormat" label="Layout in Reports" type="text" copied="true"/>
+    <field name="Code" label="Country Code" type="string" required="true" copied="true"/>
+    <field name="EbayAvailable" label="Use on eBay" type="bool" copied="true"/>
+    <field name="ImageUrl" label="Flag" type="string" readonly="true" transient="true"/>
+    <field name="Intrastat" label="Intrastat member" type="bool" copied="true"/>
+    <field name="IsStripeSupportedCountry" label="Is Stripe Supported Country" type="bool" readonly="true" transient="true"/>
+    <field name="Name" label="Country Name" type="string" required="true" copied="true" translatable="true"/>
+    <field name="NamePosition" label="Customer Name Position" type="Res.CountryCustomerNamePosition" copied="true"/>
+    <field name="PhoneCode" label="Country Calling Code" type="integer" copied="true"/>
+    <field name="StateRequired" label="State Required" type="bool" copied="true"/>
+    <field name="VatLabel" label="Vat Label" type="string" copied="true" translatable="true"/>
+    <field name="ZipRequired" label="Zip Required" type="bool" copied="true"/>
+  </model>
+</buvi>

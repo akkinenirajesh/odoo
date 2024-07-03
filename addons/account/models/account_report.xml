@@ -1,0 +1,92 @@
+xml
+<buvi>
+    <model id="Account.AccountReport" name="AccountReport" description="Accounting Report">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Lines" type="Account.AccountReportLine" label="Lines" relation="one2many" inverse="ReportId" />
+        <field name="Columns" type="Account.AccountReportColumn" label="Columns" relation="one2many" inverse="ReportId" />
+        <field name="RootReport" type="Account.AccountReport" label="Root Report" help="The report this report is a variant of." />
+        <field name="VariantReports" type="Account.AccountReport" label="Variants" relation="one2many" inverse="RootReportId" />
+        <field name="SectionReports" type="Account.AccountReport" label="Sections" relation="many2many" />
+        <field name="SectionMainReports" type="Account.AccountReport" label="Section Of" relation="many2many" />
+        <field name="UseSections" type="bool" label="Composite Report" help="Create a structured report with multiple sections for convenient navigation and simultaneous printing." />
+        <field name="ChartTemplate" type="string" label="Chart of Accounts" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="OnlyTaxExigible" type="bool" label="Only Tax Exigible Lines" />
+        <field name="AvailabilityCondition" type="Account.AccountReportAvailability" label="Availability" />
+        <field name="LoadMoreLimit" type="integer" label="Load More Limit" />
+        <field name="SearchBar" type="bool" label="Search Bar" />
+        <field name="PrefixGroupsThreshold" type="integer" label="Prefix Groups Threshold" />
+        <field name="IntegerRounding" type="Account.AccountReportIntegerRounding" label="Integer Rounding" />
+        <field name="DefaultOpeningDateFilter" type="Account.AccountReportDefaultOpening" label="Default Opening" />
+        <field name="FilterMultiCompany" type="Account.AccountReportMultiCompany" label="Multi-Company" />
+        <field name="FilterDateRange" type="bool" label="Date Range" />
+        <field name="FilterShowDraft" type="bool" label="Draft Entries" />
+        <field name="FilterUnreconciled" type="bool" label="Unreconciled Entries" />
+        <field name="FilterUnfoldAll" type="bool" label="Unfold All" />
+        <field name="FilterHide0Lines" type="Account.AccountReportHide0Lines" label="Hide lines at 0" />
+        <field name="FilterPeriodComparison" type="bool" label="Period Comparison" />
+        <field name="FilterGrowthComparison" type="bool" label="Growth Comparison" />
+        <field name="FilterJournals" type="bool" label="Journals" />
+        <field name="FilterAnalytic" type="bool" label="Analytic Filter" />
+        <field name="FilterHierarchy" type="Account.AccountReportHierarchy" label="Account Groups" />
+        <field name="FilterAccountType" type="Account.AccountReportAccountType" label="Account Types" />
+        <field name="FilterPartner" type="bool" label="Partners" />
+        <field name="FilterFiscalPosition" type="bool" label="Filter Multivat" />
+        <field name="FilterAmlIrFilters" type="bool" label="Favorite Filters" help="If activated, user-defined filters on journal items can be selected on this report" />
+        <unique>
+            <field name="Name" />
+            <message>A report with the same name already exists.</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.AccountReportAvailability" name="Account Report Availability">
+        <option value="Country" name="Country Matches" />
+        <option value="Coa" name="Chart of Accounts Matches" />
+        <option value="Always" name="Always" />
+    </optionset>
+
+    <optionset id="Account.AccountReportIntegerRounding" name="Account Report Integer Rounding">
+        <option value="HalfUp" name="Half-up (away from 0)" />
+        <option value="Up" name="Up" />
+        <option value="Down" name="Down" />
+    </optionset>
+
+    <optionset id="Account.AccountReportDefaultOpening" name="Account Report Default Opening">
+        <option value="ThisYear" name="This Year" />
+        <option value="ThisQuarter" name="This Quarter" />
+        <option value="ThisMonth" name="This Month" />
+        <option value="Today" name="Today" />
+        <option value="PreviousMonth" name="Last Month" />
+        <option value="PreviousQuarter" name="Last Quarter" />
+        <option value="PreviousYear" name="Last Year" />
+        <option value="ThisTaxPeriod" name="This Tax Period" />
+        <option value="PreviousTaxPeriod" name="Last Tax Period" />
+    </optionset>
+
+    <optionset id="Account.AccountReportMultiCompany" name="Account Report Multi-Company">
+        <option value="Disabled" name="Disabled" />
+        <option value="Selector" name="Use Company Selector" />
+        <option value="TaxUnits" name="Use Tax Units" />
+    </optionset>
+
+    <optionset id="Account.AccountReportHide0Lines" name="Account Report Hide 0 Lines">
+        <option value="ByDefault" name="Enabled by Default" />
+        <option value="Optional" name="Optional" />
+        <option value="Never" name="Never" />
+    </optionset>
+
+    <optionset id="Account.AccountReportHierarchy" name="Account Report Hierarchy">
+        <option value="ByDefault" name="Enabled by Default" />
+        <option value="Optional" name="Optional" />
+        <option value="Never" name="Never" />
+    </optionset>
+
+    <optionset id="Account.AccountReportAccountType" name="Account Report Account Type">
+        <option value="Both" name="Payable and receivable" />
+        <option value="Payable" name="Payable" />
+        <option value="Receivable" name="Receivable" />
+        <option value="Disabled" name="Disabled" />
+    </optionset>
+</buvi>

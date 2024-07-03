@@ -1,0 +1,15 @@
+xml
+<buvi>
+    <model id="Crm.TeamMember" name="TeamMember" description="CRM Team Member">
+        <field name="AssignmentEnabled" type="bool" related="CrmTeam.AssignmentEnabled" />
+        <field name="AssignmentDomain" type="string" label="Assignment Domain" tracking="true" />
+        <field name="AssignmentOptout" type="bool" label="Skip auto assignment" />
+        <field name="AssignmentMax" type="integer" label="Average Leads Capacity (on 30 days)" default="30" />
+        <field name="LeadDayCount" type="integer" label="Leads (last 24h)" computed="true"
+            help="Lead assigned to this member this last day (lost one excluded)" />
+        <field name="LeadMonthCount" type="integer" label="Leads (30 days)" computed="true"
+            help="Lead assigned to this member those last 30 days" />
+        <field name="User" type="Core.User" />
+        <field name="CrmTeam" type="Crm.Team" />
+    </model>
+</buvi>

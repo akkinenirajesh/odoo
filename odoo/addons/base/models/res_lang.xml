@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="res.currency" name="Res.Currency" track_created="true" track_update="true">
+    <field name="Rates" label="Rates" type="Res.CurrencyRate" collection="true"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+    <field name="CurrencySubunitLabel" label="Currency Subunit" type="string" copied="true"/>
+    <field name="CurrencyUnitLabel" label="Currency Unit" type="string" copied="true"/>
+    <field name="Date" label="Date" type="date" readonly="true" transient="true"/>
+    <field name="DecimalPlaces" label="Decimal Places" type="integer" readonly="true"/>
+    <field name="DisplayRoundingWarning" label="Display Rounding Warning" type="bool" readonly="true" transient="true"/>
+    <field name="EbayAvailable" label="Use on eBay" type="bool" copied="true"/>
+    <field name="FiscalCountryCodes" label="Fiscal Country Codes" type="string" copied="true" transient="true"/>
+    <field name="FullName" label="Name" type="string" copied="true"/>
+    <field name="InverseRate" label="Inverse Rate" type="float" readonly="true" transient="true"/>
+    <field name="IsCurrentCompanyCurrency" label="Is Current Company Currency" type="bool" readonly="true" transient="true"/>
+    <field name="Name" label="Currency" type="string" required="true" copied="true"/>
+    <field name="Position" label="Symbol Position" type="Res.CurrencySymbolPosition" copied="true"/>
+    <field name="Rate" label="Current Rate" type="float" readonly="true" transient="true"/>
+    <field name="RateString" label="Rate String" type="string" readonly="true" transient="true"/>
+    <field name="Rounding" label="Rounding Factor" type="float" copied="true"/>
+    <field name="Symbol" label="Symbol" type="string" required="true" copied="true"/>
+  </model>
+</buvi>

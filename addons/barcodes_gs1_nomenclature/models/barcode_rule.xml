@@ -1,0 +1,43 @@
+xml
+<buvi>
+    <model id="Barcodes.BarcodeRule" name="BarcodeRule" description="Barcode Rule">
+        <field name="Encoding" type="Barcodes.BarcodeEncoding" />
+        <field name="Type" type="Barcodes.BarcodeRuleType" />
+        <field name="IsGs1Nomenclature" type="bool" label="Is GS1 Nomenclature" />
+        <field name="Gs1ContentType" type="Barcodes.Gs1ContentType" label="GS1 Content Type"
+            help="The GS1 content type defines what kind of data the rule will process the barcode as:
+            * Date: the barcode will be converted into a Odoo datetime;
+            * Measure: the barcode's value is related to a specific UoM;
+            * Numeric Identifier: fixed length barcode following a specific encoding;
+            * Alpha-Numeric Name: variable length barcode." />
+        <field name="Gs1DecimalUsage" type="bool" label="Decimal" 
+            help="If True, use the last digit of AI to determine where the first decimal is" />
+        <field name="AssociatedUom" type="Uom.Uom" label="Associated UoM" />
+        <field name="Pattern" type="string" label="Pattern" />
+        <field name="BarcodeNomenclature" type="Barcodes.BarcodeNomenclature" label="Barcode Nomenclature" />
+    </model>
+
+    <optionset id="Barcodes.BarcodeEncoding" name="Barcode Encoding">
+        <option value="Any" name="Any" />
+        <option value="Gs1128" name="GS1-128" />
+    </optionset>
+
+    <optionset id="Barcodes.BarcodeRuleType" name="Barcode Rule Type">
+        <option value="Quantity" name="Quantity" />
+        <option value="Location" name="Location" />
+        <option value="LocationDest" name="Destination location" />
+        <option value="Lot" name="Lot number" />
+        <option value="Package" name="Package" />
+        <option value="UseDate" name="Best before Date" />
+        <option value="ExpirationDate" name="Expiration Date" />
+        <option value="PackageType" name="Package Type" />
+        <option value="PackDate" name="Pack Date" />
+    </optionset>
+
+    <optionset id="Barcodes.Gs1ContentType" name="GS1 Content Type">
+        <option value="Date" name="Date" />
+        <option value="Measure" name="Measure" />
+        <option value="Identifier" name="Numeric Identifier" />
+        <option value="Alpha" name="Alpha-Numeric Name" />
+    </optionset>
+</buvi>

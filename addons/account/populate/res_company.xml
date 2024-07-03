@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="Name" type="string" label="Company Name" required="true" />
+        <field name="CountryId" type="Core.Country" label="Country" />
+        <!-- Add other necessary fields for ResCompany -->
+    </model>
+</buvi>

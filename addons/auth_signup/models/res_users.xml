@@ -1,0 +1,22 @@
+xml
+<buvi>
+    <model id="Auth.ResUsers" name="ResUsers" description="User">
+        <field name="State" type="Auth.ResUsersState" compute="ComputeState" search="SearchState" label="Status" />
+        <field name="LoginDate" type="datetime" />
+        <field name="Email" type="string" />
+        <field name="Login" type="string" required="true" />
+        <field name="Name" type="string" required="true" />
+        <field name="Partner" type="Core.Partner" />
+        <field name="Company" type="Core.Company" />
+        <field name="Companies" type="Core.Company" multiple="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="SignupToken" type="string" />
+        <field name="SignupType" type="string" />
+        <field name="SignupExpiration" type="datetime" />
+    </model>
+
+    <optionset id="Auth.ResUsersState" name="User Status">
+        <option value="New" name="Never Connected" />
+        <option value="Active" name="Confirmed" />
+    </optionset>
+</buvi>

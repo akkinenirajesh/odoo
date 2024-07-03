@@ -1,0 +1,13 @@
+xml
+<buvi>
+    <model id="Auth.ResUsers" name="ResUsers" description="User">
+        <field name="OAuthProviderId" type="Auth.AuthOAuthProvider" label="OAuth Provider" />
+        <field name="OAuthUid" type="string" label="OAuth User ID" help="OAuth Provider user_id" />
+        <field name="OAuthAccessToken" type="string" label="OAuth Access Token" readonly="true" />
+        <unique>
+            <field name="OAuthProviderId" />
+            <field name="OAuthUid" />
+            <message>OAuth UID must be unique per provider</message>
+        </unique>
+    </model>
+</buvi>

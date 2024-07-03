@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Crm.CalendarEvent" name="CalendarEvent" description="Calendar Event">
+        <field name="OpportunityId" type="Crm.Lead" label="Opportunity" 
+               domain="[('Type', '=', 'opportunity')]" index="true" ondelete="set null" />
+    </model>
+</buvi>

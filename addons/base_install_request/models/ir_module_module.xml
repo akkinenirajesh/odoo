@@ -1,0 +1,7 @@
+xml
+<buvi>
+    <model id="Base.IrModuleModule" name="IrModuleModule" description="Ir Module Module">
+        <field name="ShortDesc" type="string" label="Short Description" />
+        <!-- Add other fields as needed -->
+    </model>
+</buvi>

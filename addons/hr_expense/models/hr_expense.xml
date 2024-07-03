@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="hr.employee" name="Hr.Employee" track_created="true" track_update="true">
+    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="DocumentsShare" label="Documents Share" type="Documents.Share" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Cars" label="Vehicles (private)" type="Fleet.Vehicle" collection="true"/>
+    <field name="Badges" label="Employee Badges" type="Gamification.BadgeUser" collection="true" readonly="true" transient="true"/>
+    <field name="DirectBadges" label="Direct Badge" type="Gamification.BadgeUser" collection="true"/>
+    <field name="Goals" label="Employee HR Goals" type="Gamification.Goal" collection="true" readonly="true" transient="true"/>
+    <field name="Applicant" label="Applicant" type="Hr.Applicant" collection="true"/>
+    <field name="Appraisals" label="Appraisal" type="Hr.Appraisal" collection="true"/>
+    <field name="LastAppraisal" label="Last Appraisal" type="Hr.Appraisal" copied="true" on-delete="Clear"/>
+    <field name="Attendances" label="Attendance" type="Hr.Attendance" collection="true"/>
+    <field name="LastAttendance" label="Last Attendance" type="Hr.Attendance" readonly="true" on-delete="Clear"/>
+    <field name="Overtimes" label="Overtime" type="Hr.AttendanceOvertime" collection="true"/>
+    <field name="Contract" label="Current Contract" type="Hr.Contract" on-delete="Clear"/>
+    <field name="Contracts" label="Employee Contracts" type="Hr.Contract" collection="true"/>
+    <field name="Department" label="Department" type="Hr.Department" copied="true" on-delete="Clear"/>
+    <field name="DepartureReason" label="Departure Reason" type="Hr.DepartureReason" on-delete="Restrict"/>
+    <field name="Childs" label="Direct subordinates" type="Hr.Employee" collection="true"/>
+    <field name="Coach" label="Coach" type="Hr.Employee" copied="true" on-delete="Clear"/>
+    <field name="Parent" label="Manager" type="Hr.Employee" copied="true" on-delete="Clear"/>
+    <field name="Subordinates" label="Subordinates" type="Hr.Employee" collection="true" readonly="true" transient="true"/>
+    <field name="Categorys" label="Tags" type="Hr.EmployeeCategory" collection="true" copied="true"/>
+    <field name="EmployeeSkills" label="Skills" type="Hr.EmployeeSkill" collection="true"/>
+    <field name="Job" label="Job Position" type="Hr.Job" copied="true" on-delete="Clear"/>
+    <field name="CurrentLeave" label="Current Time Off Type" type="Hr.LeaveType" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Slips" label="Payslips" type="Hr.Payslip" collection="true" readonly="true"/>
+    <field name="ResumeLines" label="Resume lines" type="Hr.ResumeLine" collection="true"/>
+    <field name="SalaryAttachments" label="Salary Attachments" type="Hr.SalaryAttachment" collection="true" copied="true"/>
+    <field name="Skills" label="Skill" type="Hr.Skill" collection="true" readonly="true"/>
+    <field name="ExceptionalLocation" label="Current" type="Hr.WorkLocation" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="FridayLocation" label="Friday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="MondayLocation" label="Monday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="SaturdayLocation" label="Saturday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="SundayLocation" label="Sunday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="ThursdayLocation" label="Thursday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="TuesdayLocation" label="Tuesday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="WednesdayLocation" label="Wednesday" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="WorkLocation" label="Work Location" type="Hr.WorkLocation" copied="true" on-delete="Clear"/>
+    <field name="MessageMainAttachment" label="Main Attachment" type="Ir.Attachment" on-delete="Clear"/>
+    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
+    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
+    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
+    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
+    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
+    <field name="Equipments" label="Equipment" type="Maintenance.Equipment" collection="true"/>
+    <field name="DefaultPlanningRole" label="Default Role" type="Planning.Role" transient="true" related-field="Resource.DefaultRole"/>
+    <field name="PlanningRoles" label="Roles" type="Planning.Role" collection="true" transient="true" related-field="Resource.Roles"/>
+    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
+    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" related-field="Resource.Company"/>
+    <field name="CompanyCountry" label="Company Country" type="Res.Country" readonly="true" transient="true" related-field="Company.Country"/>
+    <field name="Country" label="Nationality (Country)" type="Res.Country" copied="true" on-delete="Clear"/>
+    <field name="CountryOfBirth" label="Country of Birth" type="Res.Country" copied="true" on-delete="Clear"/>
+    <field name="PrivateCountry" label="Private Country" type="Res.Country" copied="true" on-delete="Clear"/>
+    <field name="PrivateState" label="Private State" type="Res.CountryState" copied="true" on-delete="Clear"/>
+    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Company.Currency"/>
+    <field name="Address" label="Work Address" type="Res.Partner" copied="true" on-delete="Clear"/>
+    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
+    <field name="RelatedPartner" label="Related Partner" type="Res.Partner" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="UserPartner" label="User's partner" type="Res.Partner" readonly="true" transient="true" related-field="User.Partner"/>
+    <field name="WorkContact" label="Work Contact" type="Res.Partner" on-delete="Clear"/>
+    <field name="BankAccount" label="Bank Account Number" type="Res.PartnerBank" copied="true" on-delete="Clear"/>
+    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="AttendanceManager" label="Attendance Manager" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="ExpenseManager" label="Expense" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="LeaveManager" label="Time Off" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="ParentUser" label="Parent User" type="Res.Users" readonly="true" transient="true" related-field="Parent.User"/>
+    <field name="TimesheetManager" label="Timesheet" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="User" label="User" type="Res.Users" related-field="Resource.User" on-delete="Restrict"/>
+    <field name="ResourceCalendar" label="Working Hours" type="Resource.Calendar" indexed="true" related-field="Resource.Calendar"/>
+    <field name="Resource" label="Resource" type="Resource.Resource" required="true" indexed="true" copied="true" on-delete="Restrict"/>
+    <field name="SignRequests" label="Requested Signatures" type="Sign.Request" collection="true" copied="true"/>
+    <field name="SubscribedCourses" label="eLearning Courses" type="Slide.Channel" collection="true" readonly="true" transient="true" related-field="UserPartner.SlideChannels"/>
+    <field name="Active" label="Active" type="bool" related-field="Resource.Active"/>
+    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Hr.EmployeeActivityExceptionDecoration" readonly="true" transient="true"/>
+    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
+    <field name="ActivityState" label="Activity State" type="Hr.EmployeeActivityState" readonly="true" transient="true"/>
+    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
+    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
+    <field name="AdditionalNote" label="Additional Note" type="text" copied="true"/>
+    <field name="AllocationCount" label="Total number of days allocated." type="float" readonly="true" transient="true"/>
+    <field name="AllocationDisplay" label="Allocation Display" type="string" readonly="true" transient="true"/>
+    <field name="AllocationRemainingDisplay" label="Allocation Remaining Display" type="string" readonly="true" transient="true"/>
+    <field name="AllocationsCount" label="Total number of allocations" type="integer" readonly="true" transient="true"/>
+    <field name="AppraisalCount" label="Appraisal Count" type="integer" readonly="true"/>
+    <field name="AttendanceState" label="Attendance Status" type="Hr.EmployeeAttendanceStatus" readonly="true" transient="true"/>
+    <field name="Avatar1024" label="Avatar 1024" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar128" label="Avatar 128" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar1920" label="Avatar" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar256" label="Avatar 256" type="binary" readonly="true" transient="true"/>
+    <field name="Avatar512" label="Avatar 512" type="binary" readonly="true" transient="true"/>
+    <field name="Barcode" label="Badge ID" type="string"/>
+    <field name="BillableTimeTarget" label="Billing Time Target" type="float" copied="true"/>
+    <field name="Birthday" label="Date of Birth" type="date" copied="true"/>
+    <field name="CalendarMismatch" label="Calendar Mismatch" type="bool" readonly="true" transient="true" related-field="Contract.CalendarMismatch"/>
+    <field name="CanRequestAppraisal" label="Can Request Appraisal" type="bool" readonly="true" transient="true"/>
+    <field name="Certificate" label="Certificate Level" type="Hr.EmployeeCertificateLevel" copied="true"/>
+    <field name="ChildAllCount" label="Indirect Subordinates Count" type="integer" readonly="true" transient="true"/>
+    <field name="ChildCount" label="Direct Subordinates Count" type="integer" readonly="true" transient="true"/>
+    <field name="Children" label="Number of Dependent Children" type="integer" copied="true"/>
+    <field name="Color" label="Color Index" type="integer" copied="true"/>
+    <field name="CompanyCountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="CompanyCountry.Code"/>
+    <field name="ContractWarning" label="Contract Warning" type="bool" readonly="true"/>
+    <field name="ContractsCount" label="Contract Count" type="integer" readonly="true" transient="true"/>
+    <field name="CoursesCompletionText" label="Courses Completion Text" type="string" readonly="true" transient="true"/>
+    <field name="CurrentLeaveState" label="Current Time Off Status" type="Hr.EmployeeCurrentTimeOffStatus" readonly="true" transient="true"/>
+    <field name="DepartmentColor" label="Department Color" type="integer" readonly="true" transient="true" related-field="Department.Color"/>
+    <field name="DepartureDate" label="Departure Date" type="date"/>
+    <field name="DepartureDescription" label="Additional Information" type="html"/>
+    <field name="DocumentCount" label="Document Count" type="integer" readonly="true" transient="true"/>
+    <field name="DrivingLicense" label="Driving License" type="binary" copied="true"/>
+    <field name="Email" label="Email" type="string" readonly="true" transient="true" related-field="User.Email"/>
+    <field name="EmailSent" label="Email Sent" type="bool" copied="true"/>
+    <field name="EmergencyContact" label="Contact Name" type="string" copied="true"/>
+    <field name="EmergencyPhone" label="Contact Phone" type="string" copied="true"/>
+    <field name="EmployeeCarsCount" label="Cars" type="integer" readonly="true" transient="true"/>
+    <field name="EmployeeProperties" label="Properties" type="properties"/>
+    <field name="EmployeeToken" label="Security Token" type="string" readonly="true"/>
+    <field name="EmployeeType" label="Employee Type" type="Hr.EmployeeEmployeeType" required="true" copied="true"/>
+    <field name="EquipmentCount" label="Equipment Count" type="integer" readonly="true" transient="true"/>
+    <field name="FilterForExpense" label="Filter For Expense" type="bool" copied="true" transient="true"/>
+    <field name="FirstContractDate" label="First Contract Date" type="date" readonly="true"/>
+    <field name="Gender" label="Gender" type="Hr.EmployeeGender" copied="true"/>
+    <field name="GoalsCount" label="Goals Count" type="integer" readonly="true" transient="true"/>
+    <field name="HasBadges" label="Has Badges" type="bool" readonly="true" transient="true"/>
+    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
+    <field name="HasSlots" label="Has Slots" type="bool" readonly="true" transient="true"/>
+    <field name="HasSubscribedCourses" label="Has Subscribed Courses" type="bool" readonly="true" transient="true"/>
+    <field name="HasTimesheet" label="Has Timesheet" type="bool" readonly="true" transient="true"/>
+    <field name="HasWorkEntries" label="Has Work Entries" type="bool" readonly="true" transient="true"/>
+    <field name="HasWorkPermit" label="Work Permit" type="binary" copied="true"/>
+    <field name="HourlyCost" label="Hourly Cost" type="monetary" copied="true"/>
+    <field name="HoursLastMonth" label="Hours Last Month" type="float" readonly="true" transient="true"/>
+    <field name="HoursLastMonthDisplay" label="Hours Last Month Display" type="string" readonly="true" transient="true"/>
+    <field name="HoursPreviouslyToday" label="Hours Previously Today" type="float" readonly="true" transient="true"/>
+    <field name="HoursToday" label="Hours Today" type="float" readonly="true" transient="true"/>
+    <field name="HrIconDisplay" label="Hr Icon Display" type="Hr.EmployeeHrIconDisplay" readonly="true" transient="true"/>
+    <field name="HrPresenceState" label="Hr Presence State" type="Hr.EmployeeHrPresenceState" readonly="true" transient="true"/>
+    <field name="HrPresenceStateDisplay" label="Hr Presence State Display" type="Hr.EmployeeHrPresenceStateDisplay" copied="true"/>
+    <field name="IdCard" label="ID Card Copy" type="binary" copied="true"/>
+    <field name="Identification" label="Identification No" type="string" copied="true"/>
+    <field name="ImStatus" label="IM Status" type="string" readonly="true" transient="true" related-field="User.ImStatus"/>
+    <field name="Image1024" label="Image 1024" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image128" label="Image 128" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image1920" label="Image" type="binary" copied="true"/>
+    <field name="Image256" label="Image 256" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="Image512" label="Image 512" type="binary" readonly="true" related-field="Image1920"/>
+    <field name="InternetInvoice" label="Internet Subscription Invoice" type="binary" copied="true"/>
+    <field name="IpConnected" label="Ip Connected" type="bool" copied="true"/>
+    <field name="IsAbsent" label="Absent Today" type="bool" readonly="true" transient="true"/>
+    <field name="IsNonResident" label="Non-resident" type="bool" copied="true"/>
+    <field name="IsSubordinate" label="Is Subordinate" type="bool" readonly="true" transient="true"/>
+    <field name="JobTitle" label="Job Title" type="string" copied="true"/>
+    <field name="KmHomeWork" label="Home-Work Distance" type="integer" copied="true"/>
+    <field name="L10NInEsicNumber" label="ESIC Number" type="string" copied="true"/>
+    <field name="L10NInPan" label="PAN" type="string" copied="true"/>
+    <field name="L10NInRelationship" label="Relationship" type="string" copied="true"/>
+    <field name="L10NInResidingChildHostel" label="Child Residing in hostel" type="integer" copied="true"/>
+    <field name="L10NInUan" label="UAN" type="string" copied="true"/>
+    <field name="LastActivity" label="Last Activity" type="date" readonly="true" transient="true"/>
+    <field name="LastActivityTime" label="Last Activity Time" type="string" readonly="true" transient="true"/>
+    <field name="LastAppraisalDate" label="Last Appraisal Date" type="date" copied="true"/>
+    <field name="LastAttendanceWorkedHours" label="Last Attendance Worked Hours" type="float" readonly="true" transient="true"/>
+    <field name="LastCheckIn" label="Check In" type="datetime" readonly="true" related-field="LastAttendance.CheckIn"/>
+    <field name="LastCheckOut" label="Check Out" type="datetime" readonly="true" related-field="LastAttendance.CheckOut"/>
+    <field name="LastValidatedTimesheetDate" label="Last Validated Timesheet Date" type="date" copied="true"/>
+    <field name="LeaveDateFrom" label="From Date" type="date" readonly="true" transient="true"/>
+    <field name="LeaveDateTo" label="To Date" type="date" readonly="true" transient="true"/>
+    <field name="LeavesCount" label="Number of Time Off" type="float" readonly="true" transient="true"/>
+    <field name="LicensePlate" label="License Plate" type="string" readonly="true" transient="true"/>
+    <field name="ManuallySetPresent" label="Manually Set Present" type="bool" copied="true"/>
+    <field name="MemberOfDepartment" label="Member of department" type="bool" readonly="true" transient="true"/>
+    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
+    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
+    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
+    <field name="MobileInvoice" label="Mobile Subscription Invoice" type="binary" copied="true"/>
+    <field name="MobilePhone" label="Work Mobile" type="string"/>
+    <field name="MobilityCard" label="Mobility Card" type="string" copied="true"/>
+    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
+    <field name="Name" label="Employee Name" type="string" related-field="Resource.Name"/>
+    <field name="NameWorkLocationDisplay" label="Name Work Location Display" type="string" readonly="true" transient="true"/>
+    <field name="NewlyHired" label="Newly Hired" type="bool" readonly="true" transient="true"/>
+    <field name="NextAppraisalDate" label="Next Appraisal Date" type="date" copied="true"/>
+    <field name="Notes" label="Notes" type="text" copied="true"/>
+    <field name="OngoingAppraisalCount" label="Ongoing Appraisal Count" type="integer" readonly="true"/>
+    <field name="Passport" label="Passport No" type="string" copied="true"/>
+    <field name="PayslipCount" label="Payslip Count" type="integer" readonly="true" transient="true"/>
+    <field name="PermitNo" label="Work Permit No" type="string" copied="true"/>
+    <field name="Phone" label="Phone" type="string" readonly="true" transient="true" related-field="User.Phone"/>
+    <field name="Pin" label="PIN" type="string"/>
+    <field name="PlaceOfBirth" label="Place of Birth" type="string" copied="true"/>
+    <field name="PrivateCarPlate" label="Private Car Plate" type="string" copied="true"/>
+    <field name="PrivateCity" label="Private City" type="string" copied="true"/>
+    <field name="PrivateEmail" label="Private Email" type="string" copied="true"/>
+    <field name="PrivatePhone" label="Private Phone" type="string" copied="true"/>
+    <field name="PrivateStreet" label="Private Street" type="string" copied="true"/>
+    <field name="PrivateStreet2" label="Private Street2" type="string" copied="true"/>
+    <field name="PrivateZip" label="Private Zip" type="string" copied="true"/>
+    <field name="RegistrationNumber" label="Registration Number of the Employee" type="string"/>
+    <field name="RelatedPartnersCount" label="Related Partners Count" type="integer" readonly="true" transient="true"/>
+    <field name="RemainingLeaves" label="Remaining Paid Time Off" type="float" readonly="true" transient="true"/>
+    <field name="SalaryAttachmentCount" label="Salary Attachment Count" type="integer" readonly="true" transient="true"/>
+    <field name="Share" label="Share User" type="bool" readonly="true" transient="true" related-field="User.Share"/>
+    <field name="ShowHrIconDisplay" label="Show Hr Icon Display" type="bool" readonly="true" transient="true"/>
+    <field name="ShowLeaves" label="Able to see Remaining Time Off" type="bool" readonly="true" transient="true"/>
+    <field name="SignRequestCount" label="Sign Request Count" type="integer" readonly="true" transient="true"/>
+    <field name="SimCard" label="SIM Card Copy" type="binary" copied="true"/>
+    <field name="Sinid" label="SIN No" type="string" copied="true"/>
+    <field name="SpouseBirthdate" label="Spouse Birthdate" type="date" copied="true"/>
+    <field name="SpouseCompleteName" label="Spouse Complete Name" type="string" copied="true"/>
+    <field name="Ssnid" label="SSN No" type="string" copied="true"/>
+    <field name="StudyField" label="Field of Study" type="string" copied="true"/>
+    <field name="StudySchool" label="School" type="string" copied="true"/>
+    <field name="TodayLocationName" label="Today Location Name" type="string" copied="true"/>
+    <field name="TotalOvertime" label="Total Overtime" type="float" readonly="true" transient="true"/>
+    <field name="UncompleteGoalsCount" label="Uncomplete Goals Count" type="integer" readonly="true" transient="true"/>
+    <field name="Vehicle" label="Company Vehicle" type="string" copied="true"/>
+    <field name="VisaExpire" label="Visa Expiration Date" type="date" copied="true"/>
+    <field name="VisaNo" label="Visa No" type="string" copied="true"/>
+    <field name="WorkEmail" label="Work Email" type="string"/>
+    <field name="WorkPermitExpirationDate" label="Work Permit Expiration Date" type="date" copied="true"/>
+    <field name="WorkPermitName" label="work_permit_name" type="string" readonly="true" transient="true"/>
+    <field name="WorkPermitScheduledActivity" label="Work Permit Scheduled Activity" type="bool" copied="true"/>
+    <field name="WorkPhone" label="Work Phone" type="string" copied="true"/>
+  </model>
+  <model id="hr.holidays.summary.employee" name="Hr.HolidaysSummaryEmployee" track_created="true" track_update="true">
+    <field name="Emp" label="Employee(s)" type="Hr.Employee" collection="true" copied="true"/>
+    <field name="DateFrom" label="From" type="date" required="true" copied="true"/>
+    <field name="HolidayType" label="Select Time Off Type" type="Hr.HrTimeOffSummaryReportByEmployeeSelectTimeOffType" required="true" copied="true"/>
+  </model>
+  <model id="hr.user.work.entry.employee" name="Hr.UserWorkEntryEmployee" track_created="true" track_update="true">
+    <field name="Employee" label="Employee" type="Hr.Employee" required="true" copied="true" on-delete="Restrict"/>
+    <field name="User" label="Me" type="Res.Users" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Active" label="Active" type="bool" copied="true"/>
+  </model>
+  <model id="change.password.user" name="Change.PasswordUser" track_created="true" track_update="true">
+    <field name="Wizard" label="Wizard" type="Change.PasswordWizard" required="true" copied="true" on-delete="Cascade"/>
+    <field name="User" label="User" type="Res.Users" required="true" copied="true" on-delete="Cascade"/>
+    <field name="NewPasswd" label="New Password" type="string" copied="true"/>
+    <field name="UserLogin" label="User Login" type="string" readonly="true" copied="true"/>
+  </model>
+  <model id="report.project.task.user" name="Report.ProjectTaskUser">
+    <field name="UserSkills" label="Skills" type="Hr.EmployeeSkill" collection="true" readonly="true" transient="true" related-field="Users.EmployeeSkills"/>
+    <field name="Milestone" label="Milestone" type="Project.Milestone" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Project" label="Project" type="Project.Project" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Tags" label="Tags" type="Project.Tags" collection="true" readonly="true" copied="true"/>
+    <field name="Dependents" label="Block" type="Project.Task" collection="true" readonly="true" copied="true"/>
+    <field name="Parent" label="Parent Task" type="Project.Task" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Task" label="Tasks" type="Project.Task" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="PersonalStageTypes" label="Personal Stage" type="Project.TaskType" collection="true" readonly="true" copied="true"/>
+    <field name="Stage" label="Stage" type="Project.TaskType" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Company" label="Company" type="Res.Company" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Partner" label="Customer" type="Res.Partner" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Users" label="Assignees" type="Res.Users" collection="true" readonly="true" copied="true"/>
+    <field name="SaleOrder" label="Sales Order" type="Sale.Order" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="SaleLine" label="Sales Order Item" type="Sale.OrderLine" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="WorksheetTemplate" label="Worksheet Template" type="Worksheet.Template" readonly="true" copied="true" on-delete="Clear"/>
+    <field name="Active" label="Active" type="bool" readonly="true" copied="true"/>
+    <field name="AllocatedHours" label="Allocated Time" type="float" readonly="true" copied="true"/>
+    <field name="CreateDate" label="Create Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DateAssign" label="Assignment Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DateDeadline" label="Deadline" type="datetime" readonly="true" copied="true"/>
+    <field name="DateEnd" label="Ending Date" type="datetime" readonly="true" copied="true"/>
+    <field name="DateLastStageUpdate" label="Last Stage Update" type="datetime" readonly="true" copied="true"/>
+    <field name="DelayEndingsDays" label="Days to Deadline" type="float" readonly="true" copied="true"/>
+    <field name="Description" label="Description" type="text" readonly="true" copied="true"/>
+    <field name="EffectiveHours" label="Hours Spent" type="float" readonly="true" copied="true"/>
+    <field name="IsClosed" label="Closed state" type="bool" readonly="true" copied="true"/>
+    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true" related-field="Task.MessageIsFollower"/>
+    <field name="Name" label="Task" type="string" readonly="true" copied="true"/>
+    <field name="Nbr" label="# of Tasks" type="integer" readonly="true" copied="true"/>
+    <field name="Overtime" label="Overtime" type="float" readonly="true" copied="true"/>
+    <field name="PlannedDateBegin" label="Start date" type="datetime" readonly="true" copied="true"/>
+    <field name="Priority" label="Priority" type="Report.TasksAnalysisPriority" readonly="true" copied="true"/>
+    <field name="Progress" label="Progress" type="float" readonly="true" copied="true"/>
+    <field name="RatingAvg" label="Average Rating (1-5)" type="float" readonly="true" copied="true"/>
+    <field name="RatingLastValue" label="Last Rating (1-5)" type="float" readonly="true" copied="true"/>
+    <field name="RemainingHours" label="Remaining Hours" type="float" readonly="true" copied="true"/>
+    <field name="RemainingHoursPercentage" label="Remaining Hours Percentage" type="float" readonly="true" copied="true"/>
+    <field name="RemainingHoursSo" label="Remaining Hours on SO" type="float" readonly="true" copied="true"/>
+    <field name="State" label="State" type="Report.TasksAnalysisState" readonly="true"/>
+    <field name="SubtaskEffectiveHours" label="Hours Spent on Sub-Tasks" type="float" copied="true"/>
+    <field name="TotalHoursSpent" label="Total Hours Spent" type="float" copied="true"/>
+    <field name="WorkingDaysClose" label="Working Days to Close" type="float" readonly="true" copied="true"/>
+    <field name="WorkingDaysOpen" label="Working Days to Assign" type="float" readonly="true" copied="true"/>
+    <field name="WorkingHoursClose" label="Working Hours to Close" type="float" readonly="true" copied="true"/>
+    <field name="WorkingHoursOpen" label="Working Hours to Assign" type="float" readonly="true" copied="true"/>
+  </model>
+  <model id="gamification.badge.user" name="Gamification.BadgeUser" track_created="true" track_update="true">
+    <field name="Badge" label="Badge" type="Gamification.Badge" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="Challenge" label="Challenge" type="Gamification.Challenge" copied="true" on-delete="Clear"/>
+    <field name="Employee" label="Employee" type="Hr.Employee" indexed="true" copied="true" on-delete="Clear"/>
+    <field name="Sender" label="Sender" type="Res.Users" copied="true" on-delete="Clear"/>
+    <field name="User" label="User" type="Res.Users" required="true" indexed="true" copied="true" on-delete="Cascade"/>
+    <field name="BadgeName" label="Badge Name" type="string" transient="true" translatable="true" related-field="Badge.Name"/>
+    <field name="Comment" label="Comment" type="text" copied="true"/>
+  </model>
+  <model id="portal.wizard.user" name="Portal.WizardUser" track_created="true" track_update="true">
+    <field name="Wizard" label="Wizard" type="Portal.Wizard" required="true" copied="true" on-delete="Cascade"/>
+    <field name="Partner" label="Contact" type="Res.Partner" required="true" readonly="true" copied="true" on-delete="Cascade"/>
+    <field name="User" label="User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
+    <field name="Email" label="Email" type="string" copied="true"/>
+    <field name="EmailState" label="Status" type="Portal.PortalUserConfigStatus" readonly="true" transient="true"/>
+    <field name="IsInternal" label="Is Internal" type="bool" readonly="true" transient="true"/>
+    <field name="IsPortal" label="Is Portal" type="bool" readonly="true" transient="true"/>
+    <field name="LoginDate" label="Latest Authentication" type="datetime" readonly="true" transient="true" related-field="User.LoginDate"/>
+  </model>
+</buvi>

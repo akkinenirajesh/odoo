@@ -1,0 +1,44 @@
+xml
+<buvi>
+    <model id="Account.AccountInvoiceReport" name="AccountInvoiceReport" description="Invoices Statistics">
+        <field name="MoveId" type="Account.AccountMove" readonly="true" />
+        <field name="JournalId" type="Account.AccountJournal" label="Journal" readonly="true" />
+        <field name="CompanyId" type="Core.Company" label="Company" readonly="true" />
+        <field name="CompanyCurrencyId" type="Core.Currency" label="Company Currency" readonly="true" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" readonly="true" />
+        <field name="CommercialPartnerId" type="Core.Partner" label="Main Partner" />
+        <field name="CountryId" type="Core.Country" label="Country" />
+        <field name="InvoiceUserId" type="Core.User" label="Salesperson" readonly="true" />
+        <field name="MoveType" type="Account.MoveType" readonly="true" />
+        <field name="State" type="Account.InvoiceStatus" label="Invoice Status" readonly="true" />
+        <field name="PaymentState" type="Account.PaymentState" label="Payment Status" readonly="true" />
+        <field name="FiscalPositionId" type="Account.FiscalPosition" label="Fiscal Position" readonly="true" />
+        <field name="InvoiceDate" type="date" label="Invoice Date" readonly="true" />
+        <field name="Quantity" type="decimal" label="Product Quantity" readonly="true" />
+        <field name="ProductId" type="Product.Product" label="Product" readonly="true" />
+        <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" readonly="true" />
+        <field name="ProductCategId" type="Product.Category" label="Product Category" readonly="true" />
+        <field name="InvoiceDateDue" type="date" label="Due Date" readonly="true" />
+        <field name="AccountId" type="Account.Account" label="Revenue/Expense Account" readonly="true" />
+        <field name="PriceSubtotalCurrency" type="decimal" label="Untaxed Amount in Currency" readonly="true" />
+        <field name="PriceSubtotal" type="decimal" label="Untaxed Amount" readonly="true" />
+        <field name="PriceTotal" type="decimal" label="Total in Currency" readonly="true" />
+        <field name="PriceAverage" type="decimal" label="Average Price" readonly="true" />
+        <field name="PriceMargin" type="decimal" label="Margin" readonly="true" />
+        <field name="InventoryValue" type="decimal" label="Inventory Value" readonly="true" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" readonly="true" />
+    </model>
+
+    <optionset id="Account.MoveType" name="Move Type">
+        <option value="OutInvoice" name="Customer Invoice" />
+        <option value="InInvoice" name="Vendor Bill" />
+        <option value="OutRefund" name="Customer Credit Note" />
+        <option value="InRefund" name="Vendor Credit Note" />
+    </optionset>
+
+    <optionset id="Account.InvoiceStatus" name="Invoice Status">
+        <option value="Draft" name="Draft" />
+        <option value="Posted" name="Open" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+</buvi>

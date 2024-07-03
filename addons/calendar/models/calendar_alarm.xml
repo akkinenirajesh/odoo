@@ -1,0 +1,25 @@
+xml
+<buvi>
+    <model id="Calendar.CalendarAlarm" name="CalendarAlarm" description="Event Alarm">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="AlarmType" type="Calendar.AlarmType" label="Type" required="true" default="Email" />
+        <field name="Duration" type="integer" label="Remind Before" required="true" default="1" />
+        <field name="Interval" type="Calendar.IntervalType" label="Unit" required="true" default="Hours" />
+        <field name="DurationMinutes" type="integer" label="Duration in minutes" computed="true" />
+        <field name="MailTemplate" type="Mail.MailTemplate" label="Email Template" 
+               help="Template used to render mail reminder content." />
+        <field name="Body" type="string" label="Additional Message" 
+               help="Additional message that would be sent with the notification for the reminder" />
+    </model>
+
+    <optionset id="Calendar.AlarmType" name="Alarm Type">
+        <option value="Notification" name="Notification" />
+        <option value="Email" name="Email" />
+    </optionset>
+
+    <optionset id="Calendar.IntervalType" name="Interval Type">
+        <option value="Minutes" name="Minutes" />
+        <option value="Hours" name="Hours" />
+        <option value="Days" name="Days" />
+    </optionset>
+</buvi>

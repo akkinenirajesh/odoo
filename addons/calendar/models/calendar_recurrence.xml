@@ -1,0 +1,64 @@
+xml
+<buvi>
+    <model id="Calendar.RecurrenceRule" name="RecurrenceRule" description="Event Recurrence Rule">
+        <field name="Name" type="string" compute="ComputeName" store="true" />
+        <field name="BaseEventId" type="Calendar.Event" ondelete="SetNull" />
+        <field name="CalendarEventIds" type="Calendar.Event" relation="many2many" />
+        <field name="EventTz" type="string" label="Timezone" />
+        <field name="Rrule" type="string" compute="ComputeRrule" inverse="InverseRrule" store="true" />
+        <field name="Dtstart" type="datetime" compute="ComputeDtstart" />
+        <field name="RruleType" type="Calendar.RruleType" default="Weekly" />
+        <field name="EndType" type="Calendar.EndType" default="Count" />
+        <field name="Interval" type="integer" default="1" />
+        <field name="Count" type="integer" default="1" />
+        <field name="Mon" type="bool" />
+        <field name="Tue" type="bool" />
+        <field name="Wed" type="bool" />
+        <field name="Thu" type="bool" />
+        <field name="Fri" type="bool" />
+        <field name="Sat" type="bool" />
+        <field name="Sun" type="bool" />
+        <field name="MonthBy" type="Calendar.MonthBy" default="Date" />
+        <field name="Day" type="integer" default="1" />
+        <field name="Weekday" type="Calendar.Weekday" label="Weekday" />
+        <field name="Byday" type="Calendar.Byday" label="By day" />
+        <field name="Until" type="date" label="Repeat Until" />
+        <field name="TriggerId" type="Core.CronTrigger" />
+    </model>
+
+    <optionset id="Calendar.RruleType" name="Rrule Type">
+        <option value="Daily" name="Days" />
+        <option value="Weekly" name="Weeks" />
+        <option value="Monthly" name="Months" />
+        <option value="Yearly" name="Years" />
+    </optionset>
+
+    <optionset id="Calendar.EndType" name="End Type">
+        <option value="Count" name="Number of repetitions" />
+        <option value="EndDate" name="End date" />
+        <option value="Forever" name="Forever" />
+    </optionset>
+
+    <optionset id="Calendar.MonthBy" name="Month By">
+        <option value="Date" name="Date of month" />
+        <option value="Day" name="Day of month" />
+    </optionset>
+
+    <optionset id="Calendar.Weekday" name="Weekday">
+        <option value="Mon" name="Monday" />
+        <option value="Tue" name="Tuesday" />
+        <option value="Wed" name="Wednesday" />
+        <option value="Thu" name="Thursday" />
+        <option value="Fri" name="Friday" />
+        <option value="Sat" name="Saturday" />
+        <option value="Sun" name="Sunday" />
+    </optionset>
+
+    <optionset id="Calendar.Byday" name="By day">
+        <option value="1" name="First" />
+        <option value="2" name="Second" />
+        <option value="3" name="Third" />
+        <option value="4" name="Fourth" />
+        <option value="-1" name="Last" />
+    </optionset>
+</buvi>

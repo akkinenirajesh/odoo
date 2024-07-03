@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="Ldaps" type="Core.ResCompanyLdap[]" label="LDAP Parameters" />
+    </model>
+
+    <model id="Core.ResCompanyLdap" name="ResCompanyLdap" description="Company LDAP">
+        <field name="Company" type="Core.ResCompany" label="Company" />
+        <!-- Add other fields for ResCompanyLdap as needed -->
+    </model>
+</buvi>

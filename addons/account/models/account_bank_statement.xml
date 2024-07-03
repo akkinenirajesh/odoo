@@ -1,0 +1,20 @@
+xml
+<buvi>
+    <model id="Account.AccountBankStatement" name="AccountBankStatement" description="Bank Statement">
+        <field name="Name" type="string" label="Reference" compute="ComputeName" store="true" readonly="false" />
+        <field name="Reference" type="string" label="External Reference" />
+        <field name="Date" type="date" compute="ComputeDateIndex" store="true" />
+        <field name="FirstLineIndex" type="string" compute="ComputeDateIndex" store="true" />
+        <field name="BalanceStart" type="decimal" label="Starting Balance" compute="ComputeBalanceStart" store="true" readonly="false" />
+        <field name="BalanceEnd" type="decimal" label="Computed Balance" compute="ComputeBalanceEnd" store="true" />
+        <field name="BalanceEndReal" type="decimal" label="Ending Balance" compute="ComputeBalanceEndReal" store="true" readonly="false" />
+        <field name="Company" type="Core.Company" related="Journal.Company" store="true" />
+        <field name="Currency" type="Core.Currency" compute="ComputeCurrency" />
+        <field name="Journal" type="Account.AccountJournal" compute="ComputeJournal" store="true" />
+        <field name="Lines" type="Account.AccountBankStatementLine" inverse="Statement" required="true" />
+        <field name="IsComplete" type="bool" compute="ComputeIsComplete" store="true" />
+        <field name="IsValid" type="bool" compute="ComputeIsValid" />
+        <field name="ProblemDescription" type="string" compute="ComputeProblemDescription" />
+        <field name="Attachments" type="Core.Attachment" />
+    </model>
+</buvi>

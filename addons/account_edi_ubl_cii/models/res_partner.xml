@@ -1,0 +1,27 @@
+xml
+<buvi>
+    <model id="Partner.ResPartner" name="ResPartner" description="Partner">
+        <field name="UblCiiFormat" type="Partner.UblCiiFormat" label="Format" />
+        <field name="PeppolEndpoint" type="string" label="Peppol Endpoint"
+            help="Unique identifier used by the BIS Billing 3.0 and its derivatives, also known as 'Endpoint ID'." />
+        <field name="PeppolEas" type="Partner.PeppolEas" label="Peppol e-address (EAS)"
+            help="Code used to identify the Endpoint for BIS Billing 3.0 and its derivatives. List available at https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/" />
+    </model>
+
+    <optionset id="Partner.UblCiiFormat" name="UBL CII Format">
+        <option value="Facturx" name="Factur-X (CII)" />
+        <option value="UblBis3" name="BIS Billing 3.0" />
+        <option value="Xrechnung" name="XRechnung CIUS" />
+        <option value="Nlcius" name="NLCIUS" />
+        <option value="UblANz" name="BIS Billing 3.0 A-NZ" />
+        <option value="UblSg" name="BIS Billing 3.0 SG" />
+    </optionset>
+
+    <optionset id="Partner.PeppolEas" name="Peppol EAS">
+        <option value="0002" name="0002 - System Information et Repertoire des Entreprise et des Etablissements: SIRENE" />
+        <option value="0007" name="0007 - Organisationsnummer (Swedish legal entities)" />
+        <option value="0009" name="0009 - SIRET-CODE" />
+        <!-- ... Add all other options here ... -->
+        <option value="9959" name="9959 - Employer Identification Number (EIN, USA)" />
+    </optionset>
+</buvi>

@@ -1,0 +1,19 @@
+xml
+<buvi>
+    <model id="Account.ResPartner" name="ResPartner" description="Partner">
+        <field name="AccountPeppolIsEndpointValid" type="bool" label="PEPPOL endpoint validity"
+               help="The partner's EAS code and PEPPOL endpoint are valid" compute="ComputeAccountPeppolIsEndpointValid" store="true" />
+        <field name="AccountPeppolValidityLastCheck" type="date" label="Checked on"
+               help="Last Peppol endpoint verification" compute="ComputeAccountPeppolIsEndpointValid" store="true" />
+        <field name="AccountPeppolVerificationLabel" type="Account.PeppolVerificationLabel" label="Peppol endpoint validity"
+               compute="ComputeAccountPeppolVerificationLabel" />
+        <field name="IsPeppolEdiFormat" type="bool" compute="ComputeIsPeppolEdiFormat" />
+    </model>
+
+    <optionset id="Account.PeppolVerificationLabel" name="Peppol Verification Label">
+        <option value="NotVerified" name="Not verified yet" />
+        <option value="NotValid" name="Not valid" />
+        <option value="NotValidFormat" name="Cannot receive this format" />
+        <option value="Valid" name="Valid" />
+    </optionset>
+</buvi>

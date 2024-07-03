@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Account.AccountEdiFormat" name="AccountEdiFormat" description="EDI format">
+        <field name="Name" type="string" />
+        <field name="Code" type="string" required="true" />
+        <unique>
+            <field name="Code" />
+            <message>This code already exists</message>
+        </unique>
+    </model>
+</buvi>

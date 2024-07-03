@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Auth.Users" name="Users" description="Users">
+        <field name="Email" type="string" label="Email" />
+        <field name="Name" type="string" label="Name" />
+        <field name="Login" type="string" label="Login" />
+        <field name="LoginDate" type="datetime" label="Login Date" />
+        <field name="Lang" type="string" label="Language" />
+    </model>
+</buvi>

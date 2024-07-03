@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buvi>
+  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  </model>
+  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  </model>
+</buvi>

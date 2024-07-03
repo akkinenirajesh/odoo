@@ -1,0 +1,14 @@
+xml
+<buvi>
+    <model id="Crm.IapLeadIndustry" name="IapLeadIndustry" description="CRM IAP Lead Industry">
+        <field name="Name" type="string" label="Industry" required="true" translate="true" />
+        <field name="RevealIds" type="string" label="Reveal IDs" required="true" 
+               help="The list of reveal_ids for this industry, separated with ','" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <unique>
+            <field name="Name" />
+            <message>Industry name already exists!</message>
+        </unique>
+    </model>
+</buvi>

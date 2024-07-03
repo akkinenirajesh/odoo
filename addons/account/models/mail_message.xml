@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Account.Message" name="Message" description="Message">
+        <field name="AccountAuditLogPreview" type="html" label="Description" compute="_ComputeAccountAuditLogPreview" />
+        <field name="AccountAuditLogMoveId" type="Account.Move" label="Journal Entry" 
+               compute="_ComputeAccountAuditLogMoveId" search="_SearchAccountAuditLogMoveId" />
+        <field name="AccountAuditLogActivated" type="bool" label="Audit Log Activated"
+               compute="_ComputeAccountAuditLogMoveId" search="_SearchAccountAuditLogActivated" />
+    </model>
+</buvi>

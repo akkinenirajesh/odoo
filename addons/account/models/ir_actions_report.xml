@@ -1,0 +1,6 @@
+xml
+<buvi>
+    <model id="Ir.ActionsReport" name="ActionsReport" description="Actions Report">
+        <field name="IsInvoiceReport" type="bool" label="Invoice report" />
+    </model>
+</buvi>

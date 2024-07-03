@@ -1,0 +1,10 @@
+xml
+<buvi>
+    <model id="Base.ResUsers" name="ResUsers" description="User">
+        <field name="Login" type="string" required="true" />
+        <field name="Name" type="string" required="true" />
+        <field name="Email" type="string" required="true" />
+        <field name="Active" type="bool" default="true" />
+        <!-- Add other fields as needed -->
+    </model>
+</buvi>

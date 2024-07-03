@@ -1,0 +1,71 @@
+xml
+<buvi>
+    <model id="BaseAutomation.BaseAutomation" name="BaseAutomation" description="Automation Rule">
+        <field name="Name" type="string" label="Automation Rule Name" required="true" translate="true" />
+        <field name="Description" type="html" label="Description" />
+        <field name="Model" type="Core.Model" label="Model" required="true" ondelete="cascade" 
+               help="Model on which the automation rule runs." />
+        <field name="ModelName" type="string" label="Model Name" readonly="true" related="Model.Model" />
+        <field name="ModelIsMailThread" type="bool" related="Model.IsMailThread" />
+        <field name="ActionServerIds" type="Core.ActionServer[]" label="Actions" />
+        <field name="Url" type="string" compute="ComputeUrl" />
+        <field name="WebhookUuid" type="string" label="Webhook UUID" readonly="true" copy="false" />
+        <field name="RecordGetter" type="string" default="model.Env[payload.Get(&quot;_model&quot;)].Browse(int.Parse(payload.Get(&quot;_id&quot;)))"
+               help="This code will be run to find on which record the automation rule should be run." />
+        <field name="LogWebhookCalls" type="bool" label="Log Calls" default="false" />
+        <field name="Active" type="bool" default="true" 
+               help="When unchecked, the rule is hidden and will not be executed." />
+        <field name="Trigger" type="BaseAutomation.TriggerType" label="Trigger" required="true" />
+        <field name="TriggerSelectionFieldId" type="Core.ModelFieldSelection" label="Trigger Field" 
+               domain="[('FieldId', 'in', TriggerFieldIds)]" />
+        <field name="TriggerFieldRefModelName" type="string" label="Trigger Field Model" compute="ComputeTriggerFieldRefModelName" />
+        <field name="TriggerFieldRef" type="dynamic" label="Trigger Reference" 
+               help="Some triggers need a reference to another field. This field is used to store it." />
+        <field name="TriggerDateId" type="Core.ModelField" label="Trigger Date" 
+               domain="[('ModelId', '=', Model), ('Type', 'in', ['date', 'datetime'])]"
+               help="When should the condition be triggered. If present, will be checked by the scheduler. If empty, will be checked at creation and update." />
+        <field name="TriggerDateRange" type="integer" label="Delay after trigger date" 
+               help="Delay after the trigger date. You can put a negative number if you need a delay before the trigger date, like sending a reminder 15 minutes before a meeting." />
+        <field name="TriggerDateRangeType" type="BaseAutomation.DateRangeType" label="Delay type" />
+        <field name="TriggerDateCalendarId" type="Resource.Calendar" label="Use Calendar" 
+               help="When calculating a day-based timed condition, it is possible to use a calendar to compute the date based on working days." />
+        <field name="FilterPreDomain" type="string" label="Before Update Domain" 
+               help="If present, this condition must be satisfied before the update of the record." />
+        <field name="FilterDomain" type="string" label="Apply on" 
+               help="If present, this condition must be satisfied before executing the automation rule." />
+        <field name="LastRun" type="datetime" readonly="true" copy="false" />
+        <field name="OnChangeFieldIds" type="Core.ModelField[]" label="On Change Fields Trigger" 
+               help="Fields that trigger the onchange." />
+        <field name="TriggerFieldIds" type="Core.ModelField[]" label="Trigger Fields" 
+               help="The automation rule will be triggered if and only if one of these fields is updated. If empty, all fields are watched." />
+        <field name="LeastDelayMsg" type="string" compute="ComputeLeastDelayMsg" />
+    </model>
+
+    <optionset id="BaseAutomation.TriggerType" name="Automation Trigger Type">
+        <option value="OnStageSet" name="Stage is set to" />
+        <option value="OnUserSet" name="User is set" />
+        <option value="OnTagSet" name="Tag is added" />
+        <option value="OnStateSet" name="State is set to" />
+        <option value="OnPrioritySet" name="Priority is set to" />
+        <option value="OnArchive" name="On archived" />
+        <option value="OnUnarchive" name="On unarchived" />
+        <option value="OnCreateOrWrite" name="On save" />
+        <option value="OnCreate" name="On creation" />
+        <option value="OnWrite" name="On update" />
+        <option value="OnUnlink" name="On deletion" />
+        <option value="OnChange" name="On UI change" />
+        <option value="OnTime" name="Based on date field" />
+        <option value="OnTimeCreated" name="After creation" />
+        <option value="OnTimeUpdated" name="After last update" />
+        <option value="OnMessageReceived" name="On incoming message" />
+        <option value="OnMessageSent" name="On outgoing message" />
+        <option value="OnWebhook" name="On webhook" />
+    </optionset>
+
+    <optionset id="BaseAutomation.DateRangeType" name="Date Range Type">
+        <option value="Minutes" name="Minutes" />
+        <option value="Hour" name="Hours" />
+        <option value="Day" name="Days" />
+        <option value="Month" name="Months" />
+    </optionset>
+</buvi>

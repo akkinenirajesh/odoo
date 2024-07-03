@@ -1,0 +1,12 @@
+xml
+<buvi>
+    <model id="Calendar.ResUsers" name="ResUsers" description="Calendar User Settings">
+        <field name="CalendarDefaultPrivacy" type="Calendar.CalendarPrivacyOption" label="Default Privacy" required="true" />
+    </model>
+
+    <optionset id="Calendar.CalendarPrivacyOption" name="Calendar Privacy Option">
+        <option value="Public" name="Public" />
+        <option value="Private" name="Private" />
+        <option value="Confidential" name="Confidential" />
+    </optionset>
+</buvi>

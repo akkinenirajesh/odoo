@@ -1,0 +1,11 @@
+xml
+<buvi>
+    <model id="Attachment.IrAttachment" name="IrAttachment" description="Attachment">
+        <field name="Name" type="string" />
+        <field name="FileType" type="string" />
+        <field name="BinData" type="binary" />
+        <field name="Mimetype" type="string" />
+        <field name="Checksum" type="string" />
+        <field name="IndexContent" type="text" />
+    </model>
+</buvi>

@@ -1,0 +1,8 @@
+xml
+<buvi>
+    <model id="Auth.ResUsers" name="ResUsers" description="Users">
+        <!-- Existing fields from res.users model should be added here -->
+        
+        <!-- No new fields are defined in the given Python code -->
+    </model>
+</buvi>

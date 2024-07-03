@@ -1,0 +1,23 @@
+xml
+<buvi>
+    <model id="Base.IrModule" name="IrModule" description="Module">
+        <field name="Imported" type="bool" label="Imported Module" />
+        <field name="ModuleType" type="Base.ModuleType" default="Official" />
+        <field name="Name" type="string" required="true" />
+        <field name="LatestVersion" type="string" />
+        <field name="InstalledVersion" type="string" />
+        <field name="Icon" type="string" />
+        <field name="IconImage" type="binary" />
+        <field name="State" type="Base.ModuleState" />
+    </model>
+
+    <optionset id="Base.ModuleType" name="Module Type">
+        <option value="Official" name="Official Apps" />
+        <option value="Industries" name="Industries" />
+    </optionset>
+
+    <optionset id="Base.ModuleState" name="Module State">
+        <option value="Installed" name="Installed" />
+        <option value="Uninstalled" name="Uninstalled" />
+    </optionset>
+</buvi>

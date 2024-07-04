@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.ResourceResource" name="ResourceResource" description="Resource Resource">
+        <field name="EmployeeId" type="Hr.Employee" label="Employee" />
+        <field name="Tz" type="string" label="Timezone" />
+    </model>
 </buvi>

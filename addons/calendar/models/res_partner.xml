@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Calendar.Partner" name="Partner" description="Partner" inherit="Core.Partner">
         <field name="MeetingCount" type="integer" label="# Meetings" compute="ComputeMeetingCount" />

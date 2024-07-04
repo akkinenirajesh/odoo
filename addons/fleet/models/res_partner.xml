@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.ResPartner" name="ResPartner" description="Partner">
+        <field name="PlanToChangeCar" type="bool" label="Plan To Change Car" default="false" tracking="true" />
+        <field name="PlanToChangeBike" type="bool" label="Plan To Change Bike" default="false" />
+    </model>
 </buvi>

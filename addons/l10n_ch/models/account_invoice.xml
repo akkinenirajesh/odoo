@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nChIsQrValid" type="bool" compute="ComputeL10nChQrIsValid" 
+               help="Determines whether an invoice can be printed as a QR or not" />
+        <field name="PartnerBankId" type="Account.AccountBankStatement" />
+        <field name="PartnerId" type="Core.Partner" />
+        <field name="CurrencyId" type="Core.Currency" />
+        <field name="MoveType" type="string" />
+        <field name="Name" type="string" />
+    </model>
 </buvi>

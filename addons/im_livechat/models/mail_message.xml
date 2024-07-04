@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailMessage" name="MailMessage" description="Mail Message">
+        <field name="ParentAuthorName" type="string" compute="_ComputeParentAuthorName" />
+        <field name="ParentBody" type="html" compute="_ComputeParentBody" />
+        <field name="ParentId" type="Mail.MailMessage" label="Parent Message" />
+        <field name="AuthorId" type="Core.Partner" label="Author" />
+        <field name="AuthorGuestId" type="Core.GuestPartner" label="Guest Author" />
+        <field name="Body" type="html" label="Message Body" />
+        <field name="Model" type="string" label="Related Document Model" />
+        <field name="ResId" type="integer" label="Related Document ID" />
+    </model>
 </buvi>

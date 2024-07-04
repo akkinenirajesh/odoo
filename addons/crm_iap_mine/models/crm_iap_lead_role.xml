@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <buvi>
+    <model id="Crm.IapLeadRole" name="IapLeadRole" description="People Role">
+        <field name="Name" type="string" label="Role Name" required="true" translate="true" />
+        <field name="RevealId" type="string" required="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <unique>
+            <field name="Name" />
+            <message>Role name already exists!</message>
+        </unique>
+    </model>
 </buvi>

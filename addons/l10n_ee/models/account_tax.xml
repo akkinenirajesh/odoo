@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nEeKmdInfCode" type="Account.L10nEeKmdInfCode" label="KMD INF Code"
+               help="This field is used for the comments/special code column in the KMD INF report." />
+    </model>
+
+    <optionset id="Account.L10nEeKmdInfCode" name="L10n EE KMD INF Code">
+        <option value="1" name="SaleKMS4142" label="Sale KMS §41/42" />
+        <option value="2" name="SaleKMS411" label="Sale KMS §41^1" />
+        <option value="11" name="PurchaseKMS294302" label="Purchase KMS §29(4)/30/32" />
+        <option value="12" name="PurchaseKMS411" label="Purchase KMS §41^1" />
+    </optionset>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Calendar.CalendarAlarm" name="CalendarAlarm" description="Calendar Alarm">
         <field name="AlarmType" type="Calendar.AlarmType" />

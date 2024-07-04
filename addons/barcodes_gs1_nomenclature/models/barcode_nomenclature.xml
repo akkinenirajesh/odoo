@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Barcodes.BarcodeNomenclature" name="BarcodeNomenclature" description="Barcode Nomenclature">
         <field name="IsGs1Nomenclature" type="bool" label="Is GS1 Nomenclature"

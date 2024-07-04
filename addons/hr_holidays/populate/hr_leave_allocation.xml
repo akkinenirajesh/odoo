@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrHolidays.HolidaysAllocation" name="HolidaysAllocation" description="Holidays Allocation">
+        <field name="HolidayStatusId" type="HrHolidays.LeaveType" label="Leave Type" required="true" />
+        <field name="EmployeeId" type="HrHolidays.Employee" label="Employee" required="true" />
+    </model>
 </buvi>

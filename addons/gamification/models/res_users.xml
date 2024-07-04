@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.User" name="User" description="User with Gamification Features">
+        <field name="Karma" type="integer" label="Karma" compute="ComputeKarma" store="true" readonly="false" />
+        <field name="KarmaTrackingIds" type="Gamification.KarmaTracking[]" label="Karma Changes" groups="Base.GroupSystem" />
+        <field name="BadgeIds" type="Gamification.BadgeUser[]" label="Badges" />
+        <field name="GoldBadge" type="integer" label="Gold badges count" compute="GetUserBadgeLevel" />
+        <field name="SilverBadge" type="integer" label="Silver badges count" compute="GetUserBadgeLevel" />
+        <field name="BronzeBadge" type="integer" label="Bronze badges count" compute="GetUserBadgeLevel" />
+        <field name="RankId" type="Gamification.KarmaRank" label="Rank" />
+        <field name="NextRankId" type="Gamification.KarmaRank" label="Next Rank" />
+    </model>
 </buvi>

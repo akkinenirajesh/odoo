@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountingAssertTest" name="AccountingAssertTest" description="Accounting Assert Test">
         <field name="Name" type="string" label="Test Name" required="true" translate="true" />

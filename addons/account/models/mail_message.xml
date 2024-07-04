@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.Message" name="Message" description="Message">
         <field name="AccountAuditLogPreview" type="html" label="Description" compute="_ComputeAccountAuditLogPreview" />

@@ -1,3 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.DeliveryCarrier" name="DeliveryCarrier" description="Shipping Methods">
+        <field name="Name" type="string" label="Delivery Method" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" default="10" help="Determine the display order" />
+        <field name="DeliveryType" type="Delivery.DeliveryType" default="Fixed" required="true" />
+        <field name="IntegrationLevel" type="Delivery.IntegrationLevel" default="RateAndShip" 
+               help="Action while validating Delivery Orders" />
+        <field name="ProdEnvironment" type="bool" label="Environment" 
+               help="Set to True if your credentials are certified for production." />
+        <field name="DebugLogging" type="bool" label="Debug logging" 
+               help="Log requests in order to ease debugging" />
+        <field name="Company" type="Core.Company" />
+        <field name="Product" type="Product.Product" required="true" />
+        <field name="TrackingUrl" type="string" label="Tracking Link" 
+               help="This option adds a link for the customer in the portal to track their package easily. Use &lt;shipmenttrackingnumber&gt; as a placeholder in your URL." />
+        <field name="Currency" type="Core.Currency" />
+        <field name="InvoicePolicy" type="Delivery.InvoicePolicy" default="Estimated" required="true" 
+               help="Estimated Cost: the customer will be invoiced the estimated cost of the shipping." />
+        <field name="Countries" type="Core.Country" multiple="true" />
+        <field name="States" type="Core.State" multiple="true" />
+        <field name="ZipPrefixes" type="Delivery.ZipPrefix" multiple="true" 
+               help="Prefixes of zip codes that this carrier applies to. Note that regular expressions can be used to support countries with varying zip code lengths, i.e. '$' can be added to end of prefix to match the exact zip (e.g. '100$' will only match '100' and not '1000')" />
+        <field name="MaxWeight" type="float" label="Max Weight" 
+               help="If the total weight of the order is over this weight, the method won't be available." />
+        <field name="MaxVolume" type="float" label="Max Volume" 
+               help="If the total volume of the order is over this volume, the method won't be available." />
+        <field name="MustHaveTags" type="Product.Tag" multiple="true" 
+               help="The method is available only if at least one product of the order has one of these tags." />
+        <field name="ExcludedTags" type="Product.Tag" multiple="true" 
+               help="The method is NOT available if at least one product of the order has one of these tags." />
+        <field name="CarrierDescription" type="string" translate="true" 
+               help="A description of the delivery method that you want to communicate to your customers on the Sales Order and sales confirmation email. E.g. instructions for customers to follow." />
+        <field name="Margin" type="float" help="This percentage will be added to the shipping price." />
+        <field name="FixedMargin" type="float" help="This fixed amount will be added to the shipping price." />
+        <field name="FreeOver" type="bool" default="false" 
+               help="If the order total amount (shipping excluded) is above or equal to this value, the customer benefits from a free shipping" />
+        <field name="Amount" type="float" default="1000" 
+               help="Amount of the order to benefit from a free shipping, expressed in the company currency" />
+        <field name="ReturnLabelOnDelivery" type="bool" label="Generate Return Label" 
+               help="The return label is automatically generated at the delivery." />
+        <field name="GetReturnLabelFromPortal" type="bool" label="Return Label Accessible from Customer Portal" 
+               help="The return label can be downloaded by the customer from the customer portal." />
+        <field name="ShippingInsurance" type="integer" default="0" 
+               help="Shipping insurance is a service which may reimburse senders whose parcels are lost, stolen, and/or damaged in transit." />
+        <field name="PriceRules" type="Delivery.PriceRule" multiple="true" />
+    </model>
+
+    <optionset id="Delivery.DeliveryType" name="Delivery Type">
+        <option value="BaseOnRule" name="Based on Rules" />
+        <option value="Fixed" name="Fixed Price" />
+    </optionset>
+
+    <optionset id="Delivery.IntegrationLevel" name="Integration Level">
+        <option value="Rate" name="Get Rate" />
+        <option value="RateAndShip" name="Get Rate and Create Shipment" />
+    </optionset>
+
+    <optionset id="Delivery.InvoicePolicy" name="Invoicing Policy">
+        <option value="Estimated" name="Estimated cost" />
+    </optionset>
 </buvi>

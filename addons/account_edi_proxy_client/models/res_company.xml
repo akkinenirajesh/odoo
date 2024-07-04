@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="AccountEdiProxyClient.ResCompany" name="ResCompany" description="Company">
         <field name="AccountEdiProxyClientIds" type="AccountEdiProxyClient.User" label="Account EDI Proxy Client Users" relation="many2many" />

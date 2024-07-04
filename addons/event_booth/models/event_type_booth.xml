@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.TypeBooth" name="TypeBooth" description="Event Booth Template">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="EventType" type="Event.Type" label="Event Category" required="true" />
+        <field name="BoothCategory" type="Event.BoothCategory" label="Booth Category" required="true" />
+    </model>
 </buvi>

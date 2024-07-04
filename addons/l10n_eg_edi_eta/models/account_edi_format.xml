@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountEdiFormat" name="AccountEdiFormat" description="Account EDI Format">
+        <field name="Code" type="string" />
+        <field name="Name" type="string" translate="true" />
+    </model>
 </buvi>

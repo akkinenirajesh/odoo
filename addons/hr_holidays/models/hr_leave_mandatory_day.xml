@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.LeaveMandatoryDay" name="LeaveMandatoryDay" description="Mandatory Day">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Company" type="Core.Company" label="Company" required="true" />
+        <field name="StartDate" type="date" label="Start Date" required="true" />
+        <field name="EndDate" type="date" label="End Date" required="true" />
+        <field name="Color" type="integer" label="Color" />
+        <field name="ResourceCalendar" type="Resource.Calendar" label="Working Hours" />
+        <field name="Departments" type="HR.Department" label="Departments" multiple="true" />
+        <unique>
+            <field name="StartDate" />
+            <field name="EndDate" />
+            <message>The start date must be anterior than the end date.</message>
+        </unique>
+    </model>
 </buvi>

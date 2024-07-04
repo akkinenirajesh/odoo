@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.IrAttachment" name="IrAttachment" description="Attachment">
+        <field name="ResModel" type="string" label="Resource Model" />
+        <field name="ResId" type="integer" label="Resource ID" />
+        <field name="Name" type="string" label="Name" />
+        <field name="Checksum" type="string" label="Checksum" />
+        <!-- Add other necessary fields for ir.attachment -->
+    </model>
 </buvi>

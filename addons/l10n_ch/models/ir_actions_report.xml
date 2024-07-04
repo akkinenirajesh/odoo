@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.IrActionsReport" name="IrActionsReport" description="Actions Report">
+        <!-- Existing fields would be defined here -->
+    </model>
+
+    <optionset id="Core.BarcodeMasks" name="Available Barcode Masks">
+        <!-- Existing options would be defined here -->
+        <option value="ChCross" name="CH Cross" />
+    </optionset>
 </buvi>

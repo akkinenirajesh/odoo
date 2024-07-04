@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIt.Ddt" name="Ddt" description="Transport Document">
+        <field name="InvoiceId" type="Account.Move" label="Invoice Reference" relation="one2many" inverse="L10nItDdtId" />
+        <field name="Name" type="string" label="Numero DDT" size="20" help="Transport document number" required="true" />
+        <field name="Date" type="date" label="Data DDT" help="Transport document date" required="true" />
+        <field name="DisplayName" type="string" compute="_ComputeDisplayName" depends="Date" />
+    </model>
 </buvi>

@@ -1,3 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Employee" name="Employee" description="Employee">
+        <field name="Name" type="string" label="Employee Name" required="true" translate="true" />
+        <field name="UserId" type="Core.User" label="User" />
+        <field name="UserPartnerId" type="Core.Partner" label="User's partner" />
+        <field name="Active" type="bool" default="true" />
+        <field name="ResourceCalendarId" type="Resource.Calendar" label="Working Hours" />
+        <field name="DepartmentId" type="Hr.Department" label="Department" />
+        <field name="CompanyId" type="Core.Company" label="Company" required="true" />
+        <field name="CompanyCountryId" type="Core.Country" label="Company Country" />
+        <field name="CompanyCountryCode" type="string" label="Company Country Code" />
+        <field name="PrivateStreet" type="string" label="Private Street" />
+        <field name="PrivateStreet2" type="string" label="Private Street2" />
+        <field name="PrivateCity" type="string" label="Private City" />
+        <field name="PrivateStateId" type="Core.CountryState" label="Private State" />
+        <field name="PrivateZip" type="string" label="Private Zip" />
+        <field name="PrivateCountryId" type="Core.Country" label="Private Country" />
+        <field name="PrivatePhone" type="string" label="Private Phone" />
+        <field name="PrivateEmail" type="string" label="Private Email" />
+        <field name="Lang" type="string" label="Language" />
+        <field name="CountryId" type="Core.Country" label="Nationality (Country)" />
+        <field name="Gender" type="Hr.EmployeeGender" label="Gender" />
+        <field name="MaritalStatus" type="Hr.MaritalStatus" label="Marital Status" required="true" default="Single" />
+        <field name="SpouseCompleteName" type="string" label="Spouse Complete Name" />
+        <field name="SpouseBirthdate" type="date" label="Spouse Birthdate" />
+        <field name="Children" type="integer" label="Number of Dependent Children" />
+        <field name="PlaceOfBirth" type="string" label="Place of Birth" />
+        <field name="CountryOfBirth" type="Core.Country" label="Country of Birth" />
+        <field name="Birthday" type="date" label="Date of Birth" />
+        <field name="Ssnid" type="string" label="SSN No" help="Social Security Number" />
+        <field name="Sinid" type="string" label="SIN No" help="Social Insurance Number" />
+        <field name="IdentificationId" type="string" label="Identification No" />
+        <field name="PassportId" type="string" label="Passport No" />
+        <field name="BankAccountId" type="Core.PartnerBank" label="Bank Account Number" 
+               help="Employee bank account to pay salaries" />
+        <field name="PermitNo" type="string" label="Work Permit No" />
+        <field name="VisaNo" type="string" label="Visa No" />
+        <field name="VisaExpire" type="date" label="Visa Expiration Date" />
+        <field name="WorkPermitExpirationDate" type="date" label="Work Permit Expiration Date" />
+        <field name="HasWorkPermit" type="binary" label="Work Permit" />
+        <field name="WorkPermitScheduledActivity" type="bool" default="false" />
+        <field name="AdditionalNote" type="string" label="Additional Note" />
+        <field name="Certificate" type="Hr.CertificateLevel" label="Certificate Level" />
+        <field name="StudyField" type="string" label="Field of Study" />
+        <field name="StudySchool" type="string" label="School" />
+        <field name="EmergencyContact" type="string" label="Contact Name" />
+        <field name="EmergencyPhone" type="string" label="Contact Phone" />
+        <field name="KmHomeWork" type="integer" label="Home-Work Distance in Km" />
+        <field name="DistanceHomeWorkUnit" type="Hr.DistanceUnit" label="Home-Work Distance unit" required="true" default="Kilometers" />
+        <field name="EmployeeType" type="Hr.EmployeeType" label="Employee Type" required="true" default="Employee" 
+               help="The employee type. Although the primary purpose may seem to categorize employees, this field has also an impact in the Contract History. Only Employee type is supposed to be under contract and will have a Contract History." />
+        <field name="JobId" type="Hr.Job" label="Job Position" />
+        <field name="ChildIds" type="Hr.Employee" label="Direct subordinates" />
+        <field name="CategoryIds" type="Hr.EmployeeCategory" label="Tags" />
+        <field name="Notes" type="string" label="Notes" />
+        <field name="Color" type="integer" label="Color Index" default="0" />
+        <field name="Barcode" type="string" label="Badge ID" help="ID used for employee identification." />
+        <field name="Pin" type="string" label="PIN" 
+               help="PIN used to Check In/Out in the Kiosk Mode of the Attendance application (if enabled in Configuration) and to change the cashier in the Point of Sale application." />
+        <field name="DepartureReasonId" type="Hr.DepartureReason" label="Departure Reason" />
+        <field name="DepartureDescription" type="string" label="Additional Information" />
+        <field name="DepartureDate" type="date" label="Departure Date" />
+        <field name="IdCard" type="binary" label="ID Card Copy" />
+        <field name="DrivingLicense" type="binary" label="Driving License" />
+        <field name="PrivateCarPlate" type="string" label="Private Car Plate" 
+               help="If you have more than one car, just separate the plates by a space." />
+        <field name="RelatedPartnersCount" type="integer" label="Related Partners Count" />
+        <field name="EmployeeProperties" type="string" label="Properties" />
+        
+        <unique>
+            <field name="Barcode" />
+            <message>The Badge ID must be unique, this one is already assigned to another employee.</message>
+        </unique>
+        <unique>
+            <field name="UserId" />
+            <field name="CompanyId" />
+            <message>A user cannot be linked to multiple employees in the same company.</message>
+        </unique>
+    </model>
+
+    <optionset id="Hr.EmployeeGender" name="Employee Gender">
+        <option value="Male" name="Male" />
+        <option value="Female" name="Female" />
+        <option value="Other" name="Other" />
+    </optionset>
+
+    <optionset id="Hr.MaritalStatus" name="Marital Status">
+        <option value="Single" name="Single" />
+        <option value="Married" name="Married" />
+        <option value="LegalCohabitant" name="Legal Cohabitant" />
+        <option value="Widower" name="Widower" />
+        <option value="Divorced" name="Divorced" />
+    </optionset>
+
+    <optionset id="Hr.CertificateLevel" name="Certificate Level">
+        <option value="Graduate" name="Graduate" />
+        <option value="Bachelor" name="Bachelor" />
+        <option value="Master" name="Master" />
+        <option value="Doctor" name="Doctor" />
+        <option value="Other" name="Other" />
+    </optionset>
+
+    <optionset id="Hr.DistanceUnit" name="Distance Unit">
+        <option value="Kilometers" name="km" />
+        <option value="Miles" name="mi" />
+    </optionset>
+
+    <optionset id="Hr.EmployeeType" name="Employee Type">
+        <option value="Employee" name="Employee" />
+        <option value="Student" name="Student" />
+        <option value="Trainee" name="Trainee" />
+        <option value="Contractor" name="Contractor" />
+        <option value="Freelance" name="Freelancer" />
+    </optionset>
 </buvi>

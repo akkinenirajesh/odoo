@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.HolidaysAllocation" name="HolidaysAllocation" description="Holidays Allocation">
+        <field name="OvertimeDeductible" type="bool" compute="ComputeOvertimeDeductible" />
+        <field name="OvertimeId" type="HumanResources.AttendanceOvertime" label="Extra Hours" />
+        <field name="EmployeeOvertime" type="float" related="Employee.TotalOvertime" />
+        <field name="HrAttendanceOvertime" type="bool" related="EmployeeCompany.HrAttendanceOvertime" />
+        <field name="HolidayStatusId" type="HumanResources.LeaveType" />
+        <field name="Employee" type="HumanResources.Employee" />
+        <field name="EmployeeCompany" type="Core.Company" />
+        <field name="NumberOfHoursDisplay" type="float" />
+        <field name="DateFrom" type="datetime" />
+    </model>
 </buvi>

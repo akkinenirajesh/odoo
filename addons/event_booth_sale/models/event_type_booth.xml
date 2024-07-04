@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventTypeBooth" name="EventTypeBooth" description="Event Type Booth">
+        <field name="ProductId" type="Product.Product" related="BoothCategoryId.ProductId" />
+        <field name="Price" type="decimal" related="BoothCategoryId.Price" store="true" />
+        <field name="CurrencyId" type="Core.Currency" related="BoothCategoryId.CurrencyId" />
+    </model>
 </buvi>

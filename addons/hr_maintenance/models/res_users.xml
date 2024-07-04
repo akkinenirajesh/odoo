@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrMaintenance.Users" name="Users" description="Users with Maintenance Equipment">
+        <field name="EquipmentIds" type="Maintenance.Equipment" label="Managed Equipment" relation="many2one" relatedField="OwnerUserId" />
+        <field name="EquipmentCount" type="integer" label="Assigned Equipment" related="EmployeeId.EquipmentCount" />
+    </model>
+
+    <model id="HrMaintenance.Employee" name="Employee" description="Employee with Maintenance Equipment">
+        <field name="EquipmentIds" type="Maintenance.Equipment" label="Equipment" relation="one2many" relatedField="EmployeeId" groups="hr.group_hr_user" />
+        <field name="EquipmentCount" type="integer" label="Equipment Count" compute="_ComputeEquipmentCount" groups="hr.group_hr_user" />
+    </model>
 </buvi>

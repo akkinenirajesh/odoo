@@ -1,3 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventMail" name="EventMail" description="Event Automated Mailing">
+        <field name="Event" type="Event.Event" required="true" label="Event" />
+        <field name="Sequence" type="integer" label="Display order" />
+        <field name="NotificationType" type="Event.NotificationType" default="Mail" required="true" label="Send" />
+        <field name="IntervalNbr" type="integer" default="1" label="Interval" />
+        <field name="IntervalUnit" type="Event.IntervalUnit" default="Hours" required="true" label="Unit" />
+        <field name="IntervalType" type="Event.IntervalType" default="BeforeEvent" required="true" label="Trigger" />
+        <field name="ScheduledDate" type="datetime" label="Schedule Date" compute="ComputeScheduledDate" store="true" />
+        <field name="MailRegistrationIds" type="Event.MailRegistration[]" label="Communication related to event registrations" />
+        <field name="MailDone" type="bool" label="Sent" readonly="true" />
+        <field name="MailState" type="Event.MailState" label="Global communication Status" compute="ComputeMailState" />
+        <field name="MailCountDone" type="integer" label="# Sent" readonly="true" />
+        <field name="TemplateModelId" type="Core.IrModel" label="Template Model" compute="ComputeTemplateModelId" />
+        <field name="TemplateRef" type="Core.TemplateReference" required="true" label="Template" />
+    </model>
+
+    <optionset id="Event.NotificationType" name="Notification Type">
+        <option value="Mail" name="Mail" />
+    </optionset>
+
+    <optionset id="Event.IntervalUnit" name="Interval Unit">
+        <option value="Now" name="Immediately" />
+        <option value="Hours" name="Hours" />
+        <option value="Days" name="Days" />
+        <option value="Weeks" name="Weeks" />
+        <option value="Months" name="Months" />
+    </optionset>
+
+    <optionset id="Event.IntervalType" name="Interval Type">
+        <option value="AfterSub" name="After each registration" />
+        <option value="BeforeEvent" name="Before the event" />
+        <option value="AfterEvent" name="After the event" />
+    </optionset>
+
+    <optionset id="Event.MailState" name="Mail State">
+        <option value="Running" name="Running" />
+        <option value="Scheduled" name="Scheduled" />
+        <option value="Sent" name="Sent" />
+    </optionset>
 </buvi>

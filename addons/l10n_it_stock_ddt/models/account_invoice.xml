@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nItDdtIds" type="many2many" relation="Stock.Picking" compute="_ComputeDdtIds" />
+        <field name="L10nItDdtCount" type="integer" compute="_ComputeDdtIds" />
+    </model>
 </buvi>

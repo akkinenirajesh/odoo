@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="L10nLatamManualChecks" type="bool" label="Use electronic and deferred checks"
+            help="* Allows putting numbers manually&#xA;* Enables Check Cash-In Date feature&#xA;* Disables printing" />
+    </model>
 </buvi>

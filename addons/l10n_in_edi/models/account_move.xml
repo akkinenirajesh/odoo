@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nInEdiCancelReason" type="Account.L10nInEdiCancelReason" label="Cancel reason" />
+        <field name="L10nInEdiCancelRemarks" type="string" label="Cancel remarks" />
+        <field name="L10nInEdiShowCancel" type="bool" label="E-invoice(IN) is sent?" computed="true" />
+    </model>
+
+    <optionset id="Account.L10nInEdiCancelReason" name="L10n In EDI Cancel Reason">
+        <option value="1" name="Duplicate" />
+        <option value="2" name="DataEntryMistake" />
+        <option value="3" name="OrderCancelled" />
+        <option value="4" name="Others" />
+    </optionset>
 </buvi>

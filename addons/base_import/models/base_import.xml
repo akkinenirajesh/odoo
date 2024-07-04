@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Base.Import" name="Import" description="Base Import">
         <field name="ResModel" type="string" required="true" />

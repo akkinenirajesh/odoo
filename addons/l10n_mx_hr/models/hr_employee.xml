@@ -1,65 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="res.bank" name="Res.Bank" track_created="true" track_update="true">
-    <field name="Country" label="Country" type="Res.Country" copied="true" on-delete="Clear"/>
-    <field name="State" label="Fed. State" type="Res.CountryState" on-delete="Clear"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Bic" label="Bank Identifier Code" type="string" indexed="true" copied="true"/>
-    <field name="City" label="City" type="string" copied="true"/>
-    <field name="Email" label="Email" type="string" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="Phone" label="Phone" type="string" copied="true"/>
-    <field name="Street" label="Street" type="string" copied="true"/>
-    <field name="Street2" label="Street2" type="string" copied="true"/>
-    <field name="Zip" label="Zip" type="string" copied="true"/>
-  </model>
-  <model id="res.partner.bank" name="Res.PartnerBank" track_created="true" track_update="true">
-    <field name="Journal" label="Account Journal" type="Account.Journal" collection="true" readonly="true"/>
-    <field name="RelatedMoves" label="Related Moves" type="Account.Move" collection="true"/>
-    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
-    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Bank" label="Bank" type="Res.Bank" copied="true" on-delete="Clear"/>
-    <field name="Company" label="Company" type="Res.Company" readonly="true" related-field="Partner.Company"/>
-    <field name="Currency" label="Currency" type="Res.Currency" copied="true" on-delete="Clear"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="Partner" label="Account Holder" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="AccHolderName" label="Account Holder Name" type="string" copied="true"/>
-    <field name="AccNumber" label="Account Number" type="string" required="true" copied="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Res.BankAccountsActivityExceptionDecoration" readonly="true" transient="true"/>
-    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
-    <field name="ActivityState" label="Activity State" type="Res.BankAccountsActivityState" readonly="true" transient="true"/>
-    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
-    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
-    <field name="AllowOutPayment" label="Send Money" type="bool"/>
-    <field name="BankBic" label="Bank Identifier Code" type="string" transient="true" related-field="Bank.Bic"/>
-    <field name="BankName" label="Name" type="string" transient="true" related-field="Bank.Name"/>
-    <field name="CountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="Partner.CountryCode"/>
-    <field name="HasIbanWarning" label="Has Iban Warning" type="bool" readonly="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="HasMoneyTransferWarning" label="Has Money Transfer Warning" type="bool" readonly="true"/>
-    <field name="LockTrustFields" label="Lock Trust Fields" type="bool" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="MoneyTransferService" label="Money Transfer Service" type="string" readonly="true" transient="true"/>
-    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="PartnerCountryName" label="Country Name" type="string" readonly="true" transient="true" translatable="true" related-field="Partner.Country.Name"/>
-    <field name="PartnerCustomerRank" label="Customer Rank" type="integer" readonly="true" transient="true" related-field="Partner.CustomerRank"/>
-    <field name="PartnerSupplierRank" label="Supplier Rank" type="integer" readonly="true" transient="true" related-field="Partner.SupplierRank"/>
-    <field name="SanitizedAccNumber" label="Sanitized Account Number" type="string" readonly="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="UserHasGroupValidateBankAccount" label="User Has Group Validate Bank Account" type="bool" readonly="true" transient="true"/>
-  </model>
+    <model id="Hr.Employee" name="Employee" description="Employee">
+        <field name="L10nMxCurp" type="string" label="CURP" groups="hr.group_hr_user" tracking="true" />
+        <field name="L10nMxRfc" type="string" label="RFC" groups="hr.group_hr_user" tracking="true" />
+    </model>
 </buvi>

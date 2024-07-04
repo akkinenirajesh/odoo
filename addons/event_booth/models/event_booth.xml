@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventBooth" name="EventBooth" description="Event Booth">
+        <field name="EventTypeId" type="Event.EventType" ondelete="SetNull" />
+        <field name="EventId" type="Event.Event" label="Event" ondelete="Cascade" required="true" />
+        <field name="PartnerId" type="Core.Partner" label="Renter" tracking="true" />
+        <field name="ContactName" type="string" label="Renter Name" compute="ComputeContactName" readonly="false" store="true" />
+        <field name="ContactEmail" type="string" label="Renter Email" compute="ComputeContactEmail" readonly="false" store="true" />
+        <field name="ContactPhone" type="string" label="Renter Phone" compute="ComputeContactPhone" readonly="false" store="true" />
+        <field name="State" type="Event.EventBoothState" label="Status" default="Available" required="true" tracking="true" group-expand="true" />
+        <field name="IsAvailable" type="bool" compute="ComputeIsAvailable" search="SearchIsAvailable" />
+    </model>
+
+    <optionset id="Event.EventBoothState" name="Event Booth State">
+        <option value="Available" name="Available" />
+        <option value="Unavailable" name="Unavailable" />
+    </optionset>
 </buvi>

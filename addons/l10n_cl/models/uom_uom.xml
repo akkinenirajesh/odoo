@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Uom.UomUom" name="UomUom" description="Unit of Measure">
+        <field name="L10nClSiiCode" type="string" label="SII Code" />
+    </model>
 </buvi>

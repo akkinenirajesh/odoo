@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Attachment.IrAttachment" name="IrAttachment" description="Attachment">
         <field name="Name" type="string" />

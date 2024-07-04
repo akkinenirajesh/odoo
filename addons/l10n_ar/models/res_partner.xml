@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nAr.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nArVat" type="string" label="VAT" compute="_ComputeL10nArVat"
+            help="Computed field that returns VAT or nothing if this one is not set for the partner" />
+        <field name="L10nArFormattedVat" type="string" label="Formatted VAT" compute="_ComputeL10nArFormattedVat"
+            help="Computed field that will convert the given VAT number to the format {person_category:2}-{number:10}-{validation_number:1}" />
+        <field name="L10nArGrossIncomeNumber" type="string" label="Gross Income Number" />
+        <field name="L10nArGrossIncomeType" type="L10nAr.GrossIncomeType" label="Gross Income Type"
+            help="Argentina: Type of gross income: exempt, local, multilateral." />
+        <field name="L10nArAfipResponsibilityType" type="L10nAr.AfipResponsibilityType" label="AFIP Responsibility Type"
+            help="Defined by AFIP to identify the type of responsibilities that a person or a legal entity could have and that impacts in the type of operations and requirements they need." />
+    </model>
+
+    <optionset id="L10nAr.GrossIncomeType" name="Gross Income Type">
+        <option value="Multilateral" name="Multilateral" />
+        <option value="Local" name="Local" />
+        <option value="Exempt" name="Exempt" />
+    </optionset>
 </buvi>

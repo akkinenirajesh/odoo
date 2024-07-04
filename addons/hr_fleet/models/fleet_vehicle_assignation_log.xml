@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrFleet.FleetVehicleAssignationLog" name="FleetVehicleAssignationLog" description="Fleet Vehicle Assignation Log">
+        <field name="DriverEmployeeId" type="Hr.Employee" label="Driver (Employee)" compute="ComputeDriverEmployeeId" store="true" readonly="false" />
+        <field name="AttachmentNumber" type="integer" label="Number of Attachments" compute="ComputeAttachmentNumber" />
+    </model>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.ResCompany" name="ResCompany" description="Company">
         <field name="AccountCheckPrintingLayout" type="Account.CheckPrintingLayout" label="Check Layout" default="Disabled"

@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nIdTaxNumber" type="string" label="Tax Number" />
+        <field name="L10nIdReplaceInvoiceId" type="Account.AccountMove" label="Replace Invoice" />
+        <field name="L10nIdAttachmentId" type="Core.IrAttachment" readonly="true" />
+        <field name="L10nIdCsvCreated" type="bool" label="CSV Created" compute="_ComputeCsvCreated" />
+        <field name="L10nIdKodeTransaksi" type="Account.KodeTransaksi" label="Kode Transaksi" 
+               help="Dua digit pertama nomor pajak" compute="_ComputeKodeTransaksi" store="true" />
+        <field name="L10nIdNeedKodeTransaksi" type="bool" compute="_ComputeNeedKodeTransaksi" />
+    </model>
+
+    <optionset id="Account.KodeTransaksi" name="Kode Transaksi">
+        <option value="01" name="KepedaPihakYangBukanPemungutPPN" />
+        <option value="02" name="KepedaPemungutBendaharawan" />
+        <option value="03" name="KepedaPemungutSelainBendaharawan" />
+        <option value="04" name="DPPNilaiLain" />
+        <option value="05" name="BesaranTertentu" />
+        <option value="06" name="PenyerahanLainnya" />
+        <option value="07" name="PenyerahanYangPPNnyaTidakDipungut" />
+        <option value="08" name="PenyerahanYangPPNnyaDibebaskan" />
+        <option value="09" name="PenyerahanAktiva" />
+    </optionset>
 </buvi>

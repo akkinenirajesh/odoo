@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="calendar.attendee" name="Calendar.Attendee" track_created="true" track_update="true">
-    <field name="Event" label="Meeting linked" type="Calendar.Event" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Recurrence" label="Recurrence Rule" type="Calendar.Recurrence" readonly="true" transient="true" related-field="Event.Recurrence"/>
-    <field name="Partner" label="Attendee" type="Res.Partner" required="true" readonly="true" copied="true" on-delete="Cascade"/>
-    <field name="AccessToken" label="Invitation Token" type="string" copied="true"/>
-    <field name="Availability" label="Available/Busy" type="Calendar.CalendarAttendeeInformationAvailable/Busy" readonly="true" copied="true"/>
-    <field name="CommonName" label="Common name" type="string" readonly="true"/>
-    <field name="Email" label="Email" type="string" readonly="true" transient="true" related-field="Partner.Email"/>
-    <field name="Phone" label="Phone" type="string" readonly="true" transient="true" related-field="Partner.Phone"/>
-    <field name="State" label="Status" type="Calendar.CalendarAttendeeInformationStatus"/>
-  </model>
+    <model id="GoogleCalendar.RecurrenceRule" name="RecurrenceRule" description="Calendar Recurrence Rule">
+        <field name="CalendarEventIds" type="Core.CalendarEvent" multiple="true" label="Calendar Events" />
+        <field name="NeedSync" type="bool" label="Need Sync" />
+        <field name="GoogleId" type="string" label="Google ID" />
+        <field name="Rrule" type="string" label="Recurrence Rule" />
+        <field name="EventTz" type="string" label="Event Timezone" />
+        <field name="BaseEventId" type="Core.CalendarEvent" label="Base Event" />
+    </model>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.Account" name="Account" description="Account">
         <field name="Name" type="string" label="Account Name" required="true" translate="true" />

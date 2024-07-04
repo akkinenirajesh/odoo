@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Analytic.AccountAnalyticPlan" name="AccountAnalyticPlan" description="Analytic Plans">
         <field name="Name" type="string" label="Name" required="true" translate="true" />

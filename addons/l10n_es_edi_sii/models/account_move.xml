@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nEsEdiIsRequired" type="bool" label="Is the Spanish EDI needed" compute="ComputeL10nEsEdiIsRequired" />
+        <field name="L10nEsEdiCsv" type="string" label="CSV return code" />
+        <field name="L10nEsRegistrationDate" type="date" label="Registration Date"
+               help="Technical field to keep the date the invoice was sent the first time as the date the invoice was registered into the system." />
+    </model>
 </buvi>

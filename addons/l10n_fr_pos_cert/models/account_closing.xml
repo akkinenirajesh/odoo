@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountSaleClosing" name="AccountSaleClosing" description="Sale Closing">
+        <field name="Name" type="string" label="Frequency and unique sequence number" required="true" />
+        <field name="Company" type="Core.Company" label="Company" readonly="true" required="true" />
+        <field name="DateClosingStop" type="datetime" label="Closing Date" readonly="true" required="true"
+            help="Date to which the values are computed" />
+        <field name="DateClosingStart" type="datetime" label="Starting Date" readonly="true" required="true"
+            help="Date from which the total interval is computed" />
+        <field name="Frequency" type="Account.ClosingFrequency" label="Closing Type" readonly="true" required="true" />
+        <field name="TotalInterval" type="decimal" label="Period Total" readonly="true" required="true"
+            help="Total in receivable accounts during the interval, excluding overlapping periods" />
+        <field name="CumulativeTotal" type="decimal" label="Cumulative Grand Total" readonly="true" required="true"
+            help="Total in receivable accounts since the beginning of times" />
+        <field name="SequenceNumber" type="integer" label="Sequence #" readonly="true" required="true" />
+        <field name="LastOrder" type="Pos.PosOrder" label="Last Pos Order" readonly="true"
+            help="Last Pos order included in the grand total" />
+        <field name="LastOrderHash" type="string" label="Last Order entry's inalterability hash" readonly="true" />
+        <field name="Currency" type="Core.Currency" label="Currency" readonly="true" related="Company.Currency"
+            help="The company's currency" />
+    </model>
+
+    <optionset id="Account.ClosingFrequency" name="Closing Frequency">
+        <option value="Daily" name="Daily" />
+        <option value="Monthly" name="Monthly" />
+        <option value="Annually" name="Annual" />
+    </optionset>
 </buvi>

@@ -1,3 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Hr.Leave" name="Leave" description="Time Off">
+    <field name="Name" type="string" compute="ComputeDescription" inverse="InverseDescription" search="SearchDescription" label="Description" />
+    <field name="PrivateName" type="string" label="Time Off Description" groups="hr_holidays.group_hr_holidays_user" />
+    <field name="State" type="Hr.LeaveState" compute="ComputeState" store="true" readonly="false" />
+    <field name="UserId" type="Core.User" related="EmployeeId.UserId" store="true" readonly="true" />
+    <field name="ManagerId" type="Hr.Employee" compute="ComputeFromEmployeeId" store="true" readonly="false" />
+    <field name="HolidayStatusId" type="Hr.LeaveType" compute="ComputeFromEmployeeId" store="true" readonly="false" required="true" />
+    <field name="Color" type="integer" related="HolidayStatusId.Color" />
+    <field name="ValidationType" type="string" related="HolidayStatusId.LeaveValidationType" readonly="false" />
+    <field name="EmployeeId" type="Hr.Employee" required="true" />
+    <field name="EmployeeCompanyId" type="Core.Company" related="EmployeeId.CompanyId" store="true" />
+    <field name="CompanyId" type="Core.Company" compute="ComputeCompanyId" store="true" />
+    <field name="ActiveEmployee" type="bool" related="EmployeeId.Active" />
+    <field name="TzMismatch" type="bool" compute="ComputeTzMismatch" />
+    <field name="Tz" type="string" compute="ComputeTz" />
+    <field name="DepartmentId" type="Hr.Department" compute="ComputeDepartmentId" store="true" readonly="false" />
+    <field name="Notes" type="string" readonly="false" />
+    <field name="ResourceCalendarId" type="Resource.Calendar" compute="ComputeResourceCalendarId" store="true" readonly="false" />
+    <field name="DateFrom" type="datetime" compute="ComputeDateFromTo" store="true" />
+    <field name="DateTo" type="datetime" compute="ComputeDateFromTo" store="true" />
+    <field name="NumberOfDays" type="float" compute="ComputeDuration" store="true" />
+    <field name="NumberOfHours" type="float" compute="ComputeDuration" store="true" />
+    <field name="LastSeveralDays" type="bool" compute="ComputeLastSeveralDays" />
+    <field name="DurationDisplay" type="string" compute="ComputeDurationDisplay" store="true" />
+    <field name="MeetingId" type="Calendar.Event" />
+    <field name="FirstApproverId" type="Hr.Employee" readonly="true" />
+    <field name="SecondApproverId" type="Hr.Employee" readonly="true" />
+    <field name="CanReset" type="bool" compute="ComputeCanReset" />
+    <field name="CanApprove" type="bool" compute="ComputeCanApprove" />
+    <field name="CanCancel" type="bool" compute="ComputeCanCancel" />
+    <field name="AttachmentIds" type="Core.Attachment[]" />
+    <field name="SupportedAttachmentIds" type="Core.Attachment[]" compute="ComputeSupportedAttachmentIds" inverse="InverseSupportedAttachmentIds" />
+    <field name="SupportedAttachmentIdsCount" type="integer" compute="ComputeSupportedAttachmentIds" />
+    <field name="LeaveTypeRequestUnit" type="string" related="HolidayStatusId.RequestUnit" readonly="true" />
+    <field name="LeaveTypeSupportDocument" type="bool" related="HolidayStatusId.SupportDocument" />
+    <field name="RequestDateFrom" type="date" />
+    <field name="RequestDateTo" type="date" />
+    <field name="RequestHourFrom" type="Hr.LeaveRequestHour" />
+    <field name="RequestHourTo" type="Hr.LeaveRequestHour" />
+    <field name="RequestDateFromPeriod" type="Hr.LeaveDateFromPeriod" />
+    <field name="RequestUnitHalf" type="bool" compute="ComputeRequestUnitHalf" store="true" readonly="false" />
+    <field name="RequestUnitHours" type="bool" compute="ComputeRequestUnitHours" store="true" readonly="false" />
+    <field name="IsHatched" type="bool" compute="ComputeIsHatched" />
+    <field name="IsStriked" type="bool" compute="ComputeIsHatched" />
+    <field name="HasMandatoryDay" type="bool" compute="ComputeHasMandatoryDay" />
+    <field name="LeaveTypeIncreasesDuration" type="bool" compute="ComputeLeaveTypeIncreasesDuration" />
+  </model>
+
+  <optionset id="Hr.LeaveState" name="Leave State">
+    <option value="Draft" name="To Submit" />
+    <option value="Confirm" name="To Approve" />
+    <option value="Refuse" name="Refused" />
+    <option value="Validate1" name="Second Approval" />
+    <option value="Validate" name="Approved" />
+    <option value="Cancel" name="Cancelled" />
+  </optionset>
+
+  <optionset id="Hr.LeaveRequestHour" name="Leave Request Hour">
+    <option value="0" name="12:00 AM" />
+    <option value="0.5" name="12:30 AM" />
+    <!-- ... other options ... -->
+    <option value="23" name="11:00 PM" />
+    <option value="23.5" name="11:30 PM" />
+  </optionset>
+
+  <optionset id="Hr.LeaveDateFromPeriod" name="Leave Date From Period">
+    <option value="Am" name="Morning" />
+    <option value="Pm" name="Afternoon" />
+  </optionset>
 </buvi>

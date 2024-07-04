@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Auth.TotpDevice" name="TotpDevice" description="Authentication Device">
         <field name="Name" type="string" label="Device Name" required="true" />

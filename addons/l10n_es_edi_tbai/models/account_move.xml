@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEs.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nEsTbaiChainIndex" type="integer" label="TicketBAI chain index"
+            help="Invoice index in chain, set if and only if an in-chain XML was submitted and did not error" />
+        <field name="L10nEsTbaiPostXml" type="binary" label="Submission XML"
+            help="Submission XML sent to TicketBAI. Kept if accepted or no response (timeout), cleared otherwise." />
+        <field name="L10nEsTbaiCancelXml" type="binary" label="Cancellation XML"
+            help="Cancellation XML sent to TicketBAI. Kept if accepted or no response (timeout), cleared otherwise." />
+        <field name="L10nEsTbaiIsRequired" type="bool" label="TicketBAI required"
+            help="Is the Basque EDI (TicketBAI) needed ?" />
+        <field name="L10nEsTbaiRefundReason" type="L10nEs.TbaiRefundReason" label="Invoice Refund Reason Code (TicketBai)"
+            help="BOE-A-1992-28740. Ley 37/1992, de 28 de diciembre, del Impuesto sobre el Valor Añadido. Artículo 80. Modificación de la base imponible." />
+        <field name="L10nEsTbaiReversedIds" type="Account.AccountMove" label="Refunded Vendor Bills" multiple="true"
+            help="In the case where a vendor refund has multiple original invoices, you can set them here." />
+    </model>
+
+    <optionset id="L10nEs.TbaiRefundReason" name="TicketBAI Refund Reason">
+        <option value="R1" name="R1: Art. 80.1, 80.2, 80.6 and rights founded error" />
+        <option value="R2" name="R2: Art. 80.3" />
+        <option value="R3" name="R3: Art. 80.4" />
+        <option value="R4" name="R4: Art. 80 - other" />
+        <option value="R5" name="R5: Factura rectificativa en facturas simplificadas" />
+    </optionset>
 </buvi>

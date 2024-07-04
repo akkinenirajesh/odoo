@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.ResCompany" name="ResCompany" description="Company">
         <field name="PeriodLockDate" type="datetime" label="Lock Date for Non-Advisers" />

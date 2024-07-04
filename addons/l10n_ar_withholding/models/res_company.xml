@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nArTaxBaseAccount" type="Account.Account" label="Tax Base Account"
+            help="Account that will be set on lines created to represent the tax base amounts." />
+    </model>
 </buvi>

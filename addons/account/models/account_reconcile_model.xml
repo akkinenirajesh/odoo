@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountReconcileModel" name="AccountReconcileModel" description="Preset to create journal entries during invoices and payments matching">
         <field name="Name" type="string" label="Name" required="true" translate="true" />

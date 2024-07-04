@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.User" name="User" description="User" inherits="Core.User">
+        <field name="LeaveManagerId" type="HR.Employee" related="EmployeeId.LeaveManagerId" />
+        <field name="ShowLeaves" type="bool" related="EmployeeId.ShowLeaves" />
+        <field name="AllocationCount" type="float" related="EmployeeId.AllocationCount" />
+        <field name="LeaveDateTo" type="date" related="EmployeeId.LeaveDateTo" />
+        <field name="CurrentLeaveState" type="HR.LeaveState" related="EmployeeId.CurrentLeaveState" />
+        <field name="IsAbsent" type="bool" related="EmployeeId.IsAbsent" />
+        <field name="AllocationRemainingDisplay" type="string" related="EmployeeId.AllocationRemainingDisplay" />
+        <field name="AllocationDisplay" type="string" related="EmployeeId.AllocationDisplay" />
+        <field name="HrIconDisplay" type="HR.IconDisplay" related="EmployeeId.HrIconDisplay" />
+    </model>
+
+    <optionset id="HR.LeaveState" name="Leave State">
+        <!-- Add appropriate options here -->
+    </optionset>
+
+    <optionset id="HR.IconDisplay" name="HR Icon Display">
+        <!-- Add appropriate options here -->
+    </optionset>
 </buvi>

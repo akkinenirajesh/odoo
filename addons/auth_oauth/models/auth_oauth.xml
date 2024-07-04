@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Auth.OAuthProvider" name="OAuthProvider" description="OAuth2 provider">
         <field name="Name" type="string" label="Provider name" required="true" />

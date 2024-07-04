@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResCompany" name="ResCompany" description="Company">
+        <field name="ProjectTimeModeId" type="Uom.UnitOfMeasure" label="Project Time Unit"
+            help="This will set the unit of measure used in projects and tasks. If you use the timesheet linked to projects, don't forget to setup the right unit of measure in your employees." />
+        <field name="TimesheetEncodeUomId" type="Uom.UnitOfMeasure" label="Timesheet Encoding Unit" />
+        <field name="InternalProjectId" type="Project.Project" label="Internal Project"
+            help="Default project value for timesheet generated from time off type." />
+    </model>
 </buvi>

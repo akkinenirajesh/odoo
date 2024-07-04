@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountAnalyticDistributionModel" name="AccountAnalyticDistributionModel" description="Account Analytic Distribution Model">
         <field name="AccountPrefix" type="string" label="Accounts Prefix"

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountAnalyticAccount" name="AccountAnalyticAccount" description="Account Analytic Account">
         <field name="InvoiceCount" type="integer" label="Invoice Count" compute="_ComputeInvoiceCount" />

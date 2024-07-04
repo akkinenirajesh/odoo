@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTaxGroup" name="AccountTaxGroup" description="Account Tax Group">
+        <field name="L10nEcType" type="Account.L10nEcType" label="Type Ecuadorian Tax" 
+               help="Ecuadorian taxes subtype" />
+    </model>
+
+    <optionset id="Account.L10nEcType" name="L10n EC Type">
+        <option value="Vat05" name="VAT 5%" />
+        <option value="Vat08" name="VAT 8%" />
+        <option value="Vat12" name="VAT 12%" />
+        <option value="Vat13" name="VAT 13%" />
+        <option value="Vat14" name="VAT 14%" />
+        <option value="Vat15" name="VAT 15%" />
+        <option value="ZeroVat" name="VAT 0%" />
+        <option value="NotChargedVat" name="VAT Not Charged" />
+        <option value="ExemptVat" name="VAT Exempt" />
+        <option value="Ice" name="Special Consumptions Tax (ICE)" />
+        <option value="Irbpnr" name="Plastic Bottles (IRBPNR)" />
+        <option value="WithholdVatSale" name="VAT Withhold on Sales" />
+        <option value="WithholdVatPurchase" name="VAT Withhold on Purchases" />
+        <option value="WithholdIncomeSale" name="Profit Withhold on Sales" />
+        <option value="WithholdIncomePurchase" name="Profit Withhold on Purchases" />
+        <option value="OutflowsTax" name="Exchange Outflows" />
+        <option value="Other" name="Others" />
+    </optionset>
 </buvi>

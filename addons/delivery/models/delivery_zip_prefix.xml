@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.DeliveryZipPrefix" name="DeliveryZipPrefix" description="Delivery Zip Prefix">
+        <field name="Name" type="string" label="Prefix" required="true" />
+        <unique>
+            <field name="Name" />
+            <message>Prefix already exists!</message>
+        </unique>
+    </model>
 </buvi>

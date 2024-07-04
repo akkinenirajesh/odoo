@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MassMailingList" name="MassMailingList" description="Mailing List">
+        <field name="Name" type="string" label="Mailing List" required="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="ContactCount" type="integer" label="Number of Contacts" compute="_ComputeMailingListStatistics" />
+        <field name="ContactCountEmail" type="integer" label="Number of Emails" compute="_ComputeMailingListStatistics" />
+        <field name="ContactCountOptOut" type="integer" label="Number of Opted-out" compute="_ComputeMailingListStatistics" />
+        <field name="ContactPctOptOut" type="float" label="Percentage of Opted-out" compute="_ComputeMailingListStatistics" />
+        <field name="ContactCountBlacklisted" type="integer" label="Number of Blacklisted" compute="_ComputeMailingListStatistics" />
+        <field name="ContactPctBlacklisted" type="float" label="Percentage of Blacklisted" compute="_ComputeMailingListStatistics" />
+        <field name="ContactPctBounce" type="float" label="Percentage of Bouncing" compute="_ComputeMailingListStatistics" />
+        <field name="Contacts" type="MassMailing.MailingContact" relation="many2many" through="MassMailing.MailingSubscription" />
+        <field name="MailingCount" type="integer" label="Number of Mailing" compute="_ComputeMailingCount" />
+        <field name="Mailings" type="MassMailing.MailingMailing" relation="many2many" />
+        <field name="Subscriptions" type="MassMailing.MailingSubscription" relation="one2many" />
+        <field name="IsPublic" type="bool" label="Show In Preferences" default="false"
+            help="The mailing list can be accessible by recipients in the subscription management page to allow them to update their preferences." />
+    </model>
 </buvi>

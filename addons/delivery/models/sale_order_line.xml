@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="IsDelivery" type="bool" label="Is a Delivery" default="false" />
+        <field name="ProductQty" type="decimal" label="Product Qty" compute="ComputeProductQty" digits="ProductUnitOfMeasure" />
+        <field name="RecomputeDeliveryPrice" type="bool" related="Order.RecomputeDeliveryPrice" />
+    </model>
 </buvi>

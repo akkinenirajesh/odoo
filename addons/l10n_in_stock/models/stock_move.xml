@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+        <!-- Inherited fields would be defined in the base model -->
+        
+        <!-- Add any additional fields if needed -->
+    </model>
 </buvi>

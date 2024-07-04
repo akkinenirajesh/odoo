@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nBrCpfCode" type="string" label="CPF" help="Natural Persons Register." />
+        <field name="L10nBrIeCode" type="string" label="IE" help="State Tax Identification Number. Should contain 9-14 digits." />
+        <field name="L10nBrImCode" type="string" label="IM" help="Municipal Tax Identification Number" />
+        <field name="L10nBrNireCode" type="string" label="NIRE" help="State Commercial Identification Number. Should contain 11 digits." />
+    </model>
 </buvi>

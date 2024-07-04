@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <!-- Add any fields that might be relevant to AccountMove -->
+        <field name="InvoiceLineIds" type="Account.AccountMoveLine" label="Invoice Lines" multiple="true" />
+    </model>
+
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="SaleLineIds" type="Sale.SaleOrderLine" label="Sale Order Lines" multiple="true" />
+    </model>
+
+    <model id="Sale.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="Order" type="Sale.SaleOrder" label="Sale Order" />
+    </model>
+
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="Warehouse" type="Stock.Warehouse" label="Warehouse" />
+    </model>
+
+    <model id="Stock.Warehouse" name="Warehouse" description="Warehouse">
+        <field name="Partner" type="Core.Partner" label="Partner" />
+    </model>
 </buvi>

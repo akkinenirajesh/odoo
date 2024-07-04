@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.Product" name="Product" description="Product">
+        <field name="ServiceTracking" type="string" label="Service Tracking" />
+        <field name="InvoicePolicy" type="string" label="Invoice Policy" />
+    </model>
 </buvi>

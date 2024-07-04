@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrSkillsSurvey.SurveySurvey" name="SurveySurvey" description="Survey">
+        <field name="CertificationValidityMonths" type="integer" label="Validity" required="false"
+            help="Specify the number of months the certification is valid after being awarded. Enter 0 for certifications that never expire." />
+    </model>
 </buvi>

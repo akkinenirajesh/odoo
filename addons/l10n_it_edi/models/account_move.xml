@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Journal Entry">
+    <field name="L10nItEdiState" type="string" label="SDI State">
+      <option value="being_sent" name="Being Sent To SdI" />
+      <option value="requires_user_signature" name="Requires user signature" />
+      <option value="processing" name="SdI Processing" />
+      <option value="rejected" name="SdI Rejected" />
+      <option value="forwarded" name="SdI Accepted, Forwarded to Partner" />
+      <option value="forward_failed" name="SdI Accepted, Forward to Partner Failed" />
+      <option value="forward_attempt" name="SdI Accepted, Forwarding to Partner" />
+      <option value="accepted_by_pa_partner" name="SdI Accepted, Accepted by the PA Partner" />
+      <option value="rejected_by_pa_partner" name="SdI Accepted, Rejected by the PA Partner" />
+      <option value="accepted_by_pa_partner_after_expiry" name="SdI Accepted, PA Partner Expired Terms" />
+    </field>
+    <field name="L10nItEdiHeader" type="string" label="EDI Header" readonly="true" />
+    <field name="L10nItEdiTransaction" type="string" label="FatturaPA Transaction" />
+    <field name="L10nItEdiAttachmentFile" type="binary" label="FatturaPA Attachment" />
+    <field name="L10nItEdiAttachmentId" type="Core.Attachment" label="FatturaPA Attachment" compute="ComputeLinkedAttachmentId" />
+    <field name="L10nItEdiIsSelfInvoice" type="bool" label="Is Self Invoice" compute="ComputeL10nItEdiIsSelfInvoice" />
+    <field name="L10nItStampDuty" type="decimal" label="Dati Bollo" default="0" />
+    <field name="L10nItDdtId" type="L10nIt.Ddt" label="DDT" />
+    <field name="L10nItOriginDocumentType" type="string" label="Origin Document Type">
+      <option value="purchase_order" name="Purchase Order" />
+      <option value="contract" name="Contract" />
+      <option value="agreement" name="Agreement" />
+    </field>
+    <field name="L10nItOriginDocumentName" type="string" label="Origin Document Name" />
+    <field name="L10nItOriginDocumentDate" type="date" label="Origin Document Date" />
+    <field name="L10nItCig" type="string" label="CIG" help="Tender Unique Identifier" />
+    <field name="L10nItCup" type="string" label="CUP" help="Public Investment Unique Identifier" />
+    <field name="L10nItPartnerPa" type="bool" label="Partner PA" compute="ComputeL10nItPartnerPa" />
+  </model>
 </buvi>

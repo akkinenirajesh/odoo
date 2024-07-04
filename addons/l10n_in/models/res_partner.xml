@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIn.ResPartner" name="ResPartner" description="Partner (Indian Localization)">
+        <field name="L10nInGstTreatment" type="L10nIn.GstTreatment" label="GST Treatment" />
+        <field name="L10nInPan" type="string" label="PAN"
+            help="PAN enables the department to link all transactions of the person with the department. These transactions include taxpayments, TDS/TCS credits, returns of income/wealth/gift/FBT, specified transactions, correspondence, and so on. Thus, PAN acts as an identifier for the person with the tax department." />
+        <field name="DisplayPanWarning" type="bool" label="Display PAN Warning" computed="true" />
+        <field name="Vat" type="string" label="VAT" />
+        <field name="CompanyType" type="Core.CompanyType" label="Company Type" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="State" type="Core.State" label="State" />
+    </model>
+
+    <optionset id="L10nIn.GstTreatment" name="GST Treatment">
+        <option value="Regular" name="Registered Business - Regular" />
+        <option value="Composition" name="Registered Business - Composition" />
+        <option value="Unregistered" name="Unregistered Business" />
+        <option value="Consumer" name="Consumer" />
+        <option value="Overseas" name="Overseas" />
+        <option value="SpecialEconomicZone" name="Special Economic Zone" />
+        <option value="DeemedExport" name="Deemed Export" />
+        <option value="UinHolders" name="UIN Holders" />
+    </optionset>
 </buvi>

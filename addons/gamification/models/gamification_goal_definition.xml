@@ -1,58 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="hr.appraisal.goal" name="Hr.AppraisalGoal" track_created="true" track_update="true">
-    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="Tags" label="Tags" type="Hr.AppraisalGoalTag" collection="true" copied="true"/>
-    <field name="EmployeeAutocompletes" label="Employee Autocomplete" type="Hr.Employee" collection="true" readonly="true" transient="true"/>
-    <field name="Employee" label="Employee" type="Hr.Employee" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Manager" label="Manager" type="Hr.Employee" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
-    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Company" label="Company" type="Res.Company" readonly="true" transient="true" related-field="Employee.Company"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="ManagerUser" label="User" type="Res.Users" readonly="true" transient="true" related-field="Manager.User"/>
-    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Hr.AppraisalGoalActivityExceptionDecoration" readonly="true" transient="true"/>
-    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
-    <field name="ActivityState" label="Activity State" type="Hr.AppraisalGoalActivityState" readonly="true" transient="true"/>
-    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
-    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
-    <field name="Deadline" label="Deadline" type="date" copied="true"/>
-    <field name="Description" label="Description" type="html" copied="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="IsManager" label="Is Manager" type="bool" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="Progression" label="Progress" type="Hr.AppraisalGoalProgress" required="true" copied="true"/>
-  </model>
-  <model id="gamification.goal" name="Gamification.Goal" track_created="true" track_update="true">
-    <field name="Challenge" label="Challenge" type="Gamification.Challenge" indexed="true" readonly="true" related-field="Line.Challenge"/>
-    <field name="Line" label="Challenge Line" type="Gamification.ChallengeLine" copied="true" on-delete="Cascade"/>
-    <field name="Definition" label="Goal Definition" type="Gamification.GoalDefinition" required="true" copied="true" on-delete="Cascade"/>
-    <field name="User" label="User" type="Res.Users" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Closed" label="Closed goal" type="bool" copied="true"/>
-    <field name="Completeness" label="Completeness" type="float" readonly="true" transient="true"/>
-    <field name="Current" label="Current Value" type="float" required="true" copied="true"/>
-    <field name="DefinitionDescription" label="Definition Description" type="text" readonly="true" transient="true" related-field="Definition.Description"/>
-    <field name="DefinitionSuffix" label="Suffix" type="string" readonly="true" transient="true" related-field="Definition.FullSuffix"/>
-    <field name="EndDate" label="End Date" type="date" copied="true"/>
-    <field name="LastUpdate" label="Last Update" type="date" copied="true"/>
-    <field name="RemindUpdateDelay" label="Remind delay" type="integer" copied="true"/>
-    <field name="StartDate" label="Start Date" type="date" copied="true"/>
-    <field name="State" label="State" type="Gamification.GamificationGoalState" required="true"/>
-    <field name="TargetGoal" label="To Reach" type="float" required="true" copied="true"/>
-    <field name="ToUpdate" label="To update" type="bool" copied="true"/>
-  </model>
+    <model id="Gamification.GoalDefinition" name="GoalDefinition" description="Gamification Goal Definition">
+        <field name="Name" type="string" label="Goal Definition" required="true" translate="true" />
+        <field name="Description" type="string" label="Goal Description" />
+        <field name="Monetary" type="bool" default="false" label="Monetary Value"
+            help="The target and current value are defined in the company currency." />
+        <field name="Suffix" type="string" label="Suffix" 
+            help="The unit of the target and current values" translate="true" />
+        <field name="FullSuffix" type="string" label="Full Suffix" computed="true"
+            help="The currency and suffix field" />
+        <field name="ComputationMode" type="Gamification.ComputationMode" required="true" default="Manually"
+            help="Define how the goals will be computed. The result of the operation will be stored in the field 'Current'." />
+        <field name="DisplayMode" type="Gamification.DisplayMode" required="true" default="Progress" />
+        <field name="Model" type="Core.IrModel" label="Model" />
+        <field name="ModelInheritedIds" type="Core.IrModel" multiple="true" related="Model.InheritedModelIds" />
+        <field name="Field" type="Core.IrModelFields" label="Field to Sum" />
+        <field name="FieldDate" type="Core.IrModelFields" label="Date Field"
+            help="The date to use for the time period evaluated" />
+        <field name="Domain" type="string" required="true" default="[]" label="Filter Domain"
+            help="Domain for filtering records. General rule, not user depending, e.g. [('state', '=', 'done')]. The expression can contain reference to 'user' which is a browse record of the current user if not in batch mode." />
+        <field name="BatchMode" type="bool" label="Batch Mode"
+            help="Evaluate the expression in batch instead of once for each user" />
+        <field name="BatchDistinctiveField" type="Core.IrModelFields" label="Distinctive field for batch user"
+            help="In batch mode, this indicates which field distinguishes one user from the other, e.g. user_id, partner_id..." />
+        <field name="BatchUserExpression" type="string" label="Evaluated expression for batch mode"
+            help="The value to compare with the distinctive field. The expression can contain reference to 'user' which is a browse record of the current user, e.g. user.id, user.partner_id.id..." />
+        <field name="ComputeCode" type="string" label="Python Code"
+            help="Python code to be executed for each user. 'result' should contains the new current value. Evaluated user can be access through object.user_id." />
+        <field name="Condition" type="Gamification.GoalCondition" required="true" default="Higher" label="Goal Performance"
+            help="A goal is considered as completed when the current value is compared to the value to reach" />
+        <field name="Action" type="Core.IrActionsActWindow" label="Action"
+            help="The action that will be called to update the goal value." />
+        <field name="ResIdField" type="string" label="ID Field of user"
+            help="The field name on the user profile (res.users) containing the value for res_id for action." />
+    </model>
+
+    <optionset id="Gamification.ComputationMode" name="Computation Mode">
+        <option value="Manually" name="Recorded manually" />
+        <option value="Count" name="Automatic: number of records" />
+        <option value="Sum" name="Automatic: sum on a field" />
+        <option value="Python" name="Automatic: execute a specific Python code" />
+    </optionset>
+
+    <optionset id="Gamification.DisplayMode" name="Display Mode">
+        <option value="Progress" name="Progressive (using numerical values)" />
+        <option value="Boolean" name="Exclusive (done or not-done)" />
+    </optionset>
+
+    <optionset id="Gamification.GoalCondition" name="Goal Condition">
+        <option value="Higher" name="The higher the better" />
+        <option value="Lower" name="The lower the better" />
+    </optionset>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ResPartner.Bank" name="Bank" description="Partner Bank">
+        <field name="L10nIdQrisApiKey" type="string" label="QRIS API Key" groups="base.group_system" />
+        <field name="L10nIdQrisMid" type="string" label="QRIS Merchant ID" groups="base.group_system" />
+        <field name="CountryCode" type="string" />
+    </model>
 </buvi>

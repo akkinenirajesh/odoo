@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventQuestionAnswer" name="EventQuestionAnswer" description="Event Question Answer">
+        <field name="Name" type="string" label="Answer" required="true" translate="true" />
+        <field name="Question" type="Event.EventQuestion" required="true" ondelete="cascade" />
+        <field name="Sequence" type="integer" default="10" />
+    </model>
 </buvi>

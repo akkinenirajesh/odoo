@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.ApplicantRefuseReason" name="ApplicantRefuseReason" description="Refuse Reason of Applicant">
+        <field name="Sequence" type="integer" default="10" />
+        <field name="Name" type="string" label="Description" required="true" translate="true" />
+        <field name="TemplateId" type="Mail.Template" label="Email Template" />
+        <field name="Active" type="bool" default="true" />
+    </model>
 </buvi>

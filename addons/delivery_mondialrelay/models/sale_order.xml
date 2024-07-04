@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <!-- Existing fields from the sale.order model would be here -->
+        
+        <!-- New field to represent the carrier_id -->
+        <field name="Carrier" type="Delivery.DeliveryCarrier" label="Delivery Method"/>
+        
+        <!-- New field to represent the partner_shipping_id -->
+        <field name="PartnerShipping" type="Res.Partner" label="Shipping Address"/>
+        
+        <!-- You might want to add more fields based on the complete sale.order model -->
+    </model>
 </buvi>

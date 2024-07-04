@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrRecruitment.ApplicantSkill" name="ApplicantSkill" description="Skill level for an applicant">
+        <field name="Applicant" type="HrRecruitment.Applicant" required="true" />
+        <field name="Skill" type="HrRecruitment.Skill" required="true" 
+               compute="ComputeSkill" store="true" 
+               domain="[('SkillType', '=', SkillType)]" />
+        <field name="SkillLevel" type="HrRecruitment.SkillLevel" required="true"
+               compute="ComputeSkillLevel" store="true"
+               domain="[('SkillType', '=', SkillType)]" />
+        <field name="SkillType" type="HrRecruitment.SkillType" required="true" />
+        <field name="LevelProgress" type="integer" related="SkillLevel.LevelProgress" />
+        
+        <unique>
+            <field name="Applicant" />
+            <field name="Skill" />
+            <message>Two levels for the same skill is not allowed</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrFleet.User" name="User" description="User with Fleet Information">
+        <field name="EmployeeCarsCount" type="integer" label="Employee Cars Count" />
+    </model>
 </buvi>

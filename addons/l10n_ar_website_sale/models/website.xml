@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.Website" name="Website" description="Website">
+        <!-- No additional fields are defined in the original Python code -->
+    </model>
 </buvi>

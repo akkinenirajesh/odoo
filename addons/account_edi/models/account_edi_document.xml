@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountEdiDocument" name="AccountEdiDocument" description="Electronic Document for an account.move">
         <field name="MoveId" type="Account.AccountMove" required="true" label="Move" />

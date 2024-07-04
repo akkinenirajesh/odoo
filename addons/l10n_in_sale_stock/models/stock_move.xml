@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+        <!-- Assuming existing fields are already defined -->
+        <field name="SaleLine" type="Sale.SaleOrderLine" label="Sale Order Line" />
+    </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <!-- No new fields are defined in the original Python code, so we'll assume it's extending an existing model -->
+    </model>
 </buvi>

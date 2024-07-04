@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ResCompany.Company" name="Company" description="Company">
+        <field name="AccountFiscalCountry" type="Core.Country" label="Fiscal Country" />
+        <field name="RootId" type="ResCompany.Company" label="Root Company" />
+        <field name="ChartTemplate" type="Account.ChartTemplate" label="Chart Template" />
+    </model>
 </buvi>

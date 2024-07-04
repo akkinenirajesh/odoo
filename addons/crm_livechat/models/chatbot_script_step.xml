@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <buvi>
+    <model id="Crm.ChatbotScriptStep" name="ChatbotScriptStep" description="Chatbot Script Step">
+        <field name="StepType" type="Core.SelectionField" label="Step Type">
+            <option value="create_lead" name="Create Lead" />
+        </field>
+        <field name="CrmTeamId" type="Crm.Team" label="Sales Team" ondelete="SetNull"
+            help="Used in combination with 'create_lead' step type in order to automatically assign the created lead/opportunity to the defined team" />
+    </model>
 </buvi>

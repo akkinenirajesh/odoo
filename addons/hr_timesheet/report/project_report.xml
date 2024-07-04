@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ReportProjectTaskUser" name="ReportProjectTaskUser" description="Report Project Task User">
+        <field name="AllocatedHours" type="float" label="Allocated Time" readonly="true" groups="hr_timesheet.group_hr_timesheet_user" />
+        <field name="EffectiveHours" type="float" label="Time Spent" readonly="true" groups="hr_timesheet.group_hr_timesheet_user" />
+        <field name="RemainingHours" type="float" label="Time Remaining" readonly="true" groups="hr_timesheet.group_hr_timesheet_user" />
+        <field name="RemainingHoursPercentage" type="float" label="Time Remaining Percentage" readonly="true" groups="hr_timesheet.group_hr_timesheet_user" />
+        <field name="Progress" type="float" label="Progress" aggregator="avg" readonly="true" groups="hr_timesheet.group_hr_timesheet_user" />
+        <field name="Overtime" type="float" readonly="true" groups="hr_timesheet.group_hr_timesheet_user" />
+        <field name="TotalHoursSpent" type="float" label="Total Time Spent" groups="hr_timesheet.group_hr_timesheet_user" help="Time spent on this task, including its sub-tasks." />
+        <field name="SubtaskEffectiveHours" type="float" label="Time Spent on Sub-Tasks" groups="hr_timesheet.group_hr_timesheet_user" help="Time spent on the sub-tasks (and their own sub-tasks) of this task." />
+    </model>
 </buvi>

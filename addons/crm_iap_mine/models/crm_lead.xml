@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <buvi>
+    <model id="Crm.Lead" name="Lead" description="CRM Lead">
+        <field name="LeadMiningRequestId" type="Crm.IapLeadMiningRequest" label="Lead Mining Request" index="btree_not_null" />
+    </model>
+
+    <model id="Crm.IapLeadMiningRequest" name="IapLeadMiningRequest" description="IAP Lead Mining Request">
+        <!-- Additional fields for IapLeadMiningRequest would be defined here -->
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <!-- Add any fields that might be necessary for this model -->
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Partner" type="Core.Partner" label="Partner" />
+        <!-- Add other fields as needed -->
+    </model>
 </buvi>

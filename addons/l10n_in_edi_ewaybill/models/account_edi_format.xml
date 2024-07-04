@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountEdiFormat" name="AccountEdiFormat" description="Account EDI Format">
+        <field name="Code" type="string" />
+        <field name="Name" type="string" label="Name" translate="true" />
+        <field name="IsAvailable" type="bool" compute="ComputeIsAvailable" />
+    </model>
+
+    <model id="Account.Move" name="Move" description="Account Move">
+        <field name="Name" type="string" />
+        <field name="Ref" type="string" />
+        <field name="MoveType" type="string" />
+        <field name="Date" type="DateTime" />
+        <field name="JournalId" type="Account.Journal" />
+        <field name="Company" type="Core.Company" />
+        <field name="Partner" type="Core.Partner" />
+        <field name="PartnerShipping" type="Core.Partner" />
+        <field name="L10nInDistance" type="integer" />
+        <field name="L10nInMode" type="string" />
+        <field name="L10nInTransporterId" type="Core.Partner" />
+        <field name="L10nInVehicleNo" type="string" />
+        <field name="L10nInVehicleType" type="string" />
+        <field name="L10nInTransportationDocNo" type="string" />
+        <field name="L10nInTransportationDocDate" type="DateTime" />
+        <field name="L10nInTypeId" type="Account.L10nInPortalCode" />
+        <field name="L10nInState" type="Core.State" />
+        <field name="L10nInGstTreatment" type="string" />
+        <field name="L10nInEdiCancelReason" type="string" />
+        <field name="L10nInEdiCancelRemarks" type="string" />
+        <field name="InvoiceLineIds" type="Account.MoveLine" relation="many2many" />
+    </model>
 </buvi>

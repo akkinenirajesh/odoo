@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Company.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nEsEdiCertificateId" type="Company.L10nEsEdiCertificate" label="Certificate (ES)"
+               compute="_ComputeL10nEsEdiCertificate" />
+        <field name="L10nEsEdiCertificates" type="Company.L10nEsEdiCertificate" multiple="true" />
+        <field name="L10nEsEdiTaxAgency" type="Company.L10nEsEdiTaxAgency" label="Tax Agency for SII" />
+        <field name="L10nEsEdiTestEnv" type="bool" label="Test Mode" default="true"
+               help="Use the test environment" />
+    </model>
+
+    <optionset id="Company.L10nEsEdiTaxAgency" name="Tax Agency for SII">
+        <option value="Aeat" name="Agencia Tributaria española" />
+        <option value="Gipuzkoa" name="Hacienda Foral de Gipuzkoa" />
+        <option value="Bizkaia" name="Hacienda Foral de Bizkaia" />
+    </optionset>
 </buvi>

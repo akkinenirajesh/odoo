@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountMove" name="AccountMove" description="Journal Entries, Invoices and related models">
         <field name="MoveType" type="Account.MoveType" required="true" />

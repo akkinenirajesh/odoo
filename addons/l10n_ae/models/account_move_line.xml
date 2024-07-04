@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="L10nAeVatAmount" type="decimal" label="VAT Amount" compute="_ComputeVatAmount" />
+        <field name="PriceSubtotal" type="decimal" />
+        <field name="PriceTotal" type="decimal" />
+    </model>
 </buvi>

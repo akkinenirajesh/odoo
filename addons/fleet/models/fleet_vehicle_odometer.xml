@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleOdometer" name="VehicleOdometer" description="Odometer log for a vehicle">
+        <field name="Name" type="string" compute="ComputeVehicleLogName" store="true" />
+        <field name="Date" type="date" default="Today" />
+        <field name="Value" type="float" label="Odometer Value" aggregator="max" />
+        <field name="Vehicle" type="Fleet.Vehicle" label="Vehicle" required="true" />
+        <field name="Unit" type="Fleet.OdometerUnit" label="Unit" readonly="true" related="Vehicle.OdometerUnit" />
+        <field name="Driver" type="Fleet.Driver" label="Driver" readonly="false" related="Vehicle.Driver" />
+    </model>
+
+    <optionset id="Fleet.OdometerUnit" name="Odometer Unit">
+        <option value="Kilometers" name="Kilometers" />
+        <option value="Miles" name="Miles" />
+    </optionset>
 </buvi>

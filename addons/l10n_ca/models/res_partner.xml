@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Partner.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nCaPst" type="string" label="PST number" 
+               help="Canadian Provincial Tax Identification Number" />
+    </model>
 </buvi>

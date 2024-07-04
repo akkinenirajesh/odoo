@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.IrAttachment" name="IrAttachment" description="Attachment">
         <!-- No new fields are defined in the given Python code, so we'll assume the existing fields from the inherited model -->

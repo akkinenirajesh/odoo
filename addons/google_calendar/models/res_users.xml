@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="GoogleCalendar.User" name="User" description="User with Google Calendar Integration">
+        <field name="GoogleCalendarRtoken" type="string" related="ResUsersSettings.GoogleCalendarRtoken" groups="Base.GroupSystem" />
+        <field name="GoogleCalendarToken" type="string" related="ResUsersSettings.GoogleCalendarToken" groups="Base.GroupSystem" />
+        <field name="GoogleCalendarTokenValidity" type="datetime" related="ResUsersSettings.GoogleCalendarTokenValidity" groups="Base.GroupSystem" />
+        <field name="GoogleCalendarSyncToken" type="string" related="ResUsersSettings.GoogleCalendarSyncToken" groups="Base.GroupSystem" />
+        <field name="GoogleCalendarCalId" type="string" related="ResUsersSettings.GoogleCalendarCalId" groups="Base.GroupSystem" />
+        <field name="GoogleSynchronizationStopped" type="bool" related="ResUsersSettings.GoogleSynchronizationStopped" readonly="false" groups="Base.GroupSystem" />
+    </model>
 </buvi>

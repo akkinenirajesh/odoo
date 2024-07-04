@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="EventBoothIds" type="Event.Booth[]" label="Booths" />
+        <field name="EventBoothCount" type="integer" label="Booth Count" compute="ComputeEventBoothCount" />
+    </model>
 </buvi>

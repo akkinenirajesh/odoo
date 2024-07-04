@@ -1,44 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="digest.digest" name="Digest.Digest" track_created="true" track_update="true">
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="Currency" label="Currency" type="Res.Currency" transient="true" related-field="Company.Currency"/>
-    <field name="Users" label="Recipients" type="Res.Users" collection="true" copied="true"/>
-    <field name="AvailableFields" label="Available Fields" type="string" readonly="true" transient="true"/>
-    <field name="IsSubscribed" label="Is user subscribed" type="bool" readonly="true" transient="true"/>
-    <field name="KpiAccountBankCash" label="Bank &amp; Cash Moves" type="bool" copied="true"/>
-    <field name="KpiAccountBankCashValue" label="Kpi Account Bank Cash Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiAccountTotalRevenue" label="Revenue" type="bool" copied="true"/>
-    <field name="KpiAccountTotalRevenueValue" label="Kpi Account Total Revenue Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiAllSaleTotal" label="All Sales" type="bool" copied="true"/>
-    <field name="KpiAllSaleTotalValue" label="Kpi All Sale Total Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiCrmLeadCreated" label="New Leads" type="bool" copied="true"/>
-    <field name="KpiCrmLeadCreatedValue" label="Kpi Crm Lead Created Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiCrmOpportunitiesWon" label="Opportunities Won" type="bool" copied="true"/>
-    <field name="KpiCrmOpportunitiesWonValue" label="Kpi Crm Opportunities Won Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiHelpdeskTicketsClosed" label="Tickets Closed" type="bool" copied="true"/>
-    <field name="KpiHelpdeskTicketsClosedValue" label="Kpi Helpdesk Tickets Closed Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiHrRecruitmentNewColleagues" label="New Employees" type="bool" copied="true"/>
-    <field name="KpiHrRecruitmentNewColleaguesValue" label="Kpi Hr Recruitment New Colleagues Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiLivechatConversations" label="Conversations handled" type="bool" copied="true"/>
-    <field name="KpiLivechatConversationsValue" label="Kpi Livechat Conversations Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiLivechatRating" label="% of Happiness" type="bool" copied="true"/>
-    <field name="KpiLivechatRatingValue" label="Kpi Livechat Rating Value" type="float" readonly="true" transient="true"/>
-    <field name="KpiLivechatResponse" label="Time to answer (sec)" type="bool" copied="true"/>
-    <field name="KpiLivechatResponseValue" label="Kpi Livechat Response Value" type="float" readonly="true" transient="true"/>
-    <field name="KpiMailMessageTotal" label="Messages Sent" type="bool" copied="true"/>
-    <field name="KpiMailMessageTotalValue" label="Kpi Mail Message Total Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiPosTotal" label="POS Sales" type="bool" copied="true"/>
-    <field name="KpiPosTotalValue" label="Kpi Pos Total Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiProjectTaskOpened" label="Open Tasks" type="bool" copied="true"/>
-    <field name="KpiProjectTaskOpenedValue" label="Kpi Project Task Opened Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiResUsersConnected" label="Connected Users" type="bool" copied="true"/>
-    <field name="KpiResUsersConnectedValue" label="Kpi Res Users Connected Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiWebsiteSaleTotal" label="eCommerce Sales" type="bool" copied="true"/>
-    <field name="KpiWebsiteSaleTotalValue" label="Kpi Website Sale Total Value" type="monetary" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NextRunDate" label="Next Mailing Date" type="date" copied="true"/>
-    <field name="Periodicity" label="Periodicity" type="Digest.DigestPeriodicity" required="true" copied="true"/>
-    <field name="State" label="Status" type="Digest.DigestStatus" readonly="true"/>
-  </model>
+    <model id="HumanResources.Applicant" name="Applicant" description="Applicant">
+        <field name="Name" type="string" label="Subject / Application" required="true" 
+            help="Email subject for applications sent via email" />
+        <field name="Active" type="bool" default="true" 
+            help="If the active field is set to false, it will allow you to hide the case without removing it." />
+        <field name="Description" type="string" />
+        <field name="EmailFrom" type="string" label="Email" />
+        <field name="EmailNormalized" type="string" />
+        <field name="Probability" type="float" />
+        <field name="Partner" type="Core.Partner" />
+        <field name="CreateDate" type="datetime" label="Applied on" readonly="true" />
+        <field name="Stage" type="HumanResources.RecruitmentStage" label="Stage" />
+        <field name="LastStage" type="HumanResources.RecruitmentStage" label="Last Stage" 
+            help="Stage of the applicant before being in the current stage. Used for lost cases analysis." />
+        <field name="Categories" type="HumanResources.ApplicantCategory" multiple="true" label="Tags" />
+        <field name="Company" type="Core.Company" />
+        <field name="User" type="Core.User" label="Recruiter" />
+        <field name="DateClosed" type="datetime" label="Hire Date" />
+        <field name="DateOpen" type="datetime" label="Assigned" readonly="true" />
+        <field name="DateLastStageUpdate" type="datetime" label="Last Stage Update" />
+        <field name="Priority" type="string" label="Evaluation" />
+        <field name="Job" type="HumanResources.Job" label="Applied Job" />
+        <field name="SalaryProposedExtra" type="string" label="Proposed Salary Extra" 
+            help="Salary Proposed by the Organisation, extra advantages" />
+        <field name="SalaryExpectedExtra" type="string" label="Expected Salary Extra" 
+            help="Salary Expected by Applicant, extra advantages" />
+        <field name="SalaryProposed" type="float" label="Proposed Salary" 
+            help="Salary Proposed by the Organisation" />
+        <field name="SalaryExpected" type="float" label="Expected Salary" 
+            help="Salary Expected by Applicant" />
+        <field name="Availability" type="date" help="The date at which the applicant will be available to start working" />
+        <field name="PartnerName" type="string" label="Applicant's Name" />
+        <field name="PartnerPhone" type="string" label="Phone" />
+        <field name="PartnerPhoneSanitized" type="string" label="Sanitized Phone Number" />
+        <field name="PartnerMobile" type="string" label="Mobile" />
+        <field name="PartnerMobileSanitized" type="string" label="Sanitized Mobile Number" />
+        <field name="Type" type="HumanResources.RecruitmentDegree" label="Degree" />
+        <field name="Department" type="HumanResources.Department" />
+        <field name="DayOpen" type="float" label="Days to Open" />
+        <field name="DayClose" type="float" label="Days to Close" />
+        <field name="DelayClose" type="float" label="Delay to Close" 
+            help="Number of days to close" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Employee" type="HumanResources.Employee" help="Employee linked to the applicant." />
+        <field name="EmployeeIsActive" type="bool" label="Employee Active" />
+        <field name="UserEmail" type="string" label="User Email" readonly="true" />
+        <field name="AttachmentNumber" type="integer" label="Number of Attachments" />
+        <field name="EmployeeName" type="string" label="Employee Name" />
+        <field name="Attachments" type="Core.Attachment" multiple="true" />
+        <field name="KanbanState" type="string" />
+        <field name="LegendBlocked" type="string" label="Kanban Blocked" />
+        <field name="LegendDone" type="string" label="Kanban Valid" />
+        <field name="LegendNormal" type="string" label="Kanban Ongoing" />
+        <field name="ApplicationCount" type="integer" help="Applications with the same email or phone or mobile" />
+        <field name="RefuseReason" type="HumanResources.ApplicantRefuseReason" label="Refuse Reason" />
+        <field name="Meetings" type="Calendar.Event" multiple="true" />
+        <field name="MeetingDisplayText" type="string" />
+        <field name="MeetingDisplayDate" type="date" />
+        <field name="Campaign" type="Marketing.Campaign" />
+        <field name="Medium" type="Marketing.Medium" />
+        <field name="Source" type="Marketing.Source" />
+        <field name="Interviewers" type="Core.User" multiple="true" label="Interviewers" />
+        <field name="LinkedinProfile" type="string" label="LinkedIn Profile" />
+        <field name="ApplicationStatus" type="string" />
+        <field name="ApplicantProperties" type="string" label="Properties" />
+    </model>
 </buvi>

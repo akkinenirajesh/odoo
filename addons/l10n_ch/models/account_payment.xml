@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.Payment" name="Payment" description="Account Payment">
+        <field name="L10nChReferenceWarningMsg" type="string" compute="ComputeL10nChReferenceWarningMsg" />
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.WorkEntry" name="WorkEntry" description="Work Entry">
+        <field name="Company" type="Core.Company" />
+        <field name="Employee" type="HumanResources.Employee" />
+        <field name="DateStart" type="datetime" />
+        <field name="DateStop" type="datetime" />
+    </model>
 </buvi>

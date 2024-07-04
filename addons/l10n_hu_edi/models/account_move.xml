@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="L10nHuPaymentMode" type="Account.L10nHuPaymentMode" label="Payment mode" 
+           help="NAV expected payment mode of the invoice." />
+    <field name="L10nHuEdiState" type="Account.L10nHuEdiState" label="NAV 3.0 status" />
+    <field name="L10nHuEdiBatchUploadIndex" type="integer" label="Index of invoice within a batch upload" />
+    <field name="L10nHuEdiAttachment" type="byte[]" label="Invoice XML file" />
+    <field name="L10nHuEdiSendTime" type="DateTime" label="Invoice upload time" />
+    <field name="L10nHuEdiTransactionCode" type="string" label="Transaction Code" />
+    <field name="L10nHuEdiMessages" type="string" label="Transaction messages (JSON)" />
+    <field name="L10nHuInvoiceChainIndex" type="integer" label="Invoice Chain Index" 
+           help="Index in the chain of modification invoices: -1 for a base invoice; 1, 2, 3, ... for modification invoices; 0 for rejected/cancelled invoices or if it has not yet been set." />
+    <field name="L10nHuEdiAttachmentFilename" type="string" label="Invoice XML filename" />
+    <field name="L10nHuEdiMessageHtml" type="string" label="Transaction messages" />
+  </model>
+
+  <optionset id="Account.L10nHuPaymentMode" name="L10n HU Payment Mode">
+    <option value="Transfer" name="Transfer" />
+    <option value="Cash" name="Cash" />
+    <option value="Card" name="Credit/debit card" />
+    <option value="Voucher" name="Voucher" />
+    <option value="Other" name="Other" />
+  </optionset>
+
+  <optionset id="Account.L10nHuEdiState" name="L10n HU EDI State">
+    <option value="Sent" name="Sent, waiting for response" />
+    <option value="SendTimeout" name="Timeout when sending" />
+    <option value="Confirmed" name="Confirmed" />
+    <option value="ConfirmedWarning" name="Confirmed with warnings" />
+    <option value="Rejected" name="Rejected" />
+    <option value="CancelSent" name="Cancellation request sent" />
+    <option value="CancelTimeout" name="Timeout when requesting cancellation" />
+    <option value="CancelPending" name="Cancellation request pending" />
+    <option value="Cancelled" name="Cancelled" />
+  </optionset>
 </buvi>

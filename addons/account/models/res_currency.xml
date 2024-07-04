@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.ResCurrency" name="ResCurrency" description="Currency">
         <field name="DisplayRoundingWarning" type="bool" label="Display Rounding Warning" 

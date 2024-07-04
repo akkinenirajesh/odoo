@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Calendar.Attendee" name="Attendee" description="Calendar Attendee Information">
         <field name="Event" type="Calendar.Event" label="Meeting linked" required="true" />

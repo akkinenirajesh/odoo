@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.LeaveType" name="LeaveType" description="Leave Type">
+        <field name="HrAttendanceOvertime" type="bool" compute="ComputeHrAttendanceOvertime" />
+        <field name="OvertimeDeductible" type="bool" label="Deduct Extra Hours" default="false"
+            help="Once a time off of this type is approved, extra hours in attendances will be deducted." />
+        <field name="DisplayName" type="string" compute="ComputeDisplayName" />
+        <field name="Name" type="string" />
+        <field name="RequiresAllocation" type="string" />
+        <field name="Company" type="Core.Company" />
+    </model>
 </buvi>

@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Core.IrActionsReport" name="IrActionsReport" description="IR Actions Report">
+        <!-- No new fields defined in the original Python code -->
+    </model>
 </buvi>

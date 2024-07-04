@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Company" name="Company" description="Company">
+        <field name="HrPresenceControlEmailAmount" type="integer" label="# emails to send" />
+        <field name="HrPresenceControlIpList" type="string" label="Valid IP addresses" />
+        <field name="EmployeePropertiesDefinition" type="Core.PropertiesDefinition" label="Employee Properties" />
+    </model>
 </buvi>

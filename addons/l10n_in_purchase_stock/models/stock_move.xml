@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+        <!-- Add any existing fields here -->
+        
+        <!-- New fields can be added if needed -->
+    </model>
 </buvi>

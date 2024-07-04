@@ -1,3 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.Challenge" name="Challenge" description="Gamification Challenge">
+        <field name="Name" type="string" label="Challenge Name" required="true" translate="true" />
+        <field name="Description" type="string" label="Description" translate="true" />
+        <field name="State" type="Gamification.ChallengeState" default="Draft" required="true" />
+        <field name="Manager" type="Core.User" label="Responsible" />
+        <field name="Users" type="Core.User" label="Participants" many2many="true" />
+        <field name="UserDomain" type="string" label="User domain" />
+        <field name="UserCount" type="integer" label="# Users" computed="true" />
+        <field name="Period" type="Gamification.ChallengePeriod" default="Once" label="Periodicity" required="true" 
+               help="Period of automatic goal assignment. If none is selected, should be launched manually." />
+        <field name="StartDate" type="date" label="Start Date" 
+               help="The day a new challenge will be automatically started. If no periodicity is set, will use this date as the goal start date." />
+        <field name="EndDate" type="date" label="End Date" 
+               help="The day a new challenge will be automatically closed. If no periodicity is set, will use this date as the goal end date." />
+        <field name="InvitedUsers" type="Core.User" label="Suggest to users" many2many="true" />
+        <field name="Lines" type="Gamification.ChallengeLine" label="Lines" many2many="true" required="true" 
+               help="List of goals that will be set" />
+        <field name="Reward" type="Gamification.Badge" label="For Every Succeeding User" />
+        <field name="RewardFirst" type="Gamification.Badge" label="For 1st user" />
+        <field name="RewardSecond" type="Gamification.Badge" label="For 2nd user" />
+        <field name="RewardThird" type="Gamification.Badge" label="For 3rd user" />
+        <field name="RewardFailure" type="bool" label="Reward Bests if not Succeeded?" />
+        <field name="RewardRealtime" type="bool" label="Reward as soon as every goal is reached" default="true" 
+               help="With this option enabled, a user can receive a badge only once. The top 3 badges are still rewarded only at the end of the challenge." />
+        <field name="VisibilityMode" type="Gamification.ChallengeVisibilityMode" default="Personal" label="Display Mode" required="true" />
+        <field name="ReportMessageFrequency" type="Gamification.ChallengeReportFrequency" default="Never" label="Report Frequency" required="true" />
+        <field name="ReportMessageGroup" type="Discuss.Channel" label="Send a copy to" 
+               help="Group that will receive a copy of the report in addition to the user" />
+        <field name="ReportTemplate" type="Mail.Template" label="Report Template" required="true" />
+        <field name="RemindUpdateDelay" type="integer" label="Non-updated manual goals will be reminded after" 
+               help="Never reminded if no value or zero is specified." />
+        <field name="LastReportDate" type="date" label="Last Report Date" default="Today" />
+        <field name="NextReportDate" type="date" label="Next Report Date" computed="true" />
+        <field name="ChallengeCategory" type="Gamification.ChallengeCategory" default="HR" label="Appears in" required="true" 
+               help="Define the visibility of the challenge through menus" />
+    </model>
+
+    <optionset id="Gamification.ChallengeState" name="Challenge State">
+        <option value="Draft" name="Draft" />
+        <option value="InProgress" name="In Progress" />
+        <option value="Done" name="Done" />
+    </optionset>
+
+    <optionset id="Gamification.ChallengePeriod" name="Challenge Period">
+        <option value="Once" name="Non recurring" />
+        <option value="Daily" name="Daily" />
+        <option value="Weekly" name="Weekly" />
+        <option value="Monthly" name="Monthly" />
+        <option value="Yearly" name="Yearly" />
+    </optionset>
+
+    <optionset id="Gamification.ChallengeVisibilityMode" name="Challenge Visibility Mode">
+        <option value="Personal" name="Individual Goals" />
+        <option value="Ranking" name="Leader Board (Group Ranking)" />
+    </optionset>
+
+    <optionset id="Gamification.ChallengeReportFrequency" name="Challenge Report Frequency">
+        <option value="Never" name="Never" />
+        <option value="OnChange" name="On change" />
+        <option value="Daily" name="Daily" />
+        <option value="Weekly" name="Weekly" />
+        <option value="Monthly" name="Monthly" />
+        <option value="Yearly" name="Yearly" />
+    </optionset>
+
+    <optionset id="Gamification.ChallengeCategory" name="Challenge Category">
+        <option value="HR" name="Human Resources / Engagement" />
+        <option value="Other" name="Settings / Gamification Tools" />
+    </optionset>
 </buvi>

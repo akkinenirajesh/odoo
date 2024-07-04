@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nDeDatevCode" type="string" size="4" label="Datev Code"
+               help="4 digits code used by Datev" />
+    </model>
+
+    <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <!-- Existing fields would be defined here -->
+    </model>
 </buvi>

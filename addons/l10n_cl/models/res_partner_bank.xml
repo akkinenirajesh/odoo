@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResBank" name="ResBank" description="Bank">
+        <field name="Name" type="string" />
+        <field name="BicSwift" type="string" />
+        <field name="Phone" type="string" />
+        <field name="Email" type="string" />
+        <field name="Active" type="bool" default="true" />
+        <field name="L10nClSbifCode" type="string" label="Cod. SBIF" size="10" />
+        <field name="FiscalCountryCodes" type="string" compute="GetFiscalCountryCodes" />
+    </model>
 </buvi>

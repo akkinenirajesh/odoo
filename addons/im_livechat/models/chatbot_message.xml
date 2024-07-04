@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ChatbotMessage" name="ChatbotMessage" description="Chatbot Message">
+        <field name="MailMessage" type="Mail.Message" label="Related Mail Message" required="true" />
+        <field name="DiscussChannel" type="Discuss.Channel" label="Discussion Channel" required="true" />
+        <field name="ScriptStep" type="ImLivechat.ChatbotScriptStep" label="Chatbot Step" required="true" />
+        <field name="UserScriptAnswer" type="ImLivechat.ChatbotScriptAnswer" label="User's answer" />
+        <field name="UserRawAnswer" type="string" label="User's raw answer" />
+        <unique>
+            <field name="MailMessage" />
+            <message>A mail.message can only be linked to a single chatbot message</message>
+        </unique>
+    </model>
 </buvi>

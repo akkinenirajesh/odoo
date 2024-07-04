@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.KarmaTracking" name="KarmaTracking" description="Track Karma Changes">
+        <field name="UserId" type="Core.User" label="User" required="true" />
+        <field name="OldValue" type="integer" label="Old Karma Value" readonly="true" />
+        <field name="NewValue" type="integer" label="New Karma Value" required="true" />
+        <field name="Gain" type="integer" label="Gain" compute="ComputeGain" />
+        <field name="Consolidated" type="bool" />
+        <field name="TrackingDate" type="datetime" default="DateTime.Now" readonly="true" />
+        <field name="Reason" type="string" label="Description" default="Add Manually" />
+        <field name="OriginRef" type="reference" label="Source" />
+        <field name="OriginRefModelName" type="Gamification.OriginSelectionValues" label="Source Type" compute="ComputeOriginRefModelName" />
+    </model>
+
+    <optionset id="Gamification.OriginSelectionValues" name="Origin Selection Values">
+        <option value="Core.User" name="User" />
+    </optionset>
 </buvi>

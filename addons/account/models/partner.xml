@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Fiscal Position">
         <field name="Sequence" type="integer" />

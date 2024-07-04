@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nKeEdiTremol.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nKeExemptionNumber" type="string" label="Exemption Number"
+            help="The exemption number of the partner. Provided by the Kenyan government." />
+    </model>
 </buvi>

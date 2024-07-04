@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+        <field name="L10nLatamCheckId" type="Account.AccountPayment" label="Check" />
+        <field name="L10nLatamCheckOperationIds" type="Account.AccountPayment" label="Check Operations" readonly="true" />
+        <field name="L10nLatamCheckCurrentJournalId" type="Account.AccountJournal" label="Check Current Journal" compute="ComputeL10nLatamCheckCurrentJournal" store="true" />
+        <field name="L10nLatamCheckWarningMsg" type="string" compute="ComputeL10nLatamCheckWarningMsg" />
+        <field name="L10nLatamCheckNumber" type="string" compute="ComputeL10nLatamCheckNumber" inverse="InverseL10nLatamCheckNumber" />
+        <field name="L10nLatamCheckBankId" type="Core.ResBank" label="Check Bank" compute="ComputeL10nLatamCheckBankId" store="true" readonly="false" />
+        <field name="L10nLatamCheckIssuerVat" type="string" label="Check Issuer VAT" compute="ComputeL10nLatamCheckIssuerVat" store="true" readonly="false" />
+        <field name="L10nLatamCheckPaymentDate" type="datetime" label="Check Cash-In Date" help="Date from when you can cash in the check, turn the check into cash" readonly="false" />
+        <field name="L10nLatamManualChecks" type="bool" related="JournalId.L10nLatamManualChecks" />
+    </model>
 </buvi>

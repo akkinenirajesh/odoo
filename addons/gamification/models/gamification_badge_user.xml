@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.BadgeUser" name="BadgeUser" description="Gamification User Badge">
+        <field name="UserId" type="Core.User" label="User" required="true" />
+        <field name="SenderId" type="Core.User" label="Sender" />
+        <field name="BadgeId" type="Gamification.Badge" label="Badge" required="true" />
+        <field name="ChallengeId" type="Gamification.Challenge" label="Challenge" />
+        <field name="Comment" type="string" />
+        <field name="BadgeName" type="string" label="Badge Name" related="BadgeId.Name" readonly="false" />
+        <field name="Level" type="Gamification.BadgeLevel" label="Badge Level" related="BadgeId.Level" store="true" readonly="true" />
+    </model>
+
+    <optionset id="Gamification.BadgeLevel" name="Badge Level">
+        <!-- Add appropriate options based on the actual levels in your system -->
+        <option value="Bronze" name="Bronze" />
+        <option value="Silver" name="Silver" />
+        <option value="Gold" name="Gold" />
+    </optionset>
 </buvi>

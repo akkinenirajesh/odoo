@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Repair.RepairOrder" name="RepairOrder" description="Repair Order">
+        <field name="L10nDin5008PrintingDate" type="date" label="DIN 5008 Printing Date" />
+    </model>
 </buvi>

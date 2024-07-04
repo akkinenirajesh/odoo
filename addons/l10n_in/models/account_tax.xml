@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nInReverseCharge" type="bool" label="Reverse charge" 
+               help="Tick this if this tax is reverse charge. Only for Indian accounting" />
+        <field name="CountryCode" type="string" />
+        <field name="InvoiceRepartitionLineIds" type="Account.AccountTaxRepartitionLine[]" />
+    </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Calendar.Event" name="CalendarEvent" description="Calendar Event">
+        <!-- Inherited fields from 'calendar.event' would be listed here -->
+    </model>
 </buvi>

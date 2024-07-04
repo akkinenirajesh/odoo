@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nEcCodeBase" type="string" label="Code base" 
+               help="Ecuador: Tax declaration code of the base amount prior to the calculation of the tax." />
+        <field name="L10nEcCodeApplied" type="string" label="Code applied"
+               help="Ecuador: Tax declaration code of the resulting amount after the calculation of the tax." />
+        <field name="L10nEcCodeAts" type="string" label="Code ATS"
+               help="Ecuador: Indicates if the purchase invoice supports tax credit or cost or expenses, conforming table 5 of ATS." />
+    </model>
 </buvi>

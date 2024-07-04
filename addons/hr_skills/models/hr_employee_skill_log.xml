@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.EmployeeSkillLog" name="EmployeeSkillLog" description="Skills History">
+        <field name="Employee" type="Hr.Employee" required="true" />
+        <field name="Department" type="Hr.Department" />
+        <field name="Skill" type="Hr.Skill" required="true" />
+        <field name="SkillLevel" type="Hr.SkillLevel" required="true" />
+        <field name="SkillType" type="Hr.SkillType" required="true" />
+        <field name="LevelProgress" type="integer" />
+        <field name="Date" type="date" default="context_today" />
+        <unique>
+            <field name="Employee" />
+            <field name="Department" />
+            <field name="Skill" />
+            <field name="Date" />
+            <message>Two levels for the same skill on the same day is not allowed</message>
+        </unique>
+    </model>
 </buvi>

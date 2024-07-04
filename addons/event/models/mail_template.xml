@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailTemplate" name="MailTemplate" description="Mail Template">
+        <!-- No specific fields were defined in the original Python file -->
+    </model>
 </buvi>

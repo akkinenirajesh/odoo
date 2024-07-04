@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventRegistration" name="EventRegistration" description="Event Registration">
+        <field name="EventId" type="Event.Event" required="true" label="Event" />
+        <field name="EventTicketId" type="Event.EventTicket" label="Ticket Type" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Barcode" type="string" readonly="true" />
+        <field name="UtmCampaignId" type="Utm.Campaign" label="Campaign" />
+        <field name="UtmSourceId" type="Utm.Source" label="Source" />
+        <field name="UtmMediumId" type="Utm.Medium" label="Medium" />
+        <field name="PartnerId" type="Res.Partner" label="Booked by" />
+        <field name="Name" type="string" label="Attendee Name" />
+        <field name="Email" type="string" label="Email" />
+        <field name="Phone" type="string" label="Phone" />
+        <field name="CompanyName" type="string" label="Company Name" />
+        <field name="DateClosed" type="datetime" label="Attended Date" />
+        <field name="EventBeginDate" type="datetime" label="Event Start Date" readonly="true" />
+        <field name="EventEndDate" type="datetime" label="Event End Date" readonly="true" />
+        <field name="EventDateRange" type="string" label="Date Range" />
+        <field name="EventOrganizerId" type="Res.Partner" label="Event Organizer" readonly="true" />
+        <field name="EventUserId" type="Res.User" label="Event Responsible" readonly="true" />
+        <field name="CompanyId" type="Res.Company" label="Company" />
+        <field name="State" type="Event.EventRegistrationState" default="Open" label="Status" />
+        <field name="RegistrationAnswerIds" type="Event.RegistrationAnswer" label="Attendee Answers" />
+        <field name="RegistrationAnswerChoiceIds" type="Event.RegistrationAnswer" label="Attendee Selection Answers" />
+        <field name="RegistrationProperties" type="Properties" label="Properties" />
+        <unique>
+            <field name="Barcode" />
+            <message>Barcode should be unique</message>
+        </unique>
+    </model>
+
+    <optionset id="Event.EventRegistrationState" name="Event Registration State">
+        <option value="Draft" name="Unconfirmed" />
+        <option value="Open" name="Registered" />
+        <option value="Done" name="Attended" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
 </buvi>

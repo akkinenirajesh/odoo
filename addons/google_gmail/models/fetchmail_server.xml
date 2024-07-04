@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Google.FetchmailServer" name="FetchmailServer" description="Fetchmail Server">
+        <field name="ServerType" type="Google.ServerType" />
+        <field name="ServerTypeInfo" type="string" compute="ComputeServerTypeInfo" />
+        <field name="Server" type="string" />
+        <field name="IsSsl" type="bool" />
+        <field name="Port" type="integer" />
+        <field name="User" type="string" />
+        <field name="GoogleGmailAuthorizationCode" type="string" />
+        <field name="GoogleGmailRefreshToken" type="string" />
+        <field name="GoogleGmailAccessToken" type="string" />
+        <field name="GoogleGmailAccessTokenExpiration" type="datetime" />
+        <field name="Object" type="Core.Model" />
+    </model>
+
+    <optionset id="Google.ServerType" name="Server Type">
+        <option value="Gmail" name="Gmail OAuth Authentication" />
+        <!-- Add other existing options here -->
+    </optionset>
 </buvi>

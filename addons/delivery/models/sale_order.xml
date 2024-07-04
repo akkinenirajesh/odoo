@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="CarrierId" type="Delivery.DeliveryCarrier" string="Delivery Method" check-company="true" 
+               help="Fill this field if you plan to invoice the shipping based on picking." />
+        <field name="DeliveryMessage" type="string" readonly="true" copy="false" />
+        <field name="DeliverySet" type="bool" compute="ComputeDeliveryState" />
+        <field name="RecomputeDeliveryPrice" type="bool" label="Delivery cost should be recomputed" />
+        <field name="IsAllService" type="bool" label="Service Product" compute="ComputeIsServiceProducts" />
+        <field name="ShippingWeight" type="float" label="Shipping Weight" compute="ComputeShippingWeight" store="true" readonly="false" />
+    </model>
 </buvi>

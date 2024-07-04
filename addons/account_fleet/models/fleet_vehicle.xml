@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Fleet.FleetVehicle" name="FleetVehicle" description="Fleet Vehicle">
         <field name="BillCount" type="integer" label="Bills Count" compute="ComputeMoveIds" />

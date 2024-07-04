@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nKeCuDateTime" type="datetime" label="CU Signing Date and Time" copy="false" />
+        <field name="L10nKeCuSerialNumber" type="string" label="CU Serial Number" copy="false" />
+        <field name="L10nKeCuInvoiceNumber" type="string" label="CU Invoice Number" copy="false" />
+        <field name="L10nKeCuQrcode" type="string" label="CU QR Code" copy="false" />
+        <!-- Other existing fields from AccountMove should be included here -->
+    </model>
 </buvi>

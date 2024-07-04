@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10n_br.ResPartner" name="ResPartner" description="Brazilian Partner Extensions">
+        <field name="L10nBrIeCode" type="string" label="IE" 
+               help="State Tax Identification Number. Should contain 9-14 digits." />
+        <field name="L10nBrImCode" type="string" label="IM" 
+               help="Municipal Tax Identification Number" />
+        <field name="L10nBrIsufCode" type="string" label="SUFRAMA code" 
+               help="SUFRAMA registration number." />
+    </model>
 </buvi>

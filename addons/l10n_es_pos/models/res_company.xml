@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <!-- Assuming ResCompany already has other fields defined elsewhere -->
+    </model>
 </buvi>

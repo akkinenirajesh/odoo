@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.ResPartnerBank" name="ResPartnerBank" description="Partner Bank Account">
         <field name="AccHolderName" type="string" label="Account Holder Name" />

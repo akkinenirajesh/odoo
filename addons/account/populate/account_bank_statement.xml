@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.BankStatement" name="BankStatement" description="Bank Statement">
         <field name="Name" type="string" label="Statement Name" required="true" />

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.Applicant" name="Applicant" description="HR Applicant">
+        <field name="SurveyId" type="Survey.Survey" label="Survey" readonly="true" related="JobId.SurveyId" />
+        <field name="ResponseIds" type="Survey.UserInput[]" label="Responses" />
+    </model>
 </buvi>

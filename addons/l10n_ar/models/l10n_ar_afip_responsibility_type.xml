@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nAr.AfipResponsibilityType" name="AfipResponsibilityType" description="AFIP Responsibility Type">
+        <field name="Name" type="string" label="Name" required="true" index="trigram" />
+        <field name="Sequence" type="integer" />
+        <field name="Code" type="string" label="Code" required="true" index="true" />
+        <field name="Active" type="bool" default="true" />
+        <unique>
+            <field name="Name" />
+            <message>Name must be unique!</message>
+        </unique>
+        <unique>
+            <field name="Code" />
+            <message>Code must be unique!</message>
+        </unique>
+    </model>
 </buvi>

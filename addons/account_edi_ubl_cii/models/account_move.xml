@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountMove" name="AccountMove" description="Account Move">
         <field name="UblCiiXmlId" type="Core.Attachment" label="Attachment" compute="ComputeLinkedAttachmentId" />

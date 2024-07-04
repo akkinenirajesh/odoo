@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleAssignationLog" name="VehicleAssignationLog" description="Drivers history on a vehicle">
+        <field name="VehicleId" type="Fleet.Vehicle" label="Vehicle" required="true" />
+        <field name="DriverId" type="Core.Partner" label="Driver" required="true" />
+        <field name="DateStart" type="date" label="Start Date" />
+        <field name="DateEnd" type="date" label="End Date" />
+    </model>
 </buvi>

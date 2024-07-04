@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nPe.L10nLatamIdentificationType" name="L10nLatamIdentificationType" description="LatAm Identification Type">
+        <field name="L10nPeVatCode" type="string" label="PE VAT Code" />
+    </model>
 </buvi>

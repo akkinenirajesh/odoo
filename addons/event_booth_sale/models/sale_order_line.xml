@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="EventBoothCategory" type="Event.BoothCategory" label="Booths Category" />
+        <field name="EventBoothPendingIds" type="Event.Booth" label="Pending Booths" multiple="true" />
+        <field name="EventBoothRegistrationIds" type="Event.BoothRegistration" label="Confirmed Registration" multiple="true" />
+        <field name="EventBoothIds" type="Event.Booth" label="Confirmed Booths" multiple="true" />
+        <field name="IsEventBooth" type="bool" label="Is Event Booth" compute="ComputeIsEventBooth" />
+        <field name="NameShort" type="string" compute="ComputeNameShort" />
+        <field name="Name" type="string" compute="ComputeName" />
+    </model>
 </buvi>

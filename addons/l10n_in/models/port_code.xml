@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIn.PortCode" name="PortCode" description="Indian port code">
+        <field name="Code" type="string" label="Port Code" required="true" />
+        <field name="Name" type="string" label="Port" required="true" />
+        <field name="State" type="Core.State" label="State" />
+        <unique>
+            <field name="Code" />
+            <message>The Port Code must be unique!</message>
+        </unique>
+    </model>
 </buvi>

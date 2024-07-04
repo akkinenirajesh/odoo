@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Contract" name="Contract" description="Employee Contract">
+        <field name="DateStart" type="date" label="Start Date" required="true" />
+        <field name="DateEnd" type="date" label="End Date" />
+        <field name="State" type="Hr.ContractState" />
+        <field name="KanbanState" type="Hr.KanbanState" />
+        <field name="Employee" type="Hr.Employee" label="Employee" />
+        <field name="ResourceCalendar" type="Resource.Calendar" label="Working Schedule" />
+    </model>
+
+    <optionset id="Hr.ContractState" name="Contract State">
+        <option value="Draft" name="Draft" />
+        <option value="Open" name="Running" />
+        <option value="Close" name="Expired" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Hr.KanbanState" name="Kanban State">
+        <option value="Normal" name="Grey" />
+        <option value="Done" name="Green" />
+        <option value="Blocked" name="Red" />
+    </optionset>
 </buvi>

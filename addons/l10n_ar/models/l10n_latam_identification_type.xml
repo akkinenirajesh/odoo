@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nAr.L10nLatamIdentificationType" name="L10nLatamIdentificationType" description="Latin American Identification Type">
+        <field name="L10nArAfipCode" type="string" label="AFIP Code" />
+    </model>
 </buvi>

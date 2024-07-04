@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Core.CountryState" name="CountryState" description="Country State">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Country" type="Core.Country" label="Country" required="true" />
+        <field name="Code" type="string" label="State Code" size="3" help="The state code in three chars." />
+        <field name="L10nInTin" type="string" label="TIN Number" size="2" help="TIN number-first two digits" />
+    </model>
 </buvi>

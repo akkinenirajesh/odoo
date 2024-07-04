@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrRecruitment.CalendarEvent" name="CalendarEvent" description="Calendar Event">
+        <field name="ApplicantId" type="HrRecruitment.Applicant" label="Applicant" index="btree_not_null" ondelete="set null" />
+    </model>
 </buvi>

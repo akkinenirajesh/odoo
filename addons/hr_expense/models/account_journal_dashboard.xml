@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="Type" type="string" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+    </model>
 </buvi>

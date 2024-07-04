@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nArWithholdingPaymentType" type="Account.WithholdingPaymentType" 
+               label="Argentinean Withholding type" 
+               compute="ComputeL10nArWithholdingPaymentType" store="true" readonly="false" />
+        <field name="L10nArWithholdingSequence" type="Core.Sequence" 
+               label="Withholding Number Sequence" copy="false" check-company="true"
+               help="If no sequence provided then it will be required for you to enter withholding number when registering one." />
+    </model>
+
+    <optionset id="Account.WithholdingPaymentType" name="Withholding Payment Type">
+        <option value="Supplier" name="Supplier" />
+        <option value="Customer" name="Customer" />
+    </optionset>
 </buvi>

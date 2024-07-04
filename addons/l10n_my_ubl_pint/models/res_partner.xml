@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nMy.ResPartner" name="ResPartner" description="Partner">
+        <field name="UblCiiFormat" type="L10nMy.UblCiiFormat" />
+        <field name="SstRegistrationNumber" type="string" label="SST" />
+        <field name="TtxRegistrationNumber" type="string" label="TTx" />
+    </model>
+
+    <optionset id="L10nMy.UblCiiFormat" name="UBL CII Format">
+        <option value="PintMy" name="PINT Malaysia" />
+        <!-- Add other options from the original selection if available -->
+    </optionset>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrGamification.ResUsers" name="ResUsers" description="Extended User Model for Gamification">
+        <field name="GoalIds" type="Gamification.Goal" relation="one2many" relatedField="UserId" />
+        <field name="BadgeIds" type="Gamification.BadgeUser" relation="one2many" relatedField="UserId" />
+    </model>
 </buvi>

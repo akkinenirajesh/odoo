@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.TimesheetsAnalysisReport" name="TimesheetsAnalysisReport" description="Timesheets Analysis Report">
+        <field name="Name" type="string" label="Description" readonly="true" />
+        <field name="User" type="Core.User" label="User" readonly="true" />
+        <field name="Project" type="Project.Project" label="Project" readonly="true" />
+        <field name="Task" type="Project.Task" label="Task" readonly="true" />
+        <field name="ParentTask" type="Project.Task" label="Parent Task" readonly="true" />
+        <field name="Employee" type="Hr.Employee" label="Employee" readonly="true" />
+        <field name="Manager" type="Hr.Employee" label="Manager" readonly="true" />
+        <field name="Company" type="Core.Company" label="Company" readonly="true" />
+        <field name="Department" type="Hr.Department" label="Department" readonly="true" />
+        <field name="Currency" type="Core.Currency" label="Currency" readonly="true" />
+        <field name="Date" type="date" label="Date" readonly="true" />
+        <field name="Amount" type="decimal" label="Amount" readonly="true" />
+        <field name="UnitAmount" type="float" label="Time Spent" readonly="true" />
+        <field name="Partner" type="Core.Partner" label="Partner" readonly="true" />
+        <field name="Milestone" type="Project.Milestone" label="Milestone" readonly="true" />
+    </model>
 </buvi>

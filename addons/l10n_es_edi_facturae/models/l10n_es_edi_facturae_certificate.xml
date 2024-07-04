@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEsEdiFacturae.Certificate" name="Certificate" description="Facturae Digital Certificate">
+        <field name="Content" type="binary" label="PFX Certificate" required="true" 
+               help="PFX Certificate" />
+        <field name="Password" type="string" label="Password"
+               help="Passphrase for the PFX certificate" />
+        <field name="SerialNumber" type="string" readonly="true" index="true" 
+               help="The serial number to add to electronic documents" />
+        <field name="DateStart" type="datetime" readonly="true" 
+               help="The date on which the certificate starts to be valid" />
+        <field name="DateEnd" type="datetime" readonly="true" 
+               help="The date on which the certificate expires" />
+        <field name="Company" type="Core.Company" required="true" readonly="true" />
+    </model>
 </buvi>

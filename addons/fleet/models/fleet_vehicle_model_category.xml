@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleModelCategory" name="VehicleModelCategory" description="Category of the model">
+        <field name="Name" type="string" label="Category Name" required="true" />
+        <field name="Sequence" type="integer" />
+        <unique>
+            <field name="Name" />
+            <message>Category name must be unique</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Calendar.EventType" name="EventType" description="Event Meeting Type">
         <field name="Name" type="string" label="Name" required="true" />

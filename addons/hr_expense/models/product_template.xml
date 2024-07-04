@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="CanBeExpensed" type="bool" label="Expenses" 
+               help="Specify whether the product can be selected in an expense." 
+               compute="_ComputeCanBeExpensed" store="true" />
+        <field name="SupplierTaxesId" type="Core.Tax" multiple="true" />
+        <field name="Type" type="Product.ProductType" />
+        <field name="PurchaseOk" type="bool" compute="_ComputePurchaseOk" />
+    </model>
+
+    <optionset id="Product.ProductType" name="Product Type">
+        <option value="Consu" name="Consumable" />
+        <option value="Service" name="Service" />
+        <!-- Add other product types as needed -->
+    </optionset>
 </buvi>

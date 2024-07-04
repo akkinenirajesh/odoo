@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventTicket" name="EventTicket" description="Event Ticket">
+        <field name="Event" type="Event.Event" label="Event" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Price" type="decimal" label="Price" />
+        <field name="Name" type="string" label="Name" />
+        <field name="Product" type="Product.Product" label="Product" />
+    </model>
 </buvi>

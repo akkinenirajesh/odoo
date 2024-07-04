@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="DataRecycle.Record" name="DataRecycleRecord" description="Recycling Record">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Record Name" computed="true" computedSudo="true" />
+        <field name="RecycleModel" type="DataRecycle.Model" label="Recycle Model" onDelete="Cascade" />
+        <field name="ResId" type="integer" label="Record ID" indexed="true" />
+        <field name="ResModelId" type="Ir.Model" related="RecycleModel.ResModelId" store="true" readonly="true" />
+        <field name="ResModelName" type="string" related="RecycleModel.ResModelName" store="true" readonly="true" />
+        <field name="Company" type="Res.Company" computed="true" store="true" />
+    </model>
 </buvi>

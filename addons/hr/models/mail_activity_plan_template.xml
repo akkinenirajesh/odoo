@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.ActivityPlanTemplate" name="ActivityPlanTemplate" description="Mail Activity Plan Template">
+        <field name="ResponsibleType" type="Mail.ResponsibleType" />
+    </model>
+
+    <optionset id="Mail.ResponsibleType" name="Responsible Type">
+        <option value="Coach" name="Coach" />
+        <option value="Manager" name="Manager" />
+        <option value="Employee" name="Employee" />
+    </optionset>
 </buvi>

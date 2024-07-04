@@ -1,3 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="AccountMove.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nEsEdiFacturaeXmlId" type="Core.Attachment" label="Facturae Attachment" />
+        <field name="L10nEsEdiFacturaeXmlFile" type="binary" string="Facturae File" />
+        <field name="L10nEsEdiFacturaeReasonCode" type="AccountMove.FacturaeReasonCode" string="Spanish Facturae EDI Reason Code" default="10" />
+        <field name="L10nEsInvoicingPeriodStartDate" type="date" string="Invoice Period Start Date" />
+        <field name="L10nEsInvoicingPeriodEndDate" type="date" string="Invoice Period End Date" />
+        <field name="L10nEsPaymentMeans" type="AccountMove.PaymentMeans" string="Payment Means" default="04" />
+    </model>
+
+    <optionset id="AccountMove.FacturaeReasonCode" name="Facturae Reason Code">
+        <option value="01" name="Invoice number" />
+        <option value="02" name="Invoice serial number" />
+        <option value="03" name="Issue date" />
+        <option value="04" name="Name and surnames/Corporate name - Issuer (Sender)" />
+        <option value="05" name="Name and surnames/Corporate name - Receiver" />
+        <option value="06" name="Issuer's Tax Identification Number" />
+        <option value="07" name="Receiver's Tax Identification Number" />
+        <option value="08" name="Issuer's address" />
+        <option value="09" name="Receiver's address" />
+        <option value="10" name="Item line" />
+        <option value="11" name="Applicable Tax Rate" />
+        <option value="12" name="Applicable Tax Amount" />
+        <option value="13" name="Applicable Date/Period" />
+        <option value="14" name="Invoice Class" />
+        <option value="15" name="Legal literals" />
+        <option value="16" name="Taxable Base" />
+        <option value="80" name="Calculation of tax outputs" />
+        <option value="81" name="Calculation of tax inputs" />
+        <option value="82" name="Taxable Base modified due to return of packages and packaging materials" />
+        <option value="83" name="Taxable Base modified due to discounts and rebates" />
+        <option value="84" name="Taxable Base modified due to firm court ruling or administrative decision" />
+        <option value="85" name="Taxable Base modified due to unpaid outputs where there is a judgement opening insolvency proceedings" />
+    </optionset>
+
+    <optionset id="AccountMove.PaymentMeans" name="Payment Means">
+        <option value="01" name="In cash" />
+        <option value="02" name="Direct debit" />
+        <option value="03" name="Receipt" />
+        <option value="04" name="Credit transfer" />
+        <option value="05" name="Accepted bill of exchange" />
+        <option value="06" name="Documentary credit" />
+        <option value="07" name="Contract award" />
+        <option value="08" name="Bill of exchange" />
+        <option value="09" name="Transferable promissory note" />
+        <option value="10" name="Non transferable promissory note" />
+        <option value="11" name="Cheque" />
+        <option value="12" name="Open account reimbursement" />
+        <option value="13" name="Special payment" />
+        <option value="14" name="Set-off by reciprocal credits" />
+        <option value="15" name="Payment by postgiro" />
+        <option value="16" name="Certified cheque" />
+        <option value="17" name="Banker's draft" />
+        <option value="18" name="Cash on delivery" />
+        <option value="19" name="Payment by card" />
+    </optionset>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventBooth" name="EventBooth" description="Event Booth">
+        <field name="EventBoothRegistrationIds" type="Event.EventBoothRegistration[]" label="Registrations" />
+        <field name="SaleOrderLineRegistrationIds" type="Sale.SaleOrderLine[]" label="SO Lines with reservations" />
+        <field name="SaleOrderLineId" type="Sale.SaleOrderLine" label="Final Sale Order Line" />
+        <field name="SaleOrderId" type="Sale.SaleOrder" label="Sale Order" />
+        <field name="IsPaid" type="bool" label="Is Paid" />
+    </model>
 </buvi>

@@ -1,3 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <buvi>
+    <model id="Crm.DiscussChannel" name="DiscussChannel" description="Discuss Channel">
+        <!-- No additional fields defined in the original Python model -->
+    </model>
 </buvi>

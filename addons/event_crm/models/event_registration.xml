@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventRegistration" name="EventRegistration" description="Event Registration" inherit="Event.EventRegistration">
+        <field name="LeadIds" type="Core.Many2many" relation="Crm.Lead" label="Leads" readonly="true" copy="false" groups="sales_team.group_sale_salesman" />
+        <field name="LeadCount" type="integer" label="# Leads" compute="ComputeLeadCount" compute-sudo="true" />
+    </model>
 </buvi>

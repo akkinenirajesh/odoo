@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment" inherit="Account.AccountPayment">
         <field name="PaymentTransactionId" type="Payment.Transaction" label="Payment Transaction" readonly="true" />

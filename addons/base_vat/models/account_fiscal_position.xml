@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
         <field name="CountryId" type="Core.Country" label="Country" />

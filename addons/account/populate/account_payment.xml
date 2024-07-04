@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
         <field name="Company" type="Core.Company" required="true" />

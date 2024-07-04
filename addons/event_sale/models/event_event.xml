@@ -1,5 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Event.Event" name="Event" description="Event">
+        <field name="SaleOrderLineIds" type="Event.SaleOrderLine[]" label="All sale order lines pointing to this event" />
+        <field name="SalePriceSubtotal" type="decimal" label="Sales (Tax Excluded)" compute="ComputeSalePriceSubtotal" />
+    </model>
+
+    <model id="Event.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="Event" type="Event.Event" />
+        <field name="PriceSubtotal" type="decimal" />
+        <field name="Currency" type="Core.Currency" />
+        <field name="Company" type="Core.Company" />
+        <field name="Order" type="Event.SaleOrder" />
+        <field name="State" type="string" />
+    </model>
+
+    <model id="Event.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="DateOrder" type="DateTime" />
+    </model>
 </buvi>

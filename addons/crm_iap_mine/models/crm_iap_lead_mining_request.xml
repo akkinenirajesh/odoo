@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
 <buvi>
+    <model id="CRM.LeadMiningRequest" name="LeadMiningRequest" description="CRM Lead Mining Request">
+        <field name="Name" type="string" label="Request Number" required="true" readonly="true" default="New" />
+        <field name="State" type="CRM.LeadMiningRequestState" required="true" default="Draft" />
+        <field name="LeadNumber" type="integer" label="Number of Leads" required="true" default="3" />
+        <field name="SearchType" type="CRM.LeadMiningRequestSearchType" label="Target" required="true" default="Companies" />
+        <field name="ErrorType" type="CRM.LeadMiningRequestErrorType" label="Error Type" readonly="true" />
+        <field name="LeadType" type="CRM.LeadType" label="Type" required="true" />
+        <field name="Team" type="CRM.Team" label="Sales Team" />
+        <field name="User" type="Core.User" label="Salesperson" />
+        <field name="Tags" type="CRM.Tag" label="Tags" multiple="true" />
+        <field name="Leads" type="CRM.Lead" label="Generated Lead / Opportunity" multiple="true" />
+        <field name="FilterOnSize" type="bool" label="Filter on Size" default="false" />
+        <field name="CompanySizeMin" type="integer" label="Size" default="1" />
+        <field name="CompanySizeMax" type="integer" default="1000" />
+        <field name="Countries" type="Core.Country" label="Countries" multiple="true" />
+        <field name="States" type="Core.State" label="States" multiple="true" />
+        <field name="Industries" type="CRM.LeadIndustry" label="Industries" multiple="true" />
+        <field name="ContactNumber" type="integer" label="Number of Contacts" default="10" />
+        <field name="ContactFilterType" type="CRM.ContactFilterType" label="Filter on" default="Role" />
+        <field name="PreferredRole" type="CRM.LeadRole" label="Preferred Role" />
+        <field name="Roles" type="CRM.LeadRole" label="Other Roles" multiple="true" />
+        <field name="Seniority" type="CRM.LeadSeniority" label="Seniority" />
+    </model>
+
+    <optionset id="CRM.LeadMiningRequestState" name="Lead Mining Request State">
+        <option value="Draft" name="Draft" />
+        <option value="Error" name="Error" />
+        <option value="Done" name="Done" />
+    </optionset>
+
+    <optionset id="CRM.LeadMiningRequestSearchType" name="Lead Mining Request Search Type">
+        <option value="Companies" name="Companies" />
+        <option value="PeopleAndCompanies" name="Companies and their Contacts" />
+    </optionset>
+
+    <optionset id="CRM.LeadMiningRequestErrorType" name="Lead Mining Request Error Type">
+        <option value="Credits" name="Insufficient Credits" />
+        <option value="NoResult" name="No Result" />
+    </optionset>
+
+    <optionset id="CRM.LeadType" name="Lead Type">
+        <option value="Lead" name="Leads" />
+        <option value="Opportunity" name="Opportunities" />
+    </optionset>
+
+    <optionset id="CRM.ContactFilterType" name="Contact Filter Type">
+        <option value="Role" name="Role" />
+        <option value="Seniority" name="Seniority" />
+    </optionset>
 </buvi>

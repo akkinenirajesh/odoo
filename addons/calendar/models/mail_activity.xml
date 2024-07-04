@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Mail.Activity" name="Activity" description="Mail Activity">
         <field name="CalendarEventId" type="Calendar.Event" label="Calendar Meeting" ondelete="cascade" />

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResPartner" name="ResPartner" description="Partner">
+        <field name="UblCiiFormat" type="Core.UblCiiFormatSelection" />
+    </model>
+
+    <optionset id="Core.UblCiiFormatSelection" name="UBL CII Format Selection">
+        <option value="oioubl_201" name="OIOUBL 2.01" />
+        <!-- Assuming other options exist in the base model -->
+    </optionset>
 </buvi>

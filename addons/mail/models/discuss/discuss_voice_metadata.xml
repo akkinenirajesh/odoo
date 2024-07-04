@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.DiscussVoiceMetadata" name="DiscussVoiceMetadata" description="Metadata for voice attachments">
+        <field name="AttachmentId" type="Core.Attachment" label="Attachment" required="true" />
+    </model>
 </buvi>

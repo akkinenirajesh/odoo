@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrSkills.ResumeLine" name="ResumeLine" description="Resume line of an employee">
+        <field name="Employee" type="Hr.Employee" required="true" label="Employee" />
+        <field name="Name" type="string" required="true" translate="true" label="Name" />
+        <field name="DateStart" type="date" required="true" label="Start Date" />
+        <field name="DateEnd" type="date" label="End Date" />
+        <field name="Description" type="string" translate="true" label="Description" />
+        <field name="LineType" type="HrSkills.ResumeLineType" label="Type" />
+        <field name="DisplayType" type="HrSkills.ResumeLineDisplayType" default="Classic" label="Display Type" />
+        <constraint type="check">
+            <condition>(DateStart <= DateEnd OR DateEnd == null)</condition>
+            <message>The start date must be anterior to the end date.</message>
+        </constraint>
+    </model>
+
+    <optionset id="HrSkills.ResumeLineDisplayType" name="Resume Line Display Type">
+        <option value="Classic" name="Classic" />
+    </optionset>
 </buvi>

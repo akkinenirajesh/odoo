@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleLogContract" name="VehicleLogContract" description="Vehicle Contract" inherits="Core.MailThread, Core.MailActivityMixin">
+        <field name="Vehicle" type="Fleet.Vehicle" required="true" checkCompany="true" />
+        <field name="CostSubtype" type="Fleet.ServiceType" label="Type" help="Cost type purchased with this cost" domain="[('Category', '=', 'contract')]" />
+        <field name="Amount" type="decimal" label="Cost" tracking="true" />
+        <field name="Date" type="date" help="Date when the cost has been executed" />
+        <field name="Company" type="Core.Company" default="Env.Company" />
+        <field name="Currency" type="Core.Currency" related="Company.Currency" />
+        <field name="Name" type="string" compute="_ComputeContractName" store="true" readonly="false" />
+        <field name="Active" type="bool" default="true" />
+        <field name="User" type="Core.User" label="Responsible" default="Vehicle.Manager" index="true" />
+        <field name="StartDate" type="date" label="Contract Start Date" default="DateTime.Today" help="Date when the coverage of the contract begins" />
+        <field name="ExpirationDate" type="date" label="Contract Expiration Date" default="ComputeNextYearDate(DateTime.Today)" help="Date when the coverage of the contract expirates (by default, one year after begin date)" />
+        <field name="DaysLeft" type="integer" compute="_ComputeDaysLeft" label="Warning Date" />
+        <field name="ExpiresYoday" type="bool" compute="_ComputeDaysLeft" />
+        <field name="Insurer" type="Core.Partner" label="Vendor" />
+        <field name="Purchaser" type="Core.Partner" related="Vehicle.Driver" label="Driver" />
+        <field name="InsRef" type="string" label="Reference" size="64" copyFalse="true" />
+        <field name="State" type="Fleet.VehicleLogContractState" default="Open" help="Choose whether the contract is still valid or not" tracking="true" copyFalse="true" />
+        <field name="Notes" type="string" label="Terms and Conditions" copyFalse="true" />
+        <field name="CostGenerated" type="decimal" label="Recurring Cost" tracking="true" />
+        <field name="CostFrequency" type="Fleet.CostFrequency" label="Recurring Cost Frequency" default="Monthly" required="true" />
+        <field name="Services" type="Fleet.ServiceType" label="Included Services" multiple="true" />
+    </model>
+
+    <optionset id="Fleet.VehicleLogContractState" name="Vehicle Log Contract State">
+        <option value="Futur" name="New" />
+        <option value="Open" name="Running" />
+        <option value="Expired" name="Expired" />
+        <option value="Closed" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Fleet.CostFrequency" name="Cost Frequency">
+        <option value="No" name="No" />
+        <option value="Daily" name="Daily" />
+        <option value="Weekly" name="Weekly" />
+        <option value="Monthly" name="Monthly" />
+        <option value="Yearly" name="Yearly" />
+    </optionset>
 </buvi>

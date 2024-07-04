@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.AttendanceOvertime" name="AttendanceOvertime" description="Attendance Overtime">
+        <field name="Employee" type="HR.Employee" label="Employee" required="true" />
+        <field name="Company" type="Core.Company" related="Employee.Company" />
+        <field name="Date" type="date" label="Day" />
+        <field name="Duration" type="float" label="Extra Hours" default="0.0" required="true" />
+        <field name="DurationReal" type="float" label="Extra Hours (Real)" default="0.0"
+            help="Extra-hours including the threshold duration" />
+        <field name="Adjustment" type="bool" default="false" />
+        <unique>
+            <field name="Employee" />
+            <field name="Date" />
+            <field name="Adjustment" />
+            <message>Only 1 overtime record per employee per day is allowed unless it's an adjustment.</message>
+        </unique>
+    </model>
 </buvi>

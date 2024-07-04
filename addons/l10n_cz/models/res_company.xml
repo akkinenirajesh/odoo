@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="TradeRegistry" type="string" />
+    </model>
+
+    <model id="Core.BaseDocumentLayout" name="BaseDocumentLayout" description="Base Document Layout">
+        <field name="AccountFiscalCountry" type="Core.Country" label="Account Fiscal Country" />
+        <field name="CompanyRegistry" type="string" label="Company Registry" />
+    </model>
 </buvi>

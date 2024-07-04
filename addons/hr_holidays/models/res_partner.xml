@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResPartner" name="ResPartner" description="Partner">
+        <field name="ImStatus" type="string" label="IM Status" />
+        <field name="User" type="Hr.User" label="Related User" />
+        <field name="Users" type="Hr.User" label="Related Users" multiple="true" />
+    </model>
 </buvi>

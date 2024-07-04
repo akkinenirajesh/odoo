@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTaxGroup" name="AccountTaxGroup" description="Account Tax Group">
+        <field name="L10nArTributeAfipCode" type="Account.L10nArTributeAfipCode" label="Tribute AFIP Code" readonly="true" />
+        <field name="L10nArVatAfipCode" type="Account.L10nArVatAfipCode" label="VAT AFIP Code" readonly="true" />
+    </model>
+
+    <optionset id="Account.L10nArTributeAfipCode" name="L10n AR Tribute AFIP Code">
+        <option value="01" name="NationalTaxes" label="01 - National Taxes" />
+        <option value="02" name="ProvincialTaxes" label="02 - Provincial Taxes" />
+        <option value="03" name="MunicipalTaxes" label="03 - Municipal Taxes" />
+        <option value="04" name="InternalTaxes" label="04 - Internal Taxes" />
+        <option value="06" name="VatPerception" label="06 - VAT perception" />
+        <option value="07" name="IibbPerception" label="07 - IIBB perception" />
+        <option value="08" name="MunicipalTaxesPerceptions" label="08 - Municipal Taxes Perceptions" />
+        <option value="09" name="OtherPerceptions" label="09 - Other Perceptions" />
+        <option value="99" name="Others" label="99 - Others" />
+    </optionset>
+
+    <optionset id="Account.L10nArVatAfipCode" name="L10n AR VAT AFIP Code">
+        <option value="0" name="NotApplicable" label="Not Applicable" />
+        <option value="1" name="Untaxed" label="Untaxed" />
+        <option value="2" name="Exempt" label="Exempt" />
+        <option value="3" name="ZeroPercent" label="0%" />
+        <option value="4" name="TenPointFivePercent" label="10.5%" />
+        <option value="5" name="TwentyOnePercent" label="21%" />
+        <option value="6" name="TwentySevenPercent" label="27%" />
+        <option value="8" name="FivePercent" label="5%" />
+        <option value="9" name="TwoPointFivePercent" label="2,5%" />
+    </optionset>
 </buvi>

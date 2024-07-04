@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.ResPartner" name="ResPartner" description="Partner">
         <field name="PropertyPaymentMethod" type="Account.PaymentMethod" label="Payment Method"

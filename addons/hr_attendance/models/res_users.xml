@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.User" name="User" description="User" inherits="Res.Users">
+        <field name="HoursLastMonth" type="float" related="EmployeeId.HoursLastMonth" />
+        <field name="HoursLastMonthDisplay" type="string" related="EmployeeId.HoursLastMonthDisplay" />
+        <field name="AttendanceState" type="Hr.AttendanceState" related="EmployeeId.AttendanceState" />
+        <field name="LastCheckIn" type="datetime" related="EmployeeId.LastAttendanceId.CheckIn" />
+        <field name="LastCheckOut" type="datetime" related="EmployeeId.LastAttendanceId.CheckOut" />
+        <field name="TotalOvertime" type="float" related="EmployeeId.TotalOvertime" />
+        <field name="AttendanceManagerId" type="Hr.Employee" related="EmployeeId.AttendanceManagerId" readonly="false" />
+        <field name="DisplayExtraHours" type="bool" related="CompanyId.HrAttendanceDisplayOvertime" />
+    </model>
+
+    <optionset id="Hr.AttendanceState" name="Attendance State">
+        <!-- Add options based on the actual values used in Odoo -->
+        <option value="Present" name="Present" />
+        <option value="Absent" name="Absent" />
+    </optionset>
 </buvi>

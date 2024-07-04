@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.WorkLocation" name="WorkLocation" description="Work Location">
+        <!-- Inherited fields would be defined in the parent model -->
+        
+        <!-- Add any additional fields specific to this inherited model here -->
+    </model>
 </buvi>

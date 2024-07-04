@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="InvoiceDate" type="datetime" label="Invoice Date" />
+        <field name="DeliveryDate" type="datetime" label="Delivery Date" />
+        <field name="CountryCode" type="string" label="Country Code" />
+        <field name="ShowDeliveryDate" type="bool" label="Show Delivery Date" />
+        <field name="MoveType" type="string" label="Move Type" />
+    </model>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.IrConfigParameter" name="IrConfigParameter" description="Configuration Parameter">
+        <field name="Key" type="string" label="Key" required="true" />
+        <field name="Value" type="string" label="Value" />
+    </model>
 </buvi>

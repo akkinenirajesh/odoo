@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SalesOrder.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="L10nItEdiDoiDate" type="date" label="Date on which Declaration of Intent is applied" compute="ComputeL10nItEdiDoiDate" />
+        <field name="L10nItEdiDoiUse" type="bool" label="Use Declaration of Intent" compute="ComputeL10nItEdiDoiUse" />
+        <field name="L10nItEdiDoiId" type="SalesOrder.DeclarationOfIntent" label="Declaration of Intent" compute="ComputeL10nItEdiDoiId" store="true" readonly="false" precompute="true" />
+        <field name="L10nItEdiDoiNotYetInvoiced" type="decimal" label="Declaration of Intent Amount Not Yet Invoiced" compute="ComputeL10nItEdiDoiNotYetInvoiced" store="true" readonly="true" help="Total under the Declaration of Intent of this document that can still be invoiced" />
+        <field name="L10nItEdiDoiWarning" type="string" label="Declaration of Intent Threshold Warning" compute="ComputeL10nItEdiDoiWarning" />
+    </model>
 </buvi>

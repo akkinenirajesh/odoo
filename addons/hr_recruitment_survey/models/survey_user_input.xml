@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Survey.UserInput" name="SurveyUserInput" description="Survey User Input">
+        <field name="ApplicantId" type="Hr.Applicant" label="Applicant" index="btree_not_null" />
+    </model>
 </buvi>

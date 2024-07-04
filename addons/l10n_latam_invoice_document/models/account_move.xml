@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="Name" type="string" />
+        <field name="State" type="string" />
+        <field name="JournalId" type="Account.AccountJournal" />
+        <field name="CommercialPartnerId" type="Core.Partner" />
+        <field name="CompanyId" type="Core.Company" />
+        <field name="MoveType" type="string" />
+        <field name="L10nLatamAvailableDocumentTypeIds" type="Account.L10nLatamDocumentType" multiple="true" compute="ComputeL10nLatamAvailableDocumentTypes" />
+        <field name="L10nLatamDocumentTypeId" type="Account.L10nLatamDocumentType" compute="ComputeL10nLatamDocumentType" store="true" />
+        <field name="L10nLatamDocumentNumber" type="string" compute="ComputeL10nLatamDocumentNumber" inverse="InverseL10nLatamDocumentNumber" />
+        <field name="L10nLatamUseDocuments" type="bool" related="JournalId.L10nLatamUseDocuments" />
+        <field name="L10nLatamManualDocumentNumber" type="bool" compute="ComputeL10nLatamManualDocumentNumber" />
+        <field name="L10nLatamDocumentTypeIdCode" type="string" related="L10nLatamDocumentTypeId.Code" />
+        <field name="PostedBefore" type="bool" />
+        <field name="DebitOriginId" type="Account.AccountMove" />
+    </model>
 </buvi>

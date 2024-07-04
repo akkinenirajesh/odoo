@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCountry" name="ResCountry" description="Country">
+        <field name="L10nArAfipCode" type="string" label="AFIP Code" size="3" 
+               help="This code will be used on electronic invoice" />
+        <field name="L10nArNaturalVat" type="string" label="Natural Person VAT" size="11"
+               help="Generic VAT number defined by AFIP in order to recognize partners from this country that are natural persons" />
+        <field name="L10nArLegalEntityVat" type="string" label="Legal Entity VAT" size="11"
+               help="Generic VAT number defined by AFIP in order to recognize partners from this country that are legal entities" />
+        <field name="L10nArOtherVat" type="string" label="Other VAT" size="11"
+               help="Generic VAT number defined by AFIP in order to recognize partners from this country that are not natural persons or legal entities" />
+    </model>
 </buvi>

@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="PurchaseVendorBillId" type="Purchase.PurchaseOrder" label="Vendor Bill" />
+        <field name="PurchaseId" type="Purchase.PurchaseOrder" label="Purchase Order" />
+        <field name="L10nInGstTreatment" type="string" label="GST Treatment" />
+    </model>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <buvi>
+    <model id="Crm.IapLeadSeniority" name="IapLeadSeniority" description="People Seniority">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="RevealId" type="string" label="Reveal ID" required="true" />
+        <field name="DisplayName" type="string" label="Display Name" computed="true" />
+        <unique>
+            <field name="Name" />
+            <message>Name already exists!</message>
+        </unique>
+    </model>
 </buvi>

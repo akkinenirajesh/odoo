@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="L10nEgEdiEta.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nEgClientIdentifier" type="string" label="ETA Client ID" groups="Base.GroupErpManager" />
+        <field name="L10nEgClientSecret" type="string" label="ETA Secret" groups="Base.GroupErpManager" />
+        <field name="L10nEgProductionEnv" type="bool" label="In Production Environment" />
+        <field name="L10nEgInvoicingThreshold" type="decimal" label="Invoicing Threshold" default="0.0"
+               help="Threshold at which you are required to give the VAT number of the customer." />
+    </model>
 </buvi>

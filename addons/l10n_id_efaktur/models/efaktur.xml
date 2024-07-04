@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIdEfaktur.EfakturRange" name="EfakturRange" description="Available E-faktur range">
+        <field name="Company" type="Core.Company" required="true" label="Company" />
+        <field name="Max" type="string" compute="_ComputeDefault" store="true" readonly="false" />
+        <field name="Min" type="string" compute="_ComputeDefault" store="true" readonly="false" />
+        <field name="Available" type="integer" compute="_ComputeAvailable" store="true" />
+        
+        <constraint type="check">
+            <condition>Min.Length == 13 &amp;&amp; Max.Length == 13</condition>
+            <message>There should be 13 digits in each number.</message>
+        </constraint>
+        <constraint type="check">
+            <condition>Min.Substring(0, 5) == Max.Substring(0, 5)</condition>
+            <message>First 5 digits should be same in Start Number and End Number.</message>
+        </constraint>
+        <constraint type="check">
+            <condition>int.Parse(Min.Substring(5)) &lt;= int.Parse(Max.Substring(5))</condition>
+            <message>Last 8 digits of End Number should be greater than the last 8 digit of Start Number</message>
+        </constraint>
+        <constraint type="check">
+            <condition>(int.Parse(Max) - int.Parse(Min)) &lt;= 10000</condition>
+            <message>The difference between the two numbers must not be greater than 10.000</message>
+        </constraint>
+    </model>
 </buvi>

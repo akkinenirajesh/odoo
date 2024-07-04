@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventQuestion" name="EventQuestion" description="Event Question">
+        <field name="Title" type="string" required="true" translate="true" />
+        <field name="QuestionType" type="Event.EventQuestionType" default="SimpleChoice" label="Question Type" required="true" />
+        <field name="EventType" type="Event.EventType" label="Event Type" />
+        <field name="Event" type="Event.Event" label="Event" />
+        <field name="Answers" type="Event.EventQuestionAnswer[]" label="Answers" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="OncePerOrder" type="bool" label="Ask once per order"
+            help="If True, this question will be asked only once and its value will be propagated to every attendees. If not it will be asked for every attendee of a reservation." />
+        <field name="IsMandatoryAnswer" type="bool" label="Mandatory Answer" />
+    </model>
+
+    <optionset id="Event.EventQuestionType" name="Event Question Type">
+        <option value="SimpleChoice" name="Selection" />
+        <option value="TextBox" name="Text Input" />
+        <option value="Name" name="Name" />
+        <option value="Email" name="Email" />
+        <option value="Phone" name="Phone" />
+        <option value="CompanyName" name="Company" />
+    </optionset>
 </buvi>

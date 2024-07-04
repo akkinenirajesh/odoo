@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventBoothCategory" name="EventBoothCategory" description="Event Booth Category">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="Description" type="html" label="Description" translate="true" sanitize-attributes="false" />
+        <field name="Booths" type="Event.EventBooth[]" label="Booths" groups="Event.EventRegistrationDesk" />
+    </model>
 </buvi>

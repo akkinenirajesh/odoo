@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEgEdi.ActivityType" name="ActivityType" description="ETA code for activity type">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" required="true" />
+        <unique>
+            <field name="Code" />
+            <message>An activity type with this code already exists.</message>
+        </unique>
+    </model>
 </buvi>

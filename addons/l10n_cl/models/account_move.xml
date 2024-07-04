@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="PartnerIdVat" type="string" label="VAT No" related="PartnerId.Vat" />
+        <field name="L10nLatamInternalType" type="string" label="L10n Latam Internal Type" related="L10nLatamDocumentTypeId.InternalType" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" />
+        <field name="L10nLatamDocumentTypeId" type="Account.L10nLatamDocumentType" label="L10n Latam Document Type" />
+        <field name="JournalId" type="Account.Journal" label="Journal" />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+        <field name="MoveType" type="string" label="Move Type" />
+        <field name="LineIds" type="Account.MoveLine" label="Move Lines" relation="many2many" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+        <field name="AmountTotal" type="decimal" label="Total Amount" />
+        <field name="AmountTotalSigned" type="decimal" label="Total Amount Signed" />
+    </model>
 </buvi>

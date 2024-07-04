@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nItAmountVatSigned" type="decimal" label="VAT" compute="ComputeAmountExtended" />
+        <field name="L10nItAmountPensionFundSigned" type="decimal" label="Pension Fund" compute="ComputeAmountExtended" />
+        <field name="L10nItAmountWithholdingSigned" type="decimal" label="Withholding" compute="ComputeAmountExtended" />
+        <field name="L10nItAmountBeforeWithholdingSigned" type="decimal" label="Total Before Withholding" compute="ComputeAmountExtended" />
+    </model>
 </buvi>

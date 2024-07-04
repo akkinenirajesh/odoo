@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Auth.User" name="User" description="User">
         <field name="TotpSecret" type="string" groups="NO_ACCESS" compute="_ComputeTotpSecret" inverse="_InverseToken" />

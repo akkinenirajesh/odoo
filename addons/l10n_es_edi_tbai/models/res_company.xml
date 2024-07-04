@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEsEdiTbai.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nEsTbaiTaxAgency" type="L10nEsEdiTbai.TaxAgency" label="Tax Agency for TBAI" />
+        <field name="L10nEsTbaiLicenseHtml" type="string" label="TicketBAI license" compute="ComputeL10nEsTbaiLicenseHtml" />
+        <field name="L10nEsTbaiChainSequence" type="Core.IrSequence" label="TicketBai account.move chain sequence" readonly="true" />
+    </model>
+
+    <optionset id="L10nEsEdiTbai.TaxAgency" name="Tax Agency">
+        <option value="Araba" name="Hacienda Foral de Araba" />
+        <option value="Bizkaia" name="Hacienda Foral de Bizkaia" />
+        <option value="Gipuzkoa" name="Hacienda Foral de Gipuzkoa" />
+    </optionset>
 </buvi>

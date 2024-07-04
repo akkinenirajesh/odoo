@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResCompany" name="ResCompany" description="Company">
+        <field name="ContractExpirationNoticePeriod" type="integer" label="Contract Expiry Notice Period" default="7" />
+        <field name="WorkPermitExpirationNoticePeriod" type="integer" label="Work Permit Expiry Notice Period" default="60" />
+    </model>
 </buvi>

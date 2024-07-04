@@ -1,3 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountEdiFormat" name="AccountEdiFormat" description="Account EDI Format">
+        <field name="Code" type="string" />
+        <field name="Name" type="string" />
+    </model>
+
+    <model id="Account.Move" name="AccountMove" description="Account Move">
+        <field name="Name" type="string" />
+        <field name="MoveType" type="string" />
+        <field name="InvoiceDate" type="DateTime" />
+        <field name="Country" type="Core.Country" />
+        <field name="Company" type="Core.Company" />
+        <field name="Partner" type="Core.Partner" />
+        <field name="PartnerShipping" type="Core.Partner" />
+        <field name="Currency" type="Core.Currency" />
+        <field name="CompanyCurrency" type="Core.Currency" />
+        <field name="L10nInGstTreatment" type="string" />
+        <field name="L10nInStateId" type="Core.State" />
+        <field name="L10nInShippingBillNumber" type="string" />
+        <field name="L10nInShippingBillDate" type="DateTime" />
+        <field name="L10nInShippingPortCodeId" type="Core.Port" />
+        <field name="L10nInEdiCancelReason" type="string" />
+        <field name="L10nInEdiCancelRemarks" type="string" />
+        <field name="InvoiceLineIds" type="Account.MoveLine[]" />
+        <field name="LineIds" type="Account.MoveLine[]" />
+    </model>
+
+    <model id="Account.MoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="Name" type="string" />
+        <field name="Product" type="Product.Product" />
+        <field name="ProductUom" type="Product.Uom" />
+        <field name="Quantity" type="decimal" />
+        <field name="PriceUnit" type="decimal" />
+        <field name="Discount" type="decimal" />
+        <field name="Balance" type="decimal" />
+        <field name="Currency" type="Core.Currency" />
+        <field name="DisplayType" type="string" />
+        <field name="L10nInHsnCode" type="string" />
+        <field name="TaxIds" type="Account.Tax[]" />
+        <field name="TaxTagIds" type="Account.AccountTag[]" />
+    </model>
 </buvi>

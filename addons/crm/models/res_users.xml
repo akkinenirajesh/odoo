@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.Users" name="Users" description="CRM Users">
         <field name="TargetSalesWon" type="integer" label="Won in Opportunities Target" />

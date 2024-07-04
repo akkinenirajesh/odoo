@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ResCompany.Company" name="Company" description="Company">
+        <field name="L10nEsEdiFacturaeResidenceType" type="string" label="Facturae EDI Residency Type Code" />
+        <field name="L10nEsEdiFacturaeCertificateId" type="ResCompany.L10nEsEdiFacturaeCertificate" label="Facturae EDI signing certificate" />
+    </model>
+
+    <model id="ResCompany.L10nEsEdiFacturaeCertificate" name="L10nEsEdiFacturaeCertificate" description="Facturae EDI Certificate">
+        <field name="Company" type="ResCompany.Company" label="Company" />
+        <!-- Add other fields for the certificate model as needed -->
+    </model>
 </buvi>

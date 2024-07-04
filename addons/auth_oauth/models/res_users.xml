@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Auth.ResUsers" name="ResUsers" description="User">
         <field name="OAuthProviderId" type="Auth.AuthOAuthProvider" label="OAuth Provider" />

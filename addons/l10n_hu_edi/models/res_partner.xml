@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ResPartner.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nHuGroupVat" type="string" label="Group Tax ID" size="13"
+            help="If this company belongs to a VAT group, indicate the group's VAT number here." />
+    </model>
 </buvi>

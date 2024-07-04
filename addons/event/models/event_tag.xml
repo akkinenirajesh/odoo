@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventTagCategory" name="EventTagCategory" description="Event Tag Category">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="TagIds" type="Event.EventTag[]" label="Tags" />
+    </model>
+
+    <model id="Event.EventTag" name="EventTag" description="Event Tag">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="0" />
+        <field name="CategoryId" type="Event.EventTagCategory" label="Category" required="true" />
+        <field name="CategorySequence" type="integer" label="Category Sequence" />
+        <field name="Color" type="integer" label="Color Index" 
+               help="Tag color. No color means no display in kanban or front-end, to distinguish internal tags from public categorization tags." />
+    </model>
 </buvi>

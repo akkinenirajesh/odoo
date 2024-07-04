@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nInGstTreatment" type="Account.GstTreatment" label="GST Treatment" 
+               compute="ComputeL10nInGstTreatment" store="true" readonly="false" copy="true" precompute="true" />
+        <field name="L10nInStateId" type="Core.ResCountryState" label="Place of supply" 
+               compute="ComputeL10nInStateId" store="true" readonly="false" />
+        <field name="L10nInGstin" type="string" label="GSTIN" />
+        <field name="L10nInShippingBillNumber" type="string" label="Shipping bill number" />
+        <field name="L10nInShippingBillDate" type="DateTime" label="Shipping bill date" />
+        <field name="L10nInShippingPortCodeId" type="L10nIn.PortCode" label="Port code" />
+        <field name="L10nInResellerPartnerId" type="Core.ResPartner" label="Reseller" 
+               help="Only Registered Reseller" />
+        <field name="L10nInJournalType" type="string" label="Journal Type" 
+               related="Journal.Type" />
+    </model>
+
+    <optionset id="Account.GstTreatment" name="GST Treatment">
+        <option value="Regular" name="Registered Business - Regular" />
+        <option value="Composition" name="Registered Business - Composition" />
+        <option value="Unregistered" name="Unregistered Business" />
+        <option value="Consumer" name="Consumer" />
+        <option value="Overseas" name="Overseas" />
+        <option value="SpecialEconomicZone" name="Special Economic Zone" />
+        <option value="DeemedExport" name="Deemed Export" />
+        <option value="UinHolders" name="UIN Holders" />
+    </optionset>
 </buvi>

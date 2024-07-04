@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nItWithholdingType" type="Account.WithholdingType" label="Withholding tax type (Italy)" 
+               help="Withholding tax type. Only for Italian accounting EDI." />
+        <field name="L10nItWithholdingReason" type="Account.WithholdingReason" label="Withholding tax reason (Italy)" 
+               help="Withholding tax reason. Only for Italian accounting EDI." />
+        <field name="L10nItPensionFundType" type="Account.PensionFundType" label="Pension fund type (Italy)" 
+               help="Pension Fund Type. Only for Italian accounting EDI." />
+    </model>
+
+    <optionset id="Account.WithholdingType" name="Withholding Type">
+        <option value="RT01" name="RT01 Withholding for persons" />
+        <option value="RT02" name="RT02 Withholding for personal businesses" />
+        <option value="RT03" name="RT03 INPS Pension fund contribution" />
+        <option value="RT04" name="RT04 ENASARCO pension fund contribution" />
+        <option value="RT05" name="RT05 ENPAM pension fund contribution" />
+        <option value="RT06" name="RT06 Other pension fund contribution" />
+    </optionset>
+
+    <optionset id="Account.WithholdingReason" name="Withholding Reason">
+        <option value="A" name="A Autonomous work in the fields of art or profession" />
+        <option value="B" name="B Income from the use of intellectual properties or patents" />
+        <!-- Add all other options here -->
+        <option value="ZO" name="ZO Other reason" />
+    </optionset>
+
+    <optionset id="Account.PensionFundType" name="Pension Fund Type">
+        <option value="TC01" name="National pension fund for lawyers and solicitors" />
+        <option value="TC02" name="Pension fund for accountants with a degree" />
+        <!-- Add all other options here -->
+        <option value="TC22" name="INPS national pension fund" />
+    </optionset>
 </buvi>

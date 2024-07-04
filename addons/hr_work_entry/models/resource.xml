@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResourceCalendarAttendance" name="ResourceCalendarAttendance" description="Resource Calendar Attendance">
+        <field name="WorkEntryType" type="Hr.WorkEntryType" label="Work Entry Type" />
+    </model>
+
+    <model id="Hr.ResourceCalendarLeave" name="ResourceCalendarLeave" description="Resource Calendar Leave">
+        <field name="WorkEntryType" type="Hr.WorkEntryType" label="Work Entry Type" />
+    </model>
 </buvi>

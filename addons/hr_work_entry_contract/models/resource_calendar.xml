@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrWorkEntryContract.ResourceCalendar" name="ResourceCalendar" description="Resource Calendar">
+        <!-- No new fields are defined in the given Python code -->
+    </model>
 </buvi>

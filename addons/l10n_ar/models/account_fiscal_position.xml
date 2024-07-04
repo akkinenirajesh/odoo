@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+        <field name="AfipResponsibilityTypes" type="Account.AfipResponsibilityType" label="AFIP Responsibility Types" multiple="true"
+            help="List of AFIP responsibilities where this fiscal position should be auto-detected" />
+    </model>
+
+    <model id="Account.AfipResponsibilityType" name="AfipResponsibilityType" description="AFIP Responsibility Type">
+        <!-- Add fields for AfipResponsibilityType if needed -->
+    </model>
 </buvi>

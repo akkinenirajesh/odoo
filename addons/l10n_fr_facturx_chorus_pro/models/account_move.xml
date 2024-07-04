@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="BuyerReference" type="string" label="Buyer Reference" 
+               help="'Service Exécutant' in Chorus PRO." />
+        <field name="ContractReference" type="string" label="Contract Reference" 
+               help="'Numéro de Marché' in Chorus PRO." />
+        <field name="PurchaseOrderReference" type="string" label="Purchase Order Reference" 
+               help="'Engagement Juridique' in Chorus PRO." />
+    </model>
 </buvi>

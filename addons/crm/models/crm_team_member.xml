@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.TeamMember" name="TeamMember" description="CRM Team Member">
         <field name="AssignmentEnabled" type="bool" related="CrmTeam.AssignmentEnabled" />

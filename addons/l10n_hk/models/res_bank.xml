@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Finance.ResPartnerBank" name="ResPartnerBank" description="Partner Bank">
+        <field name="ProxyType" type="Finance.ProxyType" />
+        <field name="ProxyValue" type="string" />
+        <field name="CountryCode" type="string" />
+        <field name="AccNumber" type="string" label="Account Number" />
+        <field name="DisplayQrSetting" type="bool" />
+    </model>
+
+    <optionset id="Finance.ProxyType" name="Proxy Type">
+        <option value="Id" name="FPS ID" />
+        <option value="Mobile" name="Mobile Number" />
+        <option value="Email" name="Email Address" />
+    </optionset>
 </buvi>

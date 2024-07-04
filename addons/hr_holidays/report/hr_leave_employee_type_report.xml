@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.LeaveEmployeeTypeReport" name="LeaveEmployeeTypeReport" description="Time Off Summary / Report">
+        <field name="Employee" type="HumanResources.Employee" label="Employee" readonly="true" />
+        <field name="ActiveEmployee" type="bool" readonly="true" />
+        <field name="NumberOfDays" type="float" label="Number of Days" readonly="true" aggregator="sum" />
+        <field name="NumberOfHours" type="float" label="Number of Hours" readonly="true" aggregator="sum" />
+        <field name="Department" type="HumanResources.Department" label="Department" readonly="true" />
+        <field name="LeaveType" type="HumanResources.LeaveType" label="Time Off Type" readonly="true" />
+        <field name="HolidayStatus" type="HumanResources.HolidayStatus" />
+        <field name="State" type="HumanResources.LeaveState" label="Status" readonly="true" />
+        <field name="DateFrom" type="datetime" label="Start Date" readonly="true" />
+        <field name="DateTo" type="datetime" label="End Date" readonly="true" />
+        <field name="Company" type="Core.Company" label="Company" readonly="true" />
+    </model>
+
+    <optionset id="HumanResources.HolidayStatus" name="Holiday Status">
+        <option value="Taken" name="Taken" />
+        <option value="Left" name="Left" />
+        <option value="Planned" name="Planned" />
+    </optionset>
+
+    <optionset id="HumanResources.LeaveState" name="Leave State">
+        <option value="Draft" name="To Submit" />
+        <option value="Cancel" name="Cancelled" />
+        <option value="Confirm" name="To Approve" />
+        <option value="Refuse" name="Refused" />
+        <option value="Validate1" name="Second Approval" />
+        <option value="Validate" name="Approved" />
+    </optionset>
 </buvi>

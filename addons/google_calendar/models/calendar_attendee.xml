@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Calendar.Attendee" name="Attendee" description="Calendar Attendee">
+        <field name="Name" type="string" label="Attendee Name" required="true" />
+        <field name="Event" type="Calendar.Event" label="Related Event" />
+        <field name="State" type="Calendar.AttendeeState" label="Attendance Status" />
+        <!-- Add other necessary fields here -->
+    </model>
+
+    <optionset id="Calendar.AttendeeState" name="Attendee State">
+        <option value="Needs_Action" name="Needs Action" />
+        <option value="Tentative" name="Tentative" />
+        <option value="Accepted" name="Accepted" />
+        <option value="Declined" name="Declined" />
+    </optionset>
 </buvi>

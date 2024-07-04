@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="QtyInvoicedPosted" type="decimal" label="Invoiced Quantity (posted)" 
+               digits="Product Unit of Measure" store="true" compute="ComputeQtyInvoicedPosted" />
+    </model>
 </buvi>

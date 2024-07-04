@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.Project" name="Project" description="Project">
+        <field name="AllowTimesheets" type="bool" label="Timesheets" default="true"
+            compute="ComputeAllowTimesheets" store="true" readonly="false" />
+        <field name="AnalyticAccount" type="Account.AnalyticAccount"
+            domain="['|', ('Company', '=', false), ('Company', '=?', Company), ('Partner', '=?', Partner)]" />
+        <field name="AnalyticAccountActive" type="bool" label="Active Account" 
+            related="AnalyticAccount.Active" />
+        <field name="TimesheetIds" type="Account.AnalyticLine" relation="many2many" 
+            label="Associated Timesheets" />
+        <field name="TimesheetEncodeUom" type="Uom.Uom" compute="ComputeTimesheetEncodeUom" />
+        <field name="TotalTimesheetTime" type="integer" compute="ComputeTotalTimesheetTime" 
+            label="Total number of time (in the proper UoM) recorded in the project, rounded to the unit." />
+        <field name="EncodeUomInDays" type="bool" compute="ComputeEncodeUomInDays" />
+        <field name="IsInternalProject" type="bool" compute="ComputeIsInternalProject" />
+        <field name="RemainingHours" type="float" compute="ComputeRemainingHours" 
+            label="Time Remaining" />
+        <field name="IsProjectOvertime" type="bool" label="Project in Overtime" 
+            compute="ComputeRemainingHours" />
+        <field name="AllocatedHours" type="float" label="Allocated Time" />
+        <field name="EffectiveHours" type="float" label="Time Spent" 
+            compute="ComputeRemainingHours" />
+    </model>
 </buvi>

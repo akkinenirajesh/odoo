@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountReport" name="AccountReport" description="Accounting Report">
         <field name="Name" type="string" label="Name" required="true" translate="true" />

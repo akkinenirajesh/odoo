@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nFrRoundingDifferenceLossAccountId" type="Account.AccountAccount" label="Rounding Difference Loss Account" check-company="true" />
+        <field name="L10nFrRoundingDifferenceProfitAccountId" type="Account.AccountAccount" label="Rounding Difference Profit Account" check-company="true" />
+    </model>
 </buvi>

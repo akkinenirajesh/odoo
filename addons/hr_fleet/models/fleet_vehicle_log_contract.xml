@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleLogContract" name="VehicleLogContract" description="Fleet Vehicle Log Contract">
+        <field name="PurchaserEmployeeId" type="HR.Employee" label="Driver (Employee)" 
+               help="Related employee who is the driver of the vehicle" />
+    </model>
 </buvi>

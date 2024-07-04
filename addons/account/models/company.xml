@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.ResCompany" name="ResCompany" description="Company">
         <field name="FiscalyearLastDay" type="integer" default="31" required="true" />

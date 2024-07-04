@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nArAfipResponsibilityTypeId" type="Account.L10nArAfipResponsibilityType" label="AFIP Responsibility Type"
+            help="Defined by AFIP to identify the type of responsibilities that a person or a legal entity could have and that impacts in the type of operations and requirements they need." />
+        <field name="L10nArAfipConcept" type="Account.L10nArAfipConcept" label="AFIP Concept"
+            help="A concept is suggested regarding the type of the products on the invoice but it is allowed to force a different type if required." />
+        <field name="L10nArAfipServiceStart" type="date" label="AFIP Service Start Date" />
+        <field name="L10nArAfipServiceEnd" type="date" label="AFIP Service End Date" />
+    </model>
+
+    <optionset id="Account.L10nArAfipConcept" name="AFIP Invoice Concepts">
+        <option value="1" name="ProductsDefinitiveExport" label="Products / Definitive export of goods" />
+        <option value="2" name="Services" label="Services" />
+        <option value="3" name="ProductsAndServices" label="Products and Services" />
+        <option value="4" name="OtherExport" label="4-Other (export)" />
+    </optionset>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.Stage" name="Stage" description="CRM Stages">
         <field name="Name" type="string" label="Stage Name" required="true" translate="true" />

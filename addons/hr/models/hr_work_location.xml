@@ -1,84 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="hr.job" name="Hr.Job" track_created="true" track_update="true">
-    <field name="Applications" label="Job Applications" type="Hr.Applicant" collection="true"/>
-    <field name="ContractType" label="Employment Type" type="Hr.ContractType" copied="true" on-delete="Clear"/>
-    <field name="Department" label="Department" type="Hr.Department" copied="true" on-delete="Clear"/>
-    <field name="Employees" label="Employees" type="Hr.Employee" collection="true"/>
-    <field name="Manager" label="Department Manager" type="Hr.Employee" readonly="true" related-field="Department.Manager"/>
-    <field name="Documents" label="Documents" type="Ir.Attachment" collection="true" readonly="true" transient="true"/>
-    <field name="AliasModel" label="Aliased Model" type="Ir.Model" required="true" copied="true" transient="true" related-field="Alias.AliasModel"/>
-    <field name="AliasParentModel" label="Parent Model" type="Ir.Model" copied="true" transient="true" related-field="Alias.AliasParentModel"/>
-    <field name="Alias" label="Alias" type="Mail.Alias" required="true" on-delete="Restrict"/>
-    <field name="AliasDomain" label="Alias Domain" type="Mail.AliasDomain" transient="true" related-field="Alias.AliasDomain"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="Address" label="Job Location" type="Res.Partner" copied="true" on-delete="Clear"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="ExtendedInterviewers" label="Extended Interviewer" type="Res.Users" collection="true" readonly="true"/>
-    <field name="FavoriteUsers" label="Favorite User" type="Res.Users" collection="true" copied="true"/>
-    <field name="Interviewers" label="Interviewers" type="Res.Users" collection="true" copied="true"/>
-    <field name="User" label="Recruiter" type="Res.Users" copied="true" on-delete="Clear"/>
-    <field name="UtmCampaign" label="Campaign" type="Utm.Campaign" copied="true" on-delete="Restrict"/>
-    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="ActivitiesOverdue" label="Activities Overdue" type="integer" readonly="true" transient="true"/>
-    <field name="ActivitiesToday" label="Activities Today" type="integer" readonly="true" transient="true"/>
-    <field name="AliasBouncedContent" label="Custom Bounced Message" type="html" copied="true" transient="true" translatable="true" related-field="Alias.AliasBouncedContent"/>
-    <field name="AliasDefaults" label="Default Values" type="text" required="true" readonly="true" transient="true" related-field="Alias.AliasDefaults"/>
-    <field name="AliasDomain" label="Alias Domain Name" type="string" readonly="true" transient="true" related-field="Alias.AliasDomain"/>
-    <field name="AliasEmail" label="Email Alias" type="string" readonly="true" transient="true"/>
-    <field name="AliasForceThread" label="Record Thread ID" type="integer" copied="true" transient="true" related-field="Alias.AliasForceThread"/>
-    <field name="AliasFullName" label="Alias Email" type="string" readonly="true" transient="true" related-field="Alias.AliasFullName"/>
-    <field name="AliasIncomingLocal" label="Local-part based incoming detection" type="bool" copied="true" transient="true" related-field="Alias.AliasIncomingLocal"/>
-    <field name="AliasName" label="Alias Name" type="string" transient="true" related-field="Alias.AliasName"/>
-    <field name="AliasParentThread" label="Parent Record Thread ID" type="integer" copied="true" transient="true" related-field="Alias.AliasParentThread"/>
-    <field name="AllApplicationCount" label="All Application Count" type="integer" readonly="true" transient="true"/>
-    <field name="ApplicantHired" label="Applicants Hired" type="integer" readonly="true" transient="true"/>
-    <field name="ApplicantPropertiesDefinition" label="Applicant Properties" type="properties_definition" copied="true"/>
-    <field name="ApplicationCount" label="Application Count" type="integer" readonly="true" transient="true"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="Color" label="Color Index" type="integer" copied="true"/>
-    <field name="Description" label="Job Description" type="html" copied="true" translatable="true"/>
-    <field name="DirectClicks" label="Direct Clicks" type="integer" readonly="true" transient="true"/>
-    <field name="DocumentsCount" label="Document Count" type="integer" readonly="true" transient="true"/>
-    <field name="ExpectedEmployees" label="Total Forecasted Employees" type="integer" readonly="true"/>
-    <field name="FacebookClicks" label="Facebook Clicks" type="integer" readonly="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="IsFavorite" label="Is Favorite" type="bool" transient="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
-    <field name="JobDetails" label="Process Details" type="html" copied="true" translatable="true"/>
-    <field name="JobOpenDate" label="Job Start Recruitment Date" type="date" copied="true"/>
-    <field name="LinkedinClicks" label="Linkedin Clicks" type="integer" readonly="true" transient="true"/>
-    <field name="MaxPoints" label="Max Points" type="integer" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="Name" label="Job Position" type="string" required="true" indexed="true" copied="true" translatable="true"/>
-    <field name="NewApplicationCount" label="New Application" type="integer" readonly="true" transient="true"/>
-    <field name="NoOfEmployee" label="Current Number of Employees" type="integer" readonly="true"/>
-    <field name="NoOfHiredEmployee" label="Hired" type="integer" readonly="true"/>
-    <field name="NoOfRecruitment" label="Target" type="integer"/>
-    <field name="OldApplicationCount" label="Old Application" type="integer" readonly="true" transient="true"/>
-    <field name="PublishedDate" label="Published Date" type="date" readonly="true"/>
-    <field name="Requirements" label="Requirements" type="text" copied="true"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="TwitterClicks" label="Twitter Clicks" type="integer" readonly="true" transient="true"/>
-    <field name="WebsiteDescription" label="Website description" type="html" copied="true" translatable="true"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-  </model>
+    <model id="HR.WorkLocation" name="WorkLocation" description="Work Location">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Work Location" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="LocationType" type="HR.WorkLocationType" label="Location Type" default="Office" required="true" />
+        <field name="Address" type="Core.Partner" label="Work Address" required="true" />
+        <field name="LocationNumber" type="string" />
+    </model>
+
+    <optionset id="HR.WorkLocationType" name="Work Location Type">
+        <option value="Home" name="Home" />
+        <option value="Office" name="Office" />
+        <option value="Other" name="Other" />
+    </optionset>
 </buvi>

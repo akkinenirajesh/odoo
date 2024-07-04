@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.PriceRule" name="PriceRule" description="Delivery Price Rules">
+        <field name="Name" type="string" compute="ComputeName" />
+        <field name="Sequence" type="integer" required="true" default="10" />
+        <field name="Carrier" type="Delivery.Carrier" required="true" />
+        <field name="CurrencyId" type="Core.Currency" />
+        <field name="Variable" type="Delivery.PriceRuleVariable" required="true" default="Quantity" />
+        <field name="Operator" type="Delivery.PriceRuleOperator" required="true" default="LessThanOrEqual" />
+        <field name="MaxValue" type="float" label="Maximum Value" required="true" />
+        <field name="ListBasePrice" type="float" label="Sale Base Price" required="true" default="0.0" />
+        <field name="ListPrice" type="float" label="Sale Price" required="true" default="0.0" />
+        <field name="VariableFactor" type="Delivery.PriceRuleVariable" label="Variable Factor" required="true" default="Weight" />
+    </model>
+
+    <optionset id="Delivery.PriceRuleVariable" name="Price Rule Variable">
+        <option value="Weight" name="Weight" />
+        <option value="Volume" name="Volume" />
+        <option value="WeightVolume" name="Weight * Volume" />
+        <option value="Price" name="Price" />
+        <option value="Quantity" name="Quantity" />
+    </optionset>
+
+    <optionset id="Delivery.PriceRuleOperator" name="Price Rule Operator">
+        <option value="Equal" name="=" />
+        <option value="LessThanOrEqual" name="<=" />
+        <option value="LessThan" name="<" />
+        <option value="GreaterThanOrEqual" name=">=" />
+        <option value="GreaterThan" name=">" />
+    </optionset>
 </buvi>

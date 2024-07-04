@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nAr.L10nLatamDocumentType" name="L10nLatamDocumentType" description="Latam Document Type">
+        <field name="L10nArLetter" type="L10nAr.L10nArLetters" label="Letters"
+               help="Letters defined by the AFIP that can be used to identify the documents presented to the government and that depends on the operation type, the responsibility of both the issuer and the receptor of the document" />
+        <field name="PurchaseAliquots" type="L10nAr.PurchaseAliquotsType" label="Purchase Aliquots"
+               help="Raise an error if a vendor bill is miss encoded. 'Not Zero' means the VAT taxes are required for the invoices related to this document type, and those with 'Zero' means that only 'VAT Not Applicable' tax is allowed." />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="Code" type="string" label="Code" />
+    </model>
+
+    <optionset id="L10nAr.L10nArLetters" name="L10n AR Letters">
+        <option value="A" name="A" />
+        <option value="B" name="B" />
+        <option value="C" name="C" />
+        <option value="E" name="E" />
+        <option value="M" name="M" />
+        <option value="T" name="T" />
+        <option value="R" name="R" />
+        <option value="X" name="X" />
+        <option value="I" name="I" />
+    </optionset>
+
+    <optionset id="L10nAr.PurchaseAliquotsType" name="Purchase Aliquots Type">
+        <option value="NotZero" name="Not Zero" />
+        <option value="Zero" name="Zero" />
+    </optionset>
 </buvi>

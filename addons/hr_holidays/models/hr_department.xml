@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.Department" name="Department" description="HR Department">
+        <field name="AbsenceOfToday" type="integer" label="Absence by Today" compute="ComputeLeaveCount" />
+        <field name="LeaveToApproveCount" type="integer" label="Time Off to Approve" compute="ComputeLeaveCount" />
+        <field name="AllocationToApproveCount" type="integer" label="Allocation to Approve" compute="ComputeLeaveCount" />
+    </model>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="L10nEgBranchId" type="Core.Partner" label="Branch" 
+               help="Address of the subdivision of the company. You can just put the company partner if this is used for the main branch." />
+        <field name="L10nEgActivityTypeId" type="L10nEgEdi.ActivityType" label="ETA Activity Code"
+               help="This is the activity type of the branch according to Egyptian Tax Authority" />
+        <field name="L10nEgBranchIdentifier" type="string" label="ETA Branch ID"
+               help="This number can be found on the taxpayer profile on the eInvoicing portal." />
+    </model>
 </buvi>

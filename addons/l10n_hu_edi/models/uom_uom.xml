@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="UOM.UoM" name="UoM" description="Unit of Measure">
+        <field name="L10nHuEdiCode" type="UOM.NAVUoMCode" label="NAV UoM code"
+               help="Choose the corresponding code, or leave blank if none correspond." />
+    </model>
+
+    <optionset id="UOM.NAVUoMCode" name="NAV UoM Code">
+        <option value="PIECE" name="Piece" />
+        <option value="KILOGRAM" name="Kilogram" />
+        <option value="TON" name="Ton" />
+        <option value="KWH" name="Kilowatt hour" />
+        <option value="DAY" name="Day" />
+        <option value="HOUR" name="Hour" />
+        <option value="MINUTE" name="Minute" />
+        <option value="MONTH" name="Month" />
+        <option value="LITRE" name="Litre" />
+        <option value="KILOMETER" name="Kilometer" />
+        <option value="CUBIC_METER" name="Cubic meter" />
+        <option value="METER" name="Meter" />
+        <option value="LINEAR_METER" name="Linear meter" />
+        <option value="CARTON" name="Carton" />
+        <option value="PACK" name="Package" />
+    </optionset>
 </buvi>

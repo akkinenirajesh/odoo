@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.RecurringPlan" name="RecurringPlan" description="CRM Recurring revenue plans">
         <field name="Name" type="string" label="Plan Name" required="true" translate="true" />

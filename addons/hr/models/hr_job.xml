@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Job" name="Job" description="Job Position">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Job Position" required="true" translate="true" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="ExpectedEmployees" type="integer" label="Total Forecasted Employees" compute="ComputeEmployees" store="true"
+            help="Expected number of employees for this job position after new recruitment." />
+        <field name="NoOfEmployee" type="integer" label="Current Number of Employees" compute="ComputeEmployees" store="true"
+            help="Number of employees currently occupying this job position." />
+        <field name="NoOfRecruitment" type="integer" label="Target" default="1"
+            help="Number of new employees you expect to recruit." />
+        <field name="Employees" type="Hr.Employee[]" label="Employees" />
+        <field name="Description" type="string" label="Job Description" />
+        <field name="Requirements" type="string" label="Requirements" />
+        <field name="Department" type="Hr.Department" label="Department" />
+        <field name="Company" type="Res.Company" label="Company" />
+        <field name="ContractType" type="Hr.ContractType" label="Employment Type" />
+        <unique>
+            <field name="Name" />
+            <field name="Company" />
+            <field name="Department" />
+            <message>The name of the job position must be unique per department in company!</message>
+        </unique>
+        <constraint>
+            <field name="NoOfRecruitment" />
+            <check>NoOfRecruitment >= 0</check>
+            <message>The expected number of new employees must be positive.</message>
+        </constraint>
+    </model>
 </buvi>

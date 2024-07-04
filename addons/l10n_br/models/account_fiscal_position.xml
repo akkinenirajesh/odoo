@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+        <field name="L10nBrFpType" type="Account.AccountFiscalPositionType" label="Interstate Fiscal Position Type" />
+    </model>
+
+    <optionset id="Account.AccountFiscalPositionType" name="Account Fiscal Position Type">
+        <option value="Internal" name="Internal" />
+        <option value="SsNnm" name="South/Southeast selling to North/Northeast/Midwest" />
+        <option value="Interstate" name="Other interstate" />
+    </optionset>
 </buvi>

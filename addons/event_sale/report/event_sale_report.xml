@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventSaleReport" name="EventSaleReport" description="Event Sales Report">
+        <field name="EventType" type="Event.EventType" label="Event Type" readonly="true" />
+        <field name="Event" type="Event.Event" label="Event" readonly="true" />
+        <field name="EventDateBegin" type="date" label="Event Start Date" readonly="true" />
+        <field name="EventDateEnd" type="date" label="Event End Date" readonly="true" />
+        <field name="EventTicket" type="Event.EventTicket" label="Event Ticket" readonly="true" />
+        <field name="EventTicketPrice" type="decimal" label="Ticket price" readonly="true" />
+        <field name="EventRegistrationCreateDate" type="date" label="Registration Date" readonly="true" />
+        <field name="EventRegistrationState" type="Event.RegistrationStatus" label="Registration Status" readonly="true" />
+        <field name="Active" type="bool" label="Is registration active (not archived)?" />
+        <field name="EventRegistration" type="Event.Registration" readonly="true" />
+        <field name="EventRegistrationName" type="string" label="Attendee Name" readonly="true" />
+        <field name="Product" type="Product.Product" readonly="true" />
+        <field name="SaleOrder" type="Sale.Order" readonly="true" />
+        <field name="SaleOrderDate" type="datetime" label="Order Date" readonly="true" />
+        <field name="SaleOrderPartner" type="Core.Partner" label="Customer" readonly="true" />
+        <field name="SaleOrderState" type="Sale.OrderStatus" label="Sale Order Status" readonly="true" />
+        <field name="SaleOrderUser" type="Core.User" label="Salesperson" readonly="true" />
+        <field name="SaleOrderLine" type="Sale.OrderLine" readonly="true" />
+        <field name="SalePrice" type="decimal" label="Revenues" readonly="true" />
+        <field name="SalePriceUntaxed" type="decimal" label="Untaxed Revenues" readonly="true" />
+        <field name="InvoicePartner" type="Core.Partner" label="Invoice Address" readonly="true" />
+        <field name="SaleStatus" type="Event.SaleStatus" label="Payment Status" />
+        <field name="Company" type="Core.Company" readonly="true" />
+    </model>
+
+    <optionset id="Event.RegistrationStatus" name="Registration Status">
+        <option value="Draft" name="Unconfirmed" />
+        <option value="Cancel" name="Cancelled" />
+        <option value="Open" name="Confirmed" />
+        <option value="Done" name="Attended" />
+    </optionset>
+
+    <optionset id="Event.SaleStatus" name="Sale Status">
+        <option value="ToPay" name="Not Sold" />
+        <option value="Sold" name="Sold" />
+        <option value="Free" name="Free" />
+    </optionset>
 </buvi>

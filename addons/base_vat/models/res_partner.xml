@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Base.Partner" name="Partner" description="Partner">
         <field name="ViesValid" type="bool" label="Intra-Community Valid" compute="ComputeViesValid" store="true" readonly="false"

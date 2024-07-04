@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="BaseAutomation.ServerAction" name="ServerAction" description="Server Action">
         <field name="Name" type="string" compute="ComputeName" store="true" readonly="false" />

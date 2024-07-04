@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrAttendance.HrEmployeePublic" name="HrEmployeePublic" description="HR Employee Public">
+        <field name="AttendanceState" type="HrAttendance.AttendanceState" label="Attendance State" readonly="true" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+        <field name="HoursToday" type="float" label="Hours Today" readonly="true" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+        <field name="LastAttendance" type="HrAttendance.HrAttendance" label="Last Attendance" readonly="true" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+        <field name="TotalOvertime" type="float" label="Total Overtime" readonly="true" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+        <field name="AttendanceManager" type="HrAttendance.HrEmployee" label="Attendance Manager" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+        <field name="LastCheckIn" type="datetime" label="Last Check In" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+        <field name="LastCheckOut" type="datetime" label="Last Check Out" 
+               groups="hr_attendance.group_hr_attendance_officer" />
+    </model>
+
+    <optionset id="HrAttendance.AttendanceState" name="Attendance State">
+        <option value="Checked_In" name="Checked In" />
+        <option value="Checked_Out" name="Checked Out" />
+    </optionset>
 </buvi>

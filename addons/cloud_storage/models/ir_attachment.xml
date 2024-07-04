@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="CloudStorage.CloudStorageAttachment" name="CloudStorageAttachment" description="Cloud Storage Attachment" inherits="Core.IrAttachment">
         <field name="Type" type="CloudStorage.AttachmentType" />

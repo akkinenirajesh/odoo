@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.FleetVehicleLogServices" name="FleetVehicleLogServices" description="Fleet Vehicle Log Services">
+        <field name="PurchaserEmployeeId" type="Hr.Employee" label="Driver (Employee)" />
+    </model>
 </buvi>

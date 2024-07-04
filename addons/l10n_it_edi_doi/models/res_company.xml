@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIt.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nItEdiDoiTaxId" type="Account.Tax" label="Declaration of Intent Tax" />
+        <field name="L10nItEdiDoiFiscalPositionId" type="Account.FiscalPosition" label="Declaration of Intent Fiscal Position" />
+    </model>
 </buvi>

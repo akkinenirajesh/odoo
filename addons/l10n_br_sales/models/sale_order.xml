@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sales.SaleOrder" name="SaleOrder" description="Sale Order">
+        <!-- Inherit fields from the base SaleOrder model -->
+        <inherit model="Sales.SaleOrder" />
+    </model>
 </buvi>

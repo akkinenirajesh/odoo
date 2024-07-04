@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Event.EventTemplateTicket" name="EventTemplateTicket" description="Event Template Ticket">
+    <field name="Sequence" type="integer" default="10" />
+    <field name="Name" type="string" label="Name" required="true" translate="true" default="Registration" />
+    <field name="Description" type="string" label="Description" translate="true"
+           help="A description of the ticket that you want to communicate to your customers." />
+    <field name="EventTypeId" type="Event.EventType" label="Event Category" required="true" />
+    <field name="SeatsLimited" type="bool" label="Limit Attendees" readonly="true" store="true" />
+    <field name="SeatsMax" type="integer" label="Maximum Attendees"
+           help="Define the number of available tickets. If you have too many registrations you will not be able to sell tickets anymore. Set 0 to ignore this rule set as unlimited." />
+  </model>
+
+  <model id="Event.EventTicket" name="EventTicket" description="Event Ticket" inherits="Event.EventTemplateTicket">
+    <field name="EventTypeId" type="Event.EventType" required="false" />
+    <field name="EventId" type="Event.Event" label="Event" required="true" />
+    <field name="CompanyId" type="Core.Company" />
+    <field name="StartSaleDatetime" type="datetime" label="Registration Start" />
+    <field name="EndSaleDatetime" type="datetime" label="Registration End" />
+    <field name="IsLaunched" type="bool" label="Are sales launched" />
+    <field name="IsExpired" type="bool" label="Is Expired" />
+    <field name="SaleAvailable" type="bool" label="Is Available"
+           help="Whether it is possible to sell these tickets" />
+    <field name="RegistrationIds" type="Event.Registration" label="Registrations" />
+    <field name="SeatsReserved" type="integer" label="Reserved Seats" />
+    <field name="SeatsAvailable" type="integer" label="Available Seats" />
+    <field name="SeatsUsed" type="integer" label="Used Seats" />
+    <field name="SeatsTaken" type="integer" label="Taken Seats" />
+    <field name="IsSoldOut" type="bool" label="Sold Out"
+           help="Whether seats are not available for this ticket." />
+    <field name="Color" type="string" default="#875A7B" />
+  </model>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nInEdiUsername" type="string" label="E-invoice (IN) Username" groups="Base.GroupSystem" />
+        <field name="L10nInEdiPassword" type="string" label="E-invoice (IN) Password" groups="Base.GroupSystem" />
+        <field name="L10nInEdiToken" type="string" label="E-invoice (IN) Token" groups="Base.GroupSystem" />
+        <field name="L10nInEdiTokenValidity" type="datetime" label="E-invoice (IN) Valid Until" groups="Base.GroupSystem" />
+        <field name="L10nInEdiProductionEnv" type="bool" label="E-invoice (IN) Is production OSE environment" groups="Base.GroupSystem"
+               help="Enable the use of production credentials" />
+    </model>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCountry" name="ResCountry" description="Country">
+        <field name="L10nClCustomsCode" type="string" label="Customs Code" />
+        <field name="L10nClCustomsName" type="string" label="Customs Name" />
+        <field name="L10nClCustomsAbbreviation" type="string" label="Customs Abbreviation" />
+    </model>
 </buvi>

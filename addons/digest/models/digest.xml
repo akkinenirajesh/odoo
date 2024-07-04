@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Digest.Digest" name="Digest" description="Digest">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Users" type="Core.User[]" label="Recipients" />
+        <field name="Periodicity" type="Digest.DigestPeriodicity" default="Daily" required="true" />
+        <field name="NextRunDate" type="date" label="Next Mailing Date" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="AvailableFields" type="string" compute="ComputeAvailableFields" />
+        <field name="IsSubscribed" type="bool" label="Is user subscribed" compute="ComputeIsSubscribed" />
+        <field name="State" type="Digest.DigestState" default="Activated" readonly="true" />
+        <field name="KpiResUsersConnected" type="bool" label="Connected Users" />
+        <field name="KpiResUsersConnectedValue" type="integer" compute="ComputeKpiResUsersConnectedValue" />
+        <field name="KpiMailMessageTotal" type="bool" label="Messages Sent" />
+        <field name="KpiMailMessageTotalValue" type="integer" compute="ComputeKpiMailMessageTotalValue" />
+    </model>
+
+    <optionset id="Digest.DigestPeriodicity" name="Digest Periodicity">
+        <option value="Daily" name="Daily" />
+        <option value="Weekly" name="Weekly" />
+        <option value="Monthly" name="Monthly" />
+        <option value="Quarterly" name="Quarterly" />
+    </optionset>
+
+    <optionset id="Digest.DigestState" name="Digest State">
+        <option value="Activated" name="Activated" />
+        <option value="Deactivated" name="Deactivated" />
+    </optionset>
 </buvi>

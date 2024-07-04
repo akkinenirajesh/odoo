@@ -1,3 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Employee" name="Employee" description="Employee" inherit="Hr.Employee">
+        <field name="AttendanceManagerId" type="Core.User" label="Attendance Manager"
+            domain="[('Share', '=', false), ('CompanyIds', 'in', CompanyId)]"
+            groups="Hr.Attendance.GroupHrAttendanceManager"
+            help="The user set in Attendance will access the attendance of the employee through the dedicated app and will be able to edit them." />
+        <field name="AttendanceIds" type="Hr.Attendance[]" label="Attendances"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="LastAttendanceId" type="Hr.Attendance" label="Last Attendance"
+            compute="ComputeLastAttendanceId" store="true"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="LastCheckIn" type="datetime" label="Last Check In"
+            related="LastAttendanceId.CheckIn" store="true"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" tracking="false" />
+        <field name="LastCheckOut" type="datetime" label="Last Check Out"
+            related="LastAttendanceId.CheckOut" store="true"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" tracking="false" />
+        <field name="AttendanceState" type="Hr.AttendanceStatus" label="Attendance Status"
+            compute="ComputeAttendanceState"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="HoursLastMonth" type="decimal" label="Hours Last Month"
+            compute="ComputeHoursLastMonth"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="HoursToday" type="decimal" label="Hours Today"
+            compute="ComputeHoursToday"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="HoursPreviouslyToday" type="decimal" label="Hours Previously Today"
+            compute="ComputeHoursToday"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="LastAttendanceWorkedHours" type="decimal" label="Last Attendance Worked Hours"
+            compute="ComputeHoursToday"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="HoursLastMonthDisplay" type="string" label="Hours Last Month Display"
+            compute="ComputeHoursLastMonth" groups="Hr.GroupHrUser" />
+        <field name="OvertimeIds" type="Hr.Attendance.Overtime[]" label="Overtimes"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+        <field name="TotalOvertime" type="decimal" label="Total Overtime"
+            compute="ComputeTotalOvertime" computeSudo="true"
+            groups="Hr.Attendance.GroupHrAttendanceOfficer,Hr.GroupHrUser" />
+    </model>
+
+    <optionset id="Hr.AttendanceStatus" name="Attendance Status">
+        <option value="CheckedOut" name="Checked out" />
+        <option value="CheckedIn" name="Checked in" />
+    </optionset>
 </buvi>

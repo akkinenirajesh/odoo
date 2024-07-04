@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="InvoiceReferenceModel" type="Account.InvoiceReferenceModel" label="Invoice Reference Model" />
+    </model>
+
+    <optionset id="Account.InvoiceReferenceModel" name="Invoice Reference Model">
+        <option value="Be" name="Belgium" />
+        <!-- Other existing options would be listed here -->
+    </optionset>
 </buvi>

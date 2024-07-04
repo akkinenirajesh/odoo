@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="ExpenseSheetId" type="HR.ExpenseSheet" label="Expense Sheet" ondelete="SetNull" copy="false" index="BtreeNotNull" />
+    </model>
 </buvi>

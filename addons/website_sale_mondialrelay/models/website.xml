@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.WebsiteMondialRelay" name="WebsiteMondialRelay" description="Website Mondial Relay">
+        <inherit model="Website.Website" />
+    </model>
 </buvi>

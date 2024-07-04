@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="HrAttendanceOvertime" type="bool" label="Enable Overtime"
+            help="Enable overtime calculation based on attendance records." />
+        <!-- Other fields from res.company model would be listed here -->
+    </model>
 </buvi>

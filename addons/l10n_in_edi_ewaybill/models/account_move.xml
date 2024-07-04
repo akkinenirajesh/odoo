@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nInTypeId" type="L10n.In.EwaybillType" label="E-waybill Document Type" tracking="true" />
+        <field name="L10nInDistance" type="integer" label="Distance" tracking="true" />
+        <field name="L10nInMode" type="Account.TransportationMode" label="Transportation Mode" tracking="true" />
+        <field name="L10nInVehicleNo" type="string" label="Vehicle Number" tracking="true" />
+        <field name="L10nInVehicleType" type="Account.VehicleType" label="Vehicle Type" tracking="true" />
+        <field name="L10nInTransportationDocNo" type="string" label="E-waybill Document Number" tracking="true"
+               help="Transport document number. If it is more than 15 chars, last 15 chars may be entered" />
+        <field name="L10nInTransportationDocDate" type="date" label="Document Date" tracking="true"
+               help="Date on the transporter document" />
+        <field name="L10nInTransporterId" type="Core.Partner" label="Transporter" tracking="true" />
+        <field name="L10nInEdiEwaybillDirectApi" type="bool" label="E-waybill(IN) direct API" compute="ComputeL10nInEdiEwaybillDirect" />
+        <field name="L10nInEdiEwaybillShowSendButton" type="bool" label="Show Send E-waybill Button" compute="ComputeL10nInEdiEwaybillShowSendButton" />
+    </model>
+
+    <optionset id="Account.TransportationMode" name="Transportation Mode">
+        <option value="0" name="ManagedByTransporter" />
+        <option value="1" name="Road" />
+        <option value="2" name="Rail" />
+        <option value="3" name="Air" />
+        <option value="4" name="Ship" />
+    </optionset>
+
+    <optionset id="Account.VehicleType" name="Vehicle Type">
+        <option value="R" name="Regular" />
+        <option value="O" name="OverDimensionalCargo" />
+    </optionset>
 </buvi>

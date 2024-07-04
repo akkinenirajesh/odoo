@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.Goal" name="Goal" description="Gamification Goal">
+        <field name="DefinitionId" type="Gamification.GoalDefinition" required="true" label="Goal Definition" />
+        <field name="UserId" type="Core.User" required="true" label="User" />
+        <field name="LineId" type="Gamification.ChallengeLine" label="Challenge Line" />
+        <field name="ChallengeId" type="Gamification.Challenge" label="Challenge" 
+               help="Challenge that generated the goal, assign challenge to users to generate goals with a value in this field." />
+        <field name="StartDate" type="date" label="Start Date" default="Today" />
+        <field name="EndDate" type="date" label="End Date" />
+        <field name="TargetGoal" type="float" required="true" label="To Reach" />
+        <field name="Current" type="float" required="true" default="0" label="Current Value" />
+        <field name="Completeness" type="float" label="Completeness" compute="GetCompletion" />
+        <field name="State" type="Gamification.GoalState" required="true" default="Draft" />
+        <field name="ToUpdate" type="bool" label="To update" />
+        <field name="Closed" type="bool" label="Closed goal" />
+        <field name="ComputationMode" type="Gamification.GoalComputationMode" />
+        <field name="RemindUpdateDelay" type="integer" label="Remind delay" 
+               help="The number of days after which the user assigned to a manual goal will be reminded. Never reminded if no value is specified." />
+        <field name="LastUpdate" type="date" label="Last Update" 
+               help="In case of manual goal, reminders are sent if the goal as not been updated for a while (defined in challenge). Ignored in case of non-manual goal or goal not linked to a challenge." />
+        <field name="DefinitionDescription" type="string" label="Definition Description" />
+        <field name="DefinitionCondition" type="Gamification.GoalCondition" label="Definition Condition" />
+        <field name="DefinitionSuffix" type="string" label="Suffix" />
+        <field name="DefinitionDisplay" type="Gamification.GoalDisplayMode" label="Display Mode" />
+    </model>
+
+    <optionset id="Gamification.GoalState" name="Goal State">
+        <option value="Draft" name="Draft" />
+        <option value="InProgress" name="In progress" />
+        <option value="Reached" name="Reached" />
+        <option value="Failed" name="Failed" />
+        <option value="Canceled" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Gamification.GoalComputationMode" name="Goal Computation Mode">
+        <option value="Manually" name="Manually" />
+        <option value="Python" name="Python" />
+        <option value="Count" name="Count" />
+        <option value="Sum" name="Sum" />
+    </optionset>
+
+    <optionset id="Gamification.GoalCondition" name="Goal Condition">
+        <option value="Higher" name="Higher" />
+        <option value="Lower" name="Lower" />
+    </optionset>
+
+    <optionset id="Gamification.GoalDisplayMode" name="Goal Display Mode">
+        <!-- Add display mode options here -->
+    </optionset>
 </buvi>

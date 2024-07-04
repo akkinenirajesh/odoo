@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sales.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="EventId" type="Events.Event" label="Event" compute="_ComputeEventId" store="true" readonly="false" precompute="true"
+            help="Choose an event and it will automatically create a registration for this event." />
+        <field name="EventTicketId" type="Events.EventTicket" label="Ticket Type" compute="_ComputeEventTicketId" store="true" readonly="false" precompute="true"
+            help="Choose an event ticket and it will automatically create a registration for this event ticket." />
+        <field name="Registrations" type="Events.Registration" relation="many2one" inverse="SaleOrderLine" />
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nItEdi.IrAttachment" name="IrAttachment" description="IR Attachment">
+        <field name="Name" type="string" />
+        <field name="Content" type="binary" />
+        <field name="MimeType" type="string" />
+        <field name="Raw" type="binary" />
+    </model>
 </buvi>

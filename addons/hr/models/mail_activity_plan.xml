@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.MailActivityPlan" name="MailActivityPlan" description="Mail Activity Plan">
+        <field name="DepartmentId" type="Hr.Department" label="Department" checkCompany="true" ondelete="cascade" />
+        <field name="DepartmentAssignable" type="bool" compute="ComputeDepartmentAssignable" />
+    </model>
 </buvi>

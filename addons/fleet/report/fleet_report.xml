@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleCostReport" name="VehicleCostReport" description="Fleet Analysis Report">
+        <field name="CompanyId" type="Core.Company" label="Company" readonly="true" />
+        <field name="VehicleId" type="Fleet.Vehicle" label="Vehicle" readonly="true" />
+        <field name="Name" type="string" label="Vehicle Name" readonly="true" />
+        <field name="DriverId" type="Core.Partner" label="Driver" readonly="true" />
+        <field name="FuelType" type="string" label="Fuel" readonly="true" />
+        <field name="DateStart" type="date" label="Date" readonly="true" />
+        <field name="VehicleType" type="Fleet.VehicleType" readonly="true" />
+        <field name="Cost" type="decimal" label="Cost" readonly="true" />
+        <field name="CostType" type="Fleet.CostType" label="Cost Type" readonly="true" />
+    </model>
+
+    <optionset id="Fleet.VehicleType" name="Vehicle Type">
+        <option value="Car" name="Car" />
+        <option value="Bike" name="Bike" />
+    </optionset>
+
+    <optionset id="Fleet.CostType" name="Cost Type">
+        <option value="Contract" name="Contract" />
+        <option value="Service" name="Service" />
+    </optionset>
 </buvi>

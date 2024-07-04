@@ -1,3 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.EmployeePublic" name="EmployeePublic" description="Public Employee">
+        <field name="CreateDate" type="datetime" readonly="true" />
+        <field name="Name" type="string" readonly="true" />
+        <field name="Active" type="bool" readonly="true" />
+        <field name="Department" type="HR.Department" readonly="true" />
+        <field name="Job" type="HR.Job" readonly="true" />
+        <field name="JobTitle" type="string" readonly="true" />
+        <field name="Company" type="Core.Company" readonly="true" />
+        <field name="Address" type="Core.Address" readonly="true" />
+        <field name="MobilePhone" type="string" readonly="true" />
+        <field name="WorkPhone" type="string" readonly="true" />
+        <field name="WorkEmail" type="string" readonly="true" />
+        <field name="WorkContact" type="Core.Contact" readonly="true" />
+        <field name="WorkLocation" type="HR.WorkLocation" readonly="true" />
+        <field name="User" type="Core.User" readonly="true" />
+        <field name="Resource" type="Core.Resource" readonly="true" />
+        <field name="TimeZone" type="Core.TimeZone" readonly="true" />
+        <field name="Color" type="integer" readonly="true" />
+        <field name="IsManager" type="bool" compute="ComputeIsManager" />
+        <field name="Employee" type="HR.Employee" compute="ComputeEmployee" search="SearchEmployee" computeSudo="true" />
+        <field name="ChildIds" type="HR.EmployeePublic[]" readonly="true" label="Direct subordinates" />
+        <field name="Image1920" type="image" related="Employee.Image1920" computeSudo="true" />
+        <field name="Image1024" type="image" related="Employee.Image1024" computeSudo="true" />
+        <field name="Image512" type="image" related="Employee.Image512" computeSudo="true" />
+        <field name="Image256" type="image" related="Employee.Image256" computeSudo="true" />
+        <field name="Image128" type="image" related="Employee.Image128" computeSudo="true" />
+        <field name="Avatar1920" type="image" related="Employee.Avatar1920" computeSudo="true" />
+        <field name="Avatar1024" type="image" related="Employee.Avatar1024" computeSudo="true" />
+        <field name="Avatar512" type="image" related="Employee.Avatar512" computeSudo="true" />
+        <field name="Avatar256" type="image" related="Employee.Avatar256" computeSudo="true" />
+        <field name="Avatar128" type="image" related="Employee.Avatar128" computeSudo="true" />
+        <field name="Parent" type="HR.EmployeePublic" readonly="true" label="Manager" />
+        <field name="Coach" type="HR.EmployeePublic" readonly="true" />
+        <field name="UserPartner" type="Core.Partner" related="User.Partner" relatedSudo="false" label="User's partner" />
+    </model>
 </buvi>

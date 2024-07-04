@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.SmsTemplate" name="SmsTemplate" description="SMS Template">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Model" type="string" label="Applies to" />
+        <!-- Add other fields as needed -->
+    </model>
 </buvi>

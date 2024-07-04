@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.WorkEntry" name="WorkEntry" description="Work Entry" inherit="Hr.WorkEntry">
+        <field name="ContractId" type="Hr.Contract" label="Contract" required="true" />
+        <field name="EmployeeId" type="Hr.Employee">
+            <domain>[('ContractIds.State', 'in', ('open', 'pending'))]</domain>
+        </field>
+        <field name="WorkEntrySource" type="string" related="ContractId.WorkEntrySource" />
+    </model>
+
+    <model id="Hr.WorkEntryType" name="WorkEntryType" description="HR Work Entry Type" inherit="Hr.WorkEntryType">
+        <field name="IsLeave" type="bool" default="false" label="Time Off" 
+               help="Allow the work entry type to be linked with time off types." />
+    </model>
 </buvi>

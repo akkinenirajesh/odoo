@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="TaxScope" type="Account.TaxScope" label="Tax Scope" />
+    </model>
+
+    <optionset id="Account.TaxScope" name="Tax Scope">
+        <option value="Merch" name="Merchandise" />
+        <option value="Invest" name="Investment" />
+    </optionset>
 </buvi>

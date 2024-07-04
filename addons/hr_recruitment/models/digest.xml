@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrRecruitment.Digest" name="Digest" description="HR Recruitment Digest">
+        <field name="KpiHrRecruitmentNewColleagues" type="bool" label="New Employees" />
+        <field name="KpiHrRecruitmentNewColleaguesValue" type="integer" label="New Employees Value" computed="true" />
+    </model>
 </buvi>

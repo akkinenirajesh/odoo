@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventTypeMail" name="EventTypeMail" description="Event Type Mail">
+        <field name="NotificationType" type="Event.NotificationType" />
+    </model>
+
+    <model id="Event.EventMailScheduler" name="EventMailScheduler" description="Event Mail Scheduler">
+        <field name="NotificationType" type="Event.NotificationType" />
+        <field name="TemplateRef" type="string" />
+        <field name="MailDone" type="bool" />
+        <field name="MailCountDone" type="integer" />
+        <field name="ScheduledDate" type="datetime" />
+        <field name="IntervalType" type="string" />
+        <field name="Event" type="Event.Event" />
+    </model>
+
+    <model id="Event.EventMailRegistration" name="EventMailRegistration" description="Event Mail Registration">
+        <field name="MailSent" type="bool" />
+        <field name="ScheduledDate" type="datetime" />
+        <field name="Registration" type="Event.Registration" />
+        <field name="Scheduler" type="Event.EventMailScheduler" />
+    </model>
+
+    <optionset id="Event.NotificationType" name="Notification Type">
+        <option value="Email" name="Email" />
+        <option value="SMS" name="SMS" />
+    </optionset>
 </buvi>

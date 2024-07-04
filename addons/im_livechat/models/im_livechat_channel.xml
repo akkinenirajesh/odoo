@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.Channel" name="ImLivechatChannel" description="Livechat Channel">
+        <field name="Name" type="string" label="Channel Name" required="true" />
+        <field name="ButtonText" type="string" label="Text of the Button" translate="true"
+            help="Default text displayed on the Livechat Support Button" />
+        <field name="DefaultMessage" type="string" label="Welcome Message" translate="true"
+            help="This is an automated 'welcome' message that your visitor will see when they initiate a new conversation." />
+        <field name="InputPlaceholder" type="string" label="Chat Input Placeholder" translate="true"
+            help="Text that prompts the user to initiate the chat." />
+        <field name="HeaderBackgroundColor" type="string" default="#875A7B"
+            help="Default background color of the channel header once open" />
+        <field name="TitleColor" type="string" default="#FFFFFF"
+            help="Default title color of the channel once open" />
+        <field name="ButtonBackgroundColor" type="string" default="#875A7B"
+            help="Default background color of the Livechat button" />
+        <field name="ButtonTextColor" type="string" default="#FFFFFF"
+            help="Default text color of the Livechat button" />
+        <field name="WebPage" type="string" label="Web Page" computed="true" readonly="true"
+            help="URL to a static page where you client can discuss with the operator of the channel." />
+        <field name="AreYouInside" type="bool" label="Are you inside the matrix?" computed="true" readonly="true" />
+        <field name="AvailableOperators" type="ImLivechat.User" multiple="true" computed="true" />
+        <field name="ScriptExternal" type="string" label="Script (external)" computed="true" readonly="true" />
+        <field name="NbrChannel" type="integer" label="Number of conversation" computed="true" readonly="true" />
+        <field name="Image128" type="binary" label="Image" />
+        <field name="Operators" type="ImLivechat.User" multiple="true" />
+        <field name="Sessions" type="Discuss.Channel" multiple="true" />
+        <field name="ChatbotScriptCount" type="integer" label="Number of Chatbot" computed="true" />
+        <field name="Rules" type="ImLivechat.ChannelRule" multiple="true" />
+    </model>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.Alias" name="Alias" description="Mail Alias">
+        <field name="AliasContact" type="Mail.AliasContactType" />
+    </model>
+
+    <optionset id="Mail.AliasContactType" name="Alias Contact Type">
+        <option value="Employees" name="Authenticated Employees" />
+        <!-- Other options from the original selection should be added here -->
+    </optionset>
 </buvi>

@@ -1,23 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="mailing.filter" name="Mailing.Filter" track_created="true" track_update="true">
-    <field name="MailingModel" label="Recipients Model" type="Ir.Model" required="true" copied="true" on-delete="Cascade"/>
-    <field name="MailingDomain" label="Filter Domain" type="string" required="true" copied="true"/>
-    <field name="MailingModelName" label="Recipients Model Name" type="string" readonly="true" transient="true" related-field="MailingModel.Model"/>
-    <field name="Name" label="Filter Name" type="string" required="true" copied="true"/>
-  </model>
-  <model id="website.snippet.filter" name="Website.SnippetFilter" track_created="true" track_update="true">
-    <field name="ActionServer" label="Server Action" type="Ir.ActionsServer" copied="true" on-delete="Cascade"/>
-    <field name="Filter" label="Filter" type="Ir.Filters" copied="true" on-delete="Cascade"/>
-    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="FieldNames" label="Field Names" type="string" required="true" copied="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="Limit" label="Limit" type="integer" required="true" copied="true"/>
-    <field name="ModelName" label="Model name" type="string" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="ProductCrossSelling" label="About cross selling products" type="bool" copied="true"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-  </model>
+    <model id="Base.Company" name="Company" description="Company">
+        <field name="Name" type="string" label="Company Name" required="true" />
+        <field name="Sequence" type="integer" />
+        <field name="CompanyRegistry" type="string" label="Company Registry" />
+        <field name="PrimaryColor" type="string" label="Primary Color" />
+        <field name="SecondaryColor" type="string" label="Secondary Color" />
+        <field name="Currency" type="Base.Currency" label="Currency" />
+    </model>
 </buvi>

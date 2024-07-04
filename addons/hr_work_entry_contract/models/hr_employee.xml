@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Employee" name="Employee" description="Employee">
+        <!-- Existing fields would be listed here -->
+        
+        <!-- We don't need to define new fields as the Python file doesn't introduce any -->
+    </model>
 </buvi>

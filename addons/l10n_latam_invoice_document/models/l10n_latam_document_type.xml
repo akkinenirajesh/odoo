@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nLatam.DocumentType" name="DocumentType" description="Latam Document Type">
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" required="true" default="10"
+            help="To set in which order show the documents type taking into account the most commonly used first" />
+        <field name="Country" type="Core.Country" required="true" index="true"
+            help="Country in which this type of document is valid" />
+        <field name="Name" type="string" required="true" translate="true"
+            help="The document name" />
+        <field name="DocCodePrefix" type="string" label="Document Code Prefix"
+            help="Prefix for Documents Codes on Invoices and Account Moves. For eg. 'FA ' will build 'FA 0001-0000001' Document Number" />
+        <field name="Code" type="string"
+            help="Code used by different localizations" />
+        <field name="ReportName" type="string" label="Name on Reports" translate="true"
+            help="Name that will be printed in reports, for example 'CREDIT NOTE'" />
+        <field name="InternalType" type="L10nLatam.DocumentInternalType"
+            help="Analog to odoo account.move.move_type but with more options allowing to identify the kind of document we are working with. (not only related to account.move, could be for documents of other models like stock.picking)" />
+    </model>
+
+    <optionset id="L10nLatam.DocumentInternalType" name="Document Internal Type">
+        <option value="Invoice" name="Invoices" />
+        <option value="DebitNote" name="Debit Notes" />
+        <option value="CreditNote" name="Credit Notes" />
+        <option value="All" name="All Documents" />
+    </optionset>
 </buvi>

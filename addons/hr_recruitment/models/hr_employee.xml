@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.Employee" name="Employee" description="Employee">
+        <field name="ApplicantId" type="HumanResources.Applicant" label="Applicant" groups="HumanResources.GroupHrUser" />
+    </model>
+
+    <model id="HumanResources.Applicant" name="Applicant" description="Job Applicant">
+        <field name="EmpId" type="HumanResources.Employee" label="Employee" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" />
+    </model>
 </buvi>

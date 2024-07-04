@@ -1,44 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="gamification.challenge" name="Gamification.Challenge" track_created="true" track_update="true">
-    <field name="ReportMessageGroup" label="Send a copy to" type="Discuss.Channel" copied="true" on-delete="Clear"/>
-    <field name="RewardFirst" label="For 1st user" type="Gamification.Badge" copied="true" on-delete="Clear"/>
-    <field name="Reward" label="For Every Succeeding User" type="Gamification.Badge" copied="true" on-delete="Clear"/>
-    <field name="RewardSecond" label="For 2nd user" type="Gamification.Badge" copied="true" on-delete="Clear"/>
-    <field name="RewardThird" label="For 3rd user" type="Gamification.Badge" copied="true" on-delete="Clear"/>
-    <field name="Lines" label="Lines" type="Gamification.ChallengeLine" required="true" collection="true" copied="true"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="ReportTemplate" label="Report Template" type="Mail.Template" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="InvitedUsers" label="Suggest to users" type="Res.Users" collection="true" copied="true"/>
-    <field name="Manager" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
-    <field name="Users" label="Participants" type="Res.Users" collection="true" copied="true"/>
-    <field name="ChallengeCategory" label="Appears in" type="Gamification.GamificationChallengeAppearsIn" required="true" copied="true"/>
-    <field name="Description" label="Description" type="text" copied="true" translatable="true"/>
-    <field name="EndDate" label="End Date" type="date" copied="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="LastReportDate" label="Last Report Date" type="date" copied="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="Name" label="Challenge Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NextReportDate" label="Next Report Date" type="date" readonly="true"/>
-    <field name="Period" label="Periodicity" type="Gamification.GamificationChallengePeriodicity" required="true" copied="true"/>
-    <field name="RemindUpdateDelay" label="Non-updated manual goals will be reminded after" type="integer" copied="true"/>
-    <field name="ReportMessageFrequency" label="Report Frequency" type="Gamification.GamificationChallengeReportFrequency" required="true" copied="true"/>
-    <field name="RewardFailure" label="Reward Bests if not Succeeded?" type="bool" copied="true"/>
-    <field name="RewardRealtime" label="Reward as soon as every goal is reached" type="bool" copied="true"/>
-    <field name="StartDate" label="Start Date" type="date" copied="true"/>
-    <field name="State" label="State" type="Gamification.GamificationChallengeState" required="true"/>
-    <field name="UserCount" label="# Users" type="integer" readonly="true" transient="true"/>
-    <field name="UserDomain" label="User domain" type="string" copied="true"/>
-    <field name="VisibilityMode" label="Display Mode" type="Gamification.GamificationChallengeDisplayMode" required="true" copied="true"/>
-  </model>
+    <model id="Gamification.ChallengeLine" name="ChallengeLine" description="Gamification generic goal for challenge">
+        <field name="ChallengeId" type="Gamification.Challenge" label="Challenge" required="true" />
+        <field name="DefinitionId" type="Gamification.GoalDefinition" label="Goal Definition" required="true" />
+        <field name="Sequence" type="integer" default="1" />
+        <field name="TargetGoal" type="float" label="Target Value to Reach" required="true" />
+        <field name="Name" type="string" label="Name" />
+        <field name="Condition" type="Gamification.GoalCondition" label="Condition" />
+        <field name="DefinitionSuffix" type="string" label="Unit" />
+        <field name="DefinitionMonetary" type="bool" label="Monetary" />
+        <field name="DefinitionFullSuffix" type="string" label="Suffix" />
+    </model>
+
+    <optionset id="Gamification.GoalCondition" name="Goal Condition">
+        <!-- Add options based on the actual conditions used in Odoo -->
+        <option value="Higher" name="Higher" />
+        <option value="Lower" name="Lower" />
+        <!-- Add more options as needed -->
+    </optionset>
 </buvi>

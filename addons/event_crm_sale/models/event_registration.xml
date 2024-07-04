@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventRegistration" name="EventRegistration" description="Event Registration">
+        <field name="SaleOrder" type="Sale.SaleOrder" label="Sale Order" />
+    </model>
 </buvi>

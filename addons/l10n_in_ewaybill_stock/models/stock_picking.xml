@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.Picking" name="Picking" description="Stock Picking">
+        <field name="L10nInEwaybill" type="L10n.In.Ewaybill" label="Ewaybill" relation="one2many" relatedField="PickingId" />
+    </model>
+
+    <model id="L10n.In.Ewaybill" name="Ewaybill" description="Indian Ewaybill">
+        <field name="PickingId" type="Stock.Picking" label="Picking" relation="many2one" />
+        <field name="TypeId" type="L10n.In.EwaybillType" label="Type" relation="many2one" />
+    </model>
+
+    <model id="L10n.In.EwaybillType" name="EwaybillType" description="Indian Ewaybill Type">
+        <!-- Add fields for EwaybillType as needed -->
+    </model>
 </buvi>

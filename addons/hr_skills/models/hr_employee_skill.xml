@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.EmployeeSkill" name="EmployeeSkill" description="Skill level for an employee">
+        <field name="Employee" type="Hr.Employee" required="true" />
+        <field name="Skill" type="Hr.Skill" required="true" />
+        <field name="SkillLevel" type="Hr.SkillLevel" required="true" />
+        <field name="SkillType" type="Hr.SkillType" required="true" />
+        <field name="LevelProgress" type="integer" />
+        <field name="Color" type="integer" />
+        <unique>
+            <field name="Employee" />
+            <field name="Skill" />
+            <message>Two levels for the same skill is not allowed</message>
+        </unique>
+    </model>
 </buvi>

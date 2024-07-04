@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Partner.ResPartnerBank" name="ResPartnerBank" description="Partner Bank">
+        <field name="ProxyType" type="Partner.ProxyType" />
+        <field name="ProxyValue" type="string" />
+        <field name="Partner" type="Partner.Partner" />
+        <field name="CountryCode" type="string" />
+    </model>
+
+    <optionset id="Partner.ProxyType" name="Proxy Type">
+        <option value="None" name="None" />
+        <option value="Email" name="Email Address" />
+        <option value="Mobile" name="Mobile Number" />
+        <option value="BrCpfCnpj" name="CPF/CNPJ (BR)" />
+        <option value="BrRandom" name="Random Key (BR)" />
+    </optionset>
 </buvi>

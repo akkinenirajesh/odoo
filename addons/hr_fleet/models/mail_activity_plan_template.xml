@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrFleet.MailActivityPlanTemplate" name="MailActivityPlanTemplate" description="Mail Activity Plan Template">
+        <field name="ResponsibleType" type="HrFleet.ResponsibleType" />
+    </model>
+
+    <optionset id="HrFleet.ResponsibleType" name="Responsible Type">
+        <option value="FleetManager" name="Fleet Manager" />
+        <!-- Add other options from the original selection field here -->
+    </optionset>
 </buvi>

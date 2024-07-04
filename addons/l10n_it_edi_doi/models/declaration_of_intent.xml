@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nItEdiDoi.DeclarationOfIntent" name="DeclarationOfIntent" description="Declaration of Intent">
+        <field name="State" type="L10nItEdiDoi.DeclarationOfIntentState" label="State" required="true" default="Draft" readonly="true"
+            help="The state of this Declaration of Intent. 
+            - 'Draft' means that the Declaration of Intent still needs to be confirmed before being usable. 
+            - 'Active' means that the Declaration of Intent is usable. 
+            - 'Terminated' designates that the Declaration of Intent has been marked as not to use anymore without invalidating usages of it. 
+            - 'Revoked' means the Declaration of Intent should not have been used. You will probably need to revert previous usages of it, if any." />
+        <field name="Company" type="Core.Company" label="Company" required="true" />
+        <field name="Partner" type="Core.Partner" label="Partner" required="true" />
+        <field name="Currency" type="Core.Currency" label="Currency" required="true" readonly="true" />
+        <field name="IssueDate" type="date" label="Date of Issue" required="true" 
+            help="Date on which the Declaration of Intent was issued" />
+        <field name="StartDate" type="date" label="Start Date" required="true"
+            help="First date on which the Declaration of Intent is valid" />
+        <field name="EndDate" type="date" label="End Date" required="true"
+            help="Last date on which the Declaration of Intent is valid" />
+        <field name="Threshold" type="decimal" label="Threshold" required="true"
+            help="Total amount of allowed sales without VAT under this Declaration of Intent" />
+        <field name="Invoiced" type="decimal" label="Invoiced" readonly="true"
+            help="Total amount of sales under this Declaration of Intent" />
+        <field name="NotYetInvoiced" type="decimal" label="Not Yet Invoiced" readonly="true"
+            help="Total amount of planned sales under this Declaration of Intent (i.e. current quotation and sales orders) that can still be invoiced" />
+        <field name="Remaining" type="decimal" label="Remaining" readonly="true"
+            help="Remaining amount after deduction of the Invoiced and Not Yet Invoiced amounts." />
+        <field name="ProtocolNumberPart1" type="string" label="Protocol 1" required="true" />
+        <field name="ProtocolNumberPart2" type="string" label="Protocol 2" required="true" />
+        <field name="Invoices" type="L10nItEdiDoi.Invoice[]" label="Invoices / Refunds" readonly="true" />
+        <field name="SaleOrders" type="L10nItEdiDoi.SaleOrder[]" label="Sales Orders / Quotations" readonly="true" />
+        <unique>
+            <field name="ProtocolNumberPart1" />
+            <field name="ProtocolNumberPart2" />
+            <message>The Protocol Number of a Declaration of Intent must be unique! Please choose another one.</message>
+        </unique>
+    </model>
+
+    <optionset id="L10nItEdiDoi.DeclarationOfIntentState" name="Declaration of Intent State">
+        <option value="Draft" name="Draft" />
+        <option value="Active" name="Active" />
+        <option value="Revoked" name="Revoked" />
+        <option value="Terminated" name="Terminated" />
+    </optionset>
 </buvi>

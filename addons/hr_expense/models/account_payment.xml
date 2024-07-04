@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+        <field name="ExpenseSheetId" type="Hr.ExpenseSheet" label="Expense Sheet" />
+        <field name="Ref" type="string" label="Reference" />
+        <field name="PaymentMethodLineId" type="Account.PaymentMethodLine" label="Payment Method Line" />
+    </model>
 </buvi>

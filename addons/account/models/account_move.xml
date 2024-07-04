@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountMove" name="AccountMove" description="Journal Entry">
         <field name="Name" type="string" label="Number" readonly="true" copy="false" />

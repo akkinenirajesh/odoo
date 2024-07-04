@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nAr.IdentificationType" name="IdentificationType" description="LATAM Identification Type">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="L10nArAfipCode" type="string" label="AFIP Code" />
+        <!-- Add other fields from the base model if needed -->
+    </model>
 </buvi>

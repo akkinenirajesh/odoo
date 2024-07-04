@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrContract.ResourceCalendar" name="ResourceCalendar" description="Resource Calendar">
+        <field name="ContractsCount" type="integer" label="# Contracts using it" compute="ComputeContractsCount" groups="hr_contract.group_hr_contract_manager" />
+    </model>
 </buvi>

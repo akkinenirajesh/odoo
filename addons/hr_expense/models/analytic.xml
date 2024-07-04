@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrExpense.AccountAnalyticApplicability" name="AccountAnalyticApplicability" description="Analytic Plan's Applicabilities">
+        <field name="BusinessDomain" type="HrExpense.BusinessDomain" />
+    </model>
+
+    <model id="HrExpense.AccountAnalyticAccount" name="AccountAnalyticAccount" description="Analytic Account">
+        <!-- No additional fields defined in the original Python code -->
+    </model>
+
+    <optionset id="HrExpense.BusinessDomain" name="Business Domain">
+        <option value="Expense" name="Expense" />
+        <!-- Other options would be defined here based on the full selection list -->
+    </optionset>
 </buvi>

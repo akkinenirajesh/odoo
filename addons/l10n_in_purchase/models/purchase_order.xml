@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+        <field name="L10nInGstTreatment" type="Purchase.GstTreatment" label="GST Treatment" 
+               compute="_ComputeL10nInGstTreatment" store="true" />
+    </model>
+
+    <optionset id="Purchase.GstTreatment" name="GST Treatment">
+        <option value="Regular" name="Registered Business - Regular" />
+        <option value="Composition" name="Registered Business - Composition" />
+        <option value="Unregistered" name="Unregistered Business" />
+        <option value="Consumer" name="Consumer" />
+        <option value="Overseas" name="Overseas" />
+        <option value="SpecialEconomicZone" name="Special Economic Zone" />
+        <option value="DeemedExport" name="Deemed Export" />
+        <option value="UinHolders" name="UIN Holders" />
+    </optionset>
 </buvi>

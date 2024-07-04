@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResUsers" name="ResUsers" description="User">
+        <field name="Name" type="string" label="Name" required="true" />
+        <!-- Add other fields from res.users model here -->
+    </model>
 </buvi>

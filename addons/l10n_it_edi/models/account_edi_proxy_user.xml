@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountEdiProxyClientUser" name="AccountEdiProxyClientUser" description="Account EDI Proxy Client User">
+        <field name="ProxyType" type="Account.ProxyType" />
+    </model>
+
+    <optionset id="Account.ProxyType" name="Proxy Type">
+        <option value="L10nItEdi" name="Italian EDI" />
+        <!-- Add other existing options here -->
+    </optionset>
 </buvi>

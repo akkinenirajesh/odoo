@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="L10nInResellerPartner" type="Core.Partner" label="Reseller"
+            help="Domain: [('Vat', '!=', False), '|', ('Company', '=', False), ('Company', '=', Company)]" />
+        <field name="L10nInGstTreatment" type="Sale.GstTreatment" label="GST Treatment" compute="ComputeL10nInGstTreatment" />
+    </model>
+
+    <optionset id="Sale.GstTreatment" name="GST Treatment">
+        <option value="Regular" name="Registered Business - Regular" />
+        <option value="Composition" name="Registered Business - Composition" />
+        <option value="Unregistered" name="Unregistered Business" />
+        <option value="Consumer" name="Consumer" />
+        <option value="Overseas" name="Overseas" />
+        <option value="SpecialEconomicZone" name="Special Economic Zone" />
+        <option value="DeemedExport" name="Deemed Export" />
+        <option value="UinHolders" name="UIN Holders" />
+    </optionset>
 </buvi>

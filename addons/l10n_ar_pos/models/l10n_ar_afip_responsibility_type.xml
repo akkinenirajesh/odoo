@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nAr.AfipResponsibilityType" name="AfipResponsibilityType" description="AFIP Responsibility Type">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+    </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nFrPosCert.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nFrPosCertSequenceId" type="Core.IrSequence" label="POS Certification Sequence" />
+    </model>
 </buvi>

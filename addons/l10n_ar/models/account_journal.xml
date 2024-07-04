@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="L10nArAfipPosSystem" type="Account.AfipPosSystem" label="AFIP POS System"
+            help="Argentina: Specify which type of system will be used to create the electronic invoice. This will depend on the type of invoice to be created." />
+        <field name="L10nArAfipPosNumber" type="integer" label="AFIP POS Number"
+            help="This is the point of sale number assigned by AFIP in order to generate invoices" />
+        <field name="CompanyPartner" type="Core.Partner" related="Company.Partner" />
+        <field name="L10nArAfipPosPartnerId" type="Core.Partner" label="AFIP POS Address"
+            help="This is the address used for invoice reports of this POS" />
+        <field name="L10nArIsPos" type="bool" label="Is AFIP POS?"
+            help="Argentina: Specify if this Journal will be used to send electronic invoices to AFIP." />
+    </model>
+
+    <optionset id="Account.AfipPosSystem" name="AFIP POS System">
+        <option value="II_IM" name="Pre-printed Invoice" />
+        <option value="RLI_RLM" name="Online Invoice" />
+        <option value="BFERCEL" name="Electronic Fiscal Bond - Online Invoice" />
+        <option value="FEERCELP" name="Export Voucher - Billing Plus" />
+        <option value="FEERCEL" name="Export Voucher - Online Invoice" />
+        <option value="CPERCEL" name="Product Coding - Online Voucher" />
+    </optionset>
 </buvi>

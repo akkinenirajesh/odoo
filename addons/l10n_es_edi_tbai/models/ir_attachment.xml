@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEsEdiTbai.IrAttachment" name="IrAttachment" description="Attachment">
+        <field name="Name" type="string" label="Name" required="true" />
+        <!-- Add other fields as needed -->
+    </model>
 </buvi>

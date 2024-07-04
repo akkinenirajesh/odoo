@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nId.ResPartner" name="ResPartner" description="Extended Partner for Indonesian Localization">
+        <field name="L10nIdPkp" type="bool" label="ID PKP" compute="ComputeL10nIdPkp" store="true" readonly="false" />
+        <field name="L10nIdNik" type="string" label="NIK" />
+        <field name="L10nIdTaxAddress" type="string" label="Tax Address" />
+        <field name="L10nIdTaxName" type="string" label="Tax Name" />
+        <field name="L10nIdKodeTransaksi" type="L10nId.KodeTransaksi" label="Kode Transaksi" default="01"
+            help="Dua digit pertama nomor pajak" />
+    </model>
+
+    <optionset id="L10nId.KodeTransaksi" name="Kode Transaksi">
+        <option value="01" name="Kepada Pihak yang Bukan Pemungut PPN (Customer Biasa)" />
+        <option value="02" name="Kepada Pemungut Bendaharawan (Dinas Kepemerintahan)" />
+        <option value="03" name="Kepada Pemungut Selain Bendaharawan (BUMN)" />
+        <option value="04" name="DPP Nilai Lain (PPN 1%)" />
+        <option value="05" name="Besaran Tertentu" />
+        <option value="06" name="Penyerahan Lainnya (Turis Asing)" />
+        <option value="07" name="Penyerahan yang PPN-nya Tidak Dipungut (Kawasan Ekonomi Khusus/ Batam)" />
+        <option value="08" name="Penyerahan yang PPN-nya Dibebaskan (Impor Barang Tertentu)" />
+        <option value="09" name="Penyerahan Aktiva ( Pasal 16D UU PPN )" />
+    </optionset>
+
+    <model id="L10nId.ResConfigSettings" name="ResConfigSettings" description="Configuration Settings for Indonesian Localization">
+        <field name="L10nIdTaxAddress" type="string" label="Tax Address" related="Company.Partner.L10nIdTaxAddress" readonly="false" />
+        <field name="L10nIdTaxName" type="string" label="Tax Name" related="Company.Partner.L10nIdTaxName" readonly="false" />
+    </model>
 </buvi>

@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nHuTaxType" type="Account.L10nHuTaxType" label="NAV VAT Tax Type"
+               help="Precise identification of the VAT tax for the Hungarian authority." />
+        <field name="L10nHuTaxReason" type="string" label="NAV VAT Tax Exemption Reason"
+               help="May be used to provide support for the use of a VAT-exempt VAT tax type." 
+               compute="ComputeL10nHuTaxReason" readonly="false" />
+    </model>
+
+    <optionset id="Account.L10nHuTaxType" name="L10n HU Tax Type">
+        <option value="VAT" name="Normal VAT (percent based)" />
+        <option value="AAM" name="AAM - Personal tax exemption" />
+        <option value="TAM" name="TAM - tax-exempt activity or tax-exempt due to being in public interest or special in nature" />
+        <option value="KBAET" name="KBAET - intra-Community exempt supply, without new means of transport" />
+        <option value="KBAUK" name="KBAUK - tax-exempt, intra-Community sales of new means of transport" />
+        <option value="EAM" name="EAM - tax-exempt, extra-Community sales of goods (export of goods to a non-EU country)" />
+        <option value="NAM" name="NAM - tax-exempt on other grounds related to international transactions" />
+        <option value="ATK" name="ATK - Outside the scope of VAT" />
+        <option value="EUFAD37" name="EUFAD37 - Based on section 37 of the VAT Act, a reverse charge transaction carried out in another Member State" />
+        <option value="EUFADE" name="EUFADE - Reverse charge transaction carried out in another Member State, not subject to Section 37 of the VAT Act" />
+        <option value="EUE" name="EUE - Non-reverse charge transaction performed in another Member State" />
+        <option value="HO" name="HO - Transaction in a third country" />
+        <option value="DOMESTIC_REVERSE" name="DOMESTIC_REVERSE - Domestic reverse-charge regime" />
+        <option value="TRAVEL_AGENCY" name="TRAVEL_AGENCY - Profit-margin based regime for travel agencies" />
+        <option value="SECOND_HAND" name="SECOND_HAND - Profit-margin based regime for second-hand sales" />
+        <option value="ARTWORK" name="ARTWORK - Profit-margin based regime for artwork sales" />
+        <option value="ANTIQUES" name="ANTIQUES - Profit-margin based regime for antique sales" />
+        <option value="REFUNDABLE_VAT" name="REFUNDABLE_VAT - VAT incurred under sections 11 or 14, without an agreement from the beneficiary to reimburse VAT" />
+        <option value="NONREFUNDABLE_VAT" name="NONREFUNDABLE_VAT - VAT incurred under sections 11 or 14, with an agreement from the beneficiary to reimburse VAT" />
+        <option value="NO_VAT" name="VAT not applicable pursuant to section 17 of the VAT Act" />
+    </optionset>
 </buvi>

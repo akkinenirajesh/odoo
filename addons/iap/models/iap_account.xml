@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Iap.IapAccount" name="IapAccount" description="IAP Account">
+        <field name="Name" type="string" />
+        <field name="ServiceName" type="string" label="Service Name" readonly="true" />
+        <field name="AccountToken" type="string" size="43" default="GenerateUUID"
+            help="Account token is your authentication key for this service. Do not share it." />
+        <field name="Companies" type="Core.Company" multiple="true" />
+        <field name="AccountInfo" type="Iap.IapAccountInfo" compute="ComputeInfo" inverse="InverseInfo" search="SearchInfo" />
+        <field name="AccountInfos" type="Iap.IapAccountInfo" multiple="true" label="Accounts from IAP" />
+        <field name="Balance" type="string" compute="ComputeBalance" />
+        <field name="Description" type="string" related="AccountInfo.Description" />
+        <field name="WarnMe" type="bool" related="AccountInfo.WarnMe" readonly="false"
+            help="We will send you an email when your balance gets below that threshold" />
+        <field name="WarningThreshold" type="float" related="AccountInfo.WarningThreshold" readonly="false" />
+        <field name="WarningEmail" type="string" related="AccountInfo.WarningEmail" readonly="false" />
+        <field name="ShowToken" type="bool" />
+    </model>
+
+    <model id="Iap.IapAccountInfo" name="IapAccountInfo" description="IAP Account Info">
+        <field name="Account" type="Iap.IapAccount" label="IAP Account" />
+        <field name="AccountToken" type="string" />
+        <field name="Balance" type="float" label="Balance" digits="(16, 4)" default="0" />
+        <field name="AccountUuidHashed" type="string" label="Account UUID" />
+        <field name="ServiceName" type="string" label="Related Service" />
+        <field name="Description" type="string" />
+        <field name="WarnMe" type="bool" label="Warn me" default="false" />
+        <field name="WarningThreshold" type="float" label="Threshold" />
+        <field name="WarningEmail" type="string" />
+        <field name="UnitName" type="string" default="Credits" />
+    </model>
 </buvi>

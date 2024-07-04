@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
         <field name="TaxLineId" type="Account.Tax" label="Tax" />

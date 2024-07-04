@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.Badge" name="Badge" description="Gamification Badge">
+        <field name="Name" type="string" label="Badge" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Description" type="html" translate="true" />
+        <field name="Level" type="Gamification.BadgeLevel" default="Bronze" label="Forum Badge Level" />
+        <field name="RuleAuth" type="Gamification.BadgeRuleAuth" default="Everyone" label="Allowance to Grant" required="true"
+            help="Who can grant this badge" />
+        <field name="RuleAuthUserIds" type="Core.User" label="Authorized Users" multiple="true"
+            help="Only these people can give this badge" />
+        <field name="RuleAuthBadgeIds" type="Gamification.Badge" label="Required Badges" multiple="true"
+            help="Only the people having these badges can give this badge" />
+        <field name="RuleMax" type="bool" label="Monthly Limited Sending"
+            help="Check to set a monthly limit per person of sending this badge" />
+        <field name="RuleMaxNumber" type="integer" label="Limitation Number"
+            help="The maximum number of time this badge can be sent per month per person." />
+        <field name="ChallengeIds" type="Gamification.Challenge" label="Reward of Challenges" multiple="true" />
+        <field name="GoalDefinitionIds" type="Gamification.GoalDefinition" label="Rewarded by" multiple="true"
+            help="The users that have succeeded these goals will receive automatically the badge." />
+        <field name="OwnerIds" type="Gamification.BadgeUser" label="Owners" multiple="true"
+            help="The list of instances of this badge granted to users" />
+    </model>
+
+    <optionset id="Gamification.BadgeLevel" name="Badge Level">
+        <option value="Bronze" name="Bronze" />
+        <option value="Silver" name="Silver" />
+        <option value="Gold" name="Gold" />
+    </optionset>
+
+    <optionset id="Gamification.BadgeRuleAuth" name="Badge Rule Auth">
+        <option value="Everyone" name="Everyone" />
+        <option value="Users" name="A selected list of users" />
+        <option value="Having" name="People having some badges" />
+        <option value="Nobody" name="No one, assigned through challenges" />
+    </optionset>
 </buvi>

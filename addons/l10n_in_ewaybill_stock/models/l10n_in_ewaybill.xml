@@ -1,3 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIn.Ewaybill" name="Ewaybill" description="e-Waybill">
+        <field name="Name" type="string" label="e-Waybill Number" readonly="true" />
+        <field name="EwaybillDate" type="date" label="e-Waybill Date" readonly="true" />
+        <field name="EwaybillExpiryDate" type="date" label="e-Waybill Valid Upto" readonly="true" />
+        <field name="State" type="L10nIn.EwaybillState" required="true" readonly="true" default="Pending" />
+        <field name="Picking" type="Stock.Picking" label="Stock Transfer" />
+        <field name="MoveIds" type="Stock.Move[]" />
+        <field name="PickingTypeCode" type="Stock.PickingTypeCode" />
+        <field name="DocumentDate" type="datetime" label="Document Date" />
+        <field name="DocumentNumber" type="string" label="Document" />
+        <field name="Company" type="Core.Company" />
+        <field name="CompanyCurrency" type="Core.Currency" />
+        <field name="SupplyType" type="L10nIn.SupplyType" label="Supply Type" />
+        <field name="PartnerBillFrom" type="Core.Partner" label="Bill From" />
+        <field name="PartnerBillTo" type="Core.Partner" label="Bill To" />
+        <field name="PartnerShipFrom" type="Core.Partner" label="Dispatch From" />
+        <field name="PartnerShipTo" type="Core.Partner" label="Ship To" />
+        <field name="IsBillToEditable" type="bool" />
+        <field name="IsBillFromEditable" type="bool" />
+        <field name="IsShipToEditable" type="bool" />
+        <field name="IsShipFromEditable" type="bool" />
+        <field name="FiscalPosition" type="Account.FiscalPosition" label="Fiscal Position" />
+        <field name="Type" type="L10nIn.EwaybillType" label="Document Type" required="true" />
+        <field name="SubTypeCode" type="string" />
+        <field name="TypeDescription" type="string" label="Description" />
+        <field name="Distance" type="integer" label="Distance" />
+        <field name="Mode" type="L10nIn.TransportationMode" label="Transportation Mode" default="ByRoad" />
+        <field name="VehicleNo" type="string" label="Vehicle Number" />
+        <field name="VehicleType" type="L10nIn.VehicleType" label="Vehicle Type" />
+        <field name="TransportationDocNo" type="string" label="Transporter Doc No" />
+        <field name="TransportationDocDate" type="date" label="Transporter Doc Date" />
+        <field name="Transporter" type="Core.Partner" label="Transporter" />
+        <field name="ErrorMessage" type="string" readonly="true" />
+        <field name="BlockingLevel" type="L10nIn.BlockingLevel" readonly="true" />
+        <field name="Content" type="byte[]" />
+        <field name="CancelReason" type="L10nIn.CancelReason" label="Cancel reason" />
+        <field name="CancelRemarks" type="string" label="Cancel remarks" />
+    </model>
+
+    <optionset id="L10nIn.EwaybillState" name="Ewaybill State">
+        <option value="Pending" name="Pending" />
+        <option value="Generated" name="Generated" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+
+    <optionset id="L10nIn.SupplyType" name="Supply Type">
+        <option value="O" name="Outward" />
+        <option value="I" name="Inward" />
+    </optionset>
+
+    <optionset id="L10nIn.TransportationMode" name="Transportation Mode">
+        <option value="1" name="ByRoad" />
+        <option value="2" name="Rail" />
+        <option value="3" name="Air" />
+        <option value="4" name="Ship" />
+    </optionset>
+
+    <optionset id="L10nIn.VehicleType" name="Vehicle Type">
+        <option value="R" name="Regular" />
+        <option value="O" name="OverDimensionalCargo" />
+    </optionset>
+
+    <optionset id="L10nIn.BlockingLevel" name="Blocking Level">
+        <option value="Warning" name="Warning" />
+        <option value="Error" name="Error" />
+    </optionset>
+
+    <optionset id="L10nIn.CancelReason" name="Cancel Reason">
+        <option value="1" name="Duplicate" />
+        <option value="2" name="DataEntryMistake" />
+        <option value="3" name="OrderCancelled" />
+        <option value="4" name="Others" />
+    </optionset>
 </buvi>

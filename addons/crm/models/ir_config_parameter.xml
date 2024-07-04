@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.IrConfigParameter" name="IrConfigParameter" description="IR Configuration Parameter">
         <field name="Key" type="string" label="Key" required="true" />

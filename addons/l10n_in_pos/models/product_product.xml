@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductProduct" name="ProductProduct" description="Product Variant">
+        <field name="L10nInHsnCode" type="string" label="HSN Code" />
+        <!-- Other fields from the base product.product model would be listed here -->
+    </model>
 </buvi>

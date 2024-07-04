@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="Reference" type="string" label="Reference" />
+        <!-- Add other fields from the original Odoo model here -->
+    </model>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResUsers" name="ResUsers" description="Users">
+        <!-- Assuming other fields are defined elsewhere as this is an inherited model -->
+        <field name="Share" type="bool" />
+        <!-- Add other fields as needed -->
+    </model>
 </buvi>

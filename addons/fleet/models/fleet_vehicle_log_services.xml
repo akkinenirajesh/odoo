@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleLogService" name="VehicleLogService" description="Services for vehicles">
+        <field name="Active" type="bool" default="true" />
+        <field name="Vehicle" type="Fleet.Vehicle" required="true" />
+        <field name="Manager" type="Core.User" related="Vehicle.Manager" store="true" />
+        <field name="Amount" type="decimal" label="Cost" />
+        <field name="Description" type="string" />
+        <field name="Odometer" type="Fleet.VehicleOdometer" label="Odometer" 
+               help="Odometer measure of the vehicle at the moment of this log" />
+        <field name="OdometerValue" type="decimal" label="Odometer Value" 
+               help="Odometer measure of the vehicle at the moment of this log" />
+        <field name="OdometerUnit" type="string" related="Vehicle.OdometerUnit" readonly="true" />
+        <field name="Date" type="datetime" default="DateTime.Now" 
+               help="Date when the cost has been executed" />
+        <field name="Company" type="Core.Company" default="Env.Company" />
+        <field name="Currency" type="Core.Currency" related="Company.Currency" />
+        <field name="Purchaser" type="Core.Partner" label="Driver" />
+        <field name="InvoiceReference" type="string" label="Vendor Reference" />
+        <field name="Vendor" type="Core.Partner" />
+        <field name="Notes" type="string" />
+        <field name="ServiceType" type="Fleet.ServiceType" required="true" />
+        <field name="State" type="Fleet.VehicleLogServiceState" default="New" label="Stage" />
+    </model>
+
+    <optionset id="Fleet.VehicleLogServiceState" name="Vehicle Log Service State">
+        <option value="New" name="New" />
+        <option value="Running" name="Running" />
+        <option value="Done" name="Done" />
+        <option value="Cancelled" name="Cancelled" />
+    </optionset>
 </buvi>

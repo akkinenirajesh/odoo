@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrSkillsSlides.SlideChannelPartner" name="SlideChannelPartner" description="Slide Channel Partner">
+        <field name="MemberStatus" type="string" />
+        <field name="PartnerId" type="Res.Partner" />
+        <field name="ChannelId" type="Slide.Channel" />
+    </model>
+
+    <model id="HrSkillsSlides.Channel" name="Channel" description="Slide Channel">
+        <field name="Name" type="string" required="true" />
+        <field name="Description" type="string" />
+        <field name="WebsiteUrl" type="string" />
+    </model>
+
+    <model id="Hr.Employee" name="Employee" description="Employee">
+        <field name="UserId" type="Res.User" />
+    </model>
+
+    <model id="Hr.ResumeLine" name="ResumeLine" description="Resume Line">
+        <field name="EmployeeId" type="Hr.Employee" />
+        <field name="Name" type="string" />
+        <field name="DateStart" type="DateTime" />
+        <field name="DateEnd" type="DateTime" />
+        <field name="Description" type="string" />
+        <field name="LineTypeId" type="Hr.ResumeLineType" />
+        <field name="DisplayType" type="string" />
+        <field name="ChannelId" type="Slide.Channel" />
+    </model>
 </buvi>

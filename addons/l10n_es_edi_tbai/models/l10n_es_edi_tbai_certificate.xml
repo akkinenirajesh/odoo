@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEsEdi.Certificate" name="Certificate" description="TicketBAI Certificate">
+        <field name="Content" type="string" label="Certificate Content" required="true" />
+        <field name="Password" type="string" label="Certificate Password" required="true" />
+    </model>
 </buvi>

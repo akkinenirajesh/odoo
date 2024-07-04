@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nCl.L10nLatamDocumentType" name="L10nLatamDocumentType" description="LATAM Document Type">
+        <field name="InternalType" type="L10nCl.L10nLatamDocumentTypeInternalType" />
+        <field name="L10nClActive" type="bool" label="Active in localization" 
+               help="This boolean enables document to be included on invoicing" />
+    </model>
+
+    <optionset id="L10nCl.L10nLatamDocumentTypeInternalType" name="LATAM Document Type Internal Type">
+        <option value="Invoice" name="Invoices" />
+        <option value="InvoiceIn" name="Purchase Invoices" />
+        <option value="DebitNote" name="Debit Notes" />
+        <option value="CreditNote" name="Credit Notes" />
+        <option value="ReceiptInvoice" name="Receipt Invoice" />
+        <option value="StockPicking" name="Stock Delivery" />
+    </optionset>
 </buvi>

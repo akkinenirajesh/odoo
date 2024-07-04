@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ResourceManagement.ResourceCalendar" name="ResourceCalendar" description="Resource Calendar">
+        <field name="TwoWeeksCalendar" type="bool" label="Two Weeks Calendar" />
+        <field name="AttendanceIds" type="ResourceManagement.ResourceCalendarAttendance" label="Attendances" />
+    </model>
+
+    <model id="ResourceManagement.ResourceCalendarAttendance" name="ResourceCalendarAttendance" description="Resource Calendar Attendance">
+        <field name="WeekType" type="string" label="Week Type" />
+        <field name="Dayofweek" type="string" label="Day of Week" />
+    </model>
 </buvi>

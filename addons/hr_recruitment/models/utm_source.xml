@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Utm.UtmSource" name="UtmSource" description="UTM Source">
+        <!-- Inherit fields from the base model -->
+        <inherit model="Utm.UtmSource" />
+    </model>
 </buvi>

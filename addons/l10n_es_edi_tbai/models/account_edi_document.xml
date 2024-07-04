@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountEdiDocument" name="AccountEdiDocument" description="Account EDI Document">
+        <field name="EdiFormatId" type="Account.EdiFormat" label="EDI Format" />
+        <field name="State" type="string" label="State" />
+        <field name="MoveId" type="Account.Move" label="Move" />
+        <field name="L10nEsTbaiChainIndex" type="integer" label="TicketBAI Chain Index" />
+    </model>
 </buvi>

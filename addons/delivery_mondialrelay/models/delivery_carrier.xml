@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.DeliveryCarrier" name="DeliveryCarrier" description="Delivery Carrier">
+        <field name="IsMondialrelay" type="bool" compute="ComputeIsMondialrelay" search="SearchIsMondialrelay" />
+        <field name="MondialrelayBrand" type="string" label="Brand Code" default="BDTEST  " />
+        <field name="MondialrelayPackagetype" type="string" default="24R" groups="Base.GroupSystem" />
+        <field name="ProductId" type="Product.Product" label="Product" />
+    </model>
 </buvi>

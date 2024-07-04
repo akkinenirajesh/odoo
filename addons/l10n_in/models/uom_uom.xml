@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Uom.UoM" name="UoM" description="Unit of Measure">
+        <field name="L10nInCode" type="string" label="Indian GST UQC" 
+               help="Unique Quantity Code (UQC) under GST" />
+    </model>
 </buvi>

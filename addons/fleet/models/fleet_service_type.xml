@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.ServiceType" name="FleetServiceType" description="Fleet Service Type">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Category" type="Fleet.ServiceTypeCategory" label="Category" required="true" 
+               help="Choose whether the service refer to contracts, vehicle services or both" />
+    </model>
+
+    <optionset id="Fleet.ServiceTypeCategory" name="Fleet Service Type Category">
+        <option value="Contract" name="Contract" />
+        <option value="Service" name="Service" />
+    </optionset>
 </buvi>

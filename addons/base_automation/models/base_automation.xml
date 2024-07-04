@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="BaseAutomation.BaseAutomation" name="BaseAutomation" description="Automation Rule">
         <field name="Name" type="string" label="Automation Rule Name" required="true" translate="true" />

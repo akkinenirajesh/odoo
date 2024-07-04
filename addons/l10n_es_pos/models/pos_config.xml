@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="POS.PosConfig" name="PosConfig" description="POS Configuration">
+        <field name="IsSpanish" type="bool" label="Company located in Spain" compute="_ComputeIsSpanish" />
+        <field name="SimplifiedInvoiceLimit" type="decimal" label="Simplified Invoice limit amount"
+            help="Over this amount is not legally possible to create a simplified invoice" default="400" />
+        <field name="SimplifiedInvoiceJournal" type="Account.Journal" label="Simplified Invoice Journal"
+            domain="[('Type', '=', 'Sale')]" check-company="true" default="_DefaultSinvJournalId" />
+        <field name="SimplifiedPartner" type="Core.Partner" label="Simplified invoice partner"
+            compute="_ComputeSimplifiedPartnerId" />
+    </model>
 </buvi>

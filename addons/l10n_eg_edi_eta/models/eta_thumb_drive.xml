@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEgEdi.ThumbDrive" name="ThumbDrive" description="Thumb drive used to sign invoices in Egypt">
+        <field name="UserId" type="Core.User" required="true" label="User" />
+        <field name="CompanyId" type="Core.Company" required="true" label="Company" />
+        <field name="Certificate" type="binary" label="ETA Certificate" />
+        <field name="Pin" type="string" required="true" label="ETA USB Pin" />
+        <field name="AccessToken" type="string" required="true" />
+        <unique>
+            <field name="UserId" />
+            <field name="CompanyId" />
+            <message>You can only have one thumb drive per user per company!</message>
+        </unique>
+    </model>
 </buvi>

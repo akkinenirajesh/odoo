@@ -1,3 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.LeaveAccrualLevel" name="LeaveAccrualLevel" description="Accrual Plan Level">
+        <field name="Sequence" type="integer" label="Sequence" computed="true" stored="true"
+            help="Sequence is generated automatically by start time delta." />
+        <field name="AccrualPlanId" type="Hr.LeaveAccrualPlan" label="Accrual Plan" required="true" />
+        <field name="AccruedGainTime" type="string" related="AccrualPlanId.AccruedGainTime" />
+        <field name="StartCount" type="integer" label="Start after" default="1"
+            help="The accrual starts after a defined period from the allocation start date. This field defines the number of days, months or years after which accrual is used." />
+        <field name="StartType" type="Hr.AccrualStartType" default="Day" required="true"
+            help="This field defines the unit of time after which the accrual starts." />
+        <field name="AddedValue" type="decimal" label="Rate" required="true" default="1"
+            help="The number of hours/days that will be incremented in the specified Time Off Type for every period" />
+        <field name="AddedValueType" type="Hr.AccrualAddedValueType" computed="true" stored="true" required="true" />
+        <field name="Frequency" type="Hr.AccrualFrequency" default="Daily" required="true" />
+        <field name="WeekDay" type="Hr.WeekDay" default="Monday" required="true" label="Allocation on" />
+        <field name="FirstDay" type="integer" default="1" />
+        <field name="FirstDayDisplay" type="string" computed="true" />
+        <field name="SecondDay" type="integer" default="15" />
+        <field name="SecondDayDisplay" type="string" computed="true" />
+        <field name="FirstMonthDay" type="integer" default="1" />
+        <field name="FirstMonthDayDisplay" type="string" computed="true" />
+        <field name="FirstMonth" type="Hr.Month" default="January" />
+        <field name="SecondMonthDay" type="integer" default="1" />
+        <field name="SecondMonthDayDisplay" type="string" computed="true" />
+        <field name="SecondMonth" type="Hr.Month" default="July" />
+        <field name="YearlyMonth" type="Hr.Month" default="January" />
+        <field name="YearlyDay" type="integer" default="1" />
+        <field name="YearlyDayDisplay" type="string" computed="true" />
+        <field name="CapAccruedTime" type="bool" default="true" label="Cap accrued time"
+            help="When the field is checked the accrued time will be capped at the specified amount of time." />
+        <field name="MaximumLeave" type="decimal" label="Limit to" computed="true" stored="true"
+            help="Choose a cap for this accrual." />
+        <field name="ActionWithUnusedAccruals" type="Hr.UnusedAccrualsAction" default="All" required="true" label="Carry over"
+            help="When the Carry-Over Time is reached, according to Plan's setting, select what you want to happen with the unused time off: None (time will be reset to zero), All accrued time carried over to the next period; or Carryover with a maximum)." />
+        <field name="PostponeMaxDays" type="integer" label="Maximum amount of accruals to transfer"
+            help="Set a maximum of accruals an allocation keeps at the end of the year." />
+        <field name="CanModifyValueType" type="bool" computed="true" />
+    </model>
+
+    <optionset id="Hr.AccrualStartType" name="Accrual Start Type">
+        <option value="Day" name="Days" />
+        <option value="Month" name="Months" />
+        <option value="Year" name="Years" />
+    </optionset>
+
+    <optionset id="Hr.AccrualAddedValueType" name="Accrual Added Value Type">
+        <option value="Day" name="Days" />
+        <option value="Hour" name="Hours" />
+    </optionset>
+
+    <optionset id="Hr.AccrualFrequency" name="Accrual Frequency">
+        <option value="Hourly" name="Hourly" />
+        <option value="Daily" name="Daily" />
+        <option value="Weekly" name="Weekly" />
+        <option value="Bimonthly" name="Twice a month" />
+        <option value="Monthly" name="Monthly" />
+        <option value="Biyearly" name="Twice a year" />
+        <option value="Yearly" name="Yearly" />
+    </optionset>
+
+    <optionset id="Hr.WeekDay" name="Week Day">
+        <option value="Monday" name="Monday" />
+        <option value="Tuesday" name="Tuesday" />
+        <option value="Wednesday" name="Wednesday" />
+        <option value="Thursday" name="Thursday" />
+        <option value="Friday" name="Friday" />
+        <option value="Saturday" name="Saturday" />
+        <option value="Sunday" name="Sunday" />
+    </optionset>
+
+    <optionset id="Hr.Month" name="Month">
+        <option value="January" name="January" />
+        <option value="February" name="February" />
+        <option value="March" name="March" />
+        <option value="April" name="April" />
+        <option value="May" name="May" />
+        <option value="June" name="June" />
+        <option value="July" name="July" />
+        <option value="August" name="August" />
+        <option value="September" name="September" />
+        <option value="October" name="October" />
+        <option value="November" name="November" />
+        <option value="December" name="December" />
+    </optionset>
+
+    <optionset id="Hr.UnusedAccrualsAction" name="Unused Accruals Action">
+        <option value="Lost" name="None. Accrued time reset to 0" />
+        <option value="All" name="All accrued time carried over" />
+        <option value="Maximum" name="Carry over with a maximum" />
+    </optionset>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.Picking" name="Picking" description="Stock Picking">
+        <field name="SaleId" type="Sale.Order" label="Sale Order" />
+    </model>
 </buvi>

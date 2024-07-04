@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Google.IrMailServer" name="IrMailServer" description="SMTP Server with Gmail OAuth support">
+        <field name="SmtpAuthentication" type="Google.SmtpAuthenticationType" />
+        <field name="SmtpAuthenticationInfo" type="string" compute="_ComputeSmtpAuthenticationInfo" />
+        <field name="SmtpEncryption" type="string" />
+        <field name="SmtpHost" type="string" />
+        <field name="SmtpPort" type="integer" />
+        <field name="GoogleGmailAuthorizationCode" type="string" />
+        <field name="GoogleGmailRefreshToken" type="string" />
+        <field name="GoogleGmailAccessToken" type="string" />
+        <field name="GoogleGmailAccessTokenExpiration" type="datetime" />
+        <field name="SmtpUser" type="string" />
+        <field name="FromFilter" type="string" />
+        <field name="SmtpPass" type="string" />
+        <field name="Name" type="string" />
+    </model>
+
+    <optionset id="Google.SmtpAuthenticationType" name="SMTP Authentication Type">
+        <option value="Gmail" name="Gmail OAuth Authentication" />
+        <!-- Add other authentication types here -->
+    </optionset>
 </buvi>

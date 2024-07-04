@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Employee" name="Employee" description="Employee">
+        <field name="ResumeLineIds" type="Hr.ResumeLine" relation="one2many" inverse="EmployeeId" label="Resume lines" />
+        <field name="EmployeeSkillIds" type="Hr.EmployeeSkill" relation="one2many" inverse="EmployeeId" label="Skills">
+            <domain>
+                <field name="SkillTypeId.Active" operator="=" value="true" />
+            </domain>
+        </field>
+        <field name="SkillIds" type="Hr.Skill" relation="many2many" compute="ComputeSkillIds" store="true" groups="Hr.GroupHrUser" />
+    </model>
 </buvi>

@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventRegistrationAnswer" name="EventRegistrationAnswer" description="Event Registration Answer">
+        <field name="QuestionId" type="Event.EventQuestion" required="true" label="Question"
+               help="The question related to this answer" />
+        <field name="RegistrationId" type="Event.EventRegistration" required="true" label="Registration" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" />
+        <field name="EventId" type="Event.Event" label="Event" />
+        <field name="QuestionType" type="Event.EventQuestionType" label="Question Type" />
+        <field name="ValueAnswerId" type="Event.EventQuestionAnswer" label="Suggested Answer" />
+        <field name="ValueTextBox" type="string" label="Text Answer" />
+        
+        <constraint type="check">
+            <condition>(ValueAnswerId != null) || (!string.IsNullOrEmpty(ValueTextBox))</condition>
+            <message>There must be a suggested value or a text value.</message>
+        </constraint>
+    </model>
+
+    <optionset id="Event.EventQuestionType" name="Event Question Type">
+        <option value="SimpleChoice" name="Simple Choice" />
+        <option value="TextBox" name="Text Box" />
+    </optionset>
 </buvi>

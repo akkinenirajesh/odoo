@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEs.Certificate" name="Certificate" description="Personal Digital Certificate">
+        <field name="Content" type="binary" label="File" required="true" help="PFX Certificate" />
+        <field name="Password" type="string" help="Passphrase for the PFX certificate" />
+        <field name="DateStart" type="datetime" readonly="true" help="The date on which the certificate starts to be valid" />
+        <field name="DateEnd" type="datetime" readonly="true" help="The date on which the certificate expires" />
+        <field name="Company" type="Core.Company" required="true" />
+    </model>
 </buvi>

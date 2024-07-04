@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="POS.Order" name="PosOrder" description="POS Order">
+        <!-- Add any additional fields here if needed -->
+    </model>
 </buvi>

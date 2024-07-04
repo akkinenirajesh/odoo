@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.Digest" name="Digest" description="CRM Digest">
         <field name="KpiCrmLeadCreated" type="bool" label="New Leads" />

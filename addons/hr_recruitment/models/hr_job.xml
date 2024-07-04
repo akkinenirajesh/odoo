@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrRecruitment.Job" name="Job" description="Job Position" inherit="Mail.AliasModel, Hr.Job">
+        <field name="AddressId" type="Res.Partner" label="Job Location" default="_DefaultAddressId"
+               domain="_AddressIdDomain"
+               help="Select the location where the applicant will work. Addresses listed here are defined on the company's contact information." />
+        <field name="ApplicationIds" type="HrRecruitment.Applicant" relation="JobId" />
+        <field name="ApplicationCount" type="integer" compute="_ComputeApplicationCount" label="Application Count" />
+        <field name="AllApplicationCount" type="integer" compute="_ComputeAllApplicationCount" label="All Application Count" />
+        <field name="NewApplicationCount" type="integer" compute="_ComputeNewApplicationCount" label="New Application"
+               help="Number of applications that are new in the flow (typically at first step of the flow)" />
+        <field name="OldApplicationCount" type="integer" compute="_ComputeOldApplicationCount" label="Old Application" />
+        <field name="ApplicantHired" type="integer" compute="_ComputeApplicantHired" label="Applicants Hired" />
+        <field name="ManagerId" type="Hr.Employee" related="DepartmentId.ManagerId" label="Department Manager" readonly="true" store="true" />
+        <field name="UserId" type="Res.Users" label="Recruiter" domain="[('Share', '=', false), ('CompanyIds', 'in', CompanyId)]" tracking="true"
+               help="The Recruiter will be the default value for all Applicants Recruiter's field in this job position. The Recruiter is automatically added to all meetings with the Applicant." />
+        <field name="DocumentIds" type="Ir.Attachment" compute="_ComputeDocumentIds" label="Documents" readonly="true" />
+        <field name="DocumentsCount" type="integer" compute="_ComputeDocumentIds" label="Document Count" />
+        <field name="AliasId" type="Mail.Alias" help="Email alias for this job position. New emails will automatically create new applicants for this job position." />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="IsFavorite" type="bool" compute="_ComputeIsFavorite" inverse="_InverseIsFavorite" />
+        <field name="FavoriteUserIds" type="Res.Users" relation="JobFavoriteUserRel" default="_GetDefaultFavoriteUserIds" />
+        <field name="InterviewerIds" type="Res.Users" label="Interviewers" domain="[('Share', '=', false), ('CompanyIds', 'in', CompanyId)]"
+               help="The Interviewers set on the job position can see all Applicants in it. They have access to the information, the attachments, the meeting management and they can refuse him. You don't need to have Recruitment rights to be set as an interviewer." />
+        <field name="ExtendedInterviewerIds" type="Res.Users" relation="HrJobExtendedInterviewerResUsers" compute="_ComputeExtendedInterviewerIds" store="true" />
+        <field name="ActivitiesOverdue" type="integer" compute="_ComputeActivities" />
+        <field name="ActivitiesToday" type="integer" compute="_ComputeActivities" />
+        <field name="ApplicantPropertiesDefinition" type="Core.PropertiesDefinition" label="Applicant Properties" />
+        <field name="NoOfHiredEmployee" type="integer" compute="_ComputeNoOfHiredEmployee" label="Hired" help="Number of hired employees for this job position during recruitment phase." store="true" />
+    </model>
 </buvi>

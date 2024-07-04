@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="PurchaseId" type="Purchase.PurchaseOrder" label="Purchase Order" />
+        <!-- Other fields from the original stock.picking model would be listed here -->
+    </model>
 </buvi>

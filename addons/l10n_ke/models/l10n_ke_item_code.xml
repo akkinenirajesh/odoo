@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nKe.ItemCode" name="ItemCode" description="KRA defined codes that justify a given tax rate / exemption">
+        <field name="Code" type="string" label="KRA Item Code" />
+        <field name="Description" type="string" />
+        <field name="TaxRate" type="L10nKe.ItemCodeTaxRate" />
+    </model>
+
+    <optionset id="L10nKe.ItemCodeTaxRate" name="Item Code Tax Rate">
+        <option value="C" name="ZeroRated" label="Zero Rated" />
+        <option value="E" name="Exempted" label="Exempted" />
+        <option value="B" name="TaxableAt8Percent" label="Taxable at 8%" />
+    </optionset>
 </buvi>

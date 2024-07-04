@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrAttendance.ResCompany" name="ResCompany" description="Company">
+        <field name="HrAttendanceOvertime" type="bool" label="Count Extra Hours" />
+        <field name="OvertimeStartDate" type="date" label="Extra Hours Starting Date" />
+        <field name="OvertimeCompanyThreshold" type="integer" label="Tolerance Time In Favor Of Company" default="0" />
+        <field name="OvertimeEmployeeThreshold" type="integer" label="Tolerance Time In Favor Of Employee" default="0" />
+        <field name="HrAttendanceDisplayOvertime" type="bool" label="Display Extra Hours" />
+        <field name="AttendanceKioskMode" type="HrAttendance.AttendanceMode" label="Attendance Mode" default="BarcodeManual" />
+        <field name="AttendanceBarcodeSource" type="HrAttendance.BarcodeSource" label="Barcode Source" default="Front" />
+        <field name="AttendanceKioskDelay" type="integer" default="10" />
+        <field name="AttendanceKioskKey" type="string" />
+        <field name="AttendanceKioskUrl" type="string" compute="ComputeAttendanceKioskUrl" />
+        <field name="AttendanceKioskUsePin" type="bool" label="Employee PIN Identification" />
+        <field name="AttendanceFromSystray" type="bool" label="Attendance From Systray" default="true" />
+    </model>
+
+    <optionset id="HrAttendance.AttendanceMode" name="Attendance Mode">
+        <option value="Barcode" name="Barcode / RFID" />
+        <option value="BarcodeManual" name="Barcode / RFID and Manual Selection" />
+        <option value="Manual" name="Manual Selection" />
+    </optionset>
+
+    <optionset id="HrAttendance.BarcodeSource" name="Barcode Source">
+        <option value="Scanner" name="Scanner" />
+        <option value="Front" name="Front Camera" />
+        <option value="Back" name="Back Camera" />
+    </optionset>
 </buvi>

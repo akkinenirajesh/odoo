@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="ServiceTracking" type="Product.ServiceTracking" />
+        <field name="InvoicePolicy" type="Product.InvoicePolicy" />
+    </model>
+
+    <optionset id="Product.ServiceTracking" name="Service Tracking">
+        <option value="NoTrack" name="No Tracking" />
+        <option value="Event" name="Event" />
+        <!-- Add other options as needed -->
+    </optionset>
+
+    <optionset id="Product.InvoicePolicy" name="Invoice Policy">
+        <option value="Order" name="Order" />
+        <!-- Add other options as needed -->
+    </optionset>
 </buvi>

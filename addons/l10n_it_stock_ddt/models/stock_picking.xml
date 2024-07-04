@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="L10nItTransportReason" type="Stock.TransportReason" label="Transport Reason" default="Sale" tracking="true" />
+        <field name="L10nItTransportMethod" type="Stock.TransportMethod" label="Transport Method" default="Sender" />
+        <field name="L10nItTransportMethodDetails" type="string" label="Transport Note" />
+        <field name="L10nItParcels" type="integer" label="Parcels" default="1" />
+        <field name="L10nItDdtNumber" type="string" label="DDT Number" readonly="true" />
+        <field name="L10nItShowPrintDdtButton" type="bool" compute="ComputeL10nItShowPrintDdtButton" />
+    </model>
+
+    <optionset id="Stock.TransportReason" name="Transport Reason">
+        <option value="Sale" name="Sale" />
+        <option value="Outsourcing" name="Outsourcing" />
+        <option value="Evaluation" name="Evaluation" />
+        <option value="Gift" name="Gift" />
+        <option value="Transfer" name="Transfer" />
+        <option value="Substitution" name="Returned goods" />
+        <option value="AttemptedSale" name="Attempted Sale" />
+        <option value="LoanedUse" name="Loaned for Use" />
+        <option value="Repair" name="Repair" />
+    </optionset>
+
+    <optionset id="Stock.TransportMethod" name="Transport Method">
+        <option value="Sender" name="Sender" />
+        <option value="Recipient" name="Recipient" />
+        <option value="Courier" name="Courier service" />
+    </optionset>
+
+    <model id="Stock.StockPickingType" name="StockPickingType" description="Stock Picking Type">
+        <field name="L10nItDdtSequence" type="Core.IrSequence" label="DDT Sequence" />
+    </model>
 </buvi>

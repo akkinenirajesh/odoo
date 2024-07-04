@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="TaxDiscount" type="bool" label="Discount this Tax in Price"
+               help="Mark it for (ICMS, PIS e etc.)." />
+        <field name="BaseReduction" type="decimal" label="Reduction" required="true"
+               help="A decimal percentage between 0-1." default="0" />
+        <field name="AmountMva" type="decimal" label="MVA Percent" required="true"
+               help="A decimal percentage between 0-1." default="0" />
+    </model>
 </buvi>

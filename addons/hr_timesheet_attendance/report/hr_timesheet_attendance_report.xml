@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrTimesheet.TimesheetAttendance" name="TimesheetAttendance" description="Timesheet Attendance Report">
+        <field name="Employee" type="Hr.Employee" label="Employee" readonly="true" />
+        <field name="Date" type="date" readonly="true" />
+        <field name="TotalTimesheet" type="float" label="Timesheets Time" readonly="true" />
+        <field name="TotalAttendance" type="float" label="Attendance Time" readonly="true" />
+        <field name="TotalDifference" type="float" label="Time Difference" readonly="true" />
+        <field name="TimesheetsCost" type="float" label="Timesheet Cost" readonly="true" />
+        <field name="AttendanceCost" type="float" label="Attendance Cost" readonly="true" />
+        <field name="CostDifference" type="float" label="Cost Difference" readonly="true" />
+        <field name="Company" type="Res.Company" label="Company" readonly="true" />
+    </model>
 </buvi>

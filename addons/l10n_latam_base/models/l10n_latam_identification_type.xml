@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="LatamBase.IdentificationType" name="IdentificationType" description="Identification Types">
+        <field name="Sequence" type="integer" default="10" />
+        <field name="Name" type="string" required="true" translate="true" />
+        <field name="Description" type="string" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="IsVat" type="bool" />
+        <field name="Country" type="Core.Country" />
+    </model>
 </buvi>

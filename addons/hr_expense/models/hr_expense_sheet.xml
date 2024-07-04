@@ -1,3 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.ExpenseSheet" name="ExpenseSheet" description="Expense Report">
+        <field name="Name" type="string" label="Expense Report Summary" required="true" translate="true" />
+        <field name="ExpenseLineIds" type="HR.Expense" relation="many2many" label="Expense Lines" />
+        <field name="NbExpense" type="integer" label="Number of Expenses" compute="ComputeNbExpense" />
+        <field name="State" type="HR.ExpenseSheetState" label="Status" compute="ComputeState" store="true" readonly="true" required="true" default="Draft" />
+        <field name="ApprovalState" type="HR.ExpenseSheetApprovalState" label="Approval State" />
+        <field name="ApprovalDate" type="datetime" label="Approval Date" readonly="true" />
+        <field name="Company" type="Core.Company" label="Company" required="true" readonly="true" />
+        <field name="Employee" type="HR.Employee" label="Employee" required="true" readonly="true" />
+        <field name="Department" type="HR.Department" label="Department" compute="ComputeFromEmployeeId" store="true" />
+        <field name="User" type="Core.User" label="Manager" compute="ComputeFromEmployeeId" store="true" readonly="true" />
+        <field name="Products" type="Product.Product" relation="many2many" label="Categories" compute="ComputeProductIds" />
+        <field name="TotalAmount" type="decimal" label="Total" compute="ComputeAmount" store="true" readonly="true" />
+        <field name="UntaxedAmount" type="decimal" label="Untaxed Amount" compute="ComputeAmount" store="true" readonly="true" />
+        <field name="TotalTaxAmount" type="decimal" label="Taxes" compute="ComputeAmount" store="true" readonly="true" />
+        <field name="AmountResidual" type="decimal" label="Amount Due" compute="ComputeFromAccountMoveIds" store="true" readonly="true" />
+        <field name="Currency" type="Core.Currency" label="Currency" compute="ComputeCurrencyId" store="true" readonly="true" />
+        <field name="CompanyCurrency" type="Core.Currency" label="Report Company Currency" related="Company.Currency" />
+        <field name="IsMultipleCurrency" type="bool" label="Handle lines with different currencies" compute="ComputeIsMultipleCurrency" />
+        <field name="PaymentState" type="Account.PaymentState" label="Payment Status" compute="ComputeFromAccountMoveIds" store="true" readonly="true" />
+        <field name="PaymentMode" type="HR.ExpensePaymentMode" label="Paid By" related="ExpenseLineIds.PaymentMode" readonly="true" />
+        <field name="EmployeeJournal" type="Account.Journal" label="Journal" />
+        <field name="SelectablePaymentMethodLineIds" type="Account.PaymentMethodLine" relation="many2many" compute="ComputeSelectablePaymentMethodLineIds" />
+        <field name="PaymentMethodLine" type="Account.PaymentMethodLine" label="Payment Method" compute="ComputePaymentMethodLineId" store="true" />
+        <field name="AttachmentIds" type="Core.Attachment" relation="many2many" label="Attachments of expenses" />
+        <field name="MessageMainAttachment" type="Core.Attachment" compute="ComputeMainAttachment" store="true" />
+        <field name="AccountingDate" type="date" label="Expense Report Date" help="Specify the bill date of the related vendor bill." />
+        <field name="AccountMoveIds" type="Account.Move" relation="many2many" label="Journal Entries" readonly="true" />
+        <field name="NbAccountMove" type="integer" label="Number of Journal Entries" compute="ComputeNbAccountMove" />
+        <field name="Journal" type="Account.Journal" label="Expense Journal" compute="ComputeJournalId" store="true" />
+        <field name="CanReset" type="bool" label="Can Reset" compute="ComputeCanReset" />
+        <field name="CanApprove" type="bool" label="Can Approve" compute="ComputeCanApprove" />
+        <field name="CannotApproveReason" type="string" label="Cannot Approve Reason" compute="ComputeCanApprove" />
+        <field name="IsEditable" type="bool" label="Expense Lines Are Editable By Current User" compute="ComputeIsEditable" />
+    </model>
+
+    <optionset id="HR.ExpenseSheetState" name="Expense Sheet State">
+        <option value="Draft" name="To Submit" />
+        <option value="Submit" name="Submitted" />
+        <option value="Approve" name="Approved" />
+        <option value="Post" name="Posted" />
+        <option value="Done" name="Done" />
+        <option value="Cancel" name="Refused" />
+    </optionset>
+
+    <optionset id="HR.ExpenseSheetApprovalState" name="Expense Sheet Approval State">
+        <option value="Submit" name="Submitted" />
+        <option value="Approve" name="Approved" />
+        <option value="Cancel" name="Refused" />
+    </optionset>
+
+    <optionset id="HR.ExpensePaymentMode" name="Expense Payment Mode">
+        <option value="OwnAccount" name="Employee (to reimburse)" />
+        <option value="CompanyAccount" name="Company" />
+    </optionset>
 </buvi>

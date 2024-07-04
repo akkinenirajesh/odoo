@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrHolidays.Leave" name="Leave" description="HR Leave">
+        <field name="OvertimeId" type="HrAttendance.Overtime" label="Extra Hours" />
+        <field name="EmployeeOvertime" type="float" label="Employee Overtime" groups="Base.GroupUser" />
+        <field name="OvertimeDeductible" type="bool" compute="ComputeOvertimeDeductible" />
+        <field name="HolidayStatusId" type="HrHolidays.LeaveType" />
+        <field name="NumberOfDays" type="float" />
+        <field name="RequestDateFrom" type="datetime" />
+        <field name="RequestDateTo" type="datetime" />
+        <field name="State" type="string" />
+        <field name="EmployeeId" type="Hr.Employee" />
+        <field name="NumberOfHours" type="float" />
+        <field name="DateFrom" type="datetime" />
+        <field name="DateTo" type="datetime" />
+        <field name="EmployeeCompanyId" type="Res.Company" />
+    </model>
 </buvi>

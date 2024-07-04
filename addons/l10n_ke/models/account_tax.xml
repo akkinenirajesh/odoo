@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nKeItemCode" type="Account.L10nKeItemCode" label="KRA Item Code"
+            help="KRA code that describes a tax rate or exemption on specific products or services." />
+    </model>
+
+    <model id="Account.L10nKeItemCode" name="L10nKeItemCode" description="KRA Item Code">
+        <!-- Additional fields for L10nKeItemCode model would be defined here -->
+    </model>
 </buvi>

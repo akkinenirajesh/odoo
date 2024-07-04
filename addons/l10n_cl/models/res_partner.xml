@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10n_cl.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nClSiiTaxpayerType" type="L10n_cl.SiiTaxpayerType" label="Taxpayer Type" index="btree_not_null"
+            help="1 - VAT Affected (1st Category) (Most of the cases)&#xA;2 - Fees Receipt Issuer (Applies to suppliers who issue fees receipt)&#xA;3 - End consumer (only receipts)&#xA;4 - Foreigner" />
+        <field name="L10nClActivityDescription" type="string" label="Activity Description" help="Chile: Economic activity." />
+    </model>
+
+    <optionset id="L10n_cl.SiiTaxpayerType" name="SII Taxpayer Type">
+        <option value="1" name="VatAffected" label="VAT Affected (1st Category)" />
+        <option value="2" name="FeesReceiptIssuer" label="Fees Receipt Issuer (2nd category)" />
+        <option value="3" name="EndConsumer" label="End Consumer" />
+        <option value="4" name="Foreigner" label="Foreigner" />
+    </optionset>
 </buvi>

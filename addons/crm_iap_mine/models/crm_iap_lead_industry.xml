@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.IapLeadIndustry" name="IapLeadIndustry" description="CRM IAP Lead Industry">
         <field name="Name" type="string" label="Industry" required="true" translate="true" />

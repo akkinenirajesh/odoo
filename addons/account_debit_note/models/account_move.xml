@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountMove" name="AccountMove" description="Account Move">
         <field name="DebitOriginId" type="Account.AccountMove" label="Original Invoice Debited" readonly="true" copy="false" index="btree_not_null" />

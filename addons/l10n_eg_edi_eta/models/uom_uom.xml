@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="EgyptianEDI.UomCode" name="UomCode" description="ETA code for the unit of measures">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" required="true" />
+    </model>
+
+    <model id="Uom.Uom" name="Uom" description="Unit of Measure">
+        <field name="EgyptianUnitCode" type="EgyptianEDI.UomCode" label="ETA Unit Code"
+               help="This is the type of unit according to egyptian tax authority" />
+    </model>
 </buvi>

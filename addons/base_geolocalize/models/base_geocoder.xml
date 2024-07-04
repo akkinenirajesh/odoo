@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="BaseGeolocalize.GeoProvider" name="GeoProvider" description="Geo Provider">
         <field name="TechName" type="string" label="Technical Name" />

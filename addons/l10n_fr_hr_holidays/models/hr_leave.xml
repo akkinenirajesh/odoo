@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Leave" name="Leave" description="Leave">
+        <field name="L10nFrDateToChanged" type="bool" />
+        <field name="Employee" type="Hr.Employee" />
+        <field name="Company" type="Core.Company" />
+        <field name="ResourceCalendar" type="Resource.Calendar" />
+        <field name="HolidayStatus" type="Hr.LeaveType" />
+        <field name="RequestDateFromPeriod" type="string" />
+        <field name="RequestHourFrom" type="float" />
+        <field name="RequestHourTo" type="float" />
+        <field name="RequestDateFrom" type="datetime" />
+        <field name="RequestDateTo" type="datetime" />
+        <field name="RequestUnitHalf" type="bool" />
+        <field name="RequestUnitHours" type="bool" />
+        <field name="DateFrom" type="datetime" />
+        <field name="DateTo" type="datetime" />
+    </model>
 </buvi>

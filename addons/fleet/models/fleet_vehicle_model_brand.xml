@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleModelBrand" name="VehicleModelBrand" description="Brand of the vehicle">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Image128" type="image" label="Logo" max-width="128" max-height="128" />
+        <field name="ModelCount" type="integer" compute="_ComputeModelCount" store="true" />
+        <field name="Models" type="Fleet.VehicleModel" relation="many2one" inverse-name="Brand" />
+    </model>
 </buvi>

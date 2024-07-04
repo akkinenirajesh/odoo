@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrRecruitment.HrApplicant" name="HrApplicant" description="HR Applicant">
+        <field name="ApplicantSkillIds" type="HrRecruitment.HrApplicantSkill" label="Skills" relation="one2many" inverse="ApplicantId" />
+        <field name="SkillIds" type="HrRecruitment.HrSkill" relation="many2many" compute="ComputeSkillIds" store="true" />
+        <field name="IsInterviewer" type="bool" compute="ComputeIsInterviewer" />
+        <field name="MatchingSkillIds" type="HrRecruitment.HrSkill" label="Matching Skills" relation="many2many" compute="ComputeMatchingSkillIds" />
+        <field name="MissingSkillIds" type="HrRecruitment.HrSkill" label="Missing Skills" relation="many2many" compute="ComputeMatchingSkillIds" />
+        <field name="MatchingScore" type="decimal" label="Matching Score(%)" compute="ComputeMatchingSkillIds" />
+    </model>
 </buvi>

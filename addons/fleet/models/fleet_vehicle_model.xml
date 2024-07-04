@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleModel" name="VehicleModel" description="Model of a vehicle">
+        <field name="Name" type="string" label="Model name" required="true" />
+        <field name="Brand" type="Fleet.VehicleModelBrand" label="Manufacturer" required="true" />
+        <field name="Category" type="Fleet.VehicleModelCategory" label="Category" />
+        <field name="Vendors" type="Core.Partner" multiple="true" label="Vendors" />
+        <field name="Image128" type="image" related="Brand.Image128" readonly="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="VehicleType" type="Fleet.VehicleType" default="Car" required="true" />
+        <field name="Transmission" type="Fleet.TransmissionType" label="Transmission" />
+        <field name="ModelYear" type="integer" />
+        <field name="Color" type="string" />
+        <field name="Seats" type="integer" label="Seats Number" />
+        <field name="Doors" type="integer" label="Doors Number" />
+        <field name="TrailerHook" type="bool" default="false" label="Trailer Hitch" />
+        <field name="DefaultCo2" type="float" label="CO2 Emissions" />
+        <field name="Co2Standard" type="string" />
+        <field name="DefaultFuelType" type="Fleet.FuelType" label="Fuel Type" default="Electric" />
+        <field name="Power" type="integer" />
+        <field name="Horsepower" type="integer" />
+        <field name="HorsepowerTax" type="float" label="Horsepower Taxation" />
+        <field name="ElectricAssistance" type="bool" default="false" />
+        <field name="VehiclePropertiesDefinition" type="Core.PropertiesDefinition" label="Vehicle Properties" />
+        <field name="VehicleRange" type="integer" label="Range" />
+    </model>
+
+    <optionset id="Fleet.VehicleType" name="Vehicle Type">
+        <option value="Car" name="Car" />
+        <option value="Bike" name="Bike" />
+    </optionset>
+
+    <optionset id="Fleet.TransmissionType" name="Transmission Type">
+        <option value="Manual" name="Manual" />
+        <option value="Automatic" name="Automatic" />
+    </optionset>
+
+    <optionset id="Fleet.FuelType" name="Fuel Type">
+        <option value="Diesel" name="Diesel" />
+        <option value="Gasoline" name="Gasoline" />
+        <option value="FullHybrid" name="Full Hybrid" />
+        <option value="PlugInHybridDiesel" name="Plug-in Hybrid Diesel" />
+        <option value="PlugInHybridGasoline" name="Plug-in Hybrid Gasoline" />
+        <option value="CNG" name="CNG" />
+        <option value="LPG" name="LPG" />
+        <option value="Hydrogen" name="Hydrogen" />
+        <option value="Electric" name="Electric" />
+    </optionset>
 </buvi>

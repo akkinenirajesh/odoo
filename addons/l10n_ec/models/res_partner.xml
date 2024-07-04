@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEc.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nEcVatValidation" type="string" label="VAT Error message validation" 
+               compute="_ComputeL10nEcVatValidation"
+               help="Error message when validating the Ecuadorian VAT" />
+        <field name="Vat" type="string" />
+        <field name="Country" type="Core.Country" />
+        <field name="L10nLatamIdentificationType" type="L10nLatam.IdentificationType" />
+    </model>
+
+    <optionset id="L10nEc.PartnerIdTypeEc" name="Partner ID Type EC">
+        <option value="IN_RUC" name="01" />
+        <option value="IN_CEDULA" name="02" />
+        <option value="IN_PASSPORT" name="03" />
+        <option value="OUT_RUC" name="04" />
+        <option value="OUT_CEDULA" name="05" />
+        <option value="OUT_PASSPORT" name="06" />
+        <option value="FINAL_CONSUMER" name="07" />
+        <option value="FOREIGN" name="08" />
+    </optionset>
 </buvi>

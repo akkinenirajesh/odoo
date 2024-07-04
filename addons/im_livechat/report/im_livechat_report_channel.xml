@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ReportChannel" name="ImLivechatReportChannel" description="Livechat Support Channel Report">
+        <field name="Uuid" type="string" label="UUID" readonly="true" />
+        <field name="Channel" type="Discuss.Channel" label="Conversation" readonly="true" />
+        <field name="ChannelName" type="string" label="Channel Name" readonly="true" />
+        <field name="TechnicalName" type="string" label="Code" readonly="true" />
+        <field name="LivechatChannel" type="ImLivechat.Channel" label="Channel" readonly="true" />
+        <field name="StartDate" type="datetime" label="Start Date of session" readonly="true" />
+        <field name="StartHour" type="string" label="Start Hour of session" readonly="true" />
+        <field name="DayNumber" type="string" label="Day Number" readonly="true" help="1 is Monday, 7 is Sunday" />
+        <field name="TimeToAnswer" type="decimal" label="Time to answer (sec)" readonly="true" help="Average time in seconds to give the first answer to the visitor" />
+        <field name="StartDateHour" type="string" label="Hour of start Date of session" readonly="true" />
+        <field name="Duration" type="decimal" label="Average duration" readonly="true" help="Duration of the conversation (in seconds)" />
+        <field name="NbrSpeaker" type="integer" label="# of speakers" readonly="true" help="Number of different speakers" />
+        <field name="NbrMessage" type="integer" label="Average message" readonly="true" help="Number of message in the conversation" />
+        <field name="IsWithoutAnswer" type="integer" label="Session(s) without answer" readonly="true" help="A session is without answer if the operator did not answer. If the visitor is also the operator, the session will always be answered." />
+        <field name="DaysOfActivity" type="integer" label="Days of activity" readonly="true" help="Number of days since the first session of the operator" />
+        <field name="IsAnonymous" type="integer" label="Is visitor anonymous" readonly="true" />
+        <field name="Country" type="Core.Country" label="Country of the visitor" readonly="true" />
+        <field name="IsHappy" type="integer" label="Visitor is Happy" readonly="true" />
+        <field name="Rating" type="integer" label="Rating" readonly="true" />
+        <field name="RatingText" type="string" label="Satisfaction Rate" readonly="true" />
+        <field name="IsUnrated" type="integer" label="Session not rated" readonly="true" />
+        <field name="Partner" type="Core.Partner" label="Operator" readonly="true" />
+    </model>
 </buvi>

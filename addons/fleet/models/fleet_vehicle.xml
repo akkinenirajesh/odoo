@@ -1,3 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.FleetVehicle" name="FleetVehicle" description="Vehicle">
+        <field name="Name" type="string" compute="_ComputeVehicleName" store="true" />
+        <field name="Description" type="string" label="Vehicle Description" />
+        <field name="Active" type="bool" default="true" label="Active" />
+        <field name="ManagerId" type="Core.User" label="Fleet Manager" />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+        <field name="CurrencyId" type="Core.Currency" related="CompanyId.CurrencyId" />
+        <field name="CountryId" type="Core.Country" related="CompanyId.CountryId" />
+        <field name="CountryCode" type="string" related="CountryId.Code" />
+        <field name="LicensePlate" type="string" label="License Plate" 
+               help="License plate number of the vehicle (i = plate number for a car)" />
+        <field name="VinSn" type="string" label="Chassis Number" 
+               help="Unique number written on the vehicle motor (VIN/SN number)" />
+        <field name="TrailerHook" type="bool" default="false" label="Trailer Hitch" 
+               compute="_ComputeModelFields" store="true" />
+        <field name="DriverId" type="Core.Partner" label="Driver" 
+               help="Driver address of the vehicle" />
+        <field name="FutureDriverId" type="Core.Partner" label="Future Driver" 
+               help="Next Driver Address of the vehicle" />
+        <field name="ModelId" type="Fleet.FleetVehicleModel" label="Model" required="true" />
+        <field name="BrandId" type="Fleet.FleetVehicleModelBrand" label="Brand" 
+               related="ModelId.BrandId" store="true" />
+        <field name="LogDrivers" type="Fleet.FleetVehicleAssignationLog" relation="many2many" 
+               label="Assignment Logs" />
+        <field name="LogServices" type="Fleet.FleetVehicleLogServices" relation="many2many" 
+               label="Services Logs" />
+        <field name="LogContracts" type="Fleet.FleetVehicleLogContract" relation="many2many" 
+               label="Contracts" />
+        <field name="ContractCount" type="integer" compute="_ComputeCountAll" label="Contract Count" />
+        <field name="ServiceCount" type="integer" compute="_ComputeCountAll" label="Services" />
+        <field name="OdometerCount" type="integer" compute="_ComputeCountAll" label="Odometer" />
+        <field name="HistoryCount" type="integer" compute="_ComputeCountAll" label="Drivers History Count" />
+        <field name="NextAssignationDate" type="DateTime" label="Assignment Date" 
+               help="This is the date at which the car will be available, if not set it means available instantly" />
+        <field name="OrderDate" type="DateTime" label="Order Date" />
+        <field name="AcquisitionDate" type="DateTime" label="Registration Date" 
+               help="Date of vehicle registration" />
+        <field name="WriteOffDate" type="DateTime" label="Cancellation Date" 
+               help="Date when the vehicle's license plate has been cancelled/removed." />
+        <field name="FirstContractDate" type="DateTime" label="First Contract Date" />
+        <field name="Color" type="string" label="Color" 
+               help="Color of the vehicle" compute="_ComputeModelFields" store="true" />
+        <field name="StateId" type="Fleet.FleetVehicleState" label="State" 
+               help="Current state of the vehicle" />
+        <field name="Location" type="string" label="Location" 
+               help="Location of the vehicle (garage, ...)" />
+        <field name="Seats" type="integer" label="Seats Number" 
+               help="Number of seats of the vehicle" compute="_ComputeModelFields" store="true" />
+        <field name="ModelYear" type="string" label="Model Year" 
+               help="Year of the model" compute="_ComputeModelFields" store="true" />
+        <field name="Doors" type="integer" label="Doors Number" 
+               help="Number of doors of the vehicle" compute="_ComputeModelFields" store="true" />
+        <field name="TagIds" type="Fleet.FleetVehicleTag" relation="many2many" label="Tags" />
+        <field name="Odometer" type="decimal" compute="_GetOdometer" label="Last Odometer" 
+               help="Odometer measure of the vehicle at the moment of this log" />
+        <field name="OdometerUnit" type="Fleet.OdometerUnit" label="Odometer Unit" default="Kilometers" />
+        <field name="Transmission" type="Fleet.TransmissionType" label="Transmission" 
+               compute="_ComputeModelFields" store="true" />
+        <field name="FuelType" type="Fleet.FuelType" label="Fuel Type" 
+               compute="_ComputeModelFields" store="true" />
+        <field name="Horsepower" type="integer" compute="_ComputeModelFields" store="true" />
+        <field name="HorsepowerTax" type="decimal" label="Horsepower Taxation" 
+               compute="_ComputeModelFields" store="true" />
+        <field name="Power" type="integer" label="Power" 
+               help="Power in kW of the vehicle" compute="_ComputeModelFields" store="true" />
+        <field name="Co2" type="decimal" label="CO2 Emissions" 
+               help="CO2 emissions of the vehicle" compute="_ComputeModelFields" store="true" />
+        <field name="Co2Standard" type="string" label="CO2 Standard" 
+               compute="_ComputeModelFields" store="true" />
+        <field name="CategoryId" type="Fleet.FleetVehicleModelCategory" label="Category" 
+               compute="_ComputeModelFields" store="true" />
+        <field name="Image128" type="byte[]" related="ModelId.Image128" />
+        <field name="ContractRenewalDueSoon" type="bool" compute="_ComputeContractReminder" 
+               label="Has Contracts to renew" />
+        <field name="ContractRenewalOverdue" type="bool" compute="_ComputeContractReminder" 
+               label="Has Contracts Overdue" />
+        <field name="ContractState" type="Fleet.ContractState" label="Last Contract State" 
+               compute="_ComputeContractReminder" />
+        <field name="CarValue" type="decimal" label="Catalog Value (VAT Incl.)" />
+        <field name="NetCarValue" type="decimal" label="Purchase Value" />
+        <field name="ResidualValue" type="decimal" />
+        <field name="PlanToChangeCar" type="bool" related="DriverId.PlanToChangeCar" store="true" />
+        <field name="PlanToChangeBike" type="bool" related="DriverId.PlanToChangeBike" store="true" />
+        <field name="VehicleType" type="Fleet.VehicleType" related="ModelId.VehicleType" />
+        <field name="FrameType" type="Fleet.BikeFrameType" label="Bike Frame Type" />
+        <field name="ElectricAssistance" type="bool" compute="_ComputeModelFields" store="true" />
+        <field name="FrameSize" type="decimal" />
+        <field name="ServiceActivity" type="Fleet.ServiceActivityState" compute="_ComputeServiceActivity" />
+        <field name="VehicleProperties" type="Core.Properties" label="Properties" />
+        <field name="VehicleRange" type="integer" label="Range" />
+    </model>
+
+    <optionset id="Fleet.OdometerUnit" name="Odometer Unit">
+        <option value="Kilometers" name="km" />
+        <option value="Miles" name="mi" />
+    </optionset>
+
+    <optionset id="Fleet.TransmissionType" name="Transmission Type">
+        <option value="Manual" name="Manual" />
+        <option value="Automatic" name="Automatic" />
+    </optionset>
+
+    <optionset id="Fleet.ContractState" name="Contract State">
+        <option value="Future" name="Incoming" />
+        <option value="Open" name="In Progress" />
+        <option value="Expired" name="Expired" />
+        <option value="Closed" name="Closed" />
+    </optionset>
+
+    <optionset id="Fleet.BikeFrameType" name="Bike Frame Type">
+        <option value="Diamant" name="Diamant" />
+        <option value="Trapez" name="Trapez" />
+        <option value="Wave" name="Wave" />
+    </optionset>
+
+    <optionset id="Fleet.ServiceActivityState" name="Service Activity State">
+        <option value="None" name="None" />
+        <option value="Overdue" name="Overdue" />
+        <option value="Today" name="Today" />
+    </optionset>
 </buvi>

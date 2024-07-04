@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrRecruitment.HrJob" name="HrJob" description="HR Job">
+        <field name="SkillIds" type="HrRecruitment.HrSkill" label="Expected Skills" multiple="true" />
+    </model>
 </buvi>

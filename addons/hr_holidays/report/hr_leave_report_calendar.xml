@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrHolidays.LeaveReportCalendar" name="LeaveReportCalendar" description="Time Off Calendar">
+        <field name="Name" type="string" label="Name" readonly="true" />
+        <field name="StartDatetime" type="datetime" label="From" readonly="true" />
+        <field name="StopDatetime" type="datetime" label="To" readonly="true" />
+        <field name="Tz" type="Core.TimezoneSelection" label="Timezone" readonly="true" />
+        <field name="Duration" type="float" label="Duration" readonly="true" />
+        <field name="Employee" type="HrHolidays.Employee" readonly="true" />
+        <field name="Department" type="HrHolidays.Department" readonly="true" />
+        <field name="Job" type="HrHolidays.Job" readonly="true" />
+        <field name="Company" type="Core.Company" readonly="true" />
+        <field name="State" type="HrHolidays.LeaveState" readonly="true" />
+        <field name="Description" type="string" label="Description" readonly="true" groups="hr_holidays.group_hr_holidays_user" />
+        <field name="IsHatched" type="bool" label="Hatched" readonly="true" />
+        <field name="IsStriked" type="bool" label="Striked" readonly="true" />
+        <field name="IsAbsent" type="bool" related="Employee.IsAbsent" />
+        <field name="LeaveManager" type="HrHolidays.Employee" related="Employee.LeaveManager" />
+        <field name="Leave" type="HrHolidays.Leave" readonly="true" />
+        <field name="IsManager" type="bool" label="Manager" compute="_ComputeIsManager" />
+    </model>
+
+    <optionset id="HrHolidays.LeaveState" name="Leave State">
+        <option value="Draft" name="To Submit" />
+        <option value="Cancel" name="Cancelled" />
+        <option value="Confirm" name="To Approve" />
+        <option value="Refuse" name="Refused" />
+        <option value="Validate1" name="Second Approval" />
+        <option value="Validate" name="Approved" />
+    </optionset>
 </buvi>

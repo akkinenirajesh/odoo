@@ -1,3 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrHolidays.LeaveAccrualPlan" name="LeaveAccrualPlan" description="Accrual Plan">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="TimeOffType" type="HrHolidays.LeaveType" label="Time Off Type"
+            help="Specify if this accrual plan can only be used with this Time Off Type. Leave empty if this accrual plan can be used with any Time Off Type." />
+        <field name="EmployeesCount" type="integer" label="Employees" compute="ComputeEmployeeCount" />
+        <field name="Levels" type="HrHolidays.LeaveAccrualLevel" relation="many2many" label="Milestone" />
+        <field name="Allocations" type="HrHolidays.LeaveAllocation" relation="many2many" />
+        <field name="Company" type="Core.Company" label="Company" compute="ComputeCompanyId" store="true" />
+        <field name="TransitionMode" type="HrHolidays.MilestoneTransition" default="Immediately" required="true"
+            help="Specify what occurs if a level transition takes place in the middle of a pay period.&#xA;'Immediately' will switch the employee to the new accrual level on the exact date during the ongoing pay period.&#xA;'After this accrual's period' will keep the employee on the same accrual level until the ongoing pay period is complete. After it is complete, the new level will take effect when the next pay period begins." />
+        <field name="ShowTransitionMode" type="bool" compute="ComputeShowTransitionMode" />
+        <field name="IsBasedOnWorkedTime" type="bool" label="Based on worked time" compute="ComputeIsBasedOnWorkedTime" store="true"
+            help="If checked, the accrual period will be calculated according to the work days, not calendar days." />
+        <field name="AccruedGainTime" type="HrHolidays.AccruedGainTime" default="End" required="true" />
+        <field name="CarryoverDate" type="HrHolidays.CarryoverTime" default="YearStart" required="true" label="Carry-Over Time" />
+        <field name="CarryoverDay" type="integer" default="1" />
+        <field name="CarryoverDayDisplay" type="HrHolidays.DaySelection" compute="ComputeCarryoverDayDisplay" inverse="InverseCarryoverDayDisplay" />
+        <field name="CarryoverMonth" type="HrHolidays.Month" default="Jan" />
+        <field name="AddedValueType" type="HrHolidays.AddedValueType" compute="ComputeAddedValueType" store="true" />
+        <field name="LevelCount" type="integer" label="Levels" compute="ComputeLevelCount" />
+    </model>
+
+    <optionset id="HrHolidays.MilestoneTransition" name="Milestone Transition">
+        <option value="Immediately" name="Immediately" />
+        <option value="EndOfAccrual" name="After this accrual's period" />
+    </optionset>
+
+    <optionset id="HrHolidays.AccruedGainTime" name="Accrued Gain Time">
+        <option value="Start" name="At the start of the accrual period" />
+        <option value="End" name="At the end of the accrual period" />
+    </optionset>
+
+    <optionset id="HrHolidays.CarryoverTime" name="Carry-Over Time">
+        <option value="YearStart" name="At the start of the year" />
+        <option value="Allocation" name="At the allocation date" />
+        <option value="Other" name="Other" />
+    </optionset>
+
+    <optionset id="HrHolidays.Month" name="Month">
+        <option value="Jan" name="January" />
+        <option value="Feb" name="February" />
+        <option value="Mar" name="March" />
+        <option value="Apr" name="April" />
+        <option value="May" name="May" />
+        <option value="Jun" name="June" />
+        <option value="Jul" name="July" />
+        <option value="Aug" name="August" />
+        <option value="Sep" name="September" />
+        <option value="Oct" name="October" />
+        <option value="Nov" name="November" />
+        <option value="Dec" name="December" />
+    </optionset>
+
+    <optionset id="HrHolidays.AddedValueType" name="Added Value Type">
+        <option value="Day" name="Days" />
+        <option value="Hour" name="Hours" />
+    </optionset>
 </buvi>

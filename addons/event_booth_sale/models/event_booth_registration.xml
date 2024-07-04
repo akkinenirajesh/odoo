@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventBoothRegistration" name="EventBoothRegistration" description="Event Booth Registration">
+        <field name="SaleOrderLine" type="Sale.SaleOrderLine" label="Sale Order Line" required="true" />
+        <field name="EventBooth" type="Event.EventBooth" label="Booth" required="true" />
+        <field name="Partner" type="Core.Partner" label="Partner" related="SaleOrderLine.OrderPartner" store="true" />
+        <field name="ContactName" type="string" label="Contact Name" compute="_ComputeContactName" readonly="false" store="true" />
+        <field name="ContactEmail" type="string" label="Contact Email" compute="_ComputeContactEmail" readonly="false" store="true" />
+        <field name="ContactPhone" type="string" label="Contact Phone" compute="_ComputeContactPhone" readonly="false" store="true" />
+        <unique>
+            <field name="SaleOrderLine" />
+            <field name="EventBooth" />
+            <message>There can be only one registration for a booth by sale order line</message>
+        </unique>
+    </model>
 </buvi>

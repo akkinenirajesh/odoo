@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEgEdi.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="L10nEgEtaCode" type="string" label="ETA Item code" compute="_ComputeL10nEgEtaCode" inverse="_SetL10nEgEtaCode"
+               help="This can be an EGS or GS1 product code, which is needed for the e-invoice. The best practice however is to use that code also as barcode and in that case, you should put it in the Barcode field instead and leave this field empty." />
+    </model>
+
+    <model id="L10nEgEdi.ProductProduct" name="ProductProduct" description="Product">
+        <field name="L10nEgEtaCode" type="string" label="ETA Code" copy="false"
+               help="This can be an EGS or GS1 product code, which is needed for the e-invoice. The best practice however is to use that code also as barcode and in that case, you should put it in the Barcode field instead and leave this field empty." />
+    </model>
 </buvi>

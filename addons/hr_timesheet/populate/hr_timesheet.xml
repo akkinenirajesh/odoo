@@ -1,18 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="uom.uom" name="Uom.Uom" track_created="true" track_update="true">
-    <field name="Category" label="Category" type="Uom.Category" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Color" label="Color" type="integer" readonly="true" transient="true"/>
-    <field name="Factor" label="Ratio" type="float" required="true" copied="true"/>
-    <field name="FactorInv" label="Bigger Ratio" type="float" required="true" readonly="true" transient="true"/>
-    <field name="FiscalCountryCodes" label="Fiscal Country Codes" type="string" readonly="true" transient="true"/>
-    <field name="IsPosGroupable" label="Group Products in POS" type="bool" transient="true" related-field="Category.IsPosGroupable"/>
-    <field name="L10NInCode" label="Indian GST UQC" type="string" copied="true"/>
-    <field name="Name" label="Unit of Measure" type="string" required="true" copied="true" translatable="true"/>
-    <field name="Ratio" label="Combined Ratio" type="float" transient="true"/>
-    <field name="Rounding" label="Rounding Precision" type="float" required="true" copied="true"/>
-    <field name="TimesheetWidget" label="Widget" type="string" copied="true"/>
-    <field name="UomType" label="Type" type="Uom.ProductUnitOfMeasureType" required="true" copied="true"/>
-  </model>
+    <model id="Account.AnalyticLine" name="AnalyticLine" description="Analytic Line">
+        <field name="Date" type="datetime" label="Date" required="true" />
+        <field name="UnitAmount" type="float" label="Unit Amount" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="Project" type="Project.Project" label="Project" />
+        <field name="Task" type="Project.Task" label="Task" />
+        <field name="Employee" type="Hr.Employee" label="Employee" />
+    </model>
 </buvi>

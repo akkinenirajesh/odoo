@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.IrUiMenu" name="IrUiMenu" description="UI Menu">
+        <!-- No new fields are defined in this model, as it's inheriting from an existing model -->
+    </model>
 </buvi>

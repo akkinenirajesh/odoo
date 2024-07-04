@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.Account" name="Account" description="Account">
+        <field name="Code" type="string" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="Tags" type="Account.AccountTag" multiple="true" />
+    </model>
 </buvi>

@@ -1,3 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.WorkEntry" name="WorkEntry" description="HR Work Entry">
+        <field name="Name" type="string" required="true" compute="_ComputeName" store="true" readonly="false" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Employee" type="Hr.Employee" required="true" />
+        <field name="DateStart" type="datetime" required="true" label="From" />
+        <field name="DateStop" type="datetime" compute="_ComputeDateStop" store="true" readonly="false" label="To" />
+        <field name="Duration" type="float" compute="_ComputeDuration" store="true" readonly="false" />
+        <field name="WorkEntryType" type="Hr.WorkEntryType" />
+        <field name="Code" type="string" related="WorkEntryType.Code" />
+        <field name="ExternalCode" type="string" related="WorkEntryType.ExternalCode" />
+        <field name="Color" type="integer" related="WorkEntryType.Color" readonly="true" />
+        <field name="State" type="Hr.WorkEntryState" default="Draft" />
+        <field name="Company" type="Core.Company" required="true" readonly="true" />
+        <field name="Conflict" type="bool" compute="_ComputeConflict" store="true" />
+        <field name="Department" type="Hr.Department" related="Employee.Department" store="true" />
+
+        <constraint type="check">
+            <field name="DateStop" />
+            <message>Work entry must end. Please define an end date or a duration.</message>
+        </constraint>
+        <constraint type="check">
+            <field name="DateStart" />
+            <field name="DateStop" />
+            <message>Starting time should be before end time.</message>
+        </constraint>
+        <constraint type="exclude">
+            <field name="DateStart" />
+            <field name="DateStop" />
+            <field name="Employee" />
+            <message>Validated work entries cannot overlap</message>
+        </constraint>
+    </model>
+
+    <optionset id="Hr.WorkEntryState" name="Work Entry State">
+        <option value="Draft" name="Draft" />
+        <option value="Validated" name="Validated" />
+        <option value="Conflict" name="Conflict" />
+        <option value="Cancelled" name="Cancelled" />
+    </optionset>
 </buvi>

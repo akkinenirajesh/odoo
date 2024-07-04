@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Base.ResUsers" name="ResUsers" description="User">
         <field name="Login" type="string" required="true" />

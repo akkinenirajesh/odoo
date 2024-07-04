@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.LeadRequest" name="LeadRequest" description="Event Lead Request">
+        <field name="EventId" type="Event.Event" label="Event" required="true" />
+        <field name="ProcessedRegistrationId" type="integer" label="Processed Registration"
+            help="The ID of the last processed event.registration, used to know where to resume." />
+        <unique>
+            <field name="EventId" />
+            <message>You can only have one generation request per event at a time.</message>
+        </unique>
+    </model>
 </buvi>

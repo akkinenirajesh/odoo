@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountInvoiceReport" name="AccountInvoiceReport" description="Invoices Statistics">
         <field name="MoveId" type="Account.AccountMove" readonly="true" />

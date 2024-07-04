@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEc.SriPayment" name="SriPayment" description="SRI Payment Method">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" />
+        <field name="Active" type="bool" default="true" label="Active" />
+    </model>
 </buvi>

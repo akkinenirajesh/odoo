@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nEgBuildingNo" type="string" label="Building No." />
+    </model>
 </buvi>

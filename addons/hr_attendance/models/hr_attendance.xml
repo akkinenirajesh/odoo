@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.Attendance" name="Attendance" description="Attendance">
+        <field name="Employee" type="HR.Employee" required="true" label="Employee" />
+        <field name="Department" type="HR.Department" label="Department" />
+        <field name="Manager" type="HR.Employee" label="Manager" />
+        <field name="CheckIn" type="datetime" required="true" label="Check In" />
+        <field name="CheckOut" type="datetime" label="Check Out" />
+        <field name="WorkedHours" type="float" label="Worked Hours" />
+        <field name="Color" type="integer" />
+        <field name="OvertimeHours" type="float" label="Over Time" />
+        <field name="InLatitude" type="float" label="Latitude" />
+        <field name="InLongitude" type="float" label="Longitude" />
+        <field name="InCountryName" type="string" label="Country" help="Based on IP Address" />
+        <field name="InCity" type="string" label="City" />
+        <field name="InIpAddress" type="string" label="IP Address" />
+        <field name="InBrowser" type="string" label="Browser" />
+        <field name="InMode" type="HR.AttendanceMode" label="Mode" />
+        <field name="OutLatitude" type="float" />
+        <field name="OutLongitude" type="float" />
+        <field name="OutCountryName" type="string" help="Based on IP Address" />
+        <field name="OutCity" type="string" />
+        <field name="OutIpAddress" type="string" />
+        <field name="OutBrowser" type="string" />
+        <field name="OutMode" type="HR.AttendanceMode" />
+    </model>
+
+    <optionset id="HR.AttendanceMode" name="Attendance Mode">
+        <option value="Kiosk" name="Kiosk" />
+        <option value="Systray" name="Systray" />
+        <option value="Manual" name="Manual" />
+    </optionset>
 </buvi>

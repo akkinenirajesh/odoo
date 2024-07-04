@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountEdiFormat" name="AccountEdiFormat" description="Account EDI Format">
+        <field name="Name" type="string" required="true" />
+        <field name="Code" type="string" required="true" />
+        <field name="LOnEsEdiTaxAgency" type="Account.LOnEsEdiTaxAgency" />
+    </model>
+
+    <model id="Account.Move" name="Move" description="Journal Entry">
+        <field name="LOnEsEdiIsRequired" type="bool" />
+        <field name="LOnEsEdiCsv" type="string" />
+        <field name="LOnEsRegistrationDate" type="DateTime" />
+        <field name="LOnEsIsSimplified" type="bool" />
+    </model>
+
+    <optionset id="Account.LOnEsEdiTaxAgency" name="Spanish EDI Tax Agency">
+        <option value="aeat" name="Agencia Tributaria" />
+        <option value="bizkaia" name="Hacienda Foral de Bizkaia" />
+        <option value="gipuzkoa" name="Hacienda Foral de Gipuzkoa" />
+    </optionset>
 </buvi>

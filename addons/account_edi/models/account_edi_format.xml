@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountEdiFormat" name="AccountEdiFormat" description="EDI format">
         <field name="Name" type="string" />

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="POS.PosOrder" name="PosOrder" description="POS Order">
+        <field name="IsL10nEsSimplifiedInvoice" type="bool" label="Simplified invoice" />
+        <field name="L10nEsSimplifiedInvoiceNumber" type="string" label="Simplified invoice number" compute="ComputeL10nEsSimplifiedInvoiceNumber" />
+        <field name="AccountMove" type="Account.AccountMove" />
+        <field name="Config" type="POS.PosConfig" />
+    </model>
 </buvi>

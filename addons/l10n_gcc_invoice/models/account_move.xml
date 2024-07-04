@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="Narration" type="html" translate="true" />
+        <field name="Company" type="Core.Company" />
+        <field name="Partner" type="Core.Partner" />
+    </model>
+
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="L10nGccInvoiceTaxAmount" type="decimal" label="Tax Amount" compute="ComputeTaxAmount" />
+        <field name="L10nGccLineName" type="string" compute="ComputeL10nGccLineName" />
+        <field name="PriceSubtotal" type="decimal" />
+        <field name="PriceTotal" type="decimal" />
+        <field name="Name" type="string" />
+        <field name="Product" type="Product.Product" />
+        <field name="Move" type="Account.AccountMove" />
+    </model>
 </buvi>

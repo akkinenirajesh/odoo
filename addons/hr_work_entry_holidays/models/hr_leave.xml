@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Leave" name="Leave" description="HR Leave">
+        <field name="HolidayStatusId" type="Hr.LeaveType" label="Leave Type" />
+        <field name="EmployeeId" type="Hr.Employee" label="Employee" />
+        <field name="DateFrom" type="datetime" label="Start Date" />
+        <field name="DateTo" type="datetime" label="End Date" />
+        <field name="RequestDateFrom" type="date" label="Request Start Date" />
+        <field name="RequestDateTo" type="date" label="Request End Date" />
+        <field name="State" type="string" label="State" />
+    </model>
 </buvi>

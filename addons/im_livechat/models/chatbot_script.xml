@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ChatbotScript" name="ChatbotScript" description="Chatbot Script">
+        <field name="Title" type="string" label="Title" required="true" translate="true" default="Chatbot" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Image1920" type="binary" related="OperatorPartnerId.Image1920" readonly="false" />
+        <field name="ScriptStepIds" type="ImLivechat.ChatbotScriptStep" label="Script Steps" />
+        <field name="OperatorPartnerId" type="Core.ResPartner" label="Bot Operator" required="true" />
+        <field name="LivechatChannelCount" type="integer" label="Livechat Channel Count" compute="_ComputeLivechatChannelCount" />
+        <field name="FirstStepWarning" type="ImLivechat.FirstStepWarningType" compute="_ComputeFirstStepWarning" />
+    </model>
+
+    <optionset id="ImLivechat.FirstStepWarningType" name="First Step Warning Type">
+        <option value="FirstStepOperator" name="First Step Operator" />
+        <option value="FirstStepInvalid" name="First Step Invalid" />
+    </optionset>
 </buvi>

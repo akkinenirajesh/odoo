@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.Department" name="Department" description="Department">
+        <field name="Name" type="string" label="Department Name" required="true" translate="true" />
+        <field name="CompleteName" type="string" label="Complete Name" compute="ComputeCompleteName" recursive="true" store="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Company" type="Core.Company" default="DefaultCompany" />
+        <field name="Parent" type="HR.Department" />
+        <field name="Children" type="HR.Department" multiple="true" />
+        <field name="Manager" type="HR.Employee" tracking="true" />
+        <field name="Members" type="HR.Employee" multiple="true" readonly="true" />
+        <field name="TotalEmployee" type="integer" label="Total Employee" compute="ComputeTotalEmployee" />
+        <field name="Jobs" type="HR.Job" multiple="true" />
+        <field name="Plans" type="Mail.ActivityPlan" multiple="true" />
+        <field name="PlansCount" type="integer" compute="ComputePlanCount" />
+        <field name="Note" type="string" multiline="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="ParentPath" type="string" />
+        <field name="MasterDepartment" type="HR.Department" compute="ComputeMasterDepartmentId" store="true" />
+    </model>
 </buvi>

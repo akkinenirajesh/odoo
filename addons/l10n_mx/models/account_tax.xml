@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nMxFactorType" type="Account.L10nMxFactorType" label="Factor Type" default="Tasa"
+            help="Mexico: 'TipoFactor' is an attribute for CFDI 4.0. This indicates the factor type that is applied to the base of the tax." />
+        <field name="L10nMxTaxType" type="Account.L10nMxTaxType" label="SAT Tax Type" compute="ComputeL10nMxTaxType" store="true" />
+        <field name="Country" type="Core.Country" />
+    </model>
+
+    <optionset id="Account.L10nMxFactorType" name="L10n MX Factor Type">
+        <option value="Tasa" name="Tasa" />
+        <option value="Cuota" name="Cuota" />
+        <option value="Exento" name="Exento" />
+    </optionset>
+
+    <optionset id="Account.L10nMxTaxType" name="L10n MX Tax Type">
+        <option value="isr" name="ISR" />
+        <option value="iva" name="IVA" />
+        <option value="ieps" name="IEPS" />
+    </optionset>
 </buvi>

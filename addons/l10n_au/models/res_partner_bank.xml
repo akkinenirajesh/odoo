@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Financial.ResPartnerBank" name="ResPartnerBank" description="Partner Bank Account">
+        <field name="AbaBsb" type="string" label="BSB" 
+               help="Bank State Branch code - needed if payment is to be made using ABA files" />
+        <field name="AccNumber" type="string" label="Account Number" />
+        <field name="AccType" type="string" label="Account Type" />
+    </model>
 </buvi>

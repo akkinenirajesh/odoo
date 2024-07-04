@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Partner.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nItEdiDoiIds" type="Partner.DeclarationOfIntent" multiple="true" 
+               label="Available Declarations of Intent of this partner" />
+    </model>
+
+    <model id="Partner.DeclarationOfIntent" name="DeclarationOfIntent" description="Declaration of Intent">
+        <field name="Partner" type="Partner.ResPartner" />
+        <field name="Company" type="Core.Company" />
+    </model>
 </buvi>

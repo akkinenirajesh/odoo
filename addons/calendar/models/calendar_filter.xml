@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Calendar.CalendarFilters" name="CalendarFilters" description="Calendar Filters">
         <field name="UserId" type="Core.ResUsers" label="Me" required="true" default="Env.User" index="true" ondelete="cascade" />

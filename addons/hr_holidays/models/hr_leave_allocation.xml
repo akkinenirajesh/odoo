@@ -1,3 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.LeaveAllocation" name="LeaveAllocation" description="Time Off Allocation">
+        <field name="Name" type="string" label="Description" compute="ComputeDescription" store="true" readonly="false" />
+        <field name="IsNameCustom" type="bool" readonly="true" store="false" />
+        <field name="NameValidity" type="string" label="Description with validity" compute="ComputeDescriptionValidity" />
+        <field name="State" type="HR.LeaveAllocationState" default="Confirm" />
+        <field name="DateFrom" type="datetime" label="Start Date" required="true" />
+        <field name="DateTo" type="datetime" label="End Date" />
+        <field name="HolidayStatusId" type="HR.LeaveType" label="Time Off Type" required="true" compute="ComputeHolidayStatusId" store="true" readonly="false" />
+        <field name="EmployeeId" type="HR.Employee" label="Employee" required="true" />
+        <field name="EmployeeCompanyId" type="Core.Company" readonly="true" store="true" related="EmployeeId.CompanyId" />
+        <field name="ActiveEmployee" type="bool" label="Active Employee" readonly="true" related="EmployeeId.Active" />
+        <field name="ManagerId" type="HR.Employee" label="Manager" compute="ComputeManagerId" store="true" />
+        <field name="Notes" type="string" label="Reasons" readonly="false" />
+        <field name="NumberOfDays" type="float" label="Number of Days" compute="ComputeFromHolidayStatusId" store="true" readonly="false" default="1" />
+        <field name="NumberOfDaysDisplay" type="float" label="Duration (days)" compute="ComputeNumberOfDaysDisplay" />
+        <field name="NumberOfHoursDisplay" type="float" label="Duration (hours)" compute="ComputeNumberOfHoursDisplay" store="true" />
+        <field name="DurationDisplay" type="string" label="Allocated (Days/Hours)" compute="ComputeDurationDisplay" />
+        <field name="ApproverId" type="HR.Employee" label="First Approval" readonly="true" />
+        <field name="SecondApproverId" type="HR.Employee" label="Second Approval" readonly="true" />
+        <field name="ValidationType" type="string" label="Validation Type" related="HolidayStatusId.AllocationValidationType" readonly="true" />
+        <field name="CanApprove" type="bool" label="Can Approve" compute="ComputeCanApprove" />
+        <field name="TypeRequestUnit" type="HR.LeaveRequestUnit" compute="ComputeTypeRequestUnit" />
+        <field name="DepartmentId" type="HR.Department" label="Department" compute="ComputeDepartmentId" store="true" readonly="false" />
+        <field name="Lastcall" type="datetime" label="Date of the last accrual allocation" readonly="true" />
+        <field name="Nextcall" type="datetime" label="Date of the next accrual allocation" readonly="true" default="false" />
+        <field name="AlreadyAccrued" type="bool" />
+        <field name="AllocationType" type="HR.LeaveAllocationType" default="Regular" required="true" readonly="true" />
+        <field name="IsOfficer" type="bool" compute="ComputeIsOfficer" />
+        <field name="AccrualPlanId" type="HR.LeaveAccrualPlan" compute="ComputeFromHolidayStatusId" store="true" readonly="false" />
+        <field name="MaxLeaves" type="float" compute="ComputeLeaves" />
+        <field name="LeavesTaken" type="float" label="Time off Taken" compute="ComputeLeaves" />
+    </model>
+
+    <optionset id="HR.LeaveAllocationState" name="Leave Allocation State">
+        <option value="Confirm" name="To Approve" />
+        <option value="Refuse" name="Refused" />
+        <option value="Validate1" name="Second Approval" />
+        <option value="Validate" name="Approved" />
+    </optionset>
+
+    <optionset id="HR.LeaveRequestUnit" name="Leave Request Unit">
+        <option value="Hour" name="Hours" />
+        <option value="HalfDay" name="Half Day" />
+        <option value="Day" name="Day" />
+    </optionset>
+
+    <optionset id="HR.LeaveAllocationType" name="Leave Allocation Type">
+        <option value="Regular" name="Regular Allocation" />
+        <option value="Accrual" name="Accrual Allocation" />
+    </optionset>
 </buvi>

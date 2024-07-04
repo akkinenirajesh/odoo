@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nSaQrCodeStr" type="string" label="Zatka QR Code" compute="_ComputeQrCodeStr" />
+        <field name="L10nSaConfirmationDatetime" type="datetime" label="Confirmation Date" readonly="true" copy="false" />
+    </model>
 </buvi>

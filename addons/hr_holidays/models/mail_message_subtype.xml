@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MessageSubtype" name="MessageSubtype" description="Mail Message Subtype">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="ResModel" type="string" label="Resource Model" />
+        <field name="ParentId" type="Mail.MessageSubtype" label="Parent Subtype" />
+        <field name="Default" type="bool" label="Default" />
+        <field name="RelationField" type="string" label="Relation Field" />
+    </model>
 </buvi>

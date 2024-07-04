@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Bus.BusPresence" name="BusPresence" description="User Presence">
         <field name="UserId" type="Core.User" label="User" ondelete="cascade" />

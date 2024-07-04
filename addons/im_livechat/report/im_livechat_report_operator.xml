@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ReportOperator" name="ImLivechatReportOperator" description="Livechat Support Operator Report">
+        <field name="Partner" type="Core.Partner" label="Operator" readonly="true" />
+        <field name="LivechatChannel" type="ImLivechat.Channel" label="Channel" readonly="true" />
+        <field name="NbrChannel" type="integer" label="# of Sessions" readonly="true" aggregator="sum" />
+        <field name="Channel" type="Discuss.Channel" label="Conversation" readonly="true" />
+        <field name="StartDate" type="datetime" label="Start Date of session" readonly="true" />
+        <field name="TimeToAnswer" type="decimal" label="Time to answer" readonly="true" aggregator="avg" 
+               help="Average time to give the first answer to the visitor" />
+        <field name="Duration" type="decimal" label="Average duration" readonly="true" aggregator="avg" 
+               help="Duration of the conversation (in seconds)" />
+        <field name="Rating" type="decimal" label="Average rating" readonly="true" aggregator="avg" 
+               help="Average rating given by the visitor" />
+    </model>
 </buvi>

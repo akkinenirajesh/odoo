@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="l10n_ch.ResPartnerBank" name="ResPartnerBank" description="Partner Bank" inherits="res.partner.bank">
+        <field name="L10nChQrIban" type="string" label="QR-IBAN" compute="ComputeL10nChQrIban" store="true" readonly="false"
+               help="Put the QR-IBAN here for your own bank accounts. That way, you can still use the main IBAN in the Account Number while you will see the QR-IBAN for the barcode." />
+        <field name="L10nChDisplayQrBankOptions" type="bool" compute="ComputeL10nChDisplayQrBankOptions" />
+    </model>
 </buvi>

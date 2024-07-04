@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResUsersLog" name="ResUsersLog" description="User Log">
+        <field name="CreateUid" type="integer" label="Creator User ID" index="true" />
+        <field name="Ip" type="string" label="IP Address" />
+    </model>
 </buvi>

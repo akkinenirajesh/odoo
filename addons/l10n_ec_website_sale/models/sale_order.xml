@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <!-- Inherit fields from the base SaleOrder model -->
+        <inherit model="Sale.SaleOrder" />
+        <!-- No new fields are defined in the given Python code -->
+    </model>
 </buvi>

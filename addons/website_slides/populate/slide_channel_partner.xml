@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.SlideChannelPartner" name="SlideChannelPartner" description="Slide Channel Partner">
+        <field name="Partner" type="Core.Partner" required="true" />
+        <field name="Channel" type="Website.SlideChannel" required="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="MemberStatus" type="Website.SlideChannelPartnerStatus" />
+        <unique>
+            <field name="Partner" />
+            <field name="Channel" />
+            <message>A partner can only be associated with a channel once.</message>
+        </unique>
+    </model>
+
+    <optionset id="Website.SlideChannelPartnerStatus" name="Slide Channel Partner Status">
+        <option value="Invited" name="Invited" />
+        <option value="Joined" name="Joined" />
+        <option value="Ongoing" name="Ongoing" />
+        <option value="Completed" name="Completed" />
+    </optionset>
 </buvi>

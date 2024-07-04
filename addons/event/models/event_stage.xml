@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventStage" name="EventStage" description="Event Stage">
+        <field name="Name" type="string" label="Stage Name" required="true" translate="true" />
+        <field name="Description" type="string" label="Stage description" translate="true" />
+        <field name="Sequence" type="integer" default="1" />
+        <field name="Fold" type="bool" label="Folded in Kanban" default="false" />
+        <field name="PipeEnd" type="bool" label="End Stage" default="false"
+            help="Events will automatically be moved into this stage when they are finished. The event moved into this stage will automatically be set as green." />
+        <field name="LegendBlocked" type="string" label="Red Kanban Label" required="true" translate="true"
+            help="Override the default value displayed for the blocked state for kanban selection." />
+        <field name="LegendDone" type="string" label="Green Kanban Label" required="true" translate="true"
+            help="Override the default value displayed for the done state for kanban selection." />
+        <field name="LegendNormal" type="string" label="Grey Kanban Label" required="true" translate="true"
+            help="Override the default value displayed for the normal state for kanban selection." />
+    </model>
 </buvi>

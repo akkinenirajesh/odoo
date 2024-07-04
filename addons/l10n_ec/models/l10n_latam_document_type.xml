@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nLatam.DocumentType" name="DocumentType" description="L10n Latam Document Type">
+        <field name="InternalType" type="L10nLatam.DocumentTypeInternalType" />
+        <field name="L10nEcCheckFormat" type="bool" label="Check Number Format EC" default="false" />
+    </model>
+
+    <optionset id="L10nLatam.DocumentTypeInternalType" name="Document Type Internal Type">
+        <option value="PurchaseLiquidation" name="Purchase Liquidation" />
+        <option value="Withhold" name="Withhold" />
+        <!-- Note: Other options from the original selection should be included here -->
+    </optionset>
 </buvi>

@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ChatbotScriptStep" name="ChatbotScriptStep" description="Chatbot Script Step">
+        <field name="Message" type="string" label="Message" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="ChatbotScript" type="ImLivechat.ChatbotScript" label="Chatbot" required="true" />
+        <field name="StepType" type="ImLivechat.ChatbotStepType" default="Text" required="true" />
+        <field name="Answers" type="ImLivechat.ChatbotScriptAnswer" label="Answers" multiple="true" />
+        <field name="TriggeringAnswers" type="ImLivechat.ChatbotScriptAnswer" label="Only If" multiple="true" 
+               help="Show this step only if all of these answers have been selected." />
+        <field name="IsForwardOperatorChild" type="bool" compute="ComputeIsForwardOperatorChild" />
+    </model>
+
+    <optionset id="ImLivechat.ChatbotStepType" name="Chatbot Step Type">
+        <option value="Text" name="Text" />
+        <option value="QuestionSelection" name="Question" />
+        <option value="QuestionEmail" name="Email" />
+        <option value="QuestionPhone" name="Phone" />
+        <option value="ForwardOperator" name="Forward to Operator" />
+        <option value="FreeInputSingle" name="Free Input" />
+        <option value="FreeInputMulti" name="Free Input (Multi-Line)" />
+    </optionset>
 </buvi>

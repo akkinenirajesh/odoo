@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrWorkEntryHolidays.HrContract" name="HrContract" description="Employee Contract">
+        <field name="Name" type="string" label="Contract Name" required="true" />
+        <!-- Add other fields from the original hr.contract model -->
+    </model>
 </buvi>

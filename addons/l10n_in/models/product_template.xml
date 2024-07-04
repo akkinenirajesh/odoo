@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIn.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="L10nInHsnCode" type="string" label="HSN/SAC Code" 
+               help="Harmonized System Nomenclature/Services Accounting Code" />
+        <field name="L10nInHsnDescription" type="string" label="HSN/SAC Description" 
+               help="HSN/SAC description is required if HSN/SAC code is not provided." />
+        <field name="L10nInHsnWarning" type="string" label="HSC/SAC warning" compute="ComputeL10nInHsnWarning" />
+        <field name="SaleOk" type="bool" />
+    </model>
 </buvi>

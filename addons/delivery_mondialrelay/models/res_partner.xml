@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ResPartner.ResPartnerMondialRelay" name="ResPartnerMondialRelay" description="Res Partner Mondial Relay">
+        <field name="IsMondialRelay" type="bool" compute="_ComputeIsMondialRelay" />
+        <field name="Ref" type="string" inherit="true" />
+    </model>
 </buvi>

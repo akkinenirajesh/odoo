@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="account.tour.upload.bill" name="Account.TourUploadBill" track_created="true" track_update="true">
-    <field name="Attachments" label="Attachments" type="Ir.Attachment" collection="true" copied="true"/>
-    <field name="PreviewInvoice" label="Invoice Preview" type="html" readonly="true" transient="true" translatable="true"/>
-  </model>
-  <model id="pos.bill" name="Pos.Bill" track_created="true" track_update="true">
-    <field name="PosConfigs" label="Point of Sales" type="Pos.Config" collection="true" copied="true"/>
-    <field name="Name" label="Name" type="string" copied="true"/>
-    <field name="Value" label="Coin/Bill Value" type="float" required="true" copied="true"/>
-  </model>
+    <model id="PointOfSale.PosCategory" name="PosCategory" description="Point of Sale Category">
+        <field name="Name" type="string" label="Category Name" required="true" translate="true" />
+        <field name="ParentId" type="PointOfSale.PosCategory" label="Parent Category" />
+        <field name="ChildIds" type="PointOfSale.PosCategory[]" label="Children Categories" />
+        <field name="Sequence" type="integer" 
+               help="Gives the sequence order when displaying a list of product categories." />
+        <field name="Image128" type="byte[]" label="Image" />
+        <field name="Color" type="integer" label="Color" />
+        <field name="HasImage" type="bool" computed="true" />
+        <unique>
+            <field name="Name" />
+            <field name="ParentId" />
+            <message>Error! You cannot create recursive categories.</message>
+        </unique>
+    </model>
 </buvi>

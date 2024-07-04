@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.EmployeeLocation" name="EmployeeLocation" description="Employee Location">
+        <field name="WorkLocation" type="Hr.WorkLocation" required="true" label="Location" />
+        <field name="WorkLocationName" type="string" related="WorkLocation.Name" label="Location name" />
+        <field name="WorkLocationType" type="Hr.WorkLocationType" related="WorkLocation.LocationType" />
+        <field name="Employee" type="Hr.Employee" required="true" label="Employee" />
+        <field name="EmployeeName" type="string" related="Employee.Name" />
+        <field name="Date" type="date" label="Date" />
+        <field name="DayWeekString" type="string" compute="_ComputeDayWeekString" />
+        <unique>
+            <field name="Employee" />
+            <field name="Date" />
+            <message>Only one default work location and one exceptional work location per day per employee.</message>
+        </unique>
+    </model>
+
+    <optionset id="Hr.WorkLocationType" name="Work Location Type">
+        <!-- Add appropriate options based on the original Odoo model -->
+    </optionset>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="OnboardingOnboarding.OnboardingStep" name="OnboardingStep" description="Onboarding Step">
         <!-- Inherits fields from the base OnboardingStep model -->

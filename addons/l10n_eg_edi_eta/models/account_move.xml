@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nEgEdiEta.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nEgLongId" type="string" label="ETA Long ID" compute="ComputeEtaLongId" />
+        <field name="L10nEgQrCode" type="string" label="ETA QR Code" compute="ComputeEtaQrCodeStr" />
+        <field name="L10nEgSubmissionNumber" type="string" label="Submission ID" compute="ComputeEtaResponseData" store="true" />
+        <field name="L10nEgUuid" type="string" label="Document UUID" compute="ComputeEtaResponseData" store="true" />
+        <field name="L10nEgEtaJsonDocId" type="Core.IrAttachment" label="ETA JSON Document" />
+        <field name="L10nEgSigningTime" type="datetime" label="Signing Time" />
+        <field name="L10nEgIsSigned" type="bool" label="Is Signed" />
+    </model>
 </buvi>

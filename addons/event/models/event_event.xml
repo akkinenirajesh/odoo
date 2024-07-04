@@ -1,3 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Event.EventEvent" name="EventEvent" description="Event">
+    <field name="Name" type="string" label="Event" required="true" translate="true" />
+    <field name="Note" type="html" />
+    <field name="Description" type="html" translate="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="User" type="Core.User" label="Responsible" />
+    <field name="UseBarcode" type="bool" compute="_ComputeUseBarcode" />
+    <field name="Company" type="Core.Company" />
+    <field name="Organizer" type="Core.Partner" label="Organizer" />
+    <field name="EventType" type="Event.EventType" label="Template" />
+    <field name="EventMails" type="Event.EventMail" label="Mail Schedule" />
+    <field name="Tags" type="Event.EventTag" label="Tags" />
+    <field name="RegistrationPropertiesDefinition" type="Core.PropertiesDefinition" label="Registration Properties" />
+    <field name="KanbanState" type="string" />
+    <field name="KanbanStateLabel" type="string" compute="_ComputeKanbanStateLabel" />
+    <field name="Stage" type="Event.EventStage" />
+    <field name="LegendBlocked" type="string" />
+    <field name="LegendDone" type="string" />
+    <field name="LegendNormal" type="string" />
+    <field name="SeatsMax" type="integer" label="Maximum Attendees" compute="_ComputeSeatsMax" />
+    <field name="SeatsLimited" type="bool" label="Limit Attendees" compute="_ComputeSeatsLimited" />
+    <field name="SeatsReserved" type="integer" label="Number of Registrations" compute="_ComputeSeats" />
+    <field name="SeatsAvailable" type="integer" label="Available Seats" compute="_ComputeSeats" />
+    <field name="SeatsUsed" type="integer" label="Number of Attendees" compute="_ComputeSeats" />
+    <field name="SeatsTaken" type="integer" label="Number of Taken Seats" compute="_ComputeSeats" />
+    <field name="Registrations" type="Event.EventRegistration" label="Attendees" />
+    <field name="EventTickets" type="Event.EventTicket" label="Event Ticket" compute="_ComputeEventTicketIds" />
+    <field name="EventRegistrationsStarted" type="bool" compute="_ComputeEventRegistrationsStarted" />
+    <field name="EventRegistrationsOpen" type="bool" compute="_ComputeEventRegistrationsOpen" />
+    <field name="EventRegistrationsSoldOut" type="bool" compute="_ComputeEventRegistrationsSoldOut" />
+    <field name="StartSaleDatetime" type="datetime" compute="_ComputeStartSaleDate" />
+    <field name="DateTz" type="string" label="Timezone" compute="_ComputeDateTz" />
+    <field name="DateBegin" type="datetime" label="Start Date" required="true" />
+    <field name="DateEnd" type="datetime" label="End Date" required="true" />
+    <field name="DateBeginLocated" type="string" compute="_ComputeDateBeginTz" />
+    <field name="DateEndLocated" type="string" compute="_ComputeDateEndTz" />
+    <field name="IsOngoing" type="bool" compute="_ComputeIsOngoing" />
+    <field name="IsOneDay" type="bool" compute="_ComputeFieldIsOneDay" />
+    <field name="IsFinished" type="bool" compute="_ComputeIsFinished" />
+    <field name="Address" type="Core.Partner" label="Venue" />
+    <field name="AddressSearch" type="Core.Partner" compute="_ComputeAddressSearch" />
+    <field name="AddressInline" type="string" compute="_ComputeAddressInline" />
+    <field name="Country" type="Core.Country" />
+    <field name="Lang" type="string" label="Language" />
+    <field name="BadgeFormat" type="string" label="Badge Dimension" />
+    <field name="BadgeImage" type="binary" label="Badge Background" />
+    <field name="TicketInstructions" type="html" label="Ticket Instructions" compute="_ComputeTicketInstructions" />
+    <field name="Questions" type="Event.EventQuestion" label="Questions" compute="_ComputeQuestionIds" />
+    <field name="GeneralQuestions" type="Event.EventQuestion" label="General Questions" />
+    <field name="SpecificQuestions" type="Event.EventQuestion" label="Specific Questions" />
+  </model>
 </buvi>

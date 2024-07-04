@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.DiscussChannel" name="DiscussChannel" description="Discuss Channel">
+        <field name="SubscriptionDepartmentIds" type="Hr.Department" label="HR Departments" multiple="true"
+            help="Automatically subscribe members of those departments to the channel." />
+    </model>
 </buvi>

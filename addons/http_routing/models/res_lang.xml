@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResLang" name="ResLang" description="Language">
+        <field name="Code" type="string" label="Language Code" required="true" />
+        <!-- Add other fields from res.lang model here -->
+    </model>
 </buvi>

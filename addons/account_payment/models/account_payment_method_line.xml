@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="AccountPayment.AccountPaymentMethodLine" name="AccountPaymentMethodLine" description="Account Payment Method Line">
         <field name="PaymentProviderId" type="Payment.Provider" label="Payment Provider"

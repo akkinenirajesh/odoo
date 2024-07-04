@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleProject.ProjectProject" name="ProjectProject" description="Project">
+        <field name="AllowBillable" type="bool" label="Billable" />
+        <field name="SaleLine" type="Sale.SaleOrderLine" label="Sales Order Item" 
+               help="Sales order item that will be selected by default on the tasks and timesheets of this project, except if the employee set on the timesheets is explicitely linked to another sales order item on the project. It can be modified on each task and timesheet entry individually if necessary." />
+        <field name="SaleOrder" type="Sale.SaleOrder" label="Sales Order" />
+        <field name="HasAnySoToInvoice" type="bool" label="Has SO to Invoice" />
+        <field name="SaleOrderLineCount" type="integer" label="Sale Order Line Count" />
+        <field name="SaleOrderCount" type="integer" label="Sale Order Count" />
+        <field name="HasAnySoWithNothingToInvoice" type="bool" label="Has a SO with an invoice status of No" />
+        <field name="InvoiceCount" type="integer" label="Invoice Count" />
+        <field name="VendorBillCount" type="integer" label="Vendor Bill Count" />
+        <field name="Partner" type="Core.Partner" label="Partner" />
+        <field name="DisplaySalesStatButtons" type="bool" label="Display Sales Stat Buttons" />
+        <field name="SaleOrderState" type="Sale.SaleOrderState" label="Sale Order State" />
+    </model>
 </buvi>

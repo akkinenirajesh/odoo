@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+        <field name="Move" type="Account.AccountMove" label="Move" required="true" />
+        <field name="PriceUnit" type="decimal" label="Unit Price" required="true" />
+        <field name="Quantity" type="decimal" label="Quantity" required="true" />
+        <field name="Discount" type="decimal" label="Discount (%)" />
+        <field name="PriceSubtotal" type="decimal" label="Subtotal" required="true" />
+        <field name="Product" type="Product.Product" label="Product" />
+        <field name="TaxIds" type="Account.AccountTax" label="Taxes" multiple="true" />
+        <field name="Currency" type="Core.Currency" label="Currency" required="true" />
+    </model>
 </buvi>

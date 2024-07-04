@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.Transaction" name="Transaction" description="Payment Transaction">
+        <field name="IsDonation" type="bool" label="Is donation" />
+        <field name="State" type="string" />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" />
+        <field name="PartnerName" type="string" label="Partner Name" />
+        <field name="PartnerCountryId" type="Core.Country" label="Partner Country" />
+        <field name="PartnerEmail" type="string" label="Partner Email" />
+        <field name="PaymentId" type="Payment.Payment" label="Payment" />
+    </model>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountMove" name="AccountMove" description="Account Move">
         <field name="EdiDocumentIds" type="Account.EdiDocument" relation="many2many" inverse="MoveId" />

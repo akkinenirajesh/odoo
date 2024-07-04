@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrMaintenance.MaintenanceEquipment" name="MaintenanceEquipment" description="Maintenance Equipment">
+        <field name="EmployeeId" type="Hr.Employee" label="Assigned Employee" tracking="true" />
+        <field name="DepartmentId" type="Hr.Department" label="Assigned Department" tracking="true" />
+        <field name="EquipmentAssignTo" type="HrMaintenance.EquipmentAssignTo" label="Used By" required="true" default="Employee" />
+        <field name="OwnerUserId" type="Core.User" />
+        <field name="AssignDate" type="date" />
+    </model>
+
+    <optionset id="HrMaintenance.EquipmentAssignTo" name="Equipment Assign To">
+        <option value="Department" name="Department" />
+        <option value="Employee" name="Employee" />
+        <option value="Other" name="Other" />
+    </optionset>
+
+    <model id="HrMaintenance.MaintenanceRequest" name="MaintenanceRequest" description="Maintenance Request">
+        <field name="EmployeeId" type="Hr.Employee" label="Employee" />
+        <field name="OwnerUserId" type="Core.User" />
+        <field name="EquipmentId" type="HrMaintenance.MaintenanceEquipment" />
+    </model>
 </buvi>

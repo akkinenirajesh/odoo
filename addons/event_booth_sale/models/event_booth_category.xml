@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventBoothCategory" name="EventBoothCategory" description="Event Booth Category">
+        <field name="ProductId" type="Product.Product" label="Product" required="true" />
+        <field name="Price" type="decimal" label="Price" compute="_ComputePrice" digits="ProductPrice" readonly="false" store="true" />
+        <field name="PriceIncl" type="decimal" label="Price incl" compute="_ComputePriceIncl" digits="ProductPrice" readonly="false" />
+        <field name="CurrencyId" type="Core.Currency" related="ProductId.CurrencyId" />
+        <field name="PriceReduce" type="decimal" label="Price Reduce" compute="_ComputePriceReduce" computeSudo="true" digits="ProductPrice" />
+        <field name="PriceReduceTaxinc" type="decimal" label="Price Reduce Tax inc" compute="_ComputePriceReduceTaxinc" computeSudo="true" />
+        <field name="Image1920" type="byte[]" compute="_ComputeImage1920" readonly="false" store="true" />
+    </model>
 </buvi>

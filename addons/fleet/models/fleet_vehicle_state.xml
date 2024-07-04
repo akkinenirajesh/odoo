@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fleet.VehicleState" name="VehicleState" description="Vehicle Status">
+        <field name="Name" type="string" label="State Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" />
+        <unique>
+            <field name="Name" />
+            <message>State name already exists</message>
+        </unique>
+    </model>
 </buvi>

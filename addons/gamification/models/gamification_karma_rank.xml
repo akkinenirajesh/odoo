@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.KarmaRank" name="KarmaRank" description="Rank based on karma">
+        <field name="Name" type="string" label="Rank Name" required="true" translate="true" />
+        <field name="Description" type="html" label="Description" translate="true" sanitizeAttributes="false" />
+        <field name="DescriptionMotivational" type="html" label="Motivational" translate="true" sanitizeAttributes="false"
+               help="Motivational phrase to reach this rank on your profile page" />
+        <field name="KarmaMin" type="integer" label="Required Karma" required="true" default="1" />
+        <field name="Users" type="Core.User[]" label="Users" />
+        <field name="RankUsersCount" type="integer" label="# Users" computed="true" />
+        <field name="Image" type="Core.Image" label="Image" />
+        <unique>
+            <field name="KarmaMin" />
+            <message>The required karma has to be above 0.</message>
+        </unique>
+    </model>
 </buvi>

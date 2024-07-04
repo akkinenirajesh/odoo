@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.ProductCategory" name="ProductCategory" description="Product Category">
+        <!-- No additional fields are defined in the original Python file -->
+    </model>
 </buvi>

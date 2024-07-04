@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HR.IrUiMenu" name="IrUiMenu" description="UI Menu">
+        <field name="Name" type="string" label="Menu Name" required="true" translate="true" />
+        <!-- Add other fields as needed -->
+    </model>
 </buvi>

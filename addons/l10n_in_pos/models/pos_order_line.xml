@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="POS.OrderLine" name="OrderLine" description="POS Order Line">
+        <field name="L10nInHsnCode" type="string" label="HSN/SAC Code" compute="_ComputeL10nInHsnCode" store="true" readonly="false" />
+    </model>
 </buvi>

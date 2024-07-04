@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Analytic.AnalyticLine" name="AnalyticLine" description="Analytic Line">
         <field name="Amount" type="decimal" label="Amount" />

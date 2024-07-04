@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.Contract" name="Contract" description="Employee Contract">
+        <field name="DateGeneratedFrom" type="datetime" label="Generated From" readonly="true" required="true" />
+        <field name="DateGeneratedTo" type="datetime" label="Generated To" readonly="true" required="true" />
+        <field name="LastGenerationDate" type="date" label="Last Generation Date" readonly="true" />
+        <field name="WorkEntrySource" type="Hr.WorkEntrySource" required="true" default="Calendar" 
+               help="Defines the source for work entries generation" />
+    </model>
+
+    <optionset id="Hr.WorkEntrySource" name="Work Entry Source">
+        <option value="Calendar" name="Working Schedule" />
+        <option value="Attendances" name="Attendances" />
+        <option value="Planning" name="Planning" />
+    </optionset>
 </buvi>

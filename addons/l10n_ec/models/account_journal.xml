@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="L10nEcRequireEmission" type="bool" label="Require Emission" compute="ComputeL10nEcRequireEmission"
+            help="True if an entity and emission point must be set on the journal" />
+        <field name="L10nEcEntity" type="string" label="Emission Entity" size="3"
+            help="Ecuador: Emission entity number that is given by the SRI." />
+        <field name="L10nEcEmission" type="string" label="Emission Point" size="3"
+            help="Ecuador: Emission point number that is given by the SRI." />
+        <field name="L10nEcEmissionAddress" type="Core.Partner" label="Emission address"
+            domain="['|', ('Id', '=', CompanyPartnerId), '&amp;', ('Id', 'child_of', CompanyPartnerId), ('Type', '!=', 'contact')]"
+            help="Ecuador: Address for electronic invoicing." />
+    </model>
 </buvi>

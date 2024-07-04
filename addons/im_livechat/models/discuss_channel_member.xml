@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ChannelMember" name="ChannelMember" description="Livechat Channel Member">
+        <field name="IsPinned" type="bool" label="Is Pinned" />
+        <field name="LastSeenDt" type="datetime" label="Last Seen Date" />
+        <field name="ChannelId" type="Discuss.Channel" label="Channel" />
+        <field name="UnpinDt" type="datetime" label="Unpin Date" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" />
+        <field name="MessageUnreadCounter" type="integer" label="Unread Message Count" />
+    </model>
 </buvi>

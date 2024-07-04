@@ -1,3 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="ETA tax codes mixin">
+        <field name="L10nEgEtaCode" type="Account.EtaTaxCode" label="ETA Code (Egypt)" />
+    </model>
+
+    <optionset id="Account.EtaTaxCode" name="ETA Tax Code">
+        <option value="t1_v001" name="T1 - V001 - Export" />
+        <option value="t1_v002" name="T1 - V002 - Export to free areas and other areas" />
+        <option value="t1_v003" name="T1 - V003 - Exempted good or service" />
+        <option value="t1_v004" name="T1 - V004 - A non-taxable good or service" />
+        <option value="t1_v005" name="T1 - V005 - Exemptions for diplomats, consulates and embassies" />
+        <option value="t1_v006" name="T1 - V006 - Defence and National security Exemptions" />
+        <option value="t1_v007" name="T1 - V007 - Agreements exemptions" />
+        <option value="t1_v008" name="T1 - V008 - Special Exemption and other reasons" />
+        <option value="t1_v009" name="T1 - V009 - General Item sales" />
+        <option value="t1_v010" name="T1 - V010 - Other Rates" />
+        <option value="t2_tbl01" name="T2 - Tbl01 - Table tax (percentage)" />
+        <option value="t3_tbl02" name="T3 - Tbl02 - Table tax (Fixed Amount)" />
+        <option value="t4_w001" name="T4 - W001 - Contracting" />
+        <option value="t4_w002" name="T4 - W002 - Supplies" />
+        <option value="t4_w003" name="T4 - W003 - Purchases" />
+        <option value="t4_w004" name="T4 - W004 - Services" />
+        <option value="t4_w005" name="T4 - W005 - Sums paid by the cooperative societies for car transportation to their members" />
+        <option value="t4_w006" name="T4 - W006 - Commission agency &amp; brokerage" />
+        <option value="t4_w007" name="T4 - W007 - Discounts &amp; grants &amp; additional exceptional incentives (smoke, cement companies)" />
+        <option value="t4_w008" name="T4 - W008 - All discounts &amp; grants &amp; commissions (petroleum, telecommunications, and other)" />
+        <option value="t4_w009" name="T4 - W009 - Supporting export subsidies" />
+        <option value="t4_w010" name="T4 - W010 - Professional fees" />
+        <option value="t4_w011" name="T4 - W011 - Commission &amp; brokerage _A_57" />
+        <option value="t4_w012" name="T4 - W012 - Hospitals collecting from doctors" />
+        <option value="t4_w013" name="T4 - W013 - Royalties" />
+        <option value="t4_w014" name="T4 - W014 - Customs clearance" />
+        <option value="t4_w015" name="T4 - W015 - Exemption" />
+        <option value="t4_w016" name="T4 - W016 - advance payments" />
+        <option value="t5_st01" name="T5 - ST01 - Stamping tax (percentage)" />
+        <option value="t6_st02" name="T6 - ST02 - Stamping Tax (amount)" />
+        <option value="t7_ent01" name="T7 - Ent01 - Entertainment tax (rate)" />
+        <option value="t7_ent02" name="T7 - Ent02 - Entertainment tax (amount)" />
+        <option value="t8_rd01" name="T8 - RD01 - Resource development fee (rate)" />
+        <option value="t8_rd02" name="T8 - RD02 - Resource development fee (amount)" />
+        <option value="t9_sc01" name="T9 - SC01 - Service charges (rate)" />
+        <option value="t9_sc02" name="T9 - SC02 - Service charges (amount)" />
+        <option value="t10_mn01" name="T10 - Mn01 - Municipality Fees (rate)" />
+        <option value="t10_mn02" name="T10 - Mn02 - Municipality Fees (amount)" />
+        <option value="t11_mi01" name="T11 - MI01 - Medical insurance fee (rate)" />
+        <option value="t11_mi02" name="T11 - MI02 - Medical insurance fee (amount)" />
+        <option value="t12_of01" name="T12 - OF01 - Other fees (rate)" />
+        <option value="t12_of02" name="T12 - OF02 - Other fees (amount)" />
+        <option value="t13_st03" name="T13 - ST03 - Stamping tax (percentage)" />
+        <option value="t14_st04" name="T14 - ST04 - Stamping Tax (amount)" />
+        <option value="t15_ent03" name="T15 - Ent03 - Entertainment tax (rate)" />
+        <option value="t15_ent04" name="T15 - Ent04 - Entertainment tax (amount)" />
+        <option value="t16_rd03" name="T16 - RD03 - Resource development fee (rate)" />
+        <option value="t16_rd04" name="T16 - RD04 - Resource development fee (amount)" />
+        <option value="t17_sc03" name="T17 - SC03 - Service charges (rate)" />
+        <option value="t17_sc04" name="T17 - SC04 - Service charges (amount)" />
+        <option value="t18_mn03" name="T18 - Mn03 - Municipality Fees (rate)" />
+        <option value="t18_mn04" name="T18 - Mn04 - Municipality Fees (amount)" />
+        <option value="t19_mi03" name="T19 - MI03 - Medical insurance fee (rate)" />
+        <option value="t19_mi04" name="T19 - MI04 - Medical insurance fee (amount)" />
+        <option value="t20_of03" name="T20 - OF03 - Other fees (rate)" />
+        <option value="t20_of04" name="T20 - OF04 - Other fees (amount)" />
+    </optionset>
 </buvi>

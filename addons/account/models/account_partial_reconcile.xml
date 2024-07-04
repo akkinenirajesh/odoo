@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Account.AccountPartialReconcile" name="AccountPartialReconcile" description="Partial Reconcile">
         <field name="DebitMoveId" type="Account.AccountMoveLine" label="Debit Move" required="true" />

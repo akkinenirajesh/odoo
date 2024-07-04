@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HumanResources.User" name="User" description="User">
+        <field name="Vehicle" type="string" related="Employee.Vehicle" />
+        <field name="BankAccount" type="Banking.BankAccount" related="Employee.BankAccount" />
+    </model>
 </buvi>

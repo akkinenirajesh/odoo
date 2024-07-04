@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Crm.Lead" name="Lead" description="CRM Lead">
+        <field name="EventLeadRule" type="Event.LeadRule" label="Registration Rule" 
+               help="Rule that created this lead" />
+        <field name="Event" type="Event.Event" label="Source Event" 
+               help="Event triggering the rule that created this lead" />
+        <field name="Registrations" type="Event.Registration" multiple="true" label="Source Registrations" 
+               groups="event.group_event_registration_desk"
+               help="Registrations triggering the rule that created this lead" />
+        <field name="RegistrationCount" type="integer" label="# Registrations" computed="true"
+               groups="event.group_event_registration_desk"
+               help="Counter for the registrations linked to this lead" />
+    </model>
 </buvi>

@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIt.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nItPecEmail" type="string" label="PEC e-mail" />
+        <field name="L10nItCodiceFiscale" type="string" label="Codice Fiscale" size="16" />
+        <field name="L10nItPaIndex" type="string" label="Destination Code" size="7"
+            help="Must contain the 6-character (or 7) code, present in the PA Index in the information relative to the electronic invoicing service, associated with the office which, within the addressee administration, deals with receiving (and processing) the invoice." />
+        
+        <constraint type="sql">
+            <check>L10nItCodiceFiscale IS NULL OR L10nItCodiceFiscale = '' OR LENGTH(L10nItCodiceFiscale) >= 11</check>
+            <message>Codice fiscale must have between 11 and 16 characters.</message>
+        </constraint>
+        
+        <constraint type="sql">
+            <check>L10nItPaIndex IS NULL OR L10nItPaIndex = '' OR LENGTH(L10nItPaIndex) >= 6</check>
+            <message>Destination Code must have between 6 and 7 characters.</message>
+        </constraint>
+    </model>
 </buvi>

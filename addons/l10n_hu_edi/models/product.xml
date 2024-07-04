@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="L10nHuProductCodeType" type="Product.L10nHuProductCodeType" label="Product Code Type"
+            help="If your product has a code in a standard nomenclature, you can indicate which nomenclature here." />
+        <field name="L10nHuProductCode" type="string" label="Product Code Value"
+            help="If your product has a code in a standard nomenclature, you can indicate its code here." />
+    </model>
+
+    <optionset id="Product.L10nHuProductCodeType" name="Hungarian Product Code Type">
+        <option value="VTSZ" name="VTSZ - Customs Code" />
+        <option value="TESZOR" name="TESZOR - CPA 2.1 Code" />
+        <option value="KN" name="KN - Combined Nomenclature Code" />
+        <option value="AHK" name="AHK - e-TKO Excise Duty Code" />
+        <option value="KT" name="KT - Environmental Product Code" />
+        <option value="CSK" name="CSK - Packaging Catalogue Code" />
+        <option value="EJ" name="EJ - Building Registry Number" />
+        <option value="OTHER" name="Other" />
+    </optionset>
 </buvi>

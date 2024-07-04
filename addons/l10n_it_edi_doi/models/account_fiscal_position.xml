@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+        <!-- Add any fields that might be needed for the AccountFiscalPosition model -->
+        <field name="Name" type="string" label="Fiscal Position Name" required="true" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <!-- Add other relevant fields here -->
+    </model>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+        <field name="L10nLatamUseDocuments" type="bool" label="Use Documents?"
+               help="If active: will be using for legal invoicing (invoices, debit/credit notes). If not set means that will be used to register accounting entries not related to invoicing legal documents. For Example: Receipts, Tax Payments, Register journal entries" />
+        <field name="L10nLatamCompanyUseDocuments" type="bool" compute="ComputeL10nLatamCompanyUseDocuments" />
+        <field name="Company" type="Core.Company" />
+        <field name="Type" type="string" />
+    </model>
 </buvi>

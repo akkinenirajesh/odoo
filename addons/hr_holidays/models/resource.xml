@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.CalendarLeaves" name="CalendarLeaves" description="Calendar Leaves">
+        <field name="HolidayId" type="Hr.Leave" label="Time Off Request" />
+        <field name="DateFrom" type="datetime" required="true" />
+        <field name="DateTo" type="datetime" required="true" />
+        <field name="CalendarId" type="Resource.Calendar" />
+        <field name="ResourceId" type="Resource.Resource" />
+        <field name="CompanyId" type="Core.Company" />
+    </model>
 </buvi>

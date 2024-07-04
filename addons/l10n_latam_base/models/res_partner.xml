@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResPartner" name="ResPartner" description="Partner">
+        <field name="L10nLatamIdentificationType" type="L10nLatam.IdentificationType" label="Identification Type" index="btree_not_null" auto_join="true"
+            help="The type of identification" />
+        <field name="Vat" type="string" label="Identification Number" help="Identification Number for selected type" />
+    </model>
 </buvi>

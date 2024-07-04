@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrFleet.FleetVehicleOdometer" name="FleetVehicleOdometer" description="Fleet Vehicle Odometer">
+        <field name="DriverEmployeeId" type="Hr.Employee" label="Driver (Employee)" readonly="true" related="Vehicle.DriverEmployeeId" />
+    </model>
 </buvi>

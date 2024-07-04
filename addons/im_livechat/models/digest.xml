@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Digest.Digest" name="Digest" description="Digest">
+        <field name="KpiLivechatRating" type="bool" label="% of Happiness" />
+        <field name="KpiLivechatRatingValue" type="decimal" digits="(16, 2)" compute="ComputeKpiLivechatRatingValue" />
+        <field name="KpiLivechatConversations" type="bool" label="Conversations handled" />
+        <field name="KpiLivechatConversationsValue" type="int" compute="ComputeKpiLivechatConversationsValue" />
+        <field name="KpiLivechatResponse" type="bool" label="Time to answer (sec)" />
+        <field name="KpiLivechatResponseValue" type="decimal" digits="(16, 2)" compute="ComputeKpiLivechatResponseValue" />
+    </model>
 </buvi>

@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Calendar.RecurrenceRule" name="RecurrenceRule" description="Event Recurrence Rule">
         <field name="Name" type="string" compute="ComputeName" store="true" />

@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.EmployeeCategory" name="EmployeeCategory" description="Employee Category">
+        <field name="Name" type="string" label="Tag Name" required="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Employees" type="Hr.Employee" multiple="true" />
+        <unique>
+            <field name="Name" />
+            <message>Tag name already exists!</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,47 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="hr.department" name="Hr.Department" track_created="true" track_update="true">
-    <field name="Childs" label="Child Departments" type="Hr.Department" collection="true"/>
-    <field name="MasterDepartment" label="Master Department" type="Hr.Department" readonly="true" on-delete="Clear"/>
-    <field name="Parent" label="Parent Department" type="Hr.Department" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="Manager" label="Manager" type="Hr.Employee" copied="true" on-delete="Clear"/>
-    <field name="Members" label="Members" type="Hr.Employee" collection="true" readonly="true"/>
-    <field name="Jobss" label="Jobs" type="Hr.Job" collection="true"/>
-    <field name="Plans" label="Plan" type="Mail.ActivityPlan" collection="true"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Company" label="Company" type="Res.Company" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="AppraisalSurveyTemplate" label="Appraisal Survey" type="Survey.Survey" copied="true" on-delete="Clear"/>
-    <field name="AbsenceOfToday" label="Absence by Today" type="integer" readonly="true" transient="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="AllocationToApproveCount" label="Allocation to Approve" type="integer" readonly="true" transient="true"/>
-    <field name="AppraisalPropertiesDefinition" label="Appraisal Properties" type="properties_definition" copied="true"/>
-    <field name="AppraisalsToProcessCount" label="Appraisals to Process" type="integer" readonly="true" transient="true"/>
-    <field name="Color" label="Color Index" type="integer" copied="true"/>
-    <field name="CompleteName" label="Complete Name" type="string" readonly="true"/>
-    <field name="CustomAppraisalTemplates" label="Custom Appraisal Templates" type="bool" copied="true"/>
-    <field name="EmployeeFeedbackTemplate" label="Employee Feedback Template" type="html" copied="true" translatable="true"/>
-    <field name="ExpectedEmployee" label="Expected Employee" type="integer" readonly="true" transient="true"/>
-    <field name="ExpenseSheetsToApproveCount" label="Expenses Reports to Approve" type="integer" readonly="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="LeaveToApproveCount" label="Time Off to Approve" type="integer" readonly="true" transient="true"/>
-    <field name="ManagerFeedbackTemplate" label="Manager Feedback Template" type="html" copied="true" translatable="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="Name" label="Department Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NewApplicantCount" label="New Applicant" type="integer" readonly="true" transient="true"/>
-    <field name="NewHiredEmployee" label="New Hired Employee" type="integer" readonly="true" transient="true"/>
-    <field name="Note" label="Note" type="text" copied="true"/>
-    <field name="ParentPath" label="Parent Path" type="string" indexed="true" copied="true"/>
-    <field name="PlansCount" label="Plans Count" type="integer" readonly="true" transient="true"/>
-    <field name="TotalEmployee" label="Total Employee" type="integer" readonly="true" transient="true"/>
-  </model>
+    <model id="HR.DepartureReason" name="DepartureReason" description="Departure Reason">
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="Name" type="string" label="Reason" required="true" translate="true" />
+        <field name="ReasonCode" type="integer" label="Reason Code" />
+    </model>
 </buvi>

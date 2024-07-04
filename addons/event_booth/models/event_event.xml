@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.Event" name="Event" description="Event">
+        <field name="EventBoothIds" type="Event.Booth" label="Booths" multiple="true" />
+        <field name="EventBoothCount" type="integer" label="Total Booths" computed="true" />
+        <field name="EventBoothCountAvailable" type="integer" label="Available Booths" computed="true" />
+        <field name="EventBoothCategoryIds" type="Event.BoothCategory" multiple="true" computed="true" />
+        <field name="EventBoothCategoryAvailableIds" type="Event.BoothCategory" multiple="true" computed="true" 
+               help="Booth Category for which booths are still available. Used in frontend" />
+    </model>
 </buvi>

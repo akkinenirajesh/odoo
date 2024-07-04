@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="L10nEcSriPaymentId" type="Account.SriPayment" label="Payment Method (SRI)"
+               help="Ecuador: Payment Methods Defined by the SRI." />
+    </model>
+
+    <model id="Account.SriPayment" name="SriPayment" description="SRI Payment">
+        <!-- Add fields for SriPayment if needed -->
+    </model>
+
+    <optionset id="Account.PartnerIdTypeEc" name="Partner ID Type EC">
+        <option value="01" name="RUC" />
+        <option value="02" name="CedulaDeIdentidad" />
+        <option value="03" name="Pasaporte" />
+        <option value="04" name="IdentificacionDelExterior" />
+        <option value="05" name="ConsumidorFinal" />
+        <option value="06" name="IdentificacionTributariaSimplificada" />
+        <option value="07" name="VentaAConsumidorFinalTransfronteriza" />
+        <option value="09" name="IdentificacionDelExteriorEntidadPublicaInternacional" />
+        <option value="20" name="RucPresuntivoOCatastro" />
+        <option value="21" name="RegistroMigratorio" />
+    </optionset>
 </buvi>

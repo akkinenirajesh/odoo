@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nEsEdiFacturaeTaxType" type="Account.L10nEsEdiFacturaeTaxType" 
+               label="Spanish Facturae EDI Tax Type" default="ValueAddedTax" />
+    </model>
+
+    <optionset id="Account.L10nEsEdiFacturaeTaxType" name="Spanish Facturae EDI Tax Type">
+        <option value="ValueAddedTax" name="Value-Added Tax" />
+        <option value="TaxesCeutaMelilla" name="Taxes on production, services and imports in Ceuta and Melilla" />
+        <option value="IGIC" name="IGIC: Canaries General Indirect Tax" />
+        <option value="IRPF" name="IRPF: Personal Income Tax" />
+        <option value="Other" name="Other" />
+        <option value="ITPAJD" name="ITPAJD: Tax on wealth transfers and stamp duty" />
+        <option value="IE" name="IE: Excise duties and consumption taxes" />
+        <option value="RA" name="RA: Customs duties" />
+        <option value="IGTECM" name="IGTECM: Sales tax in Ceuta and Melilla" />
+        <option value="IECDPCAC" name="IECDPCAC: Excise duties on oil derivates in Canaries" />
+        <option value="IIIMAB" name="IIIMAB: Tax on premises that affect the environment in the Balearic Islands" />
+        <option value="ICIO" name="ICIO: Tax on construction, installation and works" />
+        <option value="IMVDN" name="IMVDN: Local tax on unoccupied homes in Navarre" />
+        <option value="IMSN" name="IMSN: Local tax on building plots in Navarre" />
+        <option value="IMGSN" name="IMGSN: Local sumptuary tax in Navarre" />
+        <option value="IMPN" name="IMPN: Local tax on advertising in Navarre" />
+        <option value="REIVA" name="REIVA: Special VAT for travel agencies" />
+        <option value="REIGIC" name="REIGIC: Special IGIC: for travel agencies" />
+        <option value="REIPSI" name="REIPSI: Special IPSI for travel agencies" />
+        <option value="IPS" name="IPS: Insurance premiums Tax" />
+        <option value="SWUA" name="SWUA: Surcharge for Winding Up Activity" />
+        <option value="IVPEE" name="IVPEE: Tax on the value of electricity generation" />
+        <option value="SpentNuclearFuelTax" name="Tax on the production of spent nuclear fuel and radioactive waste from the generation of nuclear electric power" />
+        <option value="NuclearWasteStorageTax" name="Tax on the storage of spent nuclear energy and radioactive waste in centralised facilities" />
+        <option value="IDEC" name="IDEC: Tax on bank deposits" />
+        <option value="CanariesTobaccoExcise" name="Excise duty applied to manufactured tobacco in Canaries" />
+        <option value="IGFEI" name="IGFEI: Tax on Fluorinated Greenhouse Gases" />
+        <option value="IRNR" name="IRNR: Non-resident Income Tax" />
+        <option value="CorporationTax" name="Corporation Tax" />
+    </optionset>
 </buvi>

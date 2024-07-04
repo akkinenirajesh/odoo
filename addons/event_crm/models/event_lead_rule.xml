@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Event.EventLeadRule" name="EventLeadRule" description="Event Lead Rules">
+        <field name="Name" type="string" label="Rule Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="LeadIds" type="Core.CrmLead[]" label="Created Leads" />
+        <field name="LeadCreationBasis" type="Event.LeadCreationBasis" required="true" default="Attendee" 
+            help="Per Attendee: A Lead is created for each Attendee (B2C).&#xA;Per Order: A single Lead is created per Ticket Batch/Sale Order (B2B)" />
+        <field name="LeadCreationTrigger" type="Event.LeadCreationTrigger" required="true" default="Create" 
+            help="Creation: at attendee creation;&#xA;Registered: at attendee registration, manually or automatically;&#xA;Attended: when attendance is confirmed and registration set to done;" />
+        <field name="EventTypeIds" type="Event.EventType[]" label="Event Templates" 
+            help="Filter the attendees to include those of this specific event category. If not set, no event category restriction will be applied." />
+        <field name="EventId" type="Event.Event" label="Event" 
+            help="Filter the attendees to include those of this specific event. If not set, no event restriction will be applied." />
+        <field name="CompanyId" type="Core.Company" label="Company" 
+            help="Restrict the trigger of this rule to events belonging to a specific company.&#xA;If not set, no company restriction will be applied." />
+        <field name="EventRegistrationFilter" type="string" label="Registrations Domain" 
+            help="Filter the attendees that will or not generate leads." />
+        <field name="LeadType" type="Crm.LeadType" required="true" 
+            help="Default lead type when this rule is applied." />
+        <field name="LeadSalesTeamId" type="Crm.Team" label="Sales Team" 
+            help="Automatically assign the created leads to this Sales Team." />
+        <field name="LeadUserId" type="Core.User" label="Salesperson" 
+            help="Automatically assign the created leads to this Salesperson." />
+        <field name="LeadTagIds" type="Crm.Tag[]" label="Tags" 
+            help="Automatically add these tags to the created leads." />
+    </model>
+
+    <optionset id="Event.LeadCreationBasis" name="Lead Creation Basis">
+        <option value="Attendee" name="Per Attendee" />
+        <option value="Order" name="Per Order" />
+    </optionset>
+
+    <optionset id="Event.LeadCreationTrigger" name="Lead Creation Trigger">
+        <option value="Create" name="Attendees are created" />
+        <option value="Confirm" name="Attendees are registered" />
+        <option value="Done" name="Attendees attended" />
+    </optionset>
+
+    <optionset id="Crm.LeadType" name="Lead Type">
+        <option value="Lead" name="Lead" />
+        <option value="Opportunity" name="Opportunity" />
+    </optionset>
 </buvi>

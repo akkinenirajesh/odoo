@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="Name" type="string" label="Company Name" required="true" />
+        <!-- Add other fields from res.company model here -->
+    </model>
 </buvi>

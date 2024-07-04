@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Core.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nClActivityDescription" type="string" label="Company Activity Description" 
+               related="Partner.L10nClActivityDescription" readonly="false" />
+    </model>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrSkills.SkillType" name="SkillType" description="Skill Type">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" required="true" translate="true" />
+        <field name="Skills" type="HrSkills.Skill[]" label="Skills" />
+        <field name="SkillLevels" type="HrSkills.SkillLevel[]" label="Levels" />
+        <field name="Color" type="integer" label="Color" />
+    </model>
 </buvi>

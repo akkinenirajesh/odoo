@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResumeLineType" name="ResumeLineType" description="Type of a resume line">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+    </model>
 </buvi>

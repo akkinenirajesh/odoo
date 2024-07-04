@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nIn.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nInUpiId" type="string" label="UPI Id" />
+        <field name="L10nInHsnCodeDigit" type="L10nIn.HsnCodeDigit" label="HSN Code Digit" />
+    </model>
+
+    <optionset id="L10nIn.HsnCodeDigit" name="HSN Code Digit">
+        <option value="4" name="FourDigits" label="4 Digits" />
+        <option value="6" name="SixDigits" label="6 Digits" />
+        <option value="8" name="EightDigits" label="8 Digits" />
+    </optionset>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Finance.ResCurrency" name="ResCurrency" description="Currency">
+        <field name="L10nClCurrencyCode" type="string" label="Currency Code" translate="true" />
+        <field name="L10nClShortName" type="string" label="Short Name" translate="true" />
+    </model>
 </buvi>

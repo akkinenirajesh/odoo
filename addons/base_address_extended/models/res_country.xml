@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Core.Country" name="Country" description="Country">
         <field name="EnforceCities" type="bool" label="Enforce Cities"

@@ -1,5 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="L10nHuEdi.ResCompany" name="ResCompany" description="Company with Hungarian EDI settings">
+        <field name="L10nHuGroupVat" type="string" label="Group VAT" />
+        <field name="L10nHuTaxRegime" type="L10nHuEdi.TaxRegime" label="NAV Tax Regime" />
+        <field name="L10nHuEdiServerMode" type="L10nHuEdi.ServerMode" label="Server Mode"
+            help="- Production: Sends invoices to the NAV's production system.
+                  - Test: Sends invoices to the NAV's test system.
+                  - Demo: Mocks the NAV system (does not require credentials)." />
+        <field name="L10nHuEdiUsername" type="string" label="NAV Username" />
+        <field name="L10nHuEdiPassword" type="string" label="NAV Password" />
+        <field name="L10nHuEdiSignatureKey" type="string" label="NAV Signature Key" />
+        <field name="L10nHuEdiReplacementKey" type="string" label="NAV Replacement Key" />
+        <field name="L10nHuEdiLastTransactionRecovery" type="datetime" label="Last transaction recovery (in production mode)" />
+    </model>
+
+    <optionset id="L10nHuEdi.TaxRegime" name="Tax Regime">
+        <option value="IE" name="Individual Exemption" />
+        <option value="CA" name="Cash Accounting" />
+        <option value="SB" name="Small Business" />
+    </optionset>
+
+    <optionset id="L10nHuEdi.ServerMode" name="Server Mode">
+        <option value="Production" name="Production" />
+        <option value="Test" name="Test" />
+        <option value="Demo" name="Demo" />
+    </optionset>
 </buvi>

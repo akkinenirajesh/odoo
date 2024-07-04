@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Currency.CurrencyRate" name="CurrencyRate" description="Currency Exchange Rate">
+        <field name="Currency" type="Currency.Currency" label="Currency" required="true"/>
+        <field name="Company" type="Company.Company" label="Company" required="true"/>
+        <field name="Date" type="date" label="Date" required="true"/>
+        <field name="Rate" type="decimal" label="Rate" required="true"/>
+        <field name="CompanyRate" type="decimal" label="Company Rate" required="true"/>
+        <field name="InverseCompanyRate" type="decimal" label="Inverse Company Rate" required="true"/>
+    </model>
 </buvi>

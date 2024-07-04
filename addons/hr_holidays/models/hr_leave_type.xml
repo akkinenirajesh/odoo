@@ -1,3 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrHolidays.HolidaysType" name="HolidaysType" description="Time Off Type">
+        <field name="Name" type="string" label="Time Off Type" required="true" translate="true" />
+        <field name="Sequence" type="integer" default="100"
+            help="The type with the smallest sequence is the default value in time off request" />
+        <field name="CreateCalendarMeeting" type="bool" label="Display Time Off in Calendar" default="true" />
+        <field name="Color" type="integer" label="Color"
+            help="The color selected here will be used in every screen with the time off type." />
+        <field name="IconId" type="Core.Attachment" label="Cover Image" />
+        <field name="Active" type="bool" default="true"
+            help="If the active field is set to false, it will allow you to hide the time off type without removing it." />
+        <field name="ShowOnDashboard" type="bool" default="true"
+            help="Non-visible allocations can still be selected when taking a leave, but will simply not be displayed on the leave dashboard." />
+        <field name="MaxLeaves" type="float" label="Maximum Allowed" compute="ComputeLeaves"
+            help="This value is given by the sum of all time off requests with a positive value." />
+        <field name="LeavesTaken" type="float" label="Time off Already Taken" compute="ComputeLeaves"
+            help="This value is given by the sum of all time off requests with a negative value." />
+        <field name="VirtualRemainingLeaves" type="float" label="Virtual Remaining Time Off" compute="ComputeLeaves"
+            help="Maximum Time Off Allowed - Time Off Already Taken - Time Off Waiting Approval" />
+        <field name="AllocationCount" type="integer" label="Allocations" compute="ComputeAllocationCount" />
+        <field name="GroupDaysLeave" type="float" label="Group Time Off" compute="ComputeGroupDaysLeave" />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+        <field name="ResponsibleIds" type="Core.User[]" label="Notified Time Off Officer"
+            help="Choose the Time Off Officers who will be notified to approve allocation or Time Off Request. If empty, nobody will be notified" />
+        <field name="LeaveValidationType" type="HrHolidays.LeaveValidationType" label="Time Off Validation" default="Hr" />
+        <field name="RequiresAllocation" type="HrHolidays.RequiresAllocation" label="Requires allocation" default="Yes" required="true"
+            help="Yes: Time off requests need to have a valid allocation.\nNo Limit: Time Off requests can be taken without any prior allocation." />
+        <field name="EmployeeRequests" type="HrHolidays.EmployeeRequests" label="Employee Requests" default="No" required="true"
+            help="Extra Days Requests Allowed: User can request an allocation for himself.\nNot Allowed: User cannot request an allocation." />
+        <field name="AllocationValidationType" type="HrHolidays.AllocationValidationType" label="Approval" default="Hr"
+            help="Select the level of approval needed in case of request by employee" />
+        <field name="HasValidAllocation" type="bool" compute="ComputeValid"
+            help="This indicates if it is still possible to use this type of leave" />
+        <field name="TimeType" type="HrHolidays.TimeType" label="Kind of Time Off" default="Leave"
+            help="The distinction between working time (ex. Attendance) and absence (ex. Training) will be used in the computation of Accrual's plan rate." />
+        <field name="RequestUnit" type="HrHolidays.RequestUnit" label="Take Time Off in" default="Day" required="true" />
+        <field name="Unpaid" type="bool" label="Is Unpaid" default="false" />
+        <field name="IncludePublicHolidaysInDuration" type="bool" label="Public Holiday Included" default="false"
+            help="Public holidays should be counted in the leave duration when applying for leaves" />
+        <field name="LeaveNotifSubtypeId" type="Mail.MessageSubtype" label="Time Off Notification Subtype" />
+        <field name="AllocationNotifSubtypeId" type="Mail.MessageSubtype" label="Allocation Notification Subtype" />
+        <field name="SupportDocument" type="bool" label="Supporting Document" />
+        <field name="AccrualsIds" type="HrHolidays.LeaveAccrualPlan[]" />
+        <field name="AccrualCount" type="float" label="Accruals count" compute="ComputeAccrualCount" />
+        <field name="AllowsNegative" type="bool" label="Allow Negative Cap"
+            help="If checked, users request can exceed the allocated days and balance can go in negative." />
+        <field name="MaxAllowedNegative" type="integer" label="Amount in Negative"
+            help="Define the maximum level of negative days this kind of time off can reach. Value must be at least 1." />
+    </model>
+
+    <optionset id="HrHolidays.LeaveValidationType" name="Leave Validation Type">
+        <option value="NoValidation" name="No Validation" />
+        <option value="Hr" name="By Time Off Officer" />
+        <option value="Manager" name="By Employee's Approver" />
+        <option value="Both" name="By Employee's Approver and Time Off Officer" />
+    </optionset>
+
+    <optionset id="HrHolidays.RequiresAllocation" name="Requires Allocation">
+        <option value="Yes" name="Yes" />
+        <option value="NoLimit" name="No Limit" />
+    </optionset>
+
+    <optionset id="HrHolidays.EmployeeRequests" name="Employee Requests">
+        <option value="Yes" name="Extra Days Requests Allowed" />
+        <option value="No" name="Not Allowed" />
+    </optionset>
+
+    <optionset id="HrHolidays.AllocationValidationType" name="Allocation Validation Type">
+        <option value="NoValidation" name="No Validation" />
+        <option value="Hr" name="By Time Off Officer" />
+        <option value="Manager" name="By Employee's Approver" />
+        <option value="Both" name="By Employee's Approver and Time Off Officer" />
+    </optionset>
+
+    <optionset id="HrHolidays.TimeType" name="Time Type">
+        <option value="Other" name="Worked Time" />
+        <option value="Leave" name="Absence" />
+    </optionset>
+
+    <optionset id="HrHolidays.RequestUnit" name="Request Unit">
+        <option value="Day" name="Day" />
+        <option value="HalfDay" name="Half Day" />
+        <option value="Hour" name="Hours" />
+    </optionset>
 </buvi>

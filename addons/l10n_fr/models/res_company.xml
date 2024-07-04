@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nFrClosingSequenceId" type="Core.IrSequence" label="Sequence to use to build sale closings" readonly="true" />
+        <field name="Siret" type="string" label="SIRET" size="14" readonly="false" related="Partner.Siret" />
+        <field name="Ape" type="string" label="APE" />
+        <field name="Vat" type="string" label="VAT" />
+        <field name="Country" type="Core.Country" label="Country" />
+    </model>
 </buvi>

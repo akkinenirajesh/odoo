@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.RecruitmentSource" name="RecruitmentSource" description="Source of Applicants">
+        <field name="Email" type="string" label="Email" readonly="true" />
+        <field name="HasDomain" type="string" computed="true" />
+        <field name="Job" type="Hr.Job" label="Job" ondelete="cascade" />
+        <field name="Alias" type="Mail.Alias" label="Alias ID" ondelete="restrict" />
+        <field name="Medium" type="Utm.Medium" />
+    </model>
 </buvi>

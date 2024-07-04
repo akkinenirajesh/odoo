@@ -1,4 +1,3 @@
-xml
 <buvi>
     <model id="Crm.LostReason" name="LostReason" description="Opp. Lost Reason">
         <field name="Name" type="string" label="Description" required="true" translate="true" />

@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TimeSheet.AccountAnalyticLine" name="AccountAnalyticLine" description="Account Analytic Line">
+        <field name="TaskId" type="Project.Task" label="Task" index="btree_not_null"
+            domain="[('AllowTimesheets', '=', true), ('ProjectId', '=?', ProjectId)]" />
+        <field name="ParentTaskId" type="Project.Task" related="TaskId.ParentId" store="true" />
+        <field name="ProjectId" type="Project.Project" label="Project" index="true" />
+        <field name="UserId" type="Core.User" />
+        <field name="EmployeeId" type="HumanResource.Employee" label="Employee" index="true"
+            help="Define an 'hourly cost' on the employee to track the cost of their time." />
+        <field name="JobTitle" type="string" related="EmployeeId.JobTitle" />
+        <field name="DepartmentId" type="HumanResource.Department" label="Department" />
+        <field name="ManagerId" type="HumanResource.Employee" label="Manager" related="EmployeeId.ParentId" store="true" />
+        <field name="EncodingUomId" type="Product.Uom" label="Encoding UOM" />
+        <field name="PartnerId" type="Core.Partner" />
+        <field name="ReadonlyTimesheet" type="bool" />
+        <field name="MilestoneId" type="Project.Milestone" related="TaskId.MilestoneId" />
+    </model>
 </buvi>

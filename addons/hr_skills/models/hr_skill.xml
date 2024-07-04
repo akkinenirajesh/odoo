@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="HrSkills.Skill" name="Skill" description="Skill">
+        <field name="Name" type="string" required="true" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="SkillType" type="HrSkills.SkillType" required="true" />
+        <field name="Color" type="integer" />
+    </model>
+
+    <optionset id="HrSkills.SkillType" name="Skill Type">
+        <!-- Assuming SkillType is an option set. Add options as needed. -->
+        <option value="Technical" name="Technical" />
+        <option value="Soft" name="Soft" />
+        <!-- Add more options as required -->
+    </optionset>
 </buvi>

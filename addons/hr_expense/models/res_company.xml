@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="HrExpense.ResCompany" name="ResCompany" description="Company">
+        <field name="ExpenseJournalId" type="Account.AccountJournal" label="Default Expense Journal" 
+               help="The company's default journal used when an employee expense is created." />
+        <field name="CompanyExpenseAllowedPaymentMethodLineIds" type="Account.AccountPaymentMethodLine" 
+               label="Payment methods available for expenses paid by company" multiple="true" />
+    </model>
 </buvi>

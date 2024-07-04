@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <!-- No additional fields defined in the given Python code -->
+    </model>
+
+    <model id="Pos.PosSession" name="PosSession" description="Point of Sale Session">
+        <field name="StartAt" type="datetime" label="Start Time" />
+    </model>
+
+    <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order">
+        <field name="L10nFrHash" type="string" label="Inalterability Hash" readonly="true" />
+        <field name="L10nFrSecureSequenceNumber" type="integer" label="Inalterability No Gap Sequence #" readonly="true" />
+        <field name="L10nFrStringToHash" type="string" label="String to Hash" compute="ComputeStringToHash" readonly="true" />
+        <field name="DateOrder" type="datetime" label="Order Date" />
+        <field name="User" type="Core.User" label="User" />
+        <field name="Lines" type="Pos.PosOrderLine" label="Order Lines" multiple="true" />
+        <field name="Payments" type="Pos.PosPayment" label="Payments" multiple="true" />
+        <field name="Pricelist" type="Product.Pricelist" label="Pricelist" />
+        <field name="Partner" type="Res.Partner" label="Customer" />
+        <field name="Session" type="Pos.PosSession" label="Session" />
+        <field name="PosReference" type="string" label="Receipt Number" />
+        <field name="SaleJournal" type="Account.Journal" label="Sales Journal" />
+        <field name="FiscalPosition" type="Account.FiscalPosition" label="Fiscal Position" />
+        <field name="State" type="string" label="Status" />
+        <field name="Company" type="Res.Company" label="Company" />
+    </model>
+
+    <model id="Pos.PosOrderLine" name="PosOrderLine" description="Point of Sale Order Line">
+        <field name="Notice" type="string" label="Notice" />
+        <field name="Product" type="Product.Product" label="Product" />
+        <field name="Qty" type="decimal" label="Quantity" />
+        <field name="PriceUnit" type="decimal" label="Unit Price" />
+        <field name="Discount" type="decimal" label="Discount" />
+        <field name="Taxes" type="Account.Tax" label="Taxes" multiple="true" />
+        <field name="TaxesAfterFiscalPosition" type="Account.Tax" label="Taxes after Fiscal Position" multiple="true" />
+        <field name="Order" type="Pos.PosOrder" label="Order" />
+        <field name="Company" type="Res.Company" label="Company" />
+    </model>
 </buvi>

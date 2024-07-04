@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Hr.ResPartner" name="ResPartner" description="Extended Partner for HR Homeworking">
+        <field name="ImStatus" type="string" label="IM Status" />
+        <field name="UserIds" type="Core.User[]" label="Related Users" />
+    </model>
 </buvi>

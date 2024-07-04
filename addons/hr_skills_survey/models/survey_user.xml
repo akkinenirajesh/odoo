@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Survey.UserInput" name="SurveyUserInput" description="Survey User Input">
+        <field name="Survey" type="Survey.Survey" />
+        <field name="Partner" type="Core.Partner" />
+        <field name="ScoringSuccess" type="bool" />
+    </model>
+
+    <model id="Hr.Employee" name="Employee" description="Employee">
+        <field name="User" type="Core.User" />
+    </model>
+
+    <model id="Hr.ResumeLine" name="ResumeLine" description="Resume Line">
+        <field name="Employee" type="Hr.Employee" />
+        <field name="Name" type="string" />
+        <field name="DateStart" type="date" />
+        <field name="DateEnd" type="date" />
+        <field name="Description" type="string" />
+        <field name="LineType" type="Hr.ResumeLineType" />
+        <field name="DisplayType" type="string" />
+        <field name="Survey" type="Survey.Survey" />
+    </model>
+
+    <model id="Survey.Survey" name="Survey" description="Survey">
+        <field name="Title" type="string" />
+        <field name="Description" type="string" />
+        <field name="Certification" type="bool" />
+        <field name="CertificationValidityMonths" type="integer" />
+    </model>
 </buvi>

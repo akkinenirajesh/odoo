@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ImLivechat.ChatbotScriptAnswer" name="ChatbotScriptAnswer" description="Chatbot Script Answer">
+        <field name="Name" type="string" label="Answer" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="1" />
+        <field name="RedirectLink" type="string" label="Redirect Link"
+            help="The visitor will be redirected to this link upon clicking the option (note that the script will end if the link is external to the livechat website)." />
+        <field name="ScriptStep" type="ImLivechat.ChatbotScriptStep" label="Script Step" required="true" />
+        <field name="ChatbotScript" type="ImLivechat.ChatbotScript" label="Chatbot Script" related="ScriptStep.ChatbotScript" />
+    </model>
 </buvi>

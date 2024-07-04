@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Rating.Rating" name="Rating" description="Rating">
+        <field name="ResModel" type="string" label="Related Model" />
+        <field name="ResId" type="integer" label="Related Document ID" />
+        <field name="ResName" type="string" label="Resource Name" computed="true" />
+    </model>
 </buvi>

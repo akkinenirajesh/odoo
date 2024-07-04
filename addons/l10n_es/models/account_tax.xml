@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nEsExemptReason" type="Account.ExemptReasonSpain" label="Exempt Reason (Spain)" />
+        <field name="L10nEsType" type="Account.TaxTypeSpain" label="Tax Type (Spain)" default="Sujeto" />
+        <field name="L10nEsBienInversion" type="bool" label="Bien de Inversion" default="false" />
+    </model>
+
+    <optionset id="Account.ExemptReasonSpain" name="Exempt Reason (Spain)">
+        <option value="E1" name="Art. 20" />
+        <option value="E2" name="Art. 21" />
+        <option value="E3" name="Art. 22" />
+        <option value="E4" name="Art. 23 y 24" />
+        <option value="E5" name="Art. 25" />
+        <option value="E6" name="Otros" />
+    </optionset>
+
+    <optionset id="Account.TaxTypeSpain" name="Tax Type (Spain)">
+        <option value="Exento" name="Exento" />
+        <option value="Sujeto" name="Sujeto" />
+        <option value="SujetoAgricultura" name="Sujeto Agricultura" />
+        <option value="SujetoIsp" name="Sujeto ISP" />
+        <option value="NoSujeto" name="No Sujeto" />
+        <option value="NoSujetoLoc" name="No Sujeto por reglas de Localization" />
+        <option value="NoDeducible" name="No Deducible" />
+        <option value="Retencion" name="Retencion" />
+        <option value="Recargo" name="Recargo de Equivalencia" />
+        <option value="Dua" name="DUA" />
+        <option value="Ignore" name="Ignore even the base amount" />
+    </optionset>
 </buvi>

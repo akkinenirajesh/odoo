@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nInEdi.EWayBillType" name="EWayBillType" description="E-Waybill Document Type">
+        <field name="Name" type="string" label="Type" required="true" />
+        <field name="Code" type="string" label="Type Code" />
+        <field name="SubType" type="string" label="Sub-type" />
+        <field name="SubTypeCode" type="string" label="Sub-type Code" />
+        <field name="AllowedSupplyType" type="L10nInEdi.AllowedSupplyType" label="Allowed for supply type" />
+        <field name="Active" type="bool" default="true" label="Active" />
+    </model>
+
+    <optionset id="L10nInEdi.AllowedSupplyType" name="Allowed Supply Type">
+        <option value="Both" name="Incoming and Outgoing" />
+        <option value="Out" name="Outgoing" />
+        <option value="In" name="Incoming" />
+    </optionset>
 </buvi>

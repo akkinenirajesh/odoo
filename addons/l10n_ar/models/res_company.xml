@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.ResCompany" name="ResCompany" description="Company">
+        <field name="L10nArGrossIncomeNumber" type="string" label="Gross Income Number" 
+               help="This field is required in order to print the invoice report properly" />
+        <field name="L10nArGrossIncomeType" type="Account.GrossIncomeType" label="Gross Income" 
+               help="This field is required in order to print the invoice report properly" />
+        <field name="L10nArAfipResponsibilityType" type="Account.AfipResponsibilityType" label="AFIP Responsibility Type" />
+        <field name="L10nArCompanyRequiresVat" type="bool" label="Company Requires Vat?" />
+        <field name="L10nArAfipStartDate" type="date" label="Activities Start" />
+        <field name="TaxCalculationRoundingMethod" type="string" />
+        <field name="Country" type="Core.Country" />
+    </model>
+
+    <optionset id="Account.GrossIncomeType" name="Gross Income Type">
+        <!-- Add options based on the actual values used in Odoo -->
+    </optionset>
+
+    <optionset id="Account.AfipResponsibilityType" name="AFIP Responsibility Type">
+        <!-- Add options based on the actual values used in Odoo -->
+    </optionset>
 </buvi>

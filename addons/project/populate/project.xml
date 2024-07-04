@@ -1,3 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.ProjectStage" name="Project.ProjectStage" description="Project Stage">
+    <field name="Name" type="string" label="Stage Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Project Stage without removing it." />
+    <field name="Fold" type="bool" label="Fold" />
+  </model>
+
+  <model id="Project.ProjectProject" name="Project.ProjectProject" description="Project Project">
+    <field name="Name" type="string" label="Project Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Project Project without removing it." />
+    <field name="Company" type="Res.Company" label="Company" />
+    <field name="TypeIds" type="Project.ProjectStage" collection="true" />
+    <field name="Color" type="integer" label="Color Index" />
+  </model>
+
+  <model id="Project.ProjectTask" name="Project.ProjectTask" description="Project Task">
+    <field name="Name" type="string" label="Task Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Project Task without removing it." />
+    <field name="Color" type="integer" label="Color Index" />
+    <field name="State" type="Selection" selection="Project.TaskState" label="State" />
+    <field name="Project" type="Project.ProjectProject" label="Project" />
+    <field name="Stage" type="Project.ProjectStage" label="Stage" />
+    <field name="Partner" type="Res.Partner" label="Partner" />
+    <field name="Users" type="Res.Users" collection="true" />
+    <field name="Parent" type="Project.ProjectTask" label="Parent Task" />
+  </model>
+
+  <optionset id="Project.TaskState" name="Project Task State">
+    <option value="01_InProgress" name="In Progress" />
+    <option value="03_Approved" name="Approved" />
+    <option value="02_ChangesRequested" name="Changes Requested" />
+    <option value="1_Done" name="Done" />
+    <option value="1_Canceled" name="Canceled" />
+  </optionset>
 </buvi>

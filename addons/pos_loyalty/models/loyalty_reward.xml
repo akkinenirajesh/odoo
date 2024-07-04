@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosLoyalty.LoyaltyReward" name="PosLoyalty.LoyaltyReward" description="Loyalty Reward">
+    <field name="Description" type="string" label="Description" />
+    <field name="ProgramId" type="PosLoyalty.LoyaltyProgram" />
+    <field name="RewardType" type="PosLoyalty.RewardType" />
+    <field name="RequiredPoints" type="integer" label="Required Points" />
+    <field name="ClearWallet" type="bool" label="Clear Wallet" />
+    <field name="CurrencyId" type="ResCurrency" />
+    <field name="Discount" type="float" label="Discount" />
+    <field name="DiscountMode" type="PosLoyalty.DiscountMode" />
+    <field name="DiscountApplicability" type="PosLoyalty.DiscountApplicability" />
+    <field name="AllDiscountProductIds" type="ProductProduct" collection="true" label="All Discount Products" />
+    <field name="IsGlobalDiscount" type="bool" label="Is Global Discount" />
+    <field name="DiscountMaxAmount" type="float" label="Discount Max Amount" />
+    <field name="DiscountLineProductId" type="ProductProduct" label="Discount Line Product" />
+    <field name="RewardProductId" type="ProductProduct" label="Reward Product" />
+    <field name="MultiProduct" type="bool" label="Multi Product" />
+    <field name="RewardProductIds" type="ProductProduct" collection="true" label="Reward Products" />
+    <field name="RewardProductQty" type="float" label="Reward Product Qty" />
+    <field name="RewardProductUomId" type="ProductUom" label="Reward Product Uom" />
+    <field name="RewardProductDomain" type="string" label="Reward Product Domain" />
+  </model>
+
+  <optionset id="PosLoyalty.RewardType" name="Reward Type">
+    <option value="discount" name="Discount" />
+    <option value="product" name="Product" />
+  </optionset>
+
+  <optionset id="PosLoyalty.DiscountMode" name="Discount Mode">
+    <option value="fixed" name="Fixed" />
+    <option value="percentage" name="Percentage" />
+  </optionset>
+
+  <optionset id="PosLoyalty.DiscountApplicability" name="Discount Applicability">
+    <option value="global" name="Global" />
+    <option value="product" name="Product" />
+  </optionset>
 </buvi>

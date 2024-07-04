@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.IrActionsReport" name="IrActionsReport" description="Ir Actions Report" inherit="base.IrActionsReport">
+    <field name="ReportRef" type="many2one" relation="ir.actions.report" label="Report" />
+  </model>
 </buvi>

@@ -1,5 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="SaleProject.ProductTemplate" name="SaleProject.ProductTemplate" description="Product Template">
+        <field name="ServiceTracking" type="SaleProject.ServiceTracking" />
+        <field name="ProjectId" type="Project.Project" label="Project" collection="true" />
+        <field name="ProjectTemplateId" type="Project.Project" label="Project Template" collection="true" />
+        <field name="ServicePolicy" type="SaleProject.ServiceInvoicingPolicy" label="Service Invoicing Policy" compute="ComputeServicePolicy" inverse="InverseServicePolicy" />
+        <field name="ServiceType" type="SaleProject.ServiceType" />
+    </model>
+
+    <optionset id="SaleProject.ServiceTracking" name="Service Tracking">
+        <option value="TaskGlobalProject" name="Task" />
+        <option value="TaskInProject" name="Project & Task" />
+        <option value="ProjectOnly" name="Project" />
+        <option value="No" name="None" />
+    </optionset>
+
+    <optionset id="SaleProject.ServiceInvoicingPolicy" name="Service Invoicing Policy">
+        <option value="OrderedPrepaid" name="Prepaid/Fixed Price" />
+        <option value="DeliveredManual" name="Based on Delivered Quantity (Manual)" />
+        <option value="DeliveredMilestones" name="Based on Milestones" />
+    </optionset>
+
+    <optionset id="SaleProject.ServiceType" name="Service Type">
+        <option value="Milestones" name="Project Milestones" />
+    </optionset>
 </buvi>

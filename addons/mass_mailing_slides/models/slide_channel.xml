@@ -1,3 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Slide.SlideChannel" name="Slide.SlideChannel" description="Slide Channel">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Description" type="text" label="Description" />
+        <field name="Public" type="bool" label="Public" default="true" help="If this is a public channel, anyone can join it and access its contents. Otherwise, only invited users can join the channel." />
+        <field name="PublicDescription" type="text" label="Public Description" help="The public description of the channel, which is shown to anyone who has access to it." />
+        <field name="Visibility" type="Selection" label="Visibility" default="portal" selection="[('public', 'Public'), ('portal', 'Portal'), ('private', 'Private')]" help="The visibility of the channel." />
+        <field name="CategoryIds" type="Slide.SlideChannelCategory" collection="true" label="Categories" />
+        <field name="SlideIds" type="Slide.Slide" collection="true" label="Slides" />
+        <field name="PartnerIds" type="Res.Partner" collection="true" label="Attendees" />
+        <field name="TeacherIds" type="Res.Partner" collection="true" label="Teachers" />
+        <field name="CourseIds" type="Slide.Course" collection="true" label="Courses" />
+        <field name="CoverImage" type="Image" label="Cover Image" />
+        <field name="StartDate" type="date" label="Start Date" help="Start date of the channel." />
+        <field name="EndDate" type="date" label="End Date" help="End date of the channel." />
+        <field name="TimeZone" type="Selection" label="Time Zone" selection="[('UTC', 'UTC'), ('GMT', 'GMT'), ('Europe/Brussels', 'Brussels'), ('America/New_York', 'New York')]" help="The time zone of the channel." />
+        <field name="ShowForum" type="bool" label="Show Forum" default="true" help="Show the forum on the channel." />
+        <field name="ShowSyllabus" type="bool" label="Show Syllabus" default="true" help="Show the syllabus on the channel." />
+        <field name="ShowCertificates" type="bool" label="Show Certificates" default="true" help="Show the certificates on the channel." />
+        <field name="ShowSlides" type="bool" label="Show Slides" default="true" help="Show the slides on the channel." />
+        <field name="ShowAssessments" type="bool" label="Show Assessments" default="true" help="Show the assessments on the channel." />
+        <field name="ShowChat" type="bool" label="Show Chat" default="true" help="Show the chat on the channel." />
+        <field name="ShowSocial" type="bool" label="Show Social" default="true" help="Show the social on the channel." />
+        <field name="ShowResources" type="bool" label="Show Resources" default="true" help="Show the resources on the channel." />
+        <field name="ShowComments" type="bool" label="Show Comments" default="true" help="Show the comments on the channel." />
+        <field name="ShowRatings" type="bool" label="Show Ratings" default="true" help="Show the ratings on the channel." />
+        <field name="ShowQAndA" type="bool" label="Show Q&amp;A" default="true" help="Show the Q&amp;A on the channel." />
+        <field name="ShowQuizzes" type="bool" label="Show Quizzes" default="true" help="Show the quizzes on the channel." />
+        <field name="ShowDiscussions" type="bool" label="Show Discussions" default="true" help="Show the discussions on the channel." />
+        <field name="ShowFeedback" type="bool" label="Show Feedback" default="true" help="Show the feedback on the channel." />
+        <field name="ShowEvents" type="bool" label="Show Events" default="true" help="Show the events on the channel." />
+        <field name="ShowCalendar" type="bool" label="Show Calendar" default="true" help="Show the calendar on the channel." />
+        <field name="ShowAssignments" type="bool" label="Show Assignments" default="true" help="Show the assignments on the channel." />
+        <field name="ShowGoals" type="bool" label="Show Goals" default="true" help="Show the goals on the channel." />
+        <field name="ShowActivities" type="bool" label="Show Activities" default="true" help="Show the activities on the channel." />
+        <field name="ShowProgress" type="bool" label="Show Progress" default="true" help="Show the progress on the channel." />
+        <field name="ShowReports" type="bool" label="Show Reports" default="true" help="Show the reports on the channel." />
+        <field name="ShowAnalytics" type="bool" label="Show Analytics" default="true" help="Show the analytics on the channel." />
+        <field name="ShowDashboard" type="bool" label="Show Dashboard" default="true" help="Show the dashboard on the channel." />
+        <field name="ShowHelp" type="bool" label="Show Help" default="true" help="Show the help on the channel." />
+        <field name="ShowSettings" type="bool" label="Show Settings" default="true" help="Show the settings on the channel." />
+        <field name="ShowNotifications" type="bool" label="Show Notifications" default="true" help="Show the notifications on the channel." />
+        <field name="ShowMessages" type="bool" label="Show Messages" default="true" help="Show the messages on the channel." />
+        <field name="ShowUsers" type="bool" label="Show Users" default="true" help="Show the users on the channel." />
+        <field name="ShowGroups" type="bool" label="Show Groups" default="true" help="Show the groups on the channel." />
+        <field name="ShowRoles" type="bool" label="Show Roles" default="true" help="Show the roles on the channel." />
+        <field name="ShowPermissions" type="bool" label="Show Permissions" default="true" help="Show the permissions on the channel." />
+        <field name="ShowPolicies" type="bool" label="Show Policies" default="true" help="Show the policies on the channel." />
+        <field name="ShowCompliance" type="bool" label="Show Compliance" default="true" help="Show the compliance on the channel." />
+        <field name="ShowSecurity" type="bool" label="Show Security" default="true" help="Show the security on the channel." />
+        <field name="ShowPrivacy" type="bool" label="Show Privacy" default="true" help="Show the privacy on the channel." />
+        <field name="ShowLegal" type="bool" label="Show Legal" default="true" help="Show the legal on the channel." />
+        <field name="ShowAbout" type="bool" label="Show About" default="true" help="Show the about on the channel." />
+        <field name="ShowContact" type="bool" label="Show Contact" default="true" help="Show the contact on the channel." />
+        <field name="ShowSupport" type="bool" label="Show Support" default="true" help="Show the support on the channel." />
+        <field name="ShowFeedback" type="bool" label="Show Feedback" default="true" help="Show the feedback on the channel." />
+    </model>
+    <optionset id="Slide.SlideChannelVisibility" name="Slide Channel Visibility">
+        <option value="public" name="Public" />
+        <option value="portal" name="Portal" />
+        <option value="private" name="Private" />
+    </optionset>
 </buvi>

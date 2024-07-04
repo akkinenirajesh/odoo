@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.PaymentTransaction" name="Sale.PaymentTransaction" description="Payment Transaction">
+    <field name="SaleOrderIds" type="Sale.SaleOrder" collection="true" label="Sales Orders" readonly="true" />
+    <field name="SaleOrderIdsNbr" type="integer" label="# of Sales Orders" readonly="true" />
+  </model>
+
+  <optionset id="Sale.SaleOrderState" name="Sale Order State">
+    <option value="Draft" name="Draft" />
+    <option value="Sent" name="Sent" />
+    <option value="Sale" name="Sale" />
+  </optionset>
 </buvi>

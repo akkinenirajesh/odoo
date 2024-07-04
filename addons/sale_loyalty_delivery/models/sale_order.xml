@@ -1,3 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="AmountTotalWithoutDelivery" type="float" label="Amount Total Without Delivery" compute="ComputeAmountTotalWithoutDelivery" readonly="true" />
+    <field name="OrderLines" type="Sale.SaleOrderLine" collection="true" />
+    <field name="Company" type="Res.Company" required="true" />
+  </model>
+
+  <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+    <field name="Coupon" type="Sale.CouponProgram" />
+    <field name="Reward" type="Sale.Reward" />
+    <field name="IsDelivery" type="bool" />
+    <field name="PriceUnit" type="float" />
+    <field name="Sequence" type="integer" />
+    <field name="IsRewardLine" type="bool" />
+    <field name="Product" type="Product.Product" required="true" />
+    <field name="ProductUom" type="Product.Uom" required="true" />
+    <field name="Taxes" type="Account.Tax" collection="true" />
+  </model>
+
+  <model id="Sale.CouponProgram" name="Sale.CouponProgram" description="Coupon Program">
+    <field name="ProgramType" type="string" />
+  </model>
+
+  <model id="Sale.Reward" name="Sale.Reward" description="Reward">
+    <field name="RewardType" type="string" />
+    <field name="DiscountLineProduct" type="Product.Product" />
+    <field name="DiscountMaxAmount" type="float" />
+    <field name="RequiredPoints" type="float" />
+    <field name="ClearWallet" type="bool" />
+    <field name="Description" type="string" />
+  </model>
+
+  <model id="Res.Company" name="Res.Company" description="Company">
+    <field name="FiscalPosition" type="Account.FiscalPosition" />
+  </model>
+
+  <model id="Account.FiscalPosition" name="Account.FiscalPosition" description="Fiscal Position">
+    <field name="Taxes" type="Account.Tax" collection="true" />
+  </model>
+
+  <model id="Account.Tax" name="Account.Tax" description="Tax">
+    <field name="Company" type="Res.Company" />
+  </model>
+
+  <model id="Product.Product" name="Product.Product" description="Product">
+    <field name="Uom" type="Product.Uom" />
+    <field name="Taxes" type="Account.Tax" collection="true" />
+  </model>
+
+  <model id="Product.Uom" name="Product.Uom" description="Uom" />
 </buvi>

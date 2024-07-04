@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.DeliveryCarrier" name="Stock.DeliveryCarrier" description="Delivery Carrier">
+    <field name="InvoicePolicy" type="Selection" label="Invoice Policy" selection="Stock.DeliveryCarrierInvoicePolicy" help="Estimated Cost: the customer will be invoiced the estimated cost of the shipping.&#x20;
+Real Cost: the customer will be invoiced the real cost of the shipping, the cost of the
+shipping will be updated on the SO after the delivery." />
+    <field name="RouteIds" type="Many2many" label="Routes" collection="true" relation="Stock.Route" relation_field="RouteId" target_field="ShippingId" domain="[('ShippingSelectable', '=', True)]" />
+    <field name="CanGenerateReturn" type="bool" label="Can Generate Return" />
+    <field name="GetReturnLabelFromPortal" type="bool" label="Get Return Label From Portal" />
+    <field name="DeliveryType" type="string" label="Delivery Type" />
+    <field name="TrackingUrl" type="string" label="Tracking URL" />
+    <field name="FixedPrice" type="float" label="Fixed Price" />
+    <field name="TrackingNumber" type="string" label="Tracking Number" />
+  </model>
+
+  <optionset id="Stock.DeliveryCarrierInvoicePolicy" name="Delivery Carrier Invoice Policy">
+    <option value="estimated" name="Estimated Cost" />
+    <option value="real" name="Real Cost" />
+  </optionset>
 </buvi>

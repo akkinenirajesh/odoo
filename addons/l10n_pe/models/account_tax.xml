@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nPeEdiTaxCode" type="selection" label="Code" help="Peru: SUNAT tax code">
+            <option value="1000" name="IGV - General Sales Tax" />
+            <option value="1016" name="IVAP - Tax on Sale Paddy Rice" />
+            <option value="2000" name="ISC - Selective Excise Tax" />
+            <option value="7152" name="ICBPER - Plastic bag tax" />
+            <option value="9995" name="EXP - Exportation" />
+            <option value="9996" name="GRA - Free" />
+            <option value="9997" name="EXO - Exonerated" />
+            <option value="9998" name="INA - Unaffected" />
+            <option value="9999" name="OTHERS - Other taxes" />
+        </field>
+        <field name="L10nPeEdiUneceCategory" type="selection" label="UNECE Code" help="Peru: Follow the UN/ECE 5305 standard from the United Nations Economic Commission for Europe for more information http://www.unece.org/trade/untdid/d08a/tred/tred5305.html">
+            <option value="E" name="Exempt from tax" />
+            <option value="G" name="Free export item, tax not charged" />
+            <option value="O" name="Services outside scope of tax" />
+            <option value="S" name="Standard rate" />
+            <option value="Z" name="Zero rated goods" />
+        </field>
+        <field name="L10nPeEdiIscType" type="selection" label="ISC Type" help="Used in Selective Consumption Tax to indicate the type of calculation for the ISC.">
+            <option value="01" name="System to value" />
+            <option value="02" name="Application of the Fixed Amount" />
+            <option value="03" name="Retail Price System" />
+        </field>
+    </model>
 </buvi>

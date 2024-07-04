@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.DecimalPrecision" name="DecimalPrecision" description="Decimal Precision">
+    <field name="Name" type="string" label="Usage" required="true" />
+    <field name="Digits" type="integer" label="Digits" required="true" default="2" />
+    <unique>
+      <field name="Name" />
+      <message>Only one value can be defined for each given usage!</message>
+    </unique>
+  </model>
 </buvi>

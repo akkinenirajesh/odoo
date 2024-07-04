@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Payment Method">
+        <field name="UsePaymentTerminal" type="string" label="Payment Terminal" />
+        <field name="Stripe" type="bool" label="Stripe" />
+    </model>
 </buvi>

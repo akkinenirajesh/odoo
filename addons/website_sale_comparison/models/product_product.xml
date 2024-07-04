@@ -1,3 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleComparison.ProductProduct" name="WebsiteSaleComparison.ProductProduct" description="Product Product">
+        <field name="Name" type="string" label="Name" />
+        <field name="Active" type="bool" default="true"
+            help="If unchecked, it will allow you to hide the product from the website without removing it." />
+        <field name="ListPrice" type="float" label="Sale Price" />
+        <field name="StandardPrice" type="float" label="Standard Price" />
+        <field name="DefaultCode" type="string" label="Internal Reference" />
+        <field name="Type" type="Selection" label="Product Type"
+            selection="[('product', 'Storable Product'), ('consu', 'Consumable'), ('service', 'Service'), ('digital', 'Digital Content')]" />
+        <field name="CategId" type="Core.ProductCategory" label="Category" collection="true" />
+        <field name="ProductTemplateId" type="WebsiteSaleComparison.ProductTemplate" label="Product Template" />
+        <field name="AttributeLineIds" type="WebsiteSaleComparison.ProductAttributeLine" label="Product Attribute Lines" collection="true" />
+        <field name="Barcode" type="string" label="Barcode" />
+        <field name="Weight" type="float" label="Weight" />
+        <field name="Volume" type="float" label="Volume" />
+        <field name="ProductVariantCount" type="integer" label="Variant Count" />
+    </model>
+
+    <model id="WebsiteSaleComparison.ProductTemplate" name="WebsiteSaleComparison.ProductTemplate" description="Product Template">
+        <field name="Name" type="string" label="Product Name" />
+        <field name="Type" type="Selection" label="Product Type"
+            selection="[('product', 'Storable Product'), ('consu', 'Consumable'), ('service', 'Service'), ('digital', 'Digital Content')]" />
+        <field name="CategId" type="Core.ProductCategory" label="Category" collection="true" />
+        <field name="SaleOk" type="bool" label="Can be Sold" />
+        <field name="DescriptionSale" type="html" label="Sale Description" />
+        <field name="Description" type="html" label="Description" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Image" type="binary" label="Image" />
+        <field name="ImageMedium" type="binary" label="Medium Image" />
+        <field name="ImageSmall" type="binary" label="Small Image" />
+        <field name="ValidProductTemplateAttributeLineIds" type="WebsiteSaleComparison.ProductAttributeLine" label="Product Attribute Lines" collection="true" />
+        <field name="WebsitePublished" type="bool" label="Published on Website" />
+        <field name="WebsiteUrl" type="string" label="Website URL" />
+        <field name="AttributeIds" type="WebsiteSaleComparison.ProductAttribute" label="Attributes" collection="true" />
+    </model>
+
+    <model id="WebsiteSaleComparison.ProductAttribute" name="WebsiteSaleComparison.ProductAttribute" description="Product Attribute">
+        <field name="Name" type="string" label="Name" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="CreateVariant" type="bool" label="Create Variants" />
+        <field name="CategoryID" type="WebsiteSaleComparison.ProductAttributeCategory" label="Category" />
+        <field name="ValueIds" type="WebsiteSaleComparison.ProductAttributeValue" label="Values" collection="true" />
+    </model>
+
+    <model id="WebsiteSaleComparison.ProductAttributeValue" name="WebsiteSaleComparison.ProductAttributeValue" description="Product Attribute Value">
+        <field name="Name" type="string" label="Name" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="HtmlColor" type="string" label="HTML Color" />
+        <field name="AttributeId" type="WebsiteSaleComparison.ProductAttribute" label="Attribute" />
+    </model>
+
+    <model id="WebsiteSaleComparison.ProductAttributeCategory" name="WebsiteSaleComparison.ProductAttributeCategory" description="Product Attribute Category">
+        <field name="Name" type="string" label="Name" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="AttributeIds" type="WebsiteSaleComparison.ProductAttribute" label="Attributes" collection="true" />
+    </model>
+
+    <model id="WebsiteSaleComparison.ProductAttributeLine" name="WebsiteSaleComparison.ProductAttributeLine" description="Product Attribute Line">
+        <field name="AttributeId" type="WebsiteSaleComparison.ProductAttribute" label="Attribute" />
+        <field name="ValueIds" type="WebsiteSaleComparison.ProductAttributeValue" label="Values" collection="true" />
+        <field name="ProductTmplId" type="WebsiteSaleComparison.ProductTemplate" label="Product Template" />
+        <field name="ProductVariantId" type="WebsiteSaleComparison.ProductProduct" label="Product Variant" />
+    </model>
+
 </buvi>

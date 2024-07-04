@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="ir.property" name="Ir.Property" track_created="true" track_update="true">
-    <field name="Fields" label="Field" type="Ir.ModelFields" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Company" label="Company" type="Res.Company" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="Name" label="Name" type="string" indexed="true" copied="true"/>
-    <field name="Res" label="Resource" type="string" indexed="true" copied="true"/>
-    <field name="Type" label="Type" type="Ir.CompanyPropertyType" required="true" indexed="true" copied="true"/>
-    <field name="ValueBinary" label="Value Binary" type="binary" copied="true"/>
-    <field name="ValueDatetime" label="Value Datetime" type="datetime" copied="true"/>
-    <field name="ValueFloat" label="Value Float" type="float" copied="true"/>
-    <field name="ValueInteger" label="Value Integer" type="integer" copied="true"/>
-    <field name="ValueReference" label="Value Reference" type="string" copied="true"/>
-    <field name="ValueText" label="Value Text" type="text" copied="true"/>
+  <model id="Base.IrRule" name="IrRule" description="Record Rule">
+    <field name="Name" type="string" label="Name" index="true" />
+    <field name="Active" type="bool" default="true" 
+        help="If you uncheck the active field, it will disable the record rule without deleting it (if you delete a native record rule, it may be re-created when you reload the module)." />
+    <field name="Model" type="Base.IrModel" label="Model" required="true" collection="true" />
+    <field name="Groups" type="Res.Groups" label="Groups" collection="true" />
+    <field name="DomainForce" type="text" label="Domain" />
+    <field name="PermRead" type="bool" label="Read" default="true" />
+    <field name="PermWrite" type="bool" label="Write" default="true" />
+    <field name="PermCreate" type="bool" label="Create" default="true" />
+    <field name="PermUnlink" type="bool" label="Delete" default="true" />
+    <constraint name="no_access_rights" 
+                message="Rule must have at least one checked access right!"
+                expr="PermRead != False or PermWrite != False or PermCreate != False or PermUnlink != False" />
   </model>
 </buvi>

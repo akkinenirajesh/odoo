@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Privacy.PrivacyLog" name="Privacy.PrivacyLog" description="Privacy Log">
+    <field name="Date" type="datetime" label="Date" required="true" default="fields.Datetime.Now" />
+    <field name="AnonymizedName" type="string" label="Anonymized Name" required="true" />
+    <field name="AnonymizedEmail" type="string" label="Anonymized Email" required="true" />
+    <field name="UserId" type="res.users" label="Handled By" required="true" relation="one2many" collection="true" default="env.User" />
+    <field name="ExecutionDetails" type="text" />
+    <field name="RecordsDescription" type="text" label="Found Records" />
+    <field name="AdditionalNote" type="text" />
+  </model>
 </buvi>

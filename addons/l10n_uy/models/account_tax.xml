@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+        <field name="L10nUyTaxCategory" type="selection" label="Tax Category"
+            help="UY: Use to group the transactions in the Financial Reports required by DGI">
+            <option value="vat" name="VAT" />
+        </field>
+    </model>
 </buvi>

@@ -1,3 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MassMailing" name="MassMailing" description="Mass Mailing">
+        <field name="Active" type="bool" default="true" tracking="true" />
+        <field name="Subject" type="string" label="Subject" required="true" translate="false" />
+        <field name="Preview" type="string" label="Preview" translate="false"
+            render_engine="inline_template" render_options="{'post_process': True}"
+            help="Catchy preview sentence that encourages recipients to open this email.\nIn most inboxes, this is displayed next to the subject.\nKeep it empty if you prefer the first characters of your email content to appear instead." />
+        <field name="EmailFrom" type="string" label="Send From" readonly="false" required="true" store="true" precompute="true" />
+        <field name="Favorite" type="bool" label="Favorite" copy="false" tracking="true" />
+        <field name="FavoriteDate" type="datetime" label="Favorite Date" store="true" copy="false"
+            help="When this mailing was added in the favorites" />
+        <field name="SentDate" type="datetime" label="Sent Date" copy="false" />
+        <field name="ScheduleType" type="selection" label="Schedule"
+            options="[('now', 'Send now'), ('scheduled', 'Send on')]" default="now"
+            readonly="false" required="true" />
+        <field name="ScheduleDate" type="datetime" label="Scheduled for" readonly="false" store="true"
+            copy="true" tracking="true" />
+        <field name="CalendarDate" type="datetime" label="Calendar Date" store="true" copy="false"
+            help="Date at which the mailing was or will be sent." />
+        <field name="BodyArch" type="html" label="Body" translate="false" sanitize="false" />
+        <field name="BodyHtml" type="html" label="Body converted to be sent by mail" sanitize="false"
+            render_engine="qweb" render_options="{'post_process': True}" />
+        <field name="IsBodyEmpty" type="bool" label="Is Body Empty" />
+        <field name="Attachments" type="many2many" collection="true" label="Attachments" related="AttachmentIds" />
+        <field name="KeepArchives" type="bool" label="Keep Archives" />
+        <field name="CampaignId" type="many2one" label="UTM Campaign" index="true" related="CampaignId" />
+        <field name="MediumId" type="many2one" label="Medium" readonly="false" store="true"
+            ondelete="restrict"
+            help="UTM Medium: delivery method (email, sms, ...)" />
+        <field name="State" type="selection" label="Status"
+            options="[('draft', 'Draft'), ('in_queue', 'In Queue'), ('sending', 'Sending'), ('done', 'Sent')]"
+            default="draft" required="true" copy="false" tracking="true"
+            group_expand="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="UserId" type="many2one" label="Responsible" tracking="true" />
+        <field name="MailingType" type="selection" label="Mailing Type"
+            options="[('mail', 'Email')]" default="mail" required="true" />
+        <field name="MailingTypeDescription" type="string" label="Mailing Type Description" />
+        <field name="ReplyToMode" type="selection" label="Reply-To Mode" readonly="false" store="true"
+            options="[('update', 'Recipient Followers'), ('new', 'Specified Email Address')]"
+            help="Thread: replies go to target document. Email: replies are routed to a given email." />
+        <field name="ReplyTo" type="string" label="Reply To" readonly="false" store="true"
+            help="Preferred Reply-To Address" />
+        <field name="MailingModelReal" type="string" label="Recipients Real Model" />
+        <field name="MailingModelId" type="many2one" label="Recipients Model" ondelete="cascade" required="true"
+            domain="[('is_mailing_enabled', '=', True)]" />
+        <field name="MailingModelName" type="string" label="Recipients Model Name" related="MailingModelId.model" readonly="true" related_sudo="true" />
+        <field name="MailingOnMailingList" type="bool" label="Based on Mailing Lists" />
+        <field name="MailingDomain" type="string" label="Domain" readonly="false" store="true" />
+        <field name="MailServerAvailable" type="bool" label="Mail Server Available"
+            help="Technical field used to know if the user has activated the outgoing mail server option in the settings" />
+        <field name="MailServerId" type="many2one" label="Mail Server"
+            help="Use a specific mail server in priority. Otherwise Odoo relies on the first outgoing mail server available (based on their sequencing) as it does for normal mails." />
+        <field name="ContactListIds" type="many2many" collection="true" label="Mailing Lists" />
+        <field name="MailingFilterId" type="many2one" label="Favorite Filter" readonly="false" store="true"
+            domain="[('MailingModelName', '=', MailingModelName)]" />
+        <field name="MailingFilterDomain" type="string" label="Favorite filter domain" related="MailingFilterId.mailing_domain" />
+        <field name="MailingFilterCount" type="integer" label="# Favorite Filters" />
+        <field name="AbTestingCompleted" type="bool" label="A/B Testing Completed" related="CampaignId.ab_testing_completed" />
+        <field name="AbTestingDescription" type="html" label="A/B Testing Description" />
+        <field name="AbTestingEnabled" type="bool" label="Allow A/B Testing" default="false"
+            help="If checked, recipients will be mailed only once for the whole campaign. This lets you send different mailings to randomly selected recipients and test the effectiveness of the mailings, without causing duplicate messages." />
+        <field name="AbTestingIsWinnerMailing" type="bool" label="Is the Winner of its Campaign" />
+        <field name="AbTestingMailingsCount" type="integer" label="A/B Testing Mailings Count" related="CampaignId.ab_testing_mailings_count" />
+        <field name="AbTestingPc" type="integer" label="A/B Testing percentage" default="10"
+            help="Percentage of the contacts that will be mailed. Recipients will be chosen randomly." />
+        <field name="AbTestingScheduleDatetime" type="datetime" label="A/B Testing Schedule Datetime" readonly="false"
+            default="lambda self: fields.Datetime.now() + relativedelta(days=1)" />
+        <field name="AbTestingWinnerSelection" type="selection" label="A/B Testing Winner Selection" readonly="false"
+            options="[('opened_ratio', 'Open Rate'), ('clicked_ratio', 'Click Rate'), ('replied_ratio', 'Replied Rate'), ('manual', 'Manual Selection')]"
+            default="opened_ratio" copy="true" />
+        <field name="IsAbTestSent" type="bool" label="Is AB Test Sent" />
+        <field name="KpiMailRequired" type="bool" label="KPI mail required" copy="false" />
+        <field name="MailingTraceIds" type="one2many" collection="true" label="Emails Statistics" />
+        <field name="Total" type="integer" label="Total" />
+        <field name="Scheduled" type="integer" label="Scheduled" />
+        <field name="Expected" type="integer" label="Expected" />
+        <field name="Canceled" type="integer" label="Canceled" />
+        <field name="Sent" type="integer" label="Sent" />
+        <field name="Process" type="integer" label="Process" />
+        <field name="Pending" type="integer" label="Pending" />
+        <field name="Delivered" type="integer" label="Delivered" />
+        <field name="Opened" type="integer" label="Opened" />
+        <field name="Clicked" type="integer" label="Clicked" />
+        <field name="Replied" type="integer" label="Replied" />
+        <field name="Bounced" type="integer" label="Bounced" />
+        <field name="Failed" type="integer" label="Failed" />
+        <field name="ReceivedRatio" type="float" label="Received Ratio" />
+        <field name="OpenedRatio" type="float" label="Opened Ratio" />
+        <field name="RepliedRatio" type="float" label="Replied Ratio" />
+        <field name="BouncedRatio" type="float" label="Bounced Ratio" />
+        <field name="ClicksRatio" type="float" label="Number of Clicks" />
+        <field name="LinkTrackersCount" type="integer" label="Link Trackers Count" />
+        <field name="NextDeparture" type="datetime" label="Scheduled date" />
+        <field name="NextDepartureIsPast" type="bool" label="Next Departure Is Past" />
+        <field name="WarningMessage" type="string" label="Warning Message"
+            help="Warning message displayed in the mailing form view" />
+    </model>
+
+    <optionset id="MassMailing.AbTestingWinnerSelection" name="A/B Testing Winner Selection">
+        <option value="opened_ratio" name="Open Rate" />
+        <option value="clicked_ratio" name="Click Rate" />
+        <option value="replied_ratio" name="Replied Rate" />
+        <option value="manual" name="Manual Selection" />
+    </optionset>
 </buvi>

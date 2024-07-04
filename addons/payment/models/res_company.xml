@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.ResCompany" name="ResCompany" description="Res Company">
+    <field name="PaymentOnboardingPaymentMethod" type="Selection" label="Selected onboarding payment method" />
+    <field name="ChartOfAccounts" type="Account.ChartOfAccounts" relation="one2many" />
+  </model>
+
+  <optionset id="Payment.PaymentOnboardingPaymentMethod" name="Payment Onboarding Payment Method">
+    <option value="paypal" name="PayPal" />
+    <option value="stripe" name="Stripe" />
+    <option value="manual" name="Manual" />
+    <option value="other" name="Other" />
+  </optionset>
 </buvi>

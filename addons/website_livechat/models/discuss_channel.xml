@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.DiscussChannel" name="DiscussChannel" description="Discuss Channel">
+        <field name="LivechatVisitor" type="Website.Visitor" label="Visitor" required="true" />
+        <field name="LivechatActive" type="bool" />
+        <field name="MessageIds" type="mail.message" collection="true" />
+        <field name="CreateUid" type="res.users" />
+        <field name="LivechatOperator" type="res.users" />
+    </model>
 </buvi>

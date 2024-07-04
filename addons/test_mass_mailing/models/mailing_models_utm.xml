@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Utm.UtmTestSourceMixin" name="UtmTestSourceMixin" description="UTM Source Mixin Test Model">
+    <field name="Name" type="string" inherited="true" />
+    <field name="Title" type="string" />
+  </model>
+  <model id="Utm.UtmTestSourceMixinOther" name="UtmTestSourceMixinOther" description="UTM Source Mixin Test Model (another)">
+    <field name="Name" type="string" inherited="true" />
+    <field name="Title" type="string" />
+  </model>
 </buvi>

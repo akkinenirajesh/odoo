@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Acquirer" required="true" />
+    <field name="SipsMerchantId" type="string" label="Merchant ID" help="The ID solely used to identify the merchant account with Sips" required_if_provider="sips" />
+    <field name="SipsSecret" type="string" label="SIPS Secret Key" size="64" required_if_provider="sips" groups="base.group_system" />
+    <field name="SipsKeyVersion" type="integer" label="Secret Key Version" required_if_provider="sips" default="2" />
+    <field name="SipsTestUrl" type="string" label="Test URL" required_if_provider="sips" default="https://payment-webinit.simu.sips-services.com/paymentInit" />
+    <field name="SipsProdUrl" type="string" label="Production URL" required_if_provider="sips" default="https://payment-webinit.sips-services.com/paymentInit" />
+    <field name="SipsVersion" type="string" label="Interface Version" required_if_provider="sips" default="HP_2.31" />
+  </model>
+  <optionset id="Payment.PaymentProviderCode" name="Payment Provider Code">
+    <option value="sips" name="Sips" />
+  </optionset>
 </buvi>

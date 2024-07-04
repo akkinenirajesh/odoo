@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Web.IrModel" name="Web.IrModel" description="Model">
+    <field name="Name" type="string" label="Model Name" required="true" />
+    <field name="Model" type="string" label="Model" required="true" />
+    <field name="Info" type="text" label="Info" />
+    <field name="State" type="selection" selection="Web.ModelStates" label="State" default="draft" />
+    <field name="AccessRights" type="selection" selection="Web.ModelAccessRights" label="Access Rights" default="read" />
+    <field name="Module" type="string" label="Module" />
+    <field name="FieldSecurity" type="bool" label="Field Security" />
+    <field name="Inheritance" type="selection" selection="Web.ModelInheritance" label="Inheritance" />
+    <field name="IsTransient" type="bool" label="Transient" />
+    <field name="IsAbstract" type="bool" label="Abstract" />
+    <field name="Description" type="text" label="Description" />
+    <field name="Order" type="string" label="Order" />
+    <field name="RecName" type="string" label="Record Name" />
+    <field name="ParentName" type="string" label="Parent Name" />
+    <field name="Icon" type="string" label="Icon" />
+    <field name="Custom" type="bool" label="Custom" />
+    <field name="CreateDate" type="datetime" label="Created On" />
+    <field name="CreateUid" type="Core.ResUsers" label="Created By" />
+    <field name="WriteDate" type="datetime" label="Last Updated On" />
+    <field name="WriteUid" type="Core.ResUsers" label="Last Updated By" />
+  </model>
+
+  <optionset id="Web.ModelStates" name="Model States">
+    <option value="draft" name="Draft" />
+    <option value="manual" name="Manual" />
+    <option value="automatic" name="Automatic" />
+  </optionset>
+
+  <optionset id="Web.ModelAccessRights" name="Model Access Rights">
+    <option value="read" name="Read" />
+    <option value="write" name="Write" />
+    <option value="create" name="Create" />
+    <option value="delete" name="Delete" />
+    <option value="full" name="Full" />
+  </optionset>
+
+  <optionset id="Web.ModelInheritance" name="Model Inheritance">
+    <option value="none" name="None" />
+    <option value="simple" name="Simple" />
+    <option value="complex" name="Complex" />
+  </optionset>
 </buvi>

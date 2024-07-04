@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteMembership.MembershipLine" name="MembershipLine" description="Membership Line">
+        <field name="Partner" type="Core.Partner" />
+        <field name="Membership" type="WebsiteMembership.Membership" />
+        <field name="StartDate" type="date" label="Start Date" />
+        <field name="EndDate" type="date" label="End Date" />
+        <field name="InvoiceStatus" type="selection" label="Invoice Status"
+            selection="[('not_invoiced', 'Not Invoiced'), ('invoiced', 'Invoiced'), ('paid', 'Paid')]" />
+        <field name="NextInvoiceDate" type="date" label="Next Invoice Date" />
+        <field name="InvoicePeriod" type="integer" label="Invoice Period" />
+        <field name="InvoicePeriodType" type="selection" label="Invoice Period Type"
+            selection="[('days', 'Days'), ('weeks', 'Weeks'), ('months', 'Months'), ('years', 'Years')]" />
+        <field name="Amount" type="float" label="Amount" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+        <field name="State" type="selection" label="State"
+            selection="[('draft', 'Draft'), ('confirmed', 'Confirmed'), ('cancel', 'Cancelled')]" />
+        <field name="PaymentMethod" type="selection" label="Payment Method"
+            selection="[('manual', 'Manual'), ('online', 'Online')]" />
+        <field name="Recurring" type="bool" label="Recurring" />
+        <field name="CancelReason" type="text" label="Cancel Reason" />
+    </model>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Acquirer" required="true"  selection="[('mollie', 'Mollie'), ('paypal', 'PayPal'), ('stripe', 'Stripe')]"/>
+        <field name="MollieApiKey" type="string" label="Mollie API Key" required="true" help="The Test or Live API Key depending on the configuration of the provider" groups="base.group_system"/>
+    </model>
 </buvi>

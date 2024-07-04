@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.ResCompany" name="Mail.ResCompany" description="Company">
+    <field name="AliasDomainId" type="Mail.AliasDomain" label="Email Domain" default="DefaultAliasDomainId" />
+    <field name="AliasDomainName" type="string" label="Alias Domain Name" readonly="true" related="AliasDomainId.Name" store="true" />
+    <field name="BounceEmail" type="string" label="Bounce Email" compute="ComputeBounce" />
+    <field name="BounceFormatted" type="string" label="Bounce" compute="ComputeBounce" />
+    <field name="CatchallEmail" type="string" label="Catchall Email" compute="ComputeCatchall" />
+    <field name="CatchallFormatted" type="string" label="Catchall" compute="ComputeCatchall" />
+    <field name="DefaultFromEmail" type="string" label="Default From" related="AliasDomainId.DefaultFromEmail" readonly="true" />
+    <field name="EmailFormatted" type="string" label="Formatted Email" compute="ComputeEmailFormatted" computeSudo="true" />
+    <field name="EmailPrimaryColor" type="string" label="Email Header Color" compute="ComputeEmailPrimaryColor" readonly="false" store="true" />
+    <field name="EmailSecondaryColor" type="string" label="Email Button Color" compute="ComputeEmailSecondaryColor" readonly="false" store="true" />
+  </model>
 </buvi>

@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosLoyalty.LoyaltyRule" name="LoyaltyRule" description="Loyalty Rule">
+        <field name="ProgramId" type="PosLoyalty.LoyaltyProgram" relation="one2many" collection="true" label="Program" />
+        <field name="ValidProductIds" type="Product.Product" relation="many2many" collection="true" label="Valid Products" />
+        <field name="AnyProduct" type="bool" label="Any Product" />
+        <field name="PromoBarcode" type="string" label="Barcode" />
+        <field name="RewardPointAmount" type="float" label="Reward Point Amount" />
+        <field name="RewardPointSplit" type="float" label="Reward Point Split" />
+        <field name="RewardPointMode" type="PosLoyalty.RewardPointMode" label="Reward Point Mode" />
+        <field name="MinimumQty" type="integer" label="Minimum Quantity" />
+        <field name="MinimumAmount" type="float" label="Minimum Amount" />
+        <field name="MinimumAmountTaxMode" type="PosLoyalty.TaxMode" label="Minimum Amount Tax Mode" />
+        <field name="Mode" type="PosLoyalty.LoyaltyRuleMode" label="Mode" />
+        <field name="Code" type="string" label="Code" />
+        <field name="CurrencyId" type="ResCurrency.Currency" label="Currency" />
+    </model>
+
+    <optionset id="PosLoyalty.RewardPointMode" name="Reward Point Mode">
+        <option value="fixed" name="Fixed" />
+        <option value="percentage" name="Percentage" />
+    </optionset>
+
+    <optionset id="PosLoyalty.LoyaltyRuleMode" name="Loyalty Rule Mode">
+        <option value="buy_x_get_y" name="Buy X Get Y" />
+        <option value="discount" name="Discount" />
+        <option value="points" name="Points" />
+    </optionset>
+
+    <optionset id="PosLoyalty.TaxMode" name="Tax Mode">
+        <option value="include" name="Include" />
+        <option value="exclude" name="Exclude" />
+    </optionset>
 </buvi>

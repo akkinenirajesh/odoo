@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.PosPaymentMethod" name="PosPaymentMethod" description="Point of Sale Payment Methods">
+    <field name="Name" type="string" label="Method" required="true" translate="true" help="Defines the name of the payment method that will be displayed in the Point of Sale when the payments are selected." />
+    <field name="Sequence" type="integer" copy="false" />
+    <field name="OutstandingAccountId" type="Account.Account" label="Outstanding Account" ondelete="restrict" help="Leave empty to use the default account from the company setting.\nAccount used as outstanding account when creating accounting payment records for bank payments." />
+    <field name="ReceivableAccountId" type="Account.Account" label="Intermediary Account" ondelete="restrict" domain="[('Reconcile', '=', True), ('AccountType', '=', 'asset_receivable')]" help="Leave empty to use the default account from the company setting.\nOverrides the company's receivable account (for Point of Sale) used in the journal entries." />
+    <field name="IsCashCount" type="bool" label="Cash" compute="_ComputeIsCashCount" store="true" />
+    <field name="JournalId" type="Account.Journal" label="Journal" domain="['|', '&', ('Type', '=', 'cash'), ('PosPaymentMethodIds', '=', False), ('Type', '=', 'bank')]" ondelete="restrict" help="Leave empty to use the receivable account of customer.\nDefines the journal where to book the accumulated payments (or individual payment if Identify Customer is true) after closing the session.\nFor cash journal, we directly write to the default account in the journal via statement lines.\nFor bank journal, we write to the outstanding account specified in this payment method.\nOnly cash and bank journals are allowed." />
+    <field name="SplitTransactions" type="bool" label="Identify Customer" default="false" help="Forces to set a customer when using this payment method and splits the journal entries for each customer. It could slow down the closing process." />
+    <field name="OpenSessionIds" type="Pos.Session" collection="true" label="Pos Sessions" compute="_ComputeOpenSessionIds" help="Open PoS sessions that are using this payment method." />
+    <field name="ConfigIds" type="Pos.Config" collection="true" label="Point of Sale" />
+    <field name="CompanyId" type="Res.Company" label="Company" default="lambda self: self.Env.Company" />
+    <field name="UsePaymentTerminal" type="selection" label="Use a Payment Terminal" help="Record payments with a terminal on this journal." selection="lambda self: self._GetPaymentTerminalSelection()" />
+    <field name="HideUsePaymentTerminal" type="bool" compute="_ComputeHideUsePaymentTerminal" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Type" type="selection" compute="_ComputeType" selection="[('cash', 'Cash'), ('bank', 'Bank'), ('pay_later', 'Customer Account')]" />
+    <field name="Image" type="image" label="Image" max_width="50" max_height="50" />
+    <field name="PaymentMethodType" type="selection" label="Integration" default="none" required="true" selection="lambda self: self._GetPaymentMethodType()" />
+    <field name="DefaultQr" type="char" compute="_ComputeQr" />
+    <field name="QrCodeMethod" type="selection" label="QR Code Format" copy="false" selection="lambda self: self.Env['Res.Partner.Bank'].GetAvailableQrMethodsInSequence()" help="Type of QR-code to be generated for this payment method." />
+    <field name="HideQrCodeMethod" type="bool" compute="_ComputeHideQrCodeMethod" />
+  </model>
+
+  <optionset id="PointOfSale.PosPaymentMethodType" name="Payment Method Type">
+    <option value="none" name="None required" />
+    <option value="terminal" name="Terminal" />
+    <option value="qr_code" name="Bank App (QR Code)" />
+  </optionset>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MicrosoftCalendar.User" name="MicrosoftCalendar.User" description="User">
+    <field name="MicrosoftCalendarSyncToken" type="string" related="ResUsersSettings.MicrosoftCalendarSyncToken" groups="base.group_system" />
+    <field name="MicrosoftSynchronizationStopped" type="bool" related="ResUsersSettings.MicrosoftSynchronizationStopped" readonly="false" groups="base.group_system" />
+    <field name="MicrosoftLastSyncDate" type="datetime" related="ResUsersSettings.MicrosoftLastSyncDate" readonly="false" groups="base.group_system" />
+  </model>
 </buvi>

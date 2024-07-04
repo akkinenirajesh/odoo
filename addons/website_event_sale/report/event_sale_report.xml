@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.EventSaleReport" name="Website.EventSaleReport" description="Event Sale Report">
+        <field name="IsPublished" type="bool" label="Published Events" readonly="true" />
+    </model>
 </buvi>

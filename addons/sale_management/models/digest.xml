@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.Digest" name="Digest" description="Digest">
+        <field name="KpiAllSaleTotal" type="bool" label="All Sales" />
+        <field name="KpiAllSaleTotalValue" type="monetary" compute="ComputeKpiSaleTotalValue" />
+    </model>
 </buvi>

@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.IrAttachment" name="IrAttachment" description="Attachment">
+        <field name="Name" type="string" label="File Name" required="true" />
+        <field name="DisplayName" type="string" label="Display Name" />
+        <field name="ResModel" type="string" label="Related Document Model" />
+        <field name="ResId" type="integer" label="Related Document ID" />
+        <field name="ResField" type="string" label="Related Document Field" />
+        <field name="MimeType" type="string" label="MIME Type" />
+        <field name="FileBinary" type="binary" label="File Content" />
+        <field name="Checksum" type="char" label="Checksum" />
+        <field name="FileSize" type="integer" label="File Size" />
+        <field name="CreateDate" type="datetime" label="Creation Date" />
+        <field name="WriteDate" type="datetime" label="Last Modification Date" />
+        <field name="AccessToken" type="char" label="Access Token" />
+        <field name="Public" type="bool" label="Public"
+                help="Set this option to true if the attachment should be public. You will be able to access it without logging into Odoo." />
+        <field name="Description" type="text" label="Description" />
+        <field name="Company" type="Core.Company" label="Company" collection="true" />
+        <field name="CreateUid" type="Res.Users" label="Created by" />
+        <field name="WriteUid" type="Res.Users" label="Last Updated by" />
+        <field name="ResPartner" type="Res.Partner" label="Related Partner" collection="true" />
+    </model>
 </buvi>

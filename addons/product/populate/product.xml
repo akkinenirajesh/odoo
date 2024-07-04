@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductCategory" name="ProductCategory" description="Product Category">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Parent" type="Product.ProductCategory" />
+    <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Product Category without removing it." />
+    <field name="Sequence" type="integer" label="Sequence" help="Gives the order to display this category in menus." />
+  </model>
+
+  <model id="Product.ProductProduct" name="ProductProduct" description="Product Product">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Description" type="string" label="Description" translate="true" />
+    <field name="DefaultCode" type="string" label="Internal Reference" help="Internal reference of the product." />
+    <field name="Barcode" type="string" label="Barcode" help="Barcode of the product." />
+    <field name="Active" type="bool" default="true" help="If unchecked, it will disable the product." />
+    <field name="Type" type="selection" label="Type" selection="['consu', 'service']"
+            help="Select 'Storable product' for products you stock. Select 'Consumable product' for products you buy or sell without storing them (e.g. services). Select 'Service' for products you only sell." />
+    <field name="Category" type="Product.ProductCategory" label="Product Category" required="true" />
+    <field name="ListPrice" type="float" label="Sales Price" help="Base price for sales orders" />
+    <field name="StandardPrice" type="float" label="Cost" help="Standard price of the product." />
+    <field name="Sequence" type="integer" label="Sequence" help="Gives the order to display the product in menus." />
+  </model>
+
+  <model id="Product.SupplierInfo" name="SupplierInfo" description="Supplier Information">
+    <field name="Partner" type="Res.Partner" label="Supplier" required="true" />
+    <field name="Company" type="Res.Company" label="Company" />
+    <field name="ProductTemplate" type="Product.ProductTemplate" label="Product" />
+    <field name="ProductName" type="string" label="Product Name" />
+    <field name="Sequence" type="integer" label="Sequence" help="Gives the order to display the product in menus." />
+    <field name="MinQty" type="integer" label="Minimum Quantity" help="The minimal quantity for purchasing this product." />
+    <field name="Price" type="float" label="Price" help="Purchase price for this supplier." />
+    <field name="Delay" type="integer" label="Lead Time" help="Estimated number of days for delivering this product." />
+  </model>
 </buvi>

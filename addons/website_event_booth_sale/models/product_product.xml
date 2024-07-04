@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventBoothSale.ProductProduct" name="WebsiteEventBoothSale.ProductProduct" description="Product Product">
+        <field name="IsAddToCartAllowed" type="bool" compute="ComputeIsAddToCartAllowed" />
+    </model>
+    
 </buvi>

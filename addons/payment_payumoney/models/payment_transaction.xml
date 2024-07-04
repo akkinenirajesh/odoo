@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentTransaction" name="PaymentTransaction" description="Payment Transaction">
+        <field name="ProviderCode" type="string" />
+        <field name="Reference" type="string" />
+        <field name="Amount" type="float" />
+        <field name="PartnerEmail" type="string" />
+        <field name="PartnerPhone" type="string" />
+        <field name="ProviderReference" type="string" />
+        <field name="PaymentMethod" type="Payment.PaymentMethod" />
+        <field name="Partner" type="Res.Partner" />
+    </model>
+
+    <model id="Payment.PaymentMethod" name="PaymentMethod" description="Payment Method">
+        <field name="Code" type="string" />
+        <field name="Name" type="string" />
+        <field name="State" type="Selection" selection="['enabled', 'disabled']" />
+        <field name="PayUMoneyMerchantKey" type="string" />
+    </model>
+
+    <model id="Res.Partner" name="Partner" description="Partner">
+        <field name="Name" type="string" />
+    </model>
 </buvi>

@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Ttu.Product" name="Ttu.Product" description="Ttu Product">
+        <field name="Name" type="string" label="Name" />
+    </model>
+
+    <model id="Ttu.Root" name="Ttu.Root" description="Ttu Root">
+        <field name="ProductId" type="Ttu.Product" />
+        <field name="ProductQty" type="integer" />
+        <field name="QtyProducing" type="integer" />
+        <field name="QtyProduced" type="integer" compute="GetProducedQty" />
+        <field name="MoveRawIds" type="Ttu.Child" collection="true" />
+        <field name="MoveFinishedIds" type="Ttu.Child" collection="true" />
+    </model>
+
+    <model id="Ttu.Child" name="Ttu.Child" description="Ttu Child">
+        <field name="ProductId" type="Ttu.Product" />
+        <field name="UnitFactor" type="integer" default="1" required="true" />
+        <field name="QuantityDone" type="integer" compute="QuantityDoneCompute" inverse="QuantityDoneSet" />
+        <field name="RootRawId" type="Ttu.Root" />
+        <field name="RootId" type="Ttu.Root" />
+        <field name="MoveLineIds" type="Ttu.Grandchild" collection="true" />
+    </model>
+
+    <model id="Ttu.Grandchild" name="Ttu.Grandchild" description="Ttu Grandchild">
+        <field name="ProductId" type="Ttu.Product" />
+        <field name="ProductUomQty" type="integer" />
+        <field name="QtyDone" type="integer" />
+        <field name="MoveId" type="Ttu.Child" />
+    </model>
 </buvi>

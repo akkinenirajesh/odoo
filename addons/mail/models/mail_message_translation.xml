@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MessageTranslation" name="MessageTranslation" description="Message Translation">
+    <field name="MessageId" type="Mail.Message" label="Message" required="true" ondelete="cascade" />
+    <field name="SourceLang" type="string" label="Source Language" required="true" help="Result of the language detection based on its content." />
+    <field name="TargetLang" type="string" label="Target Language" required="true" help="Shortened language code used as the target for the translation request." />
+    <field name="Body" type="html" label="Translation Body" required="true" sanitize_style="true" help="String received from the translation request." />
+    <field name="CreateDate" type="datetime" index="true" />
+  </model>
 </buvi>

@@ -1,3 +1,153 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.Mail" name="MailMail" description="Outgoing Mails">
+        <field name="MailMessageId" type="Mail.Message" label="Message" required="true" ondelete="cascade" index="true" auto_join="true" />
+        <field name="MailMessageIdInt" type="integer" compute="ComputeMailMessageIdInt" compute_sudo="true" />
+        <field name="MessageType" type="selection" related="MailMessageId.MessageType" inherited="true" default="EmailOutgoing" />
+        <field name="BodyHtml" type="text" label="Text Contents" help="Rich-text/HTML message" />
+        <field name="BodyContent" type="html" label="Rich-text Contents" sanitize="true" compute="ComputeBodyContent" search="SearchBodyContent" />
+        <field name="References" type="text" label="References" help="Message references, such as identifiers of previous messages" readonly="true" />
+        <field name="Headers" type="text" label="Headers" copy="false" />
+        <field name="RestrictedAttachmentCount" type="integer" label="Restricted attachments" compute="ComputeRestrictedAttachments" />
+        <field name="UnrestrictedAttachmentIds" type="many2many" collection="true" label="Unrestricted Attachments" relation="ir.attachment" compute="ComputeRestrictedAttachments" inverse="InverseUnrestrictedAttachmentIds" />
+        <field name="IsNotification" type="bool" label="Notification Email" help="Mail has been created to notify people of an existing mail.message" />
+        <field name="EmailTo" type="text" label="To" help="Message recipients (emails)" />
+        <field name="EmailCc" type="char" label="Cc" help="Carbon copy message recipients" />
+        <field name="RecipientIds" type="many2many" collection="true" label="To (Partners)" relation="res.partner" context="{'active_test': False}" />
+        <field name="State" type="selection" label="Status" readonly="true" copy="false" default="Outgoing" options="Mail.MailState" />
+        <field name="FailureType" type="selection" label="Failure type" options="Mail.MailFailureType" />
+        <field name="FailureReason" type="text" label="Failure Reason" readonly="true" copy="false" help="Failure reason. This is usually the exception thrown by the email server, stored to ease the debugging of mailing issues." />
+        <field name="AutoDelete" type="bool" label="Auto Delete" help="This option permanently removes any track of email after it's been sent, including from the Technical menu in the Settings, in order to preserve storage space of your Odoo database." />
+        <field name="ScheduledDate" type="datetime" label="Scheduled Send Date" help="If set, the queue manager will send the email after the date. If not set, the email will be send as soon as possible. Unless a timezone is specified, it is considered as being in UTC timezone." />
+        <field name="FetchmailServerId" type="many2one" label="Inbound Mail Server" relation="fetchmail.server" readonly="true" />
+    </model>
+
+    <model id="Mail.Message" name="Message" description="Email Messages">
+        <field name="MessageType" type="selection" label="Type" default="Email" options="Mail.MessageType" />
+        <field name="Subject" type="char" label="Subject" required="true" translate="true" />
+        <field name="Body" type="html" label="Body" sanitize="true" />
+        <field name="ParentMessageId" type="many2one" relation="Mail.Message" label="Parent Message" />
+        <field name="AuthorId" type="many2one" relation="Res.Users" label="Author" />
+        <field name="PartnerId" type="many2one" relation="Res.Partner" label="Partner" />
+        <field name="Model" type="char" label="Related Document Model" />
+        <field name="ResId" type="integer" label="Related Document Id" />
+        <field name="AttachmentIds" type="many2many" collection="true" relation="ir.attachment" label="Attachments" />
+        <field name="IsThreadMessage" type="bool" label="Thread Message" />
+        <field name="EmailFrom" type="char" label="From" />
+        <field name="ReplyTo" type="char" label="Reply To" />
+        <field name="RecordAliasDomainId" type="many2one" relation="mail.alias.domain" label="Alias Domain" />
+        <field name="MessageId" type="char" label="Message ID" readonly="true" />
+        <field name="MessageDate" type="datetime" label="Message Date" readonly="true" />
+        <field name="NotificationIds" type="one2many" collection="true" relation="Mail.Notification" label="Notifications" />
+        <field name="NotificationCount" type="integer" compute="ComputeNotificationCount" />
+        <field name="Followers" type="one2many" collection="true" relation="Mail.Followers" label="Followers" />
+        <field name="ChannelIds" type="one2many" collection="true" relation="Mail.Channel" label="Channels" />
+        <field name="FollowCount" type="integer" compute="ComputeFollowCount" />
+        <field name="ReadCount" type="integer" compute="ComputeReadCount" />
+        <field name="ReadBy" type="many2many" collection="true" relation="Res.Users" label="Read by" />
+        <field name="State" type="selection" label="State" default="New" readonly="true" options="Mail.MessageState" />
+        <field name="IsPosted" type="bool" label="Posted" readonly="true" />
+    </model>
+
+    <model id="Mail.Notification" name="Notification" description="Email Notifications">
+        <field name="MailMessageId" type="many2one" relation="Mail.Mail" label="Mail" />
+        <field name="NotificationType" type="selection" label="Type" default="Email" options="Mail.NotificationType" />
+        <field name="ResPartnerId" type="many2one" relation="Res.Partner" label="Partner" />
+        <field name="NotificationStatus" type="selection" label="Status" readonly="true" default="Draft" options="Mail.NotificationStatus" />
+        <field name="FailureType" type="selection" label="Failure Type" options="Mail.MailFailureType" />
+        <field name="FailureReason" type="text" label="Failure Reason" readonly="true" />
+    </model>
+
+    <model id="Mail.Followers" name="Followers" description="Message Followers">
+        <field name="MailMessageId" type="many2one" relation="Mail.Message" label="Message" />
+        <field name="PartnerId" type="many2one" relation="Res.Partner" label="Partner" />
+        <field name="IsFollowed" type="bool" label="Followed" />
+        <field name="NotifyType" type="selection" label="Notify Type" options="Mail.NotifyType" />
+        <field name="NotificationStatus" type="selection" label="Notification Status" options="Mail.NotificationStatus" />
+        <field name="FailureType" type="selection" label="Failure Type" options="Mail.MailFailureType" />
+        <field name="FailureReason" type="text" label="Failure Reason" readonly="true" />
+    </model>
+
+    <model id="Mail.Channel" name="Channel" description="Discussion Channels">
+        <field name="Name" type="char" label="Name" required="true" translate="true" />
+        <field name="Description" type="text" label="Description" />
+        <field name="ChannelPartnerIds" type="many2many" collection="true" relation="Res.Partner" label="Partners" />
+        <field name="ChannelUserId" type="many2one" relation="Res.Users" label="Channel Owner" />
+        <field name="ChannelTypeId" type="many2one" relation="Mail.ChannelType" label="Channel Type" required="true" />
+        <field name="ChannelAccessMode" type="selection" label="Access Mode" default="Everyone" options="Mail.AccessMode" />
+        <field name="Public" type="bool" label="Public" />
+        <field name="IsPrivate" type="bool" label="Private" />
+        <field name="MailMessageId" type="many2one" relation="Mail.Message" label="Message" />
+        <field name="MessageIds" type="one2many" collection="true" relation="Mail.Message" label="Messages" />
+    </model>
+
+    <model id="Mail.ChannelType" name="ChannelType" description="Channel Type">
+        <field name="Name" type="char" label="Name" required="true" translate="true" />
+        <field name="Description" type="text" label="Description" />
+    </model>
+
+    <model id="Mail.AliasDomain" name="AliasDomain" description="Alias Domain">
+        <field name="Name" type="char" label="Name" required="true" translate="true" />
+        <field name="Domain" type="char" label="Domain" required="true" />
+        <field name="DefaultFromEmail" type="char" label="Default From Email" />
+        <field name="BounceEmail" type="char" label="Bounce Email" />
+        <field name="AliasCount" type="integer" label="Alias Count" compute="ComputeAliasCount" />
+    </model>
+
+    <optionset id="Mail.MailState" name="Mail State">
+        <option value="Outgoing" name="Outgoing" />
+        <option value="Sent" name="Sent" />
+        <option value="Received" name="Received" />
+        <option value="Exception" name="Delivery Failed" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Mail.MailFailureType" name="Mail Failure Type">
+        <option value="Unknown" name="Unknown error" />
+        <option value="MailEmailInvalid" name="Invalid email address" />
+        <option value="MailEmailMissing" name="Missing email" />
+        <option value="MailFromInvalid" name="Invalid from address" />
+        <option value="MailFromMissing" name="Missing from address" />
+        <option value="MailSmtp" name="Connection failed (outgoing mail server problem)" />
+        <option value="MailBl" name="Blacklisted Address" />
+        <option value="MailOptout" name="Opted Out" />
+        <option value="MailDup" name="Duplicated Email" />
+    </optionset>
+
+    <optionset id="Mail.MessageType" name="Message Type">
+        <option value="Email" name="Email" />
+        <option value="Comment" name="Comment" />
+        <option value="Note" name="Note" />
+        <option value="EmailOutgoing" name="Outgoing Email" />
+        <option value="AutoComment" name="Automatic Comment" />
+    </optionset>
+
+    <optionset id="Mail.NotificationType" name="Notification Type">
+        <option value="Email" name="Email" />
+        <option value="SMS" name="SMS" />
+        <option value="Push" name="Push Notification" />
+    </optionset>
+
+    <optionset id="Mail.NotificationStatus" name="Notification Status">
+        <option value="Draft" name="Draft" />
+        <option value="Sent" name="Sent" />
+        <option value="Exception" name="Delivery Failed" />
+        <option value="Canceled" name="Canceled" />
+    </optionset>
+
+    <optionset id="Mail.NotifyType" name="Notify Type">
+        <option value="Follower" name="Followers" />
+        <option value="Email" name="Emails" />
+    </optionset>
+
+    <optionset id="Mail.AccessMode" name="Access Mode">
+        <option value="Everyone" name="Everyone" />
+        <option value="Invited" name="Invited" />
+        <option value="Private" name="Private" />
+    </optionset>
+
+    <optionset id="Mail.MessageState" name="Message State">
+        <option value="New" name="New" />
+        <option value="Posted" name="Posted" />
+    </optionset>
 </buvi>

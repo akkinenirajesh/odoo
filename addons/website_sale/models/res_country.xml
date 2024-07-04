@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.ResCountry" name="ResCountry" description="Res Country">
+    <field name="Code" type="string" label="Code" required="true" />
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="States" type="Core.CountryState" collection="true" label="States" />
+    <field name="WebsitePublished" type="bool" label="Published on Website" help="Check this box to make the country appear on the website for the customer to choose." />
+  </model>
 </buvi>

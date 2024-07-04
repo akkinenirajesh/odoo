@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.LinkPreview" name="Mail.LinkPreview" description="Store link preview data">
+    <field name="MessageId" type="Mail.Message" relation="true" required="true" />
+    <field name="IsHidden" type="bool" />
+    <field name="SourceUrl" type="string" label="URL" required="true" />
+    <field name="OgType" type="string" label="Type" />
+    <field name="OgTitle" type="string" label="Title" />
+    <field name="OgSiteName" type="string" label="Site name" />
+    <field name="OgImage" type="string" label="Image" />
+    <field name="OgDescription" type="text" label="Description" />
+    <field name="OgMimeType" type="string" label="MIME type" />
+    <field name="ImageMimeType" type="string" label="Image MIME type" />
+    <field name="CreateDate" type="datetime" />
+  </model>
 </buvi>

@@ -1,5 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
-  </model>
+    <model id="Stock.StockScrap" name="StockScrap" description="Scrap">
+        <field name="Name" type="string" label="Reference" default="New" readonly="true" required="true" copy="false" />
+        <field name="Company" type="Res.Company" label="Company" required="true" default="Env.Company" />
+        <field name="Origin" type="string" label="Source Document" />
+        <field name="Product" type="Product.Product" label="Product" required="true" domain="[('type', '=', 'consu')]" checkCompany="true" />
+        <field name="ProductUom" type="Uom.Uom" label="Unit of Measure" required="true" domain="[('category_id', '=', ProductUomCategory)]" compute="ComputeProductUom" store="true" readonly="false" precompute="true" />
+        <field name="ProductUomCategory" type="Uom.UomCategory" relation="Product.Product" field="Uom.Uom" field="Category" />
+        <field name="Tracking" type="selection" label="Product Tracking" readonly="true" relation="Product.Product" field="Tracking" />
+        <field name="Lot" type="Stock.Lot" label="Lot/Serial" domain="[('product_id', '=', Product)]" checkCompany="true" />
+        <field name="Package" type="Stock.QuantPackage" checkCompany="true" />
+        <field name="Owner" type="Res.Partner" checkCompany="true" />
+        <field name="MoveIds" type="Stock.Move" collection="true" relation="Stock.Move" field="Scrap" />
+        <field name="Picking" type="Stock.Picking" checkCompany="true" />
+        <field name="Location" type="Stock.Location" label="Source Location" required="true" domain="[('usage', '=', 'internal')]" checkCompany="true" readonly="false" compute="ComputeLocation" store="true" precompute="true" />
+        <field name="ScrapLocation" type="Stock.Location" label="Scrap Location" required="true" domain="[('scrap_location', '=', True)]" checkCompany="true" readonly="false" compute="ComputeScrapLocation" store="true" precompute="true" />
+        <field name="ScrapQty" type="float" label="Quantity" required="true" digits="Product Unit of Measure" compute="ComputeScrapQty" default="1.0" readonly="false" store="true" />
+        <field name="State" type="selection" label="Status" default="draft" readonly="true" tracking="true">
+            <option value="draft" name="Draft" />
+            <option value="done" name="Done" />
+        </field>
+        <field name="DateDone" type="datetime" label="Date" readonly="true" />
+        <field name="ShouldReplenish" type="bool" label="Replenish Quantities" help="Trigger replenishment for scrapped products" />
+    </model>
 </buvi>

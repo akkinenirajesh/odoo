@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpSubcontracting.StockLocation" name="StockLocation" description="Stock Location">
+        <field name="IsSubcontractingLocation" type="bool" label="Is a Subcontracting Location?"
+            help="Check this box to create a new dedicated subcontracting location for this company. Note that standard subcontracting routes will be adapted so as to take these into account automatically." />
+        <field name="SubcontractorIds" type="res.partner" collection="true" label="Subcontractor" />
+        <field name="Usage" type="selection" selection="Stock.LocationUsage" />
+        <field name="LocationId" type="stock.location" />
+        <field name="CompanyId" type="res.company" />
+    </model>
+
+    <optionset id="Stock.LocationUsage" name="Location Usage">
+        <option value="internal" name="Internal" />
+        <option value="production" name="Production" />
+        <option value="customer" name="Customer" />
+        <option value="supplier" name="Supplier" />
+        <option value="view" name="View" />
+    </optionset>
 </buvi>

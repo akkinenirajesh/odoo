@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Provider" collection="true">
+      <option value="payulatam" name="PayU Latam" />
+    </field>
+    <field name="PayULatamMerchantId" type="string" label="PayU Latam Merchant ID"
+      help="The ID solely used to identify the account with PayULatam" required="true"
+      requiredIfProvider="payulatam" />
+    <field name="PayULatamAccountId" type="string" label="PayU Latam Account ID"
+      help="The ID solely used to identify the country-dependent shop with PayULatam" required="true"
+      requiredIfProvider="payulatam" />
+    <field name="PayULatamApiKey" type="string" label="PayU Latam API Key" required="true"
+      requiredIfProvider="payulatam" groups="base.group_system" />
+  </model>
 </buvi>

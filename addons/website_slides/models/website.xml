@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.Website" name="Website" description="Website">
+    <field name="WebsiteSlideGoogleAppKey" type="string" label="Google Doc Key" groups="base.group_system" />
+  </model>
 </buvi>

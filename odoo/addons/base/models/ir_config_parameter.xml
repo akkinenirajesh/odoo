@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrConfigParameter" name="IrConfigParameter" description="System Parameter">
+        <field name="Key" type="string" required="true" />
+        <field name="Value" type="text" required="true" />
+        <unique>
+            <field name="Key" />
+            <message>Key must be unique.</message>
+        </unique>
+    </model>
 </buvi>

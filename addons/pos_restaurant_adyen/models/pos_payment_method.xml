@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosRestaurantAdyen.PosPaymentMethod" name="PosPaymentMethod" description="Pos Payment Method">
+    <field name="AdyenMerchantAccount" type="string" label="Adyen Merchant Account" help="The POS merchant account code used in Adyen" />
+  </model>
 </buvi>

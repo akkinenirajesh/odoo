@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Provider" selection="Payment.PaymentProviderCode" required="true" />
+        <field name="State" type="selection" label="State" selection="Payment.PaymentProviderState" required="true" />
+        <field name="SupportExpressCheckout" type="bool" label="Support Express Checkout" default="false" />
+        <field name="SupportManualCapture" type="selection" label="Support Manual Capture" selection="Payment.ManualCaptureSupport" />
+        <field name="SupportRefund" type="selection" label="Support Refund" selection="Payment.RefundSupport" />
+        <field name="SupportTokenization" type="bool" label="Support Tokenization" default="false" />
+    </model>
+
+    <optionset id="Payment.PaymentProviderCode" name="Payment Provider Code">
+        <option value="demo" name="Demo" />
+        <option value="paypal" name="Paypal" />
+        <option value="stripe" name="Stripe" />
+    </optionset>
+
+    <optionset id="Payment.PaymentProviderState" name="Payment Provider State">
+        <option value="test" name="Test" />
+        <option value="enabled" name="Enabled" />
+        <option value="disabled" name="Disabled" />
+    </optionset>
+
+    <optionset id="Payment.ManualCaptureSupport" name="Manual Capture Support">
+        <option value="none" name="None" />
+        <option value="partial" name="Partial" />
+        <option value="full" name="Full" />
+    </optionset>
+
+    <optionset id="Payment.RefundSupport" name="Refund Support">
+        <option value="none" name="None" />
+        <option value="partial" name="Partial" />
+        <option value="full" name="Full" />
+    </optionset>
 </buvi>

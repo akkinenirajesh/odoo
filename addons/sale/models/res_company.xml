@@ -1,5 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Sale.ResCompany" name="ResCompany" description="Company">
+        <field name="PortalConfirmationSign" type="bool" label="Online Signature" default="true" />
+        <field name="PortalConfirmationPay" type="bool" label="Online Payment" />
+        <field name="PrepaymentPercent" type="float" label="Prepayment percentage" default="1.0" help="The percentage of the amount needed to be paid to confirm quotations." />
+        <field name="QuotationValidityDays" type="integer" label="Default Quotation Validity" default="30" help="Days between quotation proposal and expiration. 0 days means automatic expiration is disabled" />
+        <field name="SaleDiscountProductId" type="Product.Product" label="Discount Product" collection="true" help="Default product used for discounts" domain="[('type', '=', 'service'), ('invoicePolicy', '=', 'order')]" />
+        <field name="SaleOnboardingPaymentMethod" type="Sale.SaleOnboardingPaymentMethod" label="Sale onboarding selected payment method" />
+    </model>
+
+    <optionset id="Sale.SaleOnboardingPaymentMethod" name="Sale Onboarding Payment Method">
+        <option value="DigitalSignature" name="Sign online" />
+        <option value="PayPal" name="PayPal" />
+        <option value="Stripe" name="Stripe" />
+        <option value="Other" name="Pay with another payment provider" />
+        <option value="Manual" name="Manual Payment" />
+    </optionset>
 </buvi>

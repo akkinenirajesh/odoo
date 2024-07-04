@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.LandedCost" name="Stock.LandedCost" description="Landed Costs">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Date" type="datetime" label="Date" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="Journal" type="Account.Journal" label="Journal" required="true" />
+        <field name="State" type="selection" label="State" selection="Stock.LandedCostState" default="draft" />
+        <field name="Product" type="Product.Product" label="Product" required="true" />
+        <field name="ProductCount" type="integer" label="Product Count" />
+        <field name="Cost" type="float" label="Cost" />
+        <field name="Description" type="text" label="Description" />
+        <field name="Lines" type="collection" collection="true" relation="Stock.LandedCostLine" />
+    </model>
+
+    <optionset id="Stock.LandedCostState" name="Landed Cost State">
+        <option value="draft" name="Draft" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
+
+    <model id="Stock.LandedCostLine" name="Stock.LandedCostLine" description="Landed Cost Line">
+        <field name="Cost" type="float" label="Cost" required="true" />
+        <field name="Product" type="Product.Product" label="Product" required="true" />
+        <field name="CostType" type="selection" label="Cost Type" selection="Stock.LandedCostLineCostType" />
+        <field name="Account" type="Account.Account" label="Account" />
+        <field name="AnalyticAccount" type="Account.AnalyticAccount" label="Analytic Account" />
+        <field name="LandedCost" type="Stock.LandedCost" relation="true" inverse="Lines" />
+    </model>
+
+    <optionset id="Stock.LandedCostLineCostType" name="Landed Cost Line Cost Type">
+        <option value="product" name="Product" />
+        <option value="freight" name="Freight" />
+        <option value="insurance" name="Insurance" />
+        <option value="other" name="Other" />
+    </optionset>
+
+    <model id="Res.Company" name="Res.Company" description="Company">
+        <field name="LcJournal" type="Account.Journal" label="Landed Cost Journal" />
+    </model>
 </buvi>

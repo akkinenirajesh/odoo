@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.ResBank" name="Base.ResBank" description="Bank">
+        <field name="Name" type="string" label="Bank Name" required="true" />
+        <field name="Street" type="string" />
+        <field name="Street2" type="string" />
+        <field name="Zip" type="string" />
+        <field name="City" type="string" />
+        <field name="State" type="Core.CountryState" label="Fed. State" relation="Core.CountryState" domain="[('Country', '=?', Country)]" />
+        <field name="Country" type="Core.Country" />
+        <field name="Email" type="string" />
+        <field name="Phone" type="string" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Bic" type="string" label="Bank Identifier Code" index="true" help="Sometimes called BIC or Swift." />
+    </model>
+
+    <model id="Base.ResPartnerBank" name="Base.ResPartnerBank" description="Bank Accounts" collection="true">
+        <field name="Active" type="bool" default="true" />
+        <field name="AccType" type="Base.ResPartnerBankAccountType" label="Type" compute="ComputeAccType" help="Bank account type: Normal or IBAN. Inferred from the bank account number." />
+        <field name="AccNumber" type="string" label="Account Number" required="true" />
+        <field name="SanitizedAccNumber" type="string" label="Sanitized Account Number" readonly="true" store="true" compute="ComputeSanitizedAccNumber" />
+        <field name="AccHolderName" type="string" label="Account Holder Name" help="Account holder name, in case it is different than the name of the Account Holder" compute="ComputeAccountHolderName" readonly="false" store="true" />
+        <field name="Partner" type="Base.ResPartner" label="Account Holder" ondelete="cascade" index="true" domain="['|', ('IsCompany', '=', True), ('Parent', '=', False)]" required="true" />
+        <field name="AllowOutPayment" type="bool" label="Send Money" help="This account can be used for outgoing payments" default="false" copy="false" readonly="false" />
+        <field name="Bank" type="Base.ResBank" label="Bank" />
+        <field name="BankName" type="string" related="Bank.Name" readonly="false" />
+        <field name="BankBic" type="string" related="Bank.Bic" readonly="false" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+        <field name="Company" type="Base.ResCompany" label="Company" related="Partner.Company" store="true" readonly="true" />
+        <field name="CountryCode" type="string" related="Partner.CountryCode" label="Country Code" />
+
+        <unique>
+            <field name="SanitizedAccNumber" />
+            <field name="Partner" />
+            <message>The combination Account Number/Partner must be unique.</message>
+        </unique>
+
+    </model>
+
+    <optionset id="Base.ResPartnerBankAccountType" name="Res Partner Bank Account Type">
+        <option value="bank" name="Normal" />
+    </optionset>
 </buvi>

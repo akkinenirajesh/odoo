@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.AccountAnalyticLine" name="Account.AccountAnalyticLine" description="Account Analytic Line">
+    <field name="HolidayId" type="Hr.Leave" label="Time Off Request" copy="false" index="btree_not_null" export_string_translation="false" />
+    <field name="GlobalLeaveId" type="Resource.CalendarLeaves" label="Global Time Off" index="btree_not_null" ondelete="cascade" export_string_translation="false" />
+    <field name="TaskId" type="Project.Task" domain="[('AllowTimesheets', '=', True), ('ProjectId', '=?', ProjectId), ('IsTimeoffTask', '=', False)]" export_string_translation="false" />
+  </model>
 </buvi>

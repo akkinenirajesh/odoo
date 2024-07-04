@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Partner" name="ResPartner" description="Partner">
+    <field name="L10nSaEdiBuildingNumber" type="string" label="Building Number" />
+    <field name="L10nSaEdiPlotIdentification" type="string" label="Plot Identification" />
+    <field name="L10nSaAdditionalIdentificationScheme" type="Selection"
+      selection="ResPartner.L10nSaAdditionalIdentificationSchemeSelection" label="Identification Scheme"
+      help="Additional Identification scheme for Seller/Buyer" default="OTH" />
+    <field name="L10nSaAdditionalIdentificationNumber" type="string" label="Identification Number (SA)"
+      help="Additional Identification Number for Seller/Buyer" />
+  </model>
+
+  <optionset id="ResPartner.L10nSaAdditionalIdentificationSchemeSelection" name="L10nSaAdditionalIdentificationSchemeSelection">
+    <option value="TIN" name="Tax Identification Number" />
+    <option value="CRN" name="Commercial Registration Number" />
+    <option value="MOM" name="Momra License" />
+    <option value="MLS" name="MLSD License" />
+    <option value="700" name="700 Number" />
+    <option value="SAG" name="Sagia License" />
+    <option value="NAT" name="National ID" />
+    <option value="GCC" name="GCC ID" />
+    <option value="IQA" name="Iqama Number" />
+    <option value="PAS" name="Passport ID" />
+    <option value="OTH" name="Other ID" />
+  </optionset>
 </buvi>

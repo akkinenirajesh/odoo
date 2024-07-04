@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MrpSubcontractingPurchase.StockPicking" name="StockPicking" description="Stock Picking">
+    <field name="SubcontractingSourcePurchaseCount" type="integer" label="Number of subcontracting PO Source" help="Number of subcontracting Purchase Order Source" />
+  </model>
 </buvi>

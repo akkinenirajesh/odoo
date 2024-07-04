@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentMethod" name="PaymentMethod" description="Payment Method">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Code" type="string" label="Code" required="true" help="The technical code of this payment method." />
+    <field name="Sequence" type="integer" label="Sequence" default="1" />
+    <field name="PrimaryPaymentMethod" type="Payment.PaymentMethod" label="Primary Payment Method" collection="true" help="The primary payment method of the current payment method, if the latter is a brand.
+\nFor example, \"Card\" is the primary payment method of the card brand \"VISA\"." />
+    <field name="Brands" type="Payment.PaymentMethod" label="Brands" collection="true" help="The brands of the payment methods that will be displayed on the payment form." />
+    <field name="IsPrimary" type="bool" label="Is Primary Payment Method" compute="ComputeIsPrimary" search="SearchIsPrimary" />
+    <field name="Providers" type="Payment.Provider" label="Providers" collection="true" help="The list of providers supporting this payment method." />
+    <field name="Active" type="bool" label="Active" default="true" />
+    <field name="Image" type="image" label="Image" help="The base image used for this payment method; in a 64x64 px format." max_width="64" max_height="64" required="true" />
+    <field name="ImagePaymentForm" type="image" label="The resized image displayed on the payment form." related="Image" store="true" max_width="45" max_height="30" />
+    <field name="SupportTokenization" type="bool" label="Tokenization Supported" help="Tokenization is the process of saving the payment details as a token that can later
+ be reused without having to enter the payment details again." />
+    <field name="SupportExpressCheckout" type="bool" label="Express Checkout Supported" help="Express checkout allows customers to pay faster by using a payment method that
+ provides all required billing and shipping information, thus allowing to skip the
+ checkout process." />
+    <field name="SupportRefund" type="selection" label="Type of Refund Supported" selection="[('full_only', 'Full Only'), ('partial', 'Partial')]" help="Refund is a feature allowing to refund customers directly from the payment in Odoo." />
+    <field name="SupportedCountries" type="Core.Country" label="Supported Countries" collection="true" help="The list of countries in which this payment method can be used (if the provider
+ allows it). In other countries, this payment method is not available to customers." />
+    <field name="SupportedCurrencies" type="Core.Currency" label="Supported Currencies" collection="true" help="The list of currencies for that are supported by this payment method (if the provider
+ allows it). When paying with another currency, this payment method is not available
+ to customers." context="{ active_test: False }" />
+  </model>
 </buvi>

@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosSelfOrder.PosSelfOrderCustomLink" name="PosSelfOrderCustomLink" description="Custom links that the restaurant can configure to be displayed on the self order screen">
+    <field name="Name" type="string" label="Label" required="true" translate="true" />
+    <field name="Url" type="string" label="URL" required="true" />
+    <field name="PosConfigIds" type="Pos.PosConfig" collection="true" label="Points of Sale"
+      help="Select for which points of sale you want to display this link. Leave empty to display it for all points of sale. You have to select among the points of sale that have the 'QR Code Menu' feature enabled." />
+    <field name="Style" type="PosSelfOrder.PosSelfOrderCustomLinkStyle" label="Style" default="Primary" required="true" />
+    <field name="LinkHtml" type="html" label="Preview" readonly="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="1" />
+  </model>
+
+  <optionset id="PosSelfOrder.PosSelfOrderCustomLinkStyle" name="PosSelfOrderCustomLinkStyle">
+    <option value="Primary" name="Primary" />
+    <option value="Secondary" name="Secondary" />
+    <option value="Success" name="Success" />
+    <option value="Warning" name="Warning" />
+    <option value="Danger" name="Danger" />
+    <option value="Info" name="Info" />
+    <option value="Light" name="Light" />
+    <option value="Dark" name="Dark" />
+  </optionset>
 </buvi>

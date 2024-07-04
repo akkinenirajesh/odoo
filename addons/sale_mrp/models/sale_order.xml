@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="MrpProductionCount" type="integer" label="Count of MO generated" groups="Mrp.GroupMrpUser" />
+    <field name="MrpProductionIds" type="Mrp.Production" collection="true" label="Manufacturing orders associated with this sales order." groups="Mrp.GroupMrpUser" />
+  </model>
 </buvi>

@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestSearchPanel.SourceModel" name="SourceModel" description="Source Model">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="State" type="selection">
+      <option value="a" name="A" />
+      <option value="b" name="B" />
+    </field>
+    <field name="FolderId" type="TestSearchPanel.CategoryTargetModel" relation="true" />
+    <field name="CategId" type="TestSearchPanel.CategoryTargetModelNoParentName" relation="true" />
+    <field name="TagIds" type="TestSearchPanel.FilterTargetModel" collection="true" relation="true" />
+    <field name="TagId" type="TestSearchPanel.FilterTargetModel" relation="true" />
+  </model>
+  <model id="TestSearchPanel.CategoryTargetModel" name="CategoryTargetModel" description="Category target model">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="ParentNameId" type="TestSearchPanel.CategoryTargetModel" relation="true" />
+  </model>
+  <model id="TestSearchPanel.CategoryTargetModelNoParentName" name="CategoryTargetModelNoParentName" description="Category target model">
+    <field name="Name" type="string" label="Name" required="true" />
+  </model>
+  <model id="TestSearchPanel.FilterTargetModel" name="FilterTargetModel" description="Filter target model">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="Status" type="selection">
+      <option value="cool" name="Cool" />
+      <option value="unknown" name="Unknown" />
+    </field>
+    <field name="Color" type="string" label="Color" />
+    <field name="FolderId" type="TestSearchPanel.CategoryTargetModel" relation="true" />
+  </model>
 </buvi>

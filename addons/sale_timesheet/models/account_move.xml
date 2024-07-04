@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.AccountMove" name="Account.AccountMove" description="Account Move">
+        <field name="TimesheetIds" type="collection" relation="Account.AnalyticLine" label="Timesheets" readonly="true" copy="false" export_string_translation="false" />
+        <field name="TimesheetCount" type="integer" label="Number of timesheets" readonly="true" export_string_translation="false" />
+        <field name="TimesheetEncodeUomId" type="Core.UomUom" related="Company.TimesheetEncodeUomId" export_string_translation="false" />
+        <field name="TimesheetTotalDuration" type="integer" label="Timesheet Total Duration" readonly="true"
+            help="Total recorded duration, expressed in the encoding UoM, and rounded to the unit" />
+    </model>
+
+    <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+        <option value="Accounts" name="Accounts" />
+        <option value="Taxes" name="Taxes" />
+        <option value="Products" name="Products" />
+    </optionset>
 </buvi>

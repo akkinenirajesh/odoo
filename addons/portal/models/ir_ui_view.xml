@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Portal.View" name="View" description="View">
+    <field name="CustomizeShow" type="bool" label="Show As Optional Inherit" default="false" />
+  </model>
 </buvi>

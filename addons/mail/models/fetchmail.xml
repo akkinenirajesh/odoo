@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.FetchmailServer" name="Mail.FetchmailServer" description="Incoming Mail Server">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Fetchmail Server without removing it." />
+    <field name="State" type="selection"
+      selection="Mail.FetchmailServerState"
+      label="Status" index="true" readonly="true" copy="false" default="Draft" />
+    <field name="Server" type="string" label="Server Name"
+      help="Hostname or IP of the mail server" />
+    <field name="Port" type="integer" />
+    <field name="ServerType" type="selection"
+      selection="Mail.FetchmailServerType"
+      label="Server Type" index="true" required="true" default="Pop" />
+    <field name="ServerTypeInfo" type="text" label="Server Type Info" readonly="true" />
+    <field name="IsSsl" type="bool" label="SSL/TLS"
+      help="Connections are encrypted with SSL/TLS through a dedicated port (default: IMAPS=993, POP3S=995)" />
+    <field name="Attach" type="bool" label="Keep Attachments"
+      help="Whether attachments should be downloaded. If not enabled, incoming emails will be stripped of any attachments before being processed" default="true" />
+    <field name="Original" type="bool" label="Keep Original"
+      help="Whether a full original copy of each email should be kept for reference and attached to each processed message. This will usually double the size of your message database." />
+    <field name="Date" type="datetime" label="Last Fetch Date" readonly="true" />
+    <field name="User" type="string" label="Username" />
+    <field name="Password" type="string" />
+    <field name="ObjectId" type="Core.Model" label="Create a New Record"
+      help="Process each incoming mail as part of a conversation corresponding to this document type. This will create new documents for new conversations, or attach follow-up emails to the existing conversations (documents)." />
+    <field name="Priority" type="integer" label="Server Priority"
+      help="Defines the order of processing, lower values mean higher priority" default="5" />
+    <field name="MessageIds" type="collection" collection="true" label="Messages" readonly="true" />
+    <field name="Configuration" type="text" label="Configuration" readonly="true" />
+    <field name="Script" type="string" readonly="true" default="/mail/static/scripts/odoo-mailgate.py" />
+  </model>
+
+  <optionset id="Mail.FetchmailServerType" name="Fetchmail Server Type">
+    <option value="Imap" name="IMAP Server" />
+    <option value="Pop" name="POP Server" />
+    <option value="Local" name="Local Server" />
+  </optionset>
+
+  <optionset id="Mail.FetchmailServerState" name="Fetchmail Server State">
+    <option value="Draft" name="Not Confirmed" />
+    <option value="Done" name="Confirmed" />
+  </optionset>
 </buvi>

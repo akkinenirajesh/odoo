@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosHr.PosConfig" name="PosHr.PosConfig" description="POS Configuration">
+        <field name="BasicEmployeeIds" type="PosHr.PosConfigBasicEmployeeIds" collection="true" label="Employees with basic access"
+                help="If left empty, all employees can log in to PoS"/>
+        <field name="AdvancedEmployeeIds" type="PosHr.PosConfigAdvancedEmployeeIds" collection="true" label="Employees with manager access"
+                help="If left empty, only Odoo users have extended rights in PoS"/>
+    </model>
+
+    <relation id="PosHr.PosConfigBasicEmployeeIds" name="PosHr.PosConfigBasicEmployeeIds" model="Hr.Employee" />
+    <relation id="PosHr.PosConfigAdvancedEmployeeIds" name="PosHr.PosConfigAdvancedEmployeeIds" model="Hr.Employee" />
 </buvi>

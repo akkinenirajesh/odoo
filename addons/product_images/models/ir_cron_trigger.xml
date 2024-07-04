@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="ProductImages.IrCronTrigger" name="IrCronTrigger" description="Ir Cron Trigger">
+    <field name="CronId" type="Ir.Cron" label="Cron" required="true" />
+    <field name="TriggerDate" type="datetime" label="Trigger Date" required="true" />
+    <field name="TriggerInterval" type="integer" label="Trigger Interval" />
+    <field name="TriggerIntervalUnit" type="selection" label="Trigger Interval Unit"
+        selection="[( 'seconds', 'Seconds' ), ( 'minutes', 'Minutes' ), ( 'hours', 'Hours' ), ( 'days', 'Days' ), ( 'weeks', 'Weeks' ), ( 'months', 'Months' ), ( 'years', 'Years' )]" />
+    <field name="NextTrigger" type="datetime" label="Next Trigger" readonly="true" />
+    <field name="State" type="selection" label="State"
+        selection="[( 'scheduled', 'Scheduled' ), ( 'triggered', 'Triggered' ), ( 'completed', 'Completed' )]"
+        default="scheduled" />
+    <field name="AutomaticallyTriggered" type="bool" label="Automatically Triggered" readonly="true" />
+  </model>
 </buvi>

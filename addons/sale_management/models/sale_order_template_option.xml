@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderTemplateOption" name="SaleOrderTemplateOption" description="Quotation Template Option">
+        <field name="SaleOrderTemplateId" type="Sale.SaleOrderTemplate" label="Quotation Template Reference" required="true" />
+        <field name="CompanyId" type="Res.Company" related="SaleOrderTemplateId.CompanyId" store="true" />
+        <field name="ProductId" type="Product.Product" required="true" check_company="true" domain="[('SaleOk', '=', true)]" />
+        <field name="Name" type="text" label="Description" compute="ComputeName" store="true" readonly="false" precompute="true" required="true" translate="true" />
+        <field name="UomId" type="Uom.Uom" label="Unit of Measure" compute="ComputeUomId" store="true" readonly="false" precompute="true" required="true" domain="[('CategoryId', '=', ProductUomCategoryId)]" />
+        <field name="ProductUomCategoryId" type="Uom.UomCategory" related="ProductId.UomId.CategoryId" />
+        <field name="Quantity" type="float" label="Quantity" required="true" digits="Product Unit of Measure" default="1" />
+    </model>
 </buvi>

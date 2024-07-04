@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Loyalty.LoyaltyRule" name="LoyaltyRule" description="Loyalty Rule">
+        <field name="Active" type="bool" default="true" />
+        <field name="ProgramId" type="Loyalty.LoyaltyProgram" required="true" />
+        <field name="ProgramType" type="selection" related="ProgramId.ProgramType" />
+        <field name="CompanyId" type="Core.Company" related="ProgramId.CompanyId" store="true" />
+        <field name="CurrencyId" type="Core.Currency" related="ProgramId.CurrencyId" />
+        <field name="UserHasDebug" type="bool" compute="ComputeUserHasDebug" />
+        <field name="ProductDomain" type="string" default="[]" />
+        <field name="ProductIds" type="Core.ProductProduct" collection="true" />
+        <field name="ProductCategory" type="Core.ProductCategory" />
+        <field name="ProductTagId" type="Core.ProductTag" />
+        <field name="RewardPointAmount" type="float" default="1" label="Reward" />
+        <field name="RewardPointSplit" type="bool" label="Split per unit" default="false"
+               help="Whether to separate reward coupons per matched unit, only applies to 'future' programs and trigger mode per money spent or unit paid.." />
+        <field name="RewardPointName" type="string" related="ProgramId.PortalPointName" readonly="true" />
+        <field name="RewardPointMode" type="selection" selection="GetRewardPointModeSelection" required="true" default="order" />
+        <field name="MinimumQuantity" type="integer" label="Minimum Quantity" default="1" />
+        <field name="MinimumAmount" type="monetary" label="Minimum Purchase" />
+        <field name="MinimumAmountTaxMode" type="selection"
+                selection="[('incl', 'tax included'), ('excl', 'tax excluded')]" default="incl" required="true" />
+        <field name="Mode" type="selection" selection="[('auto', 'Automatic'), ('with_code', 'With a promotion code')]"
+                label="Application" compute="ComputeMode" store="true" readonly="false" />
+        <field name="Code" type="string" label="Discount code" compute="ComputeCode" store="true" readonly="false" />
+        <sql_constraint name="RewardPointAmountPositive" expr="RewardPointAmount &gt; 0"
+                         message="Rule points reward must be strictly positive." />
+    </model>
+
+    <optionset id="Loyalty.RewardPointMode" name="Reward Point Mode">
+        <option value="order" name="per order" />
+        <option value="money" name="per %s spent" />
+        <option value="unit" name="per unit paid" />
+    </optionset>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteSnippetFilter" name="WebsiteSnippetFilter" description="Website Snippet Filter">
+    <field name="CoverProperties" type="string" label="Cover Properties" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Subtitle" type="string" label="Subtitle" />
+    <field name="PostDate" type="Date" label="Post Date" />
+    <field name="WebsiteUrl" type="string" label="Website URL" />
+  </model>
 </buvi>

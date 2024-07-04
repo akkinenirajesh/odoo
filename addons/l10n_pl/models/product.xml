@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="l10n_pl.ProductTemplate" name="l10n_pl.ProductTemplate" description="Product Template">
+        <field name="L10nPlVatGtu" type="Selection" label="GTU Codes"
+            help="Codes for specific types of products, needed for VAT declaration">
+            <option value="GTU_01" name="GTU_01 - Alcoholic beverages" />
+            <option value="GTU_02" name="GTU_02 - Goods referred to under Art. 103 sec 5aa" />
+            <option value="GTU_03" name="GTU_03 - Fuel oil for excise duty, lubricating oils and other oils" />
+            <option value="GTU_04" name="GTU_04 - Tobacco products, tobacco, e-liquid" />
+            <option value="GTU_05" name="GTU_05 - Wastes" />
+            <option value="GTU_06" name="GTU_06 - Electronic devices, their parts and materials" />
+            <option value="GTU_07" name="GTU_07 - Vehicles and vehicle parts" />
+            <option value="GTU_08" name="GTU_08 - Precious metals and base metals" />
+            <option value="GTU_09" name="GTU_09 - Medicament and medical devices, medicinal products" />
+            <option value="GTU_10" name="GTU_10 - Buildings, structures and land" />
+            <option value="GTU_11" name="GTU_11 - Services related to the greenhouse gas emission allowance trading" />
+            <option value="GTU_12" name="GTU_12 - Intangible services" />
+            <option value="GTU_13" name="GTU_13 - Transport services and warehouse management services" />
+        </field>
+    </model>
 </buvi>

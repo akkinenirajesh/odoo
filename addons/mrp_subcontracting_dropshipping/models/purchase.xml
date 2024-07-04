@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.PurchaseOrder" name="Mrp.PurchaseOrder" description="Purchase Order" inherit="Purchase.PurchaseOrder">
+    <field name="DefaultLocationDestIdIsSubcontractingLoc" type="bool" related="PickingTypeId.DefaultLocationDestId.IsSubcontractingLocation" />
+    <field name="DestAddressId" type="Mrp.Subcontractor"  collection="true" />
+  </model>
 </buvi>

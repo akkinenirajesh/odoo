@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleMondialRelay.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="PartnerShippingId" type="ResPartner" label="Delivery Address" collection="true" />
+        <field name="CarrierId" type="DeliveryCarrier" label="Delivery Method" collection="true" />
+        <field name="DeliverySet" type="bool" label="Delivery Set" />
+    </model>
 </buvi>

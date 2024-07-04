@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestPopulate.TestPopulateModel" name="TestPopulateModel" description="Test Populate">
+    <field name="Name" type="string" default="Foo" />
+    <field name="State" type="selection">
+      <option value="a" name="A" />
+      <option value="b" name="B" />
+    </field>
+    <field name="Active" type="bool" default="true"
+      help="Active" />
+    <field name="CategoryID" type="TestPopulate.TestPopulateCategoryModel" label="Category" />
+    <field name="SomeRef" type="integer" label="Reference" />
+    <field name="DependantField1" type="string" label="Dependant 1" />
+    <field name="DependantField2" type="string" label="Dependant 2" />
+    <field name="Sequence" type="integer" label="Sequence" />
+  </model>
+  <model id="TestPopulate.TestPopulateCategoryModel" name="TestPopulateCategoryModel" description="Test Populate Category">
+    <field name="Name" type="string" label="Name" required="true" default="Cat1" />
+    <field name="Active" type="bool" default="true"
+      help="Active" />
+  </model>
+  <model id="TestPopulate.TestNoPopulateModelInherit" name="TestNoPopulateModelInherit" description="Test populate inherit" inherit="TestPopulate.TestPopulateModel">
+    <field name="AdditionnalField" type="string" required="true" />
+  </model>
+  <model id="TestPopulate.TestNoPopulateModel" name="TestNoPopulateModel" description="A model with no populate method and a required field, should not crash">
+    <field name="Name" type="string" required="true" />
+  </model>
 </buvi>

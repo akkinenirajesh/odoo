@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpRoutingWorkcenter" name="MrpRoutingWorkcenter" description="Work Center Usage">
+    <field name="Name" type="string" label="Operation" required="true" translate="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="WorkcenterId" type="Mrp.Workcenter" label="Work Center" required="true" tracking="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="100"
+      help="Gives the sequence order when displaying a list of routing Work Centers." />
+    <field name="BomId" type="Mrp.Bom" label="Bill of Material" index="true" collection="true" required="true"
+      tracking="true" />
+    <field name="CompanyId" type="Res.Company" label="Company" related="BomId.CompanyId" />
+    <field name="WorksheetType" type="Mrp.WorksheetType" label="Worksheet" default="Text" tracking="true" />
+    <field name="Note" type="html" label="Description" />
+    <field name="Worksheet" type="binary" label="PDF" />
+    <field name="WorksheetGoogleSlide" type="char" label="Google Slide"
+      help="Paste the url of your Google Slide. Make sure the access to the document is public."
+      tracking="true" />
+    <field name="TimeMode" type="Mrp.TimeMode" label="Duration Computation" default="Manual" tracking="true" />
+    <field name="TimeModeBatch" type="integer" label="Based on" default="10" />
+    <field name="TimeComputedOn" type="char" label="Computed on last" />
+    <field name="TimeCycleManual" type="float" label="Manual Duration" default="60" tracking="true"
+      help="Time in minutes:"
+      "- In manual mode, time used"
+      "- In automatic mode, supposed first time when there aren't any work orders yet" />
+    <field name="TimeCycle" type="float" label="Duration" />
+    <field name="WorkorderCount" type="integer" label="# Work Orders" />
+    <field name="WorkorderIds" type="Mrp.Workorder" label="Work Orders" collection="true" />
+    <field name="PossibleBomProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue"
+      related="BomId.PossibleProductTemplateAttributeValueIds" />
+    <field name="BomProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue"
+      label="Apply on Variants" collection="true"
+      domain="[('Id', 'in', PossibleBomProductTemplateAttributeValueIds)]"
+      help="BOM Product Variants needed to apply this line." />
+    <field name="AllowOperationDependencies" type="bool" related="BomId.AllowOperationDependencies" />
+    <field name="BlockedByOperationIds" type="Mrp.MrpRoutingWorkcenter" label="Blocked By" collection="true"
+      domain="[('AllowOperationDependencies', '=', True), ('Id', '!=', Id), ('BomId', '=', BomId)]"
+      help="Operations that need to be completed before this operation can start." />
+    <field name="NeededByOperationIds" type="Mrp.MrpRoutingWorkcenter" label="Blocks" collection="true"
+      domain="[('AllowOperationDependencies', '=', True), ('Id', '!=', Id), ('BomId', '=', BomId)]"
+      help="Operations that cannot start before this operation is completed." />
+  </model>
+  <optionset id="Mrp.WorksheetType" name="Worksheet Type">
+    <option value="Pdf" name="PDF" />
+    <option value="GoogleSlide" name="Google Slide" />
+    <option value="Text" name="Text" />
+  </optionset>
+  <optionset id="Mrp.TimeMode" name="Time Mode">
+    <option value="Auto" name="Compute based on tracked time" />
+    <option value="Manual" name="Set duration manually" />
+  </optionset>
 </buvi>

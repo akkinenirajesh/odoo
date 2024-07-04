@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.UoM" name="Product.UoM" description="Unit of Measure">
+        <field name="Name" type="string" label="Unit of Measure" required="true" translate="true" />
+        <field name="CategoryID" type="Product.UoMCategory" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Unit of Measure without removing it." />
+        <field name="Rounding" type="float" />
+        <field name="Factor" type="float" default="1.0" />
+        <field name="FactorInv" type="float" />
+        <field name="Symbol" type="string" label="Symbol" translate="true" help="The symbol of the unit of measure." />
+        <field name="Sequence" type="integer" />
+        <field name="RoundingMethod" type="selection" selection="uom.uom.rounding_method_selection" />
+        <field name="UOMType" type="selection" selection="uom.uom.uom_type_selection" />
+    </model>
+
+    <optionset id="Product.UoMCategory" name="Unit of Measure Category">
+        <option value="weight" name="Weight" />
+        <option value="volume" name="Volume" />
+        <option value="length" name="Length" />
+        <option value="surface" name="Surface" />
+        <option value="area" name="Area" />
+        <option value="time" name="Time" />
+        <option value="quantity" name="Quantity" />
+        <option value="other" name="Other" />
+    </optionset>
+    <optionset id="Product.UoMRoundingMethod" name="Rounding Method">
+        <option value="UP" name="Round Up" />
+        <option value="DOWN" name="Round Down" />
+        <option value="HALFUP" name="Round Half Up" />
+    </optionset>
+    <optionset id="Product.UoMType" name="Unit of Measure Type">
+        <option value="bigger" name="Bigger" />
+        <option value="smaller" name="Smaller" />
+    </optionset>
 </buvi>

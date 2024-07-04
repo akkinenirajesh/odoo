@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
-  </model>
+    <model id="Mrp.StockLandedCost" name="StockLandedCost" description="Stock Landed Cost">
+        <field name="TargetModel" type="selection" label="Target Model" required="true" translate="true">
+            <option value="purchase" name="Purchase Orders" />
+            <option value="stock" name="Stock Moves" />
+            <option value="manufacturing" name="Manufacturing Orders" />
+        </field>
+        <field name="MrpProductionIds" type="many2many" collection="true" label="Manufacturing order" copy="false" groups="stock.group_stock_manager" />
+    </model>
 </buvi>

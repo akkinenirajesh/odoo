@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPayment" name="PosPayment" description="Pos Payment" inherit="Pos.PosPayment">
+        <field name="Amount" type="float" />
+    </model>
 </buvi>

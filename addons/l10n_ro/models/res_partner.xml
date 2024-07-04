@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Partner" name="ResPartner" description="Partner">
+    <field name="NRC" type="string" label="NRC" help="Registration number at the Registry of Commerce" />
+  </model>
 </buvi>

@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.ResLang" name="ResLang" description="ResLang">
+        <field name="Id" type="integer" />
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" required="true" translate="true" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="Direction" type="string" label="Text Direction" selection="['ltr', 'rtl']" />
+        <field name="Date" type="string" label="Date Format" />
+        <field name="Time" type="string" label="Time Format" />
+        <field name="WeekStart" type="integer" label="Week Start" />
+        <field name="DecimalPoint" type="string" label="Decimal Separator" />
+        <field name="ThousandsSep" type="string" label="Thousands Separator" />
+        <field name="CurrencySymbol" type="string" label="Currency Symbol" />
+        <field name="CurrencyPosition" type="selection" label="Currency Position" selection="[('after', 'After Amount'), ('before', 'Before Amount')]" />
+        <field name="MonetarySeparator" type="string" label="Monetary Separator" />
+        <field name="Group" type="integer" label="Group By" />
+        <field name="Groups" type="integer" collection="true" label="Groups" />
+        <field name="Countries" type="Core.Country" collection="true" label="Countries" />
+        <field name="Parent" type="PointOfSale.ResLang" label="Parent" />
+        <field name="Languages" type="PointOfSale.ResLang" collection="true" label="Languages" />
+    </model>
 </buvi>

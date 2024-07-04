@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Partner" name="ResPartner" description="Partner">
+    <field name="BranchCode" type="string" label="Branch Code" default="000" store="true" />
+    <field name="FirstName" type="string" label="First Name" />
+    <field name="MiddleName" type="string" label="Middle Name" />
+    <field name="LastName" type="string" label="Last Name" />
+  </model>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.LinkTracker" name="LinkTracker" description="Link Tracker">
+        <field name="MassMailingId" type="MassMailing.MassMailing" label="Mass Mailing" />
+    </model>
+    <model id="MassMailing.LinkTrackerClick" name="LinkTrackerClick" description="Link Tracker Click">
+        <field name="MailingTraceId" type="MassMailing.MailingTrace" label="Mail Statistics" index="btree_not_null" />
+        <field name="MassMailingId" type="MassMailing.MassMailing" label="Mass Mailing" index="btree_not_null" />
+    </model>
 </buvi>

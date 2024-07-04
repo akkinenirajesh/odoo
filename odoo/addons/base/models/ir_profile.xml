@@ -1,50 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="base.import.module" name="Base.ImportModule" track_created="true" track_update="true">
-    <field name="Force" label="Force init" type="bool" copied="true"/>
-    <field name="ImportMessage" label="Import Message" type="text" copied="true"/>
-    <field name="ModuleFile" label="Module .ZIP file" type="binary" required="true" copied="true"/>
-    <field name="ModulesDependencies" label="Modules Dependencies" type="text" copied="true"/>
-    <field name="State" label="Status" type="Base.ImportModuleStatus" readonly="true"/>
-    <field name="WithDemo" label="Import demo data of module" type="bool" copied="true"/>
-  </model>
-  <model id="ir.module.module" name="Ir.ModuleModule" track_created="true" track_update="true">
-    <field name="Images" label="Screenshots" type="Ir.Attachment" collection="true" readonly="true"/>
-    <field name="Category" label="Category" type="Ir.ModuleCategory" indexed="true" readonly="true" copied="true" on-delete="Clear"/>
-    <field name="Dependencies" label="Dependencies" type="Ir.ModuleModuleDependency" collection="true" readonly="true"/>
-    <field name="Exclusions" label="Exclusions" type="Ir.ModuleModuleExclusion" collection="true" readonly="true"/>
-    <field name="Countrys" label="Country" type="Res.Country" collection="true" copied="true"/>
-    <field name="AccountTemplates" label="Account Templates" type="binary" readonly="true" transient="true"/>
-    <field name="Application" label="Application" type="bool" readonly="true" copied="true"/>
-    <field name="Author" label="Author" type="string" readonly="true" copied="true"/>
-    <field name="AutoInstall" label="Automatic Installation" type="bool" copied="true"/>
-    <field name="Contributors" label="Contributors" type="text" readonly="true" copied="true"/>
-    <field name="Demo" label="Demo Data" type="bool" readonly="true" copied="true"/>
-    <field name="Description" label="Description" type="text" readonly="true" copied="true" translatable="true"/>
-    <field name="DescriptionHtml" label="Description HTML" type="html" readonly="true" transient="true"/>
-    <field name="HasIap" label="Has Iap" type="bool" readonly="true" transient="true"/>
-    <field name="Icon" label="Icon URL" type="string" copied="true"/>
-    <field name="IconFlag" label="Flag" type="string" readonly="true" transient="true"/>
-    <field name="IconImage" label="Icon" type="binary" readonly="true" transient="true"/>
-    <field name="Imported" label="Imported Module" type="bool" copied="true"/>
-    <field name="InstalledVersion" label="Latest Version" type="string" readonly="true" transient="true"/>
-    <field name="IsInstalledOnCurrentWebsite" label="Is Installed On Current Website" type="bool" readonly="true" transient="true"/>
-    <field name="IsModuleOfficial" label="Is Module Official" type="bool" readonly="true" transient="true"/>
-    <field name="LatestVersion" label="Installed Version" type="string" readonly="true" copied="true"/>
-    <field name="License" label="License" type="Ir.ModuleLicense" readonly="true" copied="true"/>
-    <field name="Maintainer" label="Maintainer" type="string" readonly="true" copied="true"/>
-    <field name="MenusByModule" label="Menus" type="text" readonly="true"/>
-    <field name="ModuleType" label="Module Type" type="Ir.ModuleModuleType" copied="true"/>
-    <field name="Name" label="Technical Name" type="string" required="true" readonly="true" copied="true"/>
-    <field name="PublishedVersion" label="Published Version" type="string" readonly="true" copied="true"/>
-    <field name="ReportsByModule" label="Reports" type="text" readonly="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="Shortdesc" label="Module Name" type="string" readonly="true" copied="true" translatable="true"/>
-    <field name="State" label="Status" type="Ir.ModuleStatus" indexed="true" readonly="true"/>
-    <field name="Summary" label="Summary" type="string" readonly="true" copied="true" translatable="true"/>
-    <field name="ToBuy" label="Odoo Enterprise Module" type="bool" copied="true"/>
-    <field name="Url" label="URL" type="string" readonly="true" copied="true"/>
-    <field name="ViewsByModule" label="Views" type="text" readonly="true"/>
-    <field name="Website" label="Website" type="string" readonly="true" copied="true"/>
+  <model id="Base.IrProfile" name="IrProfile" description="Profiling results">
+    <field name="CreateDate" type="datetime" label="Creation Date" />
+    <field name="Session" type="string" label="Session" index="true" />
+    <field name="Name" type="string" label="Description" />
+    <field name="Duration" type="float" label="Duration" />
+    <field name="InitStackTrace" type="text" label="Initial stack trace" prefetch="false" />
+    <field name="Sql" type="text" label="Sql" prefetch="false" />
+    <field name="SqlCount" type="integer" label="Queries Count" />
+    <field name="TracesAsync" type="text" label="Traces Async" prefetch="false" />
+    <field name="TracesSync" type="text" label="Traces Sync" prefetch="false" />
+    <field name="Qweb" type="text" label="Qweb" prefetch="false" />
+    <field name="EntryCount" type="integer" label="Entry count" />
+    <field name="Speedscope" type="binary" label="Speedscope" compute="ComputeSpeedscope" />
+    <field name="SpeedscopeUrl" type="text" label="Open" compute="ComputeSpeedscopeUrl" />
   </model>
 </buvi>

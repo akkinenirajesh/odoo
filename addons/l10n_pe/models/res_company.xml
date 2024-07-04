@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Res.Company" name="ResCompany" description="Company">
+        <field name="AccountFiscalCountryId" type="Account.FiscalCountry" relation="true" label="Fiscal Country" />
+        <field name="LocalizationUseDocuments" type="bool" compute="ComputeLocalizationUseDocuments" />
+    </model>
+
+    <optionset id="Account.FiscalCountry" name="Fiscal Country">
+        <!-- Option values will go here -->
+    </optionset>
 </buvi>

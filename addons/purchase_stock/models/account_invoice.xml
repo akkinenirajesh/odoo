@@ -1,5 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
-  </model>
+    <model id="PurchaseStock.AccountMove" name="Account.Move" description="Account Move">
+        <field name="MoveType" type="Selection" label="Move Type" selection="Account.Move.move_type" required="true" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="InvoiceLineIds" type="One2Many" relation="PurchaseStock.AccountMoveLine" collection="true" />
+        <field name="DirectionSign" type="Integer" />
+        <field name="CurrencyId" type="Core.Currency" />
+        <field name="CommercialPartnerId" type="Core.Partner" />
+        <field name="FiscalPositionId" type="Account.FiscalPosition" />
+        <field name="PurchaseId" type="Purchase.PurchaseOrder" />
+        <field name="IncotermLocation" type="Stock.Incoterm" />
+        <field name="StockValuationLayerIds" type="One2Many" relation="Stock.StockValuationLayer" collection="true" />
+    </model>
+
+    <model id="PurchaseStock.AccountMoveLine" name="Account.MoveLine" description="Account Move Line">
+        <field name="MoveId" type="Account.Move" />
+        <field name="PartnerId" type="Core.Partner" />
+        <field name="CurrencyId" type="Core.Currency" />
+        <field name="ProductId" type="Product.Product" />
+        <field name="ProductUomId" type="Product.Uom" />
+        <field name="Quantity" type="Float" />
+        <field name="PriceUnit" type="Float" />
+        <field name="PriceSubtotal" type="Float" />
+        <field name="AmountCurrency" type="Float" />
+        <field name="Balance" type="Float" />
+        <field name="AccountId" type="Account.Account" />
+        <field name="AnalyticDistribution" type="Many2Many" relation="Account.AnalyticAccount" collection="true" />
+        <field name="DisplayType" type="Selection" label="Display Type" selection="Account.MoveLine.display_type" />
+        <field name="PurchaseLineId" type="Purchase.PurchaseOrderLine" />
+    </model>
+
+    <optionset id="Account.Move.move_type" name="Move Type">
+        <option value="in_invoice" name="Vendor Bill" />
+        <option value="in_refund" name="Vendor Credit Note" />
+        <option value="in_receipt" name="Receipt" />
+    </optionset>
+
+    <optionset id="Account.MoveLine.display_type" name="Display Type">
+        <option value="cogs" name="Cost of Goods Sold" />
+    </optionset>
 </buvi>

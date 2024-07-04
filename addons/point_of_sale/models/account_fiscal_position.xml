@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.FiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+        <field name="Name" type="string" label="Fiscal Position Name" required="true" translate="true" />
+        <field name="Note" type="text" label="Note" />
+        <field name="CountryId" type="Core.Country" label="Country" />
+        <field name="AutoApply" type="bool" label="Auto Apply" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="MapTaxIds" type="collection" collectionType="Account.FiscalPositionTaxMap" collection="true" />
+        <field name="ChargeTaxes" type="collection" collectionType="Account.FiscalPositionTax" collection="true" />
+        <field name="AccountTaxId" type="Account.Tax" label="Account Tax" />
+        <field name="CashRoundingId" type="Account.CashRounding" label="Cash Rounding" />
+        <field name="ApplyOn" type="Account.FiscalPositionApplyOn" />
+    </model>
+    <optionset id="Account.FiscalPositionApplyOn" name="Apply On">
+        <option value="None" name="None" />
+        <option value="Invoice" name="Invoice" />
+        <option value="CreditNote" name="Credit Note" />
+        <option value="InvoiceAndCreditNote" name="Invoice And Credit Note" />
+    </optionset>
+    <optionset id="Account.FiscalPositionTax" name="Tax">
+        <option value="None" name="None" />
+        <option value="Tax" name="Tax" />
+        <option value="TaxAndCharge" name="Tax and Charge" />
+    </optionset>
 </buvi>

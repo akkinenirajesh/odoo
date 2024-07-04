@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.Digest" name="Digest" description="Digest">
+        <field name="KpiProjectTaskOpened" type="bool" label="Open Tasks" />
+        <field name="KpiProjectTaskOpenedValue" type="integer" />
+    </model>
 </buvi>

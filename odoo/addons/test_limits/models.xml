@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestLimits.Model" name="TestLimits.Model" description="Test Limits Model">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Size" type="integer" label="Size" />
+    <field name="Seconds" type="integer" label="Seconds" />
+  </model>
 </buvi>

@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailTrackingValue" name="Mail.MailTrackingValue" description="Mail Tracking Value">
+        <field name="FieldId" type="Ir.ModelFields" required="false" readonly="true" index="true" ondelete="set null" />
+        <field name="FieldInfo" type="json" label="Removed field information" />
+        <field name="OldValueInteger" type="integer" label="Old Value Integer" readonly="true" />
+        <field name="OldValueFloat" type="float" label="Old Value Float" readonly="true" />
+        <field name="OldValueChar" type="string" label="Old Value Char" readonly="true" />
+        <field name="OldValueText" type="text" label="Old Value Text" readonly="true" />
+        <field name="OldValueDateTime" type="datetime" label="Old Value DateTime" readonly="true" />
+        <field name="NewValueInteger" type="integer" label="New Value Integer" readonly="true" />
+        <field name="NewValueFloat" type="float" label="New Value Float" readonly="true" />
+        <field name="NewValueChar" type="string" label="New Value Char" readonly="true" />
+        <field name="NewValueText" type="text" label="New Value Text" readonly="true" />
+        <field name="NewValueDateTime" type="datetime" label="New Value Datetime" readonly="true" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" readonly="true" ondelete="set null" help="Used to display the currency when tracking monetary values" />
+        <field name="MailMessageId" type="Mail.Message" label="Message ID" required="true" index="true" ondelete="cascade" />
+    </model>
 </buvi>

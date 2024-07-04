@@ -1,3 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailActivityType" name="MailActivityType" description="Activity Type">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Summary" type="string" label="Default Summary" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="10" />
+    <field name="Active" type="bool" default="true" />
+    <field name="CreateUid" type="res.users" />
+    <field name="DelayCount" type="integer" label="Schedule"
+      help="Number of days/week/month before executing the action. It allows to plan the action deadline." />
+    <field name="DelayUnit" type="selection" label="Delay units"
+      help="Unit of delay" required="true" default="days">
+      <option value="days" name="days" />
+      <option value="weeks" name="weeks" />
+      <option value="months" name="months" />
+    </field>
+    <field name="DelayLabel" type="string" />
+    <field name="DelayFrom" type="selection" label="Delay Type"
+      help="Type of delay" required="true" default="previous_activity">
+      <option value="currentDate" name="after completion date" />
+      <option value="previousActivity" name="after previous activity deadline" />
+    </field>
+    <field name="Icon" type="string"
+      help="Font awesome icon e.g. fa-tasks" />
+    <field name="DecorationType" type="selection" label="Decoration Type"
+      help="Change the background color of the related activities of this type.">
+      <option value="warning" name="Alert" />
+      <option value="danger" name="Error" />
+    </field>
+    <field name="ResModel" type="selection" label="Model"
+      help="Specify a model if the activity should be specific to a model
+             and not available when managing activities for other models." collection="true" />
+    <field name="TriggeredNextTypeId" type="mail.mailactivitytype" label="Trigger"
+      help="Automatically schedule this activity once the current one is marked as done." />
+    <field name="ChainingType" type="selection" label="Chaining Type"
+      required="true" default="suggest">
+      <option value="suggest" name="Suggest Next Activity" />
+      <option value="trigger" name="Trigger Next Activity" />
+    </field>
+    <field name="SuggestedNextTypeIds" type="mail.mailactivitytype" label="Suggest" collection="true"
+      help="Suggest these activities once the current one is marked as done." />
+    <field name="PreviousTypeIds" type="mail.mailactivitytype" label="Preceding Activities" collection="true" />
+    <field name="Category" type="selection" label="Action"
+      help="Actions may trigger specific behavior like opening calendar view or automatically mark as done when a document is uploaded" default="default">
+      <option value="default" name="None" />
+      <option value="uploadFile" name="Upload Document" />
+      <option value="phonecall" name="Phonecall" />
+    </field>
+    <field name="MailTemplateIds" type="mail.template" label="Email templates" collection="true" />
+    <field name="DefaultUserId" type="res.users" label="Default User" />
+    <field name="DefaultNote" type="html" label="Default Note" translate="true" />
+    <field name="KeepDone" type="bool" label="Keep Done"
+      help="Keep activities marked as done in the activity view" />
+    <field name="InitialResModel" type="selection" label="Initial model"
+      help="Technical field to keep track of the model at the start of editing to support UX related behaviour" />
+    <field name="ResModelChange" type="bool" label="Model has change" default="false" />
+  </model>
+  <optionset id="Mail.DelayUnit" name="Delay Unit">
+    <option value="days" name="days" />
+    <option value="weeks" name="weeks" />
+    <option value="months" name="months" />
+  </optionset>
+  <optionset id="Mail.DelayFrom" name="Delay From">
+    <option value="currentDate" name="after completion date" />
+    <option value="previousActivity" name="after previous activity deadline" />
+  </optionset>
+  <optionset id="Mail.DecorationType" name="Decoration Type">
+    <option value="warning" name="Alert" />
+    <option value="danger" name="Error" />
+  </optionset>
+  <optionset id="Mail.ChainingType" name="Chaining Type">
+    <option value="suggest" name="Suggest Next Activity" />
+    <option value="trigger" name="Trigger Next Activity" />
+  </optionset>
+  <optionset id="Mail.Category" name="Category">
+    <option value="default" name="None" />
+    <option value="uploadFile" name="Upload Document" />
+    <option value="phonecall" name="Phonecall" />
+  </optionset>
 </buvi>

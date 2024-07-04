@@ -1,3 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosSession" name="PosSession" description="Point of Sale Session">
+        <field name="State" type="selection" label="Status" selection="pos.session.state" default="opening" />
+        <field name="ConfigId" type="Pos.PosConfig" required="true" label="Point of Sale" />
+        <field name="UserId" type="Res.Users" required="true" label="Cashier" />
+        <field name="StartAt" type="datetime" label="Opening Date" required="true" />
+        <field name="StopAt" type="datetime" label="Closing Date" />
+        <field name="CashRegisterId" type="Account.CashRegister" label="Cash Register" />
+        <field name="Name" type="string" label="Session Name" />
+        <field name="SequenceId" type="Ir.Sequence" label="Session Sequence" />
+        <field name="User" type="Res.Users" label="Session User" />
+        <field name="CompanyId" type="Res.Company" label="Company" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" />
+        <field name="JournalId" type="Account.Journal" label="Journal" />
+        <field name="OpeningBalance" type="float" label="Starting Balance" />
+        <field name="ClosingBalance" type="float" label="Ending Balance" />
+        <field name="SessionOrderCount" type="integer" label="Number of Orders" />
+        <field name="SessionOrderTotal" type="float" label="Total Amount" />
+        <field name="SessionTotalCash" type="float" label="Total Cash" />
+        <field name="SessionTotalBank" type="float" label="Total Bank" />
+        <field name="SessionTotalCard" type="float" label="Total Card" />
+        <field name="SessionTotalVoucher" type="float" label="Total Voucher" />
+        <field name="SessionTotalOther" type="float" label="Total Other Payment Methods" />
+        <field name="SessionTotalCredit" type="float" label="Total Credit" />
+        <field name="SessionTotalDebit" type="float" label="Total Debit" />
+        <field name="SessionTotalGiftCard" type="float" label="Total Gift Card" />
+        <field name="SessionTotalLoyaltyPoints" type="float" label="Total Loyalty Points" />
+        <field name="SessionTotalInvoice" type="float" label="Total Invoice" />
+        <field name="SessionTotalRefund" type="float" label="Total Refund" />
+        <field name="SessionTotalDiscount" type="float" label="Total Discount" />
+        <field name="SessionTotalTax" type="float" label="Total Tax" />
+        <field name="SessionTotalDelivery" type="float" label="Total Delivery" />
+        <field name="SessionTotalPayment" type="float" label="Total Payment" />
+        <field name="SessionTotalPaymentDifference" type="float" label="Payment Difference" />
+        <field name="SessionTotalPaymentRefund" type="float" label="Payment Refund" />
+        <field name="SessionTotalPaymentDifferenceRefund" type="float" label="Payment Difference Refund" />
+        <field name="SessionTotalPaymentCounter" type="integer" label="Payment Counter" />
+        <field name="SessionTotalPaymentRefundCounter" type="integer" label="Payment Refund Counter" />
+        <field name="SessionTotalOrderLine" type="integer" label="Total Order Lines" />
+        <field name="SessionTotalOrderLineQuantity" type="float" label="Total Order Line Quantity" />
+        <field name="SessionTotalOrderLinePrice" type="float" label="Total Order Line Price" />
+        <field name="SessionTotalOrderLineCost" type="float" label="Total Order Line Cost" />
+        <field name="SessionTotalOrderLineTax" type="float" label="Total Order Line Tax" />
+        <field name="SessionTotalOrderLineDiscount" type="float" label="Total Order Line Discount" />
+        <field name="SessionTotalOrderLineProfit" type="float" label="Total Order Line Profit" />
+        <field name="SessionTotalOrderLineLoss" type="float" label="Total Order Line Loss" />
+        <field name="SessionTotalOrderLinePaid" type="float" label="Total Order Line Paid" />
+        <field name="SessionTotalOrderLineUnpaid" type="float" label="Total Order Line Unpaid" />
+        <field name="SessionTotalOrderLineRefund" type="float" label="Total Order Line Refund" />
+        <field name="SessionTotalOrderLineDifference" type="float" label="Total Order Line Difference" />
+        <field name="SessionTotalOrderLineDifferenceRefund" type="float" label="Total Order Line Difference Refund" />
+        <field name="SessionTotalOrderLineCounter" type="integer" label="Total Order Line Counter" />
+        <field name="SessionTotalOrderLineRefundCounter" type="integer" label="Total Order Line Refund Counter" />
+        <field name="SessionTotalOrderLinePaidCounter" type="integer" label="Total Order Line Paid Counter" />
+        <field name="SessionTotalOrderLineUnpaidCounter" type="integer" label="Total Order Line Unpaid Counter" />
+        <field name="SessionTotalOrderLineRefundCounter" type="integer" label="Total Order Line Refund Counter" />
+        <field name="SessionTotalOrderLineDifferenceCounter" type="integer" label="Total Order Line Difference Counter" />
+        <field name="SessionTotalOrderLineDifferenceRefundCounter" type="integer" label="Total Order Line Difference Refund Counter" />
+        <field name="SessionTotalOrderLinePaymentCounter" type="integer" label="Total Order Line Payment Counter" />
+        <field name="SessionTotalOrderLinePaymentRefundCounter" type="integer" label="Total Order Line Payment Refund Counter" />
+        <field name="SessionTotalOrderLinePaymentDifferenceCounter" type="integer" label="Total Order Line Payment Difference Counter" />
+        <field name="SessionTotalOrderLinePaymentDifferenceRefundCounter" type="integer" label="Total Order Line Payment Difference Refund Counter" />
+        <field name="SelfOrdering" type="bool" label="Self Ordering" />
+        <field name="Orders" type="Pos.PosOrder" relation="one2many" collection="true" />
+        <field name="CashControl" type="Pos.CashControl" relation="one2many" collection="true" />
+        <field name="StatementLines" type="Account.AccountMoveLine" relation="one2many" collection="true" />
+    </model>
+
+    <optionset id="Pos.PosSessionState" name="PosSessionState">
+        <option value="opening" name="Opening" />
+        <option value="opened" name="Opened" />
+        <option value="closing" name="Closing" />
+        <option value="closed" name="Closed" />
+    </optionset>
 </buvi>

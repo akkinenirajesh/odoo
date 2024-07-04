@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Product.ProductTemplate" name="Product.ProductTemplate" description="Product Template">
+    <field name="ValidProductTemplateAttributeLineIds" type="collection" collection="true" relation="Product.ProductTemplateAttributeLine" />
+    <field name="DisplayName" type="string" label="Display Name" />
+    <field name="CurrencyId" type="Core.Currency" />
+    <field name="CompanyId" type="Core.Company" />
+  </model>
+  <model id="Product.ProductTemplateAttributeValue" name="Product.ProductTemplateAttributeValue" description="Product Template Attribute Value">
+    <field name="Name" type="string" />
+    <field name="PriceExtra" type="float" />
+  </model>
+  <model id="Product.ProductTemplateAttributeLine" name="Product.ProductTemplateAttributeLine" description="Product Template Attribute Line">
+    <field name="ProductTemplateValueIds" type="collection" collection="true" relation="Product.ProductTemplateAttributeValue" />
   </model>
 </buvi>

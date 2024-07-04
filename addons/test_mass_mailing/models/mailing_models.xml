@@ -1,3 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestMassMailing.MailingCustomer" name="MailingCustomer" description="Mailing with partner">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" relation="true" />
+    </model>
+
+    <model id="TestMassMailing.MailingSimple" name="MailingSimple" description="Simple Mailing">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+    </model>
+
+    <model id="TestMassMailing.MailingUTM" name="MailingUTM" description="Mailing: UTM enabled to test UTM sync with mailing">
+        <field name="Name" type="string" />
+    </model>
+
+    <model id="TestMassMailing.MailingBlacklist" name="MailingBlacklist" description="Mailing Blacklist Enabled">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" relation="true" />
+        <field name="UserId" type="res.users" label="Responsible" relation="true" />
+    </model>
+
+    <model id="TestMassMailing.MailingOptOut" name="MailingOptOut" description="Mailing Blacklist / Optout Enabled">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="OptOut" type="bool" />
+        <field name="CustomerId" type="res.partner" label="Customer" relation="true" />
+        <field name="UserId" type="res.users" label="Responsible" relation="true" />
+    </model>
+
+    <model id="TestMassMailing.MailingTestPartner" name="MailingTestPartner" description="Mailing Model with partner_id">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="PartnerId" type="res.partner" label="Customer" relation="true" />
+    </model>
+
+    <model id="TestMassMailing.MailingPerformance" name="MailingPerformance" description="Mailing: base performance">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+    </model>
+
+    <model id="TestMassMailing.MailingPerformanceBL" name="MailingPerformanceBL" description="Mailing: blacklist performance">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="UserId" type="res.users" label="Responsible" relation="true" />
+        <field name="ContainerId" type="mail.test.container" label="Meta Container Record" relation="true" />
+    </model>
 </buvi>

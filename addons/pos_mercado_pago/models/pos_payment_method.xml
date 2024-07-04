@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Pos Payment Method">
+    <field name="MpBearerToken" type="string" label="Production user token" help="Mercado Pago customer production user token: https://www.mercadopago.com.mx/developers/en/reference" groups="PointOfSale.GroupPosManager" />
+    <field name="MpWebhookSecretKey" type="string" label="Production secret key" help="Mercado Pago production secret key from integration application: https://www.mercadopago.com.mx/developers/panel/app" groups="PointOfSale.GroupPosManager" />
+    <field name="MpIdPointSmart" type="string" label="Terminal S/N" help="Enter your Point Smart terminal serial number written on the back of your terminal (after the S/N:)" />
+    <field name="MpIdPointSmartComplet" type="string" />
+  </model>
 </buvi>

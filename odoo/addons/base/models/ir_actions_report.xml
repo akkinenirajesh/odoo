@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrActionsReport" name="Base.IrActionsReport" description="Report Action">
+        <field name="Type" type="string" default="ir.actions.report" />
+        <field name="BindingType" type="selection" default="report" />
+        <field name="Model" type="string" required="true" label="Model Name" />
+        <field name="ModelId" type="Core.IrModel" label="Model" />
+        <field name="ReportType" type="selection" required="true" default="qweb-pdf" label="Report Type">
+            <option value="qweb-html" name="HTML" />
+            <option value="qweb-pdf" name="PDF" />
+            <option value="qweb-text" name="Text" />
+        </field>
+        <field name="ReportName" type="string" required="true" label="Template Name" />
+        <field name="ReportFile" type="string" label="Report File" />
+        <field name="GroupsId" type="Core.ResGroups" collection="true" label="Groups" />
+        <field name="Multi" type="bool" label="On Multiple Doc."
+            help="If set to true, the action will not be displayed on the right toolbar of a form view." />
+        <field name="PaperFormatId" type="Report.PaperFormat" label="Paper Format" />
+        <field name="PrintReportName" type="string" label="Printed Report Name" translate="true"
+            help="This is the filename of the report going to download. Keep empty to not change the report filename. You can use a python expression with the 'object' and 'time' variables." />
+        <field name="AttachmentUse" type="bool" label="Reload from Attachment"
+            help="If enabled, then the second time the user prints with same attachment name, it returns the previous report." />
+        <field name="Attachment" type="string" label="Save as Attachment Prefix"
+            help="This is the filename of the attachment used to store the printing result. Keep empty to not save the printed reports. You can use a python expression with the object and time variables." />
+    </model>
 </buvi>

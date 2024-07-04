@@ -1,3 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosSession" name="PosSession" description="Point of Sale Session">
+    <field name="ConfigId" type="Pos.PosConfig" required="true" />
+    <field name="State" type="selection" selection="Pos.SessionState" default="opened" />
+    <field name="StartAt" type="datetime" readonly="true" />
+    <field name="StopAt" type="datetime" readonly="true" />
+    <field name="User" type="Res.Users" readonly="true" />
+    <field name="CashRegister" type="Account.CashRegister" readonly="true" />
+    <field name="OpeningBalance" type="float" readonly="true" />
+    <field name="ClosingBalance" type="float" readonly="true" />
+    <field name="JournalId" type="Account.Journal" required="true" />
+    <field name="SessionId" type="integer" readonly="true" />
+    <field name="SequenceNumber" type="integer" readonly="true" />
+    <field name="Name" type="char" readonly="true" />
+    <field name="LoginDate" type="datetime" readonly="true" />
+    <field name="Config" type="Pos.PosConfig" readonly="true" />
+    <field name="Sales" type="float" readonly="true" />
+    <field name="TotalPaid" type="float" readonly="true" />
+    <field name="TotalCash" type="float" readonly="true" />
+    <field name="TotalBank" type="float" readonly="true" />
+    <field name="TotalCredit" type="float" readonly="true" />
+    <field name="TotalGiftCard" type="float" readonly="true" />
+    <field name="TotalLoyaltyPointsEarned" type="float" readonly="true" />
+    <field name="TotalLoyaltyPointsRedeemed" type="float" readonly="true" />
+    <field name="TotalRefund" type="float" readonly="true" />
+    <field name="TotalDiscount" type="float" readonly="true" />
+    <field name="TotalTax" type="float" readonly="true" />
+    <field name="NumberOfOrders" type="integer" readonly="true" />
+    <field name="Note" type="text" />
+    <field name="IsLocked" type="bool" readonly="true" />
+    <field name="LockDate" type="datetime" readonly="true" />
+    <field name="IsClosed" type="bool" readonly="true" />
+    <field name="OrderCount" type="integer" readonly="true" />
+    <field name="Currency" type="Res.Currency" readonly="true" />
+    <field name="FiscalPosition" type="Account.FiscalPosition" readonly="true" />
+    <field name="PartnerId" type="Res.Partner" readonly="true" />
+    <field name="PartnerInvoiceId" type="Account.Invoice" readonly="true" />
+    <field name="PartnerStatementId" type="Account.BankStatement" readonly="true" />
+    <field name="Company" type="Res.Company" readonly="true" />
+    <field name="PosConfig" type="Pos.PosConfig" readonly="true" />
+    <field name="Journal" type="Account.Journal" readonly="true" />
+    <field name="CashControl" type="bool" readonly="true" />
+    <field name="CashControlMode" type="selection" selection="Pos.CashControlMode" readonly="true" />
+    <field name="CashControlStartBalance" type="float" readonly="true" />
+    <field name="CashControlDifference" type="float" readonly="true" />
+    <field name="CashControlDifferenceType" type="selection" selection="Pos.CashControlDifferenceType" readonly="true" />
+    <field name="CashControlDifferenceReason" type="char" readonly="true" />
+    <field name="CashRegisterId" type="Account.CashRegister" readonly="true" />
+    <field name="SessionStartBalance" type="float" readonly="true" />
+    <field name="SessionEndBalance" type="float" readonly="true" />
+    <field name="SessionDifference" type="float" readonly="true" />
+    <field name="SessionDifferenceType" type="selection" selection="Pos.CashControlDifferenceType" readonly="true" />
+    <field name="SessionDifferenceReason" type="char" readonly="true" />
+    <field name="PosConfigId" type="Pos.PosConfig" readonly="true" />
+    <field name="DefaultPartnerId" type="Res.Partner" readonly="true" />
+    <field name="DefaultWarehouseId" type="Stock.Warehouse" readonly="true" />
+    <field name="DefaultPricelistId" type="Product.Pricelist" readonly="true" />
+    <field name="SalespersonId" type="Res.Users" readonly="true" />
+    <field name="Partner" type="Res.Partner" readonly="true" />
+    <field name="PaymentMethods" type="Pos.PaymentMethods" collection="true" readonly="true" />
+    <field name="Orders" type="Pos.Order" collection="true" readonly="true" />
+    <field name="StatementIds" type="Account.BankStatement" collection="true" readonly="true" />
+    <field name="Users" type="Res.Users" collection="true" readonly="true" />
+    <field name="Lines" type="Pos.OrderLine" collection="true" readonly="true" />
+    <field name="LineCash" type="Pos.OrderLine" collection="true" readonly="true" />
+    <field name="LineBank" type="Pos.OrderLine" collection="true" readonly="true" />
+    <field name="LineCredit" type="Pos.OrderLine" collection="true" readonly="true" />
+    <field name="LineGiftCard" type="Pos.OrderLine" collection="true" readonly="true" />
+    <field name="LoyaltyPrograms" type="Loyalty.Program" collection="true" readonly="true" />
+    <field name="LoyaltyRules" type="Loyalty.Rule" collection="true" readonly="true" />
+    <field name="LoyaltyRewards" type="Loyalty.Reward" collection="true" readonly="true" />
+    <field name="LoyaltyCards" type="Loyalty.Card" collection="true" readonly="true" />
+  </model>
+
+  <optionset id="Pos.SessionState" name="Session State">
+    <option value="opened" name="Opened" />
+    <option value="closed" name="Closed" />
+    <option value="closing" name="Closing" />
+    <option value="opening" name="Opening" />
+  </optionset>
+
+  <optionset id="Pos.CashControlMode" name="Cash Control Mode">
+    <option value="none" name="None" />
+    <option value="strict" name="Strict" />
+    <option value="fast" name="Fast" />
+  </optionset>
+
+  <optionset id="Pos.CashControlDifferenceType" name="Cash Control Difference Type">
+    <option value="positive" name="Positive" />
+    <option value="negative" name="Negative" />
+  </optionset>
 </buvi>

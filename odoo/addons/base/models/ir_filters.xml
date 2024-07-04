@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.IrFilters" name="IrFilters" description="Filters">
+    <field name="Name" type="string" label="Filter Name" required="true" />
+    <field name="UserId" type="Res.Users" label="User" ondelete="cascade"
+      help="The user this filter is private to. When left empty the filter is public and available to all users." />
+    <field name="Domain" type="text" default="[]" required="true" />
+    <field name="Context" type="text" default="{}" required="true" />
+    <field name="Sort" type="text" default="[]" required="true" />
+    <field name="ModelId" type="selection" label="Model" required="true"
+      selection="ListAllModels" />
+    <field name="IsDefault" type="bool" label="Default Filter" />
+    <field name="ActionId" type="Ir.ActionsActions" label="Action" ondelete="cascade"
+      help="The menu action this filter applies to. When left empty the filter applies to all menus for this model." />
+    <field name="EmbeddedActionId" type="Ir.EmbeddedActions" help="The embedded action this filter is applied to" ondelete="cascade" />
+    <field name="EmbeddedParentResId" type="integer" help="id of the record the filter should be applied to. Only used in combination with embedded actions" />
+    <field name="Active" type="bool" default="true" />
+  </model>
 </buvi>

@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.MrpBom" name="Sale.MrpBom" description="MRP BOM">
+    <field name="Active" type="bool" default="true" help="If the active field is set to false, it will allow you to hide the BOM without deleting it." />
+    <field name="Code" type="string" label="Code" />
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Type" type="Sale.MrpBomType" default="normal" />
+    <field name="ProductVariantId" type="Product.ProductTemplate" label="Product" required="true" />
+    <field name="ProductTmplId" type="Product.ProductTemplate" label="Product" required="true" />
+    <field name="ProductGroupId" type="Product.ProductGroup" label="Product Group" help="The BOM can be applied to all products in the selected product group." />
+    <field name="ProductIds" type="Product.ProductProduct" collection="true" label="Applied Products" help="List of products on which this BOM can be applied. Leave empty to apply to all variants of the selected product template." />
+    <field name="VariantIds" type="Product.ProductProduct" collection="true" label="Applied Variants" help="The product variants where this BOM will be used. It can be configured on the Product Template. The field is deprecated since 14.0 and will be removed in a future version. Use Applied Products field instead." />
+    <field name="PickingType" type="Stock.PickingType" label="Picking Type" />
+    <field name="RoutingId" type="Mrp.Routing" label="Routing" />
+    <field name="OperationIds" type="Mrp.MrpRoutingWorkcenter" collection="true" label="Operations" />
+    <field name="BomLineIds" type="Mrp.MrpBomLine" collection="true" label="Bill of Material Lines" />
+    <field name="Company" type="Res.Company" />
+    <field name="Description" type="string" label="Description" />
+    <field name="Version" type="integer" label="Version" />
+    <field name="AllowEdit" type="bool" label="Allow Edit" help="If this flag is set, users are allowed to edit components directly on the Manufacturing Order." />
+    <field name="UseForProduction" type="bool" label="Use for Production" help="This BOM can be used to produce products on Manufacturing Orders." />
+    <field name="UseForQuotation" type="bool" label="Use for Quotation" help="This BOM can be used to generate quotations." />
+    <field name="UseForSale" type="bool" label="Use for Sale" help="This BOM can be used to generate sales orders." />
+    <field name="IsUsed" type="bool" label="Used in another BOM" />
+    <field name="UpdatePolicy" type="Sale.MrpBomUpdatePolicy" />
+    <field name="Available" type="bool" label="Available" />
+    <field name="Quantity" type="float" label="Quantity" help="The quantity of the product that will be produced with one bill of material." />
+    <field name="Ordered" type="float" label="Ordered Quantity" help="The quantity ordered for this bom. This field is used only if a BOM is used for a sales order." />
+    <field name="Delivered" type="float" label="Delivered Quantity" help="The quantity delivered for this bom. This field is used only if a BOM is used for a sales order." />
+    <field name="InvoiceStatus" type="Sale.InvoiceStatus" label="Invoice Status" help="The invoice status for this bom. This field is used only if a BOM is used for a sales order." />
+    <field name="InvoiceId" type="Account.Invoice" label="Invoice" help="The invoice for this bom. This field is used only if a BOM is used for a sales order." />
+    <field name="BomLineIds" type="Mrp.MrpBomLine" collection="true" label="Bill of Material Lines" />
+  </model>
+
+  <optionset id="Sale.MrpBomType" name="MRP BOM Type">
+    <option value="normal" name="Normal" />
+    <option value="phantom" name="Phantom" />
+  </optionset>
+
+  <optionset id="Sale.MrpBomUpdatePolicy" name="MRP BOM Update Policy">
+    <option value="ignore" name="Ignore" />
+    <option value="update" name="Update" />
+    <option value="update_no_cost" name="Update (no cost)" />
+  </optionset>
+
+  <optionset id="Sale.InvoiceStatus" name="Invoice Status">
+    <option value="no" name="Not Invoiced" />
+    <option value="to invoice" name="To Invoice" />
+    <option value="invoiced" name="Invoiced" />
+  </optionset>
 </buvi>

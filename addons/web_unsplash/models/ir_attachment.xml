@@ -1,7 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="web_tour.tour" name="WebTour.Tour">
-    <field name="User" label="Consumed by" type="Res.Users" copied="true" on-delete="Clear"/>
-    <field name="Name" label="Tour name" type="string" required="true" copied="true"/>
+  <model id="Web.IrAttachment" name="Web.IrAttachment" description="Ir Attachment">
+    <field name="Name" type="string" label="Name" />
+    <field name="Type" type="selection" selection="attachment.attachment_type" />
+    <field name="ResModel" type="string" />
+    <field name="ResId" type="integer" />
+    <field name="ResField" type="string" />
+    <field name="Description" type="text" />
+    <field name="MimeType" type="string" />
+    <field name="FileBinary" type="binary" />
+    <field name="FileUrl" type="char" />
+    <field name="Checksum" type="char" />
+    <field name="AccessMode" type="selection" selection="ir.attachment.access_mode" />
+    <field name="Company" type="Core.Company" />
+    <field name="Owner" type="Core.User" />
+    <field name="CreateDate" type="datetime" />
+    <field name="CreateUid" type="Core.User" />
+    <field name="WriteDate" type="datetime" />
+    <field name="WriteUid" type="Core.User" />
+    <field name="Public" type="bool" />
+    <field name="Url" type="char" />
+    <field name="Database" type="string" />
+    <field name="Hash" type="char" />
+    <field name="KeepForever" type="bool" />
+    <field name="DeleteDate" type="datetime" />
+    <field name="IsPrivate" type="bool" />
+    <field name="IsImage" type="bool" />
+    <field name="IsImageSmall" type="bool" />
+    <field name="IsImageMedium" type="bool" />
+    <field name="IsImageLarge" type="bool" />
+    <field name="IsImageFull" type="bool" />
+    <field name="IsImageXS" type="bool" />
+    <field name="IsImageS" type="bool" />
+    <field name="IsImageM" type="bool" />
+    <field name="IsImageL" type="bool" />
+    <field name="IsImageXL" type="bool" />
   </model>
+
+  <optionset id="attachment.attachment_type" name="Attachment Type">
+    <option value="binary" name="Binary" />
+    <option value="url" name="URL" />
+  </optionset>
+
+  <optionset id="ir.attachment.access_mode" name="Access Mode">
+    <option value="read" name="Read" />
+    <option value="write" name="Write" />
+  </optionset>
 </buvi>

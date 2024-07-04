@@ -1,3 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="PartnerId" type="Core.ResPartner" />
+    <field name="MoveType" type="selection" selection="Account.MoveTypeSelection" />
+    <field name="InvoiceDate" type="date" />
+    <field name="InvoiceLineIds" type="Core.AccountMoveLine" collection="true" />
+    <method name="ButtonDraft">
+      <execute>
+        <![CDATA[
+        var res = this.Env.Call("Account.AccountMove", "ButtonDraft", this);
+        foreach (var move in this.Env.Call("Account.AccountMove", "Search", [["Id", "in", this.Id]])) {
+          if (move.MoveType == "out_invoice") {
+            this.Env.Call("Membership.MembershipLine", "Write", [["AccountInvoiceLine", "in", move.InvoiceLineIds.Select(x => x.Id).ToList()], ["DateCancel", null]]);
+          }
+        }
+        return res;
+        ]]>
+      </execute>
+    </method>
+    <method name="ButtonCancel">
+      <execute>
+        <![CDATA[
+        var res = this.Env.Call("Account.AccountMove", "ButtonCancel", this);
+        foreach (var move in this.Env.Call("Account.AccountMove", "Search", [["Id", "in", this.Id]])) {
+          if (move.MoveType == "out_invoice") {
+            this.Env.Call("Membership.MembershipLine", "Write", [["AccountInvoiceLine", "in", move.InvoiceLineIds.Select(x => x.Id).ToList()], ["DateCancel", this.Env.Call("Core.Date", "Today")]]);
+          }
+        }
+        return res;
+        ]]>
+      </execute>
+    </method>
+    <method name="Write">
+      <execute>
+        <![CDATA[
+        var res = this.Env.Call("Account.AccountMove", "Write", this, vals);
+        if (vals.ContainsKey("PartnerId")) {
+          this.Env.Call("Membership.MembershipLine", "Write", [["AccountInvoiceLine", "in", this.InvoiceLineIds.Select(x => x.Id).ToList()], ["Partner", vals["PartnerId"]]]);
+        }
+        return res;
+        ]]>
+      </execute>
+    </method>
+  </model>
+
+  <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="MoveId" type="Account.AccountMove" />
+    <field name="ProductId" type="Product.Product" />
+    <field name="PriceUnit" type="float" />
+    <field name="MoveType" type="selection" selection="Account.MoveTypeSelection" />
+    <method name="Write">
+      <execute>
+        <![CDATA[
+        var res = this.Env.Call("Account.AccountMoveLine", "Write", this, vals);
+        var toProcess = this.Env.Call("Account.AccountMoveLine", "Search", [["Id", "in", this.Id], ["MoveId.MoveType", "=", "out_invoice"], ["ProductId.Membership", "=", true]]);
+        if (toProcess.Count == 0) {
+          return res;
+        }
+        var existingMemberships = this.Env.Call("Membership.MembershipLine", "Search", [["AccountInvoiceLine", "in", toProcess.Select(x => x.Id).ToList()]]);
+        toProcess = toProcess.Where(x => !existingMemberships.Select(y => y.AccountInvoiceLine.Id).Contains(x.Id)).ToList();
+        if (toProcess.Count == 0) {
+          return res;
+        }
+        var membershipsVals = new List<Dictionary<string, object>>();
+        foreach (var line in toProcess) {
+          var dateFrom = line.ProductId.MembershipDateFrom;
+          var dateTo = line.ProductId.MembershipDateTo;
+          if (dateFrom != null && dateFrom < (line.MoveId.InvoiceDate ?? new DateTime(1, 1, 1)) && (dateTo ?? new DateTime(1, 1, 1)) > (line.MoveId.InvoiceDate ?? new DateTime(1, 1, 1))) {
+            dateFrom = line.MoveId.InvoiceDate;
+          }
+          membershipsVals.Add(new Dictionary<string, object>() {
+            {"Partner", line.MoveId.PartnerId.Id},
+            {"MembershipId", line.ProductId.Id},
+            {"MemberPrice", line.PriceUnit},
+            {"Date", this.Env.Call("Core.Date", "Today")},
+            {"DateFrom", dateFrom},
+            {"DateTo", dateTo},
+            {"AccountInvoiceLine", line.Id},
+          });
+        }
+        this.Env.Call("Membership.MembershipLine", "Create", membershipsVals);
+        return res;
+        ]]>
+      </execute>
+    </method>
+    <method name="Create">
+      <execute>
+        <![CDATA[
+        var lines = this.Env.Call("Account.AccountMoveLine", "Create", valsList);
+        var toProcess = lines.Where(x => x.MoveId.MoveType == "out_invoice" && x.ProductId.Membership).ToList();
+        if (toProcess.Count == 0) {
+          return lines;
+        }
+        var existingMemberships = this.Env.Call("Membership.MembershipLine", "Search", [["AccountInvoiceLine", "in", toProcess.Select(x => x.Id).ToList()]]);
+        toProcess = toProcess.Where(x => !existingMemberships.Select(y => y.AccountInvoiceLine.Id).Contains(x.Id)).ToList();
+        if (toProcess.Count == 0) {
+          return lines;
+        }
+        var membershipsVals = new List<Dictionary<string, object>>();
+        foreach (var line in toProcess) {
+          var dateFrom = line.ProductId.MembershipDateFrom;
+          var dateTo = line.ProductId.MembershipDateTo;
+          if (dateFrom != null && dateFrom < (line.MoveId.InvoiceDate ?? new DateTime(1, 1, 1)) && (dateTo ?? new DateTime(1, 1, 1)) > (line.MoveId.InvoiceDate ?? new DateTime(1, 1, 1))) {
+            dateFrom = line.MoveId.InvoiceDate;
+          }
+          membershipsVals.Add(new Dictionary<string, object>() {
+            {"Partner", line.MoveId.PartnerId.Id},
+            {"MembershipId", line.ProductId.Id},
+            {"MemberPrice", line.PriceUnit},
+            {"Date", this.Env.Call("Core.Date", "Today")},
+            {"DateFrom", dateFrom},
+            {"DateTo", dateTo},
+            {"AccountInvoiceLine", line.Id},
+          });
+        }
+        this.Env.Call("Membership.MembershipLine", "Create", membershipsVals);
+        return lines;
+        ]]>
+      </execute>
+    </method>
+  </model>
+
+  <optionset id="Account.MoveTypeSelection" name="Move Type Selection">
+    <option value="out_invoice" name="Customer Invoice" />
+    <option value="in_invoice" name="Vendor Bill" />
+  </optionset>
 </buvi>

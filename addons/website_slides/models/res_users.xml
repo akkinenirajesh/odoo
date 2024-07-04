@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSlides.ResUsers" name="ResUsers" description="Users">
+        <field name="GroupsId" type="Core.ResGroups" collection="true" />
+        <field name="PartnerId" type="Core.Partner" />
+    </model>
+    <optionset id="Core.ResGroups" name="Res Groups" />
+    <optionset id="Core.Partner" name="Partners" />
 </buvi>

@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="l10n_vn.ResPartnerBank" name="l10n_vn.ResPartnerBank" description="Res Partner Bank">
+        <field name="ProxyType" type="Selection" label="Proxy Type"
+            selection="[(&#39;merchant_id&#39;, &#39;Merchant ID&#39;), (&#39;payment_service&#39;, &#39;Payment Service&#39;), (&#39;atm_card&#39;, &#39;ATM Card Number&#39;), (&#39;bank_acc&#39;, &#39;Bank Account&#39;)]"
+            ondelete="[(&#39;merchant_id&#39;, &#39;set default&#39;), (&#39;payment_service&#39;, &#39;set default&#39;), (&#39;atm_card&#39;, &#39;set default&#39;), (&#39;bank_acc&#39;, &#39;set default&#39;)]" />
+        <field name="CountryCode" type="Core.Country" label="Country Code" />
+        <field name="BankBic" type="string" label="Bank Identifier Code" />
+        <field name="ProxyValue" type="string" label="Proxy Value" />
+        <field name="DisplayQrSetting" type="bool" label="Display QR Setting" />
+        <field name="AccNumber" type="string" label="Account Number" />
+    </model>
 </buvi>

@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="IsService" type="bool" label="Is a Service" compute="ComputeIsService" store="true" />
+        <field name="Product" type="Product.Product" label="Product" required="true" />
+        <field name="ProductUom" type="Product.Uom" label="Unit of Measure" />
+        <field name="ProductUomQty" type="float" label="Quantity" />
+        <field name="PriceUnit" type="float" label="Unit Price" />
+        <field name="Discount" type="float" label="Discount (%)" />
+        <field name="TaxID" type="Account.Tax" label="Tax" />
+        <field name="PriceSubtotal" type="float" label="Subtotal" />
+        <field name="PriceTotal" type="float" label="Total" />
+        <field name="Order" type="Sale.SaleOrder" relation="true" />
+        <field name="State" type="Sale.SaleOrderLineState" />
+        <field name="DeliveryDate" type="date" label="Delivery Date" />
+        <field name="Sequence" type="integer" label="Sequence" />
+    </model>
+
+    <optionset id="Sale.SaleOrderLineState" name="Sale Order Line State">
+        <option value="draft" name="Draft" />
+        <option value="sale" name="Sale" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Cancel" />
+    </optionset>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="SaleOrder" description="Sales Order">
+    <field name="Opportunity" type="Crm.Lead" label="Opportunity" collection="true" domain="[('Type', '=', 'opportunity'), '|', ('CompanyId', '=', False), ('CompanyId', '=', CompanyId)]" />
+  </model>
 </buvi>

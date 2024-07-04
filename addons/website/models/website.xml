@@ -1,3 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.Website" name="Website" description="Website">
+    <field name="Name" type="string" label="Website Name" required="true" />
+    <field name="Sequence" type="integer" default="10" />
+    <field name="Domain" type="string" label="Website Domain" help="E.g. https://www.mydomain.com" />
+    <field name="CompanyId" type="Res.Company" label="Company" required="true" />
+    <field name="LanguageIds" type="Res.Lang" collection="true" label="Languages" />
+    <field name="LanguageCount" type="integer" label="Number of languages" compute="ComputeLanguageCount" />
+    <field name="DefaultLangId" type="Res.Lang" label="Default Language" required="true" />
+    <field name="AutoRedirectLang" type="bool" label="Autoredirect Language" default="true" help="Should users be redirected to their browser's language" />
+    <field name="CookiesBar" type="bool" label="Cookies Bar" help="Display a customizable cookies bar on your website." />
+    <field name="ConfiguratorDone" type="bool" help="True if configurator has been completed or ignored" />
+    <field name="SocialTwitter" type="string" label="X Account" />
+    <field name="SocialFacebook" type="string" label="Facebook Account" />
+    <field name="SocialGithub" type="string" label="GitHub Account" />
+    <field name="SocialLinkedin" type="string" label="LinkedIn Account" />
+    <field name="SocialYoutube" type="string" label="Youtube Account" />
+    <field name="SocialInstagram" type="string" label="Instagram Account" />
+    <field name="SocialTiktok" type="string" label="TikTok Account" />
+    <field name="SocialDefaultImage" type="binary" label="Default Social Share Image" help="If set, replaces the website logo as the default social share image." />
+    <field name="HasSocialDefaultImage" type="bool" compute="ComputeHasSocialDefaultImage" store="true" />
+    <field name="GoogleAnalyticsKey" type="string" label="Google Analytics Key" />
+    <field name="GoogleSearchConsole" type="string" help="Google key, or Enable to access first reply" />
+    <field name="GoogleMapsApiKey" type="string" label="Google Maps API Key" />
+    <field name="PlausibleSharedKey" type="string" label="Plausible Shared Key" />
+    <field name="PlausibleSite" type="string" label="Plausible Site" />
+    <field name="UserId" type="Res.Users" label="Public User" required="true" />
+    <field name="CdnActivated" type="bool" label="Content Delivery Network (CDN)" />
+    <field name="CdnUrl" type="string" label="CDN Base URL" />
+    <field name="CdnFilters" type="text" label="CDN Filters" help="URL matching those filters will be rewritten using the CDN Base URL" />
+    <field name="PartnerId" type="Res.Partner" label="Public Partner" readonly="false" />
+    <field name="MenuId" type="Website.Menu" label="Main Menu" compute="ComputeMenu" />
+    <field name="HomepageUrl" type="string" label="Homepage Url" help="E.g. /contactus or /shop" />
+    <field name="CustomCodeHead" type="html" label="Custom &lt;head&gt; code" sanitize="false" />
+    <field name="CustomCodeFooter" type="html" label="Custom end of &lt;body&gt; code" sanitize="false" />
+    <field name="RobotsTxt" type="html" label="Robots.txt" translate="false" groups="website.group_website_designer" sanitize="false" />
+    <field name="Favicon" type="binary" label="Website Favicon" help="This field holds the image used to display a favicon on the website." />
+    <field name="ThemeId" type="Ir.Module.Module" help="Installed theme" />
+    <field name="SpecificUserAccount" type="bool" label="Specific User Account" help="If True, new accounts will be associated to the current website" />
+    <field name="AuthSignupUninvited" type="selection" label="Customer Account" default="b2b">
+      <option value="b2b" name="On invitation" />
+      <option value="b2c" name="Free sign up" />
+    </field>
+    <unique name="domain_unique" field="Domain" message="Website Domain should be unique." />
+    <constraint name="HomepageUrlConstraint" type="function" method="CheckHomepageUrl" message="The homepage URL should be relative and start with '/'." />
+  </model>
 </buvi>

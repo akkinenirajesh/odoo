@@ -1,3 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentTransaction" name="PaymentTransaction" description="Payment Transaction">
+        <field name="ProviderCode" type="string" />
+        <field name="ProviderReference" type="string" />
+        <field name="Reference" type="string" required="true" />
+        <field name="Amount" type="float" required="true" />
+        <field name="Currency" type="Core.Currency" />
+        <field name="State" type="selection" selection="Payment.TransactionState" required="true" default="draft" />
+        <field name="Partner" type="Res.Partner" />
+        <field name="Date" type="datetime" readonly="true" />
+        <field name="ProviderId" type="Payment.Provider" />
+        <field name="PaymentTokenId" type="Payment.PaymentToken" />
+        <field name="Operation" type="selection" selection="Payment.TransactionOperation" />
+        <field name="AcquirerReference" type="string" />
+        <field name="DateAcquirer" type="datetime" />
+        <field name="PaymentMethodCode" type="string" />
+        <field name="PaymentMethodId" type="Payment.PaymentMethod" />
+        <field name="Signature" type="string" />
+        <field name="ProviderSpecificData" type="json" />
+        <field name="Fees" type="float" />
+        <field name="RefundedAmount" type="float" />
+        <field name="FeesRefunded" type="float" />
+        <field name="DateRefund" type="datetime" />
+        <field name="RefundSignature" type="string" />
+        <field name="CurrencyRate" type="float" />
+        <field name="IsRefund" type="bool" />
+        <field name="DateOrder" type="datetime" />
+        <field name="OrderId" type="integer" />
+        <field name="OrderId2" type="integer" />
+        <field name="Channel" type="selection" selection="Payment.TransactionChannel" />
+        <field name="JournalId" type="Account.Journal" />
+        <field name="InvoiceIds" type="collection" collection="true" field="Account.Invoice" />
+        <field name="InvoiceId" type="Account.Invoice" />
+        <field name="PaymentType" type="selection" selection="Payment.PaymentType" />
+    </model>
+
+    <optionset id="Payment.TransactionState" name="Transaction State">
+        <option value="draft" name="Draft" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Canceled" />
+        <option value="error" name="Error" />
+        <option value="pending" name="Pending" />
+        <option value="authorized" name="Authorized" />
+    </optionset>
+
+    <optionset id="Payment.TransactionOperation" name="Transaction Operation">
+        <option value="create" name="Create" />
+        <option value="capture" name="Capture" />
+        <option value="refund" name="Refund" />
+        <option value="void" name="Void" />
+    </optionset>
+
+    <optionset id="Payment.TransactionChannel" name="Transaction Channel">
+        <option value="online" name="Online" />
+        <option value="offline" name="Offline" />
+    </optionset>
+
+    <optionset id="Payment.PaymentType" name="Payment Type">
+        <option value="direct_payment" name="Direct Payment" />
+        <option value="pre_authorization" name="Pre-authorization" />
+    </optionset>
 </buvi>

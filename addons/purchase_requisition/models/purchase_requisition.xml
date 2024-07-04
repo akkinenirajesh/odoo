@@ -1,3 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.PurchaseRequisition" name="Purchase.PurchaseRequisition" description="Purchase Requisition">
+    <field name="Name" type="string" label="Agreement" required="true" readonly="true" copy="false" default="New" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Reference" type="string" label="Reference" />
+    <field name="OrderCount" type="integer" label="Number of Orders" />
+    <field name="Vendor" type="res.partner" label="Vendor" collection="true" />
+    <field name="RequisitionType" type="Purchase.RequisitionType" label="Agreement Type" required="true" default="BlanketOrder" />
+    <field name="DateStart" type="date" label="Start Date" />
+    <field name="DateEnd" type="date" label="End Date" />
+    <field name="User" type="res.users" label="Purchase Representative" collection="true" />
+    <field name="Description" type="html" />
+    <field name="Company" type="res.company" label="Company" required="true" collection="true" />
+    <field name="PurchaseOrders" type="purchase.order" label="Purchase Orders" collection="true" />
+    <field name="LineIds" type="purchase.requisition.line" label="Products to Purchase" collection="true" />
+    <field name="Product" type="product.product" label="Product" collection="true" />
+    <field name="State" type="Purchase.RequisitionState" label="Status" required="true" copy="false" default="Draft" />
+    <field name="Currency" type="res.currency" label="Currency" required="true" collection="true" />
+  </model>
+
+  <optionset id="Purchase.RequisitionType" name="Requisition Type">
+    <option value="BlanketOrder" name="Blanket Order" />
+    <option value="PurchaseTemplate" name="Purchase Template" />
+  </optionset>
+
+  <optionset id="Purchase.RequisitionState" name="Requisition State">
+    <option value="Draft" name="Draft" />
+    <option value="Confirmed" name="Confirmed" />
+    <option value="Done" name="Closed" />
+    <option value="Cancel" name="Cancelled" />
+  </optionset>
+
+  <model id="Purchase.PurchaseRequisitionLine" name="Purchase.PurchaseRequisitionLine" description="Purchase Requisition Line">
+    <field name="Product" type="product.product" label="Product" required="true" />
+    <field name="ProductUom" type="uom.uom" label="Product Unit of Measure" readonly="false" />
+    <field name="ProductUomCategory" type="uom.uom.category" />
+    <field name="ProductQty" type="float" label="Quantity" />
+    <field name="ProductDescriptionVariants" type="string" label="Description" />
+    <field name="PriceUnit" type="float" label="Unit Price" readonly="false" />
+    <field name="QtyOrdered" type="float" label="Ordered" />
+    <field name="Requisition" type="purchase.requisition" label="Purchase Agreement" collection="true" />
+    <field name="Company" type="res.company" label="Company" readonly="true" />
+    <field name="SupplierInfoIds" type="product.supplierinfo" label="Supplier Info" collection="true" />
+  </model>
 </buvi>

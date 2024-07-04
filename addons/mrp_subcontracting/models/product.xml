@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.SupplierInfo" name="Mrp.SupplierInfo" description="Supplier Info">
+    <field name="IsSubcontractor" type="bool" label="Subcontracted" compute="ComputeIsSubcontractor"
+      help="Choose a vendor of type subcontractor if you want to subcontract the product" />
+  </model>
+
+  <model id="Mrp.ProductProduct" name="Mrp.ProductProduct" description="Product Product">
+  </model>
 </buvi>

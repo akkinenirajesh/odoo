@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailing.MailBlackList" name="MailBlackList" description="Model of blacklisted email addresses to stop sending emails.">
+    <field name="OptOutReasonId" type="Mailing.MailingSubscriptionOptOut" label="Opt-out Reason" ondelete="restrict" track="true"/>
+  </model>
 </buvi>

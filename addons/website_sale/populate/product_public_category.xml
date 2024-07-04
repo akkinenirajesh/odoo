@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="WebsiteSale.ProductPublicCategory" name="WebsiteSale.ProductPublicCategory" description="Product Public Category">
+    <field name="Name" type="string" label="Category Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="ParentID" type="WebsiteSale.ProductPublicCategory" relation="parent_id" />
+    <field name="ProductTemplateIDs" type="Product.Template" collection="true" />
   </model>
 </buvi>

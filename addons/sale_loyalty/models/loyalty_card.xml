@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.LoyaltyCard" name="Sale.LoyaltyCard" description="Loyalty Card">
+    <field name="OrderId" type="Sale.SaleOrder" label="Order Reference" readonly="true" help="The sales order from which coupon is generated" />
+    <field name="UseCount" type="integer" label="Use Count" readonly="true" />
+  </model>
 </buvi>

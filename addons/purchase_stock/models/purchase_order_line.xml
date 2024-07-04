@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PurchaseStock.PurchaseOrderLine" name="PurchaseStock.PurchaseOrderLine" description="Purchase Order Line">
+        <field name="Name" type="string" label="Order Line" />
+        <field name="QtyReceivedMethod" type="PurchaseStock.PurchaseOrderLineQtyReceivedMethod" />
+        <field name="MoveIds" type="PurchaseStock.StockMove" collection="true" />
+        <field name="OrderpointId" type="Stock.StockWarehouseOrderpoint" />
+        <field name="MoveDestIds" type="PurchaseStock.StockMove" collection="true" />
+        <field name="ProductDescriptionVariants" type="string" label="Custom Description" />
+        <field name="PropagateCancel" type="bool" label="Propagate Cancellation" default="true" />
+        <field name="ForecastedIssue" type="bool" />
+        <field name="LocationFinalId" type="Stock.StockLocation" />
+    </model>
+
+    <optionset id="PurchaseStock.PurchaseOrderLineQtyReceivedMethod" name="Purchase Order Line Qty Received Method">
+        <option value="stock_moves" name="Stock Moves" />
+    </optionset>
 </buvi>

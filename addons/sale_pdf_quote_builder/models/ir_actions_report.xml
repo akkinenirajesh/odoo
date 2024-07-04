@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.IrActionsReport" name="IrActionsReport" description="Ir Actions Report">
+        <field name="ReportName" type="string" label="Report Name" />
+        <field name="ReportModel" type="string" label="Report Model" />
+        <field name="ReportFile" type="string" label="Report File" />
+        <field name="ReportIntId" type="integer" label="Report Internal ID" />
+        <field name="AutoPrint" type="bool" label="Auto Print" />
+        <field name="PaperformatId" type="Core.Paperformat" label="Paperformat" />
+        <field name="PrintReportName" type="string" label="Print Report Name" />
+        <field name="DisplayFooter" type="bool" label="Display Footer" />
+        <field name="DisplayHeader" type="bool" label="Display Header" />
+        <field name="ReportType" type="string" label="Report Type" />
+        <field name="AttachmentUsage" type="string" label="Attachment Usage" />
+        <field name="AttachmentUse" type="bool" label="Attachment Use" />
+        <field name="AttachmentContent" type="string" label="Attachment Content" />
+        <field name="ReportNameField" type="string" label="Report Name Field" />
+        <field name="Name" type="string" label="Name" translate="true" />
+        <field name="Description" type="text" label="Description" translate="true" />
+        <field name="Active" type="bool" default="true" label="Active" help="If unchecked, the report will be hidden from the report list." />
+        <field name="UseReportNameField" type="bool" label="Use Report Name Field" help="When ticked, the report name will be dynamically computed using the specified field." />
+        <field name="BindType" type="string" label="Binding Type" />
+        <field name="Target" type="string" label="Target" />
+        <field name="KeepFocus" type="bool" label="Keep Focus" />
+        <field name="Model" type="string" label="Model" />
+        <field name="Paperformat" type="Core.Paperformat" label="Paperformat" />
+        <field name="ReportTemplate" type="string" label="Report Template" />
+        <field name="ReportHeader" type="string" label="Report Header" />
+        <field name="ReportFooter" type="string" label="Report Footer" />
+        <field name="ReportFilename" type="string" label="Report Filename" />
+        <field name="MultiReport" type="bool" label="Multi-Report" />
+        <field name="ReportInternalId" type="integer" label="Report Internal ID" />
+        <field name="Grouping" type="string" label="Grouping" />
+        <field name="PrintReportNameField" type="string" label="Print Report Name Field" />
+        <field name="PaperformatId" type="Core.Paperformat" label="Paperformat" />
+        <field name="DisplayFooter" type="bool" label="Display Footer" />
+        <field name="DisplayHeader" type="bool" label="Display Header" />
+        <field name="PrintReportNameField" type="string" label="Print Report Name Field" />
+        <field name="ReportNameField" type="string" label="Report Name Field" />
+        <field name="UseReportNameField" type="bool" label="Use Report Name Field" />
+        <field name="ReportType" type="string" label="Report Type" />
+        <field name="MultiReport" type="bool" label="Multi-Report" />
+        <field name="AttachmentContent" type="string" label="Attachment Content" />
+        <field name="AttachmentUsage" type="string" label="Attachment Usage" />
+        <field name="AttachmentUse" type="bool" label="Attachment Use" />
+        <field name="ReportModel" type="string" label="Report Model" />
+        <field name="ReportFile" type="string" label="Report File" />
+    </model>
 </buvi>

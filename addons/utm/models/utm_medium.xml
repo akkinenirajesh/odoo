@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Utm.UtmMedium" name="UtmMedium" description="UTM Medium">
+    <field name="Name" type="string" label="Medium Name" required="true" translate="false" />
+    <field name="Active" type="bool" default="true" />
+    <unique>
+      <field name="Name" />
+      <message>The name must be unique</message>
+    </unique>
+  </model>
 </buvi>

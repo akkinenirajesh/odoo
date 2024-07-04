@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.ResUsersSettingsVolumes" name="Mail.ResUsersSettingsVolumes" description="User Settings Volumes">
+    <field name="UserSettingId" type="Mail.ResUsersSettings" required="true" ondelete="cascade" index="true" />
+    <field name="PartnerId" type="Core.Partner" ondelete="cascade" index="true" />
+    <field name="GuestId" type="Core.Partner" ondelete="cascade" index="true" />
+    <field name="Volume" type="float" default="0.5" help="Ranges between 0.0 and 1.0, scale depends on the browser implementation" />
+  </model>
 </buvi>

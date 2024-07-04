@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountTax" name="AccountTax" description="Account Tax" inherit="Account.AccountTax">
+        <field name="IsUsed" type="bool" readonly="true" />
+        <field name="PurchaseOrderLines" collection="true" relation="purchase.order.line" inverse="Taxes" store="true" />
+    </model>
 </buvi>

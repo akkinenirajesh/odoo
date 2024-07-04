@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockPackageLevel" name="StockPackageLevel" description="Stock Package Level">
+        <field name="PackageId" type="Stock.StockQuantPackage" label="Package" required="true" collection="true" />
+        <field name="PickingId" type="Stock.StockPicking" label="Picking" collection="true" />
+        <field name="MoveIds" type="Stock.StockMove" collection="true" />
+        <field name="MoveLineIds" type="Stock.StockMoveLine" collection="true" />
+        <field name="LocationId" type="Stock.StockLocation" label="From" />
+        <field name="LocationDestId" type="Stock.StockLocation" label="To" />
+        <field name="IsDone" type="bool" label="Done" />
+        <field name="State" type="selection" label="State" default="Draft">
+            <option value="Draft" name="Draft" />
+            <option value="Confirmed" name="Confirmed" />
+            <option value="Assigned" name="Reserved" />
+            <option value="New" name="New" />
+            <option value="Done" name="Done" />
+            <option value="Cancel" name="Cancelled" />
+        </field>
+        <field name="IsFreshPackage" type="bool" />
+        <field name="PickingTypeCode" type="selection" label="Picking Type Code" />
+        <field name="ShowLotsM2o" type="bool" />
+        <field name="ShowLotsText" type="bool" />
+        <field name="CompanyId" type="Res.Company" label="Company" collection="true" />
+    </model>
 </buvi>

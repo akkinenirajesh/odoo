@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosOrderLine" name="PosOrderLine" description="Pos Order Line" inherit="Pos.PosOrderLine">
+    <field name="ComboId" type="Pos.PosCombo" label="Combo line reference" />
+  </model>
+
+  <model id="Pos.PosOrder" name="PosOrder" description="Pos Order" inherit="Pos.PosOrder">
+    <field name="TableStandNumber" type="string" label="Table Stand Number" />
+  </model>
 </buvi>

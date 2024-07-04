@@ -1,3 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductTemplate" name="ProductTemplate" description="Product" collection="true">
+    <field name="Name" type="string" label="Name" required="true" translate="true" index="trigram" />
+    <field name="Sequence" type="integer" label="Sequence" default="1"
+      help="Gives the sequence order when displaying a product list" />
+    <field name="Description" type="html" label="Description" translate="true" />
+    <field name="DescriptionPurchase" type="text" label="Purchase Description" translate="true" />
+    <field name="DescriptionSale" type="text" label="Sales Description" translate="true"
+      help="A description of the Product that you want to communicate to your customers. This description will be copied to every Sales Order, Delivery Order and Customer Invoice/Credit Note" />
+    <field name="Type" type="selection" label="Product Type" default="consu" required="true"
+      selection="[['consu', 'Goods'], ['service', 'Service']]"
+      help="A storable product is a product for which you manage stock. The Inventory app has to be installed.\nA consumable product is a product for which stock is not managed.\nA service is a non-material product you provide." />
+    <field name="ServiceTracking" type="selection" label="Create on Order" default="no"
+      required="true"
+      selection="[['no', 'Nothing']]" />
+    <field name="CategId" type="Core.ProductCategory" label="Product Category"
+      required="true"
+      changeDefault="true" />
+    <field name="CurrencyId" type="Core.Currency" label="Currency" />
+    <field name="CostCurrencyId" type="Core.Currency" label="Cost Currency" />
+    <field name="ListPrice" type="float" label="Sales Price" default="1.0"
+      digits="Product Price"
+      tracking="true"
+      help="Price at which the product is sold to customers." />
+    <field name="StandardPrice" type="float" label="Cost"
+      digits="Product Price"
+      groups="base.group_user"
+      help="""Value of the product (automatically computed in AVCO). Used to value the product when the purchase cost is not known (e.g. inventory adjustment). Used to compute margins on sale orders.""" />
+    <field name="Volume" type="float" label="Volume" digits="Volume" store="true" />
+    <field name="VolumeUomName" type="char" label="Volume unit of measure label" />
+    <field name="Weight" type="float" label="Weight" digits="Stock Weight" store="true" />
+    <field name="WeightUomName" type="char" label="Weight unit of measure label" />
+    <field name="SaleOk" type="bool" label="Sales" default="true" />
+    <field name="PurchaseOk" type="bool" label="Purchase" default="true"
+      compute="ComputePurchaseOk"
+      store="true"
+      readonly="false" />
+    <field name="UomId" type="Core.UomUom" label="Unit of Measure" required="true"
+      help="Default unit of measure used for all stock operations." />
+    <field name="UomName" type="char" label="Unit of Measure Name" related="UomId.Name" readonly="true" />
+    <field name="UomPoId" type="Core.UomUom" label="Purchase Unit" required="true"
+      help="Default unit of measure used for purchase orders. It must be in the same category as the default unit of measure." />
+    <field name="CompanyId" type="Core.Company" label="Company" index="true" />
+    <field name="PackagingIds" type="Product.Packaging" label="Product Packages"
+      collection="true"
+      compute="ComputePackagingIds"
+      inverse="SetPackagingIds"
+      help="Gives the different ways to package the same product." />
+    <field name="SellerIds" type="Product.SupplierInfo" label="Vendors" collection="true"
+      dependsOnContext="['company']" />
+    <field name="VariantSellerIds" type="Product.SupplierInfo" label="Vendors" collection="true" />
+    <field name="Active" type="bool" label="Active" default="true"
+      help="If unchecked, it will allow you to hide the product without removing it." />
+    <field name="Color" type="integer" label="Color Index" />
+    <field name="IsProductVariant" type="bool" label="Is a product variant"
+      compute="ComputeIsProductVariant" />
+    <field name="AttributeLineIds" type="Product.ProductTemplateAttributeLine" label="Product Attributes"
+      collection="true"
+      copy="true" />
+    <field name="ValidProductTemplateAttributeLineIds" type="Product.ProductTemplateAttributeLine" label="Valid Product Attribute Lines"
+      collection="true"
+      compute="ComputeValidProductTemplateAttributeLineIds" />
+    <field name="ProductVariantIds" type="Product.Product" label="Products" collection="true" required="true" />
+    <field name="ProductVariantId" type="Product.Product" label="Product"
+      compute="ComputeProductVariantId" />
+    <field name="ProductVariantCount" type="integer" label="# Product Variants"
+      compute="ComputeProductVariantCount" />
+    <field name="Barcode" type="char" label="Barcode"
+      compute="ComputeBarcode"
+      inverse="SetBarcode"
+      search="SearchBarcode" />
+    <field name="DefaultCode" type="char" label="Internal Reference"
+      compute="ComputeDefaultCode"
+      inverse="SetDefaultCode"
+      store="true" />
+    <field name="PricelistItemCount" type="integer" label="Number of price rules"
+      compute="ComputeItemcount" />
+    <field name="ProductDocumentIds" type="Product.ProductDocument" label="Documents"
+      collection="true"
+      domain="[('res_model', '=', _name)]" />
+    <field name="ProductDocumentCount" type="integer" label="Documents Count"
+      compute="ComputeProductDocumentCount" />
+    <field name="CanImage1024BeZoomed" type="bool" label="Can Image 1024 be zoomed"
+      compute="ComputeCanImage1024BeZoomed"
+      store="true" />
+    <field name="HasConfigurableAttributes" type="bool" label="Is a configurable product"
+      compute="ComputeHasConfigurableAttributes"
+      store="true" />
+    <field name="ProductTooltip" type="char" compute="ComputeProductTooltip" />
+    <field name="IsFavorite" type="bool" label="Favorite" />
+    <field name="ProductTagIds" type="Product.ProductTag" label="Tags" collection="true" relation="product_tag_product_template_rel" />
+    <field name="ProductProperties" type="properties" label="Properties" definition="CategId.ProductPropertiesDefinition" copy="true" />
+  </model>
+
+  <optionset id="Product.ProductType" name="Product Type">
+    <option value="consu" name="Goods" />
+    <option value="service" name="Service" />
+  </optionset>
+
+  <optionset id="Product.ServiceTracking" name="Create on Order">
+    <option value="no" name="Nothing" />
+  </optionset>
 </buvi>

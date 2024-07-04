@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order">
+        <field name="Table" type="Restaurant.Table" label="Table" help="The table where this order was served" index="btree_not_null" readonly="true" />
+        <field name="CustomerCount" type="integer" label="Guests" help="The amount of customers that have been served by this order." readonly="true" />
+        <field name="TakeAway" type="bool" label="Take Away" default="false" />
+    </model>
 </buvi>

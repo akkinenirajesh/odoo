@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="WebsiteSaleStock.ProductTemplate" name="WebsiteSaleStock.ProductTemplate" description="Product Template">
+        <field name="AllowOutOfStockOrder" type="bool" label="Continue selling when out-of-stock" default="true" />
+        <field name="AvailableThreshold" type="float" label="Show Threshold" default="5.0" />
+        <field name="ShowAvailability" type="bool" label="Show availability Qty" default="false" />
+        <field name="OutOfStockMessage" type="html" label="Out-of-Stock Message" translate="true" />
+    </model>
 </buvi>

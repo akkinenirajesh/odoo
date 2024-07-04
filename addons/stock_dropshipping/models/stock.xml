@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockRule" name="StockRule" description="Stock Rule">
+        <inherit id="stock.stock.rule" />
+    </model>
+
+    <model id="Procurement.ProcurementGroup" name="ProcurementGroup" description="Procurement Group">
+        <inherit id="stock.procurement.group" />
+    </model>
+
+    <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+        <inherit id="stock.stock.picking" />
+        <field name="IsDropship" type="bool" label="Is a Dropship" compute="ComputeIsDropship" />
+    </model>
+
+    <model id="Stock.StockPickingType" name="StockPickingType" description="Stock Picking Type">
+        <inherit id="stock.stock.picking.type" />
+        <field name="Code" type="selection" collection="true" label="Code" default="Outgoing">
+            <option value="Dropship" name="Dropship" />
+        </field>
+        <field name="DefaultLocationSrcId" type="Stock.Location" label="Default Source Location" compute="ComputeDefaultLocationSrcId" />
+        <field name="DefaultLocationDestId" type="Stock.Location" label="Default Destination Location" compute="ComputeDefaultLocationDestId" />
+        <field name="WarehouseId" type="Stock.Warehouse" label="Warehouse" compute="ComputeWarehouseId" />
+        <field name="ShowPickingType" type="bool" label="Show Picking Type" compute="ComputeShowPickingType" />
+    </model>
+
+    <model id="Stock.StockLot" name="StockLot" description="Stock Lot">
+        <inherit id="stock.stock.lot" />
+        <field name="LastDeliveryPartnerId" type="Res.Partner" label="Last Delivery Partner" compute="ComputeLastDeliveryPartnerId" />
+    </model>
+
 </buvi>

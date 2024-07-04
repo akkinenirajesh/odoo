@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.LunchTopping" name="LunchTopping" description="Lunch Extras">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="CompanyId" type="Res.Company" default="lambda self: self.Env.Company" />
+        <field name="CurrencyId" type="Res.Currency" relation="CompanyId" />
+        <field name="Price" type="float" label="Price" required="true" />
+        <field name="SupplierId" type="Lunch.Supplier" relation="cascade" />
+        <field name="ToppingCategory" type="integer" label="Topping Category" required="true" default="1" />
+        <field name="DisplayName" type="string" readonly="true" />
+    </model>
 </buvi>

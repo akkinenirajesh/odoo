@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailActivityPlanTemplate" name="MailActivityPlanTemplate" description="Activity plan template">
+        <field name="PlanId" type="Mail.MailActivityPlan" label="Plan" required="true" relation="true" ondelete="cascade"/>
+        <field name="ResModel" type="selection" relation="true"/>
+        <field name="CompanyId" type="Core.Company" relation="true"/>
+        <field name="Sequence" type="integer" default="10"/>
+        <field name="ActivityTypeId" type="Mail.MailActivityType" label="Activity Type" required="true" ondelete="restrict" relation="true">
+            <domain>['|', ('ResModel', '=', False), '&', ('ResModel', '!=', False), ('ResModel', '=', parent.ResModel)]</domain>
+        </field>
+        <field name="DelayCount" type="integer" label="Interval" default="0"
+            help="Number of days/week/month before executing the action after or before the scheduled plan date."/>
+        <field name="DelayUnit" type="selection" label="Delay units" required="true" default="days"
+            help="Unit of delay">
+            <option value="days" name="days"/>
+            <option value="weeks" name="weeks"/>
+            <option value="months" name="months"/>
+        </field>
+        <field name="DelayFrom" type="selection" label="Trigger" required="true" default="before_plan_date">
+            <option value="before_plan_date" name="Before Plan Date"/>
+            <option value="after_plan_date" name="After Plan Date"/>
+        </field>
+        <field name="Icon" type="char" label="Icon" relation="true"/>
+        <field name="Summary" type="char" label="Summary" store="true" readonly="false"/>
+        <field name="ResponsibleType" type="selection" label="Assignment" required="true" default="on_demand" store="true" readonly="false">
+            <option value="on_demand" name="Ask at launch"/>
+            <option value="other" name="Default user"/>
+        </field>
+        <field name="ResponsibleId" type="Core.ResUsers" label="Assigned to" relation="true" check_company="true" store="true" readonly="false"/>
+        <field name="Note" type="html" label="Note" store="true" readonly="false"/>
+    </model>
 </buvi>

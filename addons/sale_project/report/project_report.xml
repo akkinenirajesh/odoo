@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleProject.ReportProjectTaskUser" name="SaleProject.ReportProjectTaskUser" description="Report Project Task User">
+    <field name="SaleLineId" type="Sale.SaleOrderLine" label="Sales Order Item" readonly="true" />
+    <field name="SaleOrderId" type="Sale.SaleOrder" label="Sales Order" readonly="true" />
+  </model>
 </buvi>

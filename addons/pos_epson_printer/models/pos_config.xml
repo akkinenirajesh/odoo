@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="PointOfSale.PosConfig" name="PointOfSale.PosConfig" description="Point of Sale Configuration">
+    <field name="EpsonPrinterIP" type="string" label="Epson Printer IP" help="Local IP address of an Epson receipt printer." />
   </model>
 </buvi>

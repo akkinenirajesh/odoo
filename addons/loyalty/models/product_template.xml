@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Loyalty.ProductTemplate" name="Loyalty.ProductTemplate" description="Product Template">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="ProductVariantId" type="Loyalty.ProductVariant" label="Product Variant" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the product without removing it." />
+        <field name="DisplayName" type="string" label="Display Name" />
+        <field name="DisplayDefaultCode" type="bool" label="Display Default Code" />
+    </model>
+
+    <optionset id="Loyalty.ProductVariant" name="Product Variant">
+        <option value="loyalty.gift_card_product_50" name="Gift Card Product" />
+        <option value="loyalty.ewallet_product_50" name="E-Wallet Product" />
+    </optionset>
 </buvi>

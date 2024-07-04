@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MailingFilter" name="MailingFilter" description="Mailing Favorite Filters">
+        <field name="CreateUid" type="res.users" label="Saved by" required="true" readonly="true" />
+        <field name="Name" type="string" label="Filter Name" required="true" />
+        <field name="MailingDomain" type="string" label="Filter Domain" required="true" />
+        <field name="MailingModelId" type="ir.model" label="Recipients Model" required="true" />
+        <field name="MailingModelName" type="string" label="Recipients Model Name" related="MailingModelId.Model" />
+    </model>
 </buvi>

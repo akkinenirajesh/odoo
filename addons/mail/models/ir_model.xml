@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.IrModel" name="Mail.IrModel" description="Ir Model">
+    <field name="IsMailThread" type="bool" default="false" label="Has Mail Thread" />
+    <field name="IsMailActivity" type="bool" default="false" label="Has Mail Activity" />
+    <field name="IsMailBlacklist" type="bool" default="false" label="Has Mail Blacklist" />
+  </model>
 </buvi>

@@ -1,3 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.MrpWorkcenter" name="Mrp.MrpWorkcenter" description="Work Center">
+        <field name="Name" type="string" label="Work Center" related="ResourceId.Name" store="true" readonly="false" />
+        <field name="TimeEfficiency" type="float" label="Time Efficiency" related="ResourceId.TimeEfficiency" default="100.0" store="true" readonly="false" />
+        <field name="Active" type="bool" label="Active" related="ResourceId.Active" default="true" store="true" readonly="false" />
+        <field name="Code" type="string" label="Code" copy="false" />
+        <field name="Note" type="html" label="Description" />
+        <field name="DefaultCapacity" type="float" label="Capacity" default="1.0" help="Default number of pieces (in product UoM) that can be produced in parallel (at the same time) at this work center. For example: the capacity is 5 and you need to produce 10 units, then the operation time listed on the BOM will be multiplied by two. However, note that both time before and after production will only be counted once." />
+        <field name="Sequence" type="integer" label="Sequence" default="1" required="true" help="Gives the sequence order when displaying a list of work centers." />
+        <field name="Color" type="integer" label="Color" />
+        <field name="CurrencyId" type="Core.ResCurrency" label="Currency" related="CompanyId.CurrencyId" readonly="true" required="true" />
+        <field name="CostsHour" type="float" label="Cost per hour" help="Hourly processing cost." default="0.0" />
+        <field name="TimeStart" type="float" label="Setup Time" />
+        <field name="TimeStop" type="float" label="Cleanup Time" />
+        <field name="RoutingLineIds" type="Mrp.MrpRoutingWorkcenter" collection="true" />
+        <field name="HasRoutingLines" type="bool" compute="ComputeHasRoutingLines" help="Technical field for workcenter views" />
+        <field name="OrderIds" type="Mrp.MrpWorkorder" collection="true" />
+        <field name="WorkorderCount" type="integer" label="# Work Orders" compute="ComputeWorkorderCount" />
+        <field name="WorkorderReadyCount" type="integer" label="# Ready Work Orders" compute="ComputeWorkorderCount" />
+        <field name="WorkorderProgressCount" type="integer" label="Total Running Orders" compute="ComputeWorkorderCount" />
+        <field name="WorkorderPendingCount" type="integer" label="Total Pending Orders" compute="ComputeWorkorderCount" />
+        <field name="WorkorderLateCount" type="integer" label="Total Late Orders" compute="ComputeWorkorderCount" />
+        <field name="TimeIds" type="Mrp.MrpWorkcenterProductivity" collection="true" label="Time Logs" />
+        <field name="WorkingState" type="selection" label="Workcenter Status" compute="ComputeWorkingState" store="true">
+            <selection value="normal" name="Normal" />
+            <selection value="blocked" name="Blocked" />
+            <selection value="done" name="In Progress" />
+        </field>
+        <field name="BlockedTime" type="float" label="Blocked Time" compute="ComputeBlockedTime" help="Blocked hours over the last month" digits="(16, 2)" />
+        <field name="ProductiveTime" type="float" label="Productive Time" compute="ComputeProductiveTime" help="Productive hours over the last month" digits="(16, 2)" />
+        <field name="Oee" type="float" compute="ComputeOee" help="Overall Equipment Effectiveness, based on the last month" />
+        <field name="OeeTarget" type="float" label="OEE Target" help="Overall Effective Efficiency Target in percentage" default="90.0" />
+        <field name="Performance" type="integer" label="Performance" compute="ComputePerformance" help="Performance over the last month" />
+        <field name="WorkcenterLoad" type="float" label="Work Center Load" compute="ComputeWorkorderCount" />
+        <field name="AlternativeWorkcenterIds" type="Mrp.MrpWorkcenter" collection="true" domain="[('Id', '!=', Id), '|', ('CompanyId', '=', CompanyId), ('CompanyId', '=', False)]" label="Alternative Workcenters" check_company="true" help="Alternative workcenters that can be substituted to this one in order to dispatch production" />
+        <field name="TagIds" type="Mrp.MrpWorkcenterTag" collection="true" />
+        <field name="CapacityIds" type="Mrp.MrpWorkcenterCapacity" collection="true" label="Product Capacities" help="Specific number of pieces that can be produced in parallel per product." copy="true" />
+    </model>
+
+    <optionset id="Mrp.MrpWorkcenterWorkingState" name="Workcenter Status">
+        <option value="normal" name="Normal" />
+        <option value="blocked" name="Blocked" />
+        <option value="done" name="In Progress" />
+    </optionset>
+
+    <model id="Mrp.MrpWorkcenterTag" name="Mrp.MrpWorkcenterTag" description="Add tag for the workcenter">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="Color" type="integer" label="Color Index" />
+    </model>
+
+    <model id="Mrp.MrpWorkcenterProductivityLossType" name="Mrp.MrpWorkcenterProductivityLossType" description="MRP Workorder productivity losses">
+        <field name="LossType" type="selection" label="Category" required="true" default="availability">
+            <selection value="availability" name="Availability" />
+            <selection value="performance" name="Performance" />
+            <selection value="quality" name="Quality" />
+            <selection value="productive" name="Productive" />
+        </field>
+    </model>
+
+    <model id="Mrp.MrpWorkcenterProductivityLoss" name="Mrp.MrpWorkcenterProductivityLoss" description="Workcenter Productivity Losses">
+        <field name="Name" type="string" label="Blocking Reason" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="1" />
+        <field name="Manual" type="bool" label="Is a Blocking Reason" default="true" />
+        <field name="LossId" type="Mrp.MrpWorkcenterProductivityLossType" domain="[('LossType', 'in', ['quality', 'availability'])]" label="Category" />
+        <field name="LossType" type="selection" label="Effectiveness Category" related="LossId.LossType" store="true" readonly="false" />
+    </model>
+
+    <model id="Mrp.MrpWorkcenterProductivity" name="Mrp.MrpWorkcenterProductivity" description="Workcenter Productivity Log">
+        <field name="ProductionId" type="Mrp.MrpProduction" label="Manufacturing Order" related="WorkorderId.ProductionId" readonly="true" />
+        <field name="WorkcenterId" type="Mrp.MrpWorkcenter" label="Work Center" required="true" check_company="true" index="true" />
+        <field name="CompanyId" type="Core.ResCompany" label="Company" required="true" index="true" />
+        <field name="WorkorderId" type="Mrp.MrpWorkorder" label="Work Order" check_company="true" index="true" />
+        <field name="UserId" type="Core.ResUsers" label="User" />
+        <field name="LossId" type="Mrp.MrpWorkcenterProductivityLoss" label="Loss Reason" ondelete="restrict" required="true" />
+        <field name="LossType" type="selection" label="Effectiveness" related="LossId.LossType" store="true" readonly="false" />
+        <field name="Description" type="text" label="Description" />
+        <field name="DateStart" type="datetime" label="Start Date" default="now" required="true" />
+        <field name="DateEnd" type="datetime" label="End Date" />
+        <field name="Duration" type="float" label="Duration" compute="ComputeDuration" store="true" />
+    </model>
+
+    <model id="Mrp.MrpWorkcenterCapacity" name="Mrp.MrpWorkcenterCapacity" description="Work Center Capacity">
+        <field name="WorkcenterId" type="Mrp.MrpWorkcenter" label="Work Center" required="true" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" />
+        <field name="ProductUomId" type="Uom.Uom" label="Product UoM" related="ProductId.UomId" />
+        <field name="Capacity" type="float" label="Capacity" default="1.0" help="Number of pieces that can be produced in parallel for this product." />
+        <field name="TimeStart" type="float" label="Setup Time (minutes)" help="Time in minutes for the setup." />
+        <field name="TimeStop" type="float" label="Cleanup Time (minutes)" help="Time in minutes for the cleaning." />
+    </model>
 </buvi>

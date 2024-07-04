@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailingSms.MailingList" name="MailingList" description="Mailing List">
+    <field name="ContactCountSms" type="integer" label="SMS Contacts" />
+    <field name="ContactCountBlacklisted" type="integer" label="Blacklisted Contacts" />
+    <field name="MailingIds" type="MassMailingSms.Mailing" collection="true" />
+  </model>
+  <optionset id="MassMailingSms.MailingType" name="Mailing Type">
+    <option value="sms" name="SMS" />
+  </optionset>
 </buvi>

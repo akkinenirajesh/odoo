@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosLoyalty.LoyaltyMail" name="LoyaltyMail" description="Loyalty Mail">
+        <field name="PosReportPrintId" type="ir.actions.report" label="Print Report" collection="true" domain="[('model', '=', 'loyalty.card')]"
+            help="The report action to be executed when creating a coupon/gift card/loyalty card in the PoS." />
+    </model>
 </buvi>

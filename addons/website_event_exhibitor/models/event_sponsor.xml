@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventExhibitor.EventSponsor" name="WebsiteEventExhibitor.EventSponsor" description="Event Sponsor">
+    <field name="EventId" type="WebsiteEvent.Event" label="Event" required="true" />
+    <field name="SponsorTypeId" type="WebsiteEvent.SponsorType" label="Sponsorship Level" required="true" />
+    <field name="Url" type="string" label="Sponsor Website" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Subtitle" type="string" label="Slogan" />
+    <field name="ExhibitorType" type="string" label="Sponsor Type" default="sponsor" optionset="WebsiteEventExhibitor.SponsorType" />
+    <field name="WebsiteDescription" type="html" label="Description" />
+    <field name="PartnerId" type="Core.Partner" label="Partner" required="true" />
+    <field name="PartnerName" type="string" label="Name" related="PartnerId.Name" />
+    <field name="PartnerEmail" type="string" label="Email" related="PartnerId.Email" />
+    <field name="PartnerPhone" type="string" label="Phone" related="PartnerId.Phone" />
+    <field name="PartnerMobile" type="string" label="Mobile" related="PartnerId.Mobile" />
+    <field name="Name" type="string" label="Sponsor Name" />
+    <field name="Email" type="string" label="Sponsor Email" />
+    <field name="Phone" type="string" label="Sponsor Phone" />
+    <field name="Mobile" type="string" label="Sponsor Mobile" />
+    <field name="Image512" type="image" label="Logo" />
+    <field name="Image256" type="image" related="Image512" />
+    <field name="Image128" type="image" related="Image512" />
+    <field name="WebsiteImageUrl" type="string" label="Image URL" />
+    <field name="HourFrom" type="float" label="Opening hour" default="8.0" />
+    <field name="HourTo" type="float" label="End hour" default="18.0" />
+    <field name="EventDateTz" type="selection" label="Timezone" related="EventId.DateTz" />
+    <field name="IsInOpeningHours" type="bool" label="Within opening hours" />
+    <field name="ChatRoomId" type="Core.ChatRoom" />
+    <field name="RoomName" type="string" />
+    <field name="CountryId" type="Core.Country" label="Country" related="PartnerId.CountryId" />
+    <field name="CountryFlagUrl" type="string" label="Country Flag" />
+  </model>
+
+  <optionset id="WebsiteEventExhibitor.SponsorType" name="Sponsor Type">
+    <option value="sponsor" name="Footer Logo Only" />
+    <option value="exhibitor" name="Exhibitor" />
+    <option value="online" name="Online Exhibitor" />
+  </optionset>
 </buvi>

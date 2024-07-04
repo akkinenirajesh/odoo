@@ -1,3 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockLandedCost" name="StockLandedCost" description="Stock Landed Cost">
+        <field name="Name" type="string" label="Name" default="New" readonly="true" />
+        <field name="Date" type="date" label="Date" default="context_today" required="true" />
+        <field name="TargetModel" type="Stock.StockLandedCostTargetModel" required="true" default="Picking" />
+        <field name="PickingIds" type="Stock.Picking" collection="true" label="Transfers" />
+        <field name="CostLines" type="Stock.StockLandedCostLine" collection="true" label="Cost Lines" />
+        <field name="ValuationAdjustmentLines" type="Stock.ValuationAdjustmentLine" collection="true" label="Valuation Adjustments" />
+        <field name="Description" type="text" label="Item Description" />
+        <field name="AmountTotal" type="monetary" label="Total" readonly="true" />
+        <field name="State" type="Stock.StockLandedCostState" default="Draft" readonly="true" />
+        <field name="AccountMoveId" type="Account.Move" label="Journal Entry" readonly="true" />
+        <field name="AccountJournalId" type="Account.Journal" label="Account Journal" required="true" />
+        <field name="CompanyId" type="Res.Company" label="Company" required="true" />
+        <field name="StockValuationLayerIds" type="Stock.StockValuationLayer" collection="true" />
+        <field name="VendorBillId" type="Account.Move" label="Vendor Bill" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    </model>
+
+    <optionset id="Stock.StockLandedCostTargetModel" name="Apply On">
+        <option value="Picking" name="Transfers" />
+    </optionset>
+
+    <optionset id="Stock.StockLandedCostState" name="State">
+        <option value="Draft" name="Draft" />
+        <option value="Done" name="Posted" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+
+    <model id="Stock.StockLandedCostLine" name="StockLandedCostLine" description="Stock Landed Cost Line">
+        <field name="Name" type="string" label="Description" />
+        <field name="CostId" type="Stock.StockLandedCost" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" />
+        <field name="PriceUnit" type="monetary" label="Cost" required="true" />
+        <field name="SplitMethod" type="Stock.StockLandedCostLineSplitMethod" label="Split Method" required="true" />
+        <field name="AccountId" type="Account.Account" label="Account" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    </model>
+
+    <optionset id="Stock.StockLandedCostLineSplitMethod" name="Split Method">
+        <option value="Equal" name="Equal" />
+        <option value="ByQuantity" name="By Quantity" />
+        <option value="ByCurrentCostPrice" name="By Current Cost" />
+        <option value="ByWeight" name="By Weight" />
+        <option value="ByVolume" name="By Volume" />
+    </optionset>
+
+    <model id="Stock.ValuationAdjustmentLine" name="ValuationAdjustmentLine" description="Valuation Adjustment Lines">
+        <field name="Name" type="string" label="Description" readonly="true" />
+        <field name="CostId" type="Stock.StockLandedCost" />
+        <field name="CostLineId" type="Stock.StockLandedCostLine" readonly="true" />
+        <field name="MoveId" type="Stock.Move" label="Stock Move" readonly="true" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" />
+        <field name="Quantity" type="float" label="Quantity" default="1.0" required="true" />
+        <field name="Weight" type="float" label="Weight" default="1.0" />
+        <field name="Volume" type="float" label="Volume" default="1.0" />
+        <field name="FormerCost" type="monetary" label="Original Value" />
+        <field name="AdditionalLandedCost" type="monetary" label="Additional Landed Cost" />
+        <field name="FinalCost" type="monetary" label="New Value" readonly="true" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    </model>
 </buvi>

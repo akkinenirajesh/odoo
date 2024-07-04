@@ -1,3 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductProduct" name="Product.ProductProduct" description="Product Variant">
+    <field name="PriceExtra" type="float" label="Variant Price Extra" digits="Product Price"
+      help="This is the sum of the extra price of all attributes" />
+    <field name="LstPrice" type="float" label="Sales Price" digits="Product Price"
+      help="The sale price is managed from the product template. Click on the 'Configure Variants' button to set the extra attribute prices." />
+    <field name="DefaultCode" type="string" label="Internal Reference" index="true" />
+    <field name="Code" type="string" label="Reference" />
+    <field name="PartnerRef" type="string" label="Customer Ref" />
+    <field name="Active" type="bool" default="true"
+      help="If unchecked, it will allow you to hide the product without removing it." />
+    <field name="ProductTmplId" type="Product.ProductTemplate" label="Product Template" ondelete="cascade"
+      required="true" />
+    <field name="Barcode" type="string" copy="false" index="btree_not_null"
+      help="International Article Number used for product identification." />
+    <field name="ProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue" collection="true"
+      label="Attribute Values" ondelete="restrict" />
+    <field name="ProductTemplateVariantValueIds" type="Product.ProductTemplateAttributeValue" collection="true"
+      label="Variant Values" ondelete="restrict"
+      domain="[('AttributeLineId.ValueCount', '&gt;', 1)]" />
+    <field name="CombinationIndices" type="string" store="true" index="true" />
+    <field name="IsProductVariant" type="bool" />
+    <field name="StandardPrice" type="float" company_dependent="true" digits="Product Price"
+      groups="base.group_user"
+      help="""Value of the product (automatically computed in AVCO).
+        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).
+        Used to compute margins on sale orders.""" />
+    <field name="Volume" type="float" label="Volume" digits="Volume" />
+    <field name="Weight" type="float" label="Weight" digits="Stock Weight" />
+    <field name="PricelistItemCount" type="integer" label="Number of price rules" />
+    <field name="ProductDocumentIds" type="Product.ProductDocument" collection="true" label="Documents"
+      domain="[('ResModel', '=', 'Product.ProductProduct')]" />
+    <field name="ProductDocumentCount" type="integer" label="Documents Count" />
+    <field name="PackagingIds" type="Product.ProductPackaging" collection="true" label="Product Packages"
+      help="Gives the different ways to package the same product." />
+    <field name="AdditionalProductTagIds" type="Product.ProductTag" collection="true" label="Variant Tags"
+      domain="[('Id', 'not in', ProductTagIds)]" />
+    <field name="AllProductTagIds" type="Product.ProductTag" collection="true" label="All Product Tags" />
+    <field name="ImageVariant1920" type="image" label="Variant Image" max_width="1920" max_height="1920" />
+    <field name="ImageVariant1024" type="image" label="Variant Image 1024" max_width="1024" max_height="1024"
+      store="true" />
+    <field name="ImageVariant512" type="image" label="Variant Image 512" max_width="512" max_height="512"
+      store="true" />
+    <field name="ImageVariant256" type="image" label="Variant Image 256" max_width="256" max_height="256"
+      store="true" />
+    <field name="ImageVariant128" type="image" label="Variant Image 128" max_width="128" max_height="128"
+      store="true" />
+    <field name="CanImageVariant1024BeZoomed" type="bool" label="Can Variant Image 1024 be zoomed"
+      store="true" />
+    <field name="Image1920" type="image" label="Image" />
+    <field name="Image1024" type="image" label="Image 1024" />
+    <field name="Image512" type="image" label="Image 512" />
+    <field name="Image256" type="image" label="Image 256" />
+    <field name="Image128" type="image" label="Image 128" />
+    <field name="CanImage1024BeZoomed" type="bool" label="Can Image 1024 be zoomed" />
+    <field name="WriteDate" type="datetime" store="true" />
+    <inherit id="Product.ProductTemplate" field="Id" />
+  </model>
 </buvi>

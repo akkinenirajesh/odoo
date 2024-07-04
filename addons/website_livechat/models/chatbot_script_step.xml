@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ChatbotScriptStep" name="ChatbotScriptStep" description="Chatbot Script Step">
+        <field name="DiscussChannel" type="Website.DiscussChannel" required="true" relation="one2many" collection="true" label="Discuss Channel" />
+        <field name="Email" type="string" label="Email" />
+        <field name="Phone" type="string" label="Phone" />
+        <field name="Country" type="Core.Country" label="Country" />
+    </model>
 </buvi>

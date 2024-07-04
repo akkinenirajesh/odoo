@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.Product" name="ProductProduct" description="Product Product">
+    <field name="AllProductTagIds" type="Product.ProductTag" collection="true" />
+  </model>
 </buvi>

@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Menu" name="Menu" description="Website Menu">
+        <field name="Name" type="string" label="Menu" required="true" translate="true" />
+        <field name="Url" type="string" label="Url" default="" />
+        <field name="Page" type="Website.Page" label="Related Page" relation="true" />
+        <field name="ControllerPage" type="Website.ControllerPage" label="Related Model Page" relation="true" />
+        <field name="NewWindow" type="bool" label="New Window" />
+        <field name="Sequence" type="integer" default="DefaultSequence" />
+        <field name="Website" type="Website.Website" label="Website" relation="true" />
+        <field name="Parent" type="Website.Menu" label="Parent Menu" relation="true" />
+        <field name="Child" type="Website.Menu" collection="true" label="Child Menus" />
+        <field name="ParentPath" type="string" />
+        <field name="IsVisible" type="bool" label="Is Visible" />
+        <field name="Groups" type="res.groups" collection="true" label="Visible Groups"
+            help="User needs to be at least in one of these groups to see the menu" />
+        <field name="IsMegaMenu" type="bool" label="Is Mega Menu" />
+        <field name="MegaMenuContent" type="html" label="Mega Menu Content" translate="true" sanitize="false" />
+        <field name="MegaMenuClasses" type="string" />
+    </model>
 </buvi>

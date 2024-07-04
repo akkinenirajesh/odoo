@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockPickingType" name="StockPickingType" description="Stock Picking Type">
+    <field name="CountPickingBatch" type="integer" compute="ComputePickingCount" />
+    <field name="CountPickingWave" type="integer" compute="ComputePickingCount" />
+    <field name="AutoBatch" type="bool" label="Automatic Batches"
+      help="Automatically put pickings into batches as they are confirmed when possible." />
+    <field name="BatchGroupByPartner" type="bool" label="Contact" help="Automatically group batches by contacts." />
+    <field name="BatchGroupByDestination" type="bool" label="Destination Country" help="Automatically group batches by destination country." />
+    <field name="BatchGroupBySrcLoc" type="bool" label="Source Location"
+      help="Automatically group batches by their source location." />
+    <field name="BatchGroupByDestLoc" type="bool" label="Destination Location"
+      help="Automatically group batches by their destination location." />
+    <field name="BatchMaxLines" type="integer" label="Maximum lines per batch"
+      help="A transfer will not be automatically added to batches that will exceed this number of lines if the transfer is added to it.\nLeave this value as '0' if no line limit." />
+    <field name="BatchMaxPickings" type="integer" label="Maximum transfers per batch"
+      help="A transfer will not be automatically added to batches that will exceed this number of transfers.\nLeave this value as '0' if no transfer limit." />
+    <field name="BatchAutoConfirm" type="bool" label="Auto-confirm" default="true" />
+  </model>
+
+  <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+    <field name="BatchId" type="Stock.StockPickingBatch" label="Batch Transfer"
+      help="Batch associated to this transfer" collection="true" />
+  </model>
+
+  <model id="Stock.StockPickingBatch" name="StockPickingBatch" description="Stock Picking Batch">
+    <field name="PickingTypeId" type="Stock.StockPickingType"
+      help="Picking type of the batch" collection="true" />
+    <field name="PickingIds" type="Stock.StockPicking" label="Transfers"
+      help="Transfers included in the batch" collection="true" />
+  </model>
 </buvi>

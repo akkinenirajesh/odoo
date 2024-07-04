@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="WebsiteSale.ProductTemplateAttributeLine" name="WebsiteSale.ProductTemplateAttributeLine" description="Product Template Attribute Line">
+        <field name="ValueIds" type="Product.ProductAttributeLine" collection="true" />
+        <field name="AttributeId" type="Product.ProductAttribute" />
+        <field name="Value" type="string" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" />
+        <field name="DisplayType" type="string" />
+        <field name="ProductTemplateId" type="WebsiteSale.ProductTemplate" />
+    </model>
 </buvi>

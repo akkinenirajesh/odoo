@@ -1,7 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="PurchaseStock.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+    <field name="IncotermLocation" type="string" label="Incoterm Location" />
+    <field name="IncomingPickingCount" type="integer" label="Incoming Shipment count" />
+    <field name="PickingIds" type="stock.picking" collection="true" label="Receptions" />
+    <field name="DestAddressId" type="res.partner" label="Destination Address" />
+    <field name="PickingTypeId" type="stock.picking.type" label="Deliver To" required="true" help="This will determine operation type of incoming shipment" />
+    <field name="DefaultLocationDestIdUsage" type="selection" label="Destination Location Type" related="PickingTypeId.DefaultLocationDestId.Usage" readonly="true" help="Technical field used to display the Drop Ship Address" />
+    <field name="GroupId" type="procurement.group" label="Procurement Group" />
+    <field name="IsShipped" type="bool" label="Is Shipped" />
+    <field name="EffectiveDate" type="datetime" label="Arrival" help="Completion date of the first receipt order." />
+    <field name="OnTimeRate" type="float" related="PartnerId.OnTimeRate" />
+    <field name="ReceiptStatus" type="selection" label="Receipt Status" help="Red: Late\nOrange: To process today\nGreen: On time" >
+      <option value="pending" name="Not Received" />
+      <option value="partial" name="Partially Received" />
+      <option value="full" name="Fully Received" />
+    </field>
   </model>
 </buvi>

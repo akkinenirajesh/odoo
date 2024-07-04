@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+        <field name="ExpenseIds" type="hr.expense" collection="true" label="Expenses" readonly="true" copy="false" domain="[('State', '=', 'done')]" />
+        <field name="ExpenseCount" type="integer" label="# of Expenses" compute="ComputeExpenseCount" />
+    </model>
 </buvi>

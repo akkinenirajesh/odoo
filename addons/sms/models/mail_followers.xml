@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.Followers" name="Mail.Followers" description="Mail Followers">
+    <field name="PartnerIds" type="Core.ResPartner" collection="true" />
+  </model>
 </buvi>

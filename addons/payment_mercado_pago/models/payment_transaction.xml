@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="ProviderCode" type="string" />
+    <field name="ProviderReference" type="string" />
+    <field name="PaymentToken" type="string" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" />
+    <field name="PartnerName" type="string" />
+    <field name="PartnerEmail" type="string" />
+    <field name="PartnerPhone" type="string" />
+    <field name="PartnerAddress" type="string" />
+    <field name="PartnerZip" type="string" />
+    <field name="CurrencyId" type="Core.Currency" />
+    <field name="Amount" type="float" />
+    <field name="Reference" type="string" required="true" />
+    <field name="State" type="Payment.TransactionState" />
+    <field name="Date" type="datetime" />
+    <field name="AcquirerId" type="Payment.Acquirer" />
+    <field name="ProviderId" type="Payment.Acquirer" />
+    <field name="Flow" type="Payment.Flow" />
+  </model>
+
+  <optionset id="Payment.TransactionState" name="Transaction State">
+    <option value="draft" name="Draft" />
+    <option value="pending" name="Pending" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+    <option value="error" name="Error" />
+  </optionset>
+
+  <optionset id="Payment.Flow" name="Flow">
+    <option value="direct" name="Direct" />
+    <option value="redirect" name="Redirect" />
+  </optionset>
 </buvi>

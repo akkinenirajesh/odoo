@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailIceServer" name="MailIceServer" description="ICE server">
+    <field name="ServerType" type="selection" label="Type" required="true" default="stun">
+      <option value="stun" name="stun:" />
+      <option value="turn" name="turn:" />
+    </field>
+    <field name="Uri" type="string" label="URI" required="true" />
+    <field name="Username" type="string" />
+    <field name="Credential" type="string" />
+  </model>
 </buvi>

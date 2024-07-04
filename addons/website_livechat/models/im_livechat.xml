@@ -1,3 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ImLivechatChannel" name="ImLivechatChannel" description="Live Chat Channel">
+        <field name="Name" type="string" label="Channel Name" required="true" translate="true" />
+        <field name="WebsiteDescription" type="html" label="Website Description" translate="true"
+                sanitizeOverridable="true"
+                sanitizeAttributes="false" sanitizeForm="false"
+                help="Description of the channel displayed on the website page" />
+        <field name="WebsiteUrl" type="char" />
+        <field name="WebsitePublished" type="bool" label="Published on Website" />
+        <field name="WebsiteInternalUrl" type="char" readonly="true" />
+        <field name="WebsiteSequence" type="integer" label="Sequence" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="Countries" type="Core.Country" collection="true" label="Allowed Countries"
+                help="If selected, the chat will only be available for the chosen countries. " />
+        <field name="Website" type="Website.Website" label="Website" readonly="true" />
+        <field name="UserIds" type="Res.Users" collection="true" label="Allowed Users"
+                help="Select the users who can access this channel." />
+        <field name="BackgroundColor" type="integer" label="Background Color Index" />
+        <field name="BackgroundColor2" type="integer" label="Secondary Background Color Index" />
+        <field name="TextColor" type="integer" label="Text Color Index" />
+        <field name="ShowAvatar" type="bool" label="Show Avatar" />
+        <field name="ShowStatus" type="bool" label="Show Status" />
+        <field name="ShowName" type="bool" label="Show Name" />
+        <field name="ShowEmail" type="bool" label="Show Email" />
+        <field name="ShowPhone" type="bool" label="Show Phone" />
+        <field name="DisplayOrder" type="integer" label="Display Order" />
+        <field name="LivechatType" type="Website.LivechatType" label="Livechat Type" />
+        <field name="ChatMode" type="Website.ChatMode" label="Chat Mode" />
+        <field name="DisableOffline" type="bool" label="Disable Offline" />
+        <field name="AutoRedirect" type="bool" label="Redirect to Live Chat" />
+        <field name="AutoRedirectTo" type="Website.AutoRedirectTo" label="Redirect to Live Chat" />
+        <field name="CloseButton" type="bool" label="Close Button" />
+        <field name="CloseMessage" type="char" label="Close Message" translate="true" />
+        <field name="UseEmail" type="bool" label="Use Email" />
+        <field name="UsePhone" type="bool" label="Use Phone" />
+        <field name="Message" type="char" label="Message" translate="true" />
+        <field name="MessagePlaceholder" type="char" label="Message Placeholder" translate="true" />
+        <field name="OfflineMessage" type="char" label="Offline Message" translate="true" />
+        <field name="OfflineEmail" type="char" label="Offline Email" translate="true" />
+        <field name="OfflinePhone" type="char" label="Offline Phone" translate="true" />
+        <field name="OfflineMessageLink" type="char" label="Offline Message Link" translate="true" />
+        <field name="OfflineMessageLinkText" type="char" label="Offline Message Link Text" translate="true" />
+        <field name="OfflineRedirect" type="char" label="Offline Redirect" translate="true" />
+        <field name="OfflineRedirectText" type="char" label="Offline Redirect Text" translate="true" />
+        <field name="ShowForm" type="bool" label="Show Form" />
+        <field name="ShowFormName" type="bool" label="Show Name Field" />
+        <field name="ShowFormEmail" type="bool" label="Show Email Field" />
+        <field name="ShowFormPhone" type="bool" label="Show Phone Field" />
+        <field name="ShowFormMessage" type="bool" label="Show Message Field" />
+        <field name="ShowFormSubject" type="bool" label="Show Subject Field" />
+        <field name="DefaultSubject" type="char" label="Default Subject" />
+        <field name="EmailTemplate" type="Mail.Template" label="Email Template" />
+        <field name="ChatBotIds" type="Website.LivechatBot" collection="true" label="Chat Bots" />
+        <field name="LastChatBot" type="Website.LivechatBot" label="Last Chat Bot" />
+        <field name="ChatbotActive" type="bool" label="Chat Bot Active" />
+        <field name="ChatbotShowName" type="bool" label="Show Name" />
+        <field name="ChatbotShowEmail" type="bool" label="Show Email" />
+        <field name="ChatbotShowPhone" type="bool" label="Show Phone" />
+        <field name="ChatbotShowSubject" type="bool" label="Show Subject" />
+        <field name="ChatbotMessage" type="char" label="Chat Bot Message" translate="true" />
+        <field name="ChatbotMessagePlaceholder" type="char" label="Chat Bot Message Placeholder" translate="true" />
+        <field name="ChatbotIntro" type="char" label="Chat Bot Intro" translate="true" />
+        <field name="ChatbotOutro" type="char" label="Chat Bot Outro" translate="true" />
+        <field name="ChatbotTimeout" type="integer" label="Chat Bot Timeout (Seconds)" />
+        <field name="ChatbotTrigger" type="Website.ChatbotTrigger" label="Trigger" />
+        <field name="ChatbotTriggerValue" type="char" label="Trigger Value" />
+        <field name="ChatbotDelay" type="integer" label="Chat Bot Delay (Seconds)" />
+        <field name="ChatbotActive" type="bool" label="Chat Bot Active" />
+        <field name="ChatbotSequence" type="integer" label="Chat Bot Sequence" />
+        <field name="ChatbotChannel" type="Website.ImLivechatChannel" label="Channel" />
+        <field name="ChatbotContent" type="char" label="Content" />
+        <field name="ChatbotContentHelp" type="char" label="Content Help" />
+        <field name="ChatbotUserIds" type="Res.Users" collection="true" label="Allowed Users" />
+        <field name="ChatbotWebsiteIds" type="Website.Website" collection="true" label="Allowed Websites" />
+        <field name="ChatbotLanguageIds" type="Res.Lang" collection="true" label="Allowed Languages" />
+        <field name="ChatbotDomainIds" type="Website.Website" collection="true" label="Allowed Domains" />
+        <field name="ChatbotTimeout" type="integer" label="Timeout (seconds)" />
+        <field name="ChatbotType" type="Website.ChatbotType" label="Type" />
+        <field name="ChatbotTriggerType" type="Website.ChatbotTriggerType" label="Trigger Type" />
+        <field name="ChatbotTriggerValue" type="char" label="Trigger Value" />
+        <field name="ChatbotDelay" type="integer" label="Delay (seconds)" />
+    </model>
+    <optionset id="Website.LivechatType" name="Livechat Type">
+        <option value="Standard" name="Standard" />
+        <option value="Whatsapp" name="Whatsapp" />
+        <option value="Facebook" name="Facebook" />
+        <option value="Telegram" name="Telegram" />
+    </optionset>
+    <optionset id="Website.ChatMode" name="Chat Mode">
+        <option value="Manual" name="Manual" />
+        <option value="Auto" name="Automatic" />
+    </optionset>
+    <optionset id="Website.AutoRedirectTo" name="Redirect to Live Chat">
+        <option value="Chat" name="Chat" />
+        <option value="Form" name="Form" />
+    </optionset>
+    <optionset id="Website.ChatbotTrigger" name="Trigger">
+        <option value="Manual" name="Manual" />
+        <option value="Time" name="Time" />
+        <option value="Url" name="Url" />
+        <option value="Page" name="Page" />
+        <option value="Click" name="Click" />
+        <option value="Idle" name="Idle" />
+        <option value="Scroll" name="Scroll" />
+        <option value="Form" name="Form" />
+    </optionset>
+    <optionset id="Website.ChatbotType" name="Type">
+        <option value="Default" name="Default" />
+        <option value="Human" name="Human" />
+    </optionset>
+    <optionset id="Website.ChatbotTriggerType" name="Trigger Type">
+        <option value="Exact" name="Exact" />
+        <option value="Contains" name="Contains" />
+        <option value="Starts" name="Starts" />
+        <option value="Ends" name="Ends" />
+    </optionset>
 </buvi>

@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleTimesheet.ProductProduct" name="ProductProduct" description="Product Product">
+        <field name="Type" type="selection" label="Product Type" selection="SaleTimesheet.ProductProductType" required="true"/>
+        <field name="ServiceType" type="selection" label="Service Type" selection="SaleTimesheet.ServiceType" />
+        <field name="ServicePolicy" type="selection" label="Service Policy" selection="SaleTimesheet.ServicePolicy" />
+        <field name="UomId" type="Product.Uom" label="Unit of Measure" />
+        <field name="UomPoId" type="Product.Uom" label="Purchase Unit of Measure" />
+        <field name="ServiceTracking" type="selection" label="Service Tracking" selection="SaleTimesheet.ServiceTracking" />
+        <field name="ProjectId" type="Project.Project" label="Project" />
+        <field name="ProjectTemplateId" type="Project.ProjectTemplate" label="Project Template" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the product without removing it." />
+    </model>
+    <optionset id="SaleTimesheet.ProductProductType" name="Product Product Type">
+        <option value="product" name="Storable Product" />
+        <option value="consu" name="Consumable Product" />
+        <option value="service" name="Service" />
+    </optionset>
+    <optionset id="SaleTimesheet.ServiceType" name="Service Type">
+        <option value="timesheet" name="Timesheet" />
+        <option value="other" name="Other" />
+    </optionset>
+    <optionset id="SaleTimesheet.ServicePolicy" name="Service Policy">
+        <option value="delivered_timesheet" name="Delivered Timesheet" />
+        <option value="fixed_price" name="Fixed Price" />
+    </optionset>
+    <optionset id="SaleTimesheet.ServiceTracking" name="Service Tracking">
+        <option value="no" name="No" />
+        <option value="manual" name="Manually" />
+        <option value="automatic" name="Automatic" />
+    </optionset>
 </buvi>

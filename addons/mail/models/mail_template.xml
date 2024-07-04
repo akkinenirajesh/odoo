@@ -1,3 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailTemplate" name="MailTemplate" description="Email Templates">
+        <field name="Name" type="string" label="Name" translate="true" />
+        <field name="Description" type="text" label="Template description" translate="true"
+            help="This field is used for internal description of the template's usage." />
+        <field name="Active" type="bool" default="true" />
+        <field name="TemplateCategory" type="Mail.MailTemplateCategory"
+            compute="ComputeTemplateCategory" search="SearchTemplateCategory" />
+        <field name="ModelId" type="IR.Model" label="Applies to" />
+        <field name="Model" type="string" label="Related Document Model" related="ModelId.Model" index="true"
+            store="true" readonly="true" />
+        <field name="Subject" type="string" label="Subject" translate="true" prefetch="true"
+            help="Subject (placeholders may be used here)" />
+        <field name="EmailFrom" type="string" label="From"
+            help="Sender address (placeholders may be used here). If not set, the default "
+                 "value will be the author's email alias if configured, or email address." />
+        <field name="UserId" type="Res.Users" label="User"
+            domain="[('Share', '=', false)]"
+            help="The template belongs to this user" />
+        <field name="UseDefaultTo" type="bool" label="Default recipients"
+            help="Default recipients of the record:\n"
+                 "- partner (using id on a partner or the partner_id field) OR\n"
+                 "- email (using email_from or email field)" />
+        <field name="EmailTo" type="string" label="To (Emails)"
+            help="Comma-separated recipient addresses (placeholders may be used here)" />
+        <field name="PartnerTo" type="string" label="To (Partners)"
+            help="Comma-separated ids of recipient partners (placeholders may be used here)" />
+        <field name="EmailCc" type="string" label="Cc"
+            help="Carbon copy recipients (placeholders may be used here)" />
+        <field name="ReplyTo" type="string" label="Reply To"
+            help="Email address to which replies will be redirected when sending emails in mass; only used when the reply is not logged in the original discussion thread." />
+        <field name="BodyHtml" type="html" label="Body" render_engine="qweb"
+            render_options="{&quot;post_process&quot;: true}"
+            prefetch="true" translate="true" sanitize="false" />
+        <field name="AttachmentIds" type="ir.attachment" collection="true" label="Attachments"
+            help="You may attach files to this template, to be added to all "
+                 "emails created from this template" />
+        <field name="ReportTemplateIds" type="ir.actions.report" collection="true" label="Dynamic Reports"
+            domain="[('Model', '=', Model)]" />
+        <field name="EmailLayoutXmlid" type="string" label="Email Notification Layout" copy="false" />
+        <field name="MailServerId" type="IR.MailServer" label="Outgoing Mail Server" readonly="false"
+            help="Optional preferred server for outgoing mails. If not set, the highest "
+                 "priority one will be used." />
+        <field name="ScheduledDate" type="string" label="Scheduled Date"
+            help="If set, the queue manager will send the email after the date. If not set, the email will be send as soon as possible. You can use dynamic expression." />
+        <field name="AutoDelete" type="bool" label="Auto Delete" default="true"
+            help="This option permanently removes any track of email after it's been sent, including from the Technical menu in the Settings, in order to preserve storage space of your Odoo database." />
+        <field name="RefIrActWindow" type="IR.Actions.ActWindow" label="Sidebar action" readonly="true" copy="false"
+            help="Sidebar action to make this template available on records "
+                 "of the related document model" />
+        <field name="CanWrite" type="bool" label="Can Write" compute="ComputeCanWrite"
+            help="The current user can edit the template." />
+        <field name="IsTemplateEditor" type="bool" label="Is Template Editor" compute="ComputeIsTemplateEditor" />
+    </model>
+
+    <optionset id="Mail.MailTemplateCategory" name="Mail Template Category">
+        <option value="BaseTemplate" name="Base Template" />
+        <option value="HiddenTemplate" name="Hidden Template" />
+        <option value="CustomTemplate" name="Custom Template" />
+    </optionset>
 </buvi>

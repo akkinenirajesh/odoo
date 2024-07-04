@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Product" name="Website.Product" description="Product">
+        <field name="VariantRibbon" type="Website.ProductRibbon" label="Variant Ribbon" />
+        <field name="Website" type="Website.Website" related="ProductTemplate.Website" readonly="false" />
+        <field name="ProductVariantImages" type="Website.ProductImage" collection="true" label="Extra Variant Images" inverse_name="ProductVariant" />
+        <field name="BaseUnitCount" type="float" label="Base Unit Count" required="true" default="1" help="Display base unit price on your eCommerce pages. Set to 0 to hide it for this product." />
+        <field name="BaseUnitId" type="Website.BaseUnit" label="Custom Unit of Measure" help="Define a custom unit to display in the price per unit of measure field." />
+        <field name="BaseUnitPrice" type="monetary" label="Price Per Unit" compute="ComputeBaseUnitPrice" />
+        <field name="BaseUnitName" type="char" label="Base Unit Name" compute="ComputeBaseUnitName" help="Displays the custom unit for the products if defined or the selected unit of measure otherwise." />
+        <field name="WebsiteUrl" type="char" label="Website URL" help="The full URL to access the document through the website." compute="ComputeProductWebsiteUrl" />
+    </model>
+
+    <model id="Website.ProductRibbon" name="Website.ProductRibbon" description="Product Ribbon" />
+
+    <model id="Website.ProductImage" name="Website.ProductImage" description="Product Image">
+        <field name="ProductVariant" type="Website.Product" collection="false" />
+    </model>
+
+    <model id="Website.BaseUnit" name="Website.BaseUnit" description="Base Unit" />
+
+    <model id="Website.Website" name="Website.Website" description="Website" />
+
+    <model id="Website.ProductTemplate" name="Website.ProductTemplate" description="Product Template" />
 </buvi>

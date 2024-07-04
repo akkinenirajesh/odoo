@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="ProjectHrSkills.ReportProjectTaskUser" name="ReportProjectTaskUser" description="Report Project Task User">
+    <field name="UserIds" type="res.users" relation="many2many" collection="true" />
+    <field name="UserSkillIds" type="hr.employee.skill" relation="one2many" collection="true" label="Skills" />
+  </model>
 </buvi>

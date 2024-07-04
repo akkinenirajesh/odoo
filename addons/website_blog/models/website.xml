@@ -1,3 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Website" name="Website" description="Website">
+        <field name="Name" type="string" label="Website Name" required="true" translate="true" />
+        <field name="Domain" type="string" label="Domain" required="true" />
+        <field name="Company" type="Core.Company" label="Company" required="true" />
+        <field name="Language" type="Core.Language" label="Language" />
+        <field name="Theme" type="string" label="Theme" />
+        <field name="IsLive" type="bool" label="Live Website" />
+        <field name="Menu" type="Website.Menu" collection="true" />
+        <field name="Banner" type="Website.Banner" collection="true" />
+        <field name="Footer" type="Website.Footer" collection="true" />
+        <field name="SearchEngine" type="Website.SearchEngine" collection="true" />
+        <field name="Analytics" type="Website.Analytics" collection="true" />
+        <field name="SocialMedia" type="Website.SocialMedia" collection="true" />
+    </model>
+
+    <model id="Website.Menu" name="Menu" description="Menu Item">
+        <field name="Name" type="string" label="Menu Item Name" required="true" translate="true" />
+        <field name="Url" type="string" label="Url" required="true" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Parent" type="Website.Menu" label="Parent Menu Item" />
+        <field name="Website" type="Website.Website" label="Website" required="true" />
+    </model>
+
+    <model id="Website.Banner" name="Banner" description="Banner">
+        <field name="Image" type="Image" label="Banner Image" required="true" />
+        <field name="Text" type="string" label="Banner Text" translate="true" />
+        <field name="Url" type="string" label="Banner Url" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Website" type="Website.Website" label="Website" required="true" />
+    </model>
+
+    <model id="Website.Footer" name="Footer" description="Footer Item">
+        <field name="Text" type="string" label="Footer Text" translate="true" />
+        <field name="Url" type="string" label="Footer Url" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Website" type="Website.Website" label="Website" required="true" />
+    </model>
+
+    <model id="Website.SearchEngine" name="SearchEngine" description="Search Engine">
+        <field name="Name" type="string" label="Search Engine Name" required="true" translate="true" />
+        <field name="Url" type="string" label="Search Engine Url" required="true" />
+        <field name="Website" type="Website.Website" label="Website" required="true" />
+    </model>
+
+    <model id="Website.Analytics" name="Analytics" description="Analytics">
+        <field name="Name" type="string" label="Analytics Name" required="true" translate="true" />
+        <field name="Url" type="string" label="Analytics Url" required="true" />
+        <field name="Website" type="Website.Website" label="Website" required="true" />
+    </model>
+
+    <model id="Website.SocialMedia" name="SocialMedia" description="Social Media">
+        <field name="Name" type="string" label="Social Media Name" required="true" translate="true" />
+        <field name="Url" type="string" label="Social Media Url" required="true" />
+        <field name="Website" type="Website.Website" label="Website" required="true" />
+    </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+        <field name="EDIBuilders" type="many2many" collection="true" relation="Purchase.EDIBuilder"/>
+    </model>
 </buvi>

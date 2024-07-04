@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <field name="SmsReceiptTemplate" type="Sms.SmsTemplate" label="Sms Receipt template"
+            domain="[('Model', '=', 'Pos.PosOrder')]"
+            help="SMS will be sent to the customer based on this template" />
+    </model>
 </buvi>

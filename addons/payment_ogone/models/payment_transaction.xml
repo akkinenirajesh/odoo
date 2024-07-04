@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="PaymentTransaction" description="Payment Transaction">
+    <field name="Reference" type="string" label="Reference" required="true" />
+    <field name="Amount" type="float" label="Amount" required="true" />
+    <field name="Currency" type="Core.Currency" label="Currency" required="true" />
+    <field name="Partner" type="Res.Partner" label="Partner" required="true" />
+    <field name="PartnerEmail" type="string" label="Partner Email" />
+    <field name="PartnerName" type="string" label="Partner Name" />
+    <field name="PartnerAddress" type="string" label="Partner Address" />
+    <field name="PartnerZip" type="string" label="Partner Zip" />
+    <field name="PartnerCity" type="string" label="Partner City" />
+    <field name="PartnerCountry" type="Core.Country" label="Partner Country" />
+    <field name="PartnerPhone" type="string" label="Partner Phone" />
+    <field name="PaymentMethod" type="Payment.PaymentMethod" label="Payment Method" />
+    <field name="PaymentMethodCode" type="string" label="Payment Method Code" />
+    <field name="Provider" type="Payment.Provider" label="Provider" required="true" />
+    <field name="ProviderCode" type="string" label="Provider Code" required="true" />
+    <field name="ProviderReference" type="string" label="Provider Reference" />
+    <field name="Token" type="Payment.Token" label="Token" />
+    <field name="State" type="Payment.TransactionState" label="State" required="true" />
+    <field name="Date" type="datetime" label="Date" required="true" />
+    <field name="Note" type="string" label="Note" />
+    <field name="PartnerLang" type="string" label="Partner Language" />
+    <field name="Tokenize" type="bool" label="Tokenize" />
+  </model>
+
+  <optionset id="Payment.TransactionState" name="Transaction State">
+    <option value="Pending" name="Pending" />
+    <option value="Done" name="Done" />
+    <option value="Canceled" name="Canceled" />
+    <option value="Error" name="Error" />
+  </optionset>
 </buvi>

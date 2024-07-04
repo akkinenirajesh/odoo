@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventExhibitor.EventType" name="EventType" description="Event Type">
+        <field name="ExhibitorMenu" type="bool" label="Showcase Exhibitors" required="false"
+            help="Display exhibitors on website, in the footer of every page of the event."/>
+        <field name="WebsiteMenu" type="bool" required="false"/>
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.ResCompany" name="ResCompany" description="ResCompany">
+    <field name="SaleHeader" type="binary" label="Header pages" />
+    <field name="SaleHeaderName" type="string" />
+    <field name="SaleFooter" type="binary" label="Footer pages" />
+    <field name="SaleFooterName" type="string" />
+  </model>
 </buvi>

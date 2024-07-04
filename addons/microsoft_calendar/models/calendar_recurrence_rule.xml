@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="calendar.attendee" name="Calendar.Attendee" track_created="true" track_update="true">
-    <field name="Event" label="Meeting linked" type="Calendar.Event" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Recurrence" label="Recurrence Rule" type="Calendar.Recurrence" readonly="true" transient="true" related-field="Event.Recurrence"/>
-    <field name="Partner" label="Attendee" type="Res.Partner" required="true" readonly="true" copied="true" on-delete="Cascade"/>
-    <field name="AccessToken" label="Invitation Token" type="string" copied="true"/>
-    <field name="Availability" label="Available/Busy" type="Calendar.CalendarAttendeeInformationAvailable/Busy" readonly="true" copied="true"/>
-    <field name="CommonName" label="Common name" type="string" readonly="true"/>
-    <field name="Email" label="Email" type="string" readonly="true" transient="true" related-field="Partner.Email"/>
-    <field name="Phone" label="Phone" type="string" readonly="true" transient="true" related-field="Partner.Phone"/>
-    <field name="State" label="Status" type="Calendar.CalendarAttendeeInformationStatus"/>
-  </model>
+    <model id="Calendar.RecurrenceRule" name="Calendar.RecurrenceRule" description="Calendar Recurrence Rule">
+        <field name="NeedSyncM" type="bool" default="false" />
+        <field name="Rrule" type="string" label="Recurrence Rule" />
+        <field name="Dtstart" type="datetime" label="Start Date" />
+        <field name="CalendarEventId" type="Calendar.Event"  relation="many2one" label="Calendar Event"  collection="true" />
+        <field name="BaseEventId" type="Calendar.Event"  relation="many2one" label="Base Event"  collection="true" />
+        <field name="EventTz" type="string" label="Event Timezone" />
+        <field name="MicrosoftId" type="string" label="Microsoft Id" />
+        <field name="MsUniversalEventId" type="string" label="Microsoft Universal Event Id" />
+    </model>
 </buvi>

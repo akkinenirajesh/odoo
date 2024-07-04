@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductDocument" name="ProductDocument" description="Product Document">
+    <field name="IrAttachmentId" type="Ir.Attachment" required="true" ondelete="cascade" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Sequence" type="integer" default="10" />
+    <field name="Url" type="char" />
+  </model>
 </buvi>

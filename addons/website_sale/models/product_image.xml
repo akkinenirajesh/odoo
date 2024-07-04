@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteSale.ProductImage" name="WebsiteSale.ProductImage" description="Product Image">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" default="10" />
+    <field name="Image1920" type="binary" />
+    <field name="ProductTemplateId" type="WebsiteSale.ProductTemplate" collection="true" />
+    <field name="ProductVariantId" type="WebsiteSale.ProductProduct" collection="true" />
+    <field name="VideoUrl" type="string" label="Video URL" help="URL of a video for showcasing your product." />
+    <field name="EmbedCode" type="html" compute="ComputeEmbedCode" sanitize="false" />
+    <field name="CanImage1024BeZoomed" type="bool" compute="ComputeCanImage1024BeZoomed" store="true" />
+  </model>
 </buvi>

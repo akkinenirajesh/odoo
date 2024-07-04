@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.PosNote" name="PosNote" description="PoS Note">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="1" />
+        <unique>
+            <field name="Name" />
+            <message>A note with this name already exists.</message>
+        </unique>
+    </model>
 </buvi>

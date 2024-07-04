@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventTrack.EventType" name="EventType" description="Event Type">
+        <field name="WebsiteTrack" type="bool" label="Tracks on Website" />
+        <field name="WebsiteTrackProposal" type="bool" label="Tracks Proposals on Website" />
+        <field name="WebsiteMenu" type="bool" label="Website Menu" />
+    </model>
 </buvi>

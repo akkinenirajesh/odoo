@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Uom.UoMCategory" name="UoMCategory" description="Product UoM Categories">
+    <field name="Name" type="string" label="Unit of Measure Category" required="true" translate="true" />
+    <field name="UomIds" type="Uom.UoM" collection="true" />
+    <field name="ReferenceUomId" type="Uom.UoM" store="false" label="Reference UoM" />
+  </model>
+  <model id="Uom.UoM" name="UoM" description="Product Unit of Measure">
+    <field name="Name" type="string" label="Unit of Measure" required="true" translate="true" />
+    <field name="CategoryId" type="Uom.UoMCategory" required="true" label="Category" />
+    <field name="Factor" type="float" default="1.0" digits="0" required="true" label="Ratio" help="How much bigger or smaller this unit is compared to the reference Unit of Measure for this category: 1 * (reference unit) = ratio * (this unit)" />
+    <field name="FactorInv" type="float" digits="0" readonly="true" required="true" label="Bigger Ratio" help="How many times this Unit of Measure is bigger than the reference Unit of Measure in this category: 1 * (this unit) = ratio * (reference unit)" />
+    <field name="Rounding" type="float" default="0.01" digits="0" required="true" label="Rounding Precision" help="The computed quantity will be a multiple of this value. Use 1.0 for a Unit of Measure that cannot be further split, such as a piece." />
+    <field name="Active" type="bool" default="true" label="Active" help="Uncheck the active field to disable a unit of measure without deleting it." />
+    <field name="UomType" type="Uom.UoMType" default="reference" required="true" label="Type" />
+    <field name="Ratio" type="float" store="false" label="Combined Ratio" />
+    <field name="Color" type="integer" label="Color" />
+    <sqlconstraint name="FactorGtZero" check="Factor != 0" message="The conversion ratio for a unit of measure cannot be 0!" />
+    <sqlconstraint name="RoundingGtZero" check="Rounding > 0" message="The rounding precision must be strictly positive." />
+    <sqlconstraint name="FactorReferenceIsOne" check="(UomType = 'reference' AND Factor = 1.0) OR (UomType != 'reference')" message="The reference unit must have a conversion factor equal to 1." />
+  </model>
+  <optionset id="Uom.UoMType" name="UoM Type">
+    <option value="bigger" name="Bigger than the reference Unit of Measure" />
+    <option value="reference" name="Reference Unit of Measure for this category" />
+    <option value="smaller" name="Smaller than the reference Unit of Measure" />
+  </optionset>
 </buvi>

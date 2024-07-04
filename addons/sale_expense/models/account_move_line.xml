@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.AccountMoveLine" name="Account.AccountMoveLine" description="Account Move Line">
+        <field name="ExpenseId" type="Sale.ExpenseSheet"  relation="one2many" collection="true" />
+        <field name="SaleOrderId" type="Sale.SaleOrder"  relation="one2many" collection="true" />
+        <field name="Quantity" type="float" label="Quantity" />
+        <method name="SaleCanBeReinvoice" return="bool" access="public" />
+        <method name="SaleDetermineOrder" return="list" access="public" />
+        <method name="SalePrepareSaleLineValues" return="dict" access="public" />
+        <method name="SaleCreateReinvoiceSaleLine" return="list" access="public" />
+    </model>
+
+    <model id="Sale.AccountMove" name="Account.AccountMove" description="Account Move">
+        <field name="ExpenseSheetId" type="Sale.ExpenseSheet" relation="one2many" collection="true" />
+        <method name="ReverseMoves" return="list" access="public" />
+        <method name="ButtonDraft" return="list" access="public" />
+    </model>
 </buvi>

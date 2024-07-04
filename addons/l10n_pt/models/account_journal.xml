@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.Journal" name="Journal" description="Journal">
+        <field name="Name" type="string" label="Journal Name" required="true" translate="true" />
+        <field name="Code" type="char" label="Code" />
+        <field name="Type" type="Account.JournalType" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="Currency" type="Core.Currency" label="Currency" />
+        <field name="DefaultDebitAccount" type="Account.Account" label="Default Debit Account" />
+        <field name="DefaultCreditAccount" type="Account.Account" label="Default Credit Account" />
+        <field name="InvoiceSequence" type="Core.Sequence" label="Invoice Sequence" />
+        <field name="Sequence" type="Core.Sequence" label="Sequence" />
+        <field name="L10nPtTaxonomyCode" type="integer" />
+    </model>
+
+    <optionset id="Account.JournalType" name="Journal Type">
+        <option value="cash" name="Cash" />
+        <option value="bank" name="Bank" />
+        <option value="sale" name="Sale" />
+        <option value="purchase" name="Purchase" />
+        <option value="general" name="General" />
+        <option value="situation" name="Situation" />
+    </optionset>
 </buvi>

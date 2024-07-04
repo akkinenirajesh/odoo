@@ -1,3 +1,252 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ResCompany" name="ResCompany" description="Company">
+    <field name="Name" type="string" label="Company Name" required="true" translate="true" />
+    <field name="Currency" type="Core.Currency" label="Currency" required="true" />
+    <field name="Country" type="Core.Country" label="Country" />
+    <field name="Phone" type="string" label="Phone" />
+    <field name="Email" type="string" label="Email" />
+    <field name="Website" type="string" label="Website" />
+    <field name="Street" type="string" label="Street" />
+    <field name="Street2" type="string" label="Street 2" />
+    <field name="Zip" type="string" label="Zip" />
+    <field name="City" type="string" label="City" />
+    <field name="State" type="string" label="State" />
+    <field name="PartnerId" type="integer" label="Partner ID" />
+    <field name="Vat" type="string" label="VAT" />
+    <field name="TaxIdentificationNumber" type="string" label="Tax Identification Number" />
+    <field name="IsCompany" type="bool" label="Is Company" default="true" />
+    <field name="CompanyRegistry" type="string" label="Company Registry" />
+    <field name="ShareCapital" type="float" label="Share Capital" />
+    <field name="LegalForm" type="string" label="Legal Form" />
+    <field name="LegalRepresentative" type="string" label="Legal Representative" />
+    <field name="Employees" type="integer" label="Employees" />
+    <field name="PartnerContact" type="Core.Partner" label="Partner Contact" />
+    <field name="PartnerInvoices" type="Core.Partner" label="Partner Invoices" />
+    <field name="PartnerSales" type="Core.Partner" label="Partner Sales" />
+    <field name="PartnerPurchase" type="Core.Partner" label="Partner Purchase" />
+    <field name="PartnerBank" type="Core.Partner" label="Partner Bank" />
+    <field name="PartnerDelivery" type="Core.Partner" label="Partner Delivery" />
+    <field name="PartnerSupplier" type="Core.Partner" label="Partner Supplier" />
+    <field name="PartnerCustomer" type="Core.Partner" label="Partner Customer" />
+    <field name="PartnerService" type="Core.Partner" label="Partner Service" />
+    <field name="PartnerIndustry" type="Core.Partner" label="Partner Industry" />
+    <field name="PartnerSize" type="Core.Partner" label="Partner Size" />
+    <field name="PartnerRating" type="Core.Partner" label="Partner Rating" />
+    <field name="PartnerFunction" type="Core.Partner" label="Partner Function" />
+    <field name="PartnerTitle" type="Core.Partner" label="Partner Title" />
+    <field name="PartnerComment" type="text" label="Partner Comment" />
+    <field name="PartnerMobile" type="string" label="Partner Mobile" />
+    <field name="PartnerPhone" type="string" label="Partner Phone" />
+    <field name="PartnerEmail" type="string" label="Partner Email" />
+    <field name="PartnerWebsite" type="string" label="Partner Website" />
+    <field name="PartnerStreet" type="string" label="Partner Street" />
+    <field name="PartnerStreet2" type="string" label="Partner Street 2" />
+    <field name="PartnerZip" type="string" label="Partner Zip" />
+    <field name="PartnerCity" type="string" label="Partner City" />
+    <field name="PartnerState" type="string" label="Partner State" />
+    <field name="PartnerCountry" type="Core.Country" label="Partner Country" />
+    <field name="PartnerFax" type="string" label="Partner Fax" />
+    <field name="PartnerVat" type="string" label="Partner VAT" />
+    <field name="PartnerTaxIdentificationNumber" type="string" label="Partner Tax Identification Number" />
+    <field name="PartnerCompanyRegistry" type="string" label="Partner Company Registry" />
+    <field name="PartnerShareCapital" type="float" label="Partner Share Capital" />
+    <field name="PartnerLegalForm" type="string" label="Partner Legal Form" />
+    <field name="PartnerLegalRepresentative" type="string" label="Partner Legal Representative" />
+    <field name="PartnerEmployees" type="integer" label="Partner Employees" />
+    <field name="PartnerIsActive" type="bool" label="Partner Is Active" />
+    <field name="PartnerIsCompany" type="bool" label="Partner Is Company" />
+    <field name="PartnerIsSupplier" type="bool" label="Partner Is Supplier" />
+    <field name="PartnerIsCustomer" type="bool" label="Partner Is Customer" />
+    <field name="PartnerIsEmployee" type="bool" label="Partner Is Employee" />
+    <field name="PartnerIsVendor" type="bool" label="Partner Is Vendor" />
+    <field name="PartnerIsService" type="bool" label="Partner Is Service" />
+    <field name="PartnerIsContact" type="bool" label="Partner Is Contact" />
+    <field name="PartnerIsProject" type="bool" label="Partner Is Project" />
+    <field name="PartnerIsPartner" type="bool" label="Partner Is Partner" />
+    <field name="PartnerIsLead" type="bool" label="Partner Is Lead" />
+    <field name="PartnerIsOpportunity" type="bool" label="Partner Is Opportunity" />
+    <field name="PartnerIsQuote" type="bool" label="Partner Is Quote" />
+    <field name="PartnerIsOrder" type="bool" label="Partner Is Order" />
+    <field name="PartnerIsInvoice" type="bool" label="Partner Is Invoice" />
+    <field name="PartnerIsPayment" type="bool" label="Partner Is Payment" />
+    <field name="PartnerIsExpense" type="bool" label="Partner Is Expense" />
+    <field name="PartnerIsAsset" type="bool" label="Partner Is Asset" />
+    <field name="PartnerIsLiability" type="bool" label="Partner Is Liability" />
+    <field name="PartnerIsEquity" type="bool" label="Partner Is Equity" />
+    <field name="PartnerIsRevenue" type="bool" label="Partner Is Revenue" />
+    <field name="PartnerIsCost" type="bool" label="Partner Is Cost" />
+    <field name="PartnerIsSale" type="bool" label="Partner Is Sale" />
+    <field name="PartnerIsPurchase" type="bool" label="Partner Is Purchase" />
+    <field name="PartnerIsProduction" type="bool" label="Partner Is Production" />
+    <field name="PartnerIsInventory" type="bool" label="Partner Is Inventory" />
+    <field name="PartnerIsStock" type="bool" label="Partner Is Stock" />
+    <field name="PartnerIsDelivery" type="bool" label="Partner Is Delivery" />
+    <field name="PartnerIsInvoiceTerm" type="bool" label="Partner Is Invoice Term" />
+    <field name="PartnerIsPaymentTerm" type="bool" label="Partner Is Payment Term" />
+    <field name="PartnerIsFiscalPosition" type="bool" label="Partner Is Fiscal Position" />
+    <field name="PartnerIsTaxGroup" type="bool" label="Partner Is Tax Group" />
+    <field name="PartnerIsAccountTax" type="bool" label="Partner Is Account Tax" />
+    <field name="PartnerIsProduct" type="bool" label="Partner Is Product" />
+    <field name="PartnerIsService" type="bool" label="Partner Is Service" />
+    <field name="PartnerIsCategory" type="bool" label="Partner Is Category" />
+    <field name="PartnerIsBrand" type="bool" label="Partner Is Brand" />
+    <field name="PartnerIsVariant" type="bool" label="Partner Is Variant" />
+    <field name="PartnerIsAttributeSet" type="bool" label="Partner Is Attribute Set" />
+    <field name="PartnerIsAttribute" type="bool" label="Partner Is Attribute" />
+    <field name="PartnerIsAttributeValue" type="bool" label="Partner Is Attribute Value" />
+    <field name="PartnerIsTag" type="bool" label="Partner Is Tag" />
+    <field name="PartnerIsGroup" type="bool" label="Partner Is Group" />
+    <field name="PartnerIsUser" type="bool" label="Partner Is User" />
+    <field name="PartnerIsTeam" type="bool" label="Partner Is Team" />
+    <field name="PartnerIsSaleTeam" type="bool" label="Partner Is Sale Team" />
+    <field name="PartnerIsPurchaseTeam" type="bool" label="Partner Is Purchase Team" />
+    <field name="PartnerIsProjectTeam" type="bool" label="Partner Is Project Team" />
+    <field name="PartnerIsSupportTeam" type="bool" label="Partner Is Support Team" />
+    <field name="PartnerIsMarketingTeam" type="bool" label="Partner Is Marketing Team" />
+    <field name="PartnerIsSalesperson" type="bool" label="Partner Is Salesperson" />
+    <field name="PartnerIsPurchaser" type="bool" label="Partner Is Purchaser" />
+    <field name="PartnerIsProjectManager" type="bool" label="Partner Is Project Manager" />
+    <field name="PartnerIsSupportAgent" type="bool" label="Partner Is Support Agent" />
+    <field name="PartnerIsMarketer" type="bool" label="Partner Is Marketer" />
+    <field name="PartnerIsAccountManager" type="bool" label="Partner Is Account Manager" />
+    <field name="PartnerIsCustomerServiceRepresentative" type="bool" label="Partner Is Customer Service Representative" />
+    <field name="PartnerIsTechnicalSupport" type="bool" label="Partner Is Technical Support" />
+    <field name="PartnerIsDeveloper" type="bool" label="Partner Is Developer" />
+    <field name="PartnerIsDesigner" type="bool" label="Partner Is Designer" />
+    <field name="PartnerIsAnalyst" type="bool" label="Partner Is Analyst" />
+    <field name="PartnerIsConsultant" type="bool" label="Partner Is Consultant" />
+    <field name="PartnerIsManager" type="bool" label="Partner Is Manager" />
+    <field name="PartnerIsDirector" type="bool" label="Partner Is Director" />
+    <field name="PartnerIsCEO" type="bool" label="Partner Is CEO" />
+    <field name="PartnerIsCFO" type="bool" label="Partner Is CFO" />
+    <field name="PartnerIsCOO" type="bool" label="Partner Is COO" />
+    <field name="PartnerIsCTO" type="bool" label="Partner Is CTO" />
+    <field name="PartnerIsCMO" type="bool" label="Partner Is CMO" />
+    <field name="PartnerIsCHRO" type="bool" label="Partner Is CHRO" />
+    <field name="PartnerIsCIO" type="bool" label="Partner Is CIO" />
+    <field name="PartnerIsLegal" type="bool" label="Partner Is Legal" />
+    <field name="PartnerIsFinance" type="bool" label="Partner Is Finance" />
+    <field name="PartnerIsOperations" type="bool" label="Partner Is Operations" />
+    <field name="PartnerIsTechnology" type="bool" label="Partner Is Technology" />
+    <field name="PartnerIsMarketing" type="bool" label="Partner Is Marketing" />
+    <field name="PartnerIsHumanResources" type="bool" label="Partner Is Human Resources" />
+    <field name="PartnerIsInformationTechnology" type="bool" label="Partner Is Information Technology" />
+    <field name="PartnerIsSales" type="bool" label="Partner Is Sales" />
+    <field name="PartnerIsPurchase" type="bool" label="Partner Is Purchase" />
+    <field name="PartnerIsProject" type="bool" label="Partner Is Project" />
+    <field name="PartnerIsSupport" type="bool" label="Partner Is Support" />
+    <field name="PartnerIsProduction" type="bool" label="Partner Is Production" />
+    <field name="PartnerIsInventory" type="bool" label="Partner Is Inventory" />
+    <field name="PartnerIsStock" type="bool" label="Partner Is Stock" />
+    <field name="PartnerIsDelivery" type="bool" label="Partner Is Delivery" />
+    <field name="PartnerIsInvoiceTerm" type="bool" label="Partner Is Invoice Term" />
+    <field name="PartnerIsPaymentTerm" type="bool" label="Partner Is Payment Term" />
+    <field name="PartnerIsFiscalPosition" type="bool" label="Partner Is Fiscal Position" />
+    <field name="PartnerIsTaxGroup" type="bool" label="Partner Is Tax Group" />
+    <field name="PartnerIsAccountTax" type="bool" label="Partner Is Account Tax" />
+    <field name="PartnerIsProduct" type="bool" label="Partner Is Product" />
+    <field name="PartnerIsService" type="bool" label="Partner Is Service" />
+    <field name="PartnerIsCategory" type="bool" label="Partner Is Category" />
+    <field name="PartnerIsBrand" type="bool" label="Partner Is Brand" />
+    <field name="PartnerIsVariant" type="bool" label="Partner Is Variant" />
+    <field name="PartnerIsAttributeSet" type="bool" label="Partner Is Attribute Set" />
+    <field name="PartnerIsAttribute" type="bool" label="Partner Is Attribute" />
+    <field name="PartnerIsAttributeValue" type="bool" label="Partner Is Attribute Value" />
+    <field name="PartnerIsTag" type="bool" label="Partner Is Tag" />
+    <field name="PartnerIsGroup" type="bool" label="Partner Is Group" />
+    <field name="PartnerIsUser" type="bool" label="Partner Is User" />
+    <field name="PartnerIsTeam" type="bool" label="Partner Is Team" />
+    <field name="PartnerIsSaleTeam" type="bool" label="Partner Is Sale Team" />
+    <field name="PartnerIsPurchaseTeam" type="bool" label="Partner Is Purchase Team" />
+    <field name="PartnerIsProjectTeam" type="bool" label="Partner Is Project Team" />
+    <field name="PartnerIsSupportTeam" type="bool" label="Partner Is Support Team" />
+    <field name="PartnerIsMarketingTeam" type="bool" label="Partner Is Marketing Team" />
+    <field name="PartnerIsSalesperson" type="bool" label="Partner Is Salesperson" />
+    <field name="PartnerIsPurchaser" type="bool" label="Partner Is Purchaser" />
+    <field name="PartnerIsProjectManager" type="bool" label="Partner Is Project Manager" />
+    <field name="PartnerIsSupportAgent" type="bool" label="Partner Is Support Agent" />
+    <field name="PartnerIsMarketer" type="bool" label="Partner Is Marketer" />
+    <field name="PartnerIsAccountManager" type="bool" label="Partner Is Account Manager" />
+    <field name="PartnerIsCustomerServiceRepresentative" type="bool" label="Partner Is Customer Service Representative" />
+    <field name="PartnerIsTechnicalSupport" type="bool" label="Partner Is Technical Support" />
+    <field name="PartnerIsDeveloper" type="bool" label="Partner Is Developer" />
+    <field name="PartnerIsDesigner" type="bool" label="Partner Is Designer" />
+    <field name="PartnerIsAnalyst" type="bool" label="Partner Is Analyst" />
+    <field name="PartnerIsConsultant" type="bool" label="Partner Is Consultant" />
+    <field name="PartnerIsManager" type="bool" label="Partner Is Manager" />
+    <field name="PartnerIsDirector" type="bool" label="Partner Is Director" />
+    <field name="PartnerIsCEO" type="bool" label="Partner Is CEO" />
+    <field name="PartnerIsCFO" type="bool" label="Partner Is CFO" />
+    <field name="PartnerIsCOO" type="bool" label="Partner Is COO" />
+    <field name="PartnerIsCTO" type="bool" label="Partner Is CTO" />
+    <field name="PartnerIsCMO" type="bool" label="Partner Is CMO" />
+    <field name="PartnerIsCHRO" type="bool" label="Partner Is CHRO" />
+    <field name="PartnerIsCIO" type="bool" label="Partner Is CIO" />
+    <field name="PartnerIsLegal" type="bool" label="Partner Is Legal" />
+    <field name="PartnerIsFinance" type="bool" label="Partner Is Finance" />
+    <field name="PartnerIsOperations" type="bool" label="Partner Is Operations" />
+    <field name="PartnerIsTechnology" type="bool" label="Partner Is Technology" />
+    <field name="PartnerIsMarketing" type="bool" label="Partner Is Marketing" />
+    <field name="PartnerIsHumanResources" type="bool" label="Partner Is Human Resources" />
+    <field name="PartnerIsInformationTechnology" type="bool" label="Partner Is Information Technology" />
+    <field name="PartnerIsSales" type="bool" label="Partner Is Sales" />
+    <field name="PartnerIsPurchase" type="bool" label="Partner Is Purchase" />
+    <field name="PartnerIsProject" type="bool" label="Partner Is Project" />
+    <field name="PartnerIsSupport" type="bool" label="Partner Is Support" />
+    <field name="PartnerIsProduction" type="bool" label="Partner Is Production" />
+    <field name="PartnerIsInventory" type="bool" label="Partner Is Inventory" />
+    <field name="PartnerIsStock" type="bool" label="Partner Is Stock" />
+    <field name="PartnerIsDelivery" type="bool" label="Partner Is Delivery" />
+    <field name="PartnerIsInvoiceTerm" type="bool" label="Partner Is Invoice Term" />
+    <field name="PartnerIsPaymentTerm" type="bool" label="Partner Is Payment Term" />
+    <field name="PartnerIsFiscalPosition" type="bool" label="Partner Is Fiscal Position" />
+    <field name="PartnerIsTaxGroup" type="bool" label="Partner Is Tax Group" />
+    <field name="PartnerIsAccountTax" type="bool" label="Partner Is Account Tax" />
+    <field name="PartnerIsProduct" type="bool" label="Partner Is Product" />
+    <field name="PartnerIsService" type="bool" label="Partner Is Service" />
+    <field name="PartnerIsCategory" type="bool" label="Partner Is Category" />
+    <field name="PartnerIsBrand" type="bool" label="Partner Is Brand" />
+    <field name="PartnerIsVariant" type="bool" label="Partner Is Variant" />
+    <field name="PartnerIsAttributeSet" type="bool" label="Partner Is Attribute Set" />
+    <field name="PartnerIsAttribute" type="bool" label="Partner Is Attribute" />
+    <field name="PartnerIsAttributeValue" type="bool" label="Partner Is Attribute Value" />
+    <field name="PartnerIsTag" type="bool" label="Partner Is Tag" />
+    <field name="PartnerIsGroup" type="bool" label="Partner Is Group" />
+    <field name="PartnerIsUser" type="bool" label="Partner Is User" />
+    <field name="PartnerIsTeam" type="bool" label="Partner Is Team" />
+    <field name="PartnerIsSaleTeam" type="bool" label="Partner Is Sale Team" />
+    <field name="PartnerIsPurchaseTeam" type="bool" label="Partner Is Purchase Team" />
+    <field name="PartnerIsProjectTeam" type="bool" label="Partner Is Project Team" />
+    <field name="PartnerIsSupportTeam" type="bool" label="Partner Is Support Team" />
+    <field name="PartnerIsMarketingTeam" type="bool" label="Partner Is Marketing Team" />
+    <field name="PartnerIsSalesperson" type="bool" label="Partner Is Salesperson" />
+    <field name="PartnerIsPurchaser" type="bool" label="Partner Is Purchaser" />
+    <field name="PartnerIsProjectManager" type="bool" label="Partner Is Project Manager" />
+    <field name="PartnerIsSupportAgent" type="bool" label="Partner Is Support Agent" />
+    <field name="PartnerIsMarketer" type="bool" label="Partner Is Marketer" />
+    <field name="PartnerIsAccountManager" type="bool" label="Partner Is Account Manager" />
+    <field name="PartnerIsCustomerServiceRepresentative" type="bool" label="Partner Is Customer Service Representative" />
+    <field name="PartnerIsTechnicalSupport" type="bool" label="Partner Is Technical Support" />
+    <field name="PartnerIsDeveloper" type="bool" label="Partner Is Developer" />
+    <field name="PartnerIsDesigner" type="bool" label="Partner Is Designer" />
+    <field name="PartnerIsAnalyst" type="bool" label="Partner Is Analyst" />
+    <field name="PartnerIsConsultant" type="bool" label="Partner Is Consultant" />
+    <field name="PartnerIsManager" type="bool" label="Partner Is Manager" />
+    <field name="PartnerIsDirector" type="bool" label="Partner Is Director" />
+    <field name="PartnerIsCEO" type="bool" label="Partner Is CEO" />
+    <field name="PartnerIsCFO" type="bool" label="Partner Is CFO" />
+    <field name="PartnerIsCOO" type="bool" label="Partner Is COO" />
+    <field name="PartnerIsCTO" type="bool" label="Partner Is CTO" />
+    <field name="PartnerIsCMO" type="bool" label="Partner Is CMO" />
+    <field name="PartnerIsCHRO" type="bool" label="Partner Is CHRO" />
+    <field name="PartnerIsCIO" type="bool" label="Partner Is CIO" />
+    <field name="PartnerIsLegal" type="bool" label="Partner Is Legal" />
+    <field name="PartnerIsFinance" type="bool" label="Partner Is Finance" />
+    <field name="PartnerIsOperations" type="bool" label="Partner Is Operations" />
+    <field name="PartnerIsTechnology" type="bool" label="Partner Is Technology" />
+    <field name="PartnerIsMarketing" type="bool" label="Partner Is Marketing" />
+    <field name="PartnerIsHumanResources" type="bool" label="Partner Is Human Resources" />
+    <field name="PartnerIsInformationTechnology" type="bool" label="Partner Is Information Technology" />
+  </model>
 </buvi>

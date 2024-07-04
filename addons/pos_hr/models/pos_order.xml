@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order" inherit="Pos.PosOrder">
+    <field name="EmployeeId" type="Hr.Employee" label="Employee" help="Person who uses the cash register. It can be a reliever, a student or an interim employee." />
+    <field name="Cashier" type="string" label="Cashier" store="true" />
+  </model>
 </buvi>

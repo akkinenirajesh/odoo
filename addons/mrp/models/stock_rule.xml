@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.StockRule" name="StockRule" description="Stock Rule">
+    <field name="Action" type="Mrp.StockRuleAction" required="true" />
+    <field name="LocationSrc" type="Stock.Location" relation="LocationSrc" />
+    <field name="LocationDest" type="Stock.Location" relation="LocationDest" />
+    <field name="PickingTypeCode" type="Stock.PickingTypeCode" />
+    <field name="Warehouse" type="Stock.Warehouse" relation="Warehouse" />
+    <field name="Route" type="Stock.Route" relation="Route" />
+    <field name="Group" type="Procurement.Group" relation="Group" />
+    <field name="PickingType" type="Stock.PickingType" relation="PickingType" />
+    <field name="PropagateCancel" type="bool" />
+    <field name="Company" type="Res.Company" relation="Company" />
+    <field name="Product" type="Product.Product" relation="Product" />
+    <field name="GroupPropagationOption" type="Mrp.StockRuleGroupPropagationOption" />
+  </model>
+
+  <optionset id="Mrp.StockRuleAction" name="Stock Rule Action">
+    <option value="manufacture" name="Manufacture" />
+  </optionset>
+
+  <optionset id="Mrp.StockRuleGroupPropagationOption" name="Stock Rule Group Propagation Option">
+    <option value="fixed" name="Fixed" />
+    <option value="propagate" name="Propagate" />
+  </optionset>
 </buvi>

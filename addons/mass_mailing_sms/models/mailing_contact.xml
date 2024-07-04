@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailingSms.MailingContact" name="MailingContact" description="Mailing Contact">
+        <field name="Mobile" type="string" label="Mobile" />
+    </model>
 </buvi>

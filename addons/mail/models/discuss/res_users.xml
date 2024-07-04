@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.ResUsers" name="Mail.ResUsers" description="Res Users">
+        <field name="Active" type="bool" label="Active" />
+        <field name="GroupsId" type="Core.ResGroup" collection="true" label="Groups" />
+        <field name="PartnerId" type="Core.ResPartner" label="Partner" />
+    </model>
 </buvi>

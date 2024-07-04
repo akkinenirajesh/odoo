@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="Payment.PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Provider" required="true">
+            <option value="adyen" name="Adyen" />
+        </field>
+        <field name="AdyenMerchantAccount" type="string" label="Merchant Account" required="true" groups="base.group_system" />
+        <field name="AdyenApiKey" type="string" label="API Key" required="true" groups="base.group_system" />
+        <field name="AdyenClientKey" type="string" label="Client Key" required="true" />
+        <field name="AdyenHmacKey" type="string" label="HMAC Key" required="true" groups="base.group_system" />
+        <field name="AdyenApiUrlPrefix" type="string" label="API URL Prefix" required="true" />
+        <field name="SupportManualCapture" type="selection" label="Support Manual Capture" invisible="true">
+            <option value="partial" name="Partial" />
+        </field>
+        <field name="SupportRefund" type="selection" label="Support Refund" invisible="true">
+            <option value="partial" name="Partial" />
+        </field>
+        <field name="SupportTokenization" type="bool" label="Support Tokenization" invisible="true" />
+    </model>
 </buvi>

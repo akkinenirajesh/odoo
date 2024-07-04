@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.LunchOrder" name="LunchOrder" description="Lunch Order">
+        <field name="Name" type="string" label="Product Name" readonly="true" related="ProductId.Name" />
+        <field name="ToppingIds1" type="Lunch.Topping" collection="true" label="Extras 1" domain="[('ToppingCategory', '=', 1)]" />
+        <field name="ToppingIds2" type="Lunch.Topping" collection="true" label="Extras 2" domain="[('ToppingCategory', '=', 2)]" />
+        <field name="ToppingIds3" type="Lunch.Topping" collection="true" label="Extras 3" domain="[('ToppingCategory', '=', 3)]" />
+        <field name="ProductId" type="Lunch.Product" label="Product" required="true" />
+        <field name="CategoryId" type="Lunch.ProductCategory" label="Product Category" store="true" related="ProductId.CategoryId" />
+        <field name="Date" type="date" label="Order Date" required="true" readonly="false" default="Date.Today" />
+        <field name="SupplierId" type="Lunch.Supplier" label="Vendor" store="true" index="true" related="ProductId.SupplierId" />
+        <field name="AvailableToday" type="bool" related="SupplierId.AvailableToday" />
+        <field name="AvailableOnDate" type="bool" compute="ComputeAvailableOnDate" />
+        <field name="OrderDeadlinePassed" type="bool" compute="ComputeOrderDeadlinePassed" />
+        <field name="UserId" type="Res.Users" label="User" default="Env.Uid" />
+        <field name="LunchLocationId" type="Lunch.Location" default="Env.User.LastLunchLocationId" />
+        <field name="Note" type="text" label="Notes" />
+        <field name="Price" type="decimal" label="Total Price" readonly="true" store="true" compute="ComputeTotalPrice" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="State" type="selection" label="Status" readonly="true" index="true" default="New">
+            <option value="New" name="To Order" />
+            <option value="Ordered" name="Ordered" />
+            <option value="Sent" name="Sent" />
+            <option value="Confirmed" name="Received" />
+            <option value="Cancelled" name="Cancelled" />
+        </field>
+        <field name="Notified" type="bool" default="false" />
+        <field name="CompanyId" type="Res.Company" default="Env.Company.Id" />
+        <field name="CurrencyId" type="Res.Currency" store="true" related="CompanyId.CurrencyId" />
+        <field name="Quantity" type="float" label="Quantity" required="true" default="1" />
+        <field name="DisplayToppings" type="text" label="Extras" store="true" compute="ComputeDisplayToppings" />
+        <field name="ProductDescription" type="html" label="Description" related="ProductId.Description" />
+        <field name="ToppingLabel1" type="string" related="ProductId.SupplierId.ToppingLabel1" />
+        <field name="ToppingLabel2" type="string" related="ProductId.SupplierId.ToppingLabel2" />
+        <field name="ToppingLabel3" type="string" related="ProductId.SupplierId.ToppingLabel3" />
+        <field name="ToppingQuantity1" type="selection" related="ProductId.SupplierId.ToppingQuantity1" />
+        <field name="ToppingQuantity2" type="selection" related="ProductId.SupplierId.ToppingQuantity2" />
+        <field name="ToppingQuantity3" type="selection" related="ProductId.SupplierId.ToppingQuantity3" />
+        <field name="Image1920" type="image" compute="ComputeProductImages" />
+        <field name="Image128" type="image" compute="ComputeProductImages" />
+        <field name="AvailableToppings1" type="bool" help="Are extras available for this product" compute="ComputeAvailableToppings" />
+        <field name="AvailableToppings2" type="bool" help="Are extras available for this product" compute="ComputeAvailableToppings" />
+        <field name="AvailableToppings3" type="bool" help="Are extras available for this product" compute="ComputeAvailableToppings" />
+        <field name="DisplayReorderButton" type="bool" compute="ComputeDisplayReorderButton" />
+    </model>
+    <optionset id="Lunch.ToppingCategory" name="Topping Category">
+        <option value="1" name="Category 1" />
+        <option value="2" name="Category 2" />
+        <option value="3" name="Category 3" />
+    </optionset>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Res.ResBank" name="ResBank" description="Res Bank">
+        <field name="L10nPeEdiCode" type="string" label="Code (PE)" help="Bank code assigned by the SUNAT to identify banking institutions." />
+        <field name="CountryCode" type="string" label="Country Code" related="Country.Code" />
+    </model>
 </buvi>

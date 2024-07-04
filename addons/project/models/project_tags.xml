@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.ProjectTags" name="ProjectTags" description="Project Tags">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Color" type="integer" label="Color" default="GetDefaultColor"
+      help="Transparent tags are not visible in the kanban view of your projects and tasks." />
+    <field name="ProjectIds" type="Project.Project" collection="true" label="Projects" />
+    <field name="TaskIds" type="Project.Task" collection="true" label="Tasks" />
+    <unique>
+      <field name="Name" />
+      <message>A tag with the same name already exists.</message>
+    </unique>
+  </model>
 </buvi>

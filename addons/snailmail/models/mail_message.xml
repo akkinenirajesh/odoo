@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Snailmail.MailMessage" name="MailMessage" description="Mail Message">
+    <field name="SnailmailError" type="bool" label="Snailmail Message in Error" compute="ComputeSnailmailError" search="SearchSnailmailError" />
+    <field name="LetterIds" type="Snailmail.Letter" collection="true" />
+    <field name="MessageType" type="selection" default="comment">
+      <option value="snailmail" name="Snailmail" />
+    </field>
+  </model>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Portal.Rating" name="Rating" description="Rating">
+        <field name="PublisherComment" type="text" label="Publisher comment" />
+        <field name="PublisherId" type="res.partner" label="Commented by" relation="many2one" ondelete="set null" readonly="true" index="btree_not_null" />
+        <field name="PublisherDateTime" type="datetime" label="Commented on" readonly="true" />
+    </model>
 </buvi>

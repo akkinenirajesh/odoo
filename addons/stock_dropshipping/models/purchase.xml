@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.PurchaseOrder" name="Stock.PurchaseOrder" description="Purchase Order" inherit="Purchase.PurchaseOrder">
+    <field name="DropshipPickingCount" type="integer" label="Dropship Count" compute="ComputeDropshipPickingCount" />
+  </model>
+
+  <model id="Stock.PurchaseOrderLine" name="Stock.PurchaseOrderLine" description="Purchase Order Line" inherit="Purchase.PurchaseOrderLine">
+    <field name="SaleLineId" type="Purchase.SaleOrderLine" relation="one2many" />
+  </model>
 </buvi>

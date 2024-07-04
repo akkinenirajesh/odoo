@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Payment Methods for Point of Sale">
+    <field name="RazorpayTid" type="string" label="Razorpay Device Serial No" help="Device Serial No \n ex: 7000012300" />
+    <field name="RazorpayAllowedPaymentModes" type="Pos.RazorpayAllowedPaymentModes" default="all" help="Choose allow payment mode: \n All/Card/UPI or QR" />
+    <field name="RazorpayUsername" type="string" label="Razorpay Username" help="Username(Device Login) \n ex: 1234500121" />
+    <field name="RazorpayApiKey" type="string" label="Razorpay API Key" help="Used when connecting to Razorpay: https://razorpay.com/docs/payments/dashboard/account-settings/api-keys/" />
+    <field name="RazorpayTestMode" type="bool" label="Razorpay Test Mode" default="false" help="Turn it on when in Test Mode" />
+    <inherit id="pos.pos_payment_method" />
+  </model>
+
+  <optionset id="Pos.RazorpayAllowedPaymentModes" name="Razorpay Allowed Payment Modes">
+    <option value="all" name="All" />
+    <option value="card" name="Card" />
+    <option value="upi" name="UPI" />
+    <option value="bharatqr" name="BHARATQR" />
+  </optionset>
 </buvi>

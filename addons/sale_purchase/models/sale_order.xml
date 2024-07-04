@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="PurchaseOrderCount" type="integer" label="Number of Purchase Order Generated" groups="Purchase.GroupPurchaseUser" />
+  </model>
 </buvi>

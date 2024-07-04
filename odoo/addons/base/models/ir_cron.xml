@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.IrCron" name="Base.IrCron" description="Scheduled Actions">
+    <field name="IrActionsServerId" type="Base.IrActionsServer" label="Server action" required="true" />
+    <field name="CronName" type="string" label="Name" />
+    <field name="UserId" type="Res.Users" label="Scheduler User" required="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="IntervalNumber" type="integer" default="1" help="Repeat every x." required="true" />
+    <field name="IntervalType" type="selection"
+      selection="Base.IrCron.IntervalTypeSelection"
+      label="Interval Unit" default="Months" required="true" />
+    <field name="Nextcall" type="datetime" label="Next Execution Date" required="true" default="Now"
+      help="Next planned execution date for this job." />
+    <field name="Lastcall" type="datetime" label="Last Execution Date"
+      help="Previous time the cron ran successfully, provided to the job through the context on the `lastcall` key" />
+    <field name="Priority" type="integer" default="5"
+      help="The priority of the job, as an integer: 0 means higher priority, 10 means lower priority." />
+    <field name="FailureCount" type="integer" default="0"
+      help="The number of consecutive failures of this job. It is automatically reset on success." />
+    <field name="FirstFailureDate" type="datetime" label="First Failure Date"
+      help="The first time the cron failed. It is automatically reset on success." />
+    <constraint name="check_strictly_positive_interval"
+      sql="CHECK(interval_number &gt; 0)"
+      message="The interval number must be a strictly positive number." />
+  </model>
+
+  <optionset id="Base.IrCron.IntervalTypeSelection" name="Interval Type Selection">
+    <option value="Minutes" name="Minutes" />
+    <option value="Hours" name="Hours" />
+    <option value="Days" name="Days" />
+    <option value="Weeks" name="Weeks" />
+    <option value="Months" name="Months" />
+  </optionset>
 </buvi>

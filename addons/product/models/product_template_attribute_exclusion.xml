@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="Product.ProductTemplateAttributeExclusion" name="ProductTemplateAttributeExclusion" description="Product Template Attribute Exclusion">
+    <field name="ProductTemplateAttributeValueId" type="Product.ProductTemplateAttributeValue" label="Attribute Value" required="true" collection="true" ondelete="cascade"/>
+    <field name="ProductTmplId" type="Product.ProductTemplate" label="Product Template" required="true" collection="true" ondelete="cascade"/>
+    <field name="ValueIds" type="Product.ProductTemplateAttributeValue" label="Attribute Values" collection="true" domain="[('ProductTmplId', '=', ProductTmplId), ('PtavActive', '=', True)]"/>
   </model>
 </buvi>

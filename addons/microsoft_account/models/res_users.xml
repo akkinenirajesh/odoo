@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Users" name="Users" description="Users">
+    <field name="MicrosoftCalendarRToken" type="string" label="Microsoft Refresh Token" copy="false" groups="base.group_system" />
+    <field name="MicrosoftCalendarToken" type="string" label="Microsoft User token" copy="false" groups="base.group_system" />
+    <field name="MicrosoftCalendarTokenValidity" type="datetime" label="Microsoft Token Validity" copy="false" />
+  </model>
 </buvi>

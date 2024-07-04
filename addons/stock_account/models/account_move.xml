@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="StockAccount.AccountMove" name="AccountMove" description="Account Move">
+    <field name="StockMoveId" type="Stock.StockMove" label="Stock Move" index="btree_not_null" collection="true" />
+    <field name="StockValuationLayerIds" type="Stock.StockValuationLayer" label="Stock Valuation Layer" collection="true" />
+    <field name="ShowResetToDraftButton" type="bool" />
+  </model>
+
+  <model id="StockAccount.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="StockValuationLayerIds" type="Stock.StockValuationLayer" label="Stock Valuation Layer" collection="true" />
+    <field name="CogsOriginId" type="Account.AccountMoveLine" copy="false" index="btree_not_null" />
+    <field name="AccountID" type="Account.Account" />
+    <field name="CogsOriginId" type="Account.AccountMoveLine" copy="false" index="btree_not_null" />
+    <field name="Quantity" type="float" />
+    <field name="PriceUnit" type="float" />
+    <field name="PriceSubtotal" type="float" />
+    <field name="ProductUomId" type="Product.Uom" />
+    <field name="Product_id" type="Product.Product" />
+    <field name="DisplayType" type="string" />
+    <field name="AmountCurrency" type="float" />
+    <field name="TaxIds" type="Account.Tax" collection="true" />
+  </model>
 </buvi>

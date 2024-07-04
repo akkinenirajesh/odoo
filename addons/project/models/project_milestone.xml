@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.ProjectMilestone" name="Project.ProjectMilestone" description="Project Milestone">
+    <field name="Name" type="string" label="Milestone Name" required="true" translate="true" />
+    <field name="ProjectId" type="Project.Project" required="true" ondelete="cascade" />
+    <field name="Deadline" type="date" tracking="true" copy="false" />
+    <field name="IsReached" type="bool" default="false" copy="false" />
+    <field name="ReachedDate" type="date" compute="ComputeReachedDate" store="true" />
+    <field name="TaskIds" type="Project.Task" collection="true" />
+    <field name="IsDeadlineExceeded" type="bool" compute="ComputeIsDeadlineExceeded" />
+    <field name="IsDeadlineFuture" type="bool" compute="ComputeIsDeadlineFuture" />
+    <field name="TaskCount" type="integer" label="# of Tasks" compute="ComputeTaskCount" groups="project.group_project_milestone" />
+    <field name="DoneTaskCount" type="integer" label="# of Done Tasks" compute="ComputeTaskCount" groups="project.group_project_milestone" />
+    <field name="CanBeMarkedAsDone" type="bool" compute="ComputeCanBeMarkedAsDone" />
+  </model>
 </buvi>

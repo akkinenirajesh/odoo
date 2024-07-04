@@ -1,7 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+        <field name="Name" type="string" label="Order Reference" required="true" index="trigram" copy="false" default="New" />
+        <field name="Priority" type="selection" label="Priority" default="0" index="true">
+            <option value="0" name="Normal" />
+            <option value="1" name="Urgent" />
+        </field>
+        <field name="Origin" type="string" label="Source Document" copy="false"
+            help="Reference of the document that generated this purchase order request (e.g. a sales order)" />
+        <field name="PartnerRef" type="string" label="Vendor Reference" copy="false"
+            help="Reference of the sales order or bid sent by the vendor. It's used to do the matching when you receive the products as this reference is usually written on the delivery order sent by your vendor." />
+        <field name="DateOrder" type="datetime" label="Order Deadline" required="true" index="true" copy="false" default="now"
+            help="Depicts the date within which the Quotation should be confirmed and converted into a purchase order." />
+        <field name="DateApprove" type="datetime" label="Confirmation Date" readonly="true" index="true" copy="false" />
+        <field name="Partner" type="res.partner" label="Vendor" required="true" change_default="true" tracking="true" check_company="true" help="You can find a vendor by its Name, TIN, Email or Internal Reference." />
+        <field name="DestAddress" type="res.partner" label="Dropship Address" check_company="true"
+            help="Put an address if you want to deliver directly from the vendor to the customer. Otherwise, keep empty to deliver to your own company." />
+        <field name="Currency" type="res.currency" label="Currency" required="true" default="company.currency" />
+        <field name="State" type="selection" label="Status" readonly="true" index="true" copy="false" default="draft" tracking="true">
+            <option value="draft" name="RFQ" />
+            <option value="sent" name="RFQ Sent" />
+            <option value="to approve" name="To Approve" />
+            <option value="purchase" name="Purchase Order" />
+            <option value="done" name="Locked" />
+            <option value="cancel" name="Cancelled" />
+        </field>
+        <field name="OrderLines" type="purchase.order.line" label="Order Lines" collection="true" copy="true" />
+        <field name="Notes" type="html" label="Terms and Conditions" />
+        <field name="InvoiceCount" type="integer" label="Bill Count" copy="false" default="0" store="true" />
+        <field name="Invoice" type="account.move" label="Bills" collection="true" copy="false" store="true" />
+        <field name="InvoiceStatus" type="selection" label="Billing Status" store="true" readonly="true" copy="false" default="no">
+            <option value="no" name="Nothing to Bill" />
+            <option value="to invoice" name="Waiting Bills" />
+            <option value="invoiced" name="Fully Billed" />
+        </field>
+        <field name="DatePlanned" type="datetime" label="Expected Arrival" index="true" copy="false" store="true" readonly="false"
+            help="Delivery date promised by vendor. This date is used to determine expected arrival of products." />
+        <field name="DateCalendarStart" type="datetime" label="Date Calendar Start" readonly="true" store="true" />
+        <field name="AmountUntaxed" type="monetary" label="Untaxed Amount" store="true" readonly="true" tracking="true" />
+        <field name="TaxTotals" type="binary" label="Tax Totals" exportable="false" />
+        <field name="AmountTax" type="monetary" label="Taxes" store="true" readonly="true" />
+        <field name="AmountTotal" type="monetary" label="Total" store="true" readonly="true" />
+        <field name="AmountTotalCC" type="monetary" label="Company Total" store="true" readonly="true" currency_field="CompanyCurrency" />
+        <field name="FiscalPosition" type="account.fiscal.position" label="Fiscal Position" domain="['|', ('company', '=', False), ('company', '=', company)]" />
+        <field name="TaxCountry" type="res.country" label="Tax Country"
+            help="Technical field to filter the available taxes depending on the fiscal country and fiscal position." />
+        <field name="TaxCalculationRoundingMethod" type="selection" label="Tax calculation rounding method" readonly="true" />
+        <field name="PaymentTerm" type="account.payment.term" label="Payment Terms" domain="['|', ('company', '=', False), ('company', '=', company)]" />
+        <field name="Incoterm" type="account.incoterms" label="Incoterm" help="International Commercial Terms are a series of predefined commercial terms used in international transactions." />
+        <field name="Product" type="product.product" label="Product" related="OrderLines.Product" />
+        <field name="User" type="res.users" label="Buyer" index="true" tracking="true" default="current_user" check_company="true" />
+        <field name="Company" type="res.company" label="Company" required="true" index="true" default="company" />
+        <field name="CompanyCurrency" type="res.currency" label="Company Currency" related="Company.currency" />
+        <field name="CountryCode" type="string" label="Country code" related="Company.account_fiscal_country.code" />
+        <field name="CurrencyRate" type="float" label="Currency Rate" readonly="true" store="true" help='Ratio between the purchase order currency and the company currency' />
+        <field name="MailReminderConfirmed" type="bool" label="Reminder Confirmed" default="false" readonly="true" copy="false" help="True if the reminder email is confirmed by the vendor." />
+        <field name="MailReceptionConfirmed" type="bool" label="Reception Confirmed" default="false" readonly="true" copy="false" help="True if PO reception is confirmed by the vendor." />
+        <field name="ReceiptReminderEmail" type="bool" label="Receipt Reminder Email" />
+        <field name="ReminderDateBeforeReceipt" type="integer" label="Days Before Receipt" />
+    </model>
+
+    <optionset id="Purchase.Priority" name="Priority">
+        <option value="0" name="Normal" />
+        <option value="1" name="Urgent" />
+    </optionset>
 </buvi>

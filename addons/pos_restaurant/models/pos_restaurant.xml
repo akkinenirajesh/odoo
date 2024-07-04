@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosRestaurant.RestaurantFloor" name="RestaurantFloor" description="Restaurant Floor">
+        <field name="Name" type="string" label="Floor Name" required="true" />
+        <field name="PosConfigIds" type="Pos.PosConfig" collection="true" label="Point of Sales" domain="[('ModulePosRestaurant', '=', True)]" />
+        <field name="BackgroundImage" type="binary" label="Background Image" />
+        <field name="BackgroundColor" type="string" label="Background Color" help="The background color of the floor in a html-compatible format" default="rgb(249,250,251)" />
+        <field name="TableIds" type="PosRestaurant.RestaurantTable" collection="true" label="Tables" />
+        <field name="Sequence" type="integer" label="Sequence" default="1" />
+        <field name="Active" type="bool" default="true" />
+        <field name="FloorBackgroundImage" type="image" label="Floor Background Image" />
+    </model>
+    <model id="PosRestaurant.RestaurantTable" name="RestaurantTable" description="Restaurant Table">
+        <field name="Name" type="string" label="Table Name" required="true" help="An internal identification of a table" />
+        <field name="FloorId" type="PosRestaurant.RestaurantFloor" label="Floor" />
+        <field name="Shape" type="selection" label="Shape" required="true" default="square">
+            <option value="square" name="Square" />
+            <option value="round" name="Round" />
+        </field>
+        <field name="PositionH" type="float" label="Horizontal Position" default="10" help="The table's horizontal position from the left side to the table's center, in pixels" />
+        <field name="PositionV" type="float" label="Vertical Position" default="10" help="The table's vertical position from the top to the table's center, in pixels" />
+        <field name="Width" type="float" label="Width" default="50" help="The table's width in pixels" />
+        <field name="Height" type="float" label="Height" default="50" help="The table's height in pixels" />
+        <field name="Seats" type="integer" label="Seats" default="1" help="The default number of customer served at this table." />
+        <field name="Color" type="string" label="Color" help="The table's color, expressed as a valid 'background' CSS property value" default="#35D374" />
+        <field name="ParentId" type="PosRestaurant.RestaurantTable" label="Parent Table" help="The parent table if this table is part of a group of tables" />
+        <field name="Active" type="bool" label="Active" default="true" help="If false, the table is deactivated and will not be available in the point of sale" />
+    </model>
 </buvi>

@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.WebsiteControllerPage" name="WebsiteControllerPage" description="Model Page">
+        <field name="ViewId" type="ir.ui.view" label="View" required="true" ondelete="cascade" />
+        <field name="MenuIds" type="Website.Menu" collection="true" label="Related Menus" />
+        <field name="WebsiteId" type="ir.ui.view" label="Website" store="true" readonly="false" ondelete="cascade" />
+        <field name="PageName" type="string" label="Name" required="true" help="The name is used to generate the URL and is shown in the browser title bar" />
+        <field name="NameSlugified" type="string" label="URL" help="The name of the page usable in a URL" compute="ComputeNameSlugified" store="true" />
+        <field name="PageType" type="selection" label="Page Type" default="Listing" help="The type of the page. If set, it indicates whether the page displays a list of records or a single record">
+            <option value="Listing" name="Listing" />
+            <option value="Single" name="Single record" />
+        </field>
+        <field name="RecordDomain" type="string" label="Domain" help="Domain to restrict records that can be viewed publicly" />
+        <field name="DefaultLayout" type="selection" label="Default Layout" default="Grid">
+            <option value="Grid" name="Grid" />
+            <option value="List" name="List" />
+        </field>
+    </model>
 </buvi>

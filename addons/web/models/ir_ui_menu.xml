@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Web.IrUiMenu" name="IrUiMenu" description="Menu Item">
+        <field name="Name" type="string" label="Menu Name" required="true" translate="true" />
+        <field name="ParentID" type="Web.IrUiMenu" relation="parent" />
+        <field name="Action" type="string" label="Action" />
+        <field name="WebIcon" type="string" />
+        <field name="WebIconData" type="binary" />
+        <field name="WebIconDataMimetype" type="string" />
+        <field name="Sequence" type="integer" />
+        <field name="GroupsID" type="Core.ResGroups" relation="many2many" collection="true" />
+        <field name="AppID" type="Web.IrUiMenu" relation="parent" />
+        <field name="Xmlid" type="string" />
+        <field name="WebApp" type="bool" default="false" />
+    </model>
 </buvi>

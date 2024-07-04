@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.IrFilters" name="IrFilters" description="Filters">
+    <field name="Name" type="string" label="Filter Name" required="true" translate="true"/>
+    <field name="UserId" type="Res.Users" label="User" required="true"/>
+    <field name="Domain" type="string" collection="true"/>
+    <field name="Context" type="string"/>
+    <field name="Sort" type="string" collection="true"/>
+    <field name="ModelId" type="Ir.Model"/>
+    <field name="IsDefault" type="bool" default="false"/>
+    <field name="ActionId" type="Ir.Actions.Actions" />
+  </model>
 </buvi>

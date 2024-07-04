@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
-  </model>
+    <model id="Mrp.StockScrap" name="Mrp.StockScrap" description="Stock Scrap">
+        <field name="ProductionId" type="Mrp.Production" label="Manufacturing Order" collection="true" />
+        <field name="WorkorderId" type="Mrp.WorkOrder" label="Work Order" collection="true" />
+        <field name="ProductIsKit" type="bool" />
+        <field name="ProductTemplate" type="Product.ProductTemplate" collection="true" />
+        <field name="BomId" type="Mrp.Bom" label="Kit" collection="true" />
+        <field name="LocationId" type="Stock.Location" label="Location" collection="true" />
+        <field name="ScrapQty" type="decimal" label="Scrap Quantity" />
+        <field name="LotId" type="Stock.ProductionLot" label="Lot" collection="true" />
+        <field name="CompanyId" type="Res.Company" label="Company" collection="true" />
+    </model>
 </buvi>

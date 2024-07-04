@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.CrmLead" name="Website.CrmLead" description="CRM Lead">
+    <field name="VisitorIds" type="Website.Visitor" collection="true" label="Web Visitors" />
+    <field name="VisitorPageCount" type="integer" label="# Page Views" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Type" type="selection" selection="crm.lead.type" default="lead" />
+    <field name="MediumId" type="Utm.Medium" label="Medium" />
+    <field name="TeamId" type="Crm.Team" label="Team" />
+    <field name="UserId" type="Res.Users" label="User" />
+  </model>
+
+  <optionset id="crm.lead.type" name="Lead Type">
+    <option value="lead" name="Lead" />
+    <option value="opportunity" name="Opportunity" />
+  </optionset>
 </buvi>

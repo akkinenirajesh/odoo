@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.IrModuleModule" name="IrModuleModule" description="Module">
+        <field name="ImageIds" type="ir.attachment" relation="ir.attachment" collection="true"
+            domain="[('res_model', '=', 'Website.IrModuleModule'), ('mimetype', '=like', 'image/%')]" string="Screenshots" readonly="true" />
+        <field name="IsInstalledOnCurrentWebsite" type="bool" compute="ComputeIsInstalledOnCurrentWebsite" />
+    </model>
+
+    <optionset id="Website.IrModuleModuleState" name="Module State">
+        <option value="installed" name="Installed" />
+        <option value="to install" name="To Install" />
+        <option value="to upgrade" name="To Upgrade" />
+        <option value="uninstallable" name="Uninstallable" />
+    </optionset>
 </buvi>

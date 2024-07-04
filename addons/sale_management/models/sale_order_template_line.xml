@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleManagement.SaleOrderTemplateLine" name="SaleOrderTemplateLine" description="Quotation Template Line">
+        <field name="SaleOrderTemplateId" type="SaleManagement.SaleOrderTemplate" label="Quotation Template Reference" required="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="CompanyId" type="Core.Company" related="SaleOrderTemplateId.CompanyId" store="true" />
+        <field name="ProductId" type="Product.Product" check_company="true" domain="_ProductDomain" />
+        <field name="Name" type="text" label="Description" compute="_ComputeName" store="true" readonly="false" precompute="true" required="true" translate="true" />
+        <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" compute="_ComputeProductUomId" store="true" readonly="false" precompute="true" domain="[('CategoryId', '=', ProductUomCategoryId)]" />
+        <field name="ProductUomCategoryId" type="Uom.UomCategory" related="ProductId.UomId.CategoryId" />
+        <field name="ProductUomQty" type="float" label="Quantity" required="true" digits="Product Unit of Measure" default="1" />
+        <field name="DisplayType" type="SaleManagement.SaleOrderTemplateLineDisplayType" default="False" />
+    </model>
+
+    <optionset id="SaleManagement.SaleOrderTemplateLineDisplayType" name="Sale Order Template Line Display Type">
+        <option value="LineSection" name="Section" />
+        <option value="LineNote" name="Note" />
+    </optionset>
 </buvi>

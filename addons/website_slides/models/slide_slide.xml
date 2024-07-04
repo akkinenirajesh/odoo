@@ -1,3 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSlides.SlidePartnerRelation" name="SlidePartnerRelation" description="Slide / Partner decorated m2m">
+        <field name="SlideId" type="WebsiteSlides.Slide" label="Content" required="true" ondelete="cascade" collection="true" />
+        <field name="SlideCategory" type="selection" label="Slide Category" related="SlideId.SlideCategory" />
+        <field name="ChannelId" type="WebsiteSlides.SlideChannel" label="Channel" related="SlideId.ChannelId" store="true" collection="true" ondelete="cascade" />
+        <field name="PartnerId" type="Core.ResPartner" label="Partner" required="true" collection="true" ondelete="cascade" />
+        <field name="Vote" type="integer" label="Vote" default="0" />
+        <field name="Completed" type="bool" label="Completed" />
+        <field name="QuizAttemptsCount" type="integer" label="Quiz attempts count" default="0" />
+        <unique>
+            <field name="SlideId" />
+            <field name="PartnerId" />
+            <message>A partner membership to a slide must be unique!</message>
+        </unique>
+        <constraint>
+            <field name="Vote" />
+            <message>The vote must be 1, 0 or -1.</message>
+        </constraint>
+    </model>
+
+    <model id="WebsiteSlides.SlideTag" name="SlideTag" description="Slide Tag">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <unique>
+            <field name="Name" />
+            <message>A tag must be unique!</message>
+        </unique>
+    </model>
+
+    <model id="WebsiteSlides.Slide" name="Slide" description="Slides">
+        <field name="Name" type="string" label="Title" required="true" translate="true" />
+        <field name="Image1920" type="image" store="true" readonly="false" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="0" />
+        <field name="UserId" type="Core.ResUsers" label="Uploaded by" default="CurrentUserId" />
+        <field name="Description" type="html" label="Description" translate="true" sanitizeAttributes="false" />
+        <field name="ChannelId" type="WebsiteSlides.SlideChannel" label="Course" required="true" collection="true" ondelete="cascade" />
+        <field name="TagIds" type="many2many" label="Tags" collection="true" relation="rel_slide_tag"  />
+        <field name="IsPreview" type="bool" label="Allow Preview" default="false"
+            help="The course is accessible by anyone : the users don't need to join the channel to access the content of the course." />
+        <field name="IsNewSlide" type="bool" label="Is New Slide" compute="ComputeIsNewSlide" />
+        <field name="CompletionTime" type="float" label="Duration" digits="(10, 4)" compute="ComputeCategoryCompletionTime" recursive="true" readonly="false" store="true" />
+        <field name="IsCategory" type="bool" label="Is a category" default="false" />
+        <field name="CategoryId" type="WebsiteSlides.Slide" label="Section" compute="ComputeCategoryId" store="true" collection="true" />
+        <field name="SlideIds" type="one2many" label="Content" collection="true" relation="WebsiteSlides.Slide" />
+        <field name="PartnerIds" type="many2many" label="Subscribers" collection="true" relation="WebsiteSlides.SlidePartnerRelation" />
+        <field name="SlidePartnerIds" type="one2many" label="Subscribers information" collection="true" relation="WebsiteSlides.SlidePartnerRelation" />
+        <field name="UserMembershipId" type="WebsiteSlides.SlidePartnerRelation" label="Subscriber information" compute="ComputeUserMembershipId"  />
+        <field name="UserVote" type="integer" label="User vote" compute="ComputeUserMembershipId"  />
+        <field name="UserHasCompleted" type="bool" label="Is Member" compute="ComputeUserMembershipId"  />
+        <field name="UserHasCompletedCategory" type="bool" label="Is Category Completed" compute="ComputeCategoryCompleted" />
+        <field name="QuestionIds" type="one2many" label="Questions" collection="true" relation="WebsiteSlides.SlideQuestion" />
+        <field name="QuestionsCount" type="integer" label="Numbers of Questions" compute="ComputeQuestionsCount" />
+        <field name="QuizFirstAttemptReward" type="integer" label="Reward: first attempt" default="10" />
+        <field name="QuizSecondAttemptReward" type="integer" label="Reward: second attempt" default="7" />
+        <field name="QuizThirdAttemptReward" type="integer" label="Reward: third attempt" default="5" />
+        <field name="QuizFourthAttemptReward" type="integer" label="Reward: every attempt after the third try" default="2" />
+        <field name="CanSelfMarkCompleted" type="bool" label="Can Mark Completed" compute="ComputeMarkCompleteActions"
+            help="The slide can be marked as completed even without opening it" />
+        <field name="CanSelfMarkUncompleted" type="bool" label="Can Mark Uncompleted" compute="ComputeMarkCompleteActions"
+            help="The slide can be marked as not completed and the progression" />
+        <field name="SlideCategory" type="selection" label="Category" required="true"
+            options="WebsiteSlides.SlideCategory" default="Document" />
+        <field name="SourceType" type="selection" label="Source type"
+            options="WebsiteSlides.SlideSourceType" default="LocalFile" required="true" />
+        <field name="Url" type="string" label="External URL"
+            help="URL of the Google Drive file or URL of the YouTube video" />
+        <field name="BinaryContent" type="binary" label="File" attachment="true" />
+        <field name="SlideResourceIds" type="one2many" label="Additional Resource for this slide" collection="true" relation="WebsiteSlides.SlideSlideResource" />
+        <field name="SlideResourceDownloadable" type="bool" label="Allow Download" default="false"
+            help="Allow the user to download the content of the slide." />
+        <field name="GoogleDriveId" type="string" label="Google Drive ID of the external URL" compute="ComputeGoogleDriveId" />
+        <field name="HtmlContent" type="html" label="HTML Content" translate="true"
+            sanitizeAttributes="false" sanitizeForm="false" sanitizeOverridable="true"
+            help="Custom HTML content for slides of category 'Article'." />
+        <field name="ImageBinaryContent" type="binary" label="Image Content" related="BinaryContent" readonly="false" />
+        <field name="ImageGoogleUrl" type="string" label="Image Link" related="Url" readonly="false"
+            help="Link of the image (we currently only support Google Drive as source)" />
+        <field name="SlideIconClass" type="string" label="Slide Icon fa-class" compute="ComputeSlideIconClass" />
+        <field name="SlideType" type="selection" label="Slide Type" compute="ComputeSlideType" store="true" readonly="false"
+            options="WebsiteSlides.SlideType"
+            help="Subtype of the slide category, allows more precision on the actual file type / source type." />
+        <field name="DocumentGoogleUrl" type="string" label="Document Link" related="Url" readonly="false"
+            help="Link of the document (we currently only support Google Drive as source)" />
+        <field name="DocumentBinaryContent" type="binary" label="PDF Content" related="BinaryContent" readonly="false" />
+        <field name="VideoUrl" type="string" label="Video Link" related="Url" readonly="false"
+            help="Link of the video (we support YouTube, Google Drive and Vimeo as sources)" />
+        <field name="VideoSourceType" type="selection" label="Video Source" compute="ComputeVideoSourceType"
+            options="WebsiteSlides.SlideVideoSourceType" />
+        <field name="YouTubeId" type="string" label="Video YouTube ID" compute="ComputeYouTubeId" />
+        <field name="VimeoId" type="string" label="Video Vimeo ID" compute="ComputeVimeoId" />
+        <field name="WebsiteId" type="Core.Website" related="ChannelId.WebsiteId" readonly="true" />
+        <field name="DatePublished" type="datetime" label="Publish Date" readonly="true" />
+        <field name="Likes" type="integer" label="Likes" compute="ComputeLikeInfo" store="true" />
+        <field name="Dislikes" type="integer" label="Dislikes" compute="ComputeLikeInfo" store="true" />
+        <field name="EmbedCode" type="html" label="Embed Code" readonly="true" compute="ComputeEmbedCode" sanitize="false" />
+        <field name="EmbedCodeExternal" type="html" label="External Embed Code" readonly="true" compute="ComputeEmbedCode" sanitize="false"
+            help="Same as 'Embed Code' but used to embed the content on an external website." />
+        <field name="WebsiteShareUrl" type="string" label="Share URL" compute="ComputeWebsiteShareUrl" />
+        <field name="EmbedIds" type="one2many" label="External Slide Embeds" collection="true" relation="WebsiteSlides.SlideEmbed" />
+        <field name="EmbedCount" type="integer" label="# of Embeds" compute="ComputeEmbedCounts" />
+        <field name="SlideViews" type="integer" label="# of Website Views" store="true" compute="ComputeSlideViews" />
+        <field name="PublicViews" type="integer" label="# of Public Views" default="0" readonly="true" />
+        <field name="TotalViews" type="integer" label="# Total Views" default="0" compute="ComputeTotal" store="true" />
+        <field name="CommentsCount" type="integer" label="Number of comments" compute="ComputeCommentsCount" />
+        <field name="ChannelType" type="selection" label="Channel type" related="ChannelId.ChannelType" />
+        <field name="ChannelAllowComment" type="bool" label="Allows comment" related="ChannelId.AllowComment" />
+        <field name="NbrDocument" type="integer" label="Number of Documents" compute="ComputeSlidesStatistics" store="true" />
+        <field name="NbrVideo" type="integer" label="Number of Videos" compute="ComputeSlidesStatistics" store="true" />
+        <field name="NbrInfographic" type="integer" label="Number of Images" compute="ComputeSlidesStatistics" store="true" />
+        <field name="NbrArticle" type="integer" label="Number of Articles" compute="ComputeSlidesStatistics" store="true" />
+        <field name="NbrQuiz" type="integer" label="Number of Quizs" compute="ComputeSlidesStatistics" store="true" />
+        <field name="TotalSlides" type="integer" compute="ComputeSlidesStatistics" store="true" />
+        <field name="IsPublished" type="bool" label="Is published" />
+        <field name="WebsitePublished" type="bool" label="Website Published" />
+        <constraint>
+            <field name="HtmlContent" />
+            <field name="Url" />
+            <message>A slide is either filled with a url or HTML content. Not both.</message>
+        </constraint>
+    </model>
+
+    <optionset id="WebsiteSlides.SlideCategory" name="Slide Category">
+        <option value="Infographic" name="Image" />
+        <option value="Article" name="Article" />
+        <option value="Document" name="Document" />
+        <option value="Video" name="Video" />
+        <option value="Quiz" name="Quiz" />
+    </optionset>
+
+    <optionset id="WebsiteSlides.SlideSourceType" name="Slide Source Type">
+        <option value="LocalFile" name="Upload from Device" />
+        <option value="External" name="Retrieve from Google Drive" />
+    </optionset>
+
+    <optionset id="WebsiteSlides.SlideType" name="Slide Type">
+        <option value="Image" name="Image" />
+        <option value="Article" name="Article" />
+        <option value="Quiz" name="Quiz" />
+        <option value="Pdf" name="PDF" />
+        <option value="Sheet" name="Sheet (Excel, Google Sheet, ...)" />
+        <option value="Doc" name="Document (Word, Google Doc, ...)" />
+        <option value="Slides" name="Slides (PowerPoint, Google Slides, ...)" />
+        <option value="YouTubeVideo" name="YouTube Video" />
+        <option value="GoogleDriveVideo" name="Google Drive Video" />
+        <option value="VimeoVideo" name="Vimeo Video" />
+    </optionset>
+
+    <optionset id="WebsiteSlides.SlideVideoSourceType" name="Video Source">
+        <option value="YouTube" name="YouTube" />
+        <option value="GoogleDrive" name="Google Drive" />
+        <option value="Vimeo" name="Vimeo" />
+    </optionset>
 </buvi>

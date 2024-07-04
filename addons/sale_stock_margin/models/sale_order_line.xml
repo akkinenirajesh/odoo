@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="PurchasePrice" type="float" label="Purchase Price" />
+        <field name="MoveIds" type="Sale.SaleOrderLine.MoveIds" collection="true" />
+        <field name="MoveIds.StockValuationLayerIds" type="Stock.StockValuationLayer" collection="true" />
+        <field name="MoveIds.PickingId.State" type="Selection" />
+    </model>
+
+    <optionset id="Sale.SaleOrderLine.MoveIds.PickingId.State" name="Picking State">
+        <option value="draft" name="Draft" />
+        <option value="waiting" name="Waiting" />
+        <option value="confirmed" name="Confirmed" />
+        <option value="assigned" name="Assigned" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
 </buvi>

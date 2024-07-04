@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.PosCombo" name="PosCombo" description="Product combo choices">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="ComboLineIds" type="PointOfSale.PosComboLine" collection="true" label="Products in Combo" />
+    <field name="NumberOfProducts" type="integer" label="No of Products" readonly="true" />
+    <field name="Sequence" type="integer" />
+    <field name="BasePrice" type="float" label="Combo Price" readonly="true" 
+      help="The value from which pro-rating of the component price is based. This is to ensure that whatever product the user chooses for a component, it will always be they same price." />
+  </model>
+
+  <model id="PointOfSale.PosComboLine" name="PosComboLine" description="Product combo line">
+    <field name="ComboId" type="PointOfSale.PosCombo" relation="true" />
+    <field name="ProductId" type="Product.Product" relation="true" required="true" />
+    <field name="ComboPrice" type="float" label="Combo Price" />
+  </model>
 </buvi>

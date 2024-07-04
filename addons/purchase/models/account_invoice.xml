@@ -1,406 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="res.users" name="Res.Users" track_created="true" track_update="true">
-    <field name="PropertyAccountPayable" label="Account Payable" type="Account.Account" required="true" transient="true" related-field="Partner.PropertyAccountPayable"/>
-    <field name="PropertyAccountReceivable" label="Account Receivable" type="Account.Account" required="true" transient="true" related-field="Partner.PropertyAccountReceivable"/>
-    <field name="Contracts" label="Partner Contracts" type="Account.AnalyticAccount" collection="true" readonly="true" transient="true" related-field="Partner.Contracts"/>
-    <field name="PropertyAccountPosition" label="Fiscal Position" type="Account.FiscalPosition" transient="true" related-field="Partner.PropertyAccountPosition"/>
-    <field name="Invoices" label="Invoices" type="Account.Move" collection="true" readonly="true" transient="true" related-field="Partner.Invoices"/>
-    <field name="UnpaidInvoices" label="Unpaid Invoice" type="Account.Move" collection="true" readonly="true" transient="true" related-field="Partner.UnpaidInvoices"/>
-    <field name="UnreconciledAmls" label="Unreconciled Aml" type="Account.MoveLine" collection="true" transient="true" related-field="Partner.UnreconciledAmls"/>
-    <field name="PropertyPaymentMethod" label="Payment Method" type="Account.PaymentMethod" transient="true" related-field="Partner.PropertyPaymentMethod"/>
-    <field name="PropertyPaymentTerm" label="Customer Payment Terms" type="Account.PaymentTerm" transient="true" related-field="Partner.PropertyPaymentTerm"/>
-    <field name="PropertySupplierPaymentTerm" label="Vendor Payment Terms" type="Account.PaymentTerm" transient="true" related-field="Partner.PropertySupplierPaymentTerm"/>
-    <field name="FollowupLine" label="Follow-up Level" type="AccountFollowup.FollowupLine" transient="true" related-field="Partner.FollowupLine"/>
-    <field name="OauthProvider" label="OAuth Provider" type="Auth.OauthProvider" copied="true" on-delete="Clear"/>
-    <field name="TotpTrustedDevices" label="Trusted Devices" type="AuthTotp.Device" collection="true"/>
-    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" related-field="Partner.ActivityCalendarEvent"/>
-    <field name="Meetings" label="Meetings" type="Calendar.Event" collection="true" transient="true" related-field="Partner.Meetings"/>
-    <field name="Opportunitys" label="Opportunities" type="Crm.Lead" collection="true" transient="true" related-field="Partner.Opportunitys"/>
-    <field name="CrmTeams" label="Sales Teams" type="Crm.Team" collection="true" readonly="true" transient="true"/>
-    <field name="SaleTeam" label="User Sales Team" type="Crm.Team" readonly="true" on-delete="Clear"/>
-    <field name="Team" label="Sales Team" type="Crm.Team" copied="true" transient="true" related-field="Partner.Team"/>
-    <field name="CrmTeamMembers" label="Sales Team Members" type="Crm.TeamMember" collection="true"/>
-    <field name="PropertyDeliveryCarrier" label="Delivery Method" type="Delivery.Carrier" transient="true" related-field="Partner.PropertyDeliveryCarrier"/>
-    <field name="Channels" label="Channels" type="Discuss.Channel" collection="true" transient="true" related-field="Partner.Channels"/>
-    <field name="Documents" label="Document" type="Documents.Document" collection="true"/>
-    <field name="Registrations" label="Event Registrations" type="Event.Registration" collection="true" transient="true" related-field="Partner.Registrations"/>
-    <field name="Badges" label="Badges" type="Gamification.BadgeUser" collection="true"/>
-    <field name="Goals" label="Goal" type="Gamification.Goal" collection="true"/>
-    <field name="NextRank" label="Next Rank" type="Gamification.KarmaRank" copied="true" on-delete="Clear"/>
-    <field name="Rank" label="Rank" type="Gamification.KarmaRank" copied="true" on-delete="Clear"/>
-    <field name="KarmaTrackings" label="Karma Changes" type="Gamification.KarmaTracking" collection="true"/>
-    <field name="Slas" label="SLA Policies" type="Helpdesk.Sla" collection="true" copied="true" transient="true" related-field="Partner.Slas"/>
-    <field name="LastAppraisal" label="Last Appraisal" type="Hr.Appraisal" readonly="true" transient="true" related-field="Employee.LastAppraisal"/>
-    <field name="Department" label="Department" type="Hr.Department" transient="true" related-field="Employee.Department"/>
-    <field name="Coach" label="Coach" type="Hr.Employee" transient="true" related-field="Employee.Coach"/>
-    <field name="CreateEmployee" label="Technical field, bind user to this employee on create" type="Hr.Employee" transient="true" on-delete="Clear"/>
-    <field name="Employee" label="Company employee" type="Hr.Employee" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="Employees" label="Related employee" type="Hr.Employee" collection="true"/>
-    <field name="EmployeeParent" label="Manager" type="Hr.Employee" transient="true" related-field="Employee.Parent"/>
-    <field name="Categorys" label="Employee Tags" type="Hr.EmployeeCategory" collection="true" transient="true" related-field="Employee.Categorys"/>
-    <field name="EmployeeSkills" label="Skills" type="Hr.EmployeeSkill" collection="true" transient="true" related-field="Employee.EmployeeSkills"/>
-    <field name="HrReferralLevel" label="Hr Referral Level" type="Hr.ReferralLevel" copied="true" on-delete="Clear"/>
-    <field name="ReferralPoints" label="Referral Point" type="Hr.ReferralPoints" collection="true"/>
-    <field name="ResumeLines" label="Resume lines" type="Hr.ResumeLine" collection="true" transient="true" related-field="Employee.ResumeLines"/>
-    <field name="FridayLocation" label="Friday" type="Hr.WorkLocation" transient="true" related-field="Employee.FridayLocation"/>
-    <field name="MondayLocation" label="Monday" type="Hr.WorkLocation" transient="true" related-field="Employee.MondayLocation"/>
-    <field name="SaturdayLocation" label="Saturday" type="Hr.WorkLocation" transient="true" related-field="Employee.SaturdayLocation"/>
-    <field name="SundayLocation" label="Sunday" type="Hr.WorkLocation" transient="true" related-field="Employee.SundayLocation"/>
-    <field name="ThursdayLocation" label="Thursday" type="Hr.WorkLocation" transient="true" related-field="Employee.ThursdayLocation"/>
-    <field name="TuesdayLocation" label="Tuesday" type="Hr.WorkLocation" transient="true" related-field="Employee.TuesdayLocation"/>
-    <field name="WednesdayLocation" label="Wednesday" type="Hr.WorkLocation" transient="true" related-field="Employee.WednesdayLocation"/>
-    <field name="WorkLocation" label="Work Location" type="Hr.WorkLocation" transient="true" related-field="Employee.WorkLocation"/>
-    <field name="Action" label="Home Action" type="Ir.ActionsActions" copied="true" on-delete="Clear"/>
-    <field name="LastLunchLocation" label="Last Lunch Location" type="Lunch.Location" copied="true" on-delete="Clear"/>
-    <field name="FavoriteLunchProducts" label="Favorite Lunch Product" type="Lunch.Product" collection="true" copied="true"/>
-    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true" transient="true" related-field="Partner.Activitys"/>
-    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Partner.ActivityType"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true" transient="true" related-field="Partner.MessageFollowers"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true" transient="true" related-field="Partner.Messages"/>
-    <field name="StarredMessages" label="Starred Message" type="Mail.Message" collection="true" copied="true" transient="true" related-field="Partner.StarredMessages"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true" transient="true" related-field="Partner.WebsiteMessages"/>
-    <field name="Equipments" label="Managed Equipment" type="Maintenance.Equipment" collection="true"/>
-    <field name="Boms" label="BoMs for which the Partner is one of the subcontractors" type="Mrp.Bom" collection="true" readonly="true" transient="true" related-field="Partner.Boms"/>
-    <field name="Productions" label="MRP Productions for which the Partner is the subcontractor" type="Mrp.Production" collection="true" readonly="true" transient="true" related-field="Partner.Productions"/>
-    <field name="PaymentTokens" label="Payment Tokens" type="Payment.Token" collection="true" transient="true" related-field="Partner.PaymentTokens"/>
-    <field name="PosOrders" label="Pos Order" type="Pos.Order" collection="true" readonly="true" transient="true" related-field="Partner.PosOrders"/>
-    <field name="PropertyProductPricelist" label="Pricelist" type="Product.Pricelist" transient="true" related-field="Partner.PropertyProductPricelist"/>
-    <field name="Projects" label="Projects" type="Project.Project" collection="true" transient="true" related-field="Partner.Projects"/>
-    <field name="Tasks" label="Tasks" type="Project.Task" collection="true" transient="true" related-field="Partner.Tasks"/>
-    <field name="PurchaseLines" label="Purchase Lines" type="Purchase.OrderLine" collection="true" transient="true" related-field="Partner.PurchaseLines"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true" transient="true" related-field="Partner.Ratings"/>
-    <field name="AccountRepresentedCompanys" label="Account Represented Company" type="Res.Company" collection="true" transient="true" related-field="Partner.AccountRepresentedCompanys"/>
-    <field name="Company" label="Company" type="Res.Company" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Companys" label="Companies" type="Res.Company" collection="true" copied="true"/>
-    <field name="RefCompanys" label="Companies that refers to partner" type="Res.Company" collection="true" transient="true" related-field="Partner.RefCompanys"/>
-    <field name="Country" label="Country" type="Res.Country" copied="true" transient="true" related-field="Partner.Country"/>
-    <field name="CountryOfBirth" label="Country of Birth" type="Res.Country" transient="true" related-field="Employee.CountryOfBirth"/>
-    <field name="EmployeeCountry" label="Employee's Country" type="Res.Country" transient="true" related-field="Employee.Country"/>
-    <field name="PrivateCountry" label="Private Country" type="Res.Country" transient="true" related-field="Employee.PrivateCountry"/>
-    <field name="PrivateState" label="Private State" type="Res.CountryState" transient="true" related-field="Employee.PrivateState"/>
-    <field name="State" label="State" type="Res.CountryState" copied="true" transient="true" related-field="Partner.State"/>
-    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Partner.Currency"/>
-    <field name="PropertyPurchaseCurrency" label="Supplier Currency" type="Res.Currency" transient="true" related-field="Partner.PropertyPurchaseCurrency"/>
-    <field name="Groups" label="Groups" type="Res.Groups" collection="true" copied="true"/>
-    <field name="LivechatLangs" label="Livechat Languages" type="Res.Lang" collection="true" transient="true"/>
-    <field name="Address" label="Work Address" type="Res.Partner" transient="true" related-field="Employee.Address"/>
-    <field name="Childs" label="Contact" type="Res.Partner" collection="true" transient="true" related-field="Partner.Childs"/>
-    <field name="CommercialPartner" label="Commercial Entity" type="Res.Partner" readonly="true" transient="true" related-field="Partner.CommercialPartner"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true" related-field="Partner.MessagePartners"/>
-    <field name="Parent" label="Related Company" type="Res.Partner" copied="true" transient="true" related-field="Partner.Parent"/>
-    <field name="Partner" label="Related Partner" type="Res.Partner" required="true" indexed="true" copied="true" on-delete="Restrict"/>
-    <field name="SameCompanyRegistryPartner" label="Partner with same Company Registry" type="Res.Partner" readonly="true" transient="true" related-field="Partner.SameCompanyRegistryPartner"/>
-    <field name="SameVatPartner" label="Partner with same Tax ID" type="Res.Partner" readonly="true" transient="true" related-field="Partner.SameVatPartner"/>
-    <field name="Self" label="Self" type="Res.Partner" readonly="true" transient="true" related-field="Partner.Self"/>
-    <field name="WorkContact" label="Work Contact" type="Res.Partner" transient="true" related-field="Employee.WorkContact"/>
-    <field name="BankAccount" label="Bank Account Number" type="Res.PartnerBank" readonly="true" transient="true" related-field="Employee.BankAccount"/>
-    <field name="Banks" label="Banks" type="Res.PartnerBank" collection="true" transient="true" related-field="Partner.Banks"/>
-    <field name="EmployeeBankAccount" label="Employee's Bank Account Number" type="Res.PartnerBank" transient="true" related-field="Employee.BankAccount"/>
-    <field name="Category" label="Tags" type="Res.PartnerCategory" collection="true" copied="true" transient="true" related-field="Partner.Category"/>
-    <field name="Industry" label="Industry" type="Res.PartnerIndustry" copied="true" transient="true" related-field="Partner.Industry"/>
-    <field name="Title" label="Title" type="Res.PartnerTitle" copied="true" transient="true" related-field="Partner.Title"/>
-    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" related-field="Partner.ActivityUser"/>
-    <field name="AttendanceManager" label="Attendance Manager" type="Res.Users" transient="true" related-field="Employee.AttendanceManager"/>
-    <field name="Buyer" label="Buyer" type="Res.Users" copied="true" transient="true" related-field="Partner.Buyer"/>
-    <field name="ExpenseManager" label="Expense" type="Res.Users" transient="true" related-field="Employee.ExpenseManager"/>
-    <field name="FollowupResponsible" label="Responsible" type="Res.Users" transient="true" related-field="Partner.FollowupResponsible"/>
-    <field name="LeaveManager" label="Time Off" type="Res.Users" readonly="true" transient="true" related-field="Employee.LeaveManager"/>
-    <field name="TimesheetManager" label="Timesheet" type="Res.Users" readonly="true" transient="true" related-field="Employee.TimesheetManager"/>
-    <field name="User" label="Salesperson" type="Res.Users" copied="true" transient="true" related-field="Partner.User"/>
-    <field name="Users" label="Users" type="Res.Users" collection="true" transient="true" related-field="Partner.Users"/>
-    <field name="ApiKeys" label="API Keys" type="Res.UsersApikeys" collection="true"/>
-    <field name="Logs" label="User log entries" type="Res.UsersLog" collection="true"/>
-    <field name="ResUsersSettings" label="Settings" type="Res.UsersSettings" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="ResUsersSettingss" label="Res Users Settings" type="Res.UsersSettings" collection="true"/>
-    <field name="EmployeeResourceCalendar" label="Employee's Working Hours" type="Resource.Calendar" readonly="true" transient="true" related-field="Employee.ResourceCalendar"/>
-    <field name="ResourceCalendar" label="Default Working Hours" type="Resource.Calendar" transient="true" related-field="Resources.Calendar"/>
-    <field name="Resources" label="Resources" type="Resource.Resource" collection="true"/>
-    <field name="LastWebsiteSo" label="Last Online Sales Order" type="Sale.Order" readonly="true" transient="true" related-field="Partner.LastWebsiteSo"/>
-    <field name="SaleOrders" label="Sales Order" type="Sale.Order" collection="true" transient="true" related-field="Partner.SaleOrders"/>
-    <field name="SddMandates" label="Sdd Mandate" type="Sdd.Mandate" collection="true" transient="true" related-field="Partner.SddMandates"/>
-    <field name="SlideChannelCompleteds" label="Completed Courses" type="Slide.Channel" collection="true" readonly="true" transient="true" related-field="Partner.SlideChannelCompleteds"/>
-    <field name="SlideChannels" label="eLearning Courses" type="Slide.Channel" collection="true" readonly="true" transient="true" related-field="Partner.SlideChannels"/>
-    <field name="PropertyStockCustomer" label="Customer Location" type="Stock.Location" transient="true" related-field="Partner.PropertyStockCustomer"/>
-    <field name="PropertyStockSubcontractor" label="Subcontractor Location" type="Stock.Location" transient="true" related-field="Partner.PropertyStockSubcontractor"/>
-    <field name="PropertyStockSupplier" label="Vendor Location" type="Stock.Location" transient="true" related-field="Partner.PropertyStockSupplier"/>
-    <field name="Pickings" label="Stock Pickings for which the Partner is the subcontractor" type="Stock.Picking" collection="true" readonly="true" transient="true" related-field="Partner.Pickings"/>
-    <field name="PropertyWarehouse" label="Default Warehouse" type="Stock.Warehouse" transient="true" on-delete="Clear"/>
-    <field name="UtmSource" label="Source" type="Utm.Source" copied="true" on-delete="Restrict"/>
-    <field name="LastSeenPhoneCall" label="Last Seen Phone Call" type="Voip.Call" copied="true" on-delete="Clear"/>
-    <field name="Website" label="Website" type="Website." related-field="Partner.Website"/>
-    <field name="Visitors" label="Visitors" type="Website.Visitor" collection="true" transient="true" related-field="Partner.Visitors"/>
-    <field name="AccessesCount" label="# Access Rights" type="integer" readonly="true" transient="true"/>
-    <field name="AccountSepaLei" label="LEI" type="string" copied="true" transient="true" related-field="Partner.AccountSepaLei"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="ActiveLangCount" label="Active Lang Count" type="integer" readonly="true" transient="true" related-field="Partner.ActiveLangCount"/>
-    <field name="ActivePartner" label="Partner is Active" type="bool" readonly="true" transient="true" related-field="Partner.Active"/>
-    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true" related-field="Partner.ActivityDateDeadline"/>
-    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true" related-field="Partner.ActivityExceptionIcon"/>
-    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Partner.ActivitySummary"/>
-    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Partner.ActivityTypeIcon"/>
-    <field name="AdditionalInfo" label="Additional info" type="string" copied="true" transient="true" related-field="Partner.AdditionalInfo"/>
-    <field name="AdditionalNote" label="Additional Note" type="text" transient="true" related-field="Employee.AdditionalNote"/>
-    <field name="AllocationCount" label="Total number of days allocated." type="float" readonly="true" transient="true" related-field="Employee.AllocationCount"/>
-    <field name="AllocationDisplay" label="Allocation Display" type="string" readonly="true" transient="true" related-field="Employee.AllocationDisplay"/>
-    <field name="AllocationRemainingDisplay" label="Allocation Remaining Display" type="string" readonly="true" transient="true" related-field="Employee.AllocationRemainingDisplay"/>
-    <field name="AmazonEmail" label="Amazon Email" type="string" copied="true" transient="true" related-field="Partner.AmazonEmail"/>
-    <field name="Avatar1024" label="Avatar 1024" type="binary" readonly="true" transient="true" related-field="Partner.Avatar1024"/>
-    <field name="Avatar128" label="Avatar 128" type="binary" readonly="true" transient="true" related-field="Partner.Avatar128"/>
-    <field name="Avatar1920" label="Avatar" type="binary" readonly="true" transient="true" related-field="Partner.Avatar1920"/>
-    <field name="Avatar256" label="Avatar 256" type="binary" readonly="true" transient="true" related-field="Partner.Avatar256"/>
-    <field name="Avatar512" label="Avatar 512" type="binary" readonly="true" transient="true" related-field="Partner.Avatar512"/>
-    <field name="BankAccountCount" label="Bank" type="integer" readonly="true" transient="true" related-field="Partner.BankAccountCount"/>
-    <field name="Barcode" label="Badge ID" type="string" transient="true" related-field="Employee.Barcode"/>
-    <field name="BillMyAccount" label="Bill My Account" type="bool" readonly="true" transient="true" related-field="Partner.BillMyAccount"/>
-    <field name="Birthday" label="Date of Birth" type="date" transient="true" related-field="Employee.Birthday"/>
-    <field name="BronzeBadge" label="Bronze badges count" type="integer" readonly="true" transient="true"/>
-    <field name="CalendarLastNotifAck" label="Last notification marked as read from base Calendar" type="datetime" copied="true" transient="true" related-field="Partner.CalendarLastNotifAck"/>
-    <field name="CanEdit" label="Can Edit" type="bool" readonly="true" transient="true"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true" related-field="Partner.CanPublish"/>
-    <field name="CertificationsCompanyCount" label="Company Certifications Count" type="integer" readonly="true" transient="true" related-field="Partner.CertificationsCompanyCount"/>
-    <field name="CertificationsCount" label="Certifications Count" type="integer" readonly="true" transient="true" related-field="Partner.CertificationsCount"/>
-    <field name="Children" label="Number of Dependent Children" type="integer" transient="true" related-field="Employee.Children"/>
-    <field name="City" label="City" type="string" copied="true" transient="true" related-field="Partner.City"/>
-    <field name="Color" label="Color Index" type="integer" copied="true" transient="true" related-field="Partner.Color"/>
-    <field name="Comment" label="Notes" type="html" copied="true" transient="true" related-field="Partner.Comment"/>
-    <field name="CommercialCompanyName" label="Company Name Entity" type="string" readonly="true" transient="true" related-field="Partner.CommercialCompanyName"/>
-    <field name="CompaniesCount" label="Number of Companies" type="integer" readonly="true" transient="true"/>
-    <field name="CompanyName" label="Company Name" type="string" copied="true" transient="true" related-field="Partner.CompanyName"/>
-    <field name="CompanyRegistry" label="Company ID" type="string" copied="true" transient="true" related-field="Partner.CompanyRegistry"/>
-    <field name="CompleteName" label="Complete Name" type="string" readonly="true" transient="true" related-field="Partner.CompleteName"/>
-    <field name="ContactAddress" label="Complete Address" type="string" readonly="true" transient="true" related-field="Partner.ContactAddress"/>
-    <field name="ContactAddressComplete" label="Contact Address Complete" type="string" readonly="true" transient="true" related-field="Partner.ContactAddressComplete"/>
-    <field name="ContactAddressInline" label="Inlined Complete Address" type="string" readonly="true" transient="true" related-field="Partner.ContactAddressInline"/>
-    <field name="CountryCode" label="Country Code" type="string" readonly="true" transient="true" related-field="Partner.CountryCode"/>
-    <field name="CreateEmployee" label="Technical field, whether to create an employee" type="bool" transient="true"/>
-    <field name="Credit" label="Total Receivable" type="monetary" readonly="true" transient="true" related-field="Partner.Credit"/>
-    <field name="CreditLimit" label="Credit Limit" type="float" transient="true" related-field="Partner.CreditLimit"/>
-    <field name="CreditToInvoice" label="Credit To Invoice" type="monetary" readonly="true" transient="true" related-field="Partner.CreditToInvoice"/>
-    <field name="CustomerRank" label="Customer Rank" type="integer" transient="true" related-field="Partner.CustomerRank"/>
-    <field name="DateLocalization" label="Geolocation Date" type="date" copied="true" transient="true" related-field="Partner.DateLocalization"/>
-    <field name="DaysSalesOutstanding" label="Days Sales Outstanding (DSO)" type="float" readonly="true" transient="true" related-field="Partner.DaysSalesOutstanding"/>
-    <field name="Debit" label="Total Payable" type="monetary" readonly="true" transient="true" related-field="Partner.Debit"/>
-    <field name="DebitLimit" label="Payable Limit" type="monetary" copied="true" transient="true" related-field="Partner.DebitLimit"/>
-    <field name="DisplayExtraHours" label="Display Extra Hours" type="bool" readonly="true" transient="true" related-field="Company.HrAttendanceDisplayOvertime"/>
-    <field name="DisplayPanWarning" label="Display pan warning" type="bool" readonly="true" transient="true" related-field="Partner.DisplayPanWarning"/>
-    <field name="DocumentCount" label="Documents" type="integer" readonly="true" transient="true"/>
-    <field name="DuplicatedBankAccountPartnersCount" label="Duplicated Bank Account Partners Count" type="integer" readonly="true" transient="true" related-field="Partner.DuplicatedBankAccountPartnersCount"/>
-    <field name="Ebay" label="eBay User ID" type="string" copied="true" transient="true" related-field="Partner.Ebay"/>
-    <field name="Email" label="Email" type="string" transient="true" related-field="Partner.Email"/>
-    <field name="EmailFormatted" label="Formatted Email" type="string" readonly="true" transient="true" related-field="Partner.EmailFormatted"/>
-    <field name="EmailNormalized" label="Normalized Email" type="string" readonly="true" transient="true" related-field="Partner.EmailNormalized"/>
-    <field name="EmergencyContact" label="Contact Name" type="string" transient="true" related-field="Employee.EmergencyContact"/>
-    <field name="EmergencyPhone" label="Contact Phone" type="string" transient="true" related-field="Employee.EmergencyPhone"/>
-    <field name="Employee" label="Employee" type="bool" copied="true" transient="true" related-field="Partner.Employee"/>
-    <field name="EmployeeCarsCount" label="Cars" type="integer" readonly="true" transient="true" related-field="Employee.EmployeeCarsCount"/>
-    <field name="EmployeeCount" label="Employee Count" type="integer" readonly="true" transient="true"/>
-    <field name="EmployeesCount" label="Employees Count" type="integer" readonly="true" transient="true" related-field="Partner.EmployeesCount"/>
-    <field name="EquipmentCount" label="Assigned Equipment" type="integer" readonly="true" transient="true" related-field="Employee.EquipmentCount"/>
-    <field name="EventCount" label="# Events" type="integer" readonly="true" transient="true" related-field="Partner.EventCount"/>
-    <field name="ExternalDeviceNumber" label="External Device Number" type="string" transient="true"/>
-    <field name="FiscalCountryCodes" label="Fiscal Country Codes" type="string" readonly="true" transient="true" related-field="Partner.FiscalCountryCodes"/>
-    <field name="FollowupNextActionDate" label="Next reminder" type="date" transient="true" related-field="Partner.FollowupNextActionDate"/>
-    <field name="Function" label="Job Position" type="string" copied="true" transient="true" related-field="Partner.Function"/>
-    <field name="GoldBadge" label="Gold badges count" type="integer" readonly="true" transient="true"/>
-    <field name="GoogleCalendarCal" label="Calendar ID" type="string" readonly="true" transient="true" related-field="ResUsersSettings.GoogleCalendarCal"/>
-    <field name="GoogleCalendarRtoken" label="Refresh Token" type="string" readonly="true" transient="true" related-field="ResUsersSettings.GoogleCalendarRtoken"/>
-    <field name="GoogleCalendarSyncToken" label="Next Sync Token" type="string" readonly="true" transient="true" related-field="ResUsersSettings.GoogleCalendarSyncToken"/>
-    <field name="GoogleCalendarToken" label="User token" type="string" readonly="true" transient="true" related-field="ResUsersSettings.GoogleCalendarToken"/>
-    <field name="GoogleCalendarTokenValidity" label="Token Validity" type="datetime" readonly="true" transient="true" related-field="ResUsersSettings.GoogleCalendarTokenValidity"/>
-    <field name="GoogleSynchronizationStopped" label="Google Synchronization stopped" type="bool" transient="true" related-field="ResUsersSettings.GoogleSynchronizationStopped"/>
-    <field name="GroupsCount" label="# Groups" type="integer" readonly="true" transient="true"/>
-    <field name="HasAccessLivechat" label="Has access to Livechat" type="bool" readonly="true" transient="true"/>
-    <field name="HasCallInQueue" label="Is in the Call Queue" type="bool" readonly="true" transient="true" related-field="Partner.HasCallInQueue"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true" related-field="Partner.HasMessage"/>
-    <field name="HasUnreconciledEntries" label="Has Unreconciled Entries" type="bool" readonly="true" transient="true" related-field="Partner.HasUnreconciledEntries"/>
-    <field name="HelpdeskTargetClosed" label="Target Tickets to Close" type="integer" copied="true"/>
-    <field name="HelpdeskTargetRating" label="Target Customer Rating" type="float" copied="true"/>
-    <field name="HelpdeskTargetSuccess" label="Target Success Rate" type="float" copied="true"/>
-    <field name="HoursLastMonth" label="Hours Last Month" type="float" readonly="true" transient="true" related-field="Employee.HoursLastMonth"/>
-    <field name="HoursLastMonthDisplay" label="Hours Last Month Display" type="string" readonly="true" transient="true" related-field="Employee.HoursLastMonthDisplay"/>
-    <field name="HowToCallOnMobile" label="How To Call On Mobile" type="Res.UserHowToCallOnMobile" transient="true"/>
-    <field name="HrReferralOnboardingPage" label="Hr Referral Onboarding Page" type="bool" copied="true"/>
-    <field name="IapEnrichInfo" label="IAP Enrich Info" type="text" readonly="true" transient="true" related-field="Partner.IapEnrichInfo"/>
-    <field name="IapSearchDomain" label="Search Domain / Email" type="string" readonly="true" transient="true" related-field="Partner.IapSearchDomain"/>
-    <field name="Identification" label="Identification No" type="string" transient="true" related-field="Employee.Identification"/>
-    <field name="IgnoreAbnormalInvoiceAmount" label="Ignore Abnormal Invoice Amount" type="bool" transient="true" related-field="Partner.IgnoreAbnormalInvoiceAmount"/>
-    <field name="IgnoreAbnormalInvoiceDate" label="Ignore Abnormal Invoice Date" type="bool" transient="true" related-field="Partner.IgnoreAbnormalInvoiceDate"/>
-    <field name="ImStatus" label="IM Status" type="string" readonly="true" transient="true"/>
-    <field name="Image1024" label="Image 1024" type="binary" readonly="true" transient="true" related-field="Partner.Image1024"/>
-    <field name="Image128" label="Image 128" type="binary" readonly="true" transient="true" related-field="Partner.Image128"/>
-    <field name="Image1920" label="Image" type="binary" copied="true" transient="true" related-field="Partner.Image1920"/>
-    <field name="Image256" label="Image 256" type="binary" readonly="true" transient="true" related-field="Partner.Image256"/>
-    <field name="Image512" label="Image 512" type="binary" readonly="true" transient="true" related-field="Partner.Image512"/>
-    <field name="ImageMedium" label="Medium-sized image" type="binary" readonly="true" transient="true" related-field="Partner.ImageMedium"/>
-    <field name="InvoiceWarnMsg" label="Message for Invoice" type="text" copied="true" transient="true" related-field="Partner.InvoiceWarnMsg"/>
-    <field name="IsAbsent" label="Absent Today" type="bool" readonly="true" transient="true" related-field="Employee.IsAbsent"/>
-    <field name="IsBlacklisted" label="Blacklist" type="bool" readonly="true" transient="true" related-field="Partner.IsBlacklisted"/>
-    <field name="IsCompany" label="Is a Company" type="bool" copied="true" transient="true" related-field="Partner.IsCompany"/>
-    <field name="IsNonResident" label="Non-resident" type="bool" transient="true" related-field="Employees.IsNonResident"/>
-    <field name="IsPublic" label="Is Public" type="bool" readonly="true" transient="true" related-field="Partner.IsPublic"/>
-    <field name="IsPublished" label="Is Published" type="bool" transient="true" related-field="Partner.IsPublished"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true" related-field="Partner.IsSeoOptimized"/>
-    <field name="IsSubcontractor" label="Subcontractor" type="bool" readonly="true" transient="true" related-field="Partner.IsSubcontractor"/>
-    <field name="IsSystem" label="Is System" type="bool" readonly="true" transient="true"/>
-    <field name="JobTitle" label="Job Title" type="string" transient="true" related-field="Employee.JobTitle"/>
-    <field name="JournalItemCount" label="Journal Items" type="integer" readonly="true" transient="true" related-field="Partner.JournalItemCount"/>
-    <field name="Karma" label="Karma" type="integer" copied="true"/>
-    <field name="KmHomeWork" label="Home-Work Distance" type="integer" transient="true" related-field="Employee.KmHomeWork"/>
-    <field name="L10NInPan" label="PAN" type="string" copied="true" transient="true" related-field="Partner.L10NInPan"/>
-    <field name="L10NInRelationship" label="Relationship" type="string" transient="true" related-field="Employee.L10NInRelationship"/>
-    <field name="LastActivity" label="Last Activity" type="date" readonly="true" transient="true" related-field="Employee.LastActivity"/>
-    <field name="LastActivityTime" label="Last Activity Time" type="string" readonly="true" transient="true" related-field="Employee.LastActivityTime"/>
-    <field name="LastAppraisalDate" label="Last Appraisal Date" type="date" readonly="true" transient="true" related-field="Employee.LastAppraisalDate"/>
-    <field name="LastCheckIn" label="Check In" type="datetime" readonly="true" transient="true" related-field="Employee.LastAttendance.CheckIn"/>
-    <field name="LastCheckOut" label="Check Out" type="datetime" readonly="true" transient="true" related-field="Employee.LastAttendance.CheckOut"/>
-    <field name="LastTimeEntriesChecked" label="Latest Invoices &amp; Payments Matching Date" type="datetime" readonly="true" transient="true" related-field="Partner.LastTimeEntriesChecked"/>
-    <field name="LeaveDateTo" label="To Date" type="date" readonly="true" transient="true" related-field="Employee.LeaveDateTo"/>
-    <field name="LivechatUsername" label="Livechat Username" type="string" transient="true"/>
-    <field name="Login" label="Login" type="string" required="true" copied="true"/>
-    <field name="LoginDate" label="Latest authentication" type="datetime" transient="true" related-field="Logs.CreateDate"/>
-    <field name="LoyaltyCardCount" label="Active loyalty cards" type="integer" readonly="true" transient="true" related-field="Partner.LoyaltyCardCount"/>
-    <field name="MeetingCount" label="# Meetings" type="integer" readonly="true" transient="true" related-field="Partner.MeetingCount"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true" related-field="Partner.MessageAttachmentCount"/>
-    <field name="MessageBounce" label="Bounce" type="integer" copied="true" transient="true" related-field="Partner.MessageBounce"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true" related-field="Partner.MessageHasError"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true" related-field="Partner.MessageHasErrorCounter"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true" related-field="Partner.MessageHasSmsError"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true" related-field="Partner.MessageIsFollower"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true" related-field="Partner.MessageNeedaction"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true" related-field="Partner.MessageNeedactionCounter"/>
-    <field name="MicrosoftCalendarRtoken" label="Microsoft Refresh Token" type="string"/>
-    <field name="MicrosoftCalendarSyncToken" label="Microsoft Next Sync Token" type="string" readonly="true" transient="true" related-field="ResUsersSettings.MicrosoftCalendarSyncToken"/>
-    <field name="MicrosoftCalendarToken" label="Microsoft User token" type="string"/>
-    <field name="MicrosoftCalendarTokenValidity" label="Microsoft Token Validity" type="datetime"/>
-    <field name="MicrosoftLastSyncDate" label="Last Sync Date" type="datetime" transient="true" related-field="ResUsersSettings.MicrosoftLastSyncDate"/>
-    <field name="MicrosoftSynchronizationStopped" label="Outlook Synchronization stopped" type="bool" transient="true" related-field="ResUsersSettings.MicrosoftSynchronizationStopped"/>
-    <field name="Mobile" label="Mobile" type="string" copied="true" transient="true" related-field="Partner.Mobile"/>
-    <field name="MobileBlacklisted" label="Blacklisted Phone Is Mobile" type="bool" readonly="true" transient="true" related-field="Partner.MobileBlacklisted"/>
-    <field name="MobilePhone" label="Work Mobile" type="string" transient="true" related-field="Employee.MobilePhone"/>
-    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true" related-field="Partner.MyActivityDateDeadline"/>
-    <field name="Name" label="Name" type="string" transient="true" related-field="Partner.Name"/>
-    <field name="NewPassword" label="Set Password" type="string" transient="true"/>
-    <field name="NextAppraisalDate" label="Next Appraisal Date" type="date" readonly="true" transient="true" related-field="Employee.NextAppraisalDate"/>
-    <field name="NotificationType" label="Notification" type="Res.UserNotification" required="true"/>
-    <field name="OauthAccessToken" label="OAuth Access Token" type="string" readonly="true"/>
-    <field name="OauthUid" label="OAuth User ID" type="string"/>
-    <field name="OcnToken" label="OCN Token" type="string" readonly="true" transient="true" related-field="Partner.OcnToken"/>
-    <field name="OdooComUid" label="Odoo.com User ID" type="string" transient="true"/>
-    <field name="OdoobotFailed" label="Odoobot Failed" type="bool" readonly="true" copied="true"/>
-    <field name="OdoobotState" label="OdooBot Status" type="Res.UserOdoobotStatus" readonly="true" copied="true"/>
-    <field name="OnTimeRate" label="On-Time Delivery Rate" type="float" readonly="true" transient="true" related-field="Partner.OnTimeRate"/>
-    <field name="OngoingAppraisalCount" label="Ongoing Appraisal Count" type="integer" readonly="true" transient="true" related-field="Employee.OngoingAppraisalCount"/>
-    <field name="OnlinePartnerInformation" label="Online Partner Information" type="string" readonly="true" copied="true" transient="true" related-field="Partner.OnlinePartnerInformation"/>
-    <field name="OpportunityCount" label="Opportunity" type="integer" readonly="true" transient="true" related-field="Partner.OpportunityCount"/>
-    <field name="ParentName" label="Parent name" type="string" readonly="true" transient="true" related-field="Partner.ParentName"/>
-    <field name="PartnerGid" label="Company database ID" type="integer" copied="true" transient="true" related-field="Partner.PartnerGid"/>
-    <field name="PartnerLatitude" label="Geo Latitude" type="float" copied="true" transient="true" related-field="Partner.PartnerLatitude"/>
-    <field name="PartnerLongitude" label="Geo Longitude" type="float" copied="true" transient="true" related-field="Partner.PartnerLongitude"/>
-    <field name="PartnerShare" label="Share Partner" type="bool" readonly="true" transient="true" related-field="Partner.PartnerShare"/>
-    <field name="Passport" label="Passport No" type="string" transient="true" related-field="Employee.Passport"/>
-    <field name="Password" label="Password" type="string" transient="true"/>
-    <field name="PaymentTokenCount" label="Payment Token Count" type="integer" readonly="true" transient="true" related-field="Partner.PaymentTokenCount"/>
-    <field name="PeppolEndpoint" label="Peppol Endpoint" type="string" copied="true" transient="true" related-field="Partner.PeppolEndpoint"/>
-    <field name="PerformViesValidation" label="Perform Vies Validation" type="bool" readonly="true" transient="true" related-field="Partner.PerformViesValidation"/>
-    <field name="PermitNo" label="Work Permit No" type="string" transient="true" related-field="Employee.PermitNo"/>
-    <field name="Phone" label="Phone" type="string" copied="true" transient="true" related-field="Partner.Phone"/>
-    <field name="PhoneBlacklisted" label="Blacklisted Phone is Phone" type="bool" readonly="true" transient="true" related-field="Partner.PhoneBlacklisted"/>
-    <field name="PhoneMobileSearch" label="Phone/Mobile" type="string" copied="true" transient="true" related-field="Partner.PhoneMobileSearch"/>
-    <field name="PhoneSanitized" label="Sanitized Number" type="string" readonly="true" transient="true" related-field="Partner.PhoneSanitized"/>
-    <field name="PhoneSanitizedBlacklisted" label="Phone Blacklisted" type="bool" readonly="true" transient="true" related-field="Partner.PhoneSanitizedBlacklisted"/>
-    <field name="PickingWarnMsg" label="Message for Stock Picking" type="text" copied="true" transient="true" related-field="Partner.PickingWarnMsg"/>
-    <field name="Pin" label="PIN" type="string" transient="true" related-field="Employee.Pin"/>
-    <field name="PlaceOfBirth" label="Place of Birth" type="string" transient="true" related-field="Employee.PlaceOfBirth"/>
-    <field name="PlanToChangeBike" label="Plan To Change Bike" type="bool" copied="true" transient="true" related-field="Partner.PlanToChangeBike"/>
-    <field name="PlanToChangeCar" label="Plan To Change Car" type="bool" copied="true" transient="true" related-field="Partner.PlanToChangeCar"/>
-    <field name="PosOrderCount" label="Pos Order Count" type="integer" readonly="true" transient="true" related-field="Partner.PosOrderCount"/>
-    <field name="PrivateCity" label="Private City" type="string" transient="true" related-field="Employee.PrivateCity"/>
-    <field name="PrivateEmail" label="Private Email" type="string" transient="true" related-field="Employee.PrivateEmail"/>
-    <field name="PrivatePhone" label="Private Phone" type="string" transient="true" related-field="Employee.PrivatePhone"/>
-    <field name="PrivateStreet" label="Private Street" type="string" transient="true" related-field="Employee.PrivateStreet"/>
-    <field name="PrivateStreet2" label="Private Street2" type="string" transient="true" related-field="Employee.PrivateStreet2"/>
-    <field name="PrivateZip" label="Private Zip" type="string" transient="true" related-field="Employee.PrivateZip"/>
-    <field name="PropertyUpsCarrierAccount" label="UPS Account Number" type="string" transient="true" related-field="Partner.PropertyUpsCarrierAccount"/>
-    <field name="PurchaseOrderCount" label="Purchase Order Count" type="integer" readonly="true" transient="true" related-field="Partner.PurchaseOrderCount"/>
-    <field name="PurchaseWarnMsg" label="Message for Purchase Order" type="text" copied="true" transient="true" related-field="Partner.PurchaseWarnMsg"/>
-    <field name="ReceiptReminderEmail" label="Receipt Reminder" type="bool" transient="true" related-field="Partner.ReceiptReminderEmail"/>
-    <field name="Ref" label="Reference" type="string" copied="true" transient="true" related-field="Partner.Ref"/>
-    <field name="ReminderDateBeforeReceipt" label="Days Before Receipt" type="integer" transient="true" related-field="Partner.ReminderDateBeforeReceipt"/>
-    <field name="RequestOvertime" label="Request Overtime" type="bool" readonly="true" transient="true"/>
-    <field name="RulesCount" label="# Record Rules" type="integer" readonly="true" transient="true"/>
-    <field name="SaleOrderCount" label="Sale Order Count" type="integer" readonly="true" transient="true" related-field="Partner.SaleOrderCount"/>
-    <field name="SaleWarnMsg" label="Message for Sales Order" type="text" copied="true" transient="true" related-field="Partner.SaleWarnMsg"/>
-    <field name="SddCount" label="SDD count" type="integer" readonly="true" transient="true" related-field="Partner.SddCount"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" transient="true" translatable="true" related-field="Partner.SeoName"/>
-    <field name="Share" label="Share User" type="bool" readonly="true"/>
-    <field name="ShouldAutoRejectIncomingCalls" label="Should Auto Reject Incoming Calls" type="bool" transient="true"/>
-    <field name="ShouldCallFromAnotherDevice" label="Should Call From Another Device" type="bool" transient="true"/>
-    <field name="ShowCreditLimit" label="Show Credit Limit" type="bool" readonly="true" transient="true" related-field="Partner.ShowCreditLimit"/>
-    <field name="ShowLeaves" label="Able to see Remaining Time Off" type="bool" readonly="true" transient="true" related-field="Employee.ShowLeaves"/>
-    <field name="SignInitials" label="Digital Initials" type="binary"/>
-    <field name="SignInitialsFrame" label="Digital Initials Frame" type="binary"/>
-    <field name="SignRequestCount" label="Sign Request Count" type="integer" readonly="true" transient="true"/>
-    <field name="SignSignature" label="Digital Signature" type="binary"/>
-    <field name="SignSignatureFrame" label="Digital Signature Frame" type="binary"/>
-    <field name="Signature" label="Email Signature" type="html" copied="true"/>
-    <field name="SignatureCount" label="# Signatures" type="integer" readonly="true" transient="true" related-field="Partner.SignatureCount"/>
-    <field name="SignupExpiration" label="Signup Expiration" type="datetime" transient="true" related-field="Partner.SignupExpiration"/>
-    <field name="SignupToken" label="Signup Token" type="string" transient="true" related-field="Partner.SignupToken"/>
-    <field name="SignupType" label="Signup Token Type" type="string" transient="true" related-field="Partner.SignupType"/>
-    <field name="SignupUrl" label="Signup URL" type="string" readonly="true" transient="true" related-field="Partner.SignupUrl"/>
-    <field name="SignupValid" label="Signup Token is Valid" type="bool" readonly="true" transient="true" related-field="Partner.SignupValid"/>
-    <field name="SilverBadge" label="Silver badges count" type="integer" readonly="true" transient="true"/>
-    <field name="SlideChannelCompanyCount" label="Company Course Count" type="integer" readonly="true" transient="true" related-field="Partner.SlideChannelCompanyCount"/>
-    <field name="SlideChannelCount" label="Course Count" type="integer" readonly="true" transient="true" related-field="Partner.SlideChannelCount"/>
-    <field name="SpouseBirthdate" label="Spouse Birthdate" type="date" transient="true" related-field="Employee.SpouseBirthdate"/>
-    <field name="SpouseCompleteName" label="Spouse Complete Name" type="string" transient="true" related-field="Employee.SpouseCompleteName"/>
-    <field name="Ssnid" label="SSN No" type="string" transient="true" related-field="Employee.Ssnid"/>
-    <field name="State" label="Status" type="Res.UserStatus" readonly="true" transient="true"/>
-    <field name="StaticMapUrl" label="Static Map Url" type="string" readonly="true" transient="true" related-field="Partner.StaticMapUrl"/>
-    <field name="StaticMapUrlIsValid" label="Static Map Url Is Valid" type="bool" readonly="true" transient="true" related-field="Partner.StaticMapUrlIsValid"/>
-    <field name="Street" label="Street" type="string" copied="true" transient="true" related-field="Partner.Street"/>
-    <field name="Street2" label="Street2" type="string" copied="true" transient="true" related-field="Partner.Street2"/>
-    <field name="StudyField" label="Field of Study" type="string" transient="true" related-field="Employee.StudyField"/>
-    <field name="StudySchool" label="School" type="string" transient="true" related-field="Employee.StudySchool"/>
-    <field name="SubscriptionCount" label="Subscriptions" type="integer" readonly="true" transient="true" related-field="Partner.SubscriptionCount"/>
-    <field name="SupplierInvoiceCount" label="# Vendor Bills" type="integer" readonly="true" transient="true" related-field="Partner.SupplierInvoiceCount"/>
-    <field name="SupplierRank" label="Supplier Rank" type="integer" transient="true" related-field="Partner.SupplierRank"/>
-    <field name="TargetSalesDone" label="Activities Done Target" type="integer" copied="true"/>
-    <field name="TargetSalesInvoiced" label="Invoiced in Sales Orders Target" type="integer" copied="true"/>
-    <field name="TargetSalesWon" label="Won in Opportunities Target" type="integer" copied="true"/>
-    <field name="TaskCount" label="# Tasks" type="integer" readonly="true" transient="true" related-field="Partner.TaskCount"/>
-    <field name="TicketCount" label="Tickets" type="integer" readonly="true" transient="true" related-field="Partner.TicketCount"/>
-    <field name="TotalDue" label="Total Due" type="monetary" readonly="true" transient="true" related-field="Partner.TotalDue"/>
-    <field name="TotalInvoiced" label="Total Invoiced" type="monetary" readonly="true" transient="true" related-field="Partner.TotalInvoiced"/>
-    <field name="TotalOverdue" label="Total Overdue" type="monetary" readonly="true" transient="true" related-field="Partner.TotalOverdue"/>
-    <field name="TotalOvertime" label="Total Overtime" type="float" readonly="true" transient="true" related-field="Employee.TotalOvertime"/>
-    <field name="TotpEnabled" label="Two-factor authentication" type="bool" readonly="true" transient="true"/>
-    <field name="TotpSecret" label="Totp Secret" type="string" transient="true"/>
-    <field name="TzOffset" label="Timezone offset" type="string" readonly="true" transient="true"/>
-    <field name="UnpaidInvoicesCount" label="Unpaid Invoices Count" type="integer" readonly="true" transient="true" related-field="Partner.UnpaidInvoicesCount"/>
-    <field name="UsePartnerCreditLimit" label="Partner Limit" type="bool" transient="true" related-field="Partner.UsePartnerCreditLimit"/>
-    <field name="UserGroupWarning" label="User Group Warning" type="text" readonly="true" transient="true"/>
-    <field name="UserLivechatUsername" label="User Livechat Username" type="string" readonly="true" transient="true" related-field="Partner.UserLivechatUsername"/>
-    <field name="Vat" label="Tax ID" type="string" copied="true" transient="true" related-field="Partner.Vat"/>
-    <field name="Vehicle" label="Company Vehicle" type="string" readonly="true" transient="true" related-field="Employee.Vehicle"/>
-    <field name="ViesValid" label="Intra-Community Valid" type="bool" copied="true" transient="true" related-field="Partner.ViesValid"/>
-    <field name="ViesVatToCheck" label="Vies Vat To Check" type="string" readonly="true" transient="true" related-field="Partner.ViesVatToCheck"/>
-    <field name="VisaExpire" label="Visa Expiration Date" type="date" transient="true" related-field="Employee.VisaExpire"/>
-    <field name="VisaNo" label="Visa No" type="string" transient="true" related-field="Employee.VisaNo"/>
-    <field name="VoipSecret" label="Voip Secret" type="string" transient="true"/>
-    <field name="VoipUsername" label="Voip Username" type="string" transient="true"/>
-    <field name="Website" label="Website Link" type="string" copied="true" transient="true" related-field="Partner.Website"/>
-    <field name="WebsiteDescription" label="Website Partner Full Description" type="html" copied="true" transient="true" translatable="true" related-field="Partner.WebsiteDescription"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" transient="true" translatable="true" related-field="Partner.WebsiteMetaDescription"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" transient="true" translatable="true" related-field="Partner.WebsiteMetaKeywords"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true" transient="true" related-field="Partner.WebsiteMetaOgImg"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" transient="true" translatable="true" related-field="Partner.WebsiteMetaTitle"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true" related-field="Partner.WebsitePublished"/>
-    <field name="WebsiteShortDescription" label="Website Partner Short Description" type="text" copied="true" transient="true" translatable="true" related-field="Partner.WebsiteShortDescription"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true" related-field="Partner.WebsiteUrl"/>
-    <field name="WorkEmail" label="Work Email" type="string" transient="true" related-field="Employee.WorkEmail"/>
-    <field name="WorkPhone" label="Work Phone" type="string" transient="true" related-field="Employee.WorkPhone"/>
-    <field name="Zip" label="Zip" type="string" copied="true" transient="true" related-field="Partner.Zip"/>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="PurchaseVendorBillId" type="Purchase.BillUnion" label="Auto-complete" store="false" readonly="false"
+      help="Auto-complete from a past bill / purchase order." />
+    <field name="PurchaseId" type="Purchase.Order" label="Purchase Order" store="false" readonly="false"
+      help="Auto-complete from a past purchase order." />
+    <field name="PurchaseOrderCount" type="integer" label="Purchase Order Count" compute="ComputePurchaseOrderCount" />
+    <field name="InvoiceOrigin" type="string" label="Invoice Origin" />
+    <field name="Ref" type="string" label="Reference" />
+    <field name="PaymentReference" type="string" label="Payment Reference" />
+    <field name="PartnerId" type="Res.Partner" label="Partner" />
+    <field name="CompanyId" type="Res.Company" label="Company" />
+    <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    <field name="JournalId" type="Account.Journal" label="Journal" />
+    <field name="MoveType" type="selection" label="Move Type"
+      selection="[(&#39;entry&#39;, &#39;Journal Entry&#39;), (&#39;out_invoice&#39;, &#39;Customer Invoice&#39;), (&#39;out_refund&#39;, &#39;Customer Credit Note&#39;), (&#39;in_invoice&#39;, &#39;Vendor Bill&#39;), (&#39;in_refund&#39;, &#39;Vendor Credit Note&#39;), (&#39;out_receipt&#39;, &#39;Customer Receipt&#39;), (&#39;in_receipt&#39;, &#39;Vendor Payment&#39;)]" />
+    <field name="ReversedEntryId" type="Account.Move" label="Reversed Entry" />
+    <field name="InvoiceVendorBillId" type="Account.Move" label="Vendor Bill" />
+    <field name="InvoiceLineIds" collection="true" type="Account.MoveLine" label="Invoice Lines" />
+    <field name="LineIds" collection="true" type="Account.MoveLine" label="Lines" />
+    <method name="OnchangePurchaseAutoComplete" onchange="true" >
+      <field name="PurchaseVendorBillId" />
+      <field name="PurchaseId" />
+    </method>
+    <method name="OnchangePartnerId" onchange="true" >
+      <field name="PartnerId" />
+      <field name="CompanyId" />
+    </method>
+    <method name="ComputePurchaseOrderCount" compute="true" >
+      <field name="LineIds" />
+    </method>
+    <method name="ActionViewSourcePurchaseOrders" action="true" />
+    <method name="Create" create="true" />
+    <method name="Write" write="true" />
+    <method name="FindMatchingSubsetPOLines" static="true" />
+    <method name="FindMatchingPOAndInvLines" static="true" />
+    <method name="SetPurchaseOrders" />
+    <method name="MatchPurchaseOrders" static="true" />
+    <method name="FindAndSetPurchaseOrders" />
+    <method name="_GetEDICreation" static="true" />
+  </model>
+  <model id="Account.MoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="PurchaseLineId" type="Purchase.OrderLine" label="Purchase Order Line" ondelete="set null" />
+    <field name="PurchaseOrderId" type="Purchase.Order" label="Purchase Order" related="PurchaseLineId.OrderId" readonly="true" />
+    <method name="CopyDataExtendBusinessFields" />
   </model>
 </buvi>

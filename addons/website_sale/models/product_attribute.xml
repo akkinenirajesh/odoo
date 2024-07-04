@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSale.ProductAttribute" name="WebsiteSale.ProductAttribute" description="Product Attribute">
+        <field name="Visibility" type="selection" label="Visibility" default="Visible">
+            <option value="Visible" name="Visible" />
+            <option value="Hidden" name="Hidden" />
+        </field>
+    </model>
 </buvi>

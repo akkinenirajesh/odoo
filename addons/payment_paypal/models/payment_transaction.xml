@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="PayPalType" type="string" label="PayPal Transaction Type" />
+    <field name="Amount" type="float" />
+    <field name="CurrencyId" type="Core.Currency" />
+    <field name="ProviderCode" type="string" />
+    <field name="ProviderId" type="Payment.PaymentProvider" />
+    <field name="PartnerName" type="string" />
+    <field name="PartnerEmail" type="string" />
+    <field name="PartnerAddress" type="string" />
+    <field name="PartnerCity" type="string" />
+    <field name="PartnerCountryId" type="Core.Country" />
+    <field name="PartnerStateId" type="Core.State" />
+    <field name="PartnerZip" type="string" />
+    <field name="PartnerLang" type="string" />
+    <field name="Reference" type="string" />
+    <field name="ProviderReference" type="string" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" />
+    <field name="CompanyId" type="Res.Company" />
+  </model>
 </buvi>

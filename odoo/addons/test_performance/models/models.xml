@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestPerformance.BaseModel" name="BaseModel" description="Test Performance Base">
+    <field name="Name" type="string" />
+    <field name="Value" type="integer" default="0" />
+    <field name="ValuePc" type="float" compute="ValuePc" store="true" />
+    <field name="ValueCtx" type="float" compute="ValueCtx" />
+    <field name="ComputedValue" type="float" compute="ComputedValue" />
+    <field name="IndirectComputedValue" type="float" compute="IndirectComputedValue" />
+    <field name="PartnerId" type="res.partner" label="Customer" collection="true" />
+    <field name="LineIds" type="test_performance.line" collection="true" />
+    <field name="Total" type="integer" compute="Total" store="true" />
+    <field name="TagIds" type="test_performance.tag" collection="true" />
+  </model>
+  <model id="TestPerformance.LineModel" name="LineModel" description="Test Performance Line">
+    <field name="BaseId" type="test_performance.base" required="true" ondelete="cascade" collection="true" />
+    <field name="Value" type="integer" />
+  </model>
+  <model id="TestPerformance.TagModel" name="TagModel" description="Test Performance Tag">
+    <field name="Name" type="string" />
+  </model>
+  <model id="TestPerformance.Bacon" name="Bacon" description="Test Performance Bacon">
+    <field name="PropertyEggs" type="test_performance.eggs" label="Eggs" company_dependent="true" collection="true" />
+  </model>
+  <model id="TestPerformance.Eggs" name="Eggs" description="Test Performance Eggs">
+    <field name="Name" type="string" />
+  </model>
+  <model id="TestPerformance.Mozzarella" name="Mozzarella" description="Test Performance Mozzarella">
+    <field name="Value" type="integer" default="0" required="true" />
+    <field name="ValuePlusOne" type="integer" compute="ValuePlusOne" required="true" store="true" />
+    <field name="ValueNullByDefault" type="integer" />
+  </model>
 </buvi>

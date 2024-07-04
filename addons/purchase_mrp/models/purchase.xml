@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+        <field name="MrpProductionCount" type="integer" label="Count of MO Source" groups="Mrp.GroupMrpUser" />
+    </model>
+    <model id="Purchase.PurchaseOrderLine" name="PurchaseOrderLine" description="Purchase Order Line" collection="true">
+        <field name="QtyReceived" type="float" />
+    </model>
 </buvi>

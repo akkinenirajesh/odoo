@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleStock.AccountMove" name="Account.AccountMove" description="Account Move">
+    <field name="StockAccountGetLastStepStockMoves" type="function" method="StockAccountGetLastStepStockMoves" />
+    <field name="GetInvoicedLotValues" type="function" method="GetInvoicedLotValues" />
+    <field name="DeliveryDate" type="datetime" readonly="true" compute="ComputeDeliveryDate" store="true" />
+    <field name="IncotermLocation" type="Core.Location" readonly="true" compute="ComputeIncotermLocation" store="true" />
+  </model>
+
+  <model id="SaleStock.AccountMoveLine" name="Account.AccountMoveLine" description="Account Move Line">
+    <field name="SaleCanBeReinvoice" type="function" method="SaleCanBeReinvoice" />
+    <field name="StockAccountGetAngloSaxonPriceUnit" type="function" method="StockAccountGetAngloSaxonPriceUnit" />
+  </model>
 </buvi>

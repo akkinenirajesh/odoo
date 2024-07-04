@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpWorkcenter" name="MrpWorkcenter" description="Work Center">
+    <field name="Name" type="string" label="Work Center" required="true" translate="true"/>
+    <field name="Code" type="string" label="Code" required="true"/>
+    <field name="Capacity" type="float" label="Capacity" default="1.0" help="Capacity in hours. Use for planning purposes."/>
+    <field name="TimeStandard" type="float" label="Standard Time" help="Time needed in hours to perform the operation."/>
+    <field name="TimeEfficiency" type="float" label="Efficiency" help="This factor is used to compute the real time, calculated with : Standard Time * Time Efficiency."/>
+    <field name="TimeCycle" type="float" label="Cycle Time" help="Time needed to execute the workcenter operation (standard time, time efficiency and loss time taken into account)."/>
+    <field name="LossTime" type="float" label="Loss Time" help="Loss time that you expect to lose during the production process."/>
+    <field name="WorkCenterType" type="selection" label="Type" selection="Mrp.WorkCenterType"/>
+    <field name="LocationId" type="Stock.Location" label="Location" required="true"/>
+    <field name="ResourceCalendarId" type="Resource.ResourceCalendar" label="Calendar" help="Working time calendar of the work center."/>
+    <field name="IsActive" type="bool" label="Active" default="true" help="If the active field is set to false, it will allow you to hide the Work Center without removing it."/>
+    <field name="AnalyticDistribution" type="Many2many" collection="true" relation="Account.AnalyticAccount" label="Analytic Account Distribution" help="Distribution for cost calculation purposes."/>
+    <field name="CostsHourAccountIds" type="Many2many" collection="true" relation="Account.AnalyticAccount" label="Costs/Hour Account" store="true"/>
+    <field name="Company" type="Res.Company" label="Company"/>
+    <field name="Description" type="text" label="Description"/>
+    <field name="Note" type="html" label="Note" translate="true"/>
+  </model>
+  <optionset id="Mrp.WorkCenterType" name="Work Center Type">
+    <option value="Production" name="Production" />
+    <option value="Assembly" name="Assembly" />
+  </optionset>
 </buvi>

@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountEdiDocument" name="AccountEdiDocument" description="Account EDI Document">
+    <field name="EdiFormatId" type="Account.EdiFormat" />
+    <field name="EdiState" type="Selection" selection="Account.EdiDocumentState" label="State" readonly="true" />
+    <field name="MoveId" type="Account.Move" relation="true" />
+    <field name="MoveLineIds" type="Account.MoveLine" relation="true" collection="true" />
+    <field name="Document" type="Binary" label="Document" readonly="true" />
+    <field name="DocumentFilename" type="Char" label="Document Filename" readonly="true" />
+    <field name="Message" type="Text" readonly="true" />
+    <field name="Signature" type="Binary" label="Signature" readonly="true" />
+    <field name="SignatureFilename" type="Char" label="Signature Filename" readonly="true" />
+    <field name="Hash" type="Char" label="Hash" readonly="true" />
+    <field name="HashAlgorithm" type="Char" label="Hash Algorithm" readonly="true" />
+    <field name="ProcessedAt" type="Date" label="Processed At" readonly="true" />
+    <field name="CreatedAt" type="Date" label="Created At" readonly="true" />
+    <field name="ExpirationDate" type="Date" label="Expiration Date" readonly="true" />
+    <field name="State" type="Selection" selection="Account.EdiDocumentState" label="State" readonly="true" />
+    <field name="Error" type="Boolean" label="Error" readonly="true" />
+    <field name="ErrorMessage" type="Text" readonly="true" />
+    <field name="EdiFormatId" type="Account.EdiFormat" label="EDI Format" readonly="true" />
+    <field name="AttachmentId" type="IrAttachment" relation="true" readonly="true" />
+    <field name="AttachmentIds" type="IrAttachment" relation="true" collection="true" readonly="true" />
+    <field name="Company" type="ResCompany" readonly="true" />
+    <field name="MoveId" type="Account.Move" label="Move" readonly="true" relation="true" />
+  </model>
+  <optionset id="Account.EdiDocumentState" name="Account EDI Document State">
+    <option value="draft" name="Draft" />
+    <option value="to_send" name="To Send" />
+    <option value="sent" name="Sent" />
+    <option value="received" name="Received" />
+    <option value="processed" name="Processed" />
+    <option value="error" name="Error" />
+  </optionset>
 </buvi>

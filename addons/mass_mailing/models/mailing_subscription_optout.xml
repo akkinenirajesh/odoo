@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MailingSubscriptionReason" name="MailingSubscriptionReason" description="Mailing Subscription Reason">
+        <field name="Name" type="string" label="Reason" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="IsFeedback" type="bool" label="Ask For Feedback" />
+    </model>
 </buvi>

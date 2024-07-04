@@ -1,94 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="hr.salary.attachment" name="Hr.SalaryAttachment" track_created="true" track_update="true">
-    <field name="Employees" label="Employees" type="Hr.Employee" required="true" collection="true" copied="true"/>
-    <field name="Payslips" label="Payslips" type="Hr.Payslip" collection="true"/>
-    <field name="DeductionType" label="Type" type="Hr.SalaryAttachmentType" required="true" copied="true" on-delete="Restrict"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Company" label="Company" type="Res.Company" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Company.Currency"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="ActiveAmount" label="Active Amount" type="monetary" readonly="true" transient="true"/>
-    <field name="Attachment" label="Document" type="binary"/>
-    <field name="AttachmentName" label="Attachment Name" type="string" copied="true"/>
-    <field name="DateEnd" label="End Date" type="date" copied="true"/>
-    <field name="DateEstimatedEnd" label="Estimated End Date" type="date" readonly="true" transient="true"/>
-    <field name="DateStart" label="Start Date" type="date" required="true" copied="true"/>
-    <field name="Description" label="Description" type="string" required="true" copied="true"/>
-    <field name="EmployeeCount" label="Employee Count" type="integer" readonly="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="HasSimilarAttachment" label="Has Similar Attachment" type="bool" readonly="true" transient="true"/>
-    <field name="HasSimilarAttachmentWarning" label="Has Similar Attachment Warning" type="string" readonly="true" transient="true"/>
-    <field name="HasTotalAmount" label="Has Total Amount" type="bool" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="MonthlyAmount" label="Monthly Amount" type="monetary" required="true" copied="true"/>
-    <field name="NoEndDate" label="No End Date" type="bool" readonly="true" related-field="DeductionType.NoEndDate"/>
-    <field name="PaidAmount" label="Paid Amount" type="monetary" copied="true"/>
-    <field name="PayslipCount" label="# Payslips" type="integer" readonly="true" transient="true"/>
-    <field name="RemainingAmount" label="Remaining Amount" type="monetary" readonly="true"/>
-    <field name="State" label="Status" type="Hr.SalaryAttachmentStatus" required="true"/>
-    <field name="TotalAmount" label="Total Amount" type="monetary" copied="true"/>
-  </model>
-  <model id="ir.attachment" name="Ir.Attachment" track_created="true" track_update="true">
-    <field name="Voices" label="Voice" type="Discuss.VoiceMetadata" collection="true"/>
-    <field name="Documents" label="Document" type="Documents.Document" collection="true"/>
-    <field name="Original" label="Original (unoptimized, unresized) attachment" type="Ir.Attachment" copied="true" on-delete="Clear"/>
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="ThemeTemplate" label="Theme Template" type="Theme.IrAttachment" on-delete="Clear"/>
-    <field name="Website" label="Website" type="Website." copied="true" on-delete="Clear"/>
-    <field name="AccessToken" label="Access Token" type="string" copied="true"/>
-    <field name="Checksum" label="Checksum/SHA1" type="string" readonly="true" copied="true"/>
-    <field name="Datas" label="File Content (base64)" type="binary" transient="true"/>
-    <field name="DbDatas" label="Database Data" type="binary" copied="true"/>
-    <field name="Description" label="Description" type="text" copied="true"/>
-    <field name="FileSize" label="File Size" type="integer" readonly="true" copied="true"/>
-    <field name="ImageHeight" label="Image Height" type="integer" readonly="true" transient="true"/>
-    <field name="ImageSrc" label="Image Src" type="string" readonly="true" transient="true"/>
-    <field name="ImageWidth" label="Image Width" type="integer" readonly="true" transient="true"/>
-    <field name="IndexContent" label="Indexed Content" type="text" readonly="true" copied="true"/>
-    <field name="Key" label="Key" type="string"/>
-    <field name="LocalUrl" label="Attachment URL" type="string" readonly="true" transient="true"/>
-    <field name="Mimetype" label="Mime Type" type="string" readonly="true" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="Public" label="Is public document" type="bool" copied="true"/>
-    <field name="Raw" label="File Content (raw)" type="binary" transient="true"/>
-    <field name="ResField" label="Resource Field" type="string" readonly="true" copied="true"/>
-    <field name="Res" label="Resource ID" type="many2one_reference" readonly="true" copied="true"/>
-    <field name="ResModel" label="Resource Model" type="string" readonly="true" copied="true"/>
-    <field name="ResName" label="Resource Name" type="string" readonly="true" transient="true"/>
-    <field name="StoreFname" label="Stored Filename" type="string" indexed="true" copied="true"/>
-    <field name="Type" label="Type" type="Ir.AttachmentType" required="true" copied="true"/>
-    <field name="Url" label="Url" type="string" indexed="true" copied="true"/>
-  </model>
-  <model id="mail.thread.main.attachment" name="Mail.ThreadMainAttachment">
-    <field name="MessageMainAttachment" label="Main Attachment" type="Ir.Attachment" on-delete="Clear"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-  </model>
-  <model id="theme.ir.attachment" name="Theme.IrAttachment" track_created="true" track_update="true">
-    <field name="Copys" label="Attachment using a copy of me" type="Ir.Attachment" collection="true" readonly="true"/>
-    <field name="Key" label="Key" type="string" required="true" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="Url" label="Url" type="string" copied="true"/>
-  </model>
+    <model id="Website.IrModelData" name="IrModelData" description="IrModelData">
+        <field name="Module" type="string" label="Module" />
+        <field name="Name" type="string" label="Name" />
+        <field name="Model" type="string" label="Model" />
+        <field name="ResId" type="integer" label="Res ID" />
+        <field name="Noupdate" type="bool" label="No Update" />
+        <field name="Module" type="string" label="Module" />
+        <field name="Field" type="string" label="Field" />
+        <field name="Value" type="text" label="Value" />
+        <field name="Date" type="datetime" label="Date" />
+        <field name="DateCreate" type="datetime" label="Date Create" />
+        <field name="CreateUser" type="Users.User" label="Create User" />
+        <field name="DateWrite" type="datetime" label="Date Write" />
+        <field name="WriteUser" type="Users.User" label="Write User" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="CreateUid" type="Users.User" label="Create UID" />
+        <field name="WriteUid" type="Users.User" label="Write UID" />
+    </model>
 </buvi>

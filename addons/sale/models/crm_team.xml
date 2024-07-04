@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.CrmTeam" name="Sale.CrmTeam" description="CRM Team">
+        <field name="Invoiced" type="float" label="Invoiced This Month" readonly="true"
+            help="Invoice revenue for the current month. This is the amount the sales channel has invoiced this month. It is used to compute the progression ratio of the current and target revenue on the kanban view." />
+        <field name="InvoicedTarget" type="float" label="Invoicing Target"
+            help="Revenue Target for the current month (untaxed total of paid invoices)." />
+        <field name="QuotationsCount" type="integer" label="Number of quotations to invoice" readonly="true" />
+        <field name="QuotationsAmount" type="float" label="Amount of quotations to invoice" readonly="true" />
+        <field name="SalesToInvoiceCount" type="integer" label="Number of sales to invoice" readonly="true" />
+        <field name="SaleOrderCount" type="integer" label="# Sale Orders" />
+    </model>
 </buvi>

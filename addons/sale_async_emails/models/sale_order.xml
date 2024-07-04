@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <inherit id="sale.sale_order" />
+    <field name="PendingEmailTemplateId" type="mail.template" label="Pending Email Template" help="The template of the pending email that must be sent asynchronously." ondelete="set null" readonly="true" />
+  </model>
 </buvi>

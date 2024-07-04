@@ -1,30 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="rating.rating" name="Rating.Rating" track_created="true" track_update="true">
-    <field name="ParentResModel" label="Parent Related Document Model" type="Ir.Model" indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="ResModel" label="Related Document Model" type="Ir.Model" indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="Message" label="Message" type="Mail.Message" indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="Partner" label="Customer" type="Res.Partner" copied="true" on-delete="Clear"/>
-    <field name="Publisher" label="Commented by" type="Res.Partner" indexed="true" readonly="true" copied="true" on-delete="Clear"/>
-    <field name="RatedPartner" label="Rated Operator" type="Res.Partner" copied="true" on-delete="Clear"/>
-    <field name="AccessToken" label="Security Token" type="string" copied="true"/>
-    <field name="Consumed" label="Filled Rating" type="bool" copied="true"/>
-    <field name="Feedback" label="Comment" type="text" copied="true"/>
-    <field name="IsInternal" label="Visible Internally Only" type="bool" related-field="Message.IsInternal"/>
-    <field name="ParentRef" label="Parent Ref" type="reference" readonly="true" transient="true"/>
-    <field name="ParentRes" label="Parent Document" type="integer" indexed="true" copied="true"/>
-    <field name="ParentResModel" label="Parent Document Model" type="string" indexed="true" related-field="ParentResModel.Model"/>
-    <field name="ParentResName" label="Parent Document Name" type="string" readonly="true"/>
-    <field name="PublisherComment" label="Publisher comment" type="text" copied="true"/>
-    <field name="PublisherDatetime" label="Commented on" type="datetime" readonly="true" copied="true"/>
-    <field name="RatedPartnerName" label="Name" type="string" readonly="true" transient="true" related-field="RatedPartner.Name"/>
-    <field name="Rating" label="Rating Value" type="float" copied="true"/>
-    <field name="RatingImage" label="Image" type="binary" readonly="true" transient="true"/>
-    <field name="RatingImageUrl" label="Image URL" type="string" readonly="true" transient="true"/>
-    <field name="RatingText" label="Rating" type="Rating.RatingRating" readonly="true"/>
-    <field name="Res" label="Document" type="many2one_reference" required="true" indexed="true" copied="true"/>
-    <field name="ResModel" label="Document Model" type="string" indexed="true" readonly="true" related-field="ResModel.Model"/>
-    <field name="ResName" label="Resource name" type="string" readonly="true"/>
-    <field name="ResourceRef" label="Resource Ref" type="reference" readonly="true" transient="true"/>
+  <model id="Repair.Product" name="Repair.Product" description="Product" inherit="Product.Product">
+    <field name="CreateRepair" type="bool" label="Create Repair" help="Create a linked Repair Order on Sale Order confirmation of this product." groups="Stock.GroupStockUser" />
+  </model>
+  <model id="Repair.ProductTemplate" name="Repair.ProductTemplate" description="Product Template" inherit="Product.ProductTemplate">
+    <field name="CreateRepair" type="bool" label="Create Repair" help="Create a linked Repair Order on Sale Order confirmation of this product." groups="Stock.GroupStockUser" />
   </model>
 </buvi>

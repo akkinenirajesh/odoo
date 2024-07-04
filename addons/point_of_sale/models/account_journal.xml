@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.Journal" name="AccountJournal" description="Account Journal">
+        <field name="PosPaymentMethodIds" type="Account.PaymentMethod" collection="true" label="Point of Sale Payment Methods" />
+    </model>
+    <optionset id="Account.PaymentMethod" name="Account Payment Method" />
 </buvi>

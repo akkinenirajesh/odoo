@@ -1,5 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Product.Pricelist" name="Pricelist" description="Pricelist">
+        <field name="Name" type="string" label="Pricelist Name" required="true" translate="true"/>
+        <field name="CurrencyId" type="Core.Currency" label="Currency" required="true"/>
+        <field name="Sequence" type="integer" label="Sequence" help="Gives the order to apply pricelists."/>
+        <field name="DiscountPolicy" type="Product.PricelistDiscountPolicy" label="Discount Policy"
+               help="Define the pricelists discount policy."/>
+        <field name="CompanyId" type="Core.Company" label="Company" required="true" help="Company"/>
+        <field name="Active" type="bool" default="true" help="If the active field is set to false, it will allow you to hide the pricelist without deleting it."/>
+    </model>
+
+    <optionset id="Product.PricelistDiscountPolicy" name="Pricelist Discount Policy">
+        <option value="WithDiscount" name="With Discount" />
+        <option value="WithoutDiscount" name="Without Discount" />
+    </optionset>
+
+    <model id="Product.PricelistItem" name="PricelistItem" description="Pricelist Item">
+        <field name="PricelistId" type="Product.Pricelist" label="Pricelist" required="true" collection="true"/>
+        <field name="AppliedOn" type="Product.PricelistItemAppliedOn" label="Apply On" required="true"/>
+        <field name="ComputePrice" type="Product.PricelistItemComputePrice" label="Price Calculation" required="true"/>
+        <field name="FixedPrice" type="float" label="Fixed Price" help="The fixed price for the product."/>
+        <field name="PercentPrice" type="float" label="Percentage Price" help="The percentage price for the product."/>
+        <field name="ProductId" type="Product.Product" label="Product" required="true" collection="true"/>
+        <field name="ProductTemplateId" type="Product.Template" label="Product Template" required="true" collection="true"/>
+        <field name="CategId" type="Product.Category" label="Product Category" required="true" collection="true"/>
+        <field name="MinQuantity" type="float" label="Min Quantity" help="Minimal quantity for the pricelist item"/>
+        <field name="Base" type="Product.PricelistItemBase" label="Pricelist base"/>
+        <field name="PriceDiscount" type="float" label="Price Discount"
+               help="Used in combination with pricelist base."/>
+        <field name="DateStart" type="datetime" label="Start Date" help="Start date of the pricelist item."/>
+        <field name="DateEnd" type="datetime" label="End Date" help="End date of the pricelist item."/>
+    </model>
+
+    <optionset id="Product.PricelistItemAppliedOn" name="Pricelist Item Applied On">
+        <option value="Global" name="Global" />
+        <option value="ProductCategory" name="Product Category" />
+        <option value="Product" name="Product" />
+        <option value="ProductVariant" name="Product Variant" />
+    </optionset>
+
+    <optionset id="Product.PricelistItemComputePrice" name="Pricelist Item Compute Price">
+        <option value="Fixed" name="Fixed" />
+        <option value="Percentage" name="Percentage" />
+        <option value="Formula" name="Formula" />
+    </optionset>
+
+    <optionset id="Product.PricelistItemBase" name="Pricelist Item Base">
+        <option value="ListPrice" name="List Price" />
+        <option value="StandardPrice" name="Standard Price" />
+    </optionset>
 </buvi>

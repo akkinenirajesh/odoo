@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosOrder" name="Pos.PosOrder" description="Point of Sale Orders">
+        <field name="CurrencyRate" type="float" label="Currency Rate" readonly="true" />
+        <field name="CrmTeamId" type="Crm.CrmTeam" label="Sales Team" />
+        <field name="SaleOrderCount" type="integer" label="Sale Order Count" readonly="true" />
+        <field name="PartnerId" type="Res.Partner" label="Customer" />
+        <field name="CompanyId" type="Res.Company" label="Company" />
+        <field name="DateOrder" type="datetime" label="Order Date" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" />
+        <field name="Lines" type="Pos.PosOrderLine" collection="true" label="Order Lines" />
+        <field name="ConfigId" type="Pos.PosConfig" label="Point of Sale" />
+        <field name="State" type="selection" label="Status"
+            selection="[('draft', 'Draft'), ('paid', 'Paid'), ('done', 'Posted'), ('invoiced', 'Invoiced'), ('cancel', 'Cancelled')]"
+            default="draft" />
+    </model>
+
+    <model id="Pos.PosOrderLine" name="Pos.PosOrderLine" description="Point of Sale Order Line">
+        <field name="SaleOrderOriginId" type="Sale.SaleOrder" label="Linked Sale Order" />
+        <field name="SaleOrderLineId" type="Sale.SaleOrderLine" label="Source Sale Order Line" />
+        <field name="DownPaymentDetails" type="text" label="Down Payment Details" />
+        <field name="QtyDelivered" type="float" label="Delivery Quantity" />
+        <field name="ProductId" type="Product.Product" label="Product" />
+        <field name="PriceUnit" type="float" label="Unit Price" />
+        <field name="Quantity" type="float" label="Quantity" />
+        <field name="Discount" type="float" label="Discount" />
+        <field name="TaxIds" type="Account.Tax" collection="true" label="Taxes" />
+        <field name="OrderLineId" type="integer" label="Line ID" />
+    </model>
+
+    <optionset id="Pos.PosOrderStatus" name="Point of Sale Order Status">
+        <option value="draft" name="Draft" />
+        <option value="paid" name="Paid" />
+        <option value="done" name="Posted" />
+        <option value="invoiced" name="Invoiced" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
+
 </buvi>

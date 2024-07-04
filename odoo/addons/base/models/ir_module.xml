@@ -1,3 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.Module" name="Module" description="Module">
+    <field name="Name" type="string" label="Technical Name" readonly="true" required="true" />
+    <field name="CategoryId" type="Base.ModuleCategory" label="Category" readonly="true" />
+    <field name="ShortName" type="string" label="Module Name" readonly="true" translate="true" />
+    <field name="Summary" type="string" label="Summary" readonly="true" translate="true" />
+    <field name="Description" type="text" label="Description" readonly="true" translate="true" />
+    <field name="DescriptionHtml" type="html" label="Description HTML" readonly="true" compute="ComputeDescriptionHtml" />
+    <field name="Author" type="string" label="Author" readonly="true" />
+    <field name="Maintainer" type="string" label="Maintainer" readonly="true" />
+    <field name="Contributors" type="text" label="Contributors" readonly="true" />
+    <field name="Website" type="string" label="Website" readonly="true" />
+    <field name="InstalledVersion" type="string" label="Latest Version" compute="ComputeLatestVersion" />
+    <field name="LatestVersion" type="string" label="Installed Version" readonly="true" />
+    <field name="PublishedVersion" type="string" label="Published Version" readonly="true" />
+    <field name="Url" type="string" label="URL" readonly="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="100" />
+    <field name="DependenciesId" type="Base.ModuleDependency" relation="true" collection="true" label="Dependencies" readonly="true" />
+    <field name="CountryIds" type="Core.Country" relation="true" collection="true" />
+    <field name="ExclusionIds" type="Base.ModuleExclusion" relation="true" collection="true" label="Exclusions" readonly="true" />
+    <field name="AutoInstall" type="bool" label="Automatic Installation" help="An auto-installable module is automatically installed by the system when all its dependencies are satisfied. If the module has no dependency, it is always installed." />
+    <field name="State" type="Base.ModuleState" readonly="true" />
+    <field name="Demo" type="bool" label="Demo Data" default="false" readonly="true" />
+    <field name="License" type="Base.ModuleLicense" default="LGPL-3" readonly="true" />
+    <field name="MenusByModule" type="text" label="Menus" readonly="true" compute="ComputeViews" />
+    <field name="ReportsByModule" type="text" label="Reports" readonly="true" compute="ComputeViews" />
+    <field name="ViewsByModule" type="text" label="Views" readonly="true" compute="ComputeViews" />
+    <field name="Application" type="bool" label="Application" readonly="true" />
+    <field name="Icon" type="string" label="Icon URL" />
+    <field name="IconImage" type="binary" label="Icon" compute="ComputeIconImage" />
+    <field name="IconFlag" type="string" label="Flag" compute="ComputeIconImage" />
+    <field name="ToBuy" type="bool" label="Odoo Enterprise Module" default="false" />
+    <field name="HasIap" type="bool" compute="ComputeHasIap" />
+    <unique>
+      <field name="Name" />
+      <message>The name of the module must be unique!</message>
+    </unique>
+  </model>
+  <optionset id="Base.ModuleState" name="Module State">
+    <option value="Uninstallable" name="Uninstallable" />
+    <option value="Uninstalled" name="Not Installed" />
+    <option value="Installed" name="Installed" />
+    <option value="ToUpgrade" name="To be upgraded" />
+    <option value="ToRemove" name="To be removed" />
+    <option value="ToInstall" name="To be installed" />
+  </optionset>
+  <optionset id="Base.ModuleLicense" name="Module License">
+    <option value="GPL-2" name="GPL Version 2" />
+    <option value="GPL-2OrAnyLaterVersion" name="GPL-2 or later version" />
+    <option value="GPL-3" name="GPL Version 3" />
+    <option value="GPL-3OrAnyLaterVersion" name="GPL-3 or later version" />
+    <option value="AGPL-3" name="Affero GPL-3" />
+    <option value="LGPL-3" name="LGPL Version 3" />
+    <option value="OtherOSIApprovedLicense" name="Other OSI Approved License" />
+    <option value="OEEL-1" name="Odoo Enterprise Edition License v1.0" />
+    <option value="OPL-1" name="Odoo Proprietary License v1.0" />
+    <option value="OtherProprietary" name="Other Proprietary" />
+  </optionset>
 </buvi>

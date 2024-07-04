@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventTrack.Event" name="Event" description="Event">
+        <field name="TrackIds" type="WebsiteEventTrack.Track" collection="true" label="Tracks" />
+        <field name="TrackCount" type="integer" label="Track Count" readonly="true" compute="ComputeTrackCount" />
+        <field name="WebsiteTrack" type="bool" label="Tracks on Website" readonly="false" store="true" />
+        <field name="WebsiteTrackProposal" type="bool" label="Proposals on Website" readonly="false" store="true" />
+        <field name="TrackMenuIds" type="Website.EventMenu" collection="true" label="Event Tracks Menus" domain="[('MenuType', '=', 'track')]" />
+        <field name="TrackProposalMenuIds" type="Website.EventMenu" collection="true" label="Event Proposals Menus" domain="[('MenuType', '=', 'track_proposal')]" />
+        <field name="AllowedTrackTagIds" type="WebsiteEventTrack.TrackTag" collection="true" label="Available Track Tags" relation="event_allowed_track_tags_rel" />
+        <field name="TracksTagIds" type="WebsiteEventTrack.TrackTag" collection="true" label="Track Tags" compute="ComputeTracksTagIds" store="true" />
+    </model>
 </buvi>

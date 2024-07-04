@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailBlacklist" name="MailBlacklist" description="Mail Blacklist">
+    <field name="Email" type="string" label="Email Address" required="true" index="trigram" help="This field is case insensitive." />
+    <field name="Active" type="bool" default="true" />
+    <unique>
+      <field name="Email" />
+      <message>Email address already exists!</message>
+    </unique>
+  </model>
 </buvi>

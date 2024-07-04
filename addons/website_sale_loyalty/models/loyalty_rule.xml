@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteSaleLoyalty.LoyaltyRule" name="LoyaltyRule" description="Loyalty Rule">
+    <field name="ProgramId" type="WebsiteSaleLoyalty.LoyaltyProgram" relation="true" />
+    <field name="WebsiteId" type="Website.Website" relation="true" />
+    <field name="Code" type="string" label="Code" required="true" />
+    <field name="Mode" type="WebsiteSaleLoyalty.LoyaltyRuleMode" />
+    <field name="Points" type="float" label="Points" required="true" />
+    <field name="RuleType" type="WebsiteSaleLoyalty.LoyaltyRuleType" />
+    <field name="Condition" type="string" label="Condition" />
+    <field name="MinQuantity" type="integer" label="Min Quantity" />
+    <field name="MaxQuantity" type="integer" label="Max Quantity" />
+    <field name="MaxPoints" type="float" label="Max Points" />
+    <field name="StartDate" type="datetime" label="Start Date" />
+    <field name="EndDate" type="datetime" label="End Date" />
+    <field name="Active" type="bool" label="Active" default="true" />
+    <field name="Coupon" type="bool" label="Coupon" default="false" />
+    <field name="DiscountType" type="WebsiteSaleLoyalty.LoyaltyRuleDiscountType" />
+    <field name="DiscountRate" type="float" label="Discount Rate" />
+    <field name="DiscountAmount" type="float" label="Discount Amount" />
+    <field name="DiscountMax" type="float" label="Discount Max" />
+    <field name="DiscountApplyOn" type="WebsiteSaleLoyalty.LoyaltyRuleDiscountApplyOn" />
+    <field name="DiscountDescription" type="string" label="Discount Description" />
+    <field name="MaxUses" type="integer" label="Max Uses" />
+    <field name="Uses" type="integer" label="Uses" readonly="true" />
+    <field name="UsedBy" type="many2many" collection="true" relation="Website.WebsiteUser" label="Used By" />
+  </model>
+  <optionset id="WebsiteSaleLoyalty.LoyaltyRuleMode" name="Loyalty Rule Mode">
+    <option value="with_code" name="With Code" />
+    <option value="without_code" name="Without Code" />
+  </optionset>
+  <optionset id="WebsiteSaleLoyalty.LoyaltyRuleType" name="Loyalty Rule Type">
+    <option value="product" name="Product" />
+    <option value="cart" name="Cart" />
+    <option value="order" name="Order" />
+  </optionset>
+  <optionset id="WebsiteSaleLoyalty.LoyaltyRuleDiscountType" name="Loyalty Rule Discount Type">
+    <option value="percentage" name="Percentage" />
+    <option value="amount" name="Amount" />
+  </optionset>
+  <optionset id="WebsiteSaleLoyalty.LoyaltyRuleDiscountApplyOn" name="Loyalty Rule Discount Apply On">
+    <option value="order" name="Order" />
+    <option value="product" name="Product" />
+  </optionset>
 </buvi>

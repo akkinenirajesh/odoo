@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="RewardId" type="Sale.Reward" />
+    </model>
 </buvi>

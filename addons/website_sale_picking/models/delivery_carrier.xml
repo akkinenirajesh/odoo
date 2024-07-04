@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Delivery.DeliveryCarrier" name="Delivery.DeliveryCarrier" description="Delivery Carrier">
+        <field name="DeliveryType" type="selection" label="Delivery Type" selection="Delivery.DeliveryCarrierDeliveryType"/>
+        <field name="Warehouse" type="stock.warehouse" label="Warehouse"/>
+        <field name="FixedPrice" type="float" label="Fixed Price"/>
+        <field name="ProductId" type="product.product" label="Product" />
+    </model>
+
+    <optionset id="Delivery.DeliveryCarrierDeliveryType" name="Delivery Carrier Delivery Type">
+        <option value="onsite" name="Pickup in store" />
+    </optionset>
 </buvi>

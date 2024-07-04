@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="JournalId" type="Account.Journal" label="Journal" />
+    <field name="L10nLatamUseDocuments" type="bool" label="Use Documents" />
+    <field name="CompanyId" type="Res.Company" label="Company" />
+    <field name="L10nLatamDocumentTypeId" type="L10nLatam.DocumentType" label="Document Type" />
+    <field name="Sequence" type="integer" label="Sequence" readonly="true" />
+  </model>
+
+  <model id="L10nLatam.DocumentType" name="DocumentType" description="Document Type">
+    <field name="DocCodePrefix" type="string" label="Document Code Prefix" />
+  </model>
+
+  <model id="Res.Company" name="Company" description="Company">
+    <field name="AccountFiscalCountryId" type="Core.Country" label="Country" />
+  </model>
 </buvi>

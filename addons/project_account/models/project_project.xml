@@ -1,3 +1,291 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.Project" name="Project" description="Project">
+    <field name="Name" type="string" label="Project Name" required="true" translate="true" />
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" label="Analytic Account" />
+    <field name="CurrencyId" type="Core.Currency" label="Currency" />
+    <field name="CompanyID" type="Core.Company" label="Company" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the project without removing it." />
+  </model>
+
+  <method model="Project.Project" name="AddPurchaseItems" return="void">
+    <argument name="profitabilityItems" type="ProfitabilityItems" />
+    <argument name="withAction" type="bool" default="true" />
+    <code language="csharp">
+      var domain = this.GetAddPurchaseItemsDomain();
+      var withAction = withAction && (
+        Env.User.HasGroup("account.group_account_invoice") ||
+        Env.User.HasGroup("account.group_account_readonly"));
+      this.GetCostsItemsFromPurchase(domain, profitabilityItems, withAction);
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetAddPurchaseItemsDomain" return="Domain">
+    <code language="csharp">
+      var purchaseOrderLineInvoiceLineIds = this.GetAlreadyIncludedProfitabilityInvoiceLineIds();
+      return new Domain(
+        new DomainCondition("MoveType", "in", new List<string> { "in_invoice", "in_refund" }),
+        new DomainCondition("ParentState", "in", new List<string> { "draft", "posted" }),
+        new DomainCondition("PriceSubtotal", ">", 0),
+        new DomainCondition("Id", "not in", purchaseOrderLineInvoiceLineIds)
+      );
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetAlreadyIncludedProfitabilityInvoiceLineIds" return="List[int]">
+    <code language="csharp">
+      // This method should be implemented in the relevant C# class
+      throw new NotImplementedException();
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetCostsItemsFromPurchase" return="void">
+    <argument name="domain" type="Domain" />
+    <argument name="profitabilityItems" type="ProfitabilityItems" />
+    <argument name="withAction" type="bool" default="true" />
+    <code language="csharp">
+      // calculate the cost of bills without a purchase order
+      var accountMoveLines = Env.Model<Account.MoveLine>().SearchFetch(
+        domain.Conditions.Concat(new DomainCondition("AnalyticDistribution", "in", this.AnalyticAccountId.Id)).ToList(),
+        new List<string> { "PriceSubtotal", "ParentState", "CurrencyId", "AnalyticDistribution", "MoveType", "MoveId" }
+      );
+      if (accountMoveLines.Count > 0)
+      {
+        // Get conversion rate from currencies to currency of the current company
+        var amountInvoiced = 0.0;
+        var amountToInvoice = 0.0;
+        foreach (var moveLine in accountMoveLines)
+        {
+          var priceSubtotal = moveLine.CurrencyId.Convert(moveLine.PriceSubtotal, this.CurrencyId);
+          // an analytic account can appear several time in an analytic distribution with different repartition percentage
+          var analyticContribution = moveLine.AnalyticDistribution.Where(x => x.Key.Contains(this.AnalyticAccountId.Id.ToString())).Sum(x => x.Value) / 100.0;
+          if (moveLine.ParentState == "draft")
+          {
+            if (moveLine.MoveType == "in_invoice")
+            {
+              amountToInvoice -= priceSubtotal * analyticContribution;
+            }
+            else // moveLine.MoveType == 'in_refund'
+            {
+              amountToInvoice += priceSubtotal * analyticContribution;
+            }
+          }
+          else // moveLine.ParentState == 'posted'
+          {
+            if (moveLine.MoveType == "in_invoice")
+            {
+              amountInvoiced -= priceSubtotal * analyticContribution;
+            }
+            else // moveLine.MoveType == 'in_refund'
+            {
+              amountInvoiced += priceSubtotal * analyticContribution;
+            }
+          }
+        }
+        // don't display the section if the final values are both 0 (bill -> vendor credit)
+        if (amountInvoiced != 0 || amountToInvoice != 0)
+        {
+          var costs = profitabilityItems.Costs;
+          var sectionId = "other_purchase_costs";
+          var billsCosts = new ProfitabilityItem
+          {
+            Id = sectionId,
+            Sequence = this.GetProfitabilitySequencePerInvoiceType()[sectionId],
+            Billed = amountInvoiced,
+            ToBill = amountToInvoice
+          };
+          if (withAction)
+          {
+            billsCosts.Action = this.GetActionForProfitabilitySection(accountMoveLines.Select(x => x.MoveId.Id).ToList(), sectionId);
+          }
+          costs.Data.Add(billsCosts);
+          costs.Total.Billed += amountInvoiced;
+          costs.Total.ToBill += amountToInvoice;
+        }
+      }
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetActionForProfitabilitySection" return="Action">
+    <argument name="recordIds" type="List[int]" />
+    <argument name="name" type="string" />
+    <code language="csharp">
+      var args = new List<object> { name, new Domain(new DomainCondition("Id", "in", recordIds)) };
+      if (recordIds.Count == 1)
+      {
+        args.Add(recordIds[0]);
+      }
+      return new Action
+      {
+        Name = "action_profitability_items",
+        Type = "object",
+        Args = Json.Serialize(args)
+      };
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetProfitabilityLabels" return="Dictionary[string, string]">
+    <code language="csharp">
+      return new Dictionary<string, string>
+      {
+        {"other_purchase_costs", "Vendor Bills"},
+        {"other_revenues", "Other Revenues"},
+        {"other_costs", "Other Costs"}
+      }.Concat(base.GetProfitabilityLabels()).ToDictionary(x => x.Key, x => x.Value);
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetProfitabilitySequencePerInvoiceType" return="Dictionary[string, int]">
+    <code language="csharp">
+      return new Dictionary<string, int>
+      {
+        {"other_purchase_costs", 11},
+        {"other_revenues", 14},
+        {"other_costs", 15}
+      }.Concat(base.GetProfitabilitySequencePerInvoiceType()).ToDictionary(x => x.Key, x => x.Value);
+    </code>
+  </method>
+
+  <method model="Project.Project" name="ActionProfitabilityItems" return="Action">
+    <argument name="sectionName" type="string" />
+    <argument name="domain" type="Domain" default="null" />
+    <argument name="resId" type="int" default="false" />
+    <code language="csharp">
+      if (sectionName == "other_revenues" || sectionName == "other_costs")
+      {
+        var action = Env.Model<Ir.Actions.Actions>().GetForXmlId("analytic.account_analytic_line_action_entries");
+        action.Domain = domain;
+        action.Context = new Dictionary<string, object> { { "group_by_date", true } };
+        if (resId != 0)
+        {
+          action.Views = new List<View> { new View(false, "form") };
+          action.ViewMode = "form";
+          action.ResId = resId;
+        }
+        else
+        {
+          var pivotViewId = Env.Model<Ir.Model.Data>().GetForXmlId("project_account.project_view_account_analytic_line_pivot");
+          var graphViewId = Env.Model<Ir.Model.Data>().GetForXmlId("project_account.project_view_account_analytic_line_graph");
+          action.Views = new List<View>
+          {
+            new View(pivotViewId, "pivot"),
+            new View(graphViewId, "graph"),
+            new View(action.Views[0].Id, action.Views[0].Type)
+          };
+        }
+        return action;
+      }
+
+      if (sectionName == "other_purchase_costs")
+      {
+        var action = Env.Model<Ir.Actions.Actions>().GetForXmlId("account.action_move_in_invoice_type");
+        action.Domain = domain ?? new Domain();
+        if (resId != 0)
+        {
+          action.Views = new List<View> { new View(false, "form") };
+          action.ViewMode = "form";
+          action.ResId = resId;
+        }
+        return action;
+      }
+
+      return base.ActionProfitabilityItems(sectionName, domain, resId);
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetDomainAalWithNoMoveLine" return="Domain">
+    <code language="csharp">
+      // this method is used in order to overwrite the domain in sale_timesheet module. Since the field 'project_id' is added to the "analytic line" model
+      // in the hr_timesheet module, we can't add the condition ('project_id', '=', False) here.
+      return new Domain(
+        new DomainCondition("AccountId", "=", this.AnalyticAccountId.Id),
+        new DomainCondition("MoveLineId", "=", false),
+        new DomainCondition("Category", "!=", "manufacturing_order")
+      );
+    </code>
+  </method>
+
+  <method model="Project.Project" name="GetItemsFromAal" return="ProfitabilityItems">
+    <argument name="withAction" type="bool" default="true" />
+    <code language="csharp">
+      var domain = this.GetDomainAalWithNoMoveLine();
+      var aalOtherSearch = Env.Model<Account.AnalyticLine>().SearchRead(domain, new List<string> { "Id", "Amount", "CurrencyId" });
+      if (aalOtherSearch.Count == 0)
+      {
+        return new ProfitabilityItems
+        {
+          Revenues = new ProfitabilitySection { Data = new List<ProfitabilityItem>(), Total = new ProfitabilityTotal { Invoiced = 0.0, ToInvoice = 0.0 } },
+          Costs = new ProfitabilitySection { Data = new List<ProfitabilityItem>(), Total = new ProfitabilityTotal { Billed = 0.0, ToBill = 0.0 } }
+        };
+      }
+      // dict of form  { company : {costs : float, revenues: float}}
+      var dictAmountPerCurrencyId = new Dictionary<int, Dictionary<string, double>>();
+      var setCurrencyIds = new HashSet<int> { this.CurrencyId.Id };
+      var costIds = new List<int>();
+      var revenueIds = new List<int>();
+      foreach (var aal in aalOtherSearch)
+      {
+        setCurrencyIds.Add(aal.CurrencyId.Id);
+        var aalAmount = aal.Amount;
+        if (aalAmount < 0.0)
+        {
+          if (!dictAmountPerCurrencyId.ContainsKey(aal.CurrencyId.Id))
+          {
+            dictAmountPerCurrencyId.Add(aal.CurrencyId.Id, new Dictionary<string, double> { { "costs", 0.0 }, { "revenues", 0.0 } });
+          }
+          dictAmountPerCurrencyId[aal.CurrencyId.Id]["costs"] += aalAmount;
+          costIds.Add(aal.Id);
+        }
+        else
+        {
+          if (!dictAmountPerCurrencyId.ContainsKey(aal.CurrencyId.Id))
+          {
+            dictAmountPerCurrencyId.Add(aal.CurrencyId.Id, new Dictionary<string, double> { { "costs", 0.0 }, { "revenues", 0.0 } });
+          }
+          dictAmountPerCurrencyId[aal.CurrencyId.Id]["revenues"] += aalAmount;
+          revenueIds.Add(aal.Id);
+        }
+      }
+
+      var totalRevenues = 0.0;
+      var totalCosts = 0.0;
+      foreach (var currencyId in setCurrencyIds)
+      {
+        var currency = Env.Model<Core.Currency>().Browse(currencyId).WithPrefetch(dictAmountPerCurrencyId);
+        totalRevenues += currency.Convert(dictAmountPerCurrencyId[currencyId]["revenues"], this.CurrencyId, this.CompanyID);
+        totalCosts += currency.Convert(dictAmountPerCurrencyId[currencyId]["costs"], this.CurrencyId, this.CompanyID);
+      }
+
+      // we dont know what part of the numbers has already been billed or not, so we have no choice but to put everything under the billed/invoiced columns.
+      // The to bill/to invoice ones will simply remain 0
+      var profitabilitySequencePerInvoiceType = this.GetProfitabilitySequencePerInvoiceType();
+      var revenues = new ProfitabilityItem
+      {
+        Id = "other_revenues",
+        Sequence = profitabilitySequencePerInvoiceType["other_revenues"],
+        Invoiced = totalRevenues,
+        ToInvoice = 0.0
+      };
+      var costs = new ProfitabilityItem
+      {
+        Id = "other_costs",
+        Sequence = profitabilitySequencePerInvoiceType["other_costs"],
+        Billed = totalCosts,
+        ToBill = 0.0
+      };
+
+      if (withAction && Env.User.HasGroup("account.group_account_readonly"))
+      {
+        costs.Action = this.GetActionForProfitabilitySection(costIds, "other_costs");
+        revenues.Action = this.GetActionForProfitabilitySection(revenueIds, "other_revenues");
+      }
+
+      return new ProfitabilityItems
+      {
+        Revenues = new ProfitabilitySection { Data = new List<ProfitabilityItem> { revenues }, Total = new ProfitabilityTotal { Invoiced = totalRevenues, ToInvoice = 0.0 } },
+        Costs = new ProfitabilitySection { Data = new List<ProfitabilityItem> { costs }, Total = new ProfitabilityTotal { Billed = totalCosts, ToBill = 0.0 } }
+      };
+    </code>
+  </method>
 </buvi>

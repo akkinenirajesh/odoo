@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" />
+    <field name="SaleLineId" type="Sale.SaleOrderLine" />
+  </model>
+  <model id="Stock.StockMoveLine" name="StockMoveLine" description="Stock Move Line">
+    <field name="ProductId" type="Product.Product" />
+    <field name="ProductUomId" type="Product.Uom" />
+    <field name="Quantity" type="float" />
+    <field name="SalePrice" type="float" />
+    <field name="MoveId" type="Stock.StockMove" />
+    <field name="BomLineId" type="Mrp.BomLine" />
+  </model>
+  <model id="Mrp.BomLine" name="BomLine" description="Bill of Materials Line" collection="true">
+    <field name="BomId" type="Mrp.Bom" />
+    <field name="ProductUomId" type="Product.Uom" />
+    <field name="ProductQty" type="float" />
+  </model>
+  <model id="Mrp.Bom" name="Bom" description="Bill of Materials">
+    <field name="Type" type="selection" selection="['phantom', 'normal']" />
+  </model>
+  <model id="Sale.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line" collection="true">
+    <field name="OrderId" type="Sale.SaleOrder" />
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" />
+  </model>
+  <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" />
+  </model>
+  <model id="Product.Product" name="Product" description="Product">
+    <field name="ListPrice" type="float" />
+    <field name="UomId" type="Product.Uom" />
+  </model>
+  <model id="Product.Uom" name="Uom" description="Unit of Measure" />
+  <model id="Account.AnalyticAccount" name="AnalyticAccount" description="Analytic Account" />
 </buvi>

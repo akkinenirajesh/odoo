@@ -1,3 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosSession" name="PosSession" description="POS Session">
+    <field name="ConfigId" type="Pos.PosConfig" required="true" />
+    <field name="State" type="selection" selection="Pos.PosSessionState" />
+    <field name="StartAt" type="datetime" />
+    <field name="StopAt" type="datetime" />
+    <field name="User" type="Res.Users" />
+    <field name="CashRegister" type="Account.CashRegister" />
+    <field name="Journal" type="Account.Journal" />
+    <field name="SequenceNumber" type="integer" />
+    <field name="NumberOfSessions" type="integer" />
+    <field name="SessionStartBalance" type="float" />
+    <field name="BalanceStart" type="float" />
+    <field name="BalanceEnd" type="float" />
+    <field name="BalanceEndReal" type="float" />
+    <field name="Difference" type="float" />
+    <field name="TotalTax" type="float" />
+    <field name="IsClosing" type="bool" />
+    <field name="CashControl" type="bool" default="false" />
+    <field name="IsLocked" type="bool" />
+    <field name="ApiKeys" type="string" />
+    <field name="LastOrderPreparationChange" type="string" />
+    <field name="CurrentOrder" type="Pos.PosOrder" />
+    <field name="Orders" type="Pos.PosOrder" collection="true" />
+    <field name="InvoiceGenerated" type="bool" default="false" />
+    <field name="ClosePosSession" type="bool" />
+    <field name="GenerateInvoice" type="bool" />
+    <field name="GenerateInvoiceForOrder" type="Pos.PosOrder" />
+    <field name="Config" type="Pos.PosConfig" relation="ConfigId" />
+  </model>
+
+  <optionset id="Pos.PosSessionState" name="POS Session State">
+    <option value="opened" name="Opened" />
+    <option value="closed" name="Closed" />
+  </optionset>
+
+  <optionset id="Pos.PosSessionType" name="POS Session Type">
+    <option value="normal" name="Normal" />
+    <option value="remote" name="Remote" />
+    <option value="cashbox" name="Cashbox" />
+  </optionset>
+
+  <optionset id="Pos.PosSessionMode" name="POS Session Mode">
+    <option value="direct" name="Direct" />
+    <option value="indirect" name="Indirect" />
+  </optionset>
 </buvi>

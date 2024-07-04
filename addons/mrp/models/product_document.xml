@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Mrp.ProductDocument" name="ProductDocument" description="Product Document">
+        <field name="AttachedOnMrp" type="Mrp.AttachedOnMrp" label="MRP : Visible at" required="true"
+            help="Leave hidden if document only accessible on product form.\n"
+            "Select Bill of Materials to visualise this document as a product attachment when this product is in a bill of material." />
+    </model>
+    <optionset id="Mrp.AttachedOnMrp" name="AttachedOnMrp">
+        <option value="Hidden" name="Hidden" />
+        <option value="Bom" name="Bill of Materials" />
+    </optionset>
 </buvi>

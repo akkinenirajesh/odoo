@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.AccountInvoiceReport" name="AccountInvoiceReport" description="Account Invoice Report" inherit="Account.AccountInvoiceReport">
+    <field name="TeamId" type="Crm.Team" label="Sales Team" />
+  </model>
 </buvi>

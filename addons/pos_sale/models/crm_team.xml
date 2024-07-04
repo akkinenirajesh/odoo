@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosSale.CrmTeam" name="CrmTeam" description="CRM Team">
+    <field name="Name" type="string" label="Team Name" required="true" translate="true" />
+    <field name="PosConfigIds" collection="true" type="Pos.PosConfig" />
+    <field name="PosSessionsOpenCount" type="integer" label="Open POS Sessions" readonly="true" />
+    <field name="PosOrderAmountTotal" type="float" label="Session Sale Amount" readonly="true" />
+  </model>
 </buvi>

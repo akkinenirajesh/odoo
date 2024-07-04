@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.Bill" name="PointOfSale.Bill" description="Coins/Bills">
+    <field name="Name" type="string" label="Name" />
+    <field name="Value" type="float" label="Coin/Bill Value" required="true" digits="(16,4)" />
+    <field name="ForAllConfig" type="bool" label="For All PoS" default="true" help="If checked, this coin/bill will be available in all PoS." />
+    <field name="PosConfigIds" type="PointOfSale.PosConfig" collection="true" label="Point of Sales" />
+  </model>
 </buvi>

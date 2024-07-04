@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Code" required="true">
+      <option value="aps" name="Amazon Payment Services" />
+    </field>
+    <field name="ApsMerchantIdentifier" type="char" label="APS Merchant Identifier" required_if_provider="aps"
+            help="The code of the merchant account to use with this provider." />
+    <field name="ApsAccessCode" type="char" label="APS Access Code" required_if_provider="aps"
+            help="The access code associated with the merchant account."
+            groups="base.group_system" />
+    <field name="ApsShaRequest" type="char" label="APS SHA Request Phrase" required_if_provider="aps"
+            groups="base.group_system" />
+    <field name="ApsShaResponse" type="char" label="APS SHA Response Phrase" required_if_provider="aps"
+            groups="base.group_system" />
+  </model>
 </buvi>

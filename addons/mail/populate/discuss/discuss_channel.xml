@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.DiscussChannel" name="DiscussChannel" description="Discuss Channel">
+        <field name="Name" type="string" label="Channel Name" required="true" translate="true" />
+        <field name="ChannelType" type="Mail.DiscussChannelType" />
+        <field name="Description" type="string" label="Description" />
+        <field name="GroupPublicId" type="Res.Group" collection="true" />
+    </model>
+
+    <optionset id="Mail.DiscussChannelType" name="Discuss Channel Type">
+        <option value="channel" name="Channel" />
+        <option value="group" name="Group" />
+        <option value="chat" name="Chat" />
+    </optionset>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteSlides.Challenge" name="WebsiteSlides.Challenge" description="Challenge">
+    <field name="ChallengeCategory" type="WebsiteSlides.ChallengeCategory" />
+  </model>
+
+  <optionset id="WebsiteSlides.ChallengeCategory" name="Challenge Category">
+    <option value="slides" name="Website / Slides" />
+  </optionset>
 </buvi>

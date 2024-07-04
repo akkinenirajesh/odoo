@@ -1,3 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Discuss.Channel" name="Discuss.Channel" description="Discussion Channel">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the channel without removing it." />
+    <field name="ChannelType" type="Discuss.ChannelType" />
+    <field name="IsEditable" type="bool" compute="ComputeIsEditable" />
+    <field name="DefaultDisplayMode" type="selection" selection="VideoFullScreen" help="Determines how the channel will be displayed by default when opening it from its invitation link. No value means display text (no voice/video)." />
+    <field name="Description" type="text" />
+    <field name="Image128" type="image" max_width="128" max_height="128" />
+    <field name="Avatar128" type="image" max_width="128" max_height="128" compute="ComputeAvatar128" />
+    <field name="AvatarCacheKey" type="string" compute="ComputeAvatarCacheKey" />
+    <field name="ChannelPartnerIds" type="Core.Partner" collection="true" compute="ComputeChannelPartnerIds" inverse="InverseChannelPartnerIds" search="SearchChannelPartnerIds" />
+    <field name="ChannelMemberIds" type="Discuss.ChannelMember" collection="true" />
+    <field name="PinnedMessageIds" type="Mail.Message" collection="true" domain="[('Model', '=', 'Discuss.Channel'), ('PinnedAt', '!=', False)]" />
+    <field name="SfuChannelUuid" type="string" groups="base.group_system" />
+    <field name="SfuServerUrl" type="string" groups="base.group_system" />
+    <field name="RtcSessionIds" type="Discuss.ChannelRtcSession" collection="true" groups="base.group_system" />
+    <field name="IsMember" type="bool" compute="ComputeIsMember" search="SearchIsMember" />
+    <field name="MemberCount" type="integer" compute="ComputeMemberCount" compute_sudo="true" />
+    <field name="LastInterestDt" type="datetime" index="true" help="Contains the date and time of the last interesting event that happened in this channel. This updates itself when new message posted." />
+    <field name="GroupIds" type="Core.Group" collection="true"
+      help="Members of those groups will automatically added as followers. "
+      "Note that they will be able to manage their subscription manually "
+      "if necessary." />
+    <field name="Uuid" type="string" size="50" default="GenerateRandomToken" copy="false" />
+    <field name="GroupPublicId" type="Core.Group" compute="ComputeGroupPublicId" readonly="false" store="true" />
+    <field name="InvitationUrl" type="string" compute="ComputeInvitationUrl" />
+    <field name="AllowPublicUpload" type="bool" default="false" />
+    <unique>
+      <field name="Uuid" />
+      <message>The channel UUID must be unique</message>
+    </unique>
+    <constraint name="ChannelTypeNotNull" check="ChannelType IS NOT NULL" message="The channel type cannot be empty" />
+    <constraint name="GroupPublicIdCheck" check="ChannelType = 'channel' OR GroupPublicId IS NULL" message="Group authorization and group auto-subscription are only supported on channels." />
+  </model>
+
+  <optionset id="Discuss.ChannelType" name="Channel Type">
+    <option value="chat" name="Chat" />
+    <option value="channel" name="Channel" />
+    <option value="group" name="Group" />
+  </optionset>
+
+  <optionset id="Discuss.VideoFullScreen" name="Video Full Screen">
+    <option value="video_full_screen" name="Full screen video" />
+  </optionset>
 </buvi>

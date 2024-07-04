@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Spreadsheet.SpreadsheetDashboardShare" name="Spreadsheet.SpreadsheetDashboardShare" description="Copy of a shared dashboard">
+        <field name="DashboardId" type="Spreadsheet.SpreadsheetDashboard" required="true" ondelete="cascade"/>
+        <field name="ExcelExport" type="binary"/>
+        <field name="AccessToken" type="string" required="true" default="System.Guid.NewGuid().ToString()"/>
+        <field name="FullUrl" type="string" label="URL" compute="ComputeFullUrl"/>
+        <field name="Name" type="string" related="DashboardId.Name"/>
+    </model>
 </buvi>

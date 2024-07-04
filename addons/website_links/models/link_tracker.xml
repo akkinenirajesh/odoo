@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.LinkTracker" name="LinkTracker" description="Link Tracker">
+        <field name="ShortUrl" type="string" label="Short Url" />
+        <field name="ShortUrlHost" type="string" label="Short Url Host" />
+        <field name="Url" type="string" label="Url" />
+        <field name="Clicks" type="integer" label="Clicks" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="LastVisit" type="datetime" label="Last Visit" />
+        <field name="WebsiteId" type="Website.Website" label="Website" />
+        <field name="WebsiteIds" type="Website.Website" collection="true" label="Websites" />
+        <field name="ResPartnerId" type="Res.Partner" label="Partner" />
+        <field name="ResPartnerIds" type="Res.Partner" collection="true" label="Partners" />
+        <field name="CampaignId" type="utm.Campaign" label="Campaign" />
+        <field name="CampaignIds" type="utm.Campaign" collection="true" label="Campaigns" />
+        <field name="MediumId" type="utm.Medium" label="Medium" />
+        <field name="MediumIds" type="utm.Medium" collection="true" label="Media" />
+        <field name="SourceId" type="utm.Source" label="Source" />
+        <field name="SourceIds" type="utm.Source" collection="true" label="Sources" />
+        <field name="ContentId" type="utm.Content" label="Content" />
+        <field name="ContentIds" type="utm.Content" collection="true" label="Contents" />
+    </model>
 </buvi>

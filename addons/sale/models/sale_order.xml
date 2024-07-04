@@ -1,3 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="SaleOrder" description="Sales Order">
+    <field name="Name" type="string" label="Order Reference" required="true" readonly="false" index="trigram" default="New" />
+    <field name="Company" type="Res.Company" required="true" index="true" default="CurrentCompany" />
+    <field name="Customer" type="Res.Partner" string="Customer" required="true" change_default="true" index="true" tracking="1" check_company="true" />
+    <field name="State" type="Sale.SaleOrderState" string="Status" readonly="true" copy="false" index="true" tracking="3" default="Draft" />
+    <field name="Locked" type="bool" default="false" copy="false" help="Locked orders cannot be modified." />
+    <field name="HasArchivedProducts" type="bool" compute="ComputeHasArchivedProducts" />
+    <field name="ClientOrderRef" type="string" string="Customer Reference" copy="false" />
+    <field name="CreateDate" type="datetime" string="Creation Date" index="true" readonly="true" />
+    <field name="CommitmentDate" type="datetime" string="Delivery Date" copy="false" help="This is the delivery date promised to the customer. If set, the delivery order will be scheduled based on this date rather than product lead times." />
+    <field name="OrderDate" type="datetime" string="Order Date" required="true" copy="false" help="Creation date of draft/sent orders,\nConfirmation date of confirmed orders." default="Now" />
+    <field name="Origin" type="string" string="Source Document" help="Reference of the document that generated this sales order request" />
+    <field name="Reference" type="string" string="Payment Ref." help="The payment communication of this sale order." copy="false" />
+    <field name="RequireSignature" type="bool" string="Online signature" compute="ComputeRequireSignature" store="true" readonly="false" precompute="true" help="Request a online signature from the customer to confirm the order." />
+    <field name="RequirePayment" type="bool" string="Online payment" compute="ComputeRequirePayment" store="true" readonly="false" precompute="true" help="Request a online payment from the customer to confirm the order." />
+    <field name="PrepaymentPercent" type="float" string="Prepayment percentage" compute="ComputePrepaymentPercent" store="true" readonly="false" precompute="true" help="The percentage of the amount needed that must be paid by the customer to confirm the order." />
+    <field name="Signature" type="image" string="Signature" copy="false" attachment="true" max_width="1024" max_height="1024" />
+    <field name="SignedBy" type="string" string="Signed By" copy="false" />
+    <field name="SignedOn" type="datetime" string="Signed On" copy="false" />
+    <field name="ValidityDate" type="date" string="Expiration" help="Validity of the order, after that you will not able to sign & pay the quotation." compute="ComputeValidityDate" store="true" readonly="false" copy="false" precompute="true" />
+    <field name="Journal" type="Account.Journal" string="Invoicing Journal" compute="ComputeJournal" store="true" readonly="false" precompute="true" domain="[('Type', '=', 'Sale')]" check_company="true" help="If set, the SO will invoice in this journal; otherwise the sales journal with the lowest sequence is used." />
+    <field name="Note" type="html" string="Terms and conditions" compute="ComputeNote" store="true" readonly="false" precompute="true" />
+    <field name="PartnerInvoice" type="Res.Partner" string="Invoice Address" compute="ComputePartnerInvoice" store="true" readonly="false" required="true" precompute="true" check_company="true" index="btree_not_null" />
+    <field name="PartnerShipping" type="Res.Partner" string="Delivery Address" compute="ComputePartnerShipping" store="true" readonly="false" required="true" precompute="true" check_company="true" index="btree_not_null" />
+    <field name="FiscalPosition" type="Account.FiscalPosition" string="Fiscal Position" compute="ComputeFiscalPosition" store="true" readonly="false" precompute="true" check_company="true" help="Fiscal positions are used to adapt taxes and accounts for particular customers or sales orders/invoices. The default value comes from the customer." />
+    <field name="PaymentTerm" type="Account.PaymentTerm" string="Payment Terms" compute="ComputePaymentTerm" store="true" readonly="false" precompute="true" check_company="true" domain="['|', ('Company', '=', False), ('Company', '=', Company)]" />
+    <field name="Pricelist" type="Product.Pricelist" string="Pricelist" compute="ComputePricelist" store="true" readonly="false" precompute="true" check_company="true" tracking="1" domain="['|', ('Company', '=', False), ('Company', '=', Company)]" help="If you change the pricelist, only newly added lines will be affected." />
+    <field name="Currency" type="Res.Currency" compute="ComputeCurrency" store="true" precompute="true" ondelete="restrict" />
+    <field name="CurrencyRate" type="float" string="Currency Rate" compute="ComputeCurrencyRate" digits="0" store="true" precompute="true" />
+    <field name="User" type="Res.Users" string="Salesperson" compute="ComputeUser" store="true" readonly="false" precompute="true" index="true" tracking="2" domain="[('Groups', '=', {self.env.ref('sales_team.group_sale_salesman').id}), ('Share', '=', False), ('Companies', '=', Company)]" />
+    <field name="Team" type="Crm.Team" string="Sales Team" compute="ComputeTeam" store="true" readonly="false" precompute="true" ondelete="set null" change_default="true" check_company="true" tracking="true" domain="['|', ('Company', '=', False), ('Company', '=', Company)]" />
+    <field name="OrderLine" type="Sale.SaleOrderLine" collection="true" string="Order Lines" copy="true" auto_join="true" />
+    <field name="AmountUntaxed" type="monetary" string="Untaxed Amount" store="true" compute="ComputeAmounts" tracking="5" />
+    <field name="AmountTax" type="monetary" string="Taxes" store="true" compute="ComputeAmounts" />
+    <field name="AmountTotal" type="monetary" string="Total" store="true" compute="ComputeAmounts" tracking="4" />
+    <field name="AmountToInvoice" type="monetary" string="Amount to invoice" store="true" compute="ComputeAmountToInvoice" />
+    <field name="AmountInvoiced" type="monetary" string="Already invoiced" compute="ComputeAmountInvoiced" />
+    <field name="InvoiceCount" type="integer" string="Invoice Count" compute="GetInvoiced" />
+    <field name="Invoice" type="Account.Move" collection="true" string="Invoices" compute="GetInvoiced" search="SearchInvoice" copy="false" />
+    <field name="InvoiceStatus" type="Sale.InvoiceStatus" string="Invoice Status" compute="ComputeInvoiceStatus" store="true" />
+    <field name="Transaction" type="Payment.Transaction" collection="true" string="Transactions" copy="false" readonly="true" />
+    <field name="AuthorizedTransaction" type="Payment.Transaction" collection="true" string="Authorized Transactions" compute="ComputeAuthorizedTransactions" copy="false" compute_sudo="true" />
+    <field name="AmountPaid" type="float" string="Payment Transactions Amount" help="Sum of transactions made in through the online payment form that are in the state 'done' or 'authorized' and linked to this order." compute="ComputeAmountPaid" compute_sudo="true" />
+    <field name="Campaign" type="Utm.Campaign" ondelete="set null" />
+    <field name="Medium" type="Utm.Medium" ondelete="set null" />
+    <field name="Source" type="Utm.Source" ondelete="set null" />
+    <field name="AnalyticAccount" type="Account.AnalyticAccount" string="Analytic Account" copy="false" check_company="true" domain="['|', ('Company', '=', False), ('Company', '=', Company)]" />
+    <field name="Tag" type="Crm.Tag" collection="true" string="Tags" />
+    <field name="AmountUndiscounted" type="float" string="Amount Before Discount" compute="ComputeAmountUndiscounted" digits="0" />
+    <field name="CountryCode" type="string" related="Company.AccountFiscalCountry.Code" string="Country code" />
+    <field name="ExpectedDate" type="datetime" string="Expected Date" compute="ComputeExpectedDate" store="false" help="Delivery date you can promise to the customer, computed from the minimum lead time of the order lines." />
+    <field name="IsExpired" type="bool" string="Is Expired" compute="ComputeIsExpired" />
+    <field name="PartnerCreditWarning" type="string" compute="ComputePartnerCreditWarning" />
+    <field name="TaxCalculationRoundingMethod" type="Selection" related="Company.TaxCalculationRoundingMethod" depends="Company" />
+    <field name="TaxCountry" type="Res.Country" compute="ComputeTaxCountry" compute_sudo="true" />
+    <field name="TaxTotals" type="binary" compute="ComputeTaxTotals" exportable="false" />
+    <field name="TermsType" type="Selection" related="Company.TermsType" />
+    <field name="TypeName" type="string" string="Type Name" compute="ComputeTypeName" />
+    <field name="ShowUpdateFpos" type="bool" string="Has Fiscal Position Changed" store="false" />
+    <field name="HasActivePricelist" type="bool" compute="ComputeHasActivePricelist" />
+    <field name="ShowUpdatePricelist" type="bool" string="Has Pricelist Changed" store="false" />
+  </model>
+  <optionset id="Sale.SaleOrderState" name="Sale Order State">
+    <option value="Draft" name="Quotation" />
+    <option value="Sent" name="Quotation Sent" />
+    <option value="Sale" name="Sales Order" />
+    <option value="Cancel" name="Cancelled" />
+  </optionset>
+  <optionset id="Sale.InvoiceStatus" name="Invoice Status">
+    <option value="Upselling" name="Upselling Opportunity" />
+    <option value="Invoiced" name="Fully Invoiced" />
+    <option value="ToInvoice" name="To Invoice" />
+    <option value="No" name="Nothing to Invoice" />
+  </optionset>
 </buvi>

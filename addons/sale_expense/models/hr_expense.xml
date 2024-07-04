@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleExpense.Expense" name="Expense" description="Expense">
+        <field name="SaleOrderId" type="Sale.SaleOrder" label="Customer to Reinvoice" readonly="False" tracking="True"
+            domain="[('State', '=', 'sale'), ('CompanyId', '=', CompanyId)]"
+            help="If the category has an expense policy, it will be reinvoiced on this sales order" />
+        <field name="CanBeReinvoiced" type="bool" label="Can be reinvoiced" />
+    </model>
+    
+    <optionset id="SaleExpense.ExpensePolicy" name="Expense Policy">
+        <option value="sales_price" name="Sales Price" />
+        <option value="cost" name="Cost" />
+    </optionset>
 </buvi>

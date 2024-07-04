@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.Company" name="Company" description="Company">
+    <field name="InternalTransitLocation" type="Stock.Location" label="Internal Transit Location" ondelete="restrict" check_company="true" />
+    <field name="StockMoveEmailValidation" type="bool" label="Email Confirmation picking" default="false" />
+    <field name="StockMailConfirmationTemplate" type="mail.template" label="Email Template confirmation picking" domain="[('model', '=', 'stock.picking')]" />
+    <field name="AnnualInventoryMonth" type="string" label="Annual Inventory Month" default="12" >
+      <optionset>
+        <option value="1" name="January" />
+        <option value="2" name="February" />
+        <option value="3" name="March" />
+        <option value="4" name="April" />
+        <option value="5" name="May" />
+        <option value="6" name="June" />
+        <option value="7" name="July" />
+        <option value="8" name="August" />
+        <option value="9" name="September" />
+        <option value="10" name="October" />
+        <option value="11" name="November" />
+        <option value="12" name="December" />
+      </optionset>
+    </field>
+    <field name="AnnualInventoryDay" type="integer" label="Day of the month" default="31" />
+  </model>
 </buvi>

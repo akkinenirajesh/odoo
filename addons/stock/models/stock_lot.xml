@@ -1,65 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="hr.employee.location" name="Hr.EmployeeLocation" track_created="true" track_update="true">
-    <field name="Employee" label="Employee" type="Hr.Employee" required="true" copied="true" on-delete="Cascade"/>
-    <field name="WorkLocation" label="Location" type="Hr.WorkLocation" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Date" label="Date" type="date" copied="true"/>
-    <field name="DayWeekString" label="Day Week String" type="string" readonly="true" transient="true"/>
-    <field name="EmployeeName" label="Employee Name" type="string" readonly="true" transient="true" related-field="Employee.Name"/>
-    <field name="WorkLocationName" label="Location name" type="string" readonly="true" transient="true" related-field="WorkLocation.Name"/>
-  </model>
-  <model id="hr.work.location" name="Hr.WorkLocation" track_created="true" track_update="true">
-    <field name="Company" label="Company" type="Res.Company" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Address" label="Work Address" type="Res.Partner" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="LocationNumber" label="Location Number" type="string" copied="true"/>
-    <field name="LocationType" label="Cover Image" type="Hr.WorkLocationCoverImage" required="true" copied="true"/>
-    <field name="Name" label="Work Location" type="string" required="true" copied="true"/>
-  </model>
-  <model id="event.track.location" name="Event.TrackLocation" track_created="true" track_update="true">
-    <field name="Name" label="Location" type="string" required="true" copied="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-  </model>
-  <model id="stock.location" name="Stock.Location" track_created="true" track_update="true">
-    <field name="ValuationInAccount" label="Stock Valuation Account (Incoming)" type="Account.Account" copied="true" on-delete="Clear"/>
-    <field name="ValuationOutAccount" label="Stock Valuation Account (Outgoing)" type="Account.Account" copied="true" on-delete="Clear"/>
-    <field name="RemovalStrategy" label="Removal Strategy" type="Product.Removal" copied="true" on-delete="Clear"/>
-    <field name="Company" label="Company" type="Res.Company" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="Subcontractors" label="Subcontractor" type="Res.Partner" collection="true"/>
-    <field name="Childs" label="Contains" type="Stock.Location" collection="true"/>
-    <field name="ChildInternalLocations" label="Internal locations among descendants" type="Stock.Location" collection="true" readonly="true" transient="true"/>
-    <field name="Location" label="Parent Location" type="Stock.Location" indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="IncomingMoveLines" label="Incoming Move Line" type="Stock.MoveLine" collection="true"/>
-    <field name="OutgoingMoveLines" label="Outgoing Move Line" type="Stock.MoveLine" collection="true"/>
-    <field name="PutawayRules" label="Putaway Rules" type="Stock.PutawayRule" collection="true"/>
-    <field name="Quants" label="Quant" type="Stock.Quant" collection="true"/>
-    <field name="StorageCategory" label="Storage Category" type="Stock.StorageCategory" copied="true" on-delete="Clear"/>
-    <field name="Warehouse" label="Warehouse" type="Stock.Warehouse" readonly="true" on-delete="Clear"/>
-    <field name="WarehouseViews" label="Warehouse View" type="Stock.Warehouse" collection="true" readonly="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Barcode" label="Barcode" type="string"/>
-    <field name="Comment" label="Additional Information" type="html" copied="true"/>
-    <field name="CompleteName" label="Full Location Name" type="string" readonly="true"/>
-    <field name="CyclicInventoryFrequency" label="Inventory Frequency (Days)" type="integer" copied="true"/>
-    <field name="ForecastWeight" label="Forecasted Weight" type="float" readonly="true" transient="true"/>
-    <field name="IsEmpty" label="Is Empty" type="bool" readonly="true" transient="true"/>
-    <field name="IsSubcontractingLocation" label="Is a Subcontracting Location?" type="bool" copied="true"/>
-    <field name="LastInventoryDate" label="Last Effective Inventory" type="date" readonly="true" copied="true"/>
-    <field name="Name" label="Location Name" type="string" required="true" copied="true"/>
-    <field name="NetWeight" label="Net Weight" type="float" readonly="true" transient="true"/>
-    <field name="NextInventoryDate" label="Next Expected Inventory" type="date" readonly="true"/>
-    <field name="ParentPath" label="Parent Path" type="string" indexed="true" copied="true"/>
-    <field name="Posx" label="Corridor (X)" type="integer" copied="true"/>
-    <field name="Posy" label="Shelves (Y)" type="integer" copied="true"/>
-    <field name="Posz" label="Height (Z)" type="integer" copied="true"/>
-    <field name="ReplenishLocation" label="Replenish Location" type="bool"/>
-    <field name="ReturnLocation" label="Is a Return Location?" type="bool" copied="true"/>
-    <field name="ScrapLocation" label="Is a Scrap Location?" type="bool" copied="true"/>
-    <field name="Usage" label="Location Type" type="Stock.InventoryLocationsLocationType" required="true" indexed="true" copied="true"/>
-  </model>
-  <model id="lunch.location" name="Lunch.Location" track_created="true" track_update="true">
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="Address" label="Address" type="text" copied="true"/>
-    <field name="Name" label="Location Name" type="string" required="true" copied="true"/>
-  </model>
+    <model id="Stock.StockLot" name="StockLot" description="Lot/Serial">
+        <field name="Name" type="string" label="Lot/Serial Number" required="true" help="Unique Lot/Serial Number" index="trigram" default="Env.Sequence.NextByCode('stock.lot.serial')" />
+        <field name="Ref" type="string" label="Internal Reference" help="Internal reference number in case it differs from the manufacturer's lot/serial number" />
+        <field name="ProductId" type="Product.Product" label="Product" index="true" required="true" check_company="true"
+               domain="[('Tracking', '!=', 'none'), ('IsStorable', '=', True)] + ([('ProductTemplateId', '=', context['default_product_tmpl_id'])] if context.get('default_product_tmpl_id') else [])" />
+        <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" related="ProductId.UomId" store="true" />
+        <field name="QuantIds" type="Stock.Quant" collection="true" label="Quants" readonly="true" />
+        <field name="ProductQty" type="float" label="On Hand Quantity" compute="ComputeProductQty" search="SearchProductQty" />
+        <field name="Note" type="html" label="Description" />
+        <field name="DisplayComplete" type="bool" compute="ComputeDisplayComplete" />
+        <field name="CompanyId" type="Res.Company" label="Company" index="true" store="true" readonly="false" compute="ComputeCompanyId" />
+        <field name="DeliveryIds" type="Stock.Picking" collection="true" label="Transfers" compute="ComputeDeliveryIds" />
+        <field name="DeliveryCount" type="integer" label="Delivery order count" compute="ComputeDeliveryIds" />
+        <field name="LastDeliveryPartnerId" type="Res.Partner" compute="ComputeLastDeliveryPartnerId" />
+        <field name="LotProperties" type="properties" label="Properties" definition="ProductId.LotPropertiesDefinition" copy="true" />
+        <field name="LocationId" type="Stock.Location" label="Location" compute="ComputeSingleLocation" store="true" readonly="false" inverse="SetSingleLocation"
+               domain="[('Usage', '!=', 'view')]" group_expand="ReadGroupLocationId" />
+    </model>
 </buvi>

@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventTrack.Track" name="WebsiteEventTrack.Track" description="Track">
+        <field name="YoutubeVideoUrl" type="string" label="YouTube Video Link" />
+        <field name="YoutubeVideoId" type="string" label="YouTube video ID" help="Extracted from the video URL and used to infer various links (embed/thumbnail/...)" />
+        <field name="IsYoutubeReplay" type="bool" label="Is YouTube Replay" help="Check this option if the video is already available on YouTube to avoid showing 'Direct' options (Chat, ...)" />
+        <field name="IsYoutubeChatAvailable" type="bool" label="Is Chat Available" />
+        <field name="WebsiteImageUrl" type="string" />
+        <field name="Date" type="datetime" />
+        <field name="DateEnd" type="datetime" />
+        <field name="IsTrackDone" type="bool" />
+        <field name="IsTrackUpcoming" type="bool" />
+        <field name="IsTrackLive" type="bool" />
+    </model>
 </buvi>

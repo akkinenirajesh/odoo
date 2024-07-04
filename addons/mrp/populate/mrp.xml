@@ -1,38 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.warehouse.orderpoint" name="Stock.WarehouseOrderpoint" track_created="true" track_update="true">
-    <field name="Bom" label="Bill of Materials" type="Mrp.Bom" copied="true" on-delete="Clear"/>
-    <field name="Group" label="Procurement Group" type="Procurement.Group" on-delete="Clear"/>
-    <field name="ProductCategory" label="Product Category" type="Product.Category" readonly="true" related-field="Product.Categ"/>
-    <field name="Product" label="Product" type="Product.Product" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Supplier" label="Product Supplier" type="Product.Supplierinfo" copied="true" on-delete="Clear"/>
-    <field name="ProductTmpl" label="Product Template" type="Product.Template" readonly="true" transient="true" related-field="Product.ProductTmpl"/>
-    <field name="Company" label="Company" type="Res.Company" required="true" indexed="true" copied="true" on-delete="Restrict"/>
-    <field name="Vendor" label="Vendor" type="Res.Partner" readonly="true" related-field="Supplier.Partner"/>
-    <field name="AllowedLocations" label="Allowed Location" type="Stock.Location" collection="true" readonly="true" transient="true"/>
-    <field name="Location" label="Location" type="Stock.Location" required="true" indexed="true" copied="true" on-delete="Cascade"/>
-    <field name="Route" label="Route" type="Stock.Route" copied="true" on-delete="Clear"/>
-    <field name="Rules" label="Rules used" type="Stock.Rule" collection="true" readonly="true" transient="true"/>
-    <field name="Warehouse" label="Warehouse" type="Stock.Warehouse" required="true" copied="true" on-delete="Cascade"/>
-    <field name="ProductUom" label="Unit of Measure" type="Uom.Uom" readonly="true" transient="true" related-field="Product.Uom"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="DaysToOrder" label="Days To Order" type="float" readonly="true" transient="true"/>
-    <field name="LeadDaysDate" label="Lead Days Date" type="date" readonly="true" transient="true"/>
-    <field name="ManufacturingVisibilityDays" label="Manufacturing Visibility Days" type="float" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" readonly="true"/>
-    <field name="ProductMaxQty" label="Max Quantity" type="float" required="true" copied="true"/>
-    <field name="ProductMinQty" label="Min Quantity" type="float" required="true" copied="true"/>
-    <field name="ProductUomName" label="Product unit of measure label" type="string" readonly="true" transient="true" related-field="ProductUom.DisplayName"/>
-    <field name="PurchaseVisibilityDays" label="Purchase Visibility Days" type="float" copied="true"/>
-    <field name="QtyForecast" label="Forecast" type="float" readonly="true" transient="true"/>
-    <field name="QtyMultiple" label="Multiple Quantity" type="float" required="true" copied="true"/>
-    <field name="QtyOnHand" label="On Hand" type="float" readonly="true" transient="true"/>
-    <field name="QtyToOrder" label="To Order" type="float" copied="true"/>
-    <field name="ShowBom" label="Show BoM column" type="bool" readonly="true" transient="true"/>
-    <field name="ShowSupplier" label="Show supplier column" type="bool" readonly="true" transient="true"/>
-    <field name="SnoozedUntil" label="Snoozed" type="date" copied="true"/>
-    <field name="Trigger" label="Trigger" type="Stock.MinimumInventoryRuleTrigger" required="true" copied="true"/>
-    <field name="UnwantedReplenish" label="Unwanted Replenish" type="bool" readonly="true" transient="true"/>
-    <field name="VisibilityDays" label="Visibility Days" type="float" transient="true"/>
+  <model id="Mrp.ResCompany" name="ResCompany" description="Company">
+    <inherit id="Base.ResCompany" />
+    <field name="ManufacturingLead" type="integer" label="Manufacturing Lead Time" />
+  </model>
+
+  <model id="Stock.Warehouse" name="Warehouse" description="Warehouse">
+    <inherit id="Stock.Warehouse" />
+    <field name="ManufactureSteps" type="Stock.ManufactureSteps" label="Manufacture Steps" />
+  </model>
+
+  <optionset id="Stock.ManufactureSteps" name="Manufacture Steps">
+    <option value="MrpOneStep" name="One Step" />
+    <option value="Pbm" name="Planning, Bill of Materials" />
+    <option value="PbmSam" name="Planning, Bill of Materials and Sub Assembly" />
+  </optionset>
+
+  <model id="Mrp.MrpBom" name="MrpBom" description="Bill of Material">
+    <inherit id="Mrp.MrpBom" />
+    <field name="Company" type="Mrp.ResCompany" relation="true" />
+    <field name="ProductTemplate" type="Product.ProductTemplate" relation="true" />
+    <field name="Product" type="Product.Product" relation="true" />
+    <field name="ProductQuantity" type="integer" label="Product Quantity" />
+    <field name="Sequence" type="integer" />
+    <field name="Code" type="string" label="Code" />
+    <field name="ReadyToProduce" type="Mrp.ReadyToProduce" label="Ready to Produce" />
+    <field name="ProduceDelay" type="integer" label="Produce Delay" />
+  </model>
+
+  <optionset id="Mrp.ReadyToProduce" name="Ready To Produce">
+    <option value="AllAvailable" name="All Available" />
+    <option value="Asap" name="As Soon As Possible" />
+  </optionset>
+
+  <model id="Mrp.MrpBomLine" name="MrpBomLine" description="Bill of Material Line">
+    <inherit id="Mrp.MrpBomLine" />
+    <field name="Bom" type="Mrp.MrpBom" relation="true" />
+    <field name="Sequence" type="integer" />
+    <field name="Product" type="Product.Product" relation="true" />
+    <field name="ProductUom" type="Product.Uom" relation="true" />
+    <field name="ProductQuantity" type="integer" label="Product Quantity" />
+  </model>
+
+  <model id="Mrp.MrpWorkcenter" name="MrpWorkcenter" description="Workcenter">
+    <inherit id="Mrp.MrpWorkcenter" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Company" type="Mrp.ResCompany" relation="true" />
+    <field name="ResourceCalendar" type="Resource.ResourceCalendar" relation="true" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Workcenter without removing it." />
+    <field name="Code" type="string" label="Code" />
+    <field name="DefaultCapacity" type="float" label="Default Capacity" />
+    <field name="Sequence" type="integer" />
+    <field name="Color" type="integer" label="Color Index" />
+    <field name="CostsHour" type="float" label="Costs per Hour" />
+    <field name="TimeStart" type="float" label="Time Start" />
+    <field name="TimeStop" type="float" label="Time Stop" />
+    <field name="OeeTarget" type="integer" label="OEE Target" />
+    <field name="AlternativeWorkcenters" type="Mrp.MrpWorkcenter" collection="true" />
+  </model>
+
+  <model id="Mrp.MrpRoutingWorkcenter" name="MrpRoutingWorkcenter" description="Routing Workcenter">
+    <inherit id="Mrp.MrpRoutingWorkcenter" />
+    <field name="Bom" type="Mrp.MrpBom" relation="true" />
+    <field name="Company" type="Mrp.ResCompany" relation="true" />
+    <field name="Workcenter" type="Mrp.MrpWorkcenter" relation="true" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Sequence" type="integer" />
+    <field name="TimeMode" type="Mrp.TimeMode" label="Time Mode" />
+    <field name="TimeModeBatch" type="integer" label="Batch Size" />
+    <field name="TimeCycleManual" type="float" label="Manual Cycle Time" />
+  </model>
+
+  <optionset id="Mrp.TimeMode" name="Time Mode">
+    <option value="Auto" name="Automatic" />
+    <option value="Manual" name="Manual" />
+  </optionset>
+
+  <model id="Mrp.MrpBomByproduct" name="MrpBomByproduct" description="Bill of Material Byproduct">
+    <inherit id="Mrp.MrpBomByproduct" />
+    <field name="Bom" type="Mrp.MrpBom" relation="true" />
+    <field name="Product" type="Product.Product" relation="true" />
+    <field name="ProductUom" type="Product.Uom" relation="true" />
+    <field name="ProductQuantity" type="integer" label="Product Quantity" />
+  </model>
+
+  <model id="Mrp.MrpProduction" name="MrpProduction" description="Manufacturing Order">
+    <inherit id="Mrp.MrpProduction" />
+    <field name="Company" type="Mrp.ResCompany" relation="true" />
+    <field name="Bom" type="Mrp.MrpBom" relation="true" />
+    <field name="Consumption" type="Mrp.Consumption" label="Consumption" />
+    <field name="Product" type="Product.Product" relation="true" />
+    <field name="ProductUom" type="Product.Uom" relation="true" />
+    <field name="ProductQuantity" type="integer" label="Product Quantity" />
+    <field name="PickingType" type="Stock.PickingType" relation="true" />
+    <field name="DateStart" type="datetime" label="Start Date" />
+    <field name="LocationSource" type="Stock.Location" relation="true" />
+    <field name="LocationDestination" type="Stock.Location" relation="true" />
+    <field name="Priority" type="Mrp.Priority" label="Priority" />
+  </model>
+
+  <optionset id="Mrp.Consumption" name="Consumption">
+    <option value="Flexible" name="Flexible" />
+  </optionset>
+
+  <optionset id="Mrp.Priority" name="Priority">
+    <option value="0" name="Normal" />
+    <option value="1" name="Urgent" />
+  </optionset>
+
+  <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+    <inherit id="Stock.StockMove" />
+    <field name="RawMaterialProduction" type="Mrp.MrpProduction" relation="true" />
+    <field name="Location" type="Stock.Location" relation="true" />
+    <field name="LocationDestination" type="Stock.Location" relation="true" />
+    <field name="PickingType" type="Stock.PickingType" relation="true" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Date" type="datetime" label="Date" />
+    <field name="Company" type="Mrp.ResCompany" relation="true" />
   </model>
 </buvi>

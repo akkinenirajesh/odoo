@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleProject.ProjectTask" name="SaleProject.ProjectTask" description="Project Task">
+    <field name="SaleOrderId" type="Sale.SaleOrder" label="Sales Order" compute="ComputeSaleOrderId" store="true" help="Sales order to which the task is linked." group_expand="GroupExpandSalesOrder" />
+    <field name="SaleLineId" type="Sale.SaleOrderLine" label="Sales Order Item" copy="true" tracking="true" index="btree_not_null" recursive="true" compute="ComputeSaleLine" store="true" readonly="false" domain="GetSaleLineServiceDomain" help="Sales Order Item to which the time spent on this task will be added in order to be invoiced to your customer.\nBy default the sales order item set on the project will be selected. In the absence of one, the last prepaid sales order item that has time remaining will be used.\nRemove the sales order item in order to make this task non billable. You can also change or remove the sales order item of each timesheet entry individually." />
+    <field name="ProjectSaleOrderId" type="Sale.SaleOrder" string="Project's sale order" related="ProjectId.SaleOrderId" />
+    <field name="SaleOrderState" type="selection" related="SaleOrderId.State" />
+    <field name="TaskToInvoice" type="bool" label="To invoice" compute="ComputeTaskToInvoice" search="SearchTaskToInvoice" groups="SalesTeam.GroupSaleSalesmanAllLeads" />
+    <field name="AllowBillable" type="bool" related="ProjectId.AllowBillable" />
+    <field name="PartnerId" type="ResPartner.Partner" inverse="InversePartnerId" />
+    <field name="DisplaySaleOrderButton" type="bool" string="Display Sales Order" compute="ComputeDisplaySaleOrderButton" />
+  </model>
 </buvi>

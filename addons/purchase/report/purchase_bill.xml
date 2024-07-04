@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.PurchaseBillUnion" name="Purchase.PurchaseBillUnion" description="Purchases & Bills Union">
+    <field name="Name" type="string" label="Reference" readonly="true" />
+    <field name="Reference" type="string" label="Source" readonly="true" />
+    <field name="PartnerId" type="res.partner" label="Vendor" readonly="true" />
+    <field name="Date" type="date" label="Date" readonly="true" />
+    <field name="Amount" type="float" label="Amount" readonly="true" />
+    <field name="CurrencyId" type="res.currency" label="Currency" readonly="true" />
+    <field name="CompanyId" type="res.company" label="Company" readonly="true" />
+    <field name="VendorBillId" type="account.move" label="Vendor Bill" readonly="true" />
+    <field name="PurchaseOrderId" type="purchase.order" label="Purchase Order" readonly="true" />
+  </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.DeliveryCarrier" name="DeliveryCarrier" description="Delivery Carrier">
+        <field name="WebsiteDescription" type="text" label="Description for Online Quotations" />
+    </model>
 </buvi>

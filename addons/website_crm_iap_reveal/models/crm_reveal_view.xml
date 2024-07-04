@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteCrmIapReveal.CRMRevealView" name="CRMRevealView" description="CRM Reveal View">
+    <field name="RevealIP" type="string" label="IP Address" />
+    <field name="RevealRuleId" type="WebsiteCrmIapReveal.CRMRevealRule" label="Lead Generation Rule" required="true" />
+    <field name="RevealState" type="selection" label="State" index="true" default="ToProcess">
+      <option value="ToProcess" name="To Process" />
+      <option value="NotFound" name="Not Found" />
+    </field>
+    <field name="CreateDate" type="datetime" index="true" />
+    <unique>
+      <field name="RevealRuleId" />
+      <field name="RevealIP" />
+      <message>A reveal view with the same IP and rule already exists.</message>
+    </unique>
+    <unique>
+      <field name="RevealState" />
+      <field name="CreateDate" />
+      <message>A reveal view with the same state and create date already exists.</message>
+    </unique>
+  </model>
 </buvi>

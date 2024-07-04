@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Spreadsheet.SpreadsheetDashboard" name="SpreadsheetDashboard" description="Spreadsheet Dashboard">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="DashboardGroupId" type="Spreadsheet.SpreadsheetDashboardGroup" required="true" />
+    <field name="Sequence" type="integer" />
+    <field name="IsPublished" type="bool" default="false" copy="false" />
+    <field name="GroupIds" type="res.groups" collection="true" default="base.group_user" />
+  </model>
 </buvi>

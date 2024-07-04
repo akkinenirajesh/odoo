@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Res.PartnerBank" name="ResPartnerBank" description="Partner Bank">
+        <field name="ProxyType" type="Res.PartnerBankProxyType" label="Proxy Type" ondelete="set default" />
+        <field name="ProxyValue" type="string" label="Proxy Value" />
+        <field name="CountryCode" type="Core.Country" label="Country Code" />
+        <field name="AccNumber" type="string" label="Account Number" />
+        <field name="PartnerId" type="Res.Partner" collection="true" label="Partner" />
+        <field name="DisplayQrSetting" type="bool" label="Display QR Setting" />
+    </model>
+
+    <optionset id="Res.PartnerBankProxyType" name="Partner Bank Proxy Type">
+        <option value="EwalletId" name="Ewallet ID" />
+        <option value="MerchantTaxId" name="Merchant Tax ID" />
+        <option value="Mobile" name="Mobile Number" />
+        <option value="None" name="None" />
+    </optionset>
 </buvi>

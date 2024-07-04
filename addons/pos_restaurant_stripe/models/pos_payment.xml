@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPayment" name="PosPayment" description="POS Payment">
+        <field name="PaymentMethodName" type="string" label="Payment Method Name" />
+        <field name="Amount" type="float" label="Amount" />
+        <field name="TransactionId" type="string" label="Transaction ID" />
+        <field name="PaymentMethodId" type="Pos.PaymentMethod" label="Payment Method" />
+        <field name="TipAmount" type="float" label="Tip Amount" />
+    </model>
+
+    <model id="Pos.PaymentMethod" name="PaymentMethod" description="Payment Method">
+        <field name="UsePaymentTerminal" type="string" label="Use Payment Terminal" />
+        <field name="StripeCapturePayment" type="string" label="Stripe Capture Payment" />
+    </model>
 </buvi>

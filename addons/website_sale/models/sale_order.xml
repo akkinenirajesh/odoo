@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="WebsiteId" type="Website.Website" label="Website" readonly="true" />
+        <field name="AccessPointAddress" type="json" label="Delivery Point Address" />
+        <field name="CartRecoveryEmailSent" type="bool" label="Cart Recovery Email Already Sent" />
+        <field name="ShopWarning" type="string" label="Warning" />
+        <field name="WebsiteOrderLine" type="WebsiteSale.SaleOrderLine" collection="true" label="Order Lines Displayed on Website" compute="ComputeWebsiteOrderLine" />
+        <field name="AmountDelivery" type="decimal" label="Delivery Amount" compute="ComputeAmountDelivery" help="Tax included or excluded depending on the website configuration." />
+        <field name="CartQuantity" type="integer" label="Cart Quantity" compute="ComputeCartInfo" />
+        <field name="OnlyServices" type="bool" label="Only Services" compute="ComputeCartInfo" />
+        <field name="IsAbandonedCart" type="bool" label="Abandoned Cart" compute="ComputeAbandonedCart" search="SearchAbandonedCart" />
+    </model>
+
+    <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+        <option value="Accounts" name="Accounts" />
+        <option value="Taxes" name="Taxes" />
+        <option value="Products" name="Products" />
+    </optionset>
 </buvi>

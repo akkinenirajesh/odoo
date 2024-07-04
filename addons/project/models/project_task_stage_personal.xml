@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ProjectTaskStagePersonal" name="ProjectTaskStagePersonal" description="Personal Task Stage">
+        <field name="TaskId" type="Project.ProjectTask" required="true" ondelete="cascade" index="true" />
+        <field name="UserId" type="Res.Users" required="true" ondelete="cascade" index="true" />
+        <field name="StageId" type="Project.ProjectTaskType" domain="[('UserId', '=', UserId)]" ondelete="set null" />
+        <unique>
+            <field name="TaskId" />
+            <field name="UserId" />
+            <message>A task can only have a single personal stage per user.</message>
+        </unique>
+    </model>
 </buvi>

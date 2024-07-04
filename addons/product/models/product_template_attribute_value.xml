@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductTemplateAttributeValue" name="ProductTemplateAttributeValue" description="Product Template Attribute Value">
+        <field name="PtavActive" type="bool" label="Active" default="true" />
+        <field name="Name" type="string" label="Value" related="ProductAttributeValueId.Name" />
+        <field name="ProductAttributeValueId" type="Product.ProductAttributeValue" required="true" ondelete="cascade" collection="true" />
+        <field name="AttributeLineId" type="Product.ProductTemplateAttributeLine" required="true" ondelete="cascade" collection="true" />
+        <field name="PriceExtra" type="float" label="Extra Price" default="0.0" digits="Product Price" help="Extra price for the variant with this attribute value on sale price. eg. 200 price extra, 1000 + 200 = 1200." />
+        <field name="CurrencyId" type="res.currency" related="AttributeLineId.ProductTmplId.CurrencyId" />
+        <field name="ExcludeFor" type="Product.ProductTemplateAttributeExclusion" collection="true" />
+        <field name="ProductTmplId" type="Product.ProductTemplate" related="AttributeLineId.ProductTmplId" store="true" collection="true" />
+        <field name="AttributeId" type="Product.ProductAttribute" related="AttributeLineId.AttributeId" store="true" collection="true" />
+        <field name="PtavProductVariantIds" type="Product.Product" collection="true" related="false" />
+        <field name="HtmlColor" type="char" label="HTML Color Index" related="ProductAttributeValueId.HtmlColor" />
+        <field name="IsCustom" type="bool" related="ProductAttributeValueId.IsCustom" />
+        <field name="DisplayType" type="selection" related="ProductAttributeValueId.DisplayType" />
+        <field name="Color" type="integer" label="Color" default="RandomColor" />
+        <field name="Image" type="binary" related="ProductAttributeValueId.Image" />
+        <unique>
+            <field name="AttributeLineId" />
+            <field name="ProductAttributeValueId" />
+            <message>Each value should be defined only once per attribute per product.</message>
+        </unique>
+    </model>
 </buvi>

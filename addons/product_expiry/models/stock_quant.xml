@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockQuant" name="StockQuant" description="Stock Quant">
+    <field name="ExpirationDate" type="datetime" related="LotId.ExpirationDate" store="true" />
+    <field name="RemovalDate" type="datetime" related="LotId.RemovalDate" store="true" />
+    <field name="UseExpirationDate" type="bool" related="ProductId.UseExpirationDate" />
+  </model>
 </buvi>

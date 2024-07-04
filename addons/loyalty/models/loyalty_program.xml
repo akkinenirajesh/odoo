@@ -1,3 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Loyalty.LoyaltyProgram" name="Loyalty.LoyaltyProgram" description="Loyalty Program">
+        <field name="Name" type="string" label="Program Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Sequence" type="integer" />
+        <field name="Company" type="Res.Company" label="Company" />
+        <field name="Currency" type="Res.Currency" label="Currency" required="true" collection="true" />
+        <field name="CurrencySymbol" type="string" related="Currency.Symbol" />
+        <field name="Pricelists" type="Product.Pricelist" label="Pricelist" collection="true" />
+        <field name="TotalOrderCount" type="integer" />
+        <field name="Rules" type="Loyalty.Rule" label="Conditional rules" collection="true" />
+        <field name="Rewards" type="Loyalty.Reward" label="Rewards" collection="true" />
+        <field name="CommunicationPlans" type="Loyalty.Mail" label="Communication Plan" collection="true" />
+        <field name="MailTemplate" type="Mail.Template" label="Email template" />
+        <field name="TriggerProducts" type="Product.Product" related="Rules.Products" collection="true" />
+        <field name="Coupons" type="Loyalty.Card" label="Coupons" collection="true" />
+        <field name="CouponCount" type="integer" />
+        <field name="CouponCountDisplay" type="string" label="Items" />
+        <field name="ProgramType" type="Loyalty.ProgramType" default="Promotion" required="true" />
+        <field name="DateFrom" type="date" label="Start Date" />
+        <field name="DateTo" type="date" label="End date" />
+        <field name="LimitUsage" type="bool" label="Limit Usage" />
+        <field name="MaxUsage" type="integer" />
+        <field name="AppliesOn" type="Loyalty.AppliesOn" default="Current" required="true" />
+        <field name="Trigger" type="Loyalty.Trigger" help="""
+        Automatic: Customers will be eligible for a reward automatically in their cart.
+        Use a code: Customers will be eligible for a reward if they enter a code.
+        """ />
+        <field name="PortalVisible" type="bool" default="false" help="""
+        Show in web portal, PoS customer ticket, eCommerce checkout, the number of points available and used by reward.
+        """ />
+        <field name="PortalPointName" type="string" default="Points" translate="true" />
+        <field name="IsNominative" type="bool" />
+        <field name="IsPaymentProgram" type="bool" />
+        <field name="PaymentProgramDiscountProduct" type="Product.Product" label="Discount Product" />
+        <field name="AvailableOn" type="bool" label="Available On" />
+        <unique>
+            <field name="Name" />
+            <message>A program with the same name already exists.</message>
+        </unique>
+        <constraint name="check_max_usage" expr="LimitUsage = false OR MaxUsage &gt; 0" message="Max usage must be strictly positive if a limit is used." />
+    </model>
+
+    <optionset id="Loyalty.ProgramType" name="Program Type">
+        <option value="Coupons" name="Coupons" />
+        <option value="GiftCard" name="Gift Card" />
+        <option value="Loyalty" name="Loyalty Cards" />
+        <option value="Promotion" name="Promotions" />
+        <option value="EWallet" name="eWallet" />
+        <option value="PromoCode" name="Discount Code" />
+        <option value="BuyXGetY" name="Buy X Get Y" />
+        <option value="NextOrderCoupons" name="Next Order Coupons" />
+    </optionset>
+    <optionset id="Loyalty.AppliesOn" name="Applies On">
+        <option value="Current" name="Current order" />
+        <option value="Future" name="Future orders" />
+        <option value="Both" name="Current & Future orders" />
+    </optionset>
+    <optionset id="Loyalty.Trigger" name="Trigger">
+        <option value="Auto" name="Automatic" />
+        <option value="WithCode" name="Use a code" />
+    </optionset>
 </buvi>

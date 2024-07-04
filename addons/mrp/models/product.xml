@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.ProductTemplate" name="Mrp.ProductTemplate" description="Product Template">
+    <field name="BomLineIds" collection="true" relation="Mrp.BomLine" label="BoM Components" />
+    <field name="BomIds" collection="true" relation="Mrp.Bom" label="Bill of Materials" />
+    <field name="BomCount" type="integer" label="# Bill of Material" />
+    <field name="UsedInBomCount" type="integer" label="# of BoM Where is Used" />
+    <field name="MrpProductQty" type="float" label="Manufactured" digits="Product Unit of Measure" />
+    <field name="IsKits" type="bool" />
+  </model>
+
+  <model id="Mrp.ProductProduct" name="Mrp.ProductProduct" description="Product Product">
+    <field name="VariantBomIds" collection="true" relation="Mrp.Bom" label="BOM Product Variants" />
+    <field name="BomLineIds" collection="true" relation="Mrp.BomLine" label="BoM Components" />
+    <field name="BomCount" type="integer" label="# Bill of Material" />
+    <field name="UsedInBomCount" type="integer" label="# BoM Where Used" />
+    <field name="MrpProductQty" type="float" label="Manufactured" digits="Product Unit of Measure" />
+    <field name="IsKits" type="bool" />
+  </model>
 </buvi>

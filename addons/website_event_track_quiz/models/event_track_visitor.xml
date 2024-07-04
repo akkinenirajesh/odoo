@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Event.TrackVisitor" name="Event.TrackVisitor" description="Track Visitor">
+    <field name="QuizCompleted" type="bool" label="Completed" />
+    <field name="QuizPoints" type="integer" label="Quiz Points" default="0" />
+  </model>
 </buvi>

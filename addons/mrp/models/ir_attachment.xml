@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.IrAttachment" name="IrAttachment" description="Ir Attachment">
+        <field name="ResModel" type="string" />
+        <field name="ResId" type="integer" />
+        <field name="Name" type="string" label="Name" />
+        <field name="ResModel" type="string" />
+        <field name="ResId" type="integer" />
+        <field name="MimeType" type="string" />
+        <field name="Description" type="string" />
+        <field name="Data" type="binary" />
+        <field name="CreateDate" type="datetime" />
+        <field name="CreateUid" type="Core.ResUsers" />
+        <field name="WriteDate" type="datetime" />
+        <field name="WriteUid" type="Core.ResUsers" />
+    </model>
 </buvi>

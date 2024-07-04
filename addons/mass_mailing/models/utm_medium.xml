@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailing.UtmMedium" name="UtmMedium" description="UTM Medium">
+    <field name="Name" type="string" label="Medium Name" required="true" translate="true"/>
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the UTM Medium without removing it."/>
+  </model>
 </buvi>

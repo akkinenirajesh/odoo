@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="account.tax.unit" name="Account.TaxUnit" track_created="true" track_update="true">
-    <field name="Companys" label="Companies" type="Res.Company" required="true" collection="true" copied="true"/>
-    <field name="MainCompany" label="Main Company" type="Res.Company" required="true" copied="true" on-delete="Restrict"/>
-    <field name="Country" label="Country" type="Res.Country" required="true" copied="true" on-delete="Restrict"/>
-    <field name="FposSynced" label="Fiscal Positions Synchronised" type="bool" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="Vat" label="Tax ID" type="string" required="true" copied="true"/>
-  </model>
-  <model id="website.base.unit" name="Website.BaseUnit" track_created="true" track_update="true">
-    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
-  </model>
+    <model id="Test_new_api.Foo" name="Foo" description="Foo">
+        <field name="Name" type="string" label="Name" />
+    </model>
+    <model id="Test_inherit.Mixin" name="Mixin" description="Mixin">
+        <field name="Name" type="string" label="Name" />
+    </model>
+    <model id="Test_inherit_depends.PublishedFoo" name="PublishedFoo" description="PublishedFoo" inherit="true" parent="Test_new_api.Foo">
+        <field name="Name" type="string" label="Name" />
+    </model>
 </buvi>

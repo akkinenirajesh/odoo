@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpSubcontractingDropshipping.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="IsDropship" type="bool" compute="ComputeIsDropship" />
+        <field name="MoveIds" type="MrpSubcontractingDropshipping.StockMove" collection="true" />
+    </model>
+
+    <optionset id="MrpSubcontractingDropshipping.StockMoveState" name="Stock Move State">
+        <option value="draft" name="Draft" />
+        <option value="waiting" name="Waiting Another Move" />
+        <option value="confirmed" name="Waiting Availability" />
+        <option value="assigned" name="Available" />
+        <option value="partially_available" name="Partially Available" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
 </buvi>

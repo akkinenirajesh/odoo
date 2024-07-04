@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrAsset" name="IrAsset" description="Asset">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Bundle" type="string" label="Bundle name" required="true" />
+        <field name="Directive" type="selection" label="Directive" selection="Base.IrAssetDirective" />
+        <field name="Path" type="string" label="Path (or glob pattern)" required="true" />
+        <field name="Target" type="string" label="Target" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Asset without removing it." />
+        <field name="Sequence" type="integer" label="Sequence" default="16" required="true" />
+    </model>
+
+    <optionset id="Base.IrAssetDirective" name="Asset Directive">
+        <option value="Append" name="Append" />
+        <option value="Prepend" name="Prepend" />
+        <option value="After" name="After" />
+        <option value="Before" name="Before" />
+        <option value="Remove" name="Remove" />
+        <option value="Replace" name="Replace" />
+        <option value="Include" name="Include" />
+    </optionset>
 </buvi>

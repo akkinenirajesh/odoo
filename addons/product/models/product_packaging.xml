@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductPackaging" name="ProductPackaging" description="Product Packaging">
+        <field name="Name" type="string" label="Product Packaging" required="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="1" help="The first in the sequence is the default one." />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" collection="true" />
+        <field name="Qty" type="float" label="Contained Quantity" default="1" digits="Product Unit of Measure" help="Quantity of products contained in the packaging." />
+        <field name="Barcode" type="string" label="Barcode" copy="false" help="Barcode used for packaging identification. Scan this packaging barcode from a transfer in the Barcode app to move all the contained units" />
+        <field name="ProductUomId" type="Uom.Uom" label="Product Uom Id" related="ProductId.UomId" readonly="true" />
+        <field name="CompanyId" type="Res.Company" label="Company" collection="true" />
+        <constraint name="positive_qty" message="Contained Quantity should be positive.">
+            <expression>Qty &gt; 0</expression>
+        </constraint>
+        <constraint name="barcode_uniq" message="A barcode can only be assigned to one packaging.">
+            <unique>
+                <field name="Barcode" />
+            </unique>
+        </constraint>
+    </model>
 </buvi>

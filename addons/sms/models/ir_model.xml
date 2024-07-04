@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sms.IrModel" name="IrModel" description="Ir Model">
+        <field name="IsMailThreadSms" type="bool" label="Mail Thread SMS" store="false" compute="ComputeIsMailThreadSms" search="SearchIsMailThreadSms"
+                help="Whether this model supports messages and notifications through SMS" />
+    </model>
 </buvi>

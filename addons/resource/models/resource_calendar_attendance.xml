@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.ResourceCalendarAttendance" name="Resource.ResourceCalendarAttendance" description="Work Detail">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Dayofweek" type="selection" label="Day of Week" required="true" index="true">
+            <option value="0" name="Monday" />
+            <option value="1" name="Tuesday" />
+            <option value="2" name="Wednesday" />
+            <option value="3" name="Thursday" />
+            <option value="4" name="Friday" />
+            <option value="5" name="Saturday" />
+            <option value="6" name="Sunday" />
+        </field>
+        <field name="DateFrom" type="date" label="Starting Date" />
+        <field name="DateTo" type="date" label="End Date" />
+        <field name="HourFrom" type="float" label="Work from" required="true" index="true"
+            help="Start and End time of working.\n"
+                 "A specific value of 24:00 is interpreted as 23:59:59.999999." />
+        <field name="HourTo" type="float" label="Work to" required="true" />
+        <field name="DurationHours" type="float" label="Duration (hours)" compute="ComputeDurationHours" />
+        <field name="DurationDays" type="float" label="Duration (days)" store="true" readonly="false" compute="ComputeDurationDays" />
+        <field name="CalendarId" type="Resource.ResourceCalendar" label="Resource's Calendar" required="true" relation="cascade" />
+        <field name="DayPeriod" type="selection" label="Day Period" required="true">
+            <option value="morning" name="Morning" />
+            <option value="lunch" name="Break" />
+            <option value="afternoon" name="Afternoon" />
+        </field>
+        <field name="ResourceId" type="Resource.Resource" label="Resource" collection="true" />
+        <field name="WeekType" type="selection" label="Week Number">
+            <option value="1" name="Second" />
+            <option value="0" name="First" />
+        </field>
+        <field name="TwoWeeksCalendar" type="bool" label="Calendar in 2 weeks mode" related="CalendarId.TwoWeeksCalendar" />
+        <field name="DisplayType" type="selection" label="Display Type" help="Technical field for UX purpose." >
+            <option value="line_section" name="Section" />
+        </field>
+        <field name="Sequence" type="integer" label="Sequence" default="10"
+            help="Gives the sequence of this line when displaying the resource calendar." />
+    </model>
 </buvi>

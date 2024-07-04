@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <field name="GiftCardSettings" type="Pos.GiftCardSettings" label="Gift Cards settings" default="CreateSet" 
+                help="Defines the way you want to set your gift cards." />
+        <field name="Active" type="bool" default="true"
+                help="Set active to false to hide the Point of Sale Configuration without removing it." />
+        <relation collection="true" model="Loyalty.Program" name="LoyaltyPrograms" />
+    </model>
+
+    <optionset id="Pos.GiftCardSettings" name="Gift Card Settings">
+        <option value="CreateSet" name="Generate PDF cards" />
+        <option value="ScanUse" name="Scan existing cards" />
+    </optionset>
 </buvi>

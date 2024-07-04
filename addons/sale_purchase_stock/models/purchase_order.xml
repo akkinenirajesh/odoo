@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SalePurchaseStock.PurchaseOrder" name="SalePurchaseStock.PurchaseOrder" description="Purchase Order">
+        <field name="SaleOrderCount" type="integer" label="Sale Order Count" readonly="true" />
+    </model>
 </buvi>

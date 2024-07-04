@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPayment" name="PosPayment" description="Point of Sale Payment">
+        <field name="OnlineAccountPaymentId" type="Account.AccountPayment" label="Online accounting payment" readonly="true" />
+    </model>
 </buvi>

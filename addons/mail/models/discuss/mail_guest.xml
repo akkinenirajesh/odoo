@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailGuest" name="MailGuest" description="Guest">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="AccessToken" type="string" label="Access Token" default="str(uuid.uuid4())" groups="base.group_system" required="true" readonly="true" copy="false" />
+    <field name="Country" type="Core.Country" label="Country" />
+    <field name="Lang" type="selection" label="Language" selection="MailGuest.LangGet" />
+    <field name="Timezone" type="selection" label="Timezone" selection="Core.TimezoneGet" />
+    <field name="ChannelIds" type="many2many" collection="true" label="Channels" relation="Discuss.ChannelMember" column1="GuestId" column2="ChannelId" copy="false" />
+    <field name="ImStatus" type="char" label="IM Status" compute="ComputeImStatus" />
+  </model>
+
+  <optionset id="Mail.MailGuestLang" name="MailGuestLang">
+    <option value="en_US" name="English (US)" />
+    <option value="fr_FR" name="French (France)" />
+    <option value="de_DE" name="German (Germany)" />
+    </optionset>
 </buvi>

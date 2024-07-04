@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailingSms.ResUsers" name="ResUsers" description="Users">
+    <field name="Id" type="int" />
+    <field name="Active" type="bool" label="Active" />
+    <field name="Login" type="char" label="Login" required="true" translate="true" />
+    <field name="Name" type="char" label="Name" required="true" translate="true" />
+    <field name="Email" type="char" label="Email" required="true" translate="true" />
+    <field name="Signature" type="text" label="Signature" translate="true" />
+    <field name="SignatureEmail" type="text" label="Signature for Emails" translate="true" />
+    <field name="Language" type="Selection" label="Language" selection="Core.Langs" default="en_US" />
+    <field name="Timezone" type="Selection" label="Timezone" selection="Core.Timezones" />
+    <field name="GroupsId" type="many2many" collection="true" relation="Core.ResGroups" label="Groups" />
+    <field name="Function" type="char" label="Job Title" translate="true" />
+    <field name="Mobile" type="char" label="Mobile Phone" />
+    <field name="WorkPhone" type="char" label="Work Phone" />
+    <field name="CompanyID" type="many2one" relation="Core.ResCompany" label="Company" />
+    <field name="Password" type="char" label="Password" />
+    <field name="NotificationType" type="Selection" label="Notification Type" selection="MassMailingSms.NotificationTypes" />
+    <field name="SMSNotification" type="bool" label="SMS Notification" />
+    <field name="EmailNotification" type="bool" label="Email Notification" />
+  </model>
+  <optionset id="MassMailingSms.NotificationTypes" name="Notification Types">
+    <option value="sms" name="SMS" />
+    <option value="email" name="Email" />
+    <option value="both" name="Both" />
+  </optionset>
 </buvi>

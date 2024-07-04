@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.Message" name="MailMessage" description="Mail Message">
+        <field name="AuthorId" type="Res.Partner" label="Author" required="true" />
+        <field name="Body" type="text" label="Body" />
+        <field name="MessageType" type="selection" label="Message Type" selection="Mail.MessageTypeSelection" />
+        <field name="Model" type="string" label="Model" />
+        <field name="ResId" type="integer" label="Record ID" />
+        <field name="Subtype" type="Mail.MessageSubtype" label="Subtype" />
+        <field name="Date" type="datetime" label="Date" />
+    </model>
+    <optionset id="Mail.MessageTypeSelection" name="Message Type Selection">
+        <option value="email" name="Email" />
+        <option value="comment" name="Comment" />
+    </optionset>
+    <optionset id="Mail.MessageSubtype" name="Message Subtype">
+        <option value="mail.mt_comment" name="Comment" />
+        <option value="mail.mt_note" name="Note" />
+    </optionset>
 </buvi>

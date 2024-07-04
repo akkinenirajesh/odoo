@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+    <inherit id="PointOfSale.PosConfig" />
+    <field name="SelfOrderOnlinePaymentMethodId" type="Pos.PaymentMethod" label="Self Online Payment" help="The online payment method to use when a customer pays a self-order online." domain="[('IsOnlinePayment', '=', True)]" collection="true" />
+  </model>
 </buvi>

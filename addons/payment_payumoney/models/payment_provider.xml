@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Provider" required="true">
+      <option value="payumoney" name="PayUmoney" />
+    </field>
+    <field name="PayUmoneyMerchantKey" type="char" label="Merchant Key" required="true" help="The key solely used to identify the account with PayU money" />
+    <field name="PayUmoneyMerchantSalt" type="char" label="Merchant Salt" required="true" groups="base.group_system" />
+  </model>
 </buvi>

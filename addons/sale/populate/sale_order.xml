@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+        <field name="CompanyID" type="Core.Company" required="true" />
+        <field name="PartnerID" type="Res.Partner" required="true" />
+        <field name="UserID" type="Res.Users" required="true" />
+        <field name="PricelistID" type="Product.Pricelist" required="true" />
+        <field name="RequirePayment" type="bool" default="false" />
+        <field name="RequireSignature" type="bool" default="false" />
+        <relation name="OrderLines" model="Sale.SaleOrderLine" collection="true" />
+    </model>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="OrderID" type="Sale.SaleOrder" required="true" />
+        <field name="ProductID" type="Product.Product" required="true" />
+        <field name="ProductUOM" type="Product.UOM" required="true" />
+        <field name="ProductUOMQty" type="integer" required="true" />
+    </model>
 </buvi>

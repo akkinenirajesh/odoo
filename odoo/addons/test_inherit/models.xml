@@ -1,3 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestInherit.Mother" name="TestInherit.Mother" description="Test Inherit Mother">
+        <field name="Name" type="string" default="Foo" />
+        <field name="State" type="selection" selection="TestInherit.MotherState" default="A" />
+        <field name="Surname" type="string" compute="ComputeSurname" />
+    </model>
+    <optionset id="TestInherit.MotherState" name="Mother State">
+        <option value="A" name="A" />
+        <option value="B" name="B" />
+    </optionset>
+    <model id="TestInherit.Daughter" name="TestInherit.Daughter" description="Test Inherit Daughter">
+        <field name="TemplateId" type="TestInherit.Mother" required="true" collection="true" />
+        <field name="FieldInDaughter" type="string" />
+    </model>
+    <model id="TestInherit.Mother2" name="TestInherit.Mother2" description="Test Inherit Mother" inherit="TestInherit.Mother">
+        <field name="FieldInMother" type="string" />
+        <field name="PartnerId" type="Res.Partner" />
+        <field name="Name" type="string" required="true" default="Bar" />
+        <field name="State" type="selection" selection="TestInherit.MotherState" default="null" />
+    </model>
+    <optionset id="TestInherit.MotherState" name="Mother State" inherit="TestInherit.MotherState">
+        <option value="C" name="C" />
+    </optionset>
+    <model id="TestInherit.Mother3" name="TestInherit.Mother3" description="Test Inherit Mother" inherit="TestInherit.Mother">
+        <field name="State" type="selection" selection="TestInherit.MotherState" />
+    </model>
+    <optionset id="TestInherit.MotherState" name="Mother State" inherit="TestInherit.MotherState">
+        <option value="D" name="D" />
+        <option value="B" />
+    </optionset>
+    <model id="TestInherit.Daughter2" name="TestInherit.Daughter2" description="Test Inherit Daughter" inherit="TestInherit.Daughter">
+        <field name="TemplateId" type="TestInherit.Mother" />
+        <field name="Name" type="string" default="Baz" />
+    </model>
+    <model id="Res.Partner" name="Res.Partner" description="Res Partner" inherit="Res.Partner">
+        <field name="DaughterIds" type="TestInherit.Daughter" collection="true" />
+    </model>
+    <model id="TestInherit.TestInheritProperty" name="TestInherit.TestInheritProperty" description="Test Inherit Property">
+        <field name="Name" type="string" required="true" label="Name" />
+        <field name="PropertyFoo" type="integer" label="Foo" />
+        <field name="PropertyBar" type="integer" label="Bar" />
+    </model>
+    <model id="TestInherit.TestInheritProperty2" name="TestInherit.TestInheritProperty2" description="Test Inherit Property" inherit="TestInherit.TestInheritProperty">
+        <field name="PropertyFoo" type="integer" />
+        <field name="PropertyBar" type="integer" compute="ComputeBar" />
+    </model>
+    <model id="TestInherit.Parent1" name="TestInherit.Parent1" abstract="true" description="Test Inherit Parent">
+        <method name="Stuff" return="string" />
+    </model>
+    <model id="TestInherit.Child" name="TestInherit.Child" abstract="true" description="Test Inherit Child" inherit="TestInherit.Parent1">
+        <field name="Bar" type="integer" />
+        <method name="Stuff" return="string" />
+    </model>
+    <model id="TestInherit.Parent2" name="TestInherit.Parent2" abstract="true" description="Test Inherit Parent" inherit="TestInherit.Parent1">
+        <field name="Foo" type="integer" />
+        <method name="Stuff" return="string" />
+    </model>
+    <model id="TestNewApi.Selection" name="TestNewApi.Selection" description="Selection" inherit="TestNewApi.Selection">
+        <field name="State" type="selection" selection="TestNewApi.SelectionState" />
+        <field name="Other" type="selection" selection="OtherValues" />
+    </model>
+    <optionset id="TestNewApi.SelectionState" name="Selection State" inherit="TestNewApi.SelectionState">
+        <option value="Bar" name="Bar" />
+        <option value="Baz" name="Baz" />
+    </optionset>
+    <model id="TestInherit.IsPublishedMixin" name="TestInherit.IsPublishedMixin" abstract="true" description="Test Inherit Mixin">
+        <field name="Published" type="bool" />
+    </model>
+    <model id="TestNewApi.Message" name="TestNewApi.Message" description="Message" inherit="TestNewApi.Message">
+        <field name="Body" type="text" translate="true" />
+    </model>
 </buvi>

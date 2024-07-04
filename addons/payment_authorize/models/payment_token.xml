@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentToken" name="PaymentToken" description="Payment Token">
+    <field name="AuthorizeProfile" type="string" label="Authorize.Net Profile ID"
+      help="The unique reference for the partner/token combination in the Authorize.net backend." />
+  </model>
 </buvi>

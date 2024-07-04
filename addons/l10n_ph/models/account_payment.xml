@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+    <inherit id="Account.AccountPayment" />
+    <field name="PaymentType" type="Account.PaymentType" />
+  </model>
+
+  <optionset id="Account.PaymentType" name="Payment Type">
+    <option value="Inbound" name="Inbound" />
+    <option value="Outbound" name="Outbound" />
+  </optionset>
 </buvi>

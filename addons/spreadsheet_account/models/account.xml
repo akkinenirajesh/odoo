@@ -1,19 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="res.lang" name="Res.Lang" track_created="true" track_update="true">
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Code" label="Locale Code" type="string" required="true" copied="true"/>
-    <field name="DateFormat" label="Date Format" type="string" required="true" copied="true"/>
-    <field name="DecimalPoint" label="Decimal Separator" type="string" required="true" copied="true"/>
-    <field name="Direction" label="Direction" type="Res.LanguagesDirection" required="true" copied="true"/>
-    <field name="FlagImage" label="Image" type="binary" copied="true"/>
-    <field name="FlagImageUrl" label="Flag Image Url" type="string" readonly="true" transient="true"/>
-    <field name="Grouping" label="Separator Format" type="string" required="true" copied="true"/>
-    <field name="IsoCode" label="ISO code" type="string" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="ThousandsSep" label="Thousands Separator" type="string" copied="true"/>
-    <field name="TimeFormat" label="Time Format" type="string" required="true" copied="true"/>
-    <field name="UrlCode" label="URL Code" type="string" required="true" copied="true"/>
-    <field name="WeekStart" label="First Day of Week" type="Res.LanguagesFirstDayOfWeek" required="true" copied="true"/>
+  <model id="Account.Account" name="Account" description="Account">
+    <field name="IncludeInitialBalance" type="bool" label="Include Initial Balance" />
   </model>
+
+  <model id="Account.Move" name="Move" description="Move">
+    <field name="State" type="Selection" selection="Account.MoveState" />
+    <field name="Company" type="Core.Company" />
+  </model>
+
+  <model id="Account.MoveLine" name="MoveLine" description="Move Line">
+    <field name="Date" type="date" />
+    <field name="Account" type="Account.Account" />
+    <field name="Move" type="Account.Move" />
+    <field name="Debit" type="decimal" />
+    <field name="Credit" type="decimal" />
+    <field name="Company" type="Core.Company" />
+  </model>
+
+  <optionset id="Account.MoveState" name="Move State">
+    <option value="posted" name="Posted" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
+
+  <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+    <option value="Accounts" name="Accounts" />
+    <option value="Taxes" name="Taxes" />
+    <option value="Products" name="Products" />
+  </optionset>
 </buvi>

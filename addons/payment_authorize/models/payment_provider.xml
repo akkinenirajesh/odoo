@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="Payment.PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Provider" required="true" 
+               options="Payment.PaymentProviderCode"/>
+        <field name="AuthorizeLogin" type="string" label="API Login ID" help="The ID solely used to identify the account with Authorize.Net"
+                required="true" if_provider="authorize"/>
+        <field name="AuthorizeTransactionKey" type="string" label="API Transaction Key" required="true" if_provider="authorize" 
+                groups="base.group_system"/>
+        <field name="AuthorizeSignatureKey" type="string" label="API Signature Key" required="true" if_provider="authorize"
+                groups="base.group_system"/>
+        <field name="AuthorizeClientKey" type="string" label="API Client Key" help="The public client key. To generate directly from Odoo or from Authorize.Net backend."/>
+        <field name="AvailableCurrencyIds" type="Core.Currency" label="Available Currencies" collection="true" required="true"/>
+        <field name="SupportManualCapture" type="selection" options="Payment.ManualCaptureSupport" />
+        <field name="SupportRefund" type="selection" options="Payment.RefundSupport" />
+        <field name="SupportTokenization" type="bool" />
+        <constraint name="AuthorizeCurrencyLimit" if_provider="authorize">
+            <condition>
+                <field name="AvailableCurrencyIds" size="1" />
+            </condition>
+            <message>Only one currency can be selected by Authorize.Net account.</message>
+        </constraint>
+    </model>
+
+    <optionset id="Payment.PaymentProviderCode" name="Payment Provider Code">
+        <option value="authorize" name="Authorize.Net" />
+        <!-- Add other options here -->
+    </optionset>
+
+    <optionset id="Payment.ManualCaptureSupport" name="Manual Capture Support">
+        <option value="full_only" name="Full Only" />
+        <option value="partial" name="Partial" />
+        <option value="none" name="None" />
+    </optionset>
+
+    <optionset id="Payment.RefundSupport" name="Refund Support">
+        <option value="full_only" name="Full Only" />
+        <option value="partial" name="Partial" />
+        <option value="none" name="None" />
+    </optionset>
 </buvi>

@@ -1,3 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.Product" name="ProductProduct" description="Product Product">
+        <field name="Id" type="int" invisible="true" />
+        <field name="Name" type="string" label="Name" />
+        <field name="DefaultCode" type="string" label="Internal Reference" />
+        <field name="Barcode" type="string" label="Barcode" />
+        <field name="Type" type="Product.ProductType" label="Product Type" />
+        <field name="CategId" type="Product.ProductCategory" label="Product Category" />
+        <field name="ListPrice" type="float" label="Sale Price" />
+        <field name="StandardPrice" type="float" label="Cost" />
+        <field name="DescriptionSale" type="html" label="Sale Description" />
+        <field name="DescriptionPurchase" type="html" label="Purchase Description" />
+        <field name="Active" type="bool" label="Active" />
+        <field name="Image" type="binary" label="Image" />
+        <field name="ImageMedia" type="many2one" relation="Media.Media" label="Media" />
+        <field name="Color" type="many2one" relation="Product.ProductColor" label="Color" />
+        <field name="Size" type="many2one" relation="Product.ProductSize" label="Size" />
+        <field name="Variants" type="many2many" relation="Product.ProductAttribute" collection="true" label="Variants" />
+        <field name="SupplierInfos" type="many2many" relation="Product.ProductSupplierInfo" collection="true" label="Suppliers" />
+        <field name="SupplierId" type="many2one" relation="Res.Partner" label="Vendor" />
+        <field name="ProductTemplate" type="many2one" relation="Product.ProductTemplate" label="Product Template" />
+        <field name="ProductTemplateId" type="many2one" relation="Product.ProductTemplate" label="Product Template" />
+        <field name="Company" type="many2one" relation="Res.Company" label="Company" />
+        <field name="CompanyId" type="many2one" relation="Res.Company" label="Company" />
+        <field name="Prices" type="one2many" relation="Product.Pricelist" collection="true" label="Prices" />
+        <field name="PricelistId" type="many2one" relation="Product.Pricelist" label="Pricelist" />
+        <field name="SaleOk" type="bool" label="Can be Sold" default="true" />
+        <field name="PurchaseOk" type="bool" label="Can be Purchased" default="true" />
+        <field name="Weight" type="float" label="Weight" />
+        <field name="Volume" type="float" label="Volume" />
+        <field name="Packing" type="string" label="Packaging" />
+        <field name="PackagingQty" type="integer" label="Packaging Quantity" />
+        <field name="IsMulti" type="bool" label="Multi Pack" default="false" />
+        <field name="MultiPackQty" type="integer" label="Multi Pack Quantity" />
+        <field name="MultiPackId" type="many2one" relation="Product.Product" label="Multi Pack Product" />
+        <field name="CostMethod" type="Product.CostMethod" label="Cost Method" />
+        <field name="CostCalculation" type="Product.CostCalculation" label="Cost Calculation" />
+        <field name="StandardPriceDate" type="datetime" label="Standard Price Date" />
+        <field name="QtyAvailable" type="float" label="Quantity on Hand" readonly="true" />
+        <field name="QtyInPicking" type="float" label="Quantity in Pickings" readonly="true" />
+        <field name="QtyToDeliver" type="float" label="Quantity to Deliver" readonly="true" />
+        <field name="QtyAvailableDate" type="datetime" label="Quantity on Hand at" readonly="true" />
+        <field name="Cost" type="float" label="Cost" readonly="true" />
+        <field name="DiscountProduct" type="bool" label="Discount Product" />
+    </model>
+    <optionset id="Product.ProductType" name="Product Type">
+        <option value="product" name="Storable Product" />
+        <option value="consu" name="Consumable Product" />
+        <option value="service" name="Service" />
+    </optionset>
+    <optionset id="Product.CostMethod" name="Cost Method">
+        <option value="fifo" name="FIFO" />
+        <option value="lifo" name="LIFO" />
+        <option value="average" name="Average" />
+    </optionset>
+    <optionset id="Product.CostCalculation" name="Cost Calculation">
+        <option value="real" name="Real Cost" />
+        <option value="standard" name="Standard Cost" />
+    </optionset>
 </buvi>

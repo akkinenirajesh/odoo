@@ -1,5 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="ProductExpiry.StockLot" name="ProductExpiry.StockLot" description="Stock Lot with Expiration Date">
+        <field name="UseExpirationDate" type="bool" label="Use Expiration Date" related="ProductId.UseExpirationDate" />
+        <field name="ExpirationDate" type="datetime" label="Expiration Date" compute="ComputeExpirationDate" store="true" readonly="false"
+            help="This is the date on which the goods with this Serial Number may become dangerous and must not be consumed." />
+        <field name="UseDate" type="datetime" label="Best before Date" compute="ComputeDates" store="true" readonly="false"
+            help="This is the date on which the goods with this Serial Number start deteriorating, without being dangerous yet." />
+        <field name="RemovalDate" type="datetime" label="Removal Date" compute="ComputeDates" store="true" readonly="false"
+            help="This is the date on which the goods with this Serial Number should be removed from the stock. This date will be used in FEFO removal strategy." />
+        <field name="AlertDate" type="datetime" label="Alert Date" compute="ComputeDates" store="true" readonly="false"
+            help="Date to determine the expired lots and serial numbers using the filter 'Expiration Alerts'." />
+        <field name="ProductExpiryAlert" type="bool" compute="ComputeProductExpiryAlert" help="The Expiration Date has been reached." />
+        <field name="ProductExpiryReminded" type="bool" label="Expiry has been reminded" />
+    </model>
+
+    <model id="Procurement.ProcurementGroup" name="Procurement.ProcurementGroup" description="Procurement Group">
+        <field name="Groups" type="Collection" collection="true"  relation="Procurement.ProcurementGroup" />
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Web.ResUsers" name="ResUsers" description="Users">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Login" type="char" label="Login" required="true" translate="true" />
+    <field name="Password" type="char" label="Password"  />
+    <field name="Active" type="bool" label="Active" default="true" />
+  </model>
 </buvi>

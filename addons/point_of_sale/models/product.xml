@@ -1,3 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="AvailableInPos" type="bool" label="Available in POS" help="Check if you want this product to appear in the Point of Sale." default="false" />
+        <field name="ToWeight" type="bool" label="To Weigh With Scale" help="Check if the product should be weighted using the hardware scale integration." />
+        <field name="PosCategIds" type="PointOfSale.PosCategory" collection="true" label="Point of Sale Category" help="Category used in the Point of Sale." />
+        <field name="ComboIds" type="PointOfSale.PosCombo" collection="true" label="Combo Choices" />
+        <field name="Type" type="string" selection="PointOfSale.ProductType" />
+    </model>
+    <optionset id="PointOfSale.ProductType" name="Product Type">
+        <option value="combo" name="Combo" />
+    </optionset>
+    <model id="PointOfSale.ProductProduct" name="ProductProduct" description="Product Product">
+        <field name="AvailableInPos" type="bool" label="Available in POS" />
+        <field name="ToWeight" type="bool" label="To Weigh With Scale" />
+        <field name="PosCategIds" type="PointOfSale.PosCategory" collection="true" label="Point of Sale Category" />
+        <field name="ComboIds" type="PointOfSale.PosCombo" collection="true" label="Combo Choices" />
+    </model>
+    <model id="PointOfSale.ProductAttribute" name="ProductAttribute" description="Product Attribute">
+        <field name="CreateVariant" type="bool" />
+        <field name="AttributeLineIds" type="PointOfSale.ProductTemplateAttributeLine" collection="true" />
+    </model>
+    <model id="PointOfSale.ProductAttributeCustomValue" name="ProductAttributeCustomValue" description="Product Attribute Custom Value">
+        <field name="PosOrderLineId" type="PointOfSale.PosOrderLine" />
+    </model>
+    <model id="PointOfSale.ProductTemplateAttributeLine" name="ProductTemplateAttributeLine" description="Product Template Attribute Line">
+        <field name="AttributeId" type="PointOfSale.ProductAttribute" />
+        <field name="ProductTemplateValueIds" type="PointOfSale.ProductTemplateAttributeValue" collection="true" />
+    </model>
+    <model id="PointOfSale.ProductTemplateAttributeValue" name="ProductTemplateAttributeValue" description="Product Template Attribute Value">
+        <field name="AttributeId" type="PointOfSale.ProductAttribute" />
+        <field name="AttributeLineId" type="PointOfSale.ProductTemplateAttributeLine" />
+        <field name="ProductAttributeValueId" type="PointOfSale.ProductAttributeValue" />
+        <field name="PriceExtra" type="decimal" />
+        <field name="IsCustom" type="bool" />
+        <field name="HtmlColor" type="integer" />
+        <field name="Image" type="binary" />
+    </model>
+    <model id="PointOfSale.ProductPackaging" name="ProductPackaging" description="Product Packaging">
+        <field name="Barcode" type="string" />
+        <field name="ProductId" type="PointOfSale.ProductProduct" />
+        <field name="Qty" type="decimal" />
+    </model>
+    <model id="PointOfSale.UomCateg" name="UomCateg" description="Uom Category">
+        <field name="IsPosGroupable" type="bool" label="Group Products in POS" help="Check if you want to group products of this category in point of sale orders" />
+        <field name="UomIds" type="PointOfSale.Uom" collection="true" />
+    </model>
+    <model id="PointOfSale.Uom" name="Uom" description="Uom">
+        <field name="IsPosGroupable" type="bool" label="Group Products in POS" />
+        <field name="CategoryId" type="PointOfSale.UomCateg" />
+        <field name="FactorInv" type="decimal" />
+        <field name="Factor" type="decimal" />
+        <field name="UomType" type="string" />
+        <field name="Rounding" type="decimal" />
+    </model>
+    <model id="PointOfSale.ProductPricelist" name="ProductPricelist" description="Product Pricelist">
+        <field name="DiscountPolicy" type="string" />
+        <field name="ItemIds" type="PointOfSale.ProductPricelistItem" collection="true" />
+    </model>
+    <model id="PointOfSale.ProductPricelistItem" name="ProductPricelistItem" description="Product PricelistItem">
+        <field name="ProductTmplId" type="PointOfSale.ProductTemplate" />
+        <field name="ProductId" type="PointOfSale.ProductProduct" />
+        <field name="PricelistId" type="PointOfSale.ProductPricelist" />
+        <field name="PriceSurcharge" type="decimal" />
+        <field name="PriceDiscount" type="decimal" />
+        <field name="PriceRound" type="decimal" />
+        <field name="PriceMinMargin" type="decimal" />
+        <field name="PriceMaxMargin" type="decimal" />
+        <field name="CompanyId" type="Core.Company" />
+        <field name="CurrencyId" type="Core.Currency" />
+        <field name="DateStart" type="date" />
+        <field name="DateEnd" type="date" />
+        <field name="ComputePrice" type="string" />
+        <field name="FixedPrice" type="decimal" />
+        <field name="PercentPrice" type="decimal" />
+        <field name="BasePricelistId" type="PointOfSale.ProductPricelist" />
+        <field name="Base" type="string" />
+        <field name="CategId" type="PointOfSale.ProductCategory" />
+        <field name="MinQuantity" type="decimal" />
+    </model>
+    <model id="PointOfSale.ProductCategory" name="ProductCategory" description="Product Category">
+        <field name="ParentId" type="PointOfSale.ProductCategory" />
+    </model>
 </buvi>

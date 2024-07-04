@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleLoyaltyDelivery.LoyaltyProgram" name="LoyaltyProgram" description="Loyalty Program">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="ProgramType" type="selection" label="Program Type" selection="SaleLoyaltyDelivery.LoyaltyProgramType" default="promotion" />
+        <field name="RewardIds" type="many2many" collection="true" relation="SaleLoyaltyDelivery.LoyaltyReward" label="Rewards" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the Loyalty Program without removing it." />
+        <field name="OrderMinimum" type="float" label="Order Minimum" />
+        <field name="PointsValidityDays" type="integer" label="Points Validity Days" />
+        <field name="PointsEarned" type="integer" label="Points Earned" />
+        <field name="PointsSpent" type="integer" label="Points Spent" />
+        <field name="PointsUsed" type="integer" label="Points Used" />
+        <field name="PointsExpired" type="integer" label="Points Expired" />
+        <field name="PointsBalance" type="integer" label="Points Balance" />
+        <field name="ProgramStartDate" type="date" label="Start Date" />
+        <field name="ProgramEndDate" type="date" label="End Date" />
+        <field name="ApplicableOrders" type="integer" label="Applicable Orders" />
+        <field name="PointsEarnedOrders" type="integer" label="Points Earned Orders" />
+        <field name="PointsSpentOrders" type="integer" label="Points Spent Orders" />
+        <field name="PointsUsedOrders" type="integer" label="Points Used Orders" />
+        <field name="PointsExpiredOrders" type="integer" label="Points Expired Orders" />
+        <field name="PointsBalanceOrders" type="integer" label="Points Balance Orders" />
+    </model>
+    <optionset id="SaleLoyaltyDelivery.LoyaltyProgramType" name="Loyalty Program Type">
+        <option value="promotion" name="Promotion" />
+        <option value="discount" name="Discount" />
+        <option value="free_gift" name="Free Gift" />
+        <option value="shipping" name="Free Shipping" />
+    </optionset>
 </buvi>

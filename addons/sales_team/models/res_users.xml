@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SalesTeam.ResUsers" name="ResUsers" description="Users">
+        <field name="CrmTeamIds" type="SalesTeam.CrmTeam" collection="true" label="Sales Teams" readonly="true" compute="ComputeCrmTeamIds" search="SearchCrmTeamIds" />
+        <field name="CrmTeamMemberIds" type="SalesTeam.CrmTeamMember" collection="true" label="Sales Team Members" />
+        <field name="SaleTeamId" type="SalesTeam.CrmTeam" label="User Sales Team" readonly="true" store="true" help="Main user sales team. Used notably for pipeline, or to set sales team in invoicing or subscription." compute="ComputeSaleTeamId" />
+    </model>
 </buvi>

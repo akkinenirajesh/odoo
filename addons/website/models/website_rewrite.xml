@@ -1,113 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="theme.website.page" name="Theme.WebsitePage" track_created="true" track_update="true">
-    <field name="View" label="View" type="Theme.IrUiView" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Copys" label="Page using a copy of me" type="Website.Page" collection="true" readonly="true"/>
-    <field name="FooterVisible" label="Footer Visible" type="bool" copied="true"/>
-    <field name="HeaderColor" label="Header Color" type="string" copied="true"/>
-    <field name="HeaderOverlay" label="Header Overlay" type="bool" copied="true"/>
-    <field name="HeaderVisible" label="Header Visible" type="bool" copied="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" copied="true"/>
-    <field name="Url" label="Url" type="string" copied="true"/>
-    <field name="WebsiteIndexed" label="Page Indexed" type="bool" copied="true"/>
-  </model>
-  <model id="website.controller.page" name="Website.ControllerPage" track_created="true" track_update="true">
-    <field name="Model" label="Model of the view" type="Ir.Model" transient="true" related-field="View.Model"/>
-    <field name="ModelData" label="Model Data" type="Ir.ModelData" readonly="true" transient="true" related-field="View.ModelData"/>
-    <field name="InheritChildrens" label="Views which inherit from this one" type="Ir.UiView" collection="true" transient="true" related-field="View.InheritChildrens"/>
-    <field name="Inherit" label="Inherited View" type="Ir.UiView" copied="true" transient="true" related-field="View.Inherit"/>
-    <field name="View" label="View" type="Ir.UiView" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Groups" label="Groups" type="Res.Groups" collection="true" copied="true" transient="true" related-field="View.Groups"/>
-    <field name="ThemeTemplate" label="Theme Template" type="Theme.IrUiView" transient="true" related-field="View.ThemeTemplate"/>
-    <field name="Website" label="Website" type="Website." indexed="true" related-field="View.Website" on-delete="Cascade"/>
-    <field name="ControllerPages" label="Controller Page" type="Website.ControllerPage" collection="true" transient="true" related-field="View.ControllerPages"/>
-    <field name="Menus" label="Related Menus" type="Website.Menu" collection="true"/>
-    <field name="FirstPage" label="Website Page" type="Website.Page" readonly="true" transient="true" related-field="View.FirstPage"/>
-    <field name="Pages" label="Page" type="Website.Page" collection="true" transient="true" related-field="View.Pages"/>
-    <field name="Active" label="Active" type="bool" copied="true" transient="true" related-field="View.Active"/>
-    <field name="Arch" label="View Architecture" type="text" transient="true" related-field="View.Arch"/>
-    <field name="ArchBase" label="Base View Architecture" type="text" transient="true" related-field="View.ArchBase"/>
-    <field name="ArchDb" label="Arch Blob" type="text" copied="true" transient="true" translatable="true" related-field="View.ArchDb"/>
-    <field name="ArchFs" label="Arch Filename" type="string" copied="true" transient="true" related-field="View.ArchFs"/>
-    <field name="ArchPrev" label="Previous View Architecture" type="text" copied="true" transient="true" related-field="View.ArchPrev"/>
-    <field name="ArchUpdated" label="Modified Architecture" type="bool" copied="true" transient="true" related-field="View.ArchUpdated"/>
-    <field name="AutoSinglePage" label="Create Single Page" type="bool" transient="true"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="CustomizeShow" label="Show As Optional Inherit" type="bool" copied="true" transient="true" related-field="View.CustomizeShow"/>
-    <field name="DefaultLayout" label="Default Layout" type="Website.ModelPageDefaultLayout" copied="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true" related-field="View.IsSeoOptimized"/>
-    <field name="Key" label="Key" type="string" copied="true" transient="true" related-field="View.Key"/>
-    <field name="Model" label="Model" type="string" copied="true" transient="true" related-field="View.Model"/>
-    <field name="Name" label="View Name" type="string" required="true" copied="true" transient="true" related-field="View.Name"/>
-    <field name="NameSlugified" label="URL" type="string" readonly="true"/>
-    <field name="PageName" label="Name" type="string" required="true" copied="true"/>
-    <field name="PageType" label="Page Type" type="Website.ModelPagePageType" copied="true"/>
-    <field name="Priority" label="Sequence" type="integer" required="true" copied="true" transient="true" related-field="View.Priority"/>
-    <field name="RecordDomain" label="Domain" type="string" copied="true"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" transient="true" translatable="true" related-field="View.SeoName"/>
-    <field name="Track" label="Track" type="bool" copied="true" transient="true" related-field="View.Track"/>
-    <field name="UseMenu" label="Create Website Menu" type="bool" transient="true"/>
-    <field name="VisibilityPassword" label="Visibility Password" type="string" transient="true" related-field="View.VisibilityPassword"/>
-    <field name="VisibilityPasswordDisplay" label="Visibility Password Display" type="string" transient="true" related-field="View.VisibilityPasswordDisplay"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" transient="true" translatable="true" related-field="View.WebsiteMetaDescription"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" transient="true" translatable="true" related-field="View.WebsiteMetaKeywords"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true" transient="true" related-field="View.WebsiteMetaOgImg"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" transient="true" translatable="true" related-field="View.WebsiteMetaTitle"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-    <field name="Xml" label="External ID" type="string" readonly="true" transient="true" related-field="View.Xml"/>
-  </model>
-  <model id="website.page" name="Website.Page" track_created="true" track_update="true">
-    <field name="Model" label="Model of the view" type="Ir.Model" transient="true" related-field="View.Model"/>
-    <field name="ModelData" label="Model Data" type="Ir.ModelData" readonly="true" transient="true" related-field="View.ModelData"/>
-    <field name="InheritChildrens" label="Views which inherit from this one" type="Ir.UiView" collection="true" transient="true" related-field="View.InheritChildrens"/>
-    <field name="Inherit" label="Inherited View" type="Ir.UiView" copied="true" transient="true" related-field="View.Inherit"/>
-    <field name="View" label="View" type="Ir.UiView" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Groups" label="Groups" type="Res.Groups" collection="true" copied="true" transient="true" related-field="View.Groups"/>
-    <field name="ThemeTemplate" label="Theme Template" type="Theme.WebsitePage" on-delete="Clear"/>
-    <field name="Website" label="Website" type="Website." indexed="true" related-field="View.Website" on-delete="Cascade"/>
-    <field name="ControllerPages" label="Controller Page" type="Website.ControllerPage" collection="true" transient="true" related-field="View.ControllerPages"/>
-    <field name="Menus" label="Related Menus" type="Website.Menu" collection="true"/>
-    <field name="FirstPage" label="Website Page" type="Website.Page" readonly="true" transient="true" related-field="View.FirstPage"/>
-    <field name="Pages" label="Page" type="Website.Page" collection="true" transient="true" related-field="View.Pages"/>
-    <field name="Active" label="Active" type="bool" copied="true" transient="true" related-field="View.Active"/>
-    <field name="Arch" label="View Architecture" type="text" transient="true" related-field="View.Arch"/>
-    <field name="ArchBase" label="Base View Architecture" type="text" transient="true" related-field="View.ArchBase"/>
-    <field name="ArchDb" label="Arch Blob" type="text" copied="true" transient="true" translatable="true" related-field="View.ArchDb"/>
-    <field name="ArchFs" label="Arch Filename" type="string" copied="true" transient="true" related-field="View.ArchFs"/>
-    <field name="ArchPrev" label="Previous View Architecture" type="text" copied="true" transient="true" related-field="View.ArchPrev"/>
-    <field name="ArchUpdated" label="Modified Architecture" type="bool" copied="true" transient="true" related-field="View.ArchUpdated"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="CustomizeShow" label="Show As Optional Inherit" type="bool" copied="true" transient="true" related-field="View.CustomizeShow"/>
-    <field name="DatePublish" label="Publishing Date" type="datetime" copied="true"/>
-    <field name="FooterVisible" label="Footer Visible" type="bool" copied="true"/>
-    <field name="HeaderColor" label="Header Color" type="string" copied="true"/>
-    <field name="HeaderOverlay" label="Header Overlay" type="bool" copied="true"/>
-    <field name="HeaderTextColor" label="Header Text Color" type="string" copied="true"/>
-    <field name="HeaderVisible" label="Header Visible" type="bool" copied="true"/>
-    <field name="IsHomepage" label="Homepage" type="bool" transient="true"/>
-    <field name="IsInMenu" label="Is In Menu" type="bool" transient="true"/>
-    <field name="IsNewPageTemplate" label="New Page Template" type="bool" copied="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true" related-field="View.IsSeoOptimized"/>
-    <field name="IsVisible" label="Is Visible" type="bool" readonly="true" transient="true"/>
-    <field name="Key" label="Key" type="string" copied="true" transient="true" related-field="View.Key"/>
-    <field name="Model" label="Model" type="string" copied="true" transient="true" related-field="View.Model"/>
-    <field name="Name" label="View Name" type="string" required="true" copied="true" transient="true" related-field="View.Name"/>
-    <field name="Priority" label="Sequence" type="integer" required="true" copied="true" transient="true" related-field="View.Priority"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" transient="true" translatable="true" related-field="View.SeoName"/>
-    <field name="Track" label="Track" type="bool" copied="true" transient="true" related-field="View.Track"/>
-    <field name="Url" label="Page URL" type="string" required="true" copied="true"/>
-    <field name="VisibilityPassword" label="Visibility Password" type="string" transient="true" related-field="View.VisibilityPassword"/>
-    <field name="VisibilityPasswordDisplay" label="Visibility Password Display" type="string" transient="true" related-field="View.VisibilityPasswordDisplay"/>
-    <field name="WebsiteIndexed" label="Is Indexed" type="bool" copied="true"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" transient="true" translatable="true" related-field="View.WebsiteMetaDescription"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" transient="true" translatable="true" related-field="View.WebsiteMetaKeywords"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true" transient="true" related-field="View.WebsiteMetaOgImg"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" transient="true" translatable="true" related-field="View.WebsiteMetaTitle"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-    <field name="Xml" label="External ID" type="string" readonly="true" transient="true" related-field="View.Xml"/>
-  </model>
+    <model id="Website.WebsiteRoute" name="WebsiteRoute" description="All Website Route">
+        <field name="Path" type="string" label="Route" />
+    </model>
+
+    <model id="Website.WebsiteRewrite" name="WebsiteRewrite" description="Website rewrite">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="WebsiteId" type="Website.Website" label="Website" collection="true" ondelete="cascade" index="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="UrlFrom" type="string" label="URL from" index="true" />
+        <field name="RouteId" type="Website.WebsiteRoute" collection="true" />
+        <field name="UrlTo" type="string" label="URL to" />
+        <field name="RedirectType" type="Website.WebsiteRewriteRedirectType" label="Action" default="302">
+            <help>Type of redirect/Rewrite:
+301 Moved permanently: The browser will keep in cache the new url.
+302 Moved temporarily: The browser will not keep in cache the new url and ask again the next time the new url.
+404 Not Found: If you want remove a specific page/controller (e.g. Ecommerce is installed, but you don't want /shop on a specific website)
+308 Redirect / Rewrite: If you want rename a controller with a new url. (Eg: /shop -> /garden - Both url will be accessible but /shop will automatically be redirected to /garden)</help>
+        </field>
+        <field name="Sequence" type="integer" />
+    </model>
+
+    <optionset id="Website.WebsiteRewriteRedirectType" name="Website Rewrite Redirect Type">
+        <option value="404" name="404 Not Found" />
+        <option value="301" name="301 Moved permanently" />
+        <option value="302" name="302 Moved temporarily" />
+        <option value="308" name="308 Redirect / Rewrite" />
+    </optionset>
 </buvi>

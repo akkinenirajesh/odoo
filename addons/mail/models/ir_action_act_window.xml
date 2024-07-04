@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.IrActionsActWindowView" name="IrActionsActWindowView" description="IrActionsActWindowView">
+        <field name="ViewMode" type="selection" label="View Mode" collection="true">
+            <option value="activity" name="Activity" />
+        </field>
+    </model>
 </buvi>

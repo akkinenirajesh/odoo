@@ -1,3 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.PickingType" name="PickingType" description="Picking Type">
+    <field name="Name" type="string" label="Operation Type" required="true" translate="true" />
+    <field name="Color" type="integer" label="Color" />
+    <field name="Sequence" type="integer" label="Sequence" help="Used to order the 'All Operations' kanban view" />
+    <field name="SequenceId" type="Core.IrSequence" label="Reference Sequence" checkCompany="true" copy="false" />
+    <field name="SequenceCode" type="string" label="Sequence Prefix" required="true" />
+    <field name="DefaultLocationSrcId" type="Stock.StockLocation" label="Default Source Location" compute="ComputeDefaultLocationSrcId" store="true" readonly="false" precompute="true" required="true" help="This is the default source location when you create a picking manually with this operation type. It is possible however to change it or that the routes put another location." />
+    <field name="DefaultLocationDestId" type="Stock.StockLocation" label="Default Destination Location" compute="ComputeDefaultLocationDestId" store="true" readonly="false" precompute="true" required="true" help="This is the default destination location when you create a picking manually with this operation type. It is possible however to change it or that the routes put another location." />
+    <field name="DefaultLocationReturnId" type="Stock.StockLocation" label="Default returns location" checkCompany="true" help="This is the default location for returns created from a picking with this operation type." domain="[('ReturnLocation', '=', True)]" />
+    <field name="Code" type="selection" label="Type of Operation" required="true">
+      <option value="incoming" name="Receipt" />
+      <option value="outgoing" name="Delivery" />
+      <option value="internal" name="Internal Transfer" />
+    </field>
+    <field name="ReturnPickingTypeId" type="Stock.PickingType" label="Operation Type for Returns" checkCompany="true" />
+    <field name="ShowEntirePacks" type="bool" label="Move Entire Packages" help="If ticked, you will be able to select entire packages to move" />
+    <field name="WarehouseId" type="Stock.StockWarehouse" label="Warehouse" compute="ComputeWarehouseId" store="true" readonly="false" ondelete="cascade" checkCompany="true" />
+    <field name="Active" type="bool" label="Active" default="true" help="Set active to false to hide the Picking Type without removing it." />
+    <field name="UseCreateLots" type="bool" label="Create New Lots/Serial Numbers" default="true" compute="ComputeUseCreateLots" store="true" readonly="false" help="If this is checked only, it will suppose you want to create new Lots/Serial Numbers, so you can provide them in a text field. " />
+    <field name="UseExistingLots" type="bool" label="Use Existing Lots/Serial Numbers" default="true" compute="ComputeUseExistingLots" store="true" readonly="false" help="If this is checked, you will be able to choose the Lots/Serial Numbers. You can also decide to not put lots in this operation type.  This means it will create stock with no lot or not put a restriction on the lot taken. " />
+    <field name="PrintLabel" type="bool" label="Print Label" compute="ComputePrintLabel" store="true" readonly="false" help="Check this box if you want to generate shipping label in this operation." />
+    <field name="ShowOperations" type="bool" label="Show Detailed Operations" default="false" help="If this checkbox is ticked, the pickings lines will represent detailed stock operations. If not, the picking lines will represent an aggregate of detailed stock operations." />
+    <field name="ReservationMethod" type="selection" label="Reservation Method" required="true" default="at_confirm" help="How products in transfers of this operation type should be reserved.">
+      <option value="at_confirm" name="At Confirmation" />
+      <option value="manual" name="Manually" />
+      <option value="by_date" name="Before scheduled date" />
+    </field>
+    <field name="ReservationDaysBefore" type="integer" label="Days" help="Maximum number of days before scheduled date that products should be reserved." />
+    <field name="ReservationDaysBeforePriority" type="integer" label="Days when starred" help="Maximum number of days before scheduled date that priority picking products should be reserved." />
+    <field name="AutoShowReceptionReport" type="bool" label="Show Reception Report at Validation" help="If this checkbox is ticked, Odoo will automatically show the reception report (if there are moves to allocate to) when validating." />
+    <field name="AutoPrintDeliverySlip" type="bool" label="Auto Print Delivery Slip" help="If this checkbox is ticked, Odoo will automatically print the delivery slip of a picking when it is validated." />
+    <field name="AutoPrintReturnSlip" type="bool" label="Auto Print Return Slip" help="If this checkbox is ticked, Odoo will automatically print the return slip of a picking when it is validated." />
+    <field name="AutoPrintProductLabels" type="bool" label="Auto Print Product Labels" help="If this checkbox is ticked, Odoo will automatically print the product labels of a picking when it is validated." />
+    <field name="ProductLabelFormat" type="selection" label="Product Label Format to auto-print" default="2x7xprice">
+      <option value="dymo" name="Dymo" />
+      <option value="2x7xprice" name="2 x 7 with price" />
+      <option value="4x7xprice" name="4 x 7 with price" />
+      <option value="4x12" name="4 x 12" />
+      <option value="4x12xprice" name="4 x 12 with price" />
+      <option value="zpl" name="ZPL Labels" />
+      <option value="zplxprice" name="ZPL Labels with price" />
+    </field>
+    <field name="AutoPrintLotLabels" type="bool" label="Auto Print Lot/SN Labels" help="If this checkbox is ticked, Odoo will automatically print the lot/SN labels of a picking when it is validated." />
+    <field name="LotLabelFormat" type="selection" label="Lot Label Format to auto-print" default="4x12_lots">
+      <option value="4x12_lots" name="4 x 12 - One per lot/SN" />
+      <option value="4x12_units" name="4 x 12 - One per unit" />
+      <option value="zpl_lots" name="ZPL Labels - One per lot/SN" />
+      <option value="zpl_units" name="ZPL Labels - One per unit" />
+    </field>
+    <field name="AutoPrintReceptionReport" type="bool" label="Auto Print Reception Report" help="If this checkbox is ticked, Odoo will automatically print the reception report of a picking when it is validated and has assigned moves." />
+    <field name="AutoPrintReceptionReportLabels" type="bool" label="Auto Print Reception Report Labels" help="If this checkbox is ticked, Odoo will automatically print the reception report labels of a picking when it is validated." />
+    <field name="AutoPrintPackages" type="bool" label="Auto Print Packages" help="If this checkbox is ticked, Odoo will automatically print the packages and their contents of a picking when it is validated." />
+    <field name="AutoPrintPackageLabel" type="bool" label="Auto Print Package Label" help="If this checkbox is ticked, Odoo will automatically print the package label when \"Put in Pack\" button is used." />
+    <field name="PackageLabelToPrint" type="selection" label="Package Label to Print" default="pdf">
+      <option value="pdf" name="PDF" />
+      <option value="zpl" name="ZPL" />
+    </field>
+    <field name="CountPickingDraft" type="integer" compute="ComputePickingCount" />
+    <field name="CountPickingReady" type="integer" compute="ComputePickingCount" />
+    <field name="CountPicking" type="integer" compute="ComputePickingCount" />
+    <field name="CountPickingWaiting" type="integer" compute="ComputePickingCount" />
+    <field name="CountPickingLate" type="integer" compute="ComputePickingCount" />
+    <field name="CountPickingBackorders" type="integer" compute="ComputePickingCount" />
+    <field name="CountMoveReady" type="integer" compute="ComputeMoveCount" />
+    <field name="HideReservationMethod" type="bool" compute="ComputeHideReservationMethod" />
+    <field name="Barcode" type="string" label="Barcode" copy="false" />
+    <field name="CompanyId" type="Core.ResCompany" label="Company" required="true" default="env.company.Id" index="true" />
+    <field name="CreateBackorder" type="selection" label="Create Backorder" required="true" default="ask" help="When validating a transfer:&#x20;
+ * Ask: users are asked to choose if they want to make a backorder for remaining products&#x20;
+ * Always: a backorder is automatically created for the remaining products&#x20;
+ * Never: remaining products are cancelled">
+      <option value="ask" name="Ask" />
+      <option value="always" name="Always" />
+      <option value="never" name="Never" />
+    </field>
+    <field name="ShowPickingType" type="bool" compute="ComputeShowPickingType" />
+    <field name="PickingPropertiesDefinition" type="PropertiesDefinition" label="Picking Properties" />
+    <field name="FavoriteUserIds" type="many2many" collection="true" label="Favorite Users" relation="PickingTypeFavoriteUserRel" relationField="PickingTypeId" relationInverseField="UserId" />
+    <field name="IsFavorite" type="bool" label="Show Operation in Overview" compute="ComputeIsFavorite" inverse="InverseIsFavorite" search="SearchIsFavorite" computeSudo="true" />
+    <field name="KanbanDashboardGraph" type="text" compute="ComputeKanbanDashboardGraph" />
+    <field name="ReadyItemsLabel" type="string" compute="ComputeReadyItemsLabel" />
+  </model>
+
+  <optionset id="Stock.PickingTypeCode" name="Picking Type Code">
+    <option value="incoming" name="Receipt" />
+    <option value="outgoing" name="Delivery" />
+    <option value="internal" name="Internal Transfer" />
+  </optionset>
 </buvi>

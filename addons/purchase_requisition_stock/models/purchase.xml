@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+    <field name="OnTimeRatePerc" type="float" label="OTD" />
+    <field name="RequisitionId" type="Purchase.PurchaseRequisition" collection="true" />
+    <field name="PickingTypeId" type="Stock.PickingType" />
+    <field name="OnTimeRate" type="float" />
+  </model>
+  <model id="Purchase.PurchaseOrderLine" name="PurchaseOrderLine" description="Purchase Order Line">
+    <field name="OnTimeRatePerc" type="float" label="OTD" related="OrderId.OnTimeRatePerc" />
+    <field name="OrderId" type="Purchase.PurchaseOrder" />
+  </model>
 </buvi>

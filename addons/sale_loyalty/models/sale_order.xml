@@ -1,3 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="AppliedCouponIds" type="collection" collection="true" label="Manually Applied Coupons" relation="Loyalty.LoyaltyCard" />
+    <field name="CodeEnabledRuleIds" type="collection" collection="true" label="Manually Triggered Rules" relation="Loyalty.LoyaltyRule" />
+    <field name="CouponPointIds" type="collection" collection="true" relation="Sale.SaleOrderCouponPoints" />
+    <field name="RewardAmount" type="float" label="Reward Amount" compute="ComputeRewardTotal" />
+  </model>
+
+  <model id="Sale.SaleOrderCouponPoints" name="Sale.SaleOrderCouponPoints" description="Sale Order Coupon Points">
+    <field name="OrderId" type="many2one" relation="Sale.SaleOrder" />
+    <field name="CouponId" type="many2one" relation="Loyalty.LoyaltyCard" />
+    <field name="Points" type="integer" label="Points" />
+  </model>
+
+  <model id="Loyalty.LoyaltyCard" name="Loyalty.LoyaltyCard" description="Loyalty Card">
+    <field name="ProgramId" type="many2one" relation="Loyalty.LoyaltyProgram" />
+    <field name="PartnerId" type="many2one" relation="Core.Partner" />
+    <field name="Points" type="integer" label="Points" />
+    <field name="ExpirationDate" type="date" label="Expiration Date" />
+    <field name="Code" type="string" label="Code" />
+    <field name="UseCount" type="integer" label="Use Count" />
+    <field name="OrderIds" type="collection" collection="true" relation="Sale.SaleOrder" />
+  </model>
+
+  <model id="Loyalty.LoyaltyProgram" name="Loyalty.LoyaltyProgram" description="Loyalty Program">
+    <field name="Active" type="bool" label="Active" default="true" />
+    <field name="SaleOk" type="bool" label="Available for Sales Orders" default="true" />
+    <field name="Company" type="many2one" relation="Core.Company" />
+    <field name="PriceListIds" type="collection" collection="true" relation="Product.PriceList" />
+    <field name="DateFrom" type="date" label="Date From" />
+    <field name="DateTo" type="date" label="Date To" />
+    <field name="AppliesOn" type="Loyalty.LoyaltyProgramAppliesOn" label="Applies On" />
+    <field name="IsPaymentProgram" type="bool" label="Payment Program" />
+    <field name="IsNominative" type="bool" label="Nominative" />
+    <field name="LimitUsage" type="bool" label="Limit Usage" />
+    <field name="MaxUsage" type="integer" label="Max Usage" />
+    <field name="TotalOrderCount" type="integer" label="Total Order Count" />
+    <field name="ProgramType" type="Loyalty.LoyaltyProgramType" label="Program Type" />
+    <field name="Trigger" type="Loyalty.LoyaltyProgramTrigger" label="Trigger" />
+    <field name="TriggerProductIds" type="collection" collection="true" relation="Product.Product" label="Trigger Products" />
+    <field name="RewardIds" type="collection" collection="true" relation="Loyalty.LoyaltyReward" />
+    <field name="RuleIds" type="collection" collection="true" relation="Loyalty.LoyaltyRule" />
+    <field name="CurrencyId" type="many2one" relation="Res.Currency" />
+  </model>
+
+  <model id="Loyalty.LoyaltyRule" name="Loyalty.LoyaltyRule" description="Loyalty Rule">
+    <field name="ProgramId" type="many2one" relation="Loyalty.LoyaltyProgram" />
+    <field name="Mode" type="Loyalty.LoyaltyRuleMode" label="Mode" />
+    <field name="Code" type="string" label="Code" />
+    <field name="MinimumAmount" type="float" label="Minimum Amount" />
+    <field name="MinimumAmountTaxMode" type="Loyalty.LoyaltyRuleMinimumAmountTaxMode" label="Minimum Amount Tax Mode" />
+    <field name="MinimumQty" type="integer" label="Minimum Quantity" />
+    <field name="RewardPointAmount" type="float" label="Reward Point Amount" />
+    <field name="RewardPointMode" type="Loyalty.LoyaltyRuleRewardPointMode" label="Reward Point Mode" />
+    <field name="RewardPointSplit" type="bool" label="Split Reward Points" />
+    <field name="CurrencyId" type="many2one" relation="Res.Currency" />
+  </model>
+
+  <model id="Loyalty.LoyaltyReward" name="Loyalty.LoyaltyReward" description="Loyalty Reward">
+    <field name="ProgramId" type="many2one" relation="Loyalty.LoyaltyProgram" />
+    <field name="RewardType" type="Loyalty.LoyaltyRewardType" label="Reward Type" />
+    <field name="RewardProductIds" type="collection" collection="true" relation="Product.Product" />
+    <field name="RewardProductQty" type="float" label="Reward Product Quantity" />
+    <field name="Discount" type="float" label="Discount" />
+    <field name="DiscountMode" type="Loyalty.LoyaltyRewardDiscountMode" label="Discount Mode" />
+    <field name="DiscountApplicability" type="Loyalty.LoyaltyRewardDiscountApplicability" label="Discount Applicability" />
+    <field name="DiscountMaxAmount" type="float" label="Discount Max Amount" />
+    <field name="ClearWallet" type="bool" label="Clear Wallet" />
+    <field name="RequiredPoints" type="integer" label="Required Points" />
+    <field name="MultiProduct" type="bool" label="Multi-Product" />
+    <field name="CurrencyId" type="many2one" relation="Res.Currency" />
+    <field name="DiscountLineProductId" type="many2one" relation="Product.Product" />
+    <field name="Description" type="string" label="Description" />
+    <field name="IsGlobalDiscount" type="bool" label="Global Discount" />
+  </model>
+
+  <optionset id="Loyalty.LoyaltyProgramAppliesOn" name="Loyalty Program Applies On">
+    <option value="Current" name="Current Order" />
+    <option value="Future" name="Future Orders" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyProgramType" name="Loyalty Program Type">
+    <option value="loyalty" name="Loyalty" />
+    <option value="ewallet" name="eWallet" />
+    <option value="gift_card" name="Gift Card" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyProgramTrigger" name="Loyalty Program Trigger">
+    <option value="auto" name="Automatic" />
+    <option value="code" name="Code" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyRuleMode" name="Loyalty Rule Mode">
+    <option value="with_code" name="With Code" />
+    <option value="no_code" name="No Code" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyRuleMinimumAmountTaxMode" name="Loyalty Rule Minimum Amount Tax Mode">
+    <option value="incl" name="Incl. Taxes" />
+    <option value="excl" name="Excl. Taxes" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyRuleRewardPointMode" name="Loyalty Rule Reward Point Mode">
+    <option value="order" name="Order" />
+    <option value="unit" name="Unit" />
+    <option value="money" name="Money" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyRewardType" name="Loyalty Reward Type">
+    <option value="discount" name="Discount" />
+    <option value="product" name="Product" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyRewardDiscountMode" name="Loyalty Reward Discount Mode">
+    <option value="per_point" name="Per Point" />
+    <option value="per_order" name="Per Order" />
+    <option value="percent" name="Percent" />
+  </optionset>
+
+  <optionset id="Loyalty.LoyaltyRewardDiscountApplicability" name="Loyalty Reward Discount Applicability">
+    <option value="order" name="Order" />
+    <option value="cheapest" name="Cheapest Line" />
+    <option value="specific" name="Specific Products" />
+  </optionset>
+
 </buvi>

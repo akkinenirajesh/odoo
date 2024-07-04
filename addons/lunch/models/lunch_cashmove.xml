@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.LunchCashMove" name="LunchCashMove" description="Lunch Cashmove">
+        <field name="CurrencyId" type="res.currency" label="Currency" required="true" default="Env.Company.CurrencyId" />
+        <field name="UserId" type="res.users" label="User" default="Env.Uid" />
+        <field name="Date" type="date" label="Date" required="true" default="Date.ContextToday" />
+        <field name="Amount" type="float" label="Amount" required="true" />
+        <field name="Description" type="text" label="Description" />
+    </model>
 </buvi>

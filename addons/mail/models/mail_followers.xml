@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.Followers" name="Mail.Followers" description="Document Followers">
+        <field name="ResModel" type="string" label="Related Document Model Name" required="true" index="true" />
+        <field name="ResId" type="Many2oneReference" label="Related Document ID" index="true" help="Id of the followed resource" model_field="ResModel" />
+        <field name="PartnerId" type="Core.Partner" label="Related Partner" index="true" ondelete="cascade" required="true" />
+        <field name="SubtypeIds" type="Mail.MessageSubtype" collection="true" label="Subtype" help="Message subtypes followed, meaning subtypes that will be pushed onto the user's Wall." />
+        <field name="Name" type="string" label="Name" related="PartnerId.Name" />
+        <field name="Email" type="string" label="Email" related="PartnerId.Email" />
+        <field name="IsActive" type="bool" label="Is Active" related="PartnerId.Active" />
+    </model>
 </buvi>

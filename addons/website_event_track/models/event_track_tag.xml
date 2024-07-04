@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventTrack.EventTrackTag" name="EventTrackTag" description="Event Track Tag">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="TrackIds" type="WebsiteEventTrack.EventTrack" collection="true" label="Tracks" />
+        <field name="Color" type="integer" label="Color Index" default="lambda self: self._default_color()" help="Note that colorless tags won't be available on the website." />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="CategoryId" type="WebsiteEventTrack.EventTrackTagCategory" label="Category" />
+        <unique>
+            <field name="Name" />
+            <message>Tag name already exists!</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpProduction" name="MrpProduction" description="Manufacturing Order">
+    <field name="ExtraCost" type="float" label="Extra Cost" />
+  </model>
 </buvi>

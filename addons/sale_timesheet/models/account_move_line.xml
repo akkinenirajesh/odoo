@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="ProductQuantity" type="float" label="Quantity" required="true" />
+        <field name="ProductPrice" type="float" label="Price" required="true" />
+        <field name="Discount" type="float" label="Discount (%)" default="0.0" />
+        <field name="TaxIDs" type="Collection" relation="Account.Tax" collection="true" />
+        <field name="ProductUom" type="Product.Uom" label="Unit of Measure" />
+        <field name="ProductDescription" type="string" label="Description" />
+        <field name="Product" type="Product.Product" label="Product" required="true" />
+        <field name="PriceSubtotal" type="float" label="Subtotal" readonly="true" />
+        <field name="PriceTotal" type="float" label="Total" readonly="true" />
+        <field name="SaleOrder" type="Sale.SaleOrder" relation="Sale.SaleOrder" required="true" />
+        <field name="SaleOrderState" type="string" label="Sale Order State" readonly="true" />
+        <field name="DeliveryDate" type="date" label="Delivery Date" />
+    </model>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventBooth.Event" name="Event" description="Event">
+        <field name="ExhibitionMap" type="image" label="Exhibition Map" max_width="1024" max_height="1024" />
+        <field name="BoothMenu" type="bool" label="Booth Register" />
+        <field name="BoothMenuIds" type="collection" label="Event Booths Menus" relation="WebsiteEventBooth.WebsiteEventMenu" collection="true" domain="[('MenuType', '=', 'booth')]" />
+    </model>
+    <optionset id="WebsiteEventBooth.WebsiteEventMenu" name="Website Event Menu">
+        <option value="booth" name="Booth" />
+    </optionset>
 </buvi>

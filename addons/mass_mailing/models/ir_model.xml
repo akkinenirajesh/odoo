@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailing.IrModel" name="IrModel" description="IrModel">
+    <field name="IsMailingEnabled" type="bool" label="Mailing Enabled" compute="ComputeIsMailingEnabled" search="SearchIsMailingEnabled" help="Whether this model supports marketing mailing capabilities (notably email and SMS)." />
+  </model>
 </buvi>

@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSlidesSurvey.ChannelUsersRelation" name="WebsiteSlidesSurvey.ChannelUsersRelation" description="Channel Users Relation">
+        <field name="ChannelId" type="WebsiteSlidesSurvey.Channel" relation="true" />
+        <field name="NbrCertification" type="integer" label="# Certifications" />
+        <field name="SurveyCertificationSuccess" type="bool" label="Certified" />
+    </model>
+
+    <model id="WebsiteSlidesSurvey.Channel" name="WebsiteSlidesSurvey.Channel" description="Channel">
+        <field name="MembersCertifiedCount" type="integer" label="# Certified Attendees" compute="ComputeMembersCertifiedCount" />
+        <field name="NbrCertification" type="integer" label="Number of Certifications" store="true" compute="ComputeSlidesStatistics" />
+    </model>
 </buvi>

@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestMailFull.MailTestPortal" name="TestMailFull.MailTestPortal" description="Chatter Model for Portal">
+        <field name="Name" type="string" label="Name" />
+        <field name="PartnerId" type="Res.Partner" label="Customer" />
+        <field name="UserId" type="Res.Users" label="Salesperson" />
+    </model>
+
+    <model id="TestMailFull.MailTestPortalNoPartner" name="TestMailFull.MailTestPortalNoPartner" description="Chatter Model for Portal (no partner field)">
+        <field name="Name" type="string" />
+    </model>
+
+    <model id="TestMailFull.MailTestRating" name="TestMailFull.MailTestRating" description="Rating Model (ticket-like)">
+        <field name="Name" type="string" label="Name" />
+        <field name="Subject" type="string" label="Subject" />
+        <field name="CompanyId" type="Res.Company" label="Company" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" />
+        <field name="EmailFrom" type="string" label="From" readonly="true" store="true" />
+        <field name="MobileNbr" type="string" label="Mobile" readonly="true" store="true" />
+        <field name="PhoneNbr" type="string" label="Phone Number" readonly="true" store="true" />
+        <field name="UserId" type="Res.Users" label="Responsible" />
+    </model>
+
+    <model id="TestMailFull.MailTestRatingThread" name="TestMailFull.MailTestRatingThread" description="Model for testing rating without the rating mixin">
+        <field name="Name" type="string" label="Name" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" />
+        <field name="UserId" type="Res.Users" label="Responsible" />
+    </model>
 </buvi>

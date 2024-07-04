@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockRoute" name="StockRoute" description="Stock Route">
+    <field name="ShippingSelectable" type="bool" label="Applicable on Shipping Methods" />
+    <inherit id="stock.stock_route" />
+  </model>
+
+  <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+    <field name="Weight" type="float" digits="Stock Weight" store="true" />
+    <inherit id="stock.stock_move" />
+  </model>
+
+  <model id="Stock.StockMoveLine" name="StockMoveLine" description="Stock Move Line">
+    <field name="SalePrice" type="float" />
+    <field name="DestinationCountryCode" type="char" relation="Stock.Picking" />
+    <field name="CarrierId" type="many2one" relation="Stock.Picking" store="true" />
+    <inherit id="stock.stock_move_line" />
+  </model>
 </buvi>

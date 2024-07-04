@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPayment" name="PosPayment" description="POS Payment">
+        <field name="PaymentMethodName" type="string" label="Payment Method Name" />
+        <field name="Amount" type="float" label="Amount" required="true" />
+        <field name="CurrencyId" type="Core.Currency" />
+        <field name="PartnerId" type="Res.Partner" />
+        <field name="TransactionId" type="char" label="Transaction ID" />
+        <field name="PaymentMethodId" type="Pos.PaymentMethod" />
+        <field name="PaymentDate" type="datetime" />
+    </model>
+
+    <model id="Pos.PaymentMethod" name="PaymentMethod" description="Payment Method">
+        <field name="Name" type="string" label="Payment Method" required="true" />
+        <field name="UsePaymentTerminal" type="string" options="adyen,ingenico" />
+        <field name="AdyenMerchantAccount" type="string" />
+    </model>
 </buvi>

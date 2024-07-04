@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.FiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+    <field name="Name" type="string" label="Fiscal Position Name" required="true" translate="true"/>
+    <field name="Note" type="text" label="Note" translate="true"/>
+    <field name="Active" type="bool" default="true" help="If unchecked, it will disable the fiscal position."/>
+    <field name="Company" type="Core.Company" required="true"/>
+    <field name="AutoApply" type="bool" label="Auto Apply" help="Automatically apply this fiscal position when creating invoices."/>
+    <field name="Country" type="Core.Country" label="Country" help="Country for which this fiscal position is valid."/>
+    <field name="CountryGroup" type="Core.CountryGroup" label="Country Group" help="Country Group for which this fiscal position is valid."/>
+    <field name="TaxMap" type="Account.TaxMap" label="Tax Map" collection="true"/>
+    <field name="AccountMap" type="Account.AccountMap" label="Account Map" collection="true"/>
+  </model>
 </buvi>

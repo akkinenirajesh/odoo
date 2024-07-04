@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SnailmailAccount.ResCompany" name="ResCompany" description="ResCompany">
+        <field name="InvoiceIsSnailmail" type="bool" label="Send by Post" default="False" />
+    </model>
 </buvi>

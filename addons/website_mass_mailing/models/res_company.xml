@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ResCompany" name="ResCompany" description="ResCompany">
+        <field name="SocialFacebook" type="string" label="Facebook" />
+        <field name="SocialLinkedin" type="string" label="LinkedIn" />
+        <field name="SocialTwitter" type="string" label="Twitter" />
+        <field name="SocialInstagram" type="string" label="Instagram" />
+        <field name="SocialTiktok" type="string" label="TikTok" />
+    </model>
 </buvi>

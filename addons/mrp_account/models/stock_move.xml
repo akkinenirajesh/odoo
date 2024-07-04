@@ -1,7 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="MrpAccount.StockMove" name="StockMove" description="Stock Move">
+        <field name="PickingTypeId" type="MrpAccount.PickingType" required="true" />
+        <field name="RawMaterialProductionId" type="MrpAccount.MrpProduction" />
+        <field name="BomLineId" type="MrpAccount.MrpBomLine" />
+        <field name="LocationId" type="Stock.Location" required="true" />
+        <field name="LocationDestId" type="Stock.Location" required="true" />
+        <field name="AnalyticDistribution" type="Account.AnalyticDistribution" collection="true" />
+    </model>
+
+    <optionset id="MrpAccount.PickingType" name="Picking Type">
+        <option value="mrp_operation" name="MRP Operation" />
+    </optionset>
 </buvi>

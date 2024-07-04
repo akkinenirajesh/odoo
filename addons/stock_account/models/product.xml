@@ -1,3 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="StockAccount.ProductTemplate" name="ProductTemplate" description="Product Template" inherit="Product.ProductTemplate">
+    <field name="CostMethod" type="selection" related="CategoryID.PropertyCostMethod" readonly="true" />
+    <field name="Valuation" type="selection" related="CategoryID.PropertyValuation" readonly="true" />
+  </model>
+
+  <model id="StockAccount.ProductProduct" name="ProductProduct" description="Product Product" inherit="Product.Product">
+    <field name="ValueSVL" type="float" compute="ComputeValueSVL" computeSudo="true" />
+    <field name="QuantitySVL" type="float" compute="ComputeValueSVL" computeSudo="true" />
+    <field name="AverageCost" type="monetary" string="Average Cost" compute="ComputeValueSVL" computeSudo="true" currencyField="CompanyCurrencyID" />
+    <field name="TotalValue" type="monetary" string="Total Value" compute="ComputeValueSVL" computeSudo="true" currencyField="CompanyCurrencyID" />
+    <field name="CompanyCurrencyID" type="Core.Currency" string="Valuation Currency" compute="ComputeValueSVL" computeSudo="true"
+      help="Technical field to correctly show the currently selected company's currency that corresponds to the totaled value of the product's valuation layers" />
+    <field name="StockValuationLayerIDs" type="StockAccount.StockValuationLayer" collection="true" />
+    <field name="Valuation" type="selection" related="CategoryID.PropertyValuation" readonly="true" />
+    <field name="CostMethod" type="selection" related="CategoryID.PropertyCostMethod" readonly="true" />
+  </model>
+
+  <model id="StockAccount.StockValuationLayer" name="StockValuationLayer" description="Stock Valuation Layer">
+    <field name="ProductID" type="StockAccount.ProductProduct" required="true" />
+    <field name="Value" type="float" required="true" />
+    <field name="UnitCost" type="float" required="true" />
+    <field name="Quantity" type="float" required="true" />
+    <field name="RemainingQuantity" type="float" required="true" />
+    <field name="RemainingValue" type="float" required="true" />
+    <field name="Description" type="string" />
+    <field name="CompanyID" type="Core.Company" />
+    <field name="StockMoveID" type="Stock.StockMove" />
+    <field name="StockValuationLayerID" type="StockAccount.StockValuationLayer" />
+    <field name="RoundingAdjustment" type="string" />
+  </model>
+
+  <model id="StockAccount.ProductCategory" name="ProductCategory" description="Product Category" inherit="Product.ProductCategory">
+    <field name="PropertyValuation" type="selection" companyDependent="true" copy="true" required="true"
+      help="""Manual: The accounting entries to value the inventory are not posted automatically.
+        Automated: An accounting entry is automatically created to value the inventory when a product enters or leaves the company.""" />
+    <field name="PropertyCostMethod" type="selection" companyDependent="true" copy="true" required="true"
+      help="""Standard Price: The products are valued at their standard cost defined on the product.
+        Average Cost (AVCO): The products are valued at weighted average cost.
+        First In First Out (FIFO): The products are valued supposing those that enter the company first will also leave it first.""" />
+    <field name="PropertyStockJournal" type="Account.Journal" companyDependent="true"
+      help="When doing automated inventory valuation, this is the Accounting Journal in which entries will be automatically posted when stock moves are processed." />
+    <field name="PropertyStockAccountInputCategoryID" type="Account.Account" companyDependent="true"
+      domain="[('deprecated', '=', False)]" checkCompany="true"
+      help="""Counterpart journal items for all incoming stock moves will be posted in this account, unless there is a specific valuation account
+                set on the source location. This is the default value for all products in this category. It can also directly be set on each product.""" />
+    <field name="PropertyStockAccountOutputCategoryID" type="Account.Account" companyDependent="true"
+      domain="[('deprecated', '=', False)]" checkCompany="true"
+      help="""When doing automated inventory valuation, counterpart journal items for all outgoing stock moves will be posted in this account,
+                unless there is a specific valuation account set on the destination location. This is the default value for all products in this category.
+                It can also directly be set on each product.""" />
+    <field name="PropertyStockValuationAccountID" type="Account.Account" companyDependent="true"
+      domain="[('deprecated', '=', False)]" checkCompany="true"
+      help="""When automated inventory valuation is enabled on a product, this account will hold the current value of the products.""" />
+  </model>
+
+  <optionset id="StockAccount.PropertyValuation" name="Property Valuation">
+    <option value="ManualPeriodic" name="Manual" />
+    <option value="RealTime" name="Automated" />
+  </optionset>
+
+  <optionset id="StockAccount.PropertyCostMethod" name="Property Costing Method">
+    <option value="Standard" name="Standard Price" />
+    <option value="FIFO" name="First In First Out (FIFO)" />
+    <option value="Average" name="Average Cost (AVCO)" />
+  </optionset>
 </buvi>

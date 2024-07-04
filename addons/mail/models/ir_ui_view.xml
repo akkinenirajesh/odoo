@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.IrUiView" name="IrUiView" description="IrUiView">
+        <field name="Type" type="selection" label="Type" selection="Mail.IrUiViewType" />
+    </model>
+
+    <optionset id="Mail.IrUiViewType" name="IrUiViewType">
+        <option value="activity" name="Activity" />
+    </optionset>
 </buvi>

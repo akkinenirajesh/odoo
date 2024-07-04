@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sms.MailNotification" name="Sms.MailNotification" description="Mail Notification">
+        <field name="NotificationType" type="selection" label="Notification Type" collection="true">
+            <option value="email" name="Email" />
+            <option value="sms" name="SMS" />
+        </field>
+        <field name="SmsIdInt" type="integer" label="SMS ID" />
+        <field name="SmsId" type="Sms.Sms" label="SMS" readonly="true" />
+        <field name="SmsTrackerIds" type="Sms.SmsTracker" label="SMS Trackers" collection="true" />
+        <field name="SmsNumber" type="string" label="SMS Number" />
+        <field name="FailureType" type="selection" label="Failure Type" collection="true">
+            <option value="email_error" name="Email Error" />
+            <option value="email_bounce" name="Email Bounce" />
+            <option value="email_spam" name="Email Spam" />
+            <option value="sms_number_missing" name="Missing Number" />
+            <option value="sms_number_format" name="Wrong Number Format" />
+            <option value="sms_credit" name="Insufficient Credit" />
+            <option value="sms_country_not_supported" name="Country Not Supported" />
+            <option value="sms_registration_needed" name="Country-specific Registration Required" />
+            <option value="sms_server" name="Server Error" />
+            <option value="sms_acc" name="Unregistered Account" />
+            <option value="sms_expired" name="Expired" />
+            <option value="sms_invalid_destination" name="Invalid Destination" />
+            <option value="sms_not_allowed" name="Not Allowed" />
+            <option value="sms_not_delivered" name="Not Delivered" />
+            <option value="sms_rejected" name="Rejected" />
+        </field>
+    </model>
 </buvi>

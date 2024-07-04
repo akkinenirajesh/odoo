@@ -1,3 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ChatbotScript" name="ChatbotScript" description="Chatbot Script">
+        <field name="Id" type="integer" required="true" />
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Script" type="text" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="AutoStart" type="bool" label="Auto Start" />
+        <field name="WelcomeMessage" type="text" />
+        <field name="EndMessage" type="text" />
+        <field name="WelcomeMessageSound" type="many2one" relation="Website.Sound" />
+        <field name="EndMessageSound" type="many2one" relation="Website.Sound" />
+        <field name="WelcomeMessageImage" type="many2one" relation="Website.Image" />
+        <field name="EndMessageImage" type="many2one" relation="Website.Image" />
+        <field name="Website" type="many2one" relation="Website" />
+        <field name="Steps" type="one2many" relation="Website.ChatbotScriptStep" collection="true" />
+        <field name="Langs" type="many2many" relation="Res.Lang" collection="true" />
+        <field name="Trigger" type="selection" selection="Website.ChatbotScriptTrigger" />
+        <field name="TriggerWebsite" type="many2one" relation="Website" label="Trigger Website" />
+        <field name="TriggerPage" type="char" label="Trigger Page" />
+        <field name="TriggerCondition" type="char" label="Trigger Condition" />
+        <field name="TriggerDelay" type="integer" label="Trigger Delay" />
+        <field name="LiveChatActive" type="bool" label="Live Chat Active" />
+        <field name="LiveChatTimeout" type="integer" label="Live Chat Timeout" />
+        <field name="LiveChatTimeoutWarning" type="integer" label="Live Chat Timeout Warning" />
+        <field name="LiveChatTimeoutMessage" type="char" label="Live Chat Timeout Message" />
+        <field name="LiveChatTitle" type="char" label="Live Chat Title" />
+        <field name="LiveChatOpenMessage" type="text" label="Live Chat Open Message" />
+        <field name="LiveChatClosedMessage" type="text" label="Live Chat Closed Message" />
+        <field name="LiveChatOperatorId" type="many2one" relation="Res.Users" label="Live Chat Operator" />
+        <field name="LiveChatOperatorGroup" type="many2one" relation="Res.Partner" label="Live Chat Operator Group" />
+        <field name="LiveChatOperatorGroupId" type="many2one" relation="Res.Partner" label="Live Chat Operator Group Id" />
+        <field name="LiveChatOperatorEmail" type="char" label="Live Chat Operator Email" />
+        <field name="LiveChatOperatorPhoneNumber" type="char" label="Live Chat Operator Phone Number" />
+        <field name="LiveChatOperatorName" type="char" label="Live Chat Operator Name" />
+        <field name="LiveChatOperatorAvatar" type="binary" label="Live Chat Operator Avatar" />
+        <field name="LiveChatOperatorAvatarUrl" type="char" label="Live Chat Operator Avatar Url" />
+    </model>
+
+    <optionset id="Website.ChatbotScriptTrigger" name="Chatbot Script Trigger">
+        <option value="visit" name="Visit" />
+        <option value="page_load" name="Page Load" />
+        <option value="condition" name="Condition" />
+        <option value="delay" name="Delay" />
+    </optionset>
 </buvi>

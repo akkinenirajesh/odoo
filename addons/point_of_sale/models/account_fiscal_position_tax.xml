@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.FiscalPositionTax" name="AccountFiscalPositionTax" description="Account Fiscal Position Tax">
+    <field name="PositionId" type="Account.FiscalPosition" required="true" />
+    <field name="TaxId" type="Account.Tax" required="true" />
+    <field name="TaxGroupId" type="Account.TaxGroup" />
+    <field name="TaxMapId" type="Account.TaxMap" />
+    <field name="Active" type="bool" default="true" />
+  </model>
 </buvi>

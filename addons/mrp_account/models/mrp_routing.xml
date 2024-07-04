@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.MrpRoutingWorkcenter" name="MrpRoutingWorkcenter" description="MRP Routing Workcenter">
+        <field name="WorkcenterId" type="Mrp.Workcenter" required="true" />
+        <field name="Name" type="string" label="Workcenter" />
+        <field name="TotalCostPerHour" type="float" label="Total Cost per Hour" />
+    </model>
+
+    <optionset id="Mrp.Workcenter" name="Workcenter">
+        <option value="workcenter.id" name="Workcenter" />
+    </optionset>
 </buvi>

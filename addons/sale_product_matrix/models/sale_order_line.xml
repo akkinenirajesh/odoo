@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="ProductAddMode" type="Sale.ProductAddMode" related="ProductTemplateId.ProductAddMode" depends="ProductTemplateId" />
+    </model>
+
+    <optionset id="Sale.ProductAddMode" name="Product Add Mode">
+        <option value="direct" name="Direct" />
+        <option value="matrix" name="Matrix" />
+    </optionset>
 </buvi>

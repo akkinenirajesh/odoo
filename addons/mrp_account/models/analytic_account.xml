@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.AccountAnalyticAccount" name="Account.AccountAnalyticAccount" description="Analytic Account">
+    <field name="Name" type="string" label="Analytic Account Name" required="true" translate="true" />
+    <field name="Code" type="char" label="Code" />
+    <field name="Parent" type="Account.AccountAnalyticAccount" label="Parent Analytic Account" relation="true" collection="true"/>
+    <field name="Active" type="bool" label="Active" default="true"/>
+    <field name="ProductionIds" type="Mrp.Production" relation="true" collection="true"/>
+    <field name="ProductionCount" type="integer" label="Manufacturing Orders Count" readonly="true"/>
+    <field name="BomIds" type="Mrp.Bom" relation="true" collection="true"/>
+    <field name="BomCount" type="integer" label="BoM Count" readonly="true"/>
+    <field name="WorkcenterIds" type="Mrp.Workcenter" relation="true" collection="true"/>
+    <field name="WorkorderCount" type="integer" label="Work Order Count" readonly="true"/>
+  </model>
+
+  <model id="Mrp.AccountAnalyticLine" name="Account.AccountAnalyticLine" description="Analytic Line">
+    <field name="Name" type="string" label="Description" translate="true"/>
+    <field name="AccountID" type="Account.AccountAnalyticAccount" relation="true" required="true" />
+    <field name="Date" type="datetime" label="Date"/>
+    <field name="Amount" type="float" label="Amount"/>
+    <field name="Ref" type="string" label="Reference"/>
+    <field name="PartnerID" type="Res.Partner" relation="true" label="Partner" />
+    <field name="GeneralLedgerEntryID" type="Account.MoveLine" relation="true" label="General Ledger Entry" />
+    <field name="UnitAmount" type="float" label="Unit Amount"/>
+    <field name="Quantity" type="float" label="Quantity"/>
+    <field name="Product" type="Product.Product" relation="true" label="Product" />
+    <field name="Category" type="selection" label="Category" default="none">
+      <option value="none" name="None" />
+      <option value="manufacturing_order" name="Manufacturing Order" />
+    </field>
+  </model>
+
+  <model id="Mrp.AccountAnalyticApplicability" name="Account.AccountAnalyticApplicability" description="Analytic Plan's Applicabilities">
+    <field name="Name" type="string" label="Name" translate="true" required="true" />
+    <field name="BusinessDomain" type="selection" label="Business Domain">
+      <option value="customer" name="Customer" />
+      <option value="project" name="Project" />
+      <option value="manufacturing_order" name="Manufacturing Order" />
+    </field>
+  </model>
 </buvi>

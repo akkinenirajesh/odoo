@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Resource.Resource" name="Resource.Resource" description="Resources">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="Active" type="bool" label="Active" default="true" help="If the active field is set to False, it will allow you to hide the resource record without removing it." />
+    <field name="Company" type="Res.Company" label="Company" />
+    <field name="ResourceType" type="Resource.ResourceType" label="Type" required="true" />
+    <field name="User" type="Res.Users" label="User" help="Related user name for the resource to manage its access." />
+    <field name="Avatar128" type="image" />
+    <field name="Share" type="bool" related="User.Share" />
+    <field name="Email" type="string" related="User.Email" />
+    <field name="Phone" type="string" related="User.Phone" />
+    <field name="TimeEfficiency" type="float" label="Efficiency Factor" default="100" required="true" help="This field is used to calculate the expected duration of a work order at this work center. For example, if a work order takes one hour and the efficiency factor is 100%, then the expected duration will be one hour. If the efficiency factor is 200%, however the expected duration will be 30 minutes." />
+    <field name="Calendar" type="Resource.Calendar" label="Working Time" />
+    <field name="Tz" type="string" label="Timezone" required="true" />
+    <sql_constraint name="CheckTimeEfficiency" condition="TimeEfficiency &gt; 0" message="Time efficiency must be strictly positive" />
+  </model>
+
+  <optionset id="Resource.ResourceType" name="Resource Type">
+    <option value="user" name="Human" />
+    <option value="material" name="Material" />
+  </optionset>
 </buvi>

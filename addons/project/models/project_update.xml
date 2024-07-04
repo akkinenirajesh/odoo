@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.ProjectUpdate" name="ProjectUpdate" description="Project Update">
+    <field name="Name" type="string" label="Title" required="true" track="true" />
+    <field name="Status" type="Project.ProjectUpdateStatus" required="true" track="true" />
+    <field name="Color" type="integer" compute="ComputeColor" />
+    <field name="Progress" type="integer" track="true" />
+    <field name="ProgressPercentage" type="float" compute="ComputeProgressPercentage" />
+    <field name="UserId" type="Res.Users" label="Author" required="true" default="Env.User" />
+    <field name="Description" type="html" />
+    <field name="Date" type="date" default="Env.Date.Today" track="true" />
+    <field name="ProjectId" type="Project.Project" required="true" />
+    <field name="NameCropped" type="string" compute="ComputeNameCropped" />
+    <field name="TaskCount" type="integer" readonly="true" />
+    <field name="ClosedTaskCount" type="integer" readonly="true" />
+    <field name="ClosedTaskPercentage" type="integer" compute="ComputeClosedTaskPercentage" />
+  </model>
+
+  <optionset id="Project.ProjectUpdateStatus" name="Project Update Status">
+    <option value="OnTrack" name="On Track" />
+    <option value="AtRisk" name="At Risk" />
+    <option value="OffTrack" name="Off Track" />
+    <option value="OnHold" name="On Hold" />
+    <option value="Done" name="Done" />
+  </optionset>
 </buvi>

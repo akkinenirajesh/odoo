@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventExhibitor.EventEvent" name="EventEvent" description="Event Event">
+        <field name="SponsorIds" type="WebsiteEventExhibitor.EventSponsor" collection="true" label="Sponsors" />
+        <field name="SponsorCount" type="integer" label="Sponsor Count" />
+        <field name="ExhibitorMenu" type="bool" label="Showcase Exhibitors" />
+        <field name="ExhibitorMenuIds" type="Website.EventMenu" collection="true" label="Exhibitors Menus" />
+    </model>
 </buvi>

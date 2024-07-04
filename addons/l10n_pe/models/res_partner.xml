@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="l10n_pe.ResPartner" name="ResPartner" description="ResPartner">
+    <field name="L10nPeDistrict" type="l10n_pe.ResCityDistrict" label="District" help="Districts are part of a province or city." />
+    <field name="CityId" type="Core.City" />
+  </model>
 </buvi>

@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleLoyaltyDelivery.LoyaltyReward" name="LoyaltyReward" description="Loyalty Reward">
+        <field name="RewardType" type="SaleLoyaltyDelivery.LoyaltyRewardType" />
+        <field name="Description" type="string" label="Description" />
+        <field name="DiscountMaxAmount" type="float" label="Maximum Discount Amount" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" />
+    </model>
+
+    <optionset id="SaleLoyaltyDelivery.LoyaltyRewardType" name="Loyalty Reward Type">
+        <option value="shipping" name="Free Shipping" />
+    </optionset>
 </buvi>

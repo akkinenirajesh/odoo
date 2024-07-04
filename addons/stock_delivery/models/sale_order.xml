@@ -1,5 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="StockDelivery.SaleOrder" name="SaleOrder" description="Sale Order">
+    <field name="CarrierId" type="StockDelivery.Carrier" />
+    <field name="State" type="selection" label="Status" selection="SaleOrderStates" />
+    <field name="PickingIds" type="Stock.Picking" collection="true" />
+    <field name="PartnerId" type="res.partner" />
+    <field name="CurrencyId" type="res.currency" />
   </model>
+
+  <optionset id="SaleOrderStates" name="Sale Order States">
+    <option value="sale" name="Sale" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancel" />
+  </optionset>
+
+  <model id="StockDelivery.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+    <field name="OrderId" type="StockDelivery.SaleOrder" />
+    <field name="RouteIds" type="Stock.Route" collection="true" />
+  </model>
+
+  <model id="StockDelivery.Carrier" name="Carrier" description="Carrier">
+    <field name="InvoicePolicy" type="selection" label="Invoice Policy" selection="CarrierInvoicePolicies" />
+    <field name="RouteIds" type="Stock.Route" collection="true" />
+  </model>
+
+  <optionset id="CarrierInvoicePolicies" name="Carrier Invoice Policies">
+    <option value="real" name="Real" />
+  </optionset>
+
+  <model id="Stock.Picking" name="Picking" description="Picking">
+    <field name="State" type="selection" label="Status" selection="PickingStates" />
+    <field name="CarrierId" type="StockDelivery.Carrier" />
+    <field name="MoveIds" type="Stock.Move" collection="true" />
+  </model>
+
+  <optionset id="PickingStates" name="Picking States">
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancel" />
+  </optionset>
+
+  <model id="Stock.Move" name="Move" description="Move">
+    <field name="OriginReturnedMoveId" type="Stock.Move" />
+  </model>
+
+  <model id="res.partner" name="ResPartner" description="Partner" />
+
+  <model id="res.currency" name="ResCurrency" description="Currency" />
+
+  <model id="Stock.Route" name="Route" description="Route" />
 </buvi>

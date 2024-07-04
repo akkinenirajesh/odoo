@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Point of Sale Payment Method">
+        <field name="StripeSerialNumber" type="string" label="Serial number of the stripe terminal" help="[Serial number of the stripe terminal], for example: WSC513105011295" copy="false" />
+    </model>
 </buvi>

@@ -1,3 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="L10nSaEdi.AccountEdiFormat" name="AccountEdiFormat"
+    description="Account EDI Format">
+    <field name="Name" type="string" label="Name" required="true"
+      translate="true" />
+    <field name="Code" type="string" label="Code" required="true"
+      translate="true" />
+    <field name="Description" type="string" label="Description"
+      translate="true" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the EDI Format without removing it." />
+    <field name="Sequence" type="integer" label="Sequence"
+      help="Gives the order in which this EDI Format will be displayed." />
+    <field name="IsReverse" type="bool" label="Reverse"
+      help="Reverse invoice flow, the invoice is received and is being posted." />
+    <field name="EDIFileFormat" type="selection" selection="AccountEdiFormat.EDIFileFormatSelection"
+      label="EDI File Format" />
+    <field name="EDIFileType" type="selection" selection="AccountEdiFormat.EDIFileTypeSelection"
+      label="EDI File Type" />
+    <field name="EDIAttachmentFilenameTemplate" type="string"
+      label="EDI Attachment Filename Template" default="EDI_File"
+      translate="true"
+      help="Template to use to generate the name of the file to attach to the invoice. Use Python variables to define how the name is generated, e.g. for invoice number use `invoice.name`." />
+    <field name="EDIAttachmentFilenamePattern" type="selection"
+      selection="AccountEdiFormat.EDIAttachmentFilenamePatternSelection"
+      label="EDI Attachment Filename Pattern" />
+    <field name="EDIAttachmentMimeType" type="string"
+      label="EDI Attachment MIME Type" default="application/xml" />
+    <field name="EDIAttachmentDescriptionTemplate" type="string"
+      label="EDI Attachment Description Template"
+      translate="true" />
+    <field name="EDIAttachmentDescriptionPattern" type="selection"
+      selection="AccountEdiFormat.EDIAttachmentDescriptionPatternSelection"
+      label="EDI Attachment Description Pattern" />
+    <field name="EDIAttachmentDescription" type="string"
+      label="EDI Attachment Description" translate="true" />
+    <field name="InvoiceLine" type="bool" label="Invoice Line"
+      help="Check if you want the EDI file to contain invoice line details" />
+    <field name="Partner" type="bool" label="Partner"
+      help="Check if you want the EDI file to contain partner details" />
+    <field name="PartnerAddress" type="bool" label="Partner Address"
+      help="Check if you want the EDI file to contain partner address details" />
+    <field name="InvoiceHeader" type="bool" label="Invoice Header"
+      help="Check if you want the EDI file to contain invoice header details" />
+    <field name="InvoiceTotals" type="bool" label="Invoice Totals"
+      help="Check if you want the EDI file to contain invoice totals details" />
+    <field name="InvoiceDates" type="bool" label="Invoice Dates"
+      help="Check if you want the EDI file to contain invoice dates details" />
+    <field name="InvoiceTaxes" type="bool" label="Invoice Taxes"
+      help="Check if you want the EDI file to contain invoice tax details" />
+    <field name="InvoicePaymentTerms" type="bool" label="Invoice Payment Terms"
+      help="Check if you want the EDI file to contain invoice payment terms details" />
+    <field name="InvoicePaymentMethods" type="bool" label="Invoice Payment Methods"
+      help="Check if you want the EDI file to contain invoice payment methods details" />
+    <field name="InvoiceAttachments" type="bool" label="Invoice Attachments"
+      help="Check if you want the EDI file to contain invoice attachments details" />
+    <field name="InvoiceOther" type="bool" label="Invoice Other"
+      help="Check if you want the EDI file to contain other invoice details" />
+    <field name="EDIWebServiceURL" type="string" label="EDI Web Service URL"
+      help="EDI Web Service URL for uploading the EDI file" />
+    <field name="EDIWebServiceUsername" type="string" label="EDI Web Service Username"
+      help="EDI Web Service Username" />
+    <field name="EDIWebServicePassword" type="string" label="EDI Web Service Password"
+      help="EDI Web Service Password" />
+    <field name="EDISenderID" type="string" label="EDI Sender ID"
+      help="EDI Sender ID" />
+    <field name="EDIRecieverID" type="string" label="EDI Receiver ID"
+      help="EDI Receiver ID" />
+    <field name="EDIWebServiceTimeout" type="integer" label="EDI Web Service Timeout (seconds)"
+      help="Timeout in seconds for the EDI Web Service" />
+    <field name="EDIWebServiceRetryCount" type="integer" label="EDI Web Service Retry Count"
+      help="Number of times to retry the EDI Web Service call" />
+    <field name="EDIWebServiceRetryDelay" type="integer" label="EDI Web Service Retry Delay (seconds)"
+      help="Delay in seconds between EDI Web Service retries" />
+    <field name="EDIWebServiceRetryInterval" type="integer" label="EDI Web Service Retry Interval (seconds)"
+      help="Interval in seconds between EDI Web Service retries" />
+    <field name="EDIWebServiceRetryBackoff" type="integer" label="EDI Web Service Retry Backoff"
+      help="Backoff factor for EDI Web Service retries" />
+  </model>
+
+  <optionset id="Account.AccountEdiFormat.EDIFileFormatSelection"
+    name="EDI File Format Selection">
+    <option value="XML" name="XML" />
+    <option value="CSV" name="CSV" />
+    <option value="JSON" name="JSON" />
+    <option value="PDF" name="PDF" />
+    <option value="EDI" name="EDI" />
+    <option value="X12" name="X12" />
+    <option value="EDIFACT" name="EDIFACT" />
+  </optionset>
+
+  <optionset id="Account.AccountEdiFormat.EDIFileTypeSelection"
+    name="EDI File Type Selection">
+    <option value="Invoice" name="Invoice" />
+    <option value="CreditNote" name="Credit Note" />
+    <option value="DebitNote" name="Debit Note" />
+    <option value="Order" name="Order" />
+    <option value="DeliveryNote" name="Delivery Note" />
+    <option value="Quotation" name="Quotation" />
+    <option value="Payment" name="Payment" />
+    <option value="Reminder" name="Reminder" />
+  </optionset>
+
+  <optionset id="Account.AccountEdiFormat.EDIAttachmentFilenamePatternSelection"
+    name="EDI Attachment Filename Pattern Selection">
+    <option value="Custom" name="Custom" />
+    <option value="InvoiceNumber" name="Invoice Number" />
+    <option value="InvoiceDate" name="Invoice Date" />
+    <option value="PartnerName" name="Partner Name" />
+    <option value="PartnerRef" name="Partner Ref" />
+    <option value="InvoiceType" name="Invoice Type" />
+    <option value="InvoiceCurrency" name="Invoice Currency" />
+    <option value="InvoiceAmount" name="Invoice Amount" />
+    <option value="InvoiceState" name="Invoice State" />
+    <option value="InvoiceDateAndInvoiceNumber" name="Invoice Date and Invoice Number" />
+    <option value="InvoiceNumberAndPartnerName" name="Invoice Number and Partner Name" />
+  </optionset>
+
+  <optionset id="Account.AccountEdiFormat.EDIAttachmentDescriptionPatternSelection"
+    name="EDI Attachment Description Pattern Selection">
+    <option value="Custom" name="Custom" />
+    <option value="InvoiceNumber" name="Invoice Number" />
+    <option value="InvoiceDate" name="Invoice Date" />
+    <option value="PartnerName" name="Partner Name" />
+    <option value="PartnerRef" name="Partner Ref" />
+    <option value="InvoiceType" name="Invoice Type" />
+    <option value="InvoiceCurrency" name="Invoice Currency" />
+    <option value="InvoiceAmount" name="Invoice Amount" />
+    <option value="InvoiceState" name="Invoice State" />
+    <option value="InvoiceDateAndInvoiceNumber" name="Invoice Date and Invoice Number" />
+    <option value="InvoiceNumberAndPartnerName" name="Invoice Number and Partner Name" />
+  </optionset>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.SupplierInfo" name="Purchase.SupplierInfo" description="Supplier Info">
+    <field name="PurchaseRequisitionId" type="Purchase.PurchaseRequisition" related="PurchaseRequisitionLineId.RequisitionId" label="Agreement" />
+    <field name="PurchaseRequisitionLineId" type="Purchase.PurchaseRequisitionLine" />
+  </model>
+  <model id="Product.Product" name="Product.Product" description="Product">
+    <!-- No fields need to be added here -->
+  </model>
 </buvi>

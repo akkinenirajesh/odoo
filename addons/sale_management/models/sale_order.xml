@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="SaleOrderTemplateId" type="Sale.SaleOrderTemplate" label="Quotation Template" readonly="true" checkCompany="true" precompute="true" />
+    <field name="SaleOrderOptionIds" type="Sale.SaleOrderOption" collection="true" copy="true" />
+    <field name="Note" type="html" label="Note" />
+    <field name="RequireSignature" type="bool" label="Require Signature" />
+    <field name="RequirePayment" type="bool" label="Require Payment" />
+    <field name="PrepaymentPercent" type="float" label="Prepayment Percent" />
+    <field name="ValidityDate" type="datetime" label="Validity Date" />
+    <field name="JournalId" type="Account.Journal" label="Journal" />
+  </model>
+
+  <optionset id="Sale.SaleOrderTemplate" name="Sale Order Template" />
+  <optionset id="Sale.SaleOrderOption" name="Sale Order Option" />
 </buvi>

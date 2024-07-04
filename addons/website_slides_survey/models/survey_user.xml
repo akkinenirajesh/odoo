@@ -1,90 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="survey.survey" name="Survey.Survey" track_created="true" track_update="true">
-    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="CertificationBadge" label="Certification Badge" type="Gamification.Badge" on-delete="Clear"/>
-    <field name="CertificationBadgeIdDummy" label="Certification Badge " type="Gamification.Badge" readonly="true" transient="true" related-field="CertificationBadge"/>
-    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
-    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="CertificationMailTemplate" label="Certified Email Template" type="Mail.Template" copied="true" on-delete="Clear"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="AppraisalManagerUsers" label="Appraisals Managers Users" type="Res.Users" collection="true" readonly="true"/>
-    <field name="RestrictUsers" label="Restricted to" type="Res.Users" collection="true" copied="true"/>
-    <field name="User" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
-    <field name="SlideChannels" label="Certification Courses" type="Slide.Channel" collection="true" readonly="true" transient="true"/>
-    <field name="Slides" label="Certification Slides" type="Slide.Slide" collection="true"/>
-    <field name="Pages" label="Pages" type="Survey.Question" collection="true" readonly="true" transient="true"/>
-    <field name="QuestionAndPages" label="Sections and Questions" type="Survey.Question" collection="true" copied="true"/>
-    <field name="Questions" label="Questions" type="Survey.Question" collection="true" readonly="true" transient="true"/>
-    <field name="SessionQuestion" label="Current Question" type="Survey.Question" on-delete="Clear"/>
-    <field name="UserInputs" label="User responses" type="Survey.UserInput" collection="true" readonly="true"/>
-    <field name="AccessMode" label="Access Mode" type="Survey.SurveyAccessMode" required="true" copied="true"/>
-    <field name="AccessToken" label="Access Token" type="string"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Survey.SurveyActivityExceptionDecoration" readonly="true" transient="true"/>
-    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
-    <field name="ActivityState" label="Activity State" type="Survey.SurveyActivityState" readonly="true" transient="true"/>
-    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
-    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
-    <field name="AllowedSurveyTypes" label="Allowed survey types" type="json" readonly="true" transient="true"/>
-    <field name="AnswerCount" label="Registered" type="integer" readonly="true" transient="true"/>
-    <field name="AnswerDoneCount" label="Attempts" type="integer" readonly="true" transient="true"/>
-    <field name="AnswerDurationAvg" label="Average Duration" type="float" readonly="true" transient="true"/>
-    <field name="AnswerScoreAvg" label="Avg Score (%)" type="float" readonly="true" transient="true"/>
-    <field name="AttemptsLimit" label="Number of attempts" type="integer" copied="true"/>
-    <field name="BackgroundImage" label="Background Image" type="binary" copied="true"/>
-    <field name="BackgroundImageUrl" label="Background Url" type="string" readonly="true" transient="true"/>
-    <field name="Certification" label="Is a Certification" type="bool" copied="true"/>
-    <field name="CertificationGiveBadge" label="Give Badge" type="bool"/>
-    <field name="CertificationReportLayout" label="Certification template" type="Survey.SurveyCertificationTemplate" copied="true"/>
-    <field name="Color" label="Color Index" type="integer" copied="true"/>
-    <field name="Description" label="Description" type="html" copied="true" translatable="true"/>
-    <field name="DescriptionDone" label="End Message" type="html" copied="true" translatable="true"/>
-    <field name="HasConditionalQuestions" label="Contains conditional questions" type="bool" readonly="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="IsAttemptsLimited" label="Limited number of attempts" type="bool" copied="true"/>
-    <field name="IsTimeLimited" label="The survey is limited in time" type="bool" copied="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="ProgressionMode" label="Display Progress as" type="Survey.SurveyDisplayProgressAs" copied="true"/>
-    <field name="QuestionCount" label="# Questions" type="integer" readonly="true" transient="true"/>
-    <field name="QuestionsLayout" label="Pagination" type="Survey.SurveyPagination" required="true" copied="true"/>
-    <field name="QuestionsSelection" label="Question Selection" type="Survey.SurveyQuestionSelection" required="true" copied="true"/>
-    <field name="ScoringMaxObtainable" label="Maximum obtainable score" type="float" readonly="true" transient="true"/>
-    <field name="ScoringSuccessMin" label="Required Score (%)" type="float" copied="true"/>
-    <field name="ScoringType" label="Scoring" type="Survey.SurveyScoring" required="true" copied="true"/>
-    <field name="SessionAnswerCount" label="Answers Count" type="integer" readonly="true" transient="true"/>
-    <field name="SessionAvailable" label="Live session available" type="bool" readonly="true" transient="true"/>
-    <field name="SessionCode" label="Session Code" type="string"/>
-    <field name="SessionLink" label="Session Link" type="string" readonly="true" transient="true"/>
-    <field name="SessionQuestionAnswerCount" label="Question Answers Count" type="integer" readonly="true" transient="true"/>
-    <field name="SessionQuestionStartTime" label="Current Question Start Time" type="datetime"/>
-    <field name="SessionShowLeaderboard" label="Show Session Leaderboard" type="bool" readonly="true" transient="true"/>
-    <field name="SessionSpeedRating" label="Reward quick answers" type="bool" copied="true"/>
-    <field name="SessionSpeedRatingTimeLimit" label="Time limit (seconds)" type="integer" copied="true"/>
-    <field name="SessionStartTime" label="Current Session Start Time" type="datetime"/>
-    <field name="SessionState" label="Session State" type="Survey.SurveySessionState"/>
-    <field name="SlideChannelCount" label="Courses Count" type="integer" readonly="true" transient="true"/>
-    <field name="SuccessCount" label="Success" type="integer" readonly="true" transient="true"/>
-    <field name="SuccessRatio" label="Success Ratio (%)" type="integer" readonly="true" transient="true"/>
-    <field name="SurveyType" label="Survey Type" type="Survey.SurveySurveyType" required="true" copied="true"/>
-    <field name="TimeLimit" label="Time limit (minutes)" type="float" copied="true"/>
-    <field name="Title" label="Survey Title" type="string" required="true" copied="true" translatable="true"/>
-    <field name="UsersCanGoBack" label="Users can go back" type="bool" copied="true"/>
-    <field name="UsersCanSignup" label="Users can signup" type="bool" readonly="true" transient="true"/>
-    <field name="UsersLoginRequired" label="Require Login" type="bool" copied="true"/>
-    <field name="XStudioIntegerField49L1I0Pv5Jkt" label="New Integer" type="integer" copied="true"/>
+  <model id="WebsiteSlidesSurvey.SurveyUserInput" name="WebsiteSlidesSurvey.SurveyUserInput" description="Survey User Input">
+    <field name="SlideId" type="WebsiteSlides.SlideSlide" label="Related course slide"
+      help="The related course slide when there is no membership information" />
+    <field name="SlidePartnerId" type="WebsiteSlides.SlideSlidePartner" label="Subscriber information"
+      help="Slide membership information for the logged in user"
+      index="btree_not_null" />
+    <field name="SurveyId" type="Survey.Survey" />
+    <field name="PartnerId" type="Res.Partner" />
+    <field name="Email" type="string" />
+    <field name="InviteToken" type="string" />
+    <field name="State" type="selection" collection="true" selection="WebsiteSlidesSurvey.SurveyUserInputState" />
+    <field name="ScoringSuccess" type="bool" />
+    <field name="AttemptNumber" type="integer" />
+    <field name="LastAttemptDate" type="datetime" />
+    <field name="Answers" type="Survey.SurveyAnswer" collection="true" />
   </model>
+  <optionset id="WebsiteSlidesSurvey.SurveyUserInputState" name="Survey User Input State">
+    <option value="draft" name="Draft" />
+    <option value="done" name="Done" />
+  </optionset>
 </buvi>

@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="StockAccount.AccountAnalyticPlan" name="AccountAnalyticPlan" description="Analytic Plan">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" />
+        <field name="ParentPlanId" type="AccountAnalyticPlan" label="Parent Plan" collection="true" />
+        <field name="Company" type="Core.Company" required="true" />
+    </model>
+
+    <model id="StockAccount.AccountAnalyticAccount" name="AccountAnalyticAccount" description="Analytic Account">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" />
+        <field name="ParentAccountId" type="AccountAnalyticAccount" label="Parent Account" collection="true" />
+        <field name="PlanId" type="AccountAnalyticPlan" label="Plan" required="true" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" required="true" />
+    </model>
+
+    <model id="StockAccount.AccountAnalyticLine" name="AccountAnalyticLine" description="Analytic Line">
+        <field name="AnalyticAccountId" type="AccountAnalyticAccount" label="Analytic Account" collection="true" />
+        <field name="Amount" type="decimal" label="Amount" />
+        <field name="UnitAmount" type="decimal" label="Unit Amount" />
+        <field name="Product" type="Product.Product" label="Product" collection="true" />
+    </model>
 </buvi>

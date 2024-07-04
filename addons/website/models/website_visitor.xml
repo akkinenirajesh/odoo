@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.WebsiteTrack" name="Website.WebsiteTrack" description="Visited Pages">
+        <field name="VisitorId" type="Website.WebsiteVisitor" required="true" readonly="true" />
+        <field name="PageId" type="Website.WebsitePage" readonly="true" />
+        <field name="Url" type="text" readonly="true" />
+        <field name="VisitDateTime" type="datetime" default="Now" required="true" readonly="true" />
+    </model>
+
+    <model id="Website.WebsiteVisitor" name="Website.WebsiteVisitor" description="Website Visitor">
+        <field name="Name" type="string" label="Name" readonly="true" />
+        <field name="AccessToken" type="string" required="true" readonly="true" />
+        <field name="WebsiteId" type="Website.Website" readonly="true" />
+        <field name="PartnerId" type="Core.ResPartner" string="Contact" help="Partner of the last logged in user." readonly="true" />
+        <field name="PartnerImage" type="binary" related="PartnerId.Image1920" readonly="true" />
+        <field name="CountryId" type="Core.Country" label="Country" readonly="true" />
+        <field name="CountryFlag" type="char" related="CountryId.ImageUrl" string="Country Flag" readonly="true" />
+        <field name="LangId" type="Core.ResLang" string="Language" help="Language from the website when visitor has been created" readonly="true" />
+        <field name="Timezone" type="selection" string="Timezone" />
+        <field name="Email" type="string" string="Email" readonly="true" />
+        <field name="Mobile" type="string" string="Mobile" readonly="true" />
+        <field name="VisitCount" type="integer" label="# Visits" default="1" readonly="true" help="A new visit is considered if last connection was more than 8 hours ago." />
+        <field name="WebsiteTrackIds" type="Website.WebsiteTrack" collection="true" string="Visited Pages History" readonly="true" />
+        <field name="VisitorPageCount" type="integer" label="Page Views" help="Total number of visits on tracked pages" readonly="true" />
+        <field name="PageIds" type="Website.WebsitePage" collection="true" string="Visited Pages" readonly="true" groups="Website.GroupWebsiteDesigner" />
+        <field name="PageCount" type="integer" label="# Visited Pages" help="Total number of tracked page visited" readonly="true" />
+        <field name="LastVisitedPageId" type="Website.WebsitePage" string="Last Visited Page" readonly="true" />
+        <field name="CreateDate" type="datetime" label="First Connection" readonly="true" />
+        <field name="LastConnectionDateTime" type="datetime" label="Last Connection" default="Now" help="Last page view date" readonly="true" />
+        <field name="TimeSinceLastAction" type="char" label="Last action" help="Time since last page view. E.g.: 2 minutes ago" readonly="true" />
+        <field name="IsConnected" type="bool" label="Is connected?" help="A visitor is considered as connected if his last page view was within the last 5 minutes." readonly="true" />
+        <unique name="AccessTokenUnique">
+            <field name="AccessToken" />
+            <message>Access token should be unique.</message>
+        </unique>
+    </model>
 </buvi>

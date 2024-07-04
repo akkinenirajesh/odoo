@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+        <field name="TimesheetCount" type="integer" label="Timesheet activities" compute="ComputeTimesheetCount" groups="HrTimesheet.GroupHrTimesheetUser" />
+        <field name="TimesheetEncodeUomId" type="Uom.Uom" related="CompanyId.TimesheetEncodeUomId" />
+        <field name="TimesheetTotalDuration" type="integer" label="Timesheet Total Duration" compute="ComputeTimesheetTotalDuration"
+            help="Total recorded duration, expressed in the encoding UoM, and rounded to the unit" compute_sudo="true" groups="HrTimesheet.GroupHrTimesheetUser" />
+        <field name="ShowHoursRecordedButton" type="bool" compute="ComputeShowHoursRecordedButton" groups="HrTimesheet.GroupHrTimesheetUser" />
+    </model>
 </buvi>

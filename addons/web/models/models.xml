@@ -1,3 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Web.Base" name="Web.Base" description="Base">
+        <field name="Id" type="integer" label="ID" readonly="true" />
+        <field name="DisplayName" type="char" label="Display Name" readonly="true" />
+        <field name="CreateDate" type="datetime" label="Create Date" readonly="true" />
+        <field name="CreateUid" type="Many2One" relation="Res.Users" label="Created By" readonly="true" />
+        <field name="WriteDate" type="datetime" label="Write Date" readonly="true" />
+        <field name="WriteUid" type="Many2One" relation="Res.Users" label="Last Updated By" readonly="true" />
+    </model>
+
+    <model id="Web.Models.Base" name="Web.Models.Base" inherit="Web.Base">
+        <field name="Active" type="bool" label="Active" default="true"
+            help="Set active to false to hide the record without removing it." />
+        <method name="WebSearchRead" static="true">
+            <param name="Domain" type="domain" />
+            <param name="Specification" type="dictionary" />
+            <param name="Offset" type="integer" default="0" />
+            <param name="Limit" type="integer" />
+            <param name="Order" type="string" />
+            <param name="CountLimit" type="integer" />
+            <return type="dictionary" />
+        </method>
+        <method name="WebSave" static="true">
+            <param name="Values" type="dictionary" />
+            <param name="Specification" type="dictionary" />
+            <param name="NextId" type="integer" />
+            <return type="list" />
+        </method>
+        <method name="WebRead" static="true">
+            <param name="Specification" type="dictionary" />
+            <return type="list" />
+        </method>
+        <method name="WebReadGroup" static="true">
+            <param name="Domain" type="domain" />
+            <param name="Fields" type="list" />
+            <param name="GroupBy" type="list" />
+            <param name="Limit" type="integer" />
+            <param name="Offset" type="integer" default="0" />
+            <param name="OrderBy" type="string" />
+            <param name="Lazy" type="bool" default="true" />
+            <return type="dictionary" />
+        </method>
+        <method name="_WebReadGroup" static="true">
+            <param name="Domain" type="domain" />
+            <param name="Fields" type="list" />
+            <param name="GroupBy" type="list" />
+            <param name="Limit" type="integer" />
+            <param name="Offset" type="integer" default="0" />
+            <param name="OrderBy" type="string" />
+            <param name="Lazy" type="bool" default="true" />
+            <return type="list" />
+        </method>
+        <method name="ReadProgressBar" static="true">
+            <param name="Domain" type="domain" />
+            <param name="GroupBy" type="string" />
+            <param name="ProgressBar" type="dictionary" />
+            <return type="dictionary" />
+        </method>
+        <method name="_SearchPanelFieldImage" static="true">
+            <param name="FieldName" type="string" />
+            <param name="ModelDomain" type="domain" default="[]" />
+            <param name="ExtraDomain" type="domain" default="[]" />
+            <param name="EnableCounters" type="bool" default="false" />
+            <param name="OnlyCounters" type="bool" default="false" />
+            <param name="Limit" type="integer" />
+            <param name="SetLimit" type="bool" default="false" />
+            <return type="dictionary" />
+        </method>
+        <method name="_SearchPanelDomainImage" static="true">
+            <param name="FieldName" type="string" />
+            <param name="Domain" type="domain" />
+            <param name="SetCount" type="bool" default="false" />
+            <param name="Limit" type="integer" />
+            <return type="dictionary" />
+        </method>
+        <method name="_SearchPanelGlobalCounters" static="true">
+            <param name="ValuesRange" type="dictionary" />
+            <param name="ParentName" type="string" />
+            <return type="dictionary" />
+        </method>
+        <method name="_SearchPanelSanitizedParentHierarchy" static="true">
+            <param name="Records" type="list" />
+            <param name="ParentName" type="string" />
+            <param name="Ids" type="list" />
+            <return type="list" />
+        </method>
+        <method name="_SearchPanelSelectionRange" static="true">
+            <param name="FieldName" type="string" />
+            <param name="EnableCounters" type="bool" default="false" />
+            <param name="Expand" type="bool" default="false" />
+            <param name="ModelDomain" type="domain" default="[]" />
+            <return type="list" />
+        </method>
+        <method name="SearchPanelSelectRange" static="true">
+            <param name="FieldName" type="string" />
+            <param name="CategoryDomain" type="domain" default="[]" />
+            <param name="ComodeDomain" type="domain" default="[]" />
+            <param name="EnableCounters" type="bool" default="false" />
+            <param name="Expand" type="bool" default="false" />
+            <param name="FilterDomain" type="domain" default="[]" />
+            <param name="Hierarchize" type="bool" default="true" />
+            <param name="Limit" type="integer" />
+            <param name="SearchDomain" type="domain" default="[]" />
+            <return type="dictionary" />
+        </method>
+        <method name="SearchPanelSelectMultiRange" static="true">
+            <param name="FieldName" type="string" />
+            <param name="CategoryDomain" type="domain" default="[]" />
+            <param name="ComodeDomain" type="domain" default="[]" />
+            <param name="EnableCounters" type="bool" default="false" />
+            <param name="Expand" type="bool" default="false" />
+            <param name="FilterDomain" type="domain" default="[]" />
+            <param name="GroupBy" type="string" />
+            <param name="GroupDomain" type="dictionary" default="[]" />
+            <param name="Limit" type="integer" />
+            <param name="SearchDomain" type="domain" default="[]" />
+            <return type="dictionary" />
+        </method>
+        <method name="Onchange" static="true">
+            <param name="Values" type="dictionary" />
+            <param name="FieldNames" type="list" />
+            <param name="FieldsSpec" type="dictionary" />
+            <return type="dictionary" />
+        </method>
+        <method name="WebOverrideTranslations" static="true">
+            <param name="Values" type="dictionary" />
+            <return type="None" />
+        </method>
+    </model>
+
+    <model id="Res.Company" name="Res.Company" description="Company">
+        <field name="Id" type="integer" label="ID" readonly="true" />
+        <field name="Name" type="char" label="Company Name" required="true" translate="true" />
+        <field name="PartnerId" type="Many2One" relation="Res.Partner" label="Partner" required="true" />
+        <field name="CurrencyId" type="Many2One" relation="Res.Currency" label="Currency" required="true" />
+        <field name="LanguageCode" type="Selection" selection="Res.Lang.GetInstalled" label="Language" default="en_US" />
+        <field name="Phone" type="char" label="Phone" />
+        <field name="Email" type="char" label="Email" />
+        <field name="Website" type="char" label="Website" />
+        <field name="Street" type="char" label="Street" />
+        <field name="Street2" type="char" label="Street2" />
+        <field name="Zip" type="char" label="Zip" />
+        <field name="City" type="char" label="City" />
+        <field name="StateId" type="Many2One" relation="Res.Country.State" label="State" />
+        <field name="CountryId" type="Many2One" relation="Res.Country" label="Country" />
+        <field name="Vat" type="char" label="VAT" />
+        <field name="TaxIdentificationNumber" type="char" label="Tax Identification Number" />
+        <field name="RegistrationNumber" type="char" label="Registration Number" />
+        <field name="BankName" type="char" label="Bank Name" />
+        <field name="AccountNumber" type="char" label="Account Number" />
+        <field name="SwiftCode" type="char" label="Swift Code" />
+        <field name="Logo" type="binary" label="Logo" />
+        <field name="LogoEncoding" type="Selection" selection="Web.LogoEncoding" label="Logo Encoding" default="base64" />
+        <field name="ExternalReportLayoutId" type="Many2One" relation="Report.Layout" label="External Report Layout" />
+        <field name="Font" type="char" label="Default Font" />
+        <field name="PrimaryColor" type="char" label="Primary Color" />
+        <field name="SecondaryColor" type="char" label="Secondary Color" />
+        <field name="ChartTemplateId" type="Many2One" relation="Account.ChartTemplate" label="Chart of Accounts" />
+        <field name="FiscalYearLastDay" type="Selection" selection="Web.FiscalYearLastDay" label="Fiscal Year Last Day" />
+        <field name="FiscalYearLockDate" type="date" label="Lock Date" help="Lock the current fiscal year for modifications." />
+        <field name="Code" type="char" label="Company Code" />
+        <field name="DisplayName" type="char" label="Display Name" readonly="true" />
+        <field name="CreateDate" type="datetime" label="Create Date" readonly="true" />
+        <field name="CreateUid" type="Many2One" relation="Res.Users" label="Created By" readonly="true" />
+        <field name="WriteDate" type="datetime" label="Write Date" readonly="true" />
+        <field name="WriteUid" type="Many2One" relation="Res.Users" label="Last Updated By" readonly="true" />
+        <method name="Create" static="true">
+            <param name="ValuesList" type="list" />
+            <return type="list" />
+        </method>
+        <method name="Write" static="true">
+            <param name="Values" type="dictionary" />
+            <return type="bool" />
+        </method>
+        <method name="_GetAssetStyleB64" static="true" />
+        <method name="_UpdateAssetStyle" static="true" />
+    </model>
+
+    <model id="Account.AccountTag" name="Account.AccountTag" description="Account Tag">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="Applicability" type="Account.AccountTagApplicability" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Account Tag without removing it." />
+        <field name="TaxNegate" type="bool" label="Negate Tax Balance"
+            help="Check this box to negate the absolute value of the balance of the lines associated with this tag in tax report computation." />
+        <field name="Country" type="Core.Country" label="Country"
+            help="Country for which this tag is available, when applied on taxes" />
+        <unique>
+            <field name="Name" />
+            <field name="Applicability" />
+            <field name="Country" />
+            <message>A tag with the same name and applicability already exists in this country.</message>
+        </unique>
+    </model>
+
+    <optionset id="Account.AccountTagApplicability" name="AccountTagApplicability">
+        <option value="Accounts" name="Accounts" />
+        <option value="Taxes" name="Taxes" />
+        <option value="Products" name="Products" />
+    </optionset>
+
+    <optionset id="Web.LogoEncoding" name="LogoEncoding">
+        <option value="base64" name="Base64" />
+        <option value="ascii" name="ASCII" />
+        <option value="utf8" name="UTF-8" />
+        <option value="latin1" name="Latin-1" />
+    </optionset>
+
+    <optionset id="Web.FiscalYearLastDay" name="FiscalYearLastDay">
+        <option value="31" name="December" />
+        <option value="30" name="November" />
+        <option value="28" name="February" />
+    </optionset>
+
 </buvi>

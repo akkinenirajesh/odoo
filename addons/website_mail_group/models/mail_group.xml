@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.MailGroup" name="MailGroup" description="Mail Group">
+        <field name="Name" type="string" label="Name" required="true" translate="true"/>
+        <field name="Description" type="text" label="Description" translate="true"/>
+        <field name="Alias" type="string" label="Alias" required="true"/>
+        <field name="Email" type="char" label="Email" required="true"/>
+        <field name="ModeratorId" type="res.users" label="Moderator"/>
+        <field name="WebsiteId" type="website" label="Website"/>
+        <field name="WebsiteUrl" type="char" label="Website URL" readonly="true" compute="ComputeWebsiteUrl"/>
+        <field name="MemberCount" type="integer" label="Member Count" readonly="true" compute="ComputeMemberCount"/>
+        <field name="Followers" type="res.partner" collection="true" relation="mail.group.followers"/>
+    </model>
+
+    <optionset id="Website.MailGroupVisibility" name="Mail Group Visibility">
+        <option value="public" name="Public"/>
+        <option value="private" name="Private"/>
+    </optionset>
 </buvi>

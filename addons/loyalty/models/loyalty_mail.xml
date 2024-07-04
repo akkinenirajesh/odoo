@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Loyalty.LoyaltyMail" name="LoyaltyMail" description="Loyalty Communication">
+        <field name="Active" type="bool" default="true" />
+        <field name="ProgramId" type="Loyalty.LoyaltyProgram" required="true" />
+        <field name="Trigger" type="selection" label="When" required="true">
+            <option value="Create" name="At Creation" />
+            <option value="PointsReach" name="When Reaching" />
+        </field>
+        <field name="Points" type="float" />
+        <field name="MailTemplateId" type="Mail.MailTemplate" string="Email Template" required="true" domain="[('Model', '=', 'Loyalty.LoyaltyCard')]" />
+    </model>
 </buvi>

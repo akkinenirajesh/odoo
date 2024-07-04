@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Membership.MembershipLine" name="MembershipLine" description="Membership Line">
+        <field name="Partner" type="Res.Partner" label="Partner" required="true" collection="true" ondelete="cascade" />
+        <field name="MembershipId" type="Product.Product" label="Membership" required="true" />
+        <field name="DateFrom" type="date" label="From" readonly="true" />
+        <field name="DateTo" type="date" label="To" readonly="true" />
+        <field name="DateCancel" type="date" label="Cancel date" />
+        <field name="Date" type="date" label="Join Date" help="Date on which member has joined the membership" />
+        <field name="MemberPrice" type="float" label="Membership Fee" digits="Product Price" required="true" help="Amount for the membership" />
+        <field name="AccountInvoiceLine" type="Account.MoveLine" label="Account Invoice line" readonly="true" collection="true" ondelete="cascade" />
+        <field name="AccountInvoiceId" type="Account.Move" label="Invoice" readonly="true" relation="AccountInvoiceLine.MoveId" />
+        <field name="CompanyId" type="Res.Company" label="Company" readonly="true" relation="AccountInvoiceLine.MoveId.CompanyId" />
+        <field name="State" type="Membership.MembershipState" label="Membership Status" store="true" help="It indicates the membership status.\n-Non Member: A member who has not applied for any membership.\n-Cancelled Member: A member who has cancelled his membership.\n-Old Member: A member whose membership date has expired.\n-Waiting Member: A member who has applied for the membership and whose invoice is going to be created.\n-Invoiced Member: A member whose invoice has been created.\n-Paid Member: A member who has paid the membership amount." />
+    </model>
+
+    <optionset id="Membership.MembershipState" name="Membership State">
+        <option value="None" name="Non Member" />
+        <option value="Canceled" name="Cancelled Member" />
+        <option value="Old" name="Old Member" />
+        <option value="Waiting" name="Waiting Member" />
+        <option value="Invoiced" name="Invoiced Member" />
+        <option value="Free" name="Free Member" />
+        <option value="Paid" name="Paid Member" />
+    </optionset>
 </buvi>

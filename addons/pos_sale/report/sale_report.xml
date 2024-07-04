@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosSale.SaleReport" name="PosSale.SaleReport" description="Sale Report">
+    <field name="State" type="selection" label="State" selection_add="PosSale.SaleReportState" />
+    <field name="OrderReference" type="reference" selection_add="PosSale.SaleReportOrderReference" />
+  </model>
+
+  <optionset id="PosSale.SaleReportState" name="Sale Report State">
+    <option value="paid" name="Paid" />
+    <option value="invoiced" name="Invoiced" />
+    <option value="done" name="Posted" />
+  </optionset>
+
+  <optionset id="PosSale.SaleReportOrderReference" name="Sale Report Order Reference">
+    <option value="pos.order" name="POS Order" />
+  </optionset>
 </buvi>

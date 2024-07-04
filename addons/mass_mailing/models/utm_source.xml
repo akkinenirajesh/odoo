@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.UtmSource" name="UtmSource" description="UTM Source">
+        <field name="Name" type="string" label="Source Name" required="true" translate="true" />
+        <field name="Url" type="string" label="URL" />
+        <field name="Description" type="text" label="Description" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the UTM Source without removing it." />
+    </model>
 </buvi>

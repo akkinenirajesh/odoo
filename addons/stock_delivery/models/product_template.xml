@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.ProductTemplate" name="Stock.ProductTemplate" description="Product Template">
+        <field name="HSCode" type="string" label="HS Code" 
+            help="Standardized code for international shipping and goods declaration."/>
+        <field name="CountryOfOrigin" type="Core.Country" label="Origin of Goods"
+            help="Rules of origin determine where goods originate, i.e. not where they have been shipped from, but where they have been produced or manufactured.&#x0A;As such, the ‘origin’ is the 'economic nationality' of goods traded in commerce."/>
+    </model>
 </buvi>

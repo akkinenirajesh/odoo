@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleExpense.ProductTemplate" name="SaleExpense.ProductTemplate" description="Product Template">
+    <field name="CanExpense" type="bool" label="Can be Expensed" />
+    <field name="ExpensePolicy" type="SaleExpense.ExpensePolicy" label="Expense Policy" />
+    <field name="ExpensePolicyTooltip" type="string" label="Expense Policy Tooltip" readonly="true" />
+    <field name="VisibleExpensePolicy" type="bool" readonly="true" />
+  </model>
+
+  <optionset id="SaleExpense.ExpensePolicy" name="Expense Policy">
+    <option value="no" name="No" />
+    <option value="cost" name="Cost" />
+    <option value="salesPrice" name="Sales Price" />
+  </optionset>
 </buvi>

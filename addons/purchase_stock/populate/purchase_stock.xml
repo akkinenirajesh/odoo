@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+        <field name="PickingTypeId" type="Stock.PickingType" required="true" />
+        <field name="CompanyId" type="Res.Company" />
+    </model>
 </buvi>

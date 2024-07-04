@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosLoyalty.LoyaltyCard" name="PosLoyalty.LoyaltyCard" description="Loyalty Card">
+    <field name="SourcePosOrderId" type="Pos.Order" label="PoS Order Reference" 
+            help="PoS order where this coupon was generated." />
+    <field name="PartnerId" type="ResPartner.Partner" />
+    <field name="Code" type="string" />
+    <field name="Points" type="integer" />
+    <field name="ProgramId" type="PosLoyalty.LoyaltyProgram" />
+    <field name="ExpirationDate" type="date" />
+    <field name="UseCount" type="integer" />
+  </model>
 </buvi>

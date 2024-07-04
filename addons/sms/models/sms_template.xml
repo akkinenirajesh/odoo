@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sms.SMSTemplate" name="SMSTemplate" description="Templates for sending SMS">
+    <field name="Name" type="string" label="Name" translate="true" />
+    <field name="ModelId" type="Ir.Model" string="Applies to" required="true"
+      domain="&amp; (is_mail_thread_sms = true) (Transient = false)" help="The type of document this template can be used with" ondelete="cascade" />
+    <field name="Model" type="string" label="Related Document Model" related="ModelId.Model" index="true" store="true" readonly="true" />
+    <field name="Body" type="string" label="Body" translate="true" required="true" />
+    <field name="SidebarActionId" type="Ir.Actions.ActWindow" label="Sidebar action" readonly="true" copy="false" help="Sidebar action to make this template available on records of the related document model" />
+  </model>
 </buvi>

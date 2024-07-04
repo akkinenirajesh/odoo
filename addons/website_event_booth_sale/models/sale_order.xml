@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="WebsiteEventBoothSale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="EventBoothPendingIds" type="many2many" relation="event.booth" collection="true" label="Event Booths" help="List of event booths to be assigned to the sale order."/>
+        <field name="EventBoothRegistrationIds" type="one2many" relation="event.booth.registration" collection="true" label="Event Booth Registrations" help="List of registrations for event booths."/>
+        <field name="EventId" type="many2one" relation="event.event" label="Event" help="The event related to the sale order."/>
+    </model>
 </buvi>

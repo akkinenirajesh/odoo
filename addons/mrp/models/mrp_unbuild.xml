@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpUnbuild" name="MrpUnbuild" description="Unbuild Order">
+    <field name="Name" type="string" label="Reference" readonly="true" copy="false" default="New" />
+    <field name="ProductId" type="Product.Product" label="Product" required="true" checkCompany="true" domain="[('Type', '=', 'Consu')]" collection="true" />
+    <field name="CompanyId" type="Res.Company" label="Company" required="true" index="true" default="Env.Company" />
+    <field name="ProductQty" type="float" label="Quantity" required="true" default="1.0" />
+    <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" required="true" />
+    <field name="BomId" type="Mrp.Bom" label="Bill of Material" checkCompany="true" domain="[
+    '|',
+        ('ProductId', '=', ProductId),
+        '&',
+            ('ProductTmplId.ProductVariantIds', '=', ProductId),
+            ('ProductId','=',False),
+    ('Type', '=', 'Normal'),
+    '|',
+        ('CompanyId', '=', CompanyId),
+        ('CompanyId', '=', False)
+    ]" />
+    <field name="MoId" type="Mrp.Production" label="Manufacturing Order" checkCompany="true" domain="[('State', '=', 'Done'), ('ProductId', '=?', ProductId), ('BomId', '=?', BomId)]" />
+    <field name="MoBomId" type="Mrp.Bom" label="Bill of Material used on the Production Order" related="MoId.BomId" />
+    <field name="LotId" type="Stock.Lot" label="Lot/Serial Number" domain="[('ProductId', '=', ProductId)]" checkCompany="true" />
+    <field name="HasTracking" type="selection" readonly="true" related="ProductId.Tracking" />
+    <field name="LocationId" type="Stock.Location" label="Source Location" required="true" checkCompany="true" domain="[('Usage','=','Internal')]" />
+    <field name="LocationDestId" type="Stock.Location" label="Destination Location" required="true" checkCompany="true" domain="[('Usage','=','Internal')]" />
+    <field name="ConsumeLineIds" type="Stock.Move" readonly="true" string="Consumed Disassembly Lines" collection="true" />
+    <field name="ProduceLineIds" type="Stock.Move" readonly="true" string="Processed Disassembly Lines" collection="true" />
+    <field name="State" type="selection" default="Draft" >
+      <option value="Draft" name="Draft" />
+      <option value="Done" name="Done" />
+    </field>
+    <constraint name="QtyPositive" check="(ProductQty &gt; 0)" message="The quantity to unbuild must be positive!" />
+  </model>
 </buvi>

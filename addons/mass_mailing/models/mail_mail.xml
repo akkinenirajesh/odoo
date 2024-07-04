@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailing.MailMail" name="MailMail" description="Add the mass mailing campaign data to mail">
+    <field name="MailingId" type="MassMailing.Mailing" label="Mass Mailing" collection="true" />
+    <field name="MailingTraceIds" type="MassMailing.MailingTrace" label="Statistics" collection="true" />
+  </model>
 </buvi>

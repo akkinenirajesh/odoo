@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.ServerActions" name="Mail.ServerActions" description="Server Action">
+    <field name="State" type="selection" label="State">
+      <option value="next_activity" name="Create Activity" />
+      <option value="mail_post" name="Send Email" />
+      <option value="followers" name="Add Followers" />
+      <option value="remove_followers" name="Remove Followers" />
+      <option value="object_create" name="Object Create" />
+    </field>
+    <field name="PartnerIds" type="many2many" relation="res.partner" collection="true" label="Partners" store="true" />
+    <field name="TemplateId" type="many2one" relation="mail.template" label="Email Template" ondelete="set null" store="true" />
+    <field name="MailPostAutofollow" type="bool" label="Subscribe Recipients" store="true" />
+    <field name="MailPostMethod" type="selection" label="Send Email As" store="true">
+      <option value="email" name="Email" />
+      <option value="comment" name="Message" />
+      <option value="note" name="Note" />
+    </field>
+    <field name="ActivityTypeId" type="many2one" relation="mail.activity.type" label="Activity Type" ondelete="restrict" store="true" />
+    <field name="ActivitySummary" type="string" label="Title" store="true" />
+    <field name="ActivityNote" type="html" label="Note" store="true" />
+    <field name="ActivityDateDeadlineRange" type="integer" label="Due Date In" store="true" />
+    <field name="ActivityDateDeadlineRangeType" type="selection" label="Due type" store="true">
+      <option value="days" name="Days" />
+      <option value="weeks" name="Weeks" />
+      <option value="months" name="Months" />
+    </field>
+    <field name="ActivityUserType" type="selection" label="User Type" store="true">
+      <option value="specific" name="Specific User" />
+      <option value="generic" name="Dynamic User (based on record)" />
+    </field>
+    <field name="ActivityUserId" type="many2one" relation="res.users" label="Responsible" store="true" />
+    <field name="ActivityUserFieldName" type="string" label="User Field" store="true" />
+  </model>
 </buvi>

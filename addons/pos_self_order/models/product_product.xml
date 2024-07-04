@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosSelfOrder.ProductTemplate" name="PosSelfOrder.ProductTemplate" description="Product Template">
+    <field name="SelfOrderAvailable" type="bool" label="Available in Self Order" default="true"
+      help="If this product is available in the Self Order screens" />
+    <field name="DescriptionSelfOrder" type="html" label="Product Description for Self Order" />
+  </model>
+  <model id="PosSelfOrder.ProductProduct" name="PosSelfOrder.ProductProduct" description="Product Product">
+    <field name="SelfOrderAvailable" type="bool" collection="true" />
+    <field name="DescriptionSelfOrder" type="html" collection="true" />
+  </model>
 </buvi>

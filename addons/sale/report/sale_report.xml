@@ -1,3 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleReport" name="SaleReport" description="Sales Analysis Report">
+    <field name="Name" type="string" label="Order Reference" readonly="true" />
+    <field name="Date" type="datetime" label="Order Date" readonly="true" />
+    <field name="Partner" type="Res.Partner" label="Customer" readonly="true" />
+    <field name="Company" type="Res.Company" readonly="true" />
+    <field name="Pricelist" type="Product.Pricelist" readonly="true" />
+    <field name="Team" type="Crm.Team" label="Sales Team" readonly="true" />
+    <field name="User" type="Res.Users" label="Salesperson" readonly="true" />
+    <field name="State" type="selection" label="Status" readonly="true">
+      <option value="draft" name="Draft" />
+      <option value="sent" name="Quotation Sent" />
+      <option value="sale" name="Sales Order" />
+      <option value="done" name="Done" />
+      <option value="cancel" name="Cancelled" />
+    </field>
+    <field name="AnalyticAccount" type="Account.AnalyticAccount" label="Analytic Account" readonly="true" />
+    <field name="InvoiceStatus" type="selection" label="Order Invoice Status" readonly="true">
+      <option value="upselling" name="Upselling Opportunity" />
+      <option value="invoiced" name="Fully Invoiced" />
+      <option value="to invoice" name="To Invoice" />
+      <option value="no" name="Nothing to Invoice" />
+    </field>
+    <field name="Campaign" type="Utm.Campaign" label="Campaign" readonly="true" />
+    <field name="Medium" type="Utm.Medium" label="Medium" readonly="true" />
+    <field name="Source" type="Utm.Source" label="Source" readonly="true" />
+    <field name="CommercialPartner" type="Res.Partner" label="Customer Entity" readonly="true" />
+    <field name="Country" type="Res.Country" label="Customer Country" readonly="true" />
+    <field name="Industry" type="Res.PartnerIndustry" label="Customer Industry" readonly="true" />
+    <field name="PartnerZip" type="string" label="Customer ZIP" readonly="true" />
+    <field name="State" type="Res.CountryState" label="Customer State" readonly="true" />
+    <field name="OrderReference" type="reference" label="Order" readonly="true" collection="true">
+      <option value="sale.order" name="Sales Order" />
+    </field>
+    <field name="Categ" type="Product.Category" label="Product Category" readonly="true" />
+    <field name="ProductVariant" type="Product.Product" label="Product Variant" readonly="true" />
+    <field name="Product" type="Product.Template" label="Product" readonly="true" />
+    <field name="ProductUom" type="Uom.Uom" label="Unit of Measure" readonly="true" />
+    <field name="ProductUomQty" type="float" label="Qty Ordered" readonly="true" />
+    <field name="QtyToDeliver" type="float" label="Qty To Deliver" readonly="true" />
+    <field name="QtyDelivered" type="float" label="Qty Delivered" readonly="true" />
+    <field name="QtyToInvoice" type="float" label="Qty To Invoice" readonly="true" />
+    <field name="QtyInvoiced" type="float" label="Qty Invoiced" readonly="true" />
+    <field name="PriceSubtotal" type="monetary" label="Untaxed Total" readonly="true" />
+    <field name="PriceTotal" type="monetary" label="Total" readonly="true" />
+    <field name="UntaxedAmountToInvoice" type="monetary" label="Untaxed Amount To Invoice" readonly="true" />
+    <field name="UntaxedAmountInvoiced" type="monetary" label="Untaxed Amount Invoiced" readonly="true" />
+    <field name="LineInvoiceStatus" type="selection" label="Invoice Status" readonly="true">
+      <option value="upselling" name="Upselling Opportunity" />
+      <option value="invoiced" name="Fully Invoiced" />
+      <option value="to invoice" name="To Invoice" />
+      <option value="no" name="Nothing to Invoice" />
+    </field>
+    <field name="Weight" type="float" label="Gross Weight" readonly="true" />
+    <field name="Volume" type="float" label="Volume" readonly="true" />
+    <field name="PriceUnit" type="float" label="Unit Price" readonly="true" aggregate="avg" />
+    <field name="Discount" type="float" label="Discount %" readonly="true" aggregate="avg" />
+    <field name="DiscountAmount" type="monetary" label="Discount Amount" readonly="true" />
+    <field name="Nbr" type="integer" label="# of Lines" readonly="true" />
+    <field name="Currency" type="Res.Currency" readonly="true" />
+  </model>
 </buvi>

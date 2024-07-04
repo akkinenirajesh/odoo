@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Acquirer"
+            selection="[('paypal', 'PayPal'), ('stripe', 'Stripe'), ('alipay', 'Alipay')]">
+            <option value="paypal" name="PayPal" />
+            <option value="stripe" name="Stripe" />
+            <option value="alipay" name="Alipay" />
+        </field>
+        <field name="AlipayPaymentMethod" type="selection" label="Account"
+            selection="[('express_checkout', 'Express Checkout (only for Chinese merchants)'), ('standard_checkout', 'Cross-border')]"
+            required="true" requiredIfProvider="alipay" default="express_checkout">
+            <option value="express_checkout" name="Express Checkout (only for Chinese merchants)" />
+            <option value="standard_checkout" name="Cross-border" />
+        </field>
+        <field name="AlipayMerchantPartnerId" type="string" label="Merchant Partner ID"
+            help="The public partner ID solely used to identify the account with Alipay" requiredIfProvider="alipay" />
+        <field name="AlipayMd5SignatureKey" type="string" label="MD5 Signature Key"
+            requiredIfProvider="alipay" groups="base.group_system" />
+        <field name="AlipaySellerEmail" type="string" label="Alipay Seller Email"
+            help="The public Alipay partner email" />
+    </model>
 </buvi>

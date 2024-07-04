@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpAccount.StockRule" name="StockRule" description="Stock Rule">
+        <field name="Name" type="string" label="Name" />
+        <field name="Active" type="bool" label="Active" default="true"
+            help="Set active to false to hide the Stock Rule without removing it." />
+        <field name="CompanyID" type="Core.Company" label="Company" />
+        <field name="LocationID" type="Stock.Location" label="Location" />
+        <field name="LocationDestID" type="Stock.Location" label="Destination Location" />
+        <field name="ProductProductID" type="Product.Product" label="Product" />
+        <field name="ProductUomID" type="Product.Uom" label="Unit of Measure" />
+        <field name="RouteID" type="Stock.Route" label="Route" />
+        <field name="ProcureMethod" type="selection" label="Procurement Method" selection="ProcurementMethodSelection" />
+        <field name="Action" type="selection" label="Action" selection="ActionSelection" />
+        <field name="PickingType" type="Stock.PickingType" label="Picking Type" />
+        <field name="Group" type="string" label="Group" />
+        <field name="Signal" type="string" label="Signal" />
+        <field name="WarehouseID" type="Stock.Warehouse" label="Warehouse" />
+        <field name="ProductAttrs" type="Product.Attribute" label="Product Attributes" collection="true" />
+        <field name="GroupLocationID" type="Stock.Location" label="Group Location" />
+        <field name="MinQty" type="float" label="Minimum Quantity" />
+        <field name="MaxQty" type="float" label="Maximum Quantity" />
+        <field name="FixedQty" type="float" label="Fixed Quantity" />
+        <field name="RuleType" type="selection" label="Rule Type" selection="RuleTypeSelection" />
+        <field name="Delay" type="integer" label="Delay" />
+        <field name="AnalyticDistribution" type="Account.AnalyticDistribution" label="Analytic Distribution" collection="true" />
+    </model>
+
+    <optionset id="MrpAccount.ProcurementMethodSelection" name="Procurement Method Selection">
+        <option value="make_to_stock" name="Make to Stock" />
+        <option value="make_to_order" name="Make to Order" />
+        <option value="buy" name="Buy" />
+    </optionset>
+
+    <optionset id="MrpAccount.ActionSelection" name="Action Selection">
+        <option value="produce" name="Produce" />
+        <option value="buy" name="Buy" />
+    </optionset>
+
+    <optionset id="MrpAccount.RuleTypeSelection" name="Rule Type Selection">
+        <option value="procurement" name="Procurement" />
+        <option value="pull" name="Pull" />
+    </optionset>
 </buvi>

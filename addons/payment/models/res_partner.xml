@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.ResPartner" name="ResPartner" description="Partner">
+    <field name="PaymentTokens" type="Payment.PaymentToken" collection="true" label="Payment Tokens" />
+    <field name="PaymentTokenCount" type="integer" label="Payment Token Count" />
+  </model>
 </buvi>

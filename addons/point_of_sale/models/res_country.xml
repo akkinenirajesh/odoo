@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.ResCountry" name="ResCountry" description="Res Country">
+    <field name="Id" type="integer" label="ID" />
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Code" type="string" label="Code" />
+    <field name="VatLabel" type="string" label="VAT Label" />
+    <field name="States" type="Core.State" collection="true" label="States" />
+    <field name="PhoneCode" type="string" label="Phone Code" />
+    <field name="ZipFormat" type="string" label="Zip Format" />
+    <field name="ZipCodeRegexp" type="string" label="Zip Code Regexp" />
+    <field name="CodeFormat" type="string" label="Code Format" />
+    <field name="VatLabelFormat" type="string" label="VAT Label Format" />
+    <field name="NameFormat" type="string" label="Name Format" />
+    <field name="AddressFormat" type="string" label="Address Format" />
+    <field name="CompanyFormat" type="string" label="Company Format" />
+    <field name="StreetFormat" type="string" label="Street Format" />
+    <field name="ZipFormatRegexp" type="string" label="Zip Format Regexp" />
+    <field name="CityFormat" type="string" label="City Format" />
+    <field name="StateFormat" type="string" label="State Format" />
+    <field name="AddressFormatRegexp" type="string" label="Address Format Regexp" />
+    <field name="PhoneFormat" type="string" label="Phone Format" />
+    <field name="Currency" type="Core.Currency" label="Currency" />
+    <field name="Language" type="Core.Lang" label="Language" />
+    <field name="CountryGroup" type="Core.CountryGroup" label="Country Group" />
+    <field name="Website" type="string" label="Website" />
+  </model>
 </buvi>

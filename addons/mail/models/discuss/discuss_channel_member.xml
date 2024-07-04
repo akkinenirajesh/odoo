@@ -1,251 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="shiprocket.channel" name="Shiprocket.Channel" track_created="true" track_update="true">
-    <field name="ChannelCode" label="Channel Code" type="integer" readonly="true" copied="true"/>
-    <field name="Name" label="Channel Name" type="string" readonly="true" copied="true"/>
-    <field name="ShiprocketEmail" label="Shiprocket Email" type="string" copied="true"/>
-  </model>
-  <model id="discuss.channel" name="Discuss.Channel" track_created="true" track_update="true">
-    <field name="ChatbotMessages" label="Chatbot Messages" type="Chatbot.Message" collection="true"/>
-    <field name="ChatbotCurrentStep" label="Chatbot Current Step" type="Chatbot.ScriptStep" copied="true" on-delete="Clear"/>
-    <field name="ChannelMembers" label="Members" type="Discuss.ChannelMember" collection="true"/>
-    <field name="RtcSessions" label="Rtc Session" type="Discuss.ChannelRtcSession" collection="true"/>
-    <field name="SubscriptionDepartments" label="HR Departments" type="Hr.Department" collection="true" copied="true"/>
-    <field name="LivechatChannel" label="Channel" type="ImLivechat.Channel" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="PinnedMessages" label="Pinned Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="WhatsappMailMessage" label="Related message" type="Mail.Message" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Country" label="Country" type="Res.Country" copied="true" on-delete="Clear"/>
-    <field name="Groups" label="Auto Subscription" type="Res.Groups" collection="true" copied="true"/>
-    <field name="GroupPublic" label="Authorized Group" type="Res.Groups" copied="true" on-delete="Clear"/>
-    <field name="ChannelPartners" label="Partners" type="Res.Partner" collection="true" transient="true"/>
-    <field name="LivechatOperator" label="Operator" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="WhatsappPartner" label="WhatsApp Partner" type="Res.Partner" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="LivechatVisitor" label="Visitor" type="Website.Visitor" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="WaAccount" label="WhatsApp Business Account" type="Whatsapp.Account" copied="true" on-delete="Clear"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="AllowPublicUpload" label="Allow Public Upload" type="bool" copied="true"/>
-    <field name="AnonymousName" label="Anonymous Name" type="string" copied="true"/>
-    <field name="Avatar128" label="Avatar" type="binary" readonly="true" transient="true"/>
-    <field name="AvatarCacheKey" label="Avatar Cache Key" type="string" readonly="true" transient="true"/>
-    <field name="ChannelType" label="Channel Type" type="Discuss.DiscussionChannelChannelType" required="true" readonly="true" copied="true"/>
-    <field name="DefaultDisplayMode" label="Default Display Mode" type="Discuss.DiscussionChannelDefaultDisplayMode" copied="true"/>
-    <field name="Description" label="Description" type="text" copied="true"/>
-    <field name="Duration" label="Duration" type="float" readonly="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="Image128" label="Image" type="binary" copied="true"/>
-    <field name="InvitationUrl" label="Invitation URL" type="string" readonly="true" transient="true"/>
-    <field name="IsChat" label="Is a chat" type="bool" readonly="true" transient="true"/>
-    <field name="IsEditable" label="Is Editable" type="bool" readonly="true" transient="true"/>
-    <field name="IsMember" label="Is Member" type="bool" readonly="true" transient="true"/>
-    <field name="LastInterestDt" label="Last Interest" type="datetime" indexed="true" copied="true"/>
-    <field name="LivechatActive" label="Is livechat ongoing?" type="bool" copied="true"/>
-    <field name="MemberCount" label="Member Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="RatingAvg" label="Average Rating" type="float" readonly="true" transient="true"/>
-    <field name="RatingAvgText" label="Rating Avg Text" type="Discuss.DiscussionChannelRatingAvgText" readonly="true" transient="true"/>
-    <field name="RatingCount" label="Rating count" type="integer" readonly="true" transient="true"/>
-    <field name="RatingLastFeedback" label="Rating Last Feedback" type="text" readonly="true" transient="true" related-field="Ratings.Feedback"/>
-    <field name="RatingLastImage" label="Rating Last Image" type="binary" readonly="true" transient="true" related-field="Ratings.RatingImage"/>
-    <field name="RatingLastValue" label="Rating Last Value" type="float" readonly="true"/>
-    <field name="RatingPercentageSatisfaction" label="Rating Satisfaction" type="float" readonly="true" transient="true"/>
-    <field name="SfuChannelUuid" label="Sfu Channel Uuid" type="string" copied="true"/>
-    <field name="SfuServerUrl" label="Sfu Server Url" type="string" copied="true"/>
-    <field name="Uuid" label="UUID" type="string"/>
-    <field name="WhatsappChannelValidUntil" label="WhatsApp Partner Last Message Datetime" type="datetime" readonly="true" transient="true"/>
-    <field name="WhatsappNumber" label="Phone Number" type="string" copied="true"/>
-  </model>
-  <model id="iot.channel" name="Iot.Channel" track_created="true" track_update="true">
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="Name" label="Name" type="string" copied="true"/>
-  </model>
-  <model id="im_livechat.channel" name="ImLivechat.Channel" track_created="true" track_update="true">
-    <field name="Channels" label="Sessions" type="Discuss.Channel" collection="true"/>
-    <field name="Rules" label="Rules" type="ImLivechat.ChannelRule" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="AvailableOperators" label="Available Operator" type="Res.Users" collection="true" readonly="true" transient="true"/>
-    <field name="Users" label="Operators" type="Res.Users" collection="true" copied="true"/>
-    <field name="AreYouInside" label="Are you inside the matrix?" type="bool" readonly="true" transient="true"/>
-    <field name="ButtonBackgroundColor" label="Button Background Color" type="string" copied="true"/>
-    <field name="ButtonText" label="Text of the Button" type="string" copied="true" translatable="true"/>
-    <field name="ButtonTextColor" label="Button Text Color" type="string" copied="true"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="ChatbotScriptCount" label="Number of Chatbot" type="integer" readonly="true" transient="true"/>
-    <field name="DefaultMessage" label="Welcome Message" type="string" copied="true" translatable="true"/>
-    <field name="HeaderBackgroundColor" label="Header Background Color" type="string" copied="true"/>
-    <field name="Image128" label="Image" type="binary" copied="true"/>
-    <field name="InputPlaceholder" label="Chat Input Placeholder" type="string" copied="true" translatable="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="Name" label="Channel Name" type="string" required="true" copied="true"/>
-    <field name="NbrChannel" label="Number of conversation" type="integer" readonly="true" transient="true"/>
-    <field name="RatingAvg" label="Average Rating" type="float" readonly="true" transient="true"/>
-    <field name="RatingAvgPercentage" label="Average Rating (%)" type="float" readonly="true" transient="true"/>
-    <field name="RatingCount" label="# Ratings" type="integer" readonly="true" transient="true"/>
-    <field name="RatingPercentageSatisfaction" label="Rating Satisfaction" type="integer" readonly="true" transient="true"/>
-    <field name="ScriptExternal" label="Script (external)" type="html" readonly="true" transient="true"/>
-    <field name="TitleColor" label="Title Color" type="string" copied="true"/>
-    <field name="WebPage" label="Web Page" type="string" readonly="true" transient="true"/>
-    <field name="WebsiteDescription" label="Website description" type="html" copied="true" translatable="true"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true" related-field="IsPublished"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-  </model>
-  <model id="im_livechat.report.channel" name="ImLivechat.ReportChannel">
-    <field name="Channel" label="Conversation" type="Discuss.Channel" readonly="true" copied="true" on-delete="Clear"/>
-    <field name="LivechatChannel" label="Channel" type="ImLivechat.Channel" readonly="true" copied="true" on-delete="Clear"/>
-    <field name="Country" label="Country of the visitor" type="Res.Country" readonly="true" copied="true" on-delete="Clear"/>
-    <field name="Partner" label="Operator" type="Res.Partner" readonly="true" copied="true" on-delete="Clear"/>
-    <field name="ChannelName" label="Channel Name" type="string" readonly="true" copied="true"/>
-    <field name="DayNumber" label="Day Number" type="string" readonly="true" copied="true"/>
-    <field name="DaysOfActivity" label="Days of activity" type="integer" readonly="true" copied="true"/>
-    <field name="Duration" label="Average duration" type="float" readonly="true" copied="true"/>
-    <field name="IsAnonymous" label="Is visitor anonymous" type="integer" readonly="true" copied="true"/>
-    <field name="IsHappy" label="Visitor is Happy" type="integer" readonly="true" copied="true"/>
-    <field name="IsUnrated" label="Session not rated" type="integer" readonly="true" copied="true"/>
-    <field name="IsWithoutAnswer" label="Session(s) without answer" type="integer" readonly="true" copied="true"/>
-    <field name="NbrMessage" label="Average message" type="integer" readonly="true" copied="true"/>
-    <field name="NbrSpeaker" label="# of speakers" type="integer" readonly="true" copied="true"/>
-    <field name="Rating" label="Rating" type="integer" readonly="true" copied="true"/>
-    <field name="RatingText" label="Satisfaction Rate" type="string" readonly="true" copied="true"/>
-    <field name="StartDate" label="Start Date of session" type="datetime" readonly="true" copied="true"/>
-    <field name="StartDateHour" label="Hour of start Date of session" type="string" readonly="true" copied="true"/>
-    <field name="StartHour" label="Start Hour of session" type="string" readonly="true" copied="true"/>
-    <field name="TechnicalName" label="Code" type="string" readonly="true" copied="true"/>
-    <field name="TimeToAnswer" label="Time to answer (sec)" type="float" readonly="true" copied="true"/>
-    <field name="Uuid" label="UUID" type="string" readonly="true" copied="true"/>
-  </model>
-  <model id="slide.channel" name="Slide.Channel" track_created="true" track_update="true">
-    <field name="ActivityCalendarEvent" label="Next Activity Calendar Event" type="Calendar.Event" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="Forum" label="Course Forum" type="Forum.Forum" on-delete="Clear"/>
-    <field name="HelpdeskTeams" label="Helpdesk Team" type="Helpdesk.Team" collection="true" copied="true"/>
-    <field name="Activitys" label="Activities" type="Mail.Activity" collection="true"/>
-    <field name="ActivityType" label="Next Activity Type" type="Mail.ActivityType" transient="true" related-field="Activitys.ActivityType"/>
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="CompletedTemplate" label="Completion Notification" type="Mail.Template" copied="true" on-delete="Clear"/>
-    <field name="PublishTemplate" label="New Content Notification" type="Mail.Template" copied="true" on-delete="Clear"/>
-    <field name="ShareChannelTemplate" label="Channel Share Template" type="Mail.Template" copied="true" on-delete="Clear"/>
-    <field name="ShareSlideTemplate" label="Share Template" type="Mail.Template" copied="true" on-delete="Clear"/>
-    <field name="Product" label="Product" type="Product.Product" copied="true" on-delete="Clear"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="Currency" label="Currency" type="Res.Currency" readonly="true" transient="true" related-field="Product.Currency"/>
-    <field name="EnrollGroups" label="Auto Enroll Groups" type="Res.Groups" collection="true" copied="true"/>
-    <field name="UploadGroups" label="Upload Groups" type="Res.Groups" collection="true" copied="true"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="Partners" label="Attendees" type="Res.Partner" collection="true" readonly="true" transient="true"/>
-    <field name="ActivityUser" label="Responsible User" type="Res.Users" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="User" label="Responsible" type="Res.Users" copied="true" on-delete="Clear"/>
-    <field name="PrerequisiteChannels" label="Prerequisites" type="Slide.Channel" collection="true" copied="true"/>
-    <field name="PrerequisiteOfChannels" label="Prerequisite Of" type="Slide.Channel" collection="true" copied="true"/>
-    <field name="ChannelPartnerAlls" label="All Attendees Information" type="Slide.ChannelPartner" collection="true"/>
-    <field name="ChannelPartners" label="Enrolled Attendees Information" type="Slide.ChannelPartner" collection="true"/>
-    <field name="Tags" label="Tags" type="Slide.ChannelTag" collection="true" copied="true"/>
-    <field name="PromotedSlide" label="Promoted Slide" type="Slide.Slide" on-delete="Clear"/>
-    <field name="SlideCategorys" label="Categories" type="Slide.Slide" collection="true" readonly="true" transient="true"/>
-    <field name="SlideContents" label="Content" type="Slide.Slide" collection="true" readonly="true" transient="true"/>
-    <field name="Slides" label="Slides and categories" type="Slide.Slide" collection="true" copied="true"/>
-    <field name="SlidePartners" label="Slide User Data" type="Slide.SlidePartner" collection="true"/>
-    <field name="Website" label="Website" type="Website." indexed="true" copied="true" on-delete="Restrict"/>
-    <field name="AccessToken" label="Security Token" type="string"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="ActivityDateDeadline" label="Next Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="ActivityExceptionDecoration" label="Activity Exception Decoration" type="Slide.CourseActivityExceptionDecoration" readonly="true" transient="true"/>
-    <field name="ActivityExceptionIcon" label="Icon" type="string" readonly="true" transient="true"/>
-    <field name="ActivityState" label="Activity State" type="Slide.CourseActivityState" readonly="true" transient="true"/>
-    <field name="ActivitySummary" label="Next Activity Summary" type="string" transient="true" related-field="Activitys.Summary"/>
-    <field name="ActivityTypeIcon" label="Activity Type Icon" type="string" readonly="true" transient="true" related-field="Activitys.Icon"/>
-    <field name="AllowComment" label="Allow rating on Course" type="bool" copied="true"/>
-    <field name="CanComment" label="Can Comment" type="bool" readonly="true" transient="true"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="CanReview" label="Can Review" type="bool" readonly="true" transient="true"/>
-    <field name="CanUpload" label="Can Upload" type="bool" readonly="true" transient="true"/>
-    <field name="CanVote" label="Can Vote" type="bool" readonly="true" transient="true"/>
-    <field name="ChannelType" label="Course type" type="Slide.CourseCourseType" required="true" copied="true"/>
-    <field name="Color" label="Color Index" type="integer" copied="true"/>
-    <field name="Completed" label="Done" type="bool" readonly="true" transient="true"/>
-    <field name="Completion" label="Completion" type="integer" readonly="true" transient="true"/>
-    <field name="CoverProperties" label="Cover Properties" type="text" copied="true"/>
-    <field name="Description" label="Description" type="html" copied="true" translatable="true"/>
-    <field name="DescriptionHtml" label="Detailed Description" type="html" copied="true" translatable="true"/>
-    <field name="DescriptionShort" label="Short Description" type="html" copied="true" translatable="true"/>
-    <field name="Enroll" label="Enroll Policy" type="Slide.CourseEnrollPolicy" required="true"/>
-    <field name="EnrollMsg" label="Enroll Message" type="html" copied="true" translatable="true"/>
-    <field name="ForumTotalPosts" label="Number of active forum posts" type="integer" readonly="true" transient="true" related-field="Forum.TotalPosts"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="HasRequestedAccess" label="Access Requested" type="bool" readonly="true" transient="true"/>
-    <field name="HelpdeskTeamCount" label="Helpdesk Team Count" type="integer" readonly="true" transient="true"/>
-    <field name="Image1024" label="Image 1024" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="Image128" label="Image 128" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="Image1920" label="Image" type="binary" copied="true"/>
-    <field name="Image256" label="Image 256" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="Image512" label="Image 512" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="IsMember" label="Is Enrolled Attendee" type="bool" readonly="true" transient="true"/>
-    <field name="IsMemberInvited" label="Is Invited Attendee" type="bool" readonly="true" transient="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
-    <field name="KarmaGenChannelFinish" label="Course finished" type="integer" copied="true"/>
-    <field name="KarmaGenChannelRank" label="Course ranked" type="integer" copied="true"/>
-    <field name="KarmaReview" label="Add Review" type="integer" copied="true"/>
-    <field name="KarmaSlideComment" label="Add Comment" type="integer" copied="true"/>
-    <field name="KarmaSlideVote" label="Vote" type="integer" copied="true"/>
-    <field name="MembersAllCount" label="# Enrolled or Invited Attendees" type="integer" readonly="true" transient="true"/>
-    <field name="MembersCertifiedCount" label="# Certified Attendees" type="integer" readonly="true" transient="true"/>
-    <field name="MembersCompletedCount" label="# Completed Attendees" type="integer" readonly="true" transient="true"/>
-    <field name="MembersCount" label="# Enrolled Attendees" type="integer" readonly="true" transient="true"/>
-    <field name="MembersEngagedCount" label="# Active Attendees" type="integer" readonly="true" transient="true"/>
-    <field name="MembersInvitedCount" label="# Invited Attendees" type="integer" readonly="true" transient="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="MyActivityDateDeadline" label="My Activity Deadline" type="date" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NbrArticle" label="Articles" type="integer" readonly="true"/>
-    <field name="NbrCertification" label="Number of Certifications" type="integer" readonly="true"/>
-    <field name="NbrDocument" label="Documents" type="integer" readonly="true"/>
-    <field name="NbrInfographic" label="Infographics" type="integer" readonly="true"/>
-    <field name="NbrQuiz" label="Number of Quizs" type="integer" readonly="true"/>
-    <field name="NbrVideo" label="Videos" type="integer" readonly="true"/>
-    <field name="PartnerHasNewContent" label="Partner Has New Content" type="bool" readonly="true" transient="true"/>
-    <field name="PrerequisiteUserHasCompleted" label="Has Completed Prerequisite" type="bool" readonly="true" transient="true"/>
-    <field name="ProductSaleRevenues" label="Total revenues" type="monetary" readonly="true" transient="true"/>
-    <field name="PromoteStrategy" label="Featured Content" type="Slide.CourseFeaturedContent"/>
-    <field name="RatingAvg" label="Average Rating" type="float" readonly="true" transient="true"/>
-    <field name="RatingAvgStars" label="Rating Average (Stars)" type="float" readonly="true" transient="true"/>
-    <field name="RatingAvgText" label="Rating Avg Text" type="Slide.CourseRatingAvgText" readonly="true" transient="true"/>
-    <field name="RatingCount" label="Rating count" type="integer" readonly="true" transient="true"/>
-    <field name="RatingLastFeedback" label="Rating Last Feedback" type="text" readonly="true" transient="true" related-field="Ratings.Feedback"/>
-    <field name="RatingLastImage" label="Rating Last Image" type="binary" readonly="true" transient="true" related-field="Ratings.RatingImage"/>
-    <field name="RatingLastValue" label="Rating Last Value" type="float" readonly="true"/>
-    <field name="RatingPercentageSatisfaction" label="Rating Satisfaction" type="float" readonly="true" transient="true"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="SlideLastUpdate" label="Last Update" type="date" readonly="true"/>
-    <field name="TotalSlides" label="Number of Contents" type="integer" readonly="true"/>
-    <field name="TotalTime" label="Duration" type="float" readonly="true"/>
-    <field name="TotalViews" label="Visits" type="integer" readonly="true"/>
-    <field name="TotalVotes" label="Votes" type="integer" readonly="true"/>
-    <field name="Visibility" label="Show Course To" type="Slide.CourseShowCourseTo" required="true" copied="true"/>
-    <field name="WebsiteDefaultBackgroundImageUrl" label="Background image URL" type="string" readonly="true" transient="true"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-  </model>
+    <model id="Mail.DiscussChannelMember" name="DiscussChannelMember" description="Channel Member">
+        <field name="Partner" type="Res.Partner" label="Partner" ondelete="cascade" index="true" />
+        <field name="Guest" type="Mail.Guest" label="Guest" ondelete="cascade" index="true" />
+        <field name="IsSelf" type="bool" compute="ComputeIsSelf" search="SearchIsSelf" />
+        <field name="Channel" type="Discuss.Channel" label="Channel" ondelete="cascade" required="true" auto_join="true" />
+        <field name="CustomChannelName" type="string" label="Custom channel name" />
+        <field name="FetchedMessageId" type="Mail.Message" label="Last Fetched" index="btree_not_null" />
+        <field name="SeenMessageId" type="Mail.Message" label="Last Seen" index="btree_not_null" />
+        <field name="NewMessageSeparator" type="integer" help="Message id before which the separator should be displayed" default="0" required="true" />
+        <field name="MessageUnreadCounter" type="integer" label="Unread Messages Counter" compute="ComputeMessageUnread" compute_sudo="true" />
+        <field name="FoldState" type="selection" label="Conversation Fold State" default="closed"
+            options="DiscussChannelMember.FoldStateOptions" />
+        <field name="CustomNotifications" type="selection" label="Customized Notifications"
+            options="DiscussChannelMember.CustomNotificationsOptions"
+            help="Use default from user settings if not specified. This setting will only be applied to channels." />
+        <field name="MuteUntilDt" type="datetime" label="Mute notifications until" help="If set, the member will not receive notifications from the channel until this date." />
+        <field name="IsPinned" type="bool" label="Is pinned on the interface" compute="ComputeIsPinned" search="SearchIsPinned" />
+        <field name="UnpinDt" type="datetime" label="Unpin date" index="true" help="Contains the date and time when the channel was unpinned by the user." />
+        <field name="LastInterestDt" type="datetime" label="Last Interest" index="true" default="now" help="Contains the date and time of the last interesting event that happened in this channel for this user. This includes: creating, joining, pinning" />
+        <field name="LastSeenDt" type="datetime" label="Last seen date" />
+        <field name="RtcSessionIds" type="Discuss.ChannelRtcSession" label="RTC Sessions" collection="true" inverse_name="ChannelMemberId" />
+        <field name="RtcInvitingSessionId" type="Discuss.ChannelRtcSession" label="Ringing session" />
+        <unique>
+            <field name="Channel" />
+            <field name="Partner" />
+        </unique>
+        <unique>
+            <field name="Channel" />
+            <field name="Guest" />
+        </unique>
+        <constraint name="PartnerOrGuestExists" message="A channel member must be a partner or a guest." check="(Partner IS NOT NULL AND Guest IS NULL) OR (Partner IS NULL AND Guest IS NOT NULL)" />
+    </model>
+
+    <optionset id="DiscussChannelMember.FoldStateOptions" name="Conversation Fold State Options">
+        <option value="open" name="Open" />
+        <option value="folded" name="Folded" />
+        <option value="closed" name="Closed" />
+    </optionset>
+
+    <optionset id="DiscussChannelMember.CustomNotificationsOptions" name="Customized Notifications Options">
+        <option value="all" name="All Messages" />
+        <option value="mentions" name="Mentions Only" />
+        <option value="no_notif" name="Nothing" />
+    </optionset>
 </buvi>

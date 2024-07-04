@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StorageCategory" name="StorageCategory" description="Storage Category">
+        <field name="Name" type="string" label="Storage Category" required="true" />
+        <field name="MaxWeight" type="float" label="Max Weight" digits="Stock Weight" />
+        <field name="CapacityIds" type="Stock.StorageCategoryCapacity" collection="true" copy="true" />
+        <field name="ProductCapacityIds" type="Stock.StorageCategoryCapacity" collection="true" compute="ComputeStorageCapacityIds" inverse="SetStorageCapacityIds" />
+        <field name="PackageCapacityIds" type="Stock.StorageCategoryCapacity" collection="true" compute="ComputeStorageCapacityIds" inverse="SetStorageCapacityIds" />
+        <field name="AllowNewProduct" type="selection" default="mixed" required="true">
+            <option value="empty" name="If the location is empty" />
+            <option value="same" name="If all products are same" />
+            <option value="mixed" name="Allow mixed products" />
+        </field>
+        <field name="LocationIds" type="Stock.Location" collection="true" />
+        <field name="Company" type="Res.Company" />
+        <field name="WeightUomName" type="string" label="Weight unit" compute="ComputeWeightUomName" />
+        <sql_constraint name="positive_max_weight" column="MaxWeight" operator="&gt;=" value="0" message="Max weight should be a positive number." />
+    </model>
+    <model id="Stock.StorageCategoryCapacity" name="StorageCategoryCapacity" description="Storage Category Capacity" checkCompanyAuto="true">
+        <field name="StorageCategory" type="Stock.StorageCategory" required="true" />
+        <field name="Product" type="Product.Product" ondelete="cascade" checkCompany="true">
+            <domain>[('ProductTmplId', '=', context.get('active_id', False))] if context.get('active_model') == 'product.template' else [('Id', '=', context.get('default_product_id', False))] if context.get('default_product_id') else [('IsStorable', '=', True)]</domain>
+        </field>
+        <field name="PackageType" type="Stock.PackageType" ondelete="cascade" checkCompany="true" />
+        <field name="Quantity" type="float" required="true" />
+        <field name="ProductUom" type="Product.ProductUom" related="Product.UomId" />
+        <field name="Company" type="Res.Company" related="StorageCategory.Company" />
+        <sql_constraint name="positive_quantity" column="Quantity" operator="&gt;" value="0" message="Quantity should be a positive number." />
+        <sql_constraint name="unique_product" columns="Product, StorageCategory" message="Multiple capacity rules for one product." />
+        <sql_constraint name="unique_package_type" columns="PackageType, StorageCategory" message="Multiple capacity rules for one package type." />
+    </model>
 </buvi>

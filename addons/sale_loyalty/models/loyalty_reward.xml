@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.LoyaltyReward" name="LoyaltyReward" description="Loyalty Reward">
+        <field name="Name" type="string" label="Reward Name" required="true" translate="true" />
+        <field name="RewardType" type="Selection" label="Reward Type" required="true" selection="Sale.LoyaltyRewardRewardType" />
+        <field name="DiscountValue" type="float" label="Discount Value" />
+        <field name="DiscountType" type="Selection" label="Discount Type" selection="Sale.LoyaltyRewardDiscountType" />
+        <field name="Points" type="float" label="Points" required="true" />
+        <field name="RewardProduct" type="Product.Product" label="Reward Product" required="true" />
+        <field name="Quantity" type="float" label="Quantity" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the Loyalty Reward without removing it." />
+    </model>
+
+    <optionset id="Sale.LoyaltyRewardRewardType" name="Loyalty Reward Reward Type">
+        <option value="discount" name="Discount" />
+        <option value="product" name="Product" />
+    </optionset>
+
+    <optionset id="Sale.LoyaltyRewardDiscountType" name="Loyalty Reward Discount Type">
+        <option value="fixed" name="Fixed" />
+        <option value="percentage" name="Percentage" />
+    </optionset>
 </buvi>

@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseStock.StockRule" name="PurchaseStock.StockRule" description="Stock Rule">
+    <field name="Action" type="PurchaseStock.StockRuleAction" required="true" />
+    <field name="LocationSrcId" type="Stock.Location" />
+    <field name="LocationDestId" type="Stock.Location" required="true" />
+    <field name="PickingTypeId" type="Stock.PickingType" required="true" />
+    <field name="GroupPropagationOption" type="Selection" selection="PurchaseStock.StockRuleGroupPropagationOption" default="None" />
+    <field name="GroupId" type="Purchase.Group" relation="true" />
+    <field name="PropagateCancel" type="bool" default="false" />
+    <field name="RouteId" type="Stock.Route" relation="true" />
+    <field name="ProcurementGroupId" type="Procurement.Group" relation="true" />
+    <field name="Company" type="Res.Company" relation="true" />
+  </model>
+
+  <optionset id="PurchaseStock.StockRuleAction" name="Stock Rule Action">
+    <option value="Buy" name="Buy" />
+  </optionset>
+
+  <optionset id="PurchaseStock.StockRuleGroupPropagationOption" name="Stock Rule Group Propagation Option">
+    <option value="None" name="None" />
+    <option value="Fixed" name="Fixed" />
+    <option value="Propagate" name="Propagate" />
+  </optionset>
 </buvi>

@@ -1,3 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.SaleOrder" name="Stock.SaleOrder" description="Sale Order">
+    <field name="DropshipPickingCount" type="integer" label="Dropship Count" />
+    <field name="DeliveryCount" type="integer" />
+    <field name="PickingIds" type="Stock.Picking" collection="true" />
+  </model>
+
+  <model id="Stock.SaleOrderLine" name="Stock.SaleOrderLine" description="Sale Order Line">
+    <field name="IsMTO" type="bool" />
+    <field name="DisplayQtyWidget" type="bool" />
+    <field name="RouteId" type="Stock.Route" />
+    <field name="ProductId" type="Product.Product" />
+    <field name="ProductUom" type="Product.Uom" />
+    <field name="PurchaseLineCount" type="integer" />
+    <field name="PurchaseLineIds" type="Purchase.PurchaseOrderLine" collection="true" />
+    <field name="ProductUpdatable" type="bool" />
+    <field name="CategId" type="Product.ProductCategory" />
+    <field name="ProductIds" type="Product.Product" collection="true" />
+    <field name="RouteIds" type="Stock.Route" collection="true" />
+  </model>
+
+  <model id="Stock.Picking" name="Stock.Picking" description="Picking">
+    <field name="IsDropship" type="bool" />
+  </model>
+
+  <model id="Purchase.PurchaseOrderLine" name="Purchase.PurchaseOrderLine" description="Purchase Order Line">
+    <field name="State" type="selection" selection="Purchase.PurchaseOrderLine.StateSelection" />
+    <field name="ProductQty" type="float" />
+    <field name="ProductUom" type="Product.Uom" />
+  </model>
+
+  <optionset id="Purchase.PurchaseOrderLine.StateSelection" name="Purchase Order Line State Selection">
+    <option value="draft" name="Draft" />
+    <option value="cancel" name="Cancelled" />
+    <option value="confirmed" name="Confirmed" />
+    <option value="done" name="Done" />
+  </optionset>
+
+  <model id="Stock.Route" name="Stock.Route" description="Route">
+    <field name="RuleIds" type="Stock.PullRule" collection="true" />
+  </model>
+
+  <model id="Stock.PullRule" name="Stock.PullRule" description="Pull Rule">
+    <field name="PickingTypeId" type="Stock.PickingType" />
+  </model>
+
+  <model id="Stock.PickingType" name="Stock.PickingType" description="Picking Type">
+    <field name="DefaultLocationSrcId" type="Stock.Location" />
+    <field name="DefaultLocationDestId" type="Stock.Location" />
+  </model>
+
+  <model id="Stock.Location" name="Stock.Location" description="Location">
+    <field name="Usage" type="selection" selection="Stock.Location.UsageSelection" />
+  </model>
+
+  <optionset id="Stock.Location.UsageSelection" name="Location Usage Selection">
+    <option value="supplier" name="Supplier" />
+    <option value="customer" name="Customer" />
+  </optionset>
+
+  <model id="Product.Product" name="Product.Product" description="Product">
+    <field name="RouteIds" type="Stock.Route" collection="true" />
+    <field name="CategId" type="Product.ProductCategory" />
+  </model>
+
+  <model id="Product.ProductCategory" name="Product.ProductCategory" description="Product Category">
+    <field name="TotalRouteIds" type="Stock.Route" collection="true" />
+  </model>
 </buvi>

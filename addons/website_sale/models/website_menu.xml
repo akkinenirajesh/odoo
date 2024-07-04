@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.Menu" name="WebsiteMenu" description="Website Menu">
+    <field name="Url" type="string" label="URL" />
+    <field name="Name" type="string" label="Menu Name" required="true" translate="true" />
+    <field name="ParentID" type="Website.Menu" relation="one2many" />
+    <field name="Sequence" type="integer" default="0" />
+    <field name="WebsiteID" type="Website.Website" relation="one2many" />
+    <field name="IsVisible" type="bool" />
+  </model>
 </buvi>

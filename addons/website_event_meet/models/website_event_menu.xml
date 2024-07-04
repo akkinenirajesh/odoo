@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEvent.EventMenu" name="EventMenu" description="Event Menu">
+        <field name="MenuType" type="Selection" label="Menu Type" />
+    </model>
+
+    <optionset id="WebsiteEvent.MenuType" name="Menu Type">
+        <option value="meeting_room" name="Event Meeting Room Menus" />
+    </optionset>
 </buvi>

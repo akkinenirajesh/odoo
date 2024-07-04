@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailingSms.UtmCampaign" name="UtmCampaign" description="UTM Campaign">
+        <field name="MailingSmsIds" type="MassMailing.Mailing" collection="true" relation="campaign_id" domain="[('MailingType', '=', 'sms')]" label="Mass SMS" groups="mass_mailing.group_mass_mailing_user" />
+        <field name="MailingSmsCount" type="integer" label="Number of Mass SMS" compute="ComputeMailingSmsCount" groups="mass_mailing.group_mass_mailing_user" />
+        <field name="AbTestingMailingsSmsCount" type="integer" label="A/B Test Mailings SMS #" compute="ComputeMailingSmsCount" />
+        <field name="AbTestingSmsWinnerSelection" type="selection" selection="MassMailingSms.AbTestingSmsWinnerSelection" label="SMS Winner Selection" default="clicks_ratio" />
+    </model>
+
+    <optionset id="MassMailingSms.AbTestingSmsWinnerSelection" name="Ab Testing Sms Winner Selection">
+        <option value="manual" name="Manual" />
+        <option value="clicks_ratio" name="Highest Click Rate" />
+    </optionset>
+
+    <model id="MassMailingSms.UtmMedium" name="UtmMedium" description="UTM Medium">
+    </model>
 </buvi>

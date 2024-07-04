@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SalesTeam.CrmTeamMember" name="CrmTeamMember" description="Sales Team Member">
+    <field name="CrmTeamId" type="SalesTeam.CrmTeam" label="Sales Team" group_expand="_ReadGroupExpandFull" default="false" check_company="true" index="true" ondelete="cascade" required="true" />
+    <field name="UserId" type="Res.Users" label="Salesperson" check_company="true" index="true" ondelete="cascade" required="true" domain="[('Share', '=', false), ('Id', 'not in', UserInTeamsIds), ('CompanyIds', 'in', UserCompanyIds)]" />
+    <field name="UserInTeamsIds" type="Res.Users" collection="true" compute="_ComputeUserInTeamsIds" help="UX: Give users not to add in the currently chosen team to avoid duplicates" />
+    <field name="UserCompanyIds" type="Res.Company" collection="true" compute="_ComputeUserCompanyIds" help="UX: Limit to team company or all if no company" />
+    <field name="Active" type="bool" default="true" />
+    <field name="IsMembershipMulti" type="bool" compute="_ComputeIsMembershipMulti" help="If True, users may belong to several sales teams. Otherwise membership is limited to a single sales team." />
+    <field name="MemberWarning" type="text" compute="_ComputeMemberWarning" />
+    <field name="Image1920" type="image" related="UserId.Image1920" max_width="1920" max_height="1920" />
+    <field name="Image128" type="image" related="UserId.Image128" max_width="128" max_height="128" />
+    <field name="Name" type="string" label="Name" related="UserId.DisplayName" readonly="false" />
+    <field name="Email" type="string" label="Email" related="UserId.Email" />
+    <field name="Phone" type="string" label="Phone" related="UserId.Phone" />
+    <field name="Mobile" type="string" label="Mobile" related="UserId.Mobile" />
+    <field name="CompanyId" type="Res.Company" label="Company" related="UserId.CompanyId" />
+  </model>
 </buvi>

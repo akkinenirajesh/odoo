@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Survey.Survey" name="Survey" description="Survey">
+    <field name="Title" type="string" label="Title" required="true" translate="true" />
+    <field name="ScoringType" type="Survey.ScoringType" label="Scoring Type" />
+    <field name="SessionCode" type="integer" label="Session Code" />
+    <field name="QuestionAndPageIds" type="survey.question" collection="true" />
+    <field name="RestrictUserIds" type="res.users" collection="true" />
+    <field name="UserId" type="res.users" />
+  </model>
+
+  <optionset id="Survey.ScoringType" name="Scoring Type">
+    <option value="NoScoring" name="No Scoring" />
+  </optionset>
 </buvi>

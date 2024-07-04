@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.ProductTemplate" name="Purchase.ProductTemplate" description="Product Template">
+        <field name="PurchasedProductQty" type="float" label="Purchased" digits="Product Unit of Measure" compute="ComputePurchasedProductQty" />
+        <field name="PurchaseMethod" type="Purchase.PurchaseMethod" string="Control Policy" compute="ComputePurchaseMethod" precompute="true" store="true" readonly="false"
+            help="On ordered quantities: Control bills based on ordered quantities.\nOn received quantities: Control bills based on received quantities." />
+        <field name="PurchaseLineWarn" type="Base.WarningMessage" label="Purchase Order Line Warning" help="WARNING_HELP" required="true" default="no-message" />
+        <field name="PurchaseLineWarnMsg" type="text" label="Message for Purchase Order Line" />
+    </model>
+
+    <model id="Purchase.ProductProduct" name="Purchase.ProductProduct" description="Product Product">
+        <field name="PurchasedProductQty" type="float" label="Purchased"
+            digits="Product Unit of Measure" compute="ComputePurchasedProductQty" />
+        <field name="IsInPurchaseOrder" type="bool" compute="ComputeIsInPurchaseOrder" search="SearchIsInPurchaseOrder" />
+    </model>
+
+    <model id="Purchase.ProductSupplierinfo" name="Purchase.ProductSupplierinfo" description="Product Supplierinfo">
+        <field name="PartnerId" type="Core.ResPartner" label="Partner" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" />
+    </model>
+
+    <model id="Purchase.ProductPackaging" name="Purchase.ProductPackaging" description="Product Packaging">
+        <field name="Purchase" type="bool" label="Purchase" default="true" help="If true, the packaging can be used for purchase orders" />
+    </model>
+
+    <optionset id="Purchase.PurchaseMethod" name="Purchase Method">
+        <option value="purchase" name="On ordered quantities" />
+        <option value="receive" name="On received quantities" />
+    </optionset>
 </buvi>

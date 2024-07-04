@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.MailMessage" name="MailMessage" description="Mail Message">
+        <field name="Date" type="datetime" label="Date" />
+        <field name="Model" type="string" label="Model" />
+        <field name="ResId" type="integer" label="Res Id" />
+        <field name="Id" type="integer" label="Id" />
+        <field name="MessageType" type="string" label="Message Type" />
+    </model>
 </buvi>

@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteCrmPartnerAssign.ResPartner" name="ResPartner" description="Partner">
+    <field name="PartnerWeight" type="integer" label="Level Weight" readonly="false" store="true" tracking="true" help="This should be a numerical value greater than 0 which will decide the contention for this partner to take this lead/opportunity." />
+    <field name="GradeId" type="WebsiteCrmPartnerAssign.ResPartnerGrade" label="Partner Level" tracking="true" />
+    <field name="GradeSequence" type="integer" related="GradeId.Sequence" readonly="true" store="true" />
+    <field name="Activation" type="WebsiteCrmPartnerAssign.ResPartnerActivation" label="Activation" index="btree_not_null" tracking="true" />
+    <field name="DatePartnership" type="date" label="Partnership Date" />
+    <field name="DateReview" type="date" label="Latest Partner Review" />
+    <field name="DateReviewNext" type="date" label="Next Partner Review" />
+    <field name="AssignedPartnerId" type="ResPartner" label="Implemented by" collection="true" />
+    <field name="ImplementedPartnerIds" type="ResPartner" label="Implementation References" collection="true" />
+    <field name="ImplementedPartnerCount" type="integer" store="true" />
+  </model>
 </buvi>

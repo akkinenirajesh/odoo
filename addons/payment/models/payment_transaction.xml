@@ -1,3 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="PaymentTransaction" description="Payment Transaction">
+    <field name="ProviderId" type="Payment.Provider" label="Provider" required="true" readonly="true"/>
+    <field name="ProviderCode" type="string" label="Provider Code" readonly="true"/>
+    <field name="CompanyId" type="Core.Company" readonly="true"/>
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" label="Payment Method" required="true" readonly="true"/>
+    <field name="PaymentMethodCode" type="string" label="Payment Method Code" readonly="true"/>
+    <field name="Reference" type="string" label="Reference" readonly="true" required="true"/>
+    <field name="ProviderReference" type="string" label="Provider Reference" readonly="true"/>
+    <field name="Amount" type="decimal" label="Amount" readonly="true" required="true"/>
+    <field name="CurrencyId" type="Core.Currency" label="Currency" readonly="true" required="true"/>
+    <field name="TokenId" type="Payment.PaymentToken" label="Payment Token" readonly="true" collection="true" domain="[(&#39;ProviderId&#39;, &#39;=&#39;, &#39;ProviderId&#39;)]"/>
+    <field name="State" type="PaymentTransactionState" label="Status" default="Draft" readonly="true" required="true" copy="false"/>
+    <field name="StateMessage" type="string" label="Message" readonly="true"/>
+    <field name="LastStateChange" type="datetime" label="Last State Change Date" readonly="true" default="fields.Datetime.Now"/>
+    <field name="Operation" type="PaymentTransactionOperation" label="Operation" readonly="true"/>
+    <field name="SourceTransactionId" type="Payment.PaymentTransaction" label="Source Transaction" readonly="true" collection="true"/>
+    <field name="ChildTransactionIds" type="Payment.PaymentTransaction" label="Child Transactions" readonly="true" collection="true" inverse_name="SourceTransactionId"/>
+    <field name="RefundsCount" type="integer" label="Refunds Count" readonly="true"/>
+    <field name="IsPostProcessed" type="bool" label="Is Post-processed" readonly="true"/>
+    <field name="Tokenize" type="bool" label="Create Token"/>
+    <field name="LandingRoute" type="string" label="Landing Route"/>
+    <field name="PartnerId" type="Core.Partner" label="Customer" readonly="true" required="true"/>
+    <field name="PartnerName" type="string" label="Partner Name" readonly="true"/>
+    <field name="PartnerLang" type="Core.Language" label="Language" readonly="true"/>
+    <field name="PartnerEmail" type="string" label="Email" readonly="true"/>
+    <field name="PartnerAddress" type="string" label="Address" readonly="true"/>
+    <field name="PartnerZip" type="string" label="Zip" readonly="true"/>
+    <field name="PartnerCity" type="string" label="City" readonly="true"/>
+    <field name="PartnerStateId" type="Core.State" label="State" readonly="true"/>
+    <field name="PartnerCountryId" type="Core.Country" label="Country" readonly="true"/>
+    <field name="PartnerPhone" type="string" label="Phone" readonly="true"/>
+    <unique>
+      <field name="Reference"/>
+      <message>Reference must be unique!</message>
+    </unique>
+  </model>
+  <optionset id="Payment.PaymentTransactionState" name="Payment Transaction State">
+    <option value="Draft" name="Draft"/>
+    <option value="Pending" name="Pending"/>
+    <option value="Authorized" name="Authorized"/>
+    <option value="Done" name="Confirmed"/>
+    <option value="Cancel" name="Canceled"/>
+    <option value="Error" name="Error"/>
+  </optionset>
+  <optionset id="Payment.PaymentTransactionOperation" name="Payment Transaction Operation">
+    <option value="OnlineRedirect" name="Online payment with redirection"/>
+    <option value="OnlineDirect" name="Online direct payment"/>
+    <option value="OnlineToken" name="Online payment by token"/>
+    <option value="Validation" name="Validation of the payment method"/>
+    <option value="Offline" name="Offline payment by token"/>
+    <option value="Refund" name="Refund"/>
+  </optionset>
 </buvi>

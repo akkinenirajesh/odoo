@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.CrmTeam" name="Sale.CrmTeam" description="CRM Team">
+    <field name="Name" type="string" label="Team Name" required="true" translate="true"/>
+    <field name="CompanyID" type="Core.Company" label="Company" required="true" readonly="true"/>
+    <field name="UseOpportunities" type="bool" label="Use Opportunities" />
+    <field name="DashboardButtonName" type="string" label="Dashboard Button Name"/>
+    <field name="SalesPersonID" type="Res.Users" label="Salesperson" readonly="true"/>
+    <field name="MemberIDs" type="Res.Users" collection="true" label="Team Members" readonly="true"/>
+    <field name="PrimaryChannel" type="string" label="Primary Channel" readonly="true"/>
+    <field name="PrimaryChannelID" type="Sale.SalesChannel" label="Primary Channel" readonly="true"/>
+    <field name="PrimaryChannelURL" type="string" label="Channel URL" readonly="true"/>
+    <field name="Image" type="image" label="Image"/>
+    <field name="Color" type="integer" label="Color Index" default="0"/>
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the Team without removing it."/>
+    <field name="UseDocuments" type="bool" default="false" label="Use Documents" help="Check this option to allow the users of the team to access documents, and display the documents tab in the form view"/>
+    <field name="UseCalendar" type="bool" default="false" label="Use Calendar" help="Check this option to allow the users of the team to access the team's calendar and display the calendar tab in the form view"/>
+    <field name="UseKanban" type="bool" default="false" label="Use Kanban" help="Check this option to allow the users of the team to access the kanban board and display the kanban tab in the form view"/>
+    <field name="UseMeetings" type="bool" default="false" label="Use Meetings" help="Check this option to allow the users of the team to access the meetings and display the meetings tab in the form view"/>
+    <field name="UseForecast" type="bool" default="false" label="Use Forecast" help="Check this option to allow the users of the team to access the forecast and display the forecast tab in the form view"/>
+    <field name="UseProjects" type="bool" default="false" label="Use Projects" help="Check this option to allow the users of the team to access the projects and display the projects tab in the form view"/>
+    <field name="UsePipeline" type="bool" default="true" label="Use Pipeline" help="Check this option to allow the users of the team to access the sales pipeline and display the sales pipeline tab in the form view"/>
+  </model>
 </buvi>

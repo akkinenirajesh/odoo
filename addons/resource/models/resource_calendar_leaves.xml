@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Resource.ResourceCalendarLeaves" name="ResourceCalendarLeaves" description="Resource Time Off Detail">
+    <field name="Name" type="string" label="Reason" />
+    <field name="Company" type="Res.Company" label="Company" readonly="true" store="true" default="Env.Company" compute="ComputeCompanyId" />
+    <field name="Calendar" type="Resource.Calendar" label="Working Hours" domain="[('Company', 'in', [Company, False])]" check_company="true" index="true" />
+    <field name="DateFrom" type="datetime" label="Start Date" required="true" />
+    <field name="DateTo" type="datetime" label="End Date" compute="ComputeDateTo" readonly="false" required="true" store="true" />
+    <field name="Resource" type="Resource.Resource" label="Resource" index="true" help="If empty, this is a generic time off for the company. If a resource is set, the time off is only for this resource" />
+    <field name="TimeType" type="ResourceCalendarLeaves.TimeType" default="Leave" help="Whether this should be computed as a time off or as work time (eg: formation)" />
+  </model>
+
+  <optionset id="ResourceCalendarLeaves.TimeType" name="TimeType">
+    <option value="Leave" name="Time Off" />
+    <option value="Other" name="Other" />
+  </optionset>
 </buvi>

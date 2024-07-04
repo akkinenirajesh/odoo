@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentToken" name="PaymentToken" description="Payment Token">
+        <field name="DemoSimulatedState" type="selection" label="Simulated State"
+                help="The state in which transactions created from this token should be set." />
+        <field name="ProviderCode" type="string" />
+    </model>
+
+    <optionset id="Payment.DemoSimulatedState" name="Demo Simulated State">
+        <option value="pending" name="Pending" />
+        <option value="done" name="Confirmed" />
+        <option value="cancel" name="Canceled" />
+        <option value="error" name="Error" />
+    </optionset>
 </buvi>

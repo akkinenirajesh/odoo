@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="ReportGrids" type="bool" label="Print Variant Grids" default="true" />
+    <field name="GridProductTemplateId" type="Product.ProductTemplate" store="false" />
+    <field name="GridUpdate" type="bool" default="false" store="false" />
+    <field name="Grid" type="string" label="Matrix Local Storage" store="false"
+      help="Technical local storage of grid.  
+      If GridUpdate, will be loaded on the SO.  
+      If not, represents the matrix to open." />
   </model>
 </buvi>

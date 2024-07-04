@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleCrm.ResUsers" name="ResUsers" description="Res Users">
+    <field name="TargetSalesInvoiced" type="integer" label="Invoiced in Sales Orders Target" />
+  </model>
 </buvi>

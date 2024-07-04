@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="Purchase.PurchaseOrderLine" name="PurchaseOrderLine" description="Purchase Order Line">
+    <field name="IsLandedCostsLine" type="bool" />
   </model>
 </buvi>

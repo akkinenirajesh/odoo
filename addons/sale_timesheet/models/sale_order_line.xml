@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="QtyDeliveredMethod" type="selection" label="Delivered Quantity Method" collection="true">
+            <option value="timesheet" name="Timesheets" />
+        </field>
+        <field name="AnalyticLineIds" type="one2many" collection="true" domain="[('Project', '=', False)]" />
+        <field name="RemainingHoursAvailable" type="bool" compute="ComputeRemainingHoursAvailable" />
+        <field name="RemainingHours" type="float" label="Time Remaining on SO" compute="ComputeRemainingHours" store="true" />
+        <field name="HasDisplayedWarningUpsell" type="bool" label="Has Displayed Warning Upsell" copy="false" export_string_translation="false" />
+        <field name="TimesheetIds" type="one2many" collection="true" domain="[('Project', '!=', False)]" label="Timesheets" export_string_translation="false" />
+    </model>
 </buvi>

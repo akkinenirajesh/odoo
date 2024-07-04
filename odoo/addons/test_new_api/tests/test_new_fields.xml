@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountTag" name="AccountTag" description="Account Tag">
+    <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+    <field name="Applicability" type="Account.AccountTagApplicability" />
+    <field name="Color" type="integer" label="Color Index" />
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the Account Tag without removing it." />
+    <field name="TaxNegate" type="bool" label="Negate Tax Balance" help="Check this box to negate the absolute value of the balance of the lines associated with this tag in tax report computation." />
+    <field name="Country" type="Core.Country" label="Country" help="Country for which this tag is available, when applied on taxes" />
+    <unique>
+      <field name="Name" />
+      <field name="Applicability" />
+      <field name="Country" />
+      <message>A tag with the same name and applicability already exists in this country.</message>
+    </unique>
+  </model>
+  <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+    <option value="Accounts" name="Accounts" />
+    <option value="Taxes" name="Taxes" />
+    <option value="Products" name="Products" />
+  </optionset>
 </buvi>

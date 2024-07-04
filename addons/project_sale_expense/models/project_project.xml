@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.Project" name="Project" description="Project">
+        <field name="ExpensesProfitabilityItems" type="json" readonly="true" compute="ComputeExpensesProfitabilityItems" />
+    </model>
+
+    <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+        <option value="Accounts" name="Accounts" />
+        <option value="Taxes" name="Taxes" />
+        <option value="Products" name="Products" />
+    </optionset>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventTrack.TrackVisitor" name="WebsiteEventTrack.TrackVisitor" description="Track / Visitor Link">
+        <field name="PartnerId" type="res.partner" label="Partner" required="false" collection="false" index="true" ondelete="set null" readonly="false" store="true" />
+        <field name="VisitorId" type="website.visitor" label="Visitor" required="false" collection="false" index="true" ondelete="cascade" />
+        <field name="TrackId" type="event.track" label="Track" required="true" collection="false" index="true" ondelete="cascade" />
+        <field name="IsWishlisted" type="bool" label="Is Wishlisted" required="false" collection="false" />
+        <field name="IsBlacklisted" type="bool" label="Is reminder off" required="false" collection="false" help="As key track cannot be un-favorited, this field store the partner choice to remove the reminder for key tracks." />
+    </model>
 </buvi>

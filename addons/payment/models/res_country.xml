@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.ResCountry" name="ResCountry" description="Res Country">
+        <field name="Code" type="string" label="Code" required="true" translate="true" />
+        <field name="IsStripeSupportedCountry" type="bool" compute="ComputeIsStripeSupportedCountry" />
+    </model>
 </buvi>

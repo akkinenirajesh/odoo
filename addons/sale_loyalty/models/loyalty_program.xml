@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.LoyaltyProgram" name="Sale.LoyaltyProgram" description="Loyalty Program">
+    <field name="OrderCount" type="integer" />
+    <field name="SaleOk" type="bool" label="Sales" default="true" />
+  </model>
 </buvi>

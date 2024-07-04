@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseStock.ProductCategory" name="ProductCategory" description="Product Category" inherit="Product.ProductCategory">
+    <field name="PropertyAccountCreditorPriceDifferenceCateg" type="Account.Account" label="Price Difference Account" company_dependent="true"
+      help="This account will be used to value price difference between purchase price and accounting cost." />
+  </model>
+
+  <model id="PurchaseStock.ProductTemplate" name="ProductTemplate" description="Product Template" inherit="Product.ProductTemplate">
+    <field name="PropertyAccountCreditorPriceDifference" type="Account.Account" label="Price Difference Account" company_dependent="true"
+      help="This account is used in automated inventory valuation to record the price difference between a purchase order and its related vendor bill when validating this vendor bill." />
+    <field name="RouteIds" type="Stock.Route" collection="true" />
+  </model>
+
+  <model id="PurchaseStock.ProductProduct" name="ProductProduct" description="Product Product" inherit="Product.ProductProduct">
+    <field name="PurchaseOrderLineIds" type="Purchase.PurchaseOrderLine" collection="true" label="PO Lines" />
+  </model>
+
+  <model id="PurchaseStock.SupplierInfo" name="SupplierInfo" description="SupplierInfo" inherit="Product.SupplierInfo">
+    <field name="LastPurchaseDate" type="Date" label="Last Purchase" />
+    <field name="ShowSetSupplierButton" type="bool" label="Show Set Supplier Button" />
+  </model>
 </buvi>

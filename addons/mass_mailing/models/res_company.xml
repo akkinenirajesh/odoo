@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.ResCompany" name="ResCompany" description="ResCompany">
+        <field name="SocialFacebook" type="string" label="Social Facebook" />
+        <field name="SocialLinkedin" type="string" label="Social Linkedin" />
+        <field name="SocialTwitter" type="string" label="Social Twitter" />
+        <field name="SocialInstagram" type="string" label="Social Instagram" />
+        <field name="SocialTiktok" type="string" label="Social Tiktok" />
+    </model>
 </buvi>

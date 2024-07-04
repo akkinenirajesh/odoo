@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Ir.ActionsActWindowView" name="ActionsActWindowView" description="Act Window View">
+        <field name="ViewMode" type="selection" label="View Mode" selection_add="[('hierarchy', 'Hierarchy')]" ondelete={'hierarchy': 'cascade'}/>
+    </model>
 </buvi>

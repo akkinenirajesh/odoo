@@ -1,3 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteForum.Forum" name="Forum" description="Forum">
+    <field name="Name" type="string" label="Forum Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" default="1" />
+    <field name="Mode" type="WebsiteForum.ForumMode" required="true" default="Questions" />
+    <field name="Privacy" type="WebsiteForum.ForumPrivacy" default="Public" />
+    <field name="AuthorizedGroup" type="Res.Groups" label="Authorized Group" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Faq" type="html" label="Guidelines" translate="true" sanitize="true" sanitizeOverridable="true" />
+    <field name="Description" type="text" translate="true" />
+    <field name="Teaser" type="text" compute="ComputeTeaser" store="true" />
+    <field name="WelcomeMessage" type="html" label="Welcome Message" translate="true" sanitizeAttributes="false" sanitizeForm="false" />
+    <field name="DefaultOrder" type="WebsiteForum.ForumDefaultOrder" required="true" default="LastActivityDateDesc" />
+    <field name="RelevancyPostVote" type="float" default="0.8" help="This formula is used in order to sort by relevance. The variable 'votes' represents number of votes for a post, and 'days' is number of days since the post creation" />
+    <field name="RelevancyTimeDecay" type="float" default="1.8" />
+    <field name="AllowShare" type="bool" label="Sharing Options" default="true" help="After posting the user will be proposed to share its question or answer on social networks, enabling social network propagation of the forum content." />
+    <field name="Posts" type="one2many" collection="true" relation="WebsiteForum.Post" />
+    <field name="LastPostId" type="many2one" relation="WebsiteForum.Post" compute="ComputeLastPostId" />
+    <field name="TotalPosts" type="integer" label="# Posts" compute="ComputeForumStatistics" />
+    <field name="TotalViews" type="integer" label="# Views" compute="ComputeForumStatistics" />
+    <field name="TotalAnswers" type="integer" label="# Answers" compute="ComputeForumStatistics" />
+    <field name="TotalFavorites" type="integer" label="# Favorites" compute="ComputeForumStatistics" />
+    <field name="CountPostsWaitingValidation" type="integer" label="Number of posts waiting for validation" compute="ComputeCountPostsWaitingValidation" />
+    <field name="CountFlaggedPosts" type="integer" label="Number of flagged posts" compute="ComputeCountFlaggedPosts" />
+    <field name="KarmaGenQuestionNew" type="integer" label="Asking a question" default="2" />
+    <field name="KarmaGenQuestionUpvote" type="integer" label="Question upvoted" default="5" />
+    <field name="KarmaGenQuestionDownvote" type="integer" label="Question downvoted" default="-2" />
+    <field name="KarmaGenAnswerUpvote" type="integer" label="Answer upvoted" default="10" />
+    <field name="KarmaGenAnswerDownvote" type="integer" label="Answer downvoted" default="-2" />
+    <field name="KarmaGenAnswerAccept" type="integer" label="Accepting an answer" default="2" />
+    <field name="KarmaGenAnswerAccepted" type="integer" label="Answer accepted" default="15" />
+    <field name="KarmaGenAnswerFlagged" type="integer" label="Answer flagged" default="-100" />
+    <field name="KarmaAsk" type="integer" label="Ask questions" default="3" />
+    <field name="KarmaAnswer" type="integer" label="Answer questions" default="3" />
+    <field name="KarmaEditOwn" type="integer" label="Edit own posts" default="1" />
+    <field name="KarmaEditAll" type="integer" label="Edit all posts" default="300" />
+    <field name="KarmaEditRetag" type="integer" label="Change question tags" default="75" />
+    <field name="KarmaCloseOwn" type="integer" label="Close own posts" default="100" />
+    <field name="KarmaCloseAll" type="integer" label="Close all posts" default="500" />
+    <field name="KarmaUnlinkOwn" type="integer" label="Delete own posts" default="500" />
+    <field name="KarmaUnlinkAll" type="integer" label="Delete all posts" default="1000" />
+    <field name="KarmaTagCreate" type="integer" label="Create new tags" default="30" />
+    <field name="KarmaUpvote" type="integer" label="Upvote" default="5" />
+    <field name="KarmaDownvote" type="integer" label="Downvote" default="50" />
+    <field name="KarmaAnswerAcceptOwn" type="integer" label="Accept an answer on own questions" default="20" />
+    <field name="KarmaAnswerAcceptAll" type="integer" label="Accept an answer to all questions" default="500" />
+    <field name="KarmaCommentOwn" type="integer" label="Comment own posts" default="1" />
+    <field name="KarmaCommentAll" type="integer" label="Comment all posts" default="1" />
+    <field name="KarmaCommentConvertOwn" type="integer" label="Convert own comments to answers" default="50" />
+    <field name="KarmaCommentConvertAll" type="integer" label="Convert all comments to answers" default="500" />
+    <field name="KarmaCommentUnlinkOwn" type="integer" label="Delete own comments" default="50" />
+    <field name="KarmaCommentUnlinkAll" type="integer" label="Delete all comments" default="500" />
+    <field name="KarmaFlag" type="integer" label="Flag a post as offensive" default="500" />
+    <field name="KarmaDofollow" type="integer" label="Nofollow links" help="If the author has not enough karma, a nofollow attribute is added to links" default="500" />
+    <field name="KarmaEditor" type="integer" label="Editor Features: image and links" default="30" />
+    <field name="KarmaUserBio" type="integer" label="Display detailed user biography" default="750" />
+    <field name="KarmaPost" type="integer" label="Ask questions without validation" default="100" />
+    <field name="KarmaModerate" type="integer" label="Moderate posts" default="1000" />
+    <field name="HasPendingPost" type="bool" label="Has pending post" compute="ComputeHasPendingPost" />
+    <field name="CanModerate" type="bool" label="Is a moderator" compute="ComputeCanModerate" />
+    <field name="Tags" type="one2many" collection="true" relation="WebsiteForum.Tag" />
+    <field name="TagMostUsedIds" type="one2many" collection="true" relation="WebsiteForum.Tag" label="Most used tags" compute="ComputeTagIdsUsage" />
+    <field name="TagUnusedIds" type="one2many" collection="true" relation="WebsiteForum.Tag" label="Unused tags" compute="ComputeTagIdsUsage" />
+  </model>
+  <optionset id="WebsiteForum.ForumMode" name="Forum Mode">
+    <option value="Questions" name="Questions (1 answer)" />
+    <option value="Discussions" name="Discussions (multiple answers)" />
+  </optionset>
+  <optionset id="WebsiteForum.ForumPrivacy" name="Forum Privacy">
+    <option value="Public" name="Public" />
+    <option value="Connected" name="Signed In" />
+    <option value="Private" name="Some users" />
+  </optionset>
+  <optionset id="WebsiteForum.ForumDefaultOrder" name="Forum Default Order">
+    <option value="CreateDateDesc" name="Newest" />
+    <option value="LastActivityDateDesc" name="Last Updated" />
+    <option value="VoteCountDesc" name="Most Voted" />
+    <option value="RelevancyDesc" name="Relevance" />
+    <option value="ChildCountDesc" name="Answered" />
+  </optionset>
 </buvi>

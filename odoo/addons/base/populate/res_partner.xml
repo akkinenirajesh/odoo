@@ -1,3 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.ResPartner" name="Base.ResPartner" description="Partner">
+    <field name="Active" type="bool" default="true" />
+    <field name="Employee" type="bool" />
+    <field name="Email" type="string" />
+    <field name="Type" type="string" default="contact" />
+    <field name="IsCompany" type="bool" />
+    <field name="Street" type="string" />
+    <field name="Street2" type="string" />
+    <field name="City" type="string" />
+    <field name="Zip" type="string" />
+    <field name="Country" type="Core.Country" />
+    <field name="State" type="Core.State" />
+    <field name="Phone" type="string" />
+    <field name="Mobile" type="string" />
+    <field name="Title" type="Core.ResPartnerTitle" />
+    <field name="Function" type="string" />
+    <field name="Tz" type="string" />
+    <field name="Website" type="string" />
+    <field name="Name" type="string" />
+    <field name="Ref" type="string" />
+    <field name="Industry" type="Base.ResPartnerIndustry" collection="true" />
+    <field name="Comment" type="text" />
+    <field name="Company" type="Base.ResCompany" />
+    <field name="Parent" type="Base.ResPartner" />
+  </model>
+  <model id="Base.ResPartnerIndustry" name="Base.ResPartnerIndustry" description="Partner Industry">
+    <field name="Active" type="bool" default="true" />
+    <field name="Name" type="string" />
+    <field name="FullName" type="string" />
+  </model>
 </buvi>

@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MrpAccount.ProductTemplate" name="MrpAccount.ProductTemplate" description="Product Template">
+    <field name="ProductionAccount" type="Account.Account" label="Production Account"
+      relation="Account.Account" companyDependent="true" domain="[('Deprecated', '=', False)]" checkCompany="true"
+      help="This account will be used as a valuation counterpart for both components and final products for manufacturing orders. If there are any workcenter/employee costs, this value will remain on the account once the production is completed." />
+  </model>
+
+  <model id="MrpAccount.ProductProduct" name="MrpAccount.ProductProduct" description="Product Product">
+    <field name="StandardPrice" type="float" label="Standard Price" />
+  </model>
+
+  <model id="MrpAccount.ProductCategory" name="MrpAccount.ProductCategory" description="Product Category">
+    <field name="ProductionAccount" type="Account.Account" label="Production Account"
+      relation="Account.Account" companyDependent="true" domain="[('Deprecated', '=', False)]" checkCompany="true"
+      help="This account will be used as a valuation counterpart for both components and final products for manufacturing orders. If there are any workcenter/employee costs, this value will remain on the account once the production is completed." />
+  </model>
 </buvi>

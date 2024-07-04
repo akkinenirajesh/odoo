@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="ProviderCode" type="string" />
+    <field name="PaymentMethodCode" type="string" />
+    <field name="Amount" type="float" />
+    <field name="Reference" type="string" />
+    <field name="PartnerName" type="string" />
+    <field name="PartnerEmail" type="string" />
+    <field name="PartnerMobile" type="string" />
+    <field name="PartnerPhone" type="string" />
+    <field name="PartnerCity" type="string" />
+    <field name="PartnerCountry" type="Core.Country" />
+    <field name="PartnerZip" type="string" />
+    <field name="PartnerState" type="Core.State" />
+    <field name="PartnerAddress" type="string" />
+    <field name="Currency" type="Core.Currency" />
+    <field name="ProviderReference" type="string" />
+    <field name="Token" type="Payment.PaymentToken" />
+    <field name="PaymentState" type="Payment.PaymentState" />
+  </model>
+
+  <optionset id="Payment.PaymentState" name="Payment State">
+    <option value="Pending" name="Pending" />
+    <option value="Done" name="Done" />
+    <option value="Canceled" name="Canceled" />
+    <option value="Error" name="Error" />
+  </optionset>
 </buvi>

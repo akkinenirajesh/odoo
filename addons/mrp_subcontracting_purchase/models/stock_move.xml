@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockMove" name="Stock.StockMove" description="Stock Move">
+        <field name="IsPurchaseReturn" type="bool" compute="ComputeIsPurchaseReturn" />
+    </model>
+
+    <optionset id="Stock.StockMove.IsPurchaseReturn" name="Stock Move IsPurchaseReturn">
+        <option value="true" name="True" />
+        <option value="false" name="False" />
+    </optionset>
 </buvi>

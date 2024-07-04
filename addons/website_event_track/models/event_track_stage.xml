@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventTrack.EventTrackStage" name="EventTrackStage" description="Event Track Stage">
+    <field name="Name" type="string" label="Stage Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="1" />
+    <field name="MailTemplate" type="Mail.Template" label="Email Template"
+      domain="[('model', '=', 'event.track')]"
+      help="If set an email will be sent to the customer when the track reaches this step." />
+    <field name="Color" type="integer" label="Color" />
+    <field name="Description" type="text" label="Description" translate="true" />
+    <field name="LegendBlocked" type="string" label="Red Kanban Label" default="Blocked" translate="true" />
+    <field name="LegendDone" type="string" label="Green Kanban Label" default="Ready for Next Stage" translate="true" />
+    <field name="LegendNormal" type="string" label="Grey Kanban Label" default="In Progress" translate="true" />
+    <field name="Fold" type="bool" label="Folded in Kanban"
+      help="This stage is folded in the kanban view when there are no records in that stage to display." />
+    <field name="IsVisibleInAgenda" type="bool" label="Visible in agenda"
+      compute="ComputeIsVisibleInAgenda" store="true"
+      help="If checked, the related tracks will be visible in the frontend." />
+    <field name="IsFullyAccessible" type="bool" label="Fully accessible"
+      compute="ComputeIsFullyAccessible" store="true"
+      help="If checked, automatically publish tracks so that access links to customers are provided." />
+    <field name="IsCancel" type="bool" label="Cancelled Stage" />
+  </model>
 </buvi>

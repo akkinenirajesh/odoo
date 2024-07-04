@@ -1,3 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.LunchProductCategory" name="LunchProductCategory" description="Lunch Product Category">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Company" type="Res.Company" />
+    </model>
+
+    <model id="Lunch.LunchProduct" name="LunchProduct" description="Lunch Product">
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Price" type="float" />
+        <field name="Supplier" type="Lunch.LunchSupplier" />
+        <field name="Category" type="Lunch.LunchProductCategory" />
+    </model>
+
+    <model id="Lunch.LunchLocation" name="LunchLocation" description="Lunch Location">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Address" type="string" label="Address" />
+        <field name="Company" type="Res.Company" />
+    </model>
+
+    <model id="Lunch.LunchSupplier" name="LunchSupplier" description="Lunch Supplier">
+        <field name="Active" type="bool" default="true" />
+        <field name="SendBy" type="string" />
+        <field name="Delivery" type="string" />
+        <field name="Mon" type="bool" />
+        <field name="Tue" type="bool" />
+        <field name="Wed" type="bool" />
+        <field name="Thu" type="bool" />
+        <field name="Fri" type="bool" />
+        <field name="Sat" type="bool" />
+        <field name="Sun" type="bool" />
+        <field name="AvailableLocations" type="Lunch.LunchLocation" collection="true" />
+        <field name="Partner" type="Res.Partner" />
+        <field name="Responsible" type="Res.Users" />
+        <field name="Moment" type="string" />
+        <field name="AutomaticEmailTime" type="float" />
+    </model>
+
+    <model id="Lunch.LunchOrder" name="LunchOrder" description="Lunch Order">
+        <field name="Active" type="bool" default="true" />
+        <field name="State" type="string" />
+        <field name="Product" type="Lunch.LunchProduct" />
+        <field name="User" type="Res.Users" />
+        <field name="Note" type="string" />
+        <field name="Company" type="Res.Company" />
+        <field name="Quantity" type="integer" />
+        <field name="Date" type="datetime" />
+    </model>
+
+    <model id="Lunch.LunchAlert" name="LunchAlert" description="Lunch Alert">
+        <field name="Active" type="bool" default="true" />
+        <field name="Recipients" type="string" />
+        <field name="Mode" type="string" />
+        <field name="Mon" type="bool" />
+        <field name="Tue" type="bool" />
+        <field name="Wed" type="bool" />
+        <field name="Thu" type="bool" />
+        <field name="Fri" type="bool" />
+        <field name="Sat" type="bool" />
+        <field name="Sun" type="bool" />
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Message" type="html" label="Message" translate="true" />
+        <field name="NotificationTime" type="float" />
+        <field name="NotificationMoment" type="string" />
+        <field name="Until" type="datetime" />
+        <field name="Locations" type="Lunch.LunchLocation" collection="true" />
+    </model>
+
+    <optionset id="Lunch.LunchSupplierSendBy" name="Lunch Supplier Send By">
+        <option value="Phone" name="Phone" />
+        <option value="Mail" name="Mail" />
+    </optionset>
+
+    <optionset id="Lunch.LunchSupplierDelivery" name="Lunch Supplier Delivery">
+        <option value="Delivery" name="Delivery" />
+        <option value="NoDelivery" name="No Delivery" />
+    </optionset>
+
+    <optionset id="Lunch.LunchSupplierMoment" name="Lunch Supplier Moment">
+        <option value="AM" name="AM" />
+        <option value="PM" name="PM" />
+    </optionset>
+
+    <optionset id="Lunch.LunchAlertMode" name="Lunch Alert Mode">
+        <option value="Alert" name="Alert" />
+        <option value="Chat" name="Chat" />
+    </optionset>
+
+    <optionset id="Lunch.LunchAlertRecipients" name="Lunch Alert Recipients">
+        <option value="Everyone" name="Everyone" />
+        <option value="LastWeek" name="Last Week" />
+        <option value="LastMonth" name="Last Month" />
+        <option value="LastYear" name="Last Year" />
+    </optionset>
+
+    <optionset id="Lunch.LunchAlertNotificationMoment" name="Lunch Alert Notification Moment">
+        <option value="AM" name="AM" />
+        <option value="PM" name="PM" />
+    </optionset>
+
+    <optionset id="Lunch.LunchOrderState" name="Lunch Order State">
+        <option value="New" name="New" />
+        <option value="Confirmed" name="Confirmed" />
+        <option value="Ordered" name="Ordered" />
+        <option value="Cancelled" name="Cancelled" />
+    </optionset>
 </buvi>

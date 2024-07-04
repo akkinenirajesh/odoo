@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.LivechatChannel" name="Website.LivechatChannel" description="Livechat Channel">
+    <field name="LivechatVisitorId" type="Website.Visitor" relation="many2one" collection="true" />
+  </model>
+  <model id="Discuss.Channel" name="Discuss.Channel" description="Discuss Channel">
+    <field name="LivechatVisitorId" type="Website.Visitor" relation="many2one" collection="true" />
+    <field name="LivechatOperatorId" type="Res.Users" relation="many2one" collection="true" />
+    <field name="LivechatActive" type="bool" />
+  </model>
+  <model id="Res.Users" name="Res.Users" description="Users">
+    <field name="UserLivechatUsername" type="string" />
+  </model>
 </buvi>

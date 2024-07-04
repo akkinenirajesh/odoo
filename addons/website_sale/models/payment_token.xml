@@ -1,44 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="digest.digest" name="Digest.Digest" track_created="true" track_update="true">
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="Currency" label="Currency" type="Res.Currency" transient="true" related-field="Company.Currency"/>
-    <field name="Users" label="Recipients" type="Res.Users" collection="true" copied="true"/>
-    <field name="AvailableFields" label="Available Fields" type="string" readonly="true" transient="true"/>
-    <field name="IsSubscribed" label="Is user subscribed" type="bool" readonly="true" transient="true"/>
-    <field name="KpiAccountBankCash" label="Bank &amp; Cash Moves" type="bool" copied="true"/>
-    <field name="KpiAccountBankCashValue" label="Kpi Account Bank Cash Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiAccountTotalRevenue" label="Revenue" type="bool" copied="true"/>
-    <field name="KpiAccountTotalRevenueValue" label="Kpi Account Total Revenue Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiAllSaleTotal" label="All Sales" type="bool" copied="true"/>
-    <field name="KpiAllSaleTotalValue" label="Kpi All Sale Total Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiCrmLeadCreated" label="New Leads" type="bool" copied="true"/>
-    <field name="KpiCrmLeadCreatedValue" label="Kpi Crm Lead Created Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiCrmOpportunitiesWon" label="Opportunities Won" type="bool" copied="true"/>
-    <field name="KpiCrmOpportunitiesWonValue" label="Kpi Crm Opportunities Won Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiHelpdeskTicketsClosed" label="Tickets Closed" type="bool" copied="true"/>
-    <field name="KpiHelpdeskTicketsClosedValue" label="Kpi Helpdesk Tickets Closed Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiHrRecruitmentNewColleagues" label="New Employees" type="bool" copied="true"/>
-    <field name="KpiHrRecruitmentNewColleaguesValue" label="Kpi Hr Recruitment New Colleagues Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiLivechatConversations" label="Conversations handled" type="bool" copied="true"/>
-    <field name="KpiLivechatConversationsValue" label="Kpi Livechat Conversations Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiLivechatRating" label="% of Happiness" type="bool" copied="true"/>
-    <field name="KpiLivechatRatingValue" label="Kpi Livechat Rating Value" type="float" readonly="true" transient="true"/>
-    <field name="KpiLivechatResponse" label="Time to answer (sec)" type="bool" copied="true"/>
-    <field name="KpiLivechatResponseValue" label="Kpi Livechat Response Value" type="float" readonly="true" transient="true"/>
-    <field name="KpiMailMessageTotal" label="Messages Sent" type="bool" copied="true"/>
-    <field name="KpiMailMessageTotalValue" label="Kpi Mail Message Total Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiPosTotal" label="POS Sales" type="bool" copied="true"/>
-    <field name="KpiPosTotalValue" label="Kpi Pos Total Value" type="monetary" readonly="true" transient="true"/>
-    <field name="KpiProjectTaskOpened" label="Open Tasks" type="bool" copied="true"/>
-    <field name="KpiProjectTaskOpenedValue" label="Kpi Project Task Opened Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiResUsersConnected" label="Connected Users" type="bool" copied="true"/>
-    <field name="KpiResUsersConnectedValue" label="Kpi Res Users Connected Value" type="integer" readonly="true" transient="true"/>
-    <field name="KpiWebsiteSaleTotal" label="eCommerce Sales" type="bool" copied="true"/>
-    <field name="KpiWebsiteSaleTotalValue" label="Kpi Website Sale Total Value" type="monetary" readonly="true" transient="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NextRunDate" label="Next Mailing Date" type="date" copied="true"/>
-    <field name="Periodicity" label="Periodicity" type="Digest.DigestPeriodicity" required="true" copied="true"/>
-    <field name="State" label="Status" type="Digest.DigestStatus" readonly="true"/>
-  </model>
+    <model id="WebsiteSale.PaymentToken" name="PaymentToken" description="Payment Token">
+        <inherit id="Payment.PaymentToken"/>
+    </model>
 </buvi>

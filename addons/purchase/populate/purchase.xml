@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.ResCompany" name="ResCompany" description="Res Company">
+        <field name="POLead" type="integer" />
+    </model>
+
+    <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+        <field name="CompanyID" type="ResCompany" required="true" />
+        <field name="DateOrder" type="datetime" required="true" />
+        <field name="DatePlanned" type="datetime" />
+        <field name="PartnerID" type="ResPartner" required="true" />
+        <field name="CurrencyID" type="ResCurrency" required="true" />
+    </model>
+
+    <model id="Purchase.PurchaseOrderLine" name="PurchaseOrderLine" description="Purchase Order Line" collection="true">
+        <field name="OrderID" type="PurchaseOrder" required="true" />
+        <field name="Name" type="string" required="true" />
+        <field name="ProductID" type="ProductProduct" required="true" />
+        <field name="ProductUOM" type="ProductUom" required="true" />
+        <field name="TaxesID" type="AccountTax" />
+        <field name="DatePlanned" type="datetime" />
+        <field name="ProductQty" type="integer" required="true" />
+        <field name="PriceUnit" type="float" required="true" />
+    </model>
 </buvi>

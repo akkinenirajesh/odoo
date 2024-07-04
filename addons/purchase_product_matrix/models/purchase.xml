@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+    <field name="ReportGrids" type="bool" label="Print Variant Grids" default="true" help="If set, the matrix of configurable products will be shown on the report of this order." />
+    <field name="GridProductTemplateId" type="Product.ProductTemplate" store="false" help="Technical field for product_matrix functionalities." />
+    <field name="GridUpdate" type="bool" default="false" store="false" help="Whether the grid field contains a new matrix to apply or not." />
+    <field name="Grid" type="char" store="false" help="Technical storage of grid. \nIf GridUpdate, will be loaded on the PO. \nIf not, represents the matrix to open." />
+  </model>
+  <model id="Purchase.PurchaseOrderLine" name="PurchaseOrderLine" description="Purchase Order Line">
+    <field name="ProductTemplateId" type="Product.ProductTemplate" string="Product Template" related="ProductId.ProductTemplateId" domain="[('PurchaseOk', '=', true)]" />
+    <field name="IsConfigurableProduct" type="bool" string="Is the product configurable?" related="ProductTemplateId.HasConfigurableAttributes" />
+    <field name="ProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue" related="ProductId.ProductTemplateAttributeValueIds" readonly="true" />
+    <field name="ProductNoVariantAttributeValueIds" type="Product.ProductTemplateAttributeValue" string="Product attribute values that do not create variants" collection="true" ondelete="restrict" />
+  </model>
 </buvi>

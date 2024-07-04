@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="SaleStock.Company" name="SaleStock.Company" description="Company">
+    <field name="SecurityLead" type="float" label="Sales Safety Days" required="true" default="0.0"
+      help="Margin of error for dates promised to customers. Products will be scheduled for procurement and delivery that many days earlier than the actual promised date, to cope with unexpected delays in the supply chain." />
   </model>
 </buvi>

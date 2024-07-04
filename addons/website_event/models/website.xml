@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Website" name="Website" description="Website">
+        <field name="Name" type="string" label="Name" />
+        <field name="Domain" type="string" label="Domain" />
+        <field name="IsPublic" type="bool" label="Public" />
+        <field name="ThemeId" type="Core.Theme" label="Theme" />
+        <field name="Logo" type="binary" label="Logo" />
+        <field name="ColorPalette" type="string" label="Color Palette" />
+        <field name="Footer" type="html" label="Footer" />
+        <field name="Homepage" type="string" label="Homepage" />
+        <field name="DefaultLanguage" type="Core.Language" label="Default Language" />
+        <field name="AllowedLanguages" type="Core.Language" collection="true" label="Allowed Languages" />
+        <field name="AllowRegistration" type="bool" label="Allow Registration" />
+        <field name="AllowContactUs" type="bool" label="Allow Contact Us" />
+        <field name="ShowFooter" type="bool" label="Show Footer" />
+        <field name="ShowHelp" type="bool" label="Show Help" />
+        <field name="ShowSitemap" type="bool" label="Show Sitemap" />
+        <field name="ShowLegal" type="bool" label="Show Legal" />
+        <field name="ShowMyAccount" type="bool" label="Show My Account" />
+        <field name="ShowCart" type="bool" label="Show Cart" />
+        <field name="ShowSearch" type="bool" label="Show Search" />
+        <field name="ShowSocialMedia" type="bool" label="Show Social Media" />
+        <field name="SocialMedia" type="string" collection="true" label="Social Media" />
+        <field name="SocialMediaLinks" type="string" collection="true" label="Social Media Links" />
+        <field name="GoogleAnalyticsId" type="string" label="Google Analytics ID" />
+        <field name="GoogleTagManagerId" type="string" label="Google Tag Manager ID" />
+        <field name="FacebookPixelId" type="string" label="Facebook Pixel ID" />
+        <field name="TwitterApiKey" type="string" label="Twitter API Key" />
+        <field name="TwitterApiSecret" type="string" label="Twitter API Secret" />
+        <field name="TwitterAccessToken" type="string" label="Twitter Access Token" />
+        <field name="TwitterAccessTokenSecret" type="string" label="Twitter Access Token Secret" />
+        <field name="InstagramAccessToken" type="string" label="Instagram Access Token" />
+        <field name="LinkedInApiKey" type="string" label="LinkedIn API Key" />
+        <field name="LinkedInApiSecret" type="string" label="LinkedIn API Secret" />
+        <field name="LinkedInAccessToken" type="string" label="LinkedIn Access Token" />
+        <field name="LinkedInAccessTokenSecret" type="string" label="LinkedIn Access Token Secret" />
+        <field name="YoutubeApiKey" type="string" label="YouTube API Key" />
+        <field name="YoutubeChannelId" type="string" label="YouTube Channel ID" />
+        <field name="PinterestApiKey" type="string" label="Pinterest API Key" />
+        <field name="PinterestApiSecret" type="string" label="Pinterest API Secret" />
+        <field name="PinterestAccessToken" type="string" label="Pinterest Access Token" />
+        <field name="PinterestAccessTokenSecret" type="string" label="Pinterest Access Token Secret" />
+    </model>
 </buvi>

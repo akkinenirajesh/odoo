@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPrinter" name="PosPrinter" description="Pos Printer">
+        <field name="PrinterType" type="selection" label="Printer Type" />
+        <field name="EpsonPrinterIP" type="char" label="Epson Printer IP Address" help="Local IP address of an Epson receipt printer." default="0.0.0.0" />
+    </model>
+    <optionset id="Pos.PrinterType" name="Printer Type">
+        <option value="epson_epos" name="Use an Epson printer" />
+    </optionset>
 </buvi>

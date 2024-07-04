@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Point of Sale Payment Method">
+        <field name="AdyenApiKey" type="string" label="Adyen API key" help="Used when connecting to Adyen: https://docs.adyen.com/user-management/how-to-get-the-api-key/#description" copy="false" groups="base.group_erp_manager" />
+        <field name="AdyenTerminalIdentifier" type="string" help="[Terminal model]-[Serial number], for example: P400Plus-123456789" copy="false" />
+        <field name="AdyenTestMode" type="bool" help="Run transactions in the test environment." groups="base.group_erp_manager" />
+        <field name="AdyenLatestResponse" type="string" copy="false" groups="base.group_erp_manager" />
+        <field name="PaymentTerminal" type="selection" label="Payment Terminal" collection="true">
+            <option value="adyen" name="Adyen" />
+        </field>
+    </model>
 </buvi>

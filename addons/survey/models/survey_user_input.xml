@@ -1,3 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Survey.SurveyUserInput" name="Survey.SurveyUserInput" description="Survey User Input">
+        <field name="SurveyId" type="Survey.Survey" label="Survey" required="true" readonly="true" index="true" ondelete="cascade" />
+        <field name="ScoringType" type="selection" label="Scoring" related="SurveyId.ScoringType" />
+        <field name="StartDateTime" type="datetime" label="Start date and time" readonly="true" />
+        <field name="EndDateTime" type="datetime" label="End date and time" readonly="true" />
+        <field name="Deadline" type="datetime" label="Deadline" help="Datetime until customer can open the survey and submit answers" />
+        <field name="State" type="selection" label="Status" default="new" readonly="true">
+            <option value="new" name="New" />
+            <option value="in_progress" name="In Progress" />
+            <option value="done" name="Completed" />
+        </field>
+        <field name="TestEntry" type="bool" readonly="true" />
+        <field name="LastDisplayedPageId" type="Survey.Question" label="Last displayed question/page" />
+        <field name="IsAttemptsLimited" type="bool" label="Limited number of attempts" related="SurveyId.IsAttemptsLimited" />
+        <field name="AttemptsLimit" type="integer" label="Number of attempts" related="SurveyId.AttemptsLimit" />
+        <field name="AttemptsCount" type="integer" label="Attempts Count" compute="ComputeAttemptsInfo" collection="true" />
+        <field name="AttemptsNumber" type="integer" label="Attempt n°" compute="ComputeAttemptsInfo" collection="true" />
+        <field name="SurveyTimeLimitReached" type="bool" label="Survey Time Limit Reached" compute="ComputeSurveyTimeLimitReached" collection="true" />
+        <field name="AccessToken" type="char" label="Identification token" default="lambda self: str(uuid.uuid4())" readonly="true" required="true" copy="false" />
+        <field name="InviteToken" type="char" label="Invite token" readonly="true" copy="false" />
+        <field name="PartnerId" type="Res.Partner" label="Contact" readonly="true" index="btree_not_null" />
+        <field name="Email" type="char" label="Email" readonly="true" />
+        <field name="Nickname" type="char" label="Nickname" help="Attendee nickname, mainly used to identify them in the survey session leaderboard." />
+        <field name="UserInputLineIds" type="Survey.SurveyUserInputLine" label="Answers" copy="true" collection="true" />
+        <field name="PredefinedQuestionIds" type="Survey.Question" label="Predefined Questions" readonly="true" collection="true" />
+        <field name="ScoringPercentage" type="float" label="Score (%)" compute="ComputeScoringValues" store="true" compute_sudo="true" />
+        <field name="ScoringTotal" type="float" label="Total Score" compute="ComputeScoringValues" store="true" compute_sudo="true" digits="(10, 2)" />
+        <field name="ScoringSuccess" type="bool" label="Quizz Passed" compute="ComputeScoringSuccess" store="true" compute_sudo="true" />
+        <field name="SurveyFirstSubmitted" type="bool" label="Survey First Submitted" />
+        <field name="IsSessionAnswer" type="bool" label="Is in a Session" help="Is that user input part of a survey session or not." />
+        <field name="QuestionTimeLimitReached" type="bool" label="Question Time Limit Reached" compute="ComputeQuestionTimeLimitReached" collection="true" />
+        <unique>
+            <field name="AccessToken" />
+            <message>An access token must be unique!</message>
+        </unique>
+    </model>
+
+    <model id="Survey.SurveyUserInputLine" name="Survey.SurveyUserInputLine" description="Survey User Input Line">
+        <field name="UserInputId" type="Survey.SurveyUserInput" label="User Input" ondelete="cascade" required="true" index="true" />
+        <field name="SurveyId" type="Survey.Survey" label="Survey" related="UserInputId.SurveyId" store="true" readonly="false" />
+        <field name="QuestionId" type="Survey.Question" label="Question" ondelete="cascade" required="true" index="true" />
+        <field name="PageId" type="Survey.Page" label="Section" related="QuestionId.PageId" readonly="false" />
+        <field name="QuestionSequence" type="integer" label="Sequence" related="QuestionId.Sequence" store="true" />
+        <field name="Skipped" type="bool" label="Skipped" />
+        <field name="AnswerType" type="selection" label="Answer Type">
+            <option value="text_box" name="Free Text" />
+            <option value="char_box" name="Text" />
+            <option value="numerical_box" name="Number" />
+            <option value="scale" name="Number" />
+            <option value="date" name="Date" />
+            <option value="datetime" name="Datetime" />
+            <option value="suggestion" name="Suggestion" />
+        </field>
+        <field name="ValueCharBox" type="char" label="Text answer" />
+        <field name="ValueNumericalBox" type="float" label="Numerical answer" />
+        <field name="ValueScale" type="integer" label="Scale value" />
+        <field name="ValueDate" type="date" label="Date answer" />
+        <field name="ValueDateTime" type="datetime" label="Datetime answer" />
+        <field name="ValueTextBox" type="text" label="Free Text answer" />
+        <field name="SuggestedAnswerId" type="Survey.QuestionAnswer" label="Suggested answer" />
+        <field name="MatrixRowId" type="Survey.QuestionAnswer" label="Row answer" />
+        <field name="AnswerScore" type="float" label="Score" />
+        <field name="AnswerIsCorrect" type="bool" label="Correct" />
+    </model>
+
+    <optionset id="Survey.SurveyState" name="Survey State">
+        <option value="new" name="New" />
+        <option value="in_progress" name="In Progress" />
+        <option value="done" name="Completed" />
+    </optionset>
 </buvi>

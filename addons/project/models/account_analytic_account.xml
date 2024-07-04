@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Project.AccountAnalyticAccount" name="AccountAnalyticAccount" description="Analytic Account">
+        <field name="Name" type="string" label="Analytic Account Name" required="true" translate="true" />
+        <field name="Code" type="char" label="Code" />
+        <field name="ParentID" type="Project.AccountAnalyticAccount" label="Parent Analytic Account" />
+        <field name="PartnerID" type="Res.Partner" label="Partner" />
+        <field name="CompanyID" type="Res.Company" label="Company" />
+        <field name="CurrencyID" type="Res.Currency" label="Currency" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Account Analytic Account without removing it." />
+        <field name="ProjectCount" type="integer" label="Project Count" />
+        <field name="Projects" type="Project.Project" collection="true" />
+    </model>
 </buvi>

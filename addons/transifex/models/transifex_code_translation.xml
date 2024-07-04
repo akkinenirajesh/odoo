@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Transifex.TransifexCodeTranslation" name="TransifexCodeTranslation" description="Code Translation">
+    <field name="Source" type="text" label="Code" />
+    <field name="Value" type="text" label="Translation Value" />
+    <field name="Module" type="char" help="Module this term belongs to" />
+    <field name="Lang" type="selection" selection="GetLanguages" label="Language" validate="false" />
+    <field name="TransifexUrl" type="char" label="Transifex URL" compute="ComputeTransifexUrl"
+      help="Propose a modification in the official version of Odoo" />
+  </model>
+
+  <optionset id="Res.Lang" name="Lang">
+    <option value="en_US" name="English (US)" />
+  </optionset>
 </buvi>

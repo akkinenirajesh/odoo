@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="L10nLatamDocumentTypeId" type="Account.DocumentType" label="Document Type" />
+    <field name="L10nLatamDocumentNumber" type="string" label="Document Number" />
+    <field name="MoveType" type="selection" selection="Account.MoveType" />
+    <field name="JournalId" type="Account.Journal" label="Journal" />
+    <field name="CompanyId" type="Core.Company" label="Company" />
+    <field name="PartnerId" type="Core.Partner" label="Partner" />
+    <field name="L10nLatamIdentificationTypeId" type="Core.IdentificationType" label="Identification Type" />
+  </model>
+
+  <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="L10nPeGroupId" type="Account.AccountGroup" label="Group Id" />
+    <field name="AccountId" type="Account.Account" label="Account" />
+  </model>
+
+  <optionset id="Account.MoveType" name="Move Type">
+    <option value="out_invoice" name="Customer Invoice" />
+    <option value="in_invoice" name="Vendor Bill" />
+    <option value="out_refund" name="Customer Credit Note" />
+    <option value="in_refund" name="Vendor Credit Note" />
+  </optionset>
+
+  <optionset id="Account.DocumentType" name="Document Type">
+    <option value="01" name="Factura" />
+    <option value="03" name="Boleta" />
+    <option value="07" name="Nota de Crédito" />
+    <option value="08" name="Nota de Débito" />
+    <option value="20" name="Factura Electrónica" />
+    <option value="40" name="Boleta Electrónica" />
+    <option value="02" name="Factura Simplificada" />
+    <option value="07b" name="Nota de Crédito Simplificada" />
+    <option value="08b" name="Nota de Débito Simplificada" />
+  </optionset>
 </buvi>

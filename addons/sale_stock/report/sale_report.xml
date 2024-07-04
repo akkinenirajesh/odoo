@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
+  <model id="Sale.SaleReport" name="SaleReport" description="Sale Report">
+    <field name="WarehouseId" type="Stock.Warehouse" label="Warehouse" readonly="true" />
   </model>
 </buvi>

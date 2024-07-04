@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPaymentMethod" name="Pos.PosPaymentMethod" description="Point of Sale Payment Method">
+        <field name="IsOnlinePayment" type="bool" label="Online Payment" help="Use this payment method for online payments (payments made on a web page with online payment providers)" default="false" />
+        <field name="OnlinePaymentProviderIds" type="Pos.PosPaymentMethod.OnlinePaymentProviderIds" collection="true" label="Allowed Providers" domain="[('IsPublished', '=', true), ('State', 'in', ['enabled', 'test'])]" />
+        <field name="HasAnOnlinePaymentProvider" type="bool" compute="ComputeHasAnOnlinePaymentProvider" readonly="true" />
+        <field name="Type" type="Pos.PosPaymentMethodType" />
+    </model>
+
+    <optionset id="Pos.PosPaymentMethodType" name="Point of Sale Payment Method Type">
+        <option value="cash" name="Cash" />
+        <option value="bank" name="Bank" />
+        <option value="transfer" name="Transfer" />
+        <option value="online" name="Online" />
+    </optionset>
 </buvi>

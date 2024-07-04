@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.ResCurrency" name="ResCurrency" description="Currency">
+        <field name="Name" type="string" label="Currency Name" required="true" translate="true" />
+        <field name="Symbol" type="string" label="Symbol" required="true" translate="true" />
+        <field name="Position" type="string" label="Position" default="after" />
+        <field name="Rounding" type="float" label="Rounding" />
+        <field name="Rate" type="float" label="Rate" />
+        <field name="DecimalPlaces" type="integer" label="Decimal Places" />
+        <field name="ISOCode" type="string" label="ISO Code" />
+        <field name="ISONumeric" type="integer" label="ISO Numeric" />
+    </model>
 </buvi>

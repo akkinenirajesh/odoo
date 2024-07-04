@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order" inherit="Pos.PosOrder">
+    <field name="ConfigId" type="Pos.PosConfig" relation="many2one" required="true" readonly="true" store="true" />
+    <field name="SmsReceiptTemplateId" type="Sms.SmsTemplate" relation="many2one" />
+  </model>
+  <optionset id="Sms.SmsTemplate" name="Sms Template">
+    <option value="sms.template" name="Sms Template" />
+  </optionset>
 </buvi>

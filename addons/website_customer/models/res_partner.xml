@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteCustomer.ResPartner" name="ResPartner" description="Partner">
+        <field name="WebsiteTagIds" type="WebsiteCustomer.ResPartnerTag" collection="true" label="Website tags"
+            help="Filter published customers on the .../customers website page" />
+    </model>
+
+    <model id="WebsiteCustomer.ResPartnerTag" name="ResPartnerTag" description="Partner Tags - These tags can be used on website to find customers by sector, or ...">
+        <field name="Name" type="string" label="Category Name" required="true" translate="true" />
+        <field name="PartnerIds" type="WebsiteCustomer.ResPartner" collection="true" label="Partners" />
+        <field name="ClassName" type="WebsiteCustomer.ResPartnerTagClassName" default="Light" label="Class"
+            help="Bootstrap class to customize the color" required="true" />
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Account Tag without removing it." />
+    </model>
+
+    <optionset id="WebsiteCustomer.ResPartnerTagClassName" name="ResPartnerTagClassName">
+        <option value="Light" name="Light" />
+        <option value="Primary" name="Primary" />
+        <option value="Success" name="Success" />
+        <option value="Warning" name="Warning" />
+        <option value="Danger" name="Danger" />
+    </optionset>
 </buvi>

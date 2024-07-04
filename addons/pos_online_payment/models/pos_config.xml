@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+    <field name="PaymentMethods" type="collection" relation="Pos.PaymentMethod" />
+    <field name="Currency" type="Core.Currency" label="Currency" required="true" />
+  </model>
+
+  <model id="Pos.PaymentMethod" name="PaymentMethod" description="Payment Method">
+    <field name="Name" type="string" label="Payment Method Name" required="true" translate="true" />
+    <field name="IsOnlinePayment" type="bool" label="Online Payment" />
+    <field name="Journal" type="Account.Journal" label="Journal" required="true" />
+  </model>
 </buvi>

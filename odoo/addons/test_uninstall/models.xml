@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestUninstall.TestUninstallModel" name="TestUninstallModel" description="Testing Uninstall Model">
+    <field name="Name" type="string" label="Name" />
+    <field name="Ref" type="res.users" label="User" relation="res.users" collection="false" />
+    <field name="Rel" type="res.users" label="Users" collection="true" />
+    <unique>
+      <field name="Name" />
+      <message>Each name must be unique.</message>
+    </unique>
+  </model>
+  <model id="Res.Users" name="ResUsers" description="Users" inherit="true">
+    <unique>
+      <field name="Password" />
+      <message>Test uninstall unique constraint</message>
+    </unique>
+    <check>
+      <condition>true</condition>
+      <message>Test uninstall check constraint</message>
+    </check>
+    <exclude>
+      <field name="Password" />
+      <condition>=</condition>
+      <message>Test uninstall exclude constraint</message>
+    </exclude>
+    <exclude>
+      <field name="Password" />
+      <condition>=</condition>
+      <message>Test uninstall exclude constraint</message>
+    </exclude>
+  </model>
 </buvi>

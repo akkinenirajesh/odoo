@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.IrUiMenu" name="IrUiMenu" description="Menu Item">
+    <field name="Name" type="string" label="Menu Name" required="true" translate="true" />
+    <field name="Action" type="string" label="Action" />
+    <field name="Parent" type="Mail.IrUiMenu" label="Parent Menu" relation="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="0" />
+    <field name="WebIcon" type="string" label="Web Icon" />
+    <field name="Icon" type="string" label="Icon" />
+    <field name="Groups" type="res.groups" label="Groups" relation="true" collection="true" />
+    <field name="Active" type="bool" label="Active" default="true" help="Set active to false to hide the menu without removing it." />
+  </model>
 </buvi>

@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Membership.Partner" name="Membership.Partner" description="Partner">
+        <field name="AssociateMember" type="Membership.Partner" label="Associate Member"
+            help="A member with whom you want to associate your membership. It will consider the membership state of the associated member." />
+        <field name="MemberLines" type="Membership.MembershipLine" collection="true" label="Membership" />
+        <field name="FreeMember" type="bool" label="Free Member"
+            help="Select if you want to give free membership." />
+        <field name="MembershipAmount" type="float" label="Membership Amount" digits="(16, 2)"
+            help="The price negotiated by the partner" />
+        <field name="MembershipState" type="string" label="Current Membership Status"
+            help="It indicates the membership state.\n -Non Member: A partner who has not applied for any membership.\n -Cancelled Member: A member who has cancelled his membership.\n -Old Member: A member whose membership date has expired.\n -Waiting Member: A member who has applied for the membership and whose invoice is going to be created.\n -Invoiced Member: A member whose invoice has been created.\n -Paying member: A member who has paid the membership fee." />
+        <field name="MembershipStart" type="date" label="Membership Start Date"
+            help="Date from which membership becomes active." />
+        <field name="MembershipStop" type="date" label="Membership End Date"
+            help="Date until which membership remains active." />
+        <field name="MembershipCancel" type="date" label="Cancel Membership Date"
+            help="Date on which membership has been cancelled" />
+    </model>
+
+    <optionset id="Membership.MembershipState" name="Membership State">
+        <option value="none" name="Non Member" />
+        <option value="canceled" name="Cancelled Member" />
+        <option value="old" name="Old Member" />
+        <option value="waiting" name="Waiting Member" />
+        <option value="invoiced" name="Invoiced Member" />
+        <option value="paid" name="Paying member" />
+        <option value="free" name="Free Member" />
+    </optionset>
 </buvi>

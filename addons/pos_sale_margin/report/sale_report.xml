@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleReport" name="Sale.SaleReport" description="Sale Report">
+    <field name="Margin" type="float" label="Margin" readonly="true" compute="ComputeMargin" />
+  </model>
 </buvi>

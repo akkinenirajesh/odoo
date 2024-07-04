@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ProjectTaskRecurrence" name="ProjectTaskRecurrence" description="Project Task Recurrence">
+        <field name="SoAnalyticAccountId" type="Account.AnalyticAccount" relation="many2one" label="Analytic Account" />
+    </model>
 </buvi>

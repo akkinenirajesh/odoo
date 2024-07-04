@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Utm.UtmCampaign" name="UtmCampaign" description="UtmCampaign">
+        <field name="AbTestingWinnerSelection" type="selection" label="AB Testing Winner Selection">
+            <option value="sale_quotation_count" name="Quotations" />
+            <option value="sale_invoiced_amount" name="Revenues" />
+        </field>
+    </model>
 </buvi>

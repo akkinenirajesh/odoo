@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Company" name="ResCompany" description="Company">
+    <field name="L10nSaPrivateKey" type="binary" label="ZATCA Private key" attachment="false" groups="base.group_system" copy="false" help="The private key used to generate the CSR and obtain certificates" />
+    <field name="L10nSaApiMode" type="ResCompany.L10nSaApiMode" help="Specifies which API the system should use" required="true" default="sandbox" copy="false" />
+    <field name="L10nSaEdiBuildingNumber" type="string" compute="ComputeAddress" inverse="L10nSaEdiInverseBuildingNumber" />
+    <field name="L10nSaEdiPlotIdentification" type="string" compute="ComputeAddress" inverse="L10nSaEdiInversePlotIdentification" />
+    <field name="L10nSaAdditionalIdentificationScheme" type="Core.Country" related="PartnerId.L10nSaAdditionalIdentificationScheme" readonly="false" />
+    <field name="L10nSaAdditionalIdentificationNumber" type="string" related="PartnerId.L10nSaAdditionalIdentificationNumber" readonly="false" />
+  </model>
+
+  <optionset id="ResCompany.L10nSaApiMode" name="L10nSaApiMode">
+    <option value="sandbox" name="Sandbox" />
+    <option value="preprod" name="Simulation (Pre-Production)" />
+    <option value="prod" name="Production" />
+  </optionset>
 </buvi>

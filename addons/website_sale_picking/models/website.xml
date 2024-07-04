@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.Website" name="Website" description="Website">
+    <field name="PickingSites" type="delivery.carrier" collection="true" label="Picking sites" compute="ComputePickingSites" />
+  </model>
+  <optionset id="delivery.carrier" name="Delivery Carrier" />
 </buvi>

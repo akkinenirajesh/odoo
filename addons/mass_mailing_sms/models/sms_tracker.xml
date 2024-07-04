@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailingSms.SmsTracker" name="SmsTracker" description="SMS Tracker">
+        <field name="MailingTraceId" type="MassMailing.MailingTrace" ondelete="cascade" />
+        <field name="SmsState" type="string" />
+        <field name="FailureType" type="string" />
+        <field name="FailureReason" type="string" />
+        <field name="SentDateTime" type="datetime" />
+    </model>
 </buvi>

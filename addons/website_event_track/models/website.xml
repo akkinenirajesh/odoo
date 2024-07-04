@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Website" name="Website" description="Website">
+        <field name="AppIcon" type="image" label="Website App Icon" readonly="true" store="true"
+            help="This field holds the image used as mobile app icon on the website (PNG format)." />
+        <field name="EventsAppName" type="string" label="Events App Name" readonly="false" store="true"
+            help="This fields holds the Event's Progressive Web App name." />
+    </model>
 </buvi>

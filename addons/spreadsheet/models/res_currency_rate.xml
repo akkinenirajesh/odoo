@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Spreadsheet.ResCurrencyRate" name="Spreadsheet.ResCurrencyRate" description="Currency Rate">
+    <field name="Name" type="string" label="Currency Rate" required="true" />
+    <field name="Rate" type="float" label="Rate" required="true" />
+    <field name="CurrencyFrom" type="Core.Currency" label="From" required="true" />
+    <field name="CurrencyTo" type="Core.Currency" label="To" required="true" />
+    <field name="Date" type="date" label="Date" required="true" />
+    <field name="Company" type="Core.Company" label="Company" />
+  </model>
 </buvi>

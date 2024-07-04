@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.ResUsersSettings" name="Base.ResUsersSettings" description="User Settings">
+    <field name="UserId" type="Base.ResUsers" label="User" required="true" readonly="true" ondelete="cascade" />
+    <unique>
+      <field name="UserId" />
+      <message>One user should only have one user settings.</message>
+    </unique>
+  </model>
 </buvi>

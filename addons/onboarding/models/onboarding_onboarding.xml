@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Onboarding.Onboarding" name="Onboarding.Onboarding" description="Onboarding">
+        <field name="Name" type="string" label="Name of the onboarding" translate="true" />
+        <field name="RouteName" type="string" label="One word name" required="true" />
+        <field name="StepIds" type="Onboarding.OnboardingStep" collection="true" />
+        <field name="TextCompleted" type="string" label="Message at completion" default="Nice work! Your configuration is done."
+            help="Text shown on onboarding when completed" />
+        <field name="IsPerCompany" type="bool" label="Should be done per company?" compute="ComputeIsPerCompany" readonly="true" store="false" />
+        <field name="PanelCloseActionName" type="string" label="Closing action"
+            help="Name of the onboarding model action to execute when closing the panel." />
+        <field name="CurrentProgressId" type="Onboarding.Progress" label="Onboarding Progress" compute="ComputeCurrentProgress"
+            help="Onboarding Progress for the current context (company)." />
+        <field name="CurrentOnboardingState" type="selection" label="Completion State" compute="ComputeCurrentProgress" readonly="true" />
+        <field name="IsOnboardingClosed" type="bool" label="Was panel closed?" compute="ComputeCurrentProgress" />
+        <field name="ProgressIds" type="Onboarding.Progress" collection="true" label="Onboarding Progress Records" readonly="true"
+            help="All Onboarding Progress Records (across companies)." />
+        <field name="Sequence" type="integer" default="10" />
+        <unique>
+            <field name="RouteName" />
+            <message>Onboarding alias must be unique.</message>
+        </unique>
+    </model>
+    <optionset id="Onboarding.OnboardingState" name="Onboarding State">
+        <option value="not_done" name="Not Done" />
+        <option value="in_progress" name="In Progress" />
+        <option value="done" name="Done" />
+    </optionset>
 </buvi>

@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ServerAction" name="ServerAction" description="Server Action">
+        <field name="XmlId" type="string" label="External ID" help="ID of the action if defined in a XML file"/>
+        <field name="WebsitePath" type="string" label="Website Path"/>
+        <field name="WebsiteUrl" type="string" label="Website Url" help="The full URL to access the server action through the website."/>
+        <field name="WebsitePublished" type="bool" label="Available on the Website" help="A code server action can be executed from the website, using a dedicated controller. The address is &lt;base&gt;/website/action/&lt;website_path&gt;. Set this field as True to allow users to run this action. If it is set to False the action cannot be run through the website."/>
+        <field name="State" type="selection" selection="[(&#39;code&#39;, &#39;Code&#39;), (&#39;object&#39;, &#39;Object&#39;), (&#39;report&#39;, &#39;Report&#39;), (&#39;workflow&#39;, &#39;Workflow&#39;)]" />
+        <field name="Name" type="string" label="Action Name" translate="true" required="true"/>
+        <field name="Type" type="selection" selection="[(&#39;ir.actions.server&#39;, &#39;Server Action&#39;), (&#39;mail.mail&#39;, &#39;Email&#39;), (&#39;report&#39;, &#39;Report&#39;), (&#39;act_window&#39;, &#39;Open a View&#39;), (&#39;act_window_close&#39;, &#39;Close Window&#39;), (&#39;ir.actions.act_url&#39;, &#39;Open a Website&#39;), (&#39;mail.compose.message&#39;, &#39;Compose Email&#39;), (&#39;server_action_client&#39;, &#39;Client Action&#39;), (&#39;ir.actions.act_view&#39;, &#39;Open a View&#39;), (&#39;popup&#39;, &#39;Popup a View&#39;)]" />
+        <field name="Target" type="selection" selection="[(&#39;new&#39;, &#39;New Window&#39;), (&#39;current&#39;, &#39;Current Window&#39;), (&#39;self&#39;, &#39;This Window&#39;)]" />
+        <field name="Sequence" type="integer" label="Sequence"/>
+        <field name="Model" type="many2one" relation="Ir.Model" help="If the server action is an object, the action is executed on the selected model."/>
+        <field name="ModelId" type="integer" relation="Ir.Model"/>
+        <field name="BindingModelId" type="integer" relation="Ir.Model"/>
+        <field name="FlowId" type="integer" relation="Workflow.Workflow"/>
+        <field name="BindingModel" type="many2one" relation="Ir.Model" help="If the server action is an object, the action is executed on the selected model."/>
+        <field name="BindingType" type="selection" selection="[(&#39;on_change&#39;, &#39;On Change&#39;), (&#39;onchange&#39;, &#39;On Change&#39;), (&#39;on_create&#39;, &#39;On Create&#39;), (&#39;on_write&#39;, &#39;On Write&#39;), (&#39;on_delete&#39;, &#39;On Delete&#39;), (&#39;on_unlink&#39;, &#39;On Unlink&#39;), (&#39;on_button_click&#39;, &#39;Button Click&#39;)]"/>
+        <field name="StateField" type="char" label="Field"/>
+        <field name="Condition" type="char" label="Condition"/>
+        <field name="ConditionType" type="selection" selection="[(&#39;python&#39;, &#39;Python Code&#39;), (&#39;js&#39;, &#39;Javascript Code&#39;), (&#39;sql&#39;, &#39;SQL Query&#39;)]" label="Condition Type"/>
+        <field name="Code" type="text" label="Code"/>
+        <field name="Lang" type="char" label="Lang"/>
+        <field name="ResModel" type="char" label="Model"/>
+        <field name="ResId" type="integer" label="Id"/>
+        <field name="Action" type="char" label="Action"/>
+        <field name="Result" type="char" label="Result"/>
+        <field name="Fields" type="char" label="Fields"/>
+        <field name="TargetField" type="char" label="Target Field"/>
+        <field name="TargetModel" type="char" label="Target Model"/>
+        <field name="TargetId" type="integer" label="Target ID"/>
+        <field name="UseContext" type="bool" label="Use Context"/>
+        <field name="Create" type="bool" label="Create"/>
+        <field name="Update" type="bool" label="Update"/>
+        <field name="Delete" type="bool" label="Delete"/>
+        <field name="OnCreate" type="bool" label="On Create"/>
+        <field name="OnWrite" type="bool" label="On Write"/>
+        <field name="OnDelete" type="bool" label="On Delete"/>
+        <field name="User" type="many2one" relation="Res.Users"/>
+        <field name="GroupId" type="integer" relation="Res.Groups"/>
+        <field name="TargetGroupId" type="integer" relation="Res.Groups"/>
+        <field name="Trigger" type="selection" selection="[(&#39;manual&#39;, &#39;Manual&#39;), (&#39;scheduled&#39;, &#39;Scheduled&#39;)]" label="Trigger"/>
+        <field name="Cron" type="char" label="Cron Expression" help="Cron expression to schedule the action.  You can use an expression like this: 0 0 * * 1-5 to run it every day from Monday to Friday at midnight.  For more information on valid cron expressions, see: https://en.wikipedia.org/wiki/Cron."/>
+        <field name="CronLog" type="text" label="Cron Logs" help="Logs of when the server action has been run by the scheduler."/>
+        <field name="CronNextCall" type="datetime" label="Next Call" help="The next scheduled call of the server action."/>
+        <field name="UserIds" type="many2many" relation="Res.Users" collection="true"/>
+        <field name="AttachmentIds" type="many2many" relation="Ir.Attachment" collection="true"/>
+    </model>
 </buvi>

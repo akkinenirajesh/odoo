@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.Product" name="Product" description="Product Product">
+    <field name="ImageFetchPending" type="bool" help="Whether an image must be fetched for this product. Handled by a cron." />
+  </model>
 </buvi>

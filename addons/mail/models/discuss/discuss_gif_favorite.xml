@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Discuss.GifFavorite" name="Discuss.GifFavorite" description="Save favorite GIF from Tenor API">
+    <field name="TenorGifId" type="string" label="GIF id from Tenor" required="true" />
+    <unique>
+      <field name="CreateUid" />
+      <field name="TenorGifId" />
+      <message>User should not have duplicated favorite GIF</message>
+    </unique>
+  </model>
 </buvi>

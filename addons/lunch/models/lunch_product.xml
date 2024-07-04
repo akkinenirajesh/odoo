@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.LunchProduct" name="LunchProduct" description="Lunch Product">
+        <field name="Name" type="string" label="Product Name" required="true" translate="true" />
+        <field name="CategoryID" type="Lunch.LunchProductCategory" label="Product Category" check_company="true" required="true" />
+        <field name="Description" type="html" label="Description" translate="true" />
+        <field name="Price" type="float" label="Price" digits="Account" required="true" />
+        <field name="SupplierID" type="Lunch.LunchSupplier" label="Vendor" check_company="true" required="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="CompanyID" type="Res.Company" related="SupplierID.CompanyID" readonly="false" store="true" />
+        <field name="CurrencyID" type="Res.Currency" related="CompanyID.CurrencyID" />
+        <field name="NewUntil" type="date" label="New Until" />
+        <field name="IsNew" type="bool" compute="ComputeIsNew" />
+        <field name="FavoriteUserIDs" type="Res.Users" relation="lunch_product_favorite_user_rel" collection="true" check_company="true" />
+        <field name="IsFavorite" type="bool" compute="ComputeIsFavorite" inverse="InverseIsFavorite" />
+        <field name="LastOrderDate" type="date" compute="ComputeLastOrderDate" />
+        <field name="ProductImage" type="image" compute="ComputeProductImage" />
+        <field name="IsAvailableAt" type="Lunch.LunchLocation" compute="ComputeIsAvailableAt" search="SearchIsAvailableAt" />
+    </model>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Utm.UtmTag" name="UtmTag" description="UTM Tag">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <unique>
+            <field name="Name" />
+            <message>Tag name already exists!</message>
+        </unique>
+    </model>
 </buvi>

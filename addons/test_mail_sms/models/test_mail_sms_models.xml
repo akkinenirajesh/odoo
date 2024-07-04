@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestMailSms.MailTestSms" name="MailTestSms" description="Chatter Model for SMS Gateway">
+        <field name="Name" type="string" />
+        <field name="Subject" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="PhoneNbr" type="string" />
+        <field name="MobileNbr" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" />
+    </model>
+
+    <model id="TestMailSms.MailTestSmsBl" name="MailTestSmsBl" description="SMS Mailing Blacklist Enabled">
+        <field name="Name" type="string" />
+        <field name="Subject" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="PhoneNbr" type="string" />
+        <field name="MobileNbr" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" />
+    </model>
+
+    <model id="TestMailSms.MailTestSmsBlActivity" name="MailTestSmsBlActivity" description="SMS Mailing Blacklist Enabled with activities">
+        <field name="Name" type="string" />
+        <field name="Subject" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="PhoneNbr" type="string" />
+        <field name="MobileNbr" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" />
+    </model>
+
+    <model id="TestMailSms.MailTestSmsBlOptout" name="MailTestSmsBlOptout" description="SMS Mailing Blacklist / Optout Enabled">
+        <field name="Name" type="string" />
+        <field name="Subject" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="PhoneNbr" type="string" />
+        <field name="MobileNbr" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" />
+        <field name="OptOut" type="bool" />
+    </model>
+
+    <model id="TestMailSms.MailTestSmsPartner" name="MailTestSmsPartner" description="Chatter Model for SMS Gateway (Partner only)">
+        <field name="Name" type="string" />
+        <field name="CustomerId" type="res.partner" label="Customer" />
+        <field name="OptOut" type="bool" />
+    </model>
+
+    <model id="TestMailSms.MailTestSmsPartner2Many" name="MailTestSmsPartner2Many" description="Chatter Model for SMS Gateway (M2M Partners only)">
+        <field name="Name" type="string" />
+        <field name="CustomerIds" type="res.partner" label="Customers" collection="true" />
+        <field name="OptOut" type="bool" />
+    </model>
 </buvi>

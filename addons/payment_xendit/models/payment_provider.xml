@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="Payment.PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" selectionAdd="xendit:Xendit" ondelete="xendit:set default" />
+    <field name="XenditPublicKey" type="char" label="Xendit Public Key" groups="base.group_system" requiredIfProvider="xendit" />
+    <field name="XenditSecretKey" type="char" label="Xendit Secret Key" groups="base.group_system" requiredIfProvider="xendit" />
+    <field name="XenditWebhookToken" type="char" label="Xendit Webhook Token" groups="base.group_system" requiredIfProvider="xendit" />
+  </model>
 </buvi>

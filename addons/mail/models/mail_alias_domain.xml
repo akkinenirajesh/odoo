@@ -1,18 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="mail.alias" name="Mail.Alias" track_created="true" track_update="true">
-    <field name="AliasModel" label="Aliased Model" type="Ir.Model" required="true" copied="true" on-delete="Cascade"/>
-    <field name="AliasParentModel" label="Parent Model" type="Ir.Model" copied="true" on-delete="Clear"/>
-    <field name="AliasDomain" label="Alias Domain" type="Mail.AliasDomain" copied="true" on-delete="Restrict"/>
-    <field name="AliasBouncedContent" label="Custom Bounced Message" type="html" copied="true" translatable="true"/>
-    <field name="AliasContact" label="Alias Contact Security" type="Mail.EmailAliasesAliasContactSecurity" required="true" copied="true"/>
-    <field name="AliasDefaults" label="Default Values" type="text" required="true" copied="true"/>
-    <field name="AliasDomain" label="Alias domain name" type="string" readonly="true" transient="true" related-field="AliasDomain.Name"/>
-    <field name="AliasForceThread" label="Record Thread ID" type="integer" copied="true"/>
-    <field name="AliasFullName" label="Alias Email" type="string" indexed="true" readonly="true"/>
-    <field name="AliasIncomingLocal" label="Local-part based incoming detection" type="bool" copied="true"/>
-    <field name="AliasName" label="Alias Name" type="string"/>
-    <field name="AliasParentThread" label="Parent Record Thread ID" type="integer" copied="true"/>
-    <field name="AliasStatus" label="Alias Status" type="Mail.EmailAliasesAliasStatus" readonly="true"/>
-  </model>
+    <model id="Mail.AliasDomain" name="Mail.AliasDomain" description="Email Domain">
+        <field name="Name" type="string" label="Name" required="true"
+            help="Email domain e.g. 'example.com' in 'odoo@example.com'" />
+        <field name="Companies" type="res.company" collection="true"
+            help="Companies using this domain as default for sending mails" />
+        <field name="Sequence" type="integer" default="10" />
+        <field name="BounceAlias" type="string" label="Bounce Alias" required="true"
+            help="Local-part of email used for Return-Path used when emails bounce e.g. "
+                 "'bounce' in 'bounce@example.com'" />
+        <field name="BounceEmail" type="string" label="Bounce Email" readonly="true" />
+        <field name="CatchallAlias" type="string" label="Catchall Alias" required="true"
+            help="Local-part of email used for Reply-To to catch answers e.g. "
+                 "'catchall' in 'catchall@example.com'" />
+        <field name="CatchallEmail" type="string" label="Catchall Email" readonly="true" />
+        <field name="DefaultFrom" type="string" label="Default From Alias" default="notifications"
+            help="Default from when it does not match outgoing server filters. Can be either "
+                 "a local-part e.g. 'notifications' either a complete email address e.g. "
+                 "'notifications@example.com' to override all outgoing emails." />
+        <field name="DefaultFromEmail" type="string" label="Default From" readonly="true" />
+        <unique>
+            <field name="BounceAlias" />
+            <field name="Name" />
+            <message>Bounce emails should be unique</message>
+        </unique>
+        <unique>
+            <field name="CatchallAlias" />
+            <field name="Name" />
+            <message>Catchall emails should be unique</message>
+        </unique>
+    </model>
 </buvi>

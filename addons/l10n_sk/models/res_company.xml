@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="l10n_sk.ResCompany" name="ResCompany" description="ResCompany">
+        <field name="TradeRegistry" type="string" />
+        <field name="IncomeTaxId" type="string" label="Income Tax ID" />
+    </model>
+
+    <model id="base.BaseDocumentLayout" name="BaseDocumentLayout" description="BaseDocumentLayout">
+        <field name="AccountFiscalCountryId" type="Core.Country" relation="Core.Country" />
+        <field name="CompanyRegistry" type="string" />
+        <field name="IncomeTaxId" type="string" />
+    </model>
 </buvi>

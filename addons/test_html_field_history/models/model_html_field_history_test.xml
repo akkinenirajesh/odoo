@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestHtmlFieldHistory.ModelHtmlFieldHistoryTest" name="ModelHtmlFieldHistoryTest" description="Test html_field_history Model">
+        <field name="VersionedField1" type="html" label="vf1" />
+        <field name="VersionedField2" type="html" label="vf2" sanitize="false" />
+    </model>
 </buvi>

@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
+  <model id="MrpSubcontractingDropshipping.StockWarehouse" name="StockWarehouse" description="Stock Warehouse">
+    <field name="SubcontractingDropshippingToResupply" type="bool" label="Dropship Subcontractors" default="true"
+      help="Dropship subcontractors with components" />
+    <field name="SubcontractingDropshippingPullId" type="Stock.StockRule" label="Subcontracting-Dropshipping MTS Rule"
+      relation="one2one" collection="true" />
   </model>
 </buvi>

@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.ProductTemplate" name="Stock.ProductTemplate" description="Product Template">
+        <field name="LandedCostOk" type="bool" label="Is a Landed Cost"
+            help="Indicates whether the product is a landed cost: when receiving a vendor bill, you can allocate this cost on preceding receipts." />
+        <field name="SplitMethodLandedCost" type="Stock.SplitMethodLandedCost" label="Default Split Method"
+            help="Default Split Method when used for Landed Cost" />
+    </model>
+
+    <optionset id="Stock.SplitMethodLandedCost" name="Split Method Landed Cost">
+        <option value="Equal" name="Equal" />
+        <option value="ByQuantity" name="By Quantity" />
+        <option value="ByWeight" name="By Weight" />
+        <option value="ByVolume" name="By Volume" />
+        <option value="ByCost" name="By Cost" />
+    </optionset>
 </buvi>

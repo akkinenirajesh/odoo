@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockPicking" name="Stock.StockPicking" description="Stock Picking">
+    <field name="Name" type="string" label="Name" />
+    <field name="PickingType" type="Stock.PickingType" required="true" />
+    <field name="PartnerId" type="Res.Partner" label="Partner" />
+    <field name="MinDate" type="date" label="Earliest Date" />
+    <field name="MaxDate" type="date" label="Latest Date" />
+    <field name="Date" type="date" label="Date" />
+    <field name="LocationId" type="Stock.Location" label="Location" />
+    <field name="LocationDestId" type="Stock.Location" label="Destination Location" />
+    <field name="State" type="selection" label="State" selection="Stock.PickingStateSelection" />
+    <field name="IsLocked" type="bool" label="Locked" />
+    <field name="MoveLines" type="Stock.StockMove" collection="true" />
+    <field name="BackorderPickingIds" type="Stock.StockPicking" collection="true" />
+    <field name="InvoiceId" type="Account.Invoice" />
+    <field name="Note" type="text" label="Note" />
+  </model>
+
+  <optionset id="Stock.PickingType" name="Picking Type">
+    <option value="incoming" name="Incoming" />
+    <option value="outgoing" name="Outgoing" />
+    <option value="internal" name="Internal" />
+  </optionset>
+
+  <optionset id="Stock.PickingStateSelection" name="Picking State Selection">
+    <option value="draft" name="Draft" />
+    <option value="cancel" name="Cancelled" />
+    <option value="waiting" name="Waiting Another Move" />
+    <option value="confirmed" name="Waiting Availability" />
+    <option value="assigned" name="Ready to Transfer" />
+    <option value="done" name="Transferred" />
+  </optionset>
 </buvi>

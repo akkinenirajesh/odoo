@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosSelfOrder.RestaurantTable" name="RestaurantTable" description="Restaurant Table">
+    <field name="Name" type="string" label="Table Name" required="true" translate="true" />
+    <field name="Identifier" type="string" label="Security Token" required="true" copy="false" />
+    <field name="FloorId" type="PosSelfOrder.RestaurantFloor" relation="many2one" />
+  </model>
+
+  <model id="PosSelfOrder.RestaurantFloor" name="RestaurantFloor" description="Restaurant Floor">
+    <field name="Name" type="string" label="Floor Name" required="true" translate="true" />
+    <field name="TableIds" type="PosSelfOrder.RestaurantTable" relation="one2many" collection="true" />
+  </model>
 </buvi>

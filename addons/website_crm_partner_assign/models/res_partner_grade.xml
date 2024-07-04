@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteCrmPartnerAssign.ResPartnerGrade" name="ResPartnerGrade" description="Partner Grade">
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Name" type="string" label="Level Name" translate="true" />
+        <field name="PartnerWeight" type="integer" label="Level Weight" default="1" help="Gives the probability to assign a lead to this partner. (0 means no assignment.)" />
+        <field name="WebsiteUrl" type="string" />
+    </model>
 </buvi>

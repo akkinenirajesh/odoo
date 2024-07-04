@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailActivityPlan" name="MailActivityPlan" description="Activity Plan">
+    <field name="Name" type="string" label="Name" required="true" />
+    <field name="CompanyId" type="Res.Company" label="Company" default="Env.Company" />
+    <field name="TemplateIds" type="Mail.MailActivityPlanTemplate" collection="true" label="Activities" copy="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="ResModelId" type="Ir.Model" label="Applies to" ondelete="cascade" readonly="false" required="true" />
+    <field name="ResModel" type="selection" selection="GetModelSelection" label="Model" required="true"
+      help="Specify a model if the activity should be specific to a model and not available when managing activities for other models." />
+    <field name="StepsCount" type="integer" readonly="true" />
+    <field name="HasUserOnDemand" type="bool" readonly="true" />
+  </model>
+  <optionset id="Mail.ActivityType" name="Activity Type">
+    <option value="on_demand" name="On Demand" />
+    <option value="scheduled" name="Scheduled" />
+  </optionset>
 </buvi>

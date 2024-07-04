@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosSession" name="PosSession" description="Point of Sale Session">
+        <field name="VivaWalletTerminalId" type="integer" label="Viva Wallet Terminal Id" />
+    </model>
 </buvi>

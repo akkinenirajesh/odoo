@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteSnippetFilter" name="WebsiteSnippetFilter" description="Website Snippet Filter">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="ActionServerId" type="Ir.ActionsServer" label="Server Action" ondelete="cascade" />
+    <field name="FieldNames" type="string" help="A list of comma-separated field names" required="true" />
+    <field name="FilterId" type="Ir.Filters" label="Filter" ondelete="cascade" />
+    <field name="Limit" type="integer" help="The limit is the maximum number of records retrieved" required="true" />
+    <field name="WebsiteId" type="Website" label="Website" ondelete="cascade" />
+    <field name="ModelName" type="string" label="Model name" compute="ComputeModelName" />
+  </model>
+  <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+    <option value="Accounts" name="Accounts" />
+    <option value="Taxes" name="Taxes" />
+    <option value="Products" name="Products" />
+  </optionset>
 </buvi>

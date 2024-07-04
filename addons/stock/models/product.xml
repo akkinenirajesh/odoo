@@ -1,3 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.Product" name="Stock.Product" description="Product">
+        <field name="StockQuantIds" type="collection" relation="Stock.Quant" collection="true" />
+        <field name="StockMoveIds" type="collection" relation="Stock.Move" collection="true" />
+        <field name="QtyAvailable" type="float" label="Quantity On Hand" digits="Product Unit of Measure" compute="ComputeQuantities" search="SearchQtyAvailable" />
+        <field name="VirtualAvailable" type="float" label="Forecasted Quantity" digits="Product Unit of Measure" compute="ComputeQuantities" search="SearchVirtualAvailable" />
+        <field name="FreeQty" type="float" label="Free To Use Quantity" digits="Product Unit of Measure" compute="ComputeQuantities" search="SearchFreeQty" />
+        <field name="IncomingQty" type="float" label="Incoming" digits="Product Unit of Measure" compute="ComputeQuantities" search="SearchIncomingQty" />
+        <field name="OutgoingQty" type="float" label="Outgoing" digits="Product Unit of Measure" compute="ComputeQuantities" search="SearchOutgoingQty" />
+        <field name="OrderpointIds" type="collection" relation="Stock.WarehouseOrderpoint" collection="true" />
+        <field name="NbrMovesIn" type="integer" compute="ComputeNbrMoves" help="Number of incoming stock moves in the past 12 months" />
+        <field name="NbrMovesOut" type="integer" compute="ComputeNbrMoves" help="Number of outgoing stock moves in the past 12 months" />
+        <field name="NbrReorderingRules" type="integer" label="Reordering Rules" compute="ComputeNbrReorderingRules" />
+        <field name="ReorderingMinQty" type="float" compute="ComputeNbrReorderingRules" />
+        <field name="ReorderingMaxQty" type="float" compute="ComputeNbrReorderingRules" />
+        <field name="PutawayRuleIds" type="collection" relation="Stock.PutawayRule" collection="true" />
+        <field name="StorageCategoryCapacityIds" type="collection" relation="Stock.StorageCategoryCapacity" collection="true" />
+        <field name="ShowOnHandQtyStatusButton" type="bool" compute="ComputeShowQtyStatusButton" />
+        <field name="ShowForecastedQtyStatusButton" type="bool" compute="ComputeShowQtyStatusButton" />
+        <field name="ValidEan" type="bool" label="Barcode is valid EAN" compute="ComputeValidEan" />
+        <field name="LotPropertiesDefinition" type="PropertiesDefinition" label="Lot Properties" />
+    </model>
+
+    <model id="Stock.ProductTemplate" name="Stock.ProductTemplate" description="Product Template" checkCompanyAuto="true">
+        <field name="IsStorable" type="bool" label="Track Inventory" store="true" compute="ComputeIsStorable" readonly="false" default="false" precompute="true" />
+        <field name="ResponsibleId" type="Core.ResUsers" label="Responsible" default="env.uid" companyDependent="true" checkCompany="true" />
+        <field name="PropertyStockProduction" type="Stock.Location" label="Production Location" companyDependent="true" checkCompany="true" domain="[('usage', '=', 'production'), '|', ('companyId', '=', false), ('companyId', '=', allowedCompanyIds[0])]" />
+        <field name="PropertyStockInventory" type="Stock.Location" label="Inventory Location" companyDependent="true" checkCompany="true" domain="[('usage', '=', 'inventory'), '|', ('companyId', '=', false), ('companyId', '=', allowedCompanyIds[0])]" />
+        <field name="SaleDelay" type="integer" label="Customer Lead Time" default="0" />
+        <field name="Tracking" type="selection" label="Tracking" required="true" default="none" compute="ComputeTracking" store="true" readonly="false" precompute="true" options="Stock.Tracking" />
+        <field name="DescriptionPicking" type="text" label="Description on Picking" translate="true" />
+        <field name="DescriptionPickingOut" type="text" label="Description on Delivery Orders" translate="true" />
+        <field name="DescriptionPickingIn" type="text" label="Description on Receptions" translate="true" />
+        <field name="QtyAvailable" type="float" label="Quantity On Hand" compute="ComputeQuantities" search="SearchQtyAvailable" />
+        <field name="VirtualAvailable" type="float" label="Forecasted Quantity" compute="ComputeQuantities" search="SearchVirtualAvailable" />
+        <field name="IncomingQty" type="float" label="Incoming" compute="ComputeQuantities" search="SearchIncomingQty" />
+        <field name="OutgoingQty" type="float" label="Outgoing" compute="ComputeQuantities" search="SearchOutgoingQty" />
+        <field name="LocationId" type="Stock.Location" label="Location" store="false" />
+        <field name="WarehouseId" type="Stock.Warehouse" label="Warehouse" store="false" />
+        <field name="HasAvailableRouteIds" type="bool" label="Routes can be selected on this product" compute="ComputeHasAvailableRouteIds" />
+        <field name="RouteIds" type="collection" relation="Stock.Route" collection="true" label="Routes" domain="[('productSelectable', '=', true)]" />
+        <field name="NbrMovesIn" type="integer" compute="ComputeNbrMoves" help="Number of incoming stock moves in the past 12 months" />
+        <field name="NbrMovesOut" type="integer" compute="ComputeNbrMoves" help="Number of outgoing stock moves in the past 12 months" />
+        <field name="NbrReorderingRules" type="integer" label="Reordering Rules" compute="ComputeNbrReorderingRules" />
+        <field name="ReorderingMinQty" type="float" compute="ComputeNbrReorderingRules" />
+        <field name="ReorderingMaxQty" type="float" compute="ComputeNbrReorderingRules" />
+        <field name="RouteFromCategIds" type="collection" relation="Stock.Route" collection="true" label="Category Routes" related="CategId.TotalRouteIds" />
+        <field name="ShowOnHandQtyStatusButton" type="bool" compute="ComputeShowQtyStatusButton" />
+        <field name="ShowForecastedQtyStatusButton" type="bool" compute="ComputeShowQtyStatusButton" />
+    </model>
+
+    <model id="Stock.ProductCategory" name="Stock.ProductCategory" description="Product Category">
+        <field name="RouteIds" type="collection" relation="Stock.Route" collection="true" label="Routes" domain="[('productCategSelectable', '=', true)]" />
+        <field name="RemovalStrategyId" type="Stock.ProductRemoval" label="Force Removal Strategy" />
+        <field name="TotalRouteIds" type="collection" relation="Stock.Route" collection="true" label="Total routes" compute="ComputeTotalRouteIds" readonly="true" />
+        <field name="PutawayRuleIds" type="collection" relation="Stock.PutawayRule" collection="true" label="Putaway Rules" />
+        <field name="PackagingReserveMethod" type="selection" label="Reserve Packagings" default="partial" options="Stock.PackagingReserveMethod" />
+        <field name="FilterForStockPutawayRule" type="bool" store="false" search="SearchFilterForStockPutawayRule" />
+    </model>
+
+    <model id="Stock.ProductPackaging" name="Stock.ProductPackaging" description="Product Packaging">
+        <field name="PackageTypeId" type="Stock.PackageType" label="Package Type" />
+        <field name="RouteIds" type="collection" relation="Stock.Route" collection="true" label="Routes" domain="[('packagingSelectable', '=', true)]" />
+    </model>
+
+    <model id="Stock.UoM" name="Stock.UoM" description="UoM">
+    </model>
+
+    <optionset id="Stock.Tracking" name="Tracking">
+        <option value="serial" name="By Unique Serial Number" />
+        <option value="lot" name="By Lots" />
+        <option value="none" name="By Quantity" />
+    </optionset>
+
+    <optionset id="Stock.PackagingReserveMethod" name="Reserve Packagings">
+        <option value="full" name="Reserve Only Full Packagings" />
+        <option value="partial" name="Reserve Partial Packagings" />
+    </optionset>
+
 </buvi>

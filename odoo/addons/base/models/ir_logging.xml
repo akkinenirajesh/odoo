@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrLogging" name="Base.IrLogging" description="Logging">
+        <field name="CreateUid" type="integer" label="Created by" readonly="true" />
+        <field name="CreateDate" type="datetime" label="Created on" readonly="true" />
+        <field name="WriteUid" type="integer" label="Last Updated by" readonly="true" />
+        <field name="WriteDate" type="datetime" label="Last Updated on" readonly="true" />
+        <field name="Name" type="string" required="true" />
+        <field name="Type" type="selection" required="true" index="true">
+            <option value="client" name="Client" />
+            <option value="server" name="Server" />
+        </field>
+        <field name="DbName" type="string" label="Database Name" index="true" />
+        <field name="Level" type="string" index="true" />
+        <field name="Message" type="text" required="true" />
+        <field name="Path" type="string" required="true" />
+        <field name="Func" type="string" label="Function" required="true" />
+        <field name="Line" type="string" required="true" />
+    </model>
 </buvi>

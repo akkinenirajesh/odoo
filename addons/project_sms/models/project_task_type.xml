@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ProjectTaskType" name="ProjectTaskType" description="Project Task Type">
+        <field name="SmsTemplateId" type="Project.ProjectTaskType.SmsTemplateId" label="SMS Template" collection="true"
+            help="If set, an SMS Text Message will be automatically sent to the customer when the task reaches this stage." />
+    </model>
+
+    <model id="Project.ProjectTaskType.SmsTemplateId" name="SmsTemplateId" description="SMS Template">
+        <field name="Id" type="integer" />
+        <field name="Model" type="string" label="Model" />
+    </model>
+
+    <optionset id="Project.ProjectTaskType.SmsTemplateId.Model" name="Model">
+        <option value="project.task" name="Project Task" />
+    </optionset>
 </buvi>

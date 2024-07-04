@@ -1,19 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="res.lang" name="Res.Lang" track_created="true" track_update="true">
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Code" label="Locale Code" type="string" required="true" copied="true"/>
-    <field name="DateFormat" label="Date Format" type="string" required="true" copied="true"/>
-    <field name="DecimalPoint" label="Decimal Separator" type="string" required="true" copied="true"/>
-    <field name="Direction" label="Direction" type="Res.LanguagesDirection" required="true" copied="true"/>
-    <field name="FlagImage" label="Image" type="binary" copied="true"/>
-    <field name="FlagImageUrl" label="Flag Image Url" type="string" readonly="true" transient="true"/>
-    <field name="Grouping" label="Separator Format" type="string" required="true" copied="true"/>
-    <field name="IsoCode" label="ISO code" type="string" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="ThousandsSep" label="Thousands Separator" type="string" copied="true"/>
-    <field name="TimeFormat" label="Time Format" type="string" required="true" copied="true"/>
-    <field name="UrlCode" label="URL Code" type="string" required="true" copied="true"/>
-    <field name="WeekStart" label="First Day of Week" type="Res.LanguagesFirstDayOfWeek" required="true" copied="true"/>
+  <model id="Base.PartnerCategory" name="PartnerCategory" description="Partner Tags">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="DisplayName" type="string" label="Display Name" compute="ComputeDisplayName" search="SearchDisplayName" />
+    <field name="Color" type="integer" label="Color" default="GetDefaultColor" />
+    <field name="Parent" type="Base.PartnerCategory" label="Category" collection="true" />
+    <field name="ChildIds" type="Base.PartnerCategory" label="Child Tags" collection="true" />
+    <field name="Active" type="bool" default="true" help="The active field allows you to hide the category without removing it." />
+    <field name="ParentPath" type="string" />
+    <field name="PartnerIds" type="Base.Partner" label="Partners" collection="true" />
+  </model>
+
+  <model id="Base.PartnerTitle" name="PartnerTitle" description="Partner Title">
+    <field name="Name" type="string" label="Title" required="true" translate="true" />
+    <field name="Shortcut" type="string" label="Abbreviation" translate="true" />
+  </model>
+
+  <model id="Base.Partner" name="Partner" description="Contact" inherit="FormatAddressMixin, FormatVATLabelMixin, AvatarMixin">
+    <field name="Name" type="string" index="true" defaultExportCompatible="true" />
+    <field name="CompleteName" type="string" compute="ComputeCompleteName" store="true" index="true" />
+    <field name="Title" type="Base.PartnerTitle" />
+    <field name="Parent" type="Base.Partner" label="Related Company" collection="true" />
+    <field name="ParentName" type="string" related="Parent.Name" readonly="true" label="Parent name" />
+    <field name="ChildIds" type="Base.Partner" label="Contact" collection="true" domain="[('Active', '=', true)]" context="{active_test: false}" />
+    <field name="Ref" type="string" label="Reference" index="true" />
+    <field name="Lang" type="string" label="Language"
+        help="All the emails and documents sent to this contact will be translated in this language." />
+    <field name="ActiveLangCount" type="integer" compute="ComputeActiveLangCount" />
+    <field name="Tz" type="string" label="Timezone" default="GetDefaultTimeZone"
+        help="When printing documents and exporting/importing data, time values are computed according to this timezone.
+If the timezone is not set, UTC (Coordinated Universal Time) is used.
+Anywhere else, time values are computed according to the time offset of your web client." />
+    <field name="TzOffset" type="string" label="Timezone offset" compute="ComputeTzOffset" />
+    <field name="UserId" type="Res.Users" label="Salesperson"
+        compute="ComputeUserId" precompute="true" readonly="false" store="true"
+        help="The internal user in charge of this contact." />
+    <field name="Vat" type="string" label="Tax ID" index="true" help="The Tax Identification Number. Values here will be validated based on the country format. You can use '/' to indicate that the partner is not subject to tax." />
+    <field name="SameVatPartner" type="Base.Partner" label="Partner with same Tax ID" compute="ComputeSameVatPartner" store="false" />
+    <field name="SameCompanyRegistryPartner" type="Base.Partner" label="Partner with same Company Registry" compute="ComputeSameVatPartner" store="false" />
+    <field name="CompanyRegistry" type="string" label="Company ID" compute="ComputeCompanyRegistry" store="true" readonly="false"
+       help="The registry number of the company. Use it if it is different from the Tax ID. It must be unique across all partners of a same country" />
+    <field name="BankIds" type="Base.PartnerBank" label="Banks" collection="true" />
+    <field name="Website" type="string" label="Website Link" />
+    <field name="Comment" type="html" label="Notes" />
+    <field name="Category" type="Base.PartnerCategory" label="Tags" collection="true" default="GetDefaultCategory" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Employee" type="bool" help="Check this box if this contact is an Employee." />
+    <field name="Function" type="string" label="Job Position" />
+    <field name="Type" type="selection" label="Address Type"
+        selection="[('contact', 'Contact'), ('invoice', 'Invoice Address'), ('delivery', 'Delivery Address'), ('other', 'Other Address')]"
+        default="contact" />
+    <field name="Street" type="string" />
+    <field name="Street2" type="string" />
+    <field name="Zip" type="string" changeDefault="true" />
+    <field name="City" type="string" />
+    <field name="State" type="Core.CountryState" label="State" domain="[('Country', '=?', Country)]" />
+    <field name="Country" type="Core.Country" label="Country" />
+    <field name="CountryCode" type="string" related="Country.Code" label="Country Code" />
+    <field name="PartnerLatitude" type="float" label="Geo Latitude" digits="(10, 7)" />
+    <field name="PartnerLongitude" type="float" label="Geo Longitude" digits="(10, 7)" />
+    <field name="Email" type="string" />
+    <field name="EmailFormatted" type="string" label="Formatted Email" compute="ComputeEmailFormatted"
+        help='Format email address "Name <email@domain>"' />
+    <field name="Phone" type="string" />
+    <field name="Mobile" type="string" />
+    <field name="IsCompany" type="bool" label="Is a Company" default="false"
+        help="Check if the contact is a company, otherwise it is a person" />
+    <field name="IsPublic" type="bool" compute="ComputeIsPublic" />
+    <field name="Industry" type="Base.PartnerIndustry" label="Industry" />
+    <field name="CompanyType" type="selection" label="Company Type"
+        selection="[('person', 'Individual'), ('company', 'Company')]"
+        compute="ComputeCompanyType" inverse="WriteCompanyType" />
+    <field name="Company" type="Res.Company" label="Company" />
+    <field name="Color" type="integer" label="Color Index" default="0" />
+    <field name="UserIds" type="Res.Users" label="Users" collection="true" />
+    <field name="PartnerShare" type="bool" label="Share Partner" compute="ComputePartnerShare" store="true"
+        help="Either customer (not a user), either shared user. Indicated the current partner is a customer without 
+access or with a limited access created for sharing data." />
+    <field name="ContactAddress" type="string" compute="ComputeContactAddress" label="Complete Address" />
+    <field name="CommercialPartner" type="Base.Partner" label="Commercial Entity"
+        compute="ComputeCommercialPartner" store="true" recursive="true" index="true" />
+    <field name="CommercialCompanyName" type="string" label="Company Name Entity" compute="ComputeCommercialCompanyName" store="true" />
+    <field name="CompanyName" type="string" label="Company Name" />
+    <field name="Barcode" type="string" help="Use a barcode to identify this contact." copy="false" companyDependent="true" />
+    <field name="Self" type="Base.Partner" compute="ComputeGetIds" />
+  </model>
+
+  <optionset id="Base.PartnerType" name="Address Type">
+    <option value="contact" name="Contact" />
+    <option value="invoice" name="Invoice Address" />
+    <option value="delivery" name="Delivery Address" />
+    <option value="other" name="Other Address" />
+  </optionset>
+
+  <model id="Base.PartnerIndustry" name="PartnerIndustry" description="Industry">
+    <field name="Name" type="string" label="Name" translate="true" />
+    <field name="FullName" type="string" label="Full Name" translate="true" />
+    <field name="Active" type="bool" label="Active" default="true" />
   </model>
 </buvi>

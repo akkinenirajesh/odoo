@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.EmbeddedSlide" name="Website.EmbeddedSlide" description="Embedded Slides View Counter">
+        <field name="SlideId" type="Website.Slide" label="Presentation" required="true" index="true" ondelete="cascade" />
+        <field name="Url" type="string" label="Third Party Website URL" />
+        <field name="WebsiteName" type="string" label="Website" computed="true" />
+        <field name="CountViews" type="integer" label="# Views" default="1" />
+    </model>
 </buvi>

@@ -1,3 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrderLine" name="SaleOrderLine" description="Sales Order Line">
+    <field name="OrderId" type="Sale.SaleOrder" label="Order Reference" required="true" collection="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="10" />
+    <field name="CompanyId" type="Core.Company" label="Company" collection="true" />
+    <field name="CurrencyId" type="Res.Currency" label="Currency" collection="true" />
+    <field name="OrderPartnerId" type="Res.Partner" label="Customer" collection="true" />
+    <field name="SalesmanId" type="Res.Users" label="Salesperson" collection="true" />
+    <field name="State" type="selection" label="Order Status" selection="SaleOrderState" collection="true" />
+    <field name="TaxCountryId" type="Core.Country" label="Tax Country" collection="true" />
+    <field name="DisplayType" type="selection" label="Display Type" selection="SaleOrderLineDisplayType" />
+    <field name="IsConfigurableProduct" type="bool" label="Is the product configurable?" collection="true" />
+    <field name="IsDownpayment" type="bool" label="Is a down payment"
+      help="Down payments are made when creating invoices from a sales order."
+      " They are not copied when duplicating a sales order." />
+    <field name="IsExpense" type="bool" label="Is expense"
+      help="Is true if the sales order line comes from an expense or a vendor bills" />
+    <field name="ProductId" type="Product.Product" label="Product" collection="true" />
+    <field name="ProductTemplateId" type="Product.Template" label="Product Template" collection="true" />
+    <field name="ProductUomCategoryId" type="Uom.UomCategory" label="Product Uom Category" collection="true" />
+    <field name="ProductTemplateAttributeValueIds" type="Product.TemplateAttributeValue" label="Product Template Attribute Value Ids" collection="true" />
+    <field name="ProductCustomAttributeValueIds" type="Product.AttributeCustomValue" label="Custom Values" collection="true" />
+    <field name="ProductNoVariantAttributeValueIds" type="Product.TemplateAttributeValue" label="Extra Values" collection="true" />
+    <field name="IsProductArchived" type="bool" label="Is Product Archived" collection="true" />
+    <field name="Name" type="text" label="Description" collection="true" />
+    <field name="ProductUomQty" type="float" label="Quantity" required="true" collection="true" />
+    <field name="ProductUom" type="Uom.Uom" label="Unit of Measure" collection="true" />
+    <field name="LinkedLineId" type="Sale.SaleOrderLine" label="Linked Order Line" collection="true" />
+    <field name="LinkedLineIds" type="Sale.SaleOrderLine" label="Linked Order Lines" collection="true" />
+    <field name="TaxId" type="Account.Tax" label="Taxes" collection="true" />
+    <field name="PricelistItem" type="Product.PricelistItem" label="Pricelist Item" collection="true" />
+    <field name="PriceUnit" type="float" label="Unit Price" required="true" collection="true" />
+    <field name="Discount" type="float" label="Discount (%)" collection="true" />
+    <field name="PriceSubtotal" type="monetary" label="Subtotal" collection="true" />
+    <field name="PriceTax" type="float" label="Total Tax" collection="true" />
+    <field name="PriceTotal" type="monetary" label="Total" collection="true" />
+    <field name="PriceReduceTaxexcl" type="monetary" label="Price Reduce Tax excl" collection="true" />
+    <field name="PriceReduceTaxinc" type="monetary" label="Price Reduce Tax incl" collection="true" />
+    <field name="ProductPackagingId" type="Product.Packaging" label="Packaging" collection="true" />
+    <field name="ProductPackagingQty" type="float" label="Packaging Quantity" collection="true" />
+    <field name="CustomerLead" type="float" label="Lead Time" required="true" collection="true"
+      help="Number of days between the order confirmation and the shipping of the products to the customer" />
+    <field name="QtyDeliveredMethod" type="selection" label="Method to update delivered qty" selection="SaleOrderLineQtyDeliveredMethod" collection="true"
+      help="According to product configuration, the delivered quantity can be automatically computed by mechanism:\n"
+      "  - Manual: the quantity is set manually on the line\n"
+      "  - Analytic From expenses: the quantity is the quantity sum from posted expenses\n"
+      "  - Timesheet: the quantity is the sum of hours recorded on tasks linked to this sale line\n"
+      "  - Stock Moves: the quantity comes from confirmed pickings\n" />
+    <field name="QtyDelivered" type="float" label="Delivery Quantity" collection="true" />
+    <field name="QtyInvoiced" type="float" label="Invoiced Quantity" collection="true" />
+    <field name="QtyToInvoice" type="float" label="Quantity To Invoice" collection="true" />
+    <field name="AnalyticLineIds" type="Account.AnalyticLine" label="Analytic lines" collection="true" />
+    <field name="InvoiceLines" type="Account.MoveLine" label="Invoice Lines" collection="true" />
+    <field name="InvoiceStatus" type="selection" label="Invoice Status" selection="SaleOrderLineInvoiceStatus" collection="true" />
+    <field name="UntaxedAmountInvoiced" type="monetary" label="Untaxed Invoiced Amount" collection="true" />
+    <field name="UntaxedAmountToInvoice" type="monetary" label="Untaxed Amount To Invoice" collection="true" />
+    <field name="ProductType" type="selection" label="Product Type" selection="ProductType" collection="true" />
+    <field name="ServiceTracking" type="selection" label="Service Tracking" selection="ServiceTracking" collection="true" />
+    <field name="ProductUpdatable" type="bool" label="Can Edit Product" collection="true" />
+    <field name="ProductUomReadOnly" type="bool" label="Product Uom Readonly" collection="true" />
+    <field name="TaxCalculationRoundingMethod" type="selection" label="Tax calculation rounding method" selection="TaxCalculationRoundingMethod" collection="true" />
+  </model>
+
+  <optionset id="Sale.SaleOrderLineDisplayType" name="Sale Order Line Display Type">
+    <option value="LineSection" name="Section" />
+    <option value="LineNote" name="Note" />
+  </optionset>
+
+  <optionset id="Sale.SaleOrderLineQtyDeliveredMethod" name="Sale Order Line Qty Delivered Method">
+    <option value="Manual" name="Manual" />
+    <option value="Analytic" name="Analytic From Expenses" />
+  </optionset>
+
+  <optionset id="Sale.SaleOrderLineInvoiceStatus" name="Sale Order Line Invoice Status">
+    <option value="Upselling" name="Upselling Opportunity" />
+    <option value="Invoiced" name="Fully Invoiced" />
+    <option value="ToInvoice" name="To Invoice" />
+    <option value="No" name="Nothing to Invoice" />
+  </optionset>
 </buvi>

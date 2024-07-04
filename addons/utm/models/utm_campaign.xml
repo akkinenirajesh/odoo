@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Utm.UtmCampaign" name="UtmCampaign" description="UTM Campaign">
+    <field name="Active" type="bool" default="true" />
+    <field name="Name" type="string" label="Campaign Identifier" required="true" translate="false" />
+    <field name="Title" type="string" label="Campaign Name" required="true" translate="true" />
+    <field name="UserId" type="Res.Users" label="Responsible" required="true" />
+    <field name="StageId" type="Utm.Stage" label="Stage" required="true" collection="true" />
+    <field name="TagIds" type="Utm.Tag" label="Tags" collection="true" />
+    <field name="IsAutoCampaign" type="bool" label="Automatically Generated Campaign" help="Allows us to filter relevant Campaigns" />
+    <field name="Color" type="integer" label="Color Index" />
+    <unique>
+      <field name="Name" />
+      <message>The name must be unique</message>
+    </unique>
+  </model>
 </buvi>

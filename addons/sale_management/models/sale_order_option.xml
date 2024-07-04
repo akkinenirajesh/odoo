@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrderOption" name="Sale.SaleOrderOption" description="Sale Options">
+    <field name="OrderId" type="Sale.SaleOrder" label="Sales Order Reference" relation="true" ondelete="cascade" index="true" />
+    <field name="ProductId" type="Product.Product" required="true" domain="[('SaleOk', '=', true)]" />
+    <field name="LineId" type="Sale.SaleOrderLine" relation="true" ondelete="set null" />
+    <field name="Sequence" type="integer" label="Sequence" help="Gives the sequence order when displaying a list of optional products." />
+    <field name="Name" type="text" label="Description" compute="ComputeName" store="true" readonly="false" required="true" precompute="true" />
+    <field name="Quantity" type="float" label="Quantity" required="true" digits="Product Unit of Measure" default="1" />
+    <field name="UomId" type="Uom.Uom" label="Unit of Measure" compute="ComputeUomId" store="true" readonly="false" required="true" precompute="true" domain="[('CategoryId', '=', ProductUomCategoryId)]" />
+    <field name="ProductUomCategoryId" type="Uom.UomCategory" relation="true" />
+    <field name="PriceUnit" type="float" label="Unit Price" digits="Product Price" compute="ComputePriceUnit" store="true" readonly="false" required="true" precompute="true" />
+    <field name="Discount" type="float" label="Discount (%)" digits="Discount" compute="ComputeDiscount" store="true" readonly="false" precompute="true" />
+    <field name="IsPresent" type="bool" label="Present on Quotation" compute="ComputeIsPresent" search="SearchIsPresent" help="This field will be checked if the option line's product is already present in the quotation." />
+  </model>
 </buvi>

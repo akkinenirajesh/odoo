@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockWarehouse" name="StockWarehouse" description="Stock Warehouse">
+        <field name="AutoBatch" type="bool" label="Auto Batch" default="true" help="Enable automatic batch creation for incoming and outgoing picking types." />
+        <field name="BatchGroupByPartner" type="bool" label="Group by Partner" default="true" help="Group picking into batches based on the partner." />
+    </model>
 </buvi>

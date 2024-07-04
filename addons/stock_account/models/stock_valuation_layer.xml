@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockValuationLayer" name="StockValuationLayer" description="Stock Valuation Layer">
+        <field name="CompanyId" type="Res.Company" label="Company" required="true" readonly="true" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" readonly="true" checkCompany="true" autoJoin="true" />
+        <field name="CategId" type="Product.Category" related="ProductId.CategId" store="true" />
+        <field name="ProductTmplId" type="Product.Template" related="ProductId.ProductTmplId" />
+        <field name="Quantity" type="float" label="Quantity" readonly="true" digits="Product Unit of Measure" />
+        <field name="UomId" type="Product.Uom" related="ProductId.UomId" readonly="true" required="true" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" related="CompanyId.CurrencyId" readonly="true" required="true" />
+        <field name="UnitCost" type="float" label="Unit Value" readonly="true" digits="Product Price" aggregator="None" />
+        <field name="Value" type="monetary" label="Total Value" readonly="true" />
+        <field name="RemainingQty" type="float" readonly="true" digits="Product Unit of Measure" />
+        <field name="RemainingValue" type="monetary" label="Remaining Value" readonly="true" />
+        <field name="Description" type="char" label="Description" readonly="true" />
+        <field name="StockValuationLayerId" type="Stock.StockValuationLayer" label="Linked To" readonly="true" checkCompany="true" index="true" />
+        <field name="StockValuationLayerIds" type="Stock.StockValuationLayer" collection="true" />
+        <field name="StockMoveId" type="Stock.Move" label="Stock Move" readonly="true" checkCompany="true" index="true" />
+        <field name="AccountMoveId" type="Account.Move" label="Journal Entry" readonly="true" checkCompany="true" index="btree_not_null" />
+        <field name="AccountMoveLineId" type="Account.MoveLine" label="Invoice Line" readonly="true" checkCompany="true" index="btree_not_null" />
+        <field name="Reference" type="char" related="StockMoveId.Reference" />
+        <field name="PriceDiffValue" type="float" label="Invoice value correction with invoice currency" />
+        <field name="WarehouseId" type="Stock.Warehouse" label="Receipt WH" compute="ComputeWarehouseId" search="SearchWarehouseId" />
+    </model>
 </buvi>

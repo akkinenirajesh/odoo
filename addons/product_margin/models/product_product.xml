@@ -1,5 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Product.Product" name="Product.Product" description="Product Product">
+    <field name="DateFrom" type="date" label="Margin Date From" compute="ComputeProductMarginFieldsValues" />
+    <field name="DateTo" type="date" label="Margin Date To" compute="ComputeProductMarginFieldsValues" />
+    <field name="InvoiceState" type="selection" label="Invoice State" readonly="true" compute="ComputeProductMarginFieldsValues">
+      <option value="Paid" name="Paid" />
+      <option value="OpenPaid" name="Open and Paid" />
+      <option value="DraftOpenPaid" name="Draft, Open and Paid" />
+    </field>
+    <field name="SaleAveragePrice" type="float" label="Avg. Sale Unit Price" help="Avg. Price in Customer Invoices" compute="ComputeProductMarginFieldsValues" />
+    <field name="PurchaseAveragePrice" type="float" label="Avg. Purchase Unit Price" help="Avg. Price in Vendor Bills" compute="ComputeProductMarginFieldsValues" />
+    <field name="SaleNumInvoiced" type="float" label="# Invoiced in Sale" help="Sum of Quantity in Customer Invoices" compute="ComputeProductMarginFieldsValues" />
+    <field name="PurchaseNumInvoiced" type="float" label="# Invoiced in Purchase" help="Sum of Quantity in Vendor Bills" compute="ComputeProductMarginFieldsValues" />
+    <field name="SalesGap" type="float" label="Sales Gap" help="Expected Sale - Turn Over" compute="ComputeProductMarginFieldsValues" />
+    <field name="PurchaseGap" type="float" label="Purchase Gap" help="Normal Cost - Total Cost" compute="ComputeProductMarginFieldsValues" />
+    <field name="Turnover" type="float" label="Turnover" help="Sum of Multiplication of Invoice price and quantity of Customer Invoices" compute="ComputeProductMarginFieldsValues" />
+    <field name="TotalCost" type="float" label="Total Cost" help="Sum of Multiplication of Invoice price and quantity of Vendor Bills" compute="ComputeProductMarginFieldsValues" />
+    <field name="SaleExpected" type="float" label="Expected Sale" help="Sum of Multiplication of Sale Catalog price and quantity of Customer Invoices" compute="ComputeProductMarginFieldsValues" />
+    <field name="NormalCost" type="float" label="Normal Cost" help="Sum of Multiplication of Cost price and quantity of Vendor Bills" compute="ComputeProductMarginFieldsValues" />
+    <field name="TotalMargin" type="float" label="Total Margin" help="Turnover - Total cost" compute="ComputeProductMarginFieldsValues" />
+    <field name="ExpectedMargin" type="float" label="Expected Margin" help="Expected Sale - Normal Cost" compute="ComputeProductMarginFieldsValues" />
+    <field name="TotalMarginRate" type="float" label="Total Margin Rate(%)" help="Total margin * 100 / Turnover" compute="ComputeProductMarginFieldsValues" />
+    <field name="ExpectedMarginRate" type="float" label="Expected Margin (%)" help="Expected margin * 100 / Expected Sale" compute="ComputeProductMarginFieldsValues" />
   </model>
 </buvi>

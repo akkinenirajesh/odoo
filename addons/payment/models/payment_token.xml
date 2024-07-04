@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentToken" name="PaymentToken" description="Payment Token">
+    <field name="ProviderId" type="Payment.PaymentProvider" label="Provider" required="true" />
+    <field name="ProviderCode" type="string" label="Provider Code" related="ProviderId.Code" />
+    <field name="CompanyId" type="Core.Company" label="Company" related="ProviderId.CompanyId" store="true" index="true" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" label="Payment Method" readonly="true" required="true" />
+    <field name="PaymentMethodCode" type="string" label="Payment Method Code" related="PaymentMethodId.Code" />
+    <field name="PaymentDetails" type="string" label="Payment Details" help="The clear part of the payment method's payment details." />
+    <field name="PartnerId" type="Res.Partner" label="Partner" required="true" />
+    <field name="ProviderRef" type="string" label="Provider Reference" required="true" help="The provider reference of the token of the transaction." />
+    <field name="TransactionIds" type="Payment.PaymentTransaction" collection="true" label="Payment Transactions" inverseName="TokenId" />
+    <field name="Active" type="bool" label="Active" default="true" />
+  </model>
 </buvi>

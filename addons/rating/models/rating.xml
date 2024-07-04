@@ -1,3 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Rating.Rating" name="Rating" description="Rating">
+    <field name="CreateDate" type="datetime" label="Submitted on" />
+    <field name="ResName" type="string" label="Resource name" compute="ComputeResName" store="true" />
+    <field name="ResModelId" type="ir.model" label="Related Document Model" index="true" ondelete="cascade" />
+    <field name="ResModel" type="string" label="Document Model" related="ResModelId.Model" store="true" index="true" readonly="true" />
+    <field name="ResId" type="many2oneReference" label="Document" model_field="ResModel" required="true" index="true" />
+    <field name="ResourceRef" type="reference" label="Resource Ref" selection="SelectionTargetModel" compute="ComputeResourceRef" readonly="true" />
+    <field name="ParentResName" type="string" label="Parent Document Name" compute="ComputeParentResName" store="true" />
+    <field name="ParentResModelId" type="ir.model" label="Parent Related Document Model" index="true" ondelete="cascade" />
+    <field name="ParentResModel" type="string" label="Parent Document Model" store="true" related="ParentResModelId.Model" index="true" readonly="false" />
+    <field name="ParentResId" type="integer" label="Parent Document" index="true" />
+    <field name="ParentRef" type="reference" label="Parent Ref" selection="SelectionTargetModel" compute="ComputeParentRef" readonly="true" />
+    <field name="RatedPartnerId" type="res.partner" label="Rated Operator" />
+    <field name="RatedPartnerName" type="string" related="RatedPartnerId.Name" />
+    <field name="PartnerId" type="res.partner" label="Customer" />
+    <field name="Rating" type="float" label="Rating Value" aggregator="avg" default="0" />
+    <field name="RatingImage" type="binary" label="Image" compute="ComputeRatingImage" />
+    <field name="RatingImageUrl" type="char" label="Image URL" compute="ComputeRatingImage" />
+    <field name="RatingText" type="selection" label="Rating" store="true" compute="ComputeRatingText" readonly="true" optionset="Rating.RatingText" />
+    <field name="Feedback" type="text" label="Comment" />
+    <field name="MessageId" type="mail.message" label="Message" index="true" ondelete="cascade" />
+    <field name="IsInternal" type="bool" label="Visible Internally Only" readonly="false" related="MessageId.IsInternal" store="true" />
+    <field name="AccessToken" type="char" label="Security Token" default="DefaultAccessToken" />
+    <field name="Consumed" type="bool" label="Filled Rating" />
+    <constraint name="RatingRange" type="check" message="Rating should be between 0 and 5">
+      <field name="Rating" operator="&gt;=" value="0" />
+      <field name="Rating" operator="&lt;=" value="5" />
+    </constraint>
+  </model>
+
+  <optionset id="Rating.RatingText" name="Rating Text">
+    <option value="Very Bad" name="Very Bad" />
+    <option value="Bad" name="Bad" />
+    <option value="Average" name="Average" />
+    <option value="Good" name="Good" />
+    <option value="Very Good" name="Very Good" />
+  </optionset>
+
+  <model id="ir.model" name="IrModel" description="Model">
+    <field name="Model" type="char" />
+  </model>
+
+  <model id="mail.message" name="MailMessage" description="Mail Message">
+    <field name="IsInternal" type="bool" />
+  </model>
+
+  <model id="res.partner" name="ResPartner" description="Partner">
+    <field name="Name" type="string" />
+  </model>
+
+  <model id="many2oneReference" name="Many2oneReference" description="Many2one Reference">
+    <field name="ResModel" type="string" />
+    <field name="ResId" type="integer" />
+  </model>
+
+  <model id="reference" name="Reference" description="Reference">
+    <field name="ResModel" type="string" />
+    <field name="ResId" type="integer" />
+  </model>
 </buvi>

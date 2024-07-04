@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+    <field name="Name" type="string" label="Product Name" required="true" translate="true" />
+    <field name="ProductType" type="selection" label="Product Type" selection="Product.ProductType" />
+    <field name="AllowZeroPrice" type="bool" label="Allow Zero Price" />
   </model>
+
+  <optionset id="Product.ProductType" name="Product Type">
+    <option value="Consumable" name="Consumable" />
+    <option value="Service" name="Service" />
+    <option value="Product" name="Storable Product" />
+    <option value="event_booth" name="Event Booth" />
+  </optionset>
 </buvi>

@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Spreadsheet.ResLang" name="ResLang" description="Language">
+    <field name="Name" type="string" label="Language Name" required="true" translate="true" />
+    <field name="Code" type="string" label="Language Code" required="true" />
+    <field name="Direction" type="selection" selection="Spreadsheet.ResLangDirection" label="Direction" required="true" default="ltr" />
+    <field name="Dateformat" type="string" label="Date Format" required="true" />
+    <field name="Timeformat" type="string" label="Time Format" required="true" />
+    <field name="DecimalPoint" type="string" label="Decimal Separator" required="true" />
+    <field name="ThousandsSep" type="string" label="Thousands Separator" required="true" />
+    <field name="WeekStart" type="integer" label="Week Start" required="true" />
+  </model>
+
+  <optionset id="Spreadsheet.ResLangDirection" name="Language Direction">
+    <option value="ltr" name="Left to Right" />
+    <option value="rtl" name="Right to Left" />
+  </optionset>
 </buvi>

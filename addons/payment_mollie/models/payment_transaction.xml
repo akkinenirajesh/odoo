@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+        <field name="ProviderCode" type="string" label="Provider Code" required="true" />
+        <field name="ProviderReference" type="string" label="Provider Reference" />
+        <field name="PaymentMethodCode" type="string" label="Payment Method Code" />
+        <field name="PaymentMethodId" type="Payment.PaymentMethod" relation="one2many" collection="true" label="Payment Method" />
+        <field name="Reference" type="string" label="Reference" />
+        <field name="Amount" type="decimal" label="Amount" required="true" />
+        <field name="CurrencyId" type="Res.Currency" relation="one2many" collection="true" label="Currency" />
+        <field name="State" type="Payment.TransactionState" label="State" />
+        <field name="AcquirerId" type="Payment.Acquirer" relation="one2many" collection="true" label="Acquirer" />
+        <field name="Date" type="date" label="Date" />
+        <field name="DateValidate" type="date" label="Date Validate" />
+        <field name="DateDone" type="date" label="Date Done" />
+        <field name="PartnerId" type="Res.Partner" relation="one2many" collection="true" label="Partner" />
+    </model>
+
+    <optionset id="Payment.TransactionState" name="Transaction State">
+        <option value="draft" name="Draft" />
+        <option value="pending" name="Pending" />
+        <option value="authorized" name="Authorized" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Canceled" />
+        <option value="error" name="Error" />
+    </optionset>
 </buvi>

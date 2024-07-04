@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Utm.UtmSource" name="Utm.UtmSource" description="UTM Source">
+    <field name="Name" type="string" label="Source Name" required="true" translate="true" />
+    <unique>
+      <field name="Name" />
+      <message>The name must be unique</message>
+    </unique>
+  </model>
+  <model id="Utm.UtmSourceMixin" name="Utm.UtmSourceMixin" description="UTM Source Mixin" abstract="true">
+    <field name="Name" type="string" label="Name" readonly="false" related="SourceId.Name" />
+    <field name="SourceId" type="Utm.UtmSource" label="Source" required="true" ondelete="restrict" copy="false" />
+  </model>
 </buvi>

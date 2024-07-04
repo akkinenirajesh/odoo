@@ -1,3 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Fetchmail.FetchmailServer" name="FetchmailServer" description="Fetchmail Server">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="ServerType" type="Fetchmail.FetchmailServerType" />
+        <field name="Server" type="string" label="Server" />
+        <field name="Port" type="integer" label="Port" />
+        <field name="IsSsl" type="bool" label="SSL" />
+        <field name="Username" type="string" label="Username" />
+        <field name="Password" type="password" label="Password" />
+        <field name="Database" type="string" label="Database" />
+        <field name="Timeout" type="integer" label="Timeout" />
+        <field name="Interval" type="integer" label="Interval" />
+        <field name="MaxMails" type="integer" label="Max Mails" />
+        <field name="UseTLS" type="bool" label="Use TLS" />
+        <field name="UseStartTLS" type="bool" label="Use STARTTLS" />
+        <field name="NoVerifySSL" type="bool" label="No Verify SSL" />
+        <field name="AutoDelete" type="bool" label="Auto Delete" />
+        <field name="IsMicrosoftOutlookConfigured" type="bool" label="Is Microsoft Outlook Configured" />
+        <field name="MicrosoftOutlookRefreshToken" type="string" label="Microsoft Outlook Refresh Token" />
+        <field name="MicrosoftOutlookAccessToken" type="string" label="Microsoft Outlook Access Token" />
+        <field name="MicrosoftOutlookAccessTokenExpiration" type="datetime" label="Microsoft Outlook Access Token Expiration" />
+        <field name="ServerTypeInfo" type="string" label="Server Type Info" />
+        <compute name="ComputeServerTypeInfo" field="ServerTypeInfo" depends="ServerType" />
+        <compute name="ComputeIsMicrosoftOutlookConfigured" field="IsMicrosoftOutlookConfigured" depends="ServerType" />
+        <constraint name="CheckUseMicrosoftOutlookService" fields="ServerType, IsSsl" />
+        <onchange name="OnChangeServerType" field="ServerType" />
+        <method name="ImapLogin" />
+        <method name="GetConnectionType" />
+        <field name="User" type="Res.Users" />
+    </model>
+
+    <optionset id="Fetchmail.FetchmailServerType" name="Fetchmail Server Type">
+        <option value="imap" name="IMAP" />
+        <option value="pop3" name="POP3" />
+        <option value="outlook" name="Outlook OAuth Authentication" />
+    </optionset>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="L10nPePos.L10nLatamIdentificationType" name="L10nLatamIdentificationType" description="L10n Latam Identification Type">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" translate="true" />
+        <field name="L10nPeVatCode" type="string" label="L10n Pe Vat Code" translate="true" />
+        <field name="Country" type="Core.Country" label="Country" required="true" />
+        <field name="Active" type="bool" default="true" />
+    </model>
 </buvi>

@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderTemplateLine" name="SaleOrderTemplateLine" description="Sale Order Template Line">
+        <field name="ProductId" type="Product.Product" required="true" />
+        <field name="Name" type="string" label="Product Name" required="true" translate="true" />
+        <field name="ProductUoM" type="Product.UoM" />
+        <field name="ProductQty" type="float" label="Quantity" required="true" />
+        <field name="PriceUnit" type="float" label="Unit Price" />
+        <field name="Discount" type="float" label="Discount (%)" />
+        <field name="TaxId" type="Account.Tax" />
+        <field name="PriceTotal" type="float" label="Total Price" />
+        <field name="Description" type="text" label="Description" />
+        <field name="ProductImage" type="binary" label="Image" />
+        <field name="SaleOrderTemplateId" type="Sale.SaleOrderTemplate" relation="true" />
+        <field name="TaskId" type="Project.Task" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="SaleOrderLineId" type="Sale.SaleOrderLine" />
+    </model>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Res.Partner" name="ResPartner" description="Partner">
+        <field name="UblCiiFormat" type="Selection" label="UBL CII Format" selection="Res.Partner.UblCiiFormatSelection" />
+    </model>
+
+    <optionset id="Res.Partner.UblCiiFormatSelection" name="UBL CII Format Selection">
+        <option value="ciusro" name="CIUSRO" />
+    </optionset>
 </buvi>

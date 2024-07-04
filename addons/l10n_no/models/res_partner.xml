@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Partner" name="Res.Partner" description="Partner">
+    <field name="L10nNoBronnoysundNumber" type="string" label="Register of Legal Entities (Brønnøysund Register Center)" size="9" />
+  </model>
 </buvi>

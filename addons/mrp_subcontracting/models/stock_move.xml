@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpSubcontracting.StockMove" name="StockMove" description="Stock Move">
+        <field name="IsSubcontract" type="bool" label="The move is a subcontract receipt" />
+        <field name="ShowSubcontractingDetailsVisible" type="bool" compute="ComputeShowSubcontractingDetailsVisible" />
+        <field name="DisplayAssignSerial" type="bool" compute="ComputeDisplayAssignSerial" />
+        <field name="ShowDetailsVisible" type="bool" compute="ComputeShowDetailsVisible" />
+        <field name="QuantityDone" type="float" />
+        <field name="Quantity" type="float" />
+        <field name="LocationId" type="Stock.Location" />
+        <field name="ProductUomQty" type="float" />
+        <field name="Date" type="datetime" />
+        <field name="State" type="selection" selection="SelectionState" />
+        <field name="HasTracking" type="selection" selection="SelectionHasTracking" />
+        <field name="ProductUom" type="Product.Uom" />
+        <field name="PickingId" type="Stock.Picking" />
+        <field name="PartnerId" type="Res.Partner" />
+        <field name="Company" type="Res.Company" />
+        <field name="PickingTypeId" type="Stock.PickingType" />
+        <field name="LocationDestId" type="Stock.Location" />
+        <field name="ProductId" type="Product.Product" />
+        <field name="MoveOrigIds" type="MrpSubcontracting.StockMove" collection="true" />
+        <field name="MoveLineIds" type="Stock.MoveLine" collection="true" />
+        <field name="RawMaterialProductionId" type="Mrp.Production" />
+        <field name="OriginReturnedMoveId" type="MrpSubcontracting.StockMove" />
+    </model>
+
+    <optionset id="MrpSubcontracting.SelectionState" name="Stock Move State">
+        <option value="draft" name="Draft" />
+        <option value="cancel" name="Cancelled" />
+        <option value="done" name="Done" />
+    </optionset>
+
+    <optionset id="MrpSubcontracting.SelectionHasTracking" name="Stock Move Has Tracking">
+        <option value="none" name="No" />
+        <option value="lot" name="Lots" />
+        <option value="serial" name="Serial Numbers" />
+    </optionset>
 </buvi>

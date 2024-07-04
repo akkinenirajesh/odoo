@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template inheritance to add an optional email.template to a product.template. When validating an invoice, an email will be send to the customer based on this template. The customer will receive an email for each product linked to an email template.">
+    <field name="EmailTemplateId" type="Mail.Template" label="Product Email Template"
+      help="When validating an invoice, an email will be sent to the customer based on this template. The customer will receive an email for each product linked to an email template." />
+  </model>
 </buvi>

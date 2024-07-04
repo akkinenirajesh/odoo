@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.ProjectTask" name="Project.ProjectTask" description="Project Task">
+    <field name="SaleOrderId" type="Project.Project" relation="Project.Project" />
+    <field name="SoAnalyticAccountId" type="Account.AnalyticAccount" relation="Account.AnalyticAccount" />
+    <field name="PricingType" type="Selection" optionset="Project.PricingType" />
+    <field name="IsProjectMapEmpty" type="bool" />
+    <field name="HasMultiSol" type="bool" />
+    <field name="TimesheetProductId" type="Product.Product" relation="Product.Product" />
+    <field name="RemainingHoursSo" type="float" />
+    <field name="RemainingHoursAvailable" type="bool" />
+  </model>
+
+  <optionset id="Project.PricingType" name="Pricing Type">
+    <option value="employee_rate" name="Employee Rate" />
+    <option value="task_rate" name="Task Rate" />
+  </optionset>
 </buvi>

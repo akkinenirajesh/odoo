@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal">
+    <field name="InvoiceReferenceModel" type="Selection" label="Invoice Reference Model" selection_add="[('se_ocr2', 'Sweden OCR Level 1 & 2'), ('se_ocr3', 'Sweden OCR Level 3'), ('se_ocr4', 'Sweden OCR Level 4')]" ondelete="{'se_ocr2': 'set default', 'se_ocr3': 'set default', 'se_ocr4': 'set default'}" />
+    <field name="L10nSeInvoiceOcrLength" type="integer" label="OCR Number Length" help="Total length of OCR Reference Number including checksum." default="6" />
+  </model>
 </buvi>

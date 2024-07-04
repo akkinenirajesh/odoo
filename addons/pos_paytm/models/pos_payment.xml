@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.PosPayment" name="PosPayment" description="Pos Payment">
+        <field name="PaytmAuthCode" type="string" label="Paytm APPR Code" />
+        <field name="PaytmIssuerCardNo" type="string" label="Paytm Issue Mask Card No." />
+        <field name="PaytmIssuerBank" type="string" label="Paytm Issuer Bank" />
+        <field name="PaytmPaymentMethod" type="string" label="Paytm Payment Method" />
+        <field name="PaytmReferenceNo" type="string" label="Paytm Merchant Reference No." />
+        <field name="PaytmCardScheme" type="string" label="Paytm Card Scheme" />
+    </model>
 </buvi>

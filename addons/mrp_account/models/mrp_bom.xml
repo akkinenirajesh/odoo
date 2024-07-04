@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpBom" name="MrpBom" description="Bill of Material">
+    <field name="Name" type="string" label="Bill of Material" required="true" translate="true" />
+    <field name="Code" type="string" label="Internal Reference" translate="true" />
+    <field name="Product" type="Product.Product" label="Product" required="true" />
+    <field name="ProductVariant" type="Product.Product" label="Variant" />
+    <field name="ProductUoM" type="Product.UoM" label="Unit of Measure" required="true" />
+    <field name="ProductQty" type="float" label="Quantity" default="1" />
+    <field name="Type" type="Mrp.MrpBomType" />
+    <field name="Operation" type="Mrp.MrpRouting" label="Routing" />
+    <field name="Operations" type="Mrp.MrpRouting" label="Routing" collection="true" />
+    <field name="RoutingId" type="integer" label="Routing" />
+    <field name="BomLine" type="Mrp.MrpBomLine" label="BoM Lines" collection="true" />
+    <field name="AnalyticDistributionText" type="text" />
+    <field name="AnalyticDistribution" type="json" store="false" />
+    <field name="AnalyticAccountIds" type="Account.AnalyticAccount" collection="true" />
+  </model>
+
+  <optionset id="Mrp.MrpBomType" name="BoM Type">
+    <option value="phantom" name="Phantom" />
+    <option value="normal" name="Normal" />
+  </optionset>
 </buvi>

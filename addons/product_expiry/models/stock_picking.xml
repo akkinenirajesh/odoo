@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="ProductExpiry.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="MoveLineIds" type="ProductExpiry.StockMoveLine" collection="true" />
+    </model>
+
+    <model id="ProductExpiry.StockMoveLine" name="StockMoveLine" description="Stock Move Line">
+        <field name="LotId" type="ProductExpiry.ProductLot" />
+        <field name="PickingId" type="ProductExpiry.StockPicking" />
+    </model>
+
+    <model id="ProductExpiry.ProductLot" name="ProductLot" description="Product Lot">
+        <field name="ProductExpiryAlert" type="bool" />
+    </model>
 </buvi>

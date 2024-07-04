@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosMercury.MercuryTransaction" name="MercuryTransaction" description="Point of Sale Vantiv Transaction">
+    <field name="PosSessionId" type="integer" />
+    <field name="PaymentMethodId" type="integer" />
+    <field name="OperatorId" type="string" />
+    <field name="MerchantId" type="string" />
+    <field name="MerchantPassword" type="string" />
+    <field name="Memo" type="string" default="Odoo " />
+    <field name="IsVoidSale" type="bool" />
+    <method name="GetPosSession" type="private" />
+    <method name="GetPosMercuryConfigId" type="private" />
+    <method name="SetupRequest" type="private" />
+    <method name="DoRequest" type="private" />
+    <method name="DoReversalOrVoidSale" type="private" />
+    <method name="DoPayment" type="public" />
+    <method name="DoReversal" type="public" />
+    <method name="DoVoidSale" type="public" />
+    <method name="DoReturn" type="public" />
+  </model>
 </buvi>

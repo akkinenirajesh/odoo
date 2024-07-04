@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+    <field name="ToRefund" type="bool" label="Update quantities on SO/PO" copy="true"
+      help="Trigger a decrease of the delivered/received quantity in the associated Sale Order/Purchase Order" />
+    <field name="AccountMoveIds" type="Account.AccountMove" collection="true" />
+    <field name="StockValuationLayerIds" type="Stock.StockValuationLayer" collection="true" />
+    <field name="AnalyticAccountLineIds" type="Account.AccountAnalyticLine" collection="true" />
+  </model>
 </buvi>

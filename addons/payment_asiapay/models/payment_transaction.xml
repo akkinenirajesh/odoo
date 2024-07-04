@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="PaymentTransaction" description="Payment Transaction">
+    <field name="Reference" type="string" label="Reference" />
+    <field name="ProviderCode" type="string" label="Provider Code" />
+    <field name="ProviderReference" type="string" label="Provider Reference" />
+    <field name="PaymentMethodCode" type="string" label="Payment Method Code" />
+    <field name="PaymentMethod" type="Payment.PaymentMethod" collection="true" label="Payment Method" />
+    <field name="Amount" type="decimal" label="Amount" />
+    <field name="Currency" type="Core.Currency" label="Currency" />
+    <field name="State" type="selection" label="State" selection="Payment.TransactionState" />
+    <field name="Date" type="datetime" label="Date" />
+    <field name="Partner" type="Res.Partner" label="Partner" />
+    <field name="PartnerInvoice" type="Account.Invoice" label="Partner Invoice" />
+    <field name="PartnerOrder" type="Sale.Order" label="Partner Order" />
+    <field name="Acquirer" type="Payment.Acquirer" label="Acquirer" />
+  </model>
+
+  <optionset id="Payment.TransactionState" name="Transaction State">
+    <option value="draft" name="Draft" />
+    <option value="authorized" name="Authorized" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+    <option value="error" name="Error" />
+  </optionset>
 </buvi>

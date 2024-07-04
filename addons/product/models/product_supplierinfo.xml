@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Product.SupplierInfo" name="SupplierInfo" description="Supplier Pricelist">
+    <field name="PartnerId" type="Res.Partner" label="Vendor" required="true" ondelete="cascade" checkCompany="true" />
+    <field name="ProductName" type="string" label="Vendor Product Name" help="This vendor's product name will be used when printing a request for quotation. Keep empty to use the internal one." />
+    <field name="ProductCode" type="string" label="Vendor Product Code" help="This vendor's product code will be used when printing a request for quotation. Keep empty to use the internal one." />
+    <field name="Sequence" type="integer" label="Sequence" default="1" help="Assigns the priority to the list of product vendor." />
+    <field name="ProductUom" type="Uom.Uom" label="Unit of Measure" related="ProductTmplId.UomPoId" />
+    <field name="MinQty" type="float" label="Quantity" default="0.0" required="true" digits="Product Unit of Measure" help="The quantity to purchase from this vendor to benefit from the price, expressed in the vendor Product Unit of Measure if not any, in the default unit of measure of the product otherwise." />
+    <field name="Price" type="float" label="Price" default="0.0" required="true" digits="Product Price" help="The price to purchase a product" />
+    <field name="PriceDiscounted" type="float" label="Discounted Price" compute="ComputePriceDiscounted" />
+    <field name="CompanyId" type="Res.Company" label="Company" default="Env.Company.Id" index="true" />
+    <field name="CurrencyId" type="Res.Currency" label="Currency" default="Env.Company.CurrencyId.Id" required="true" />
+    <field name="DateStart" type="date" label="Start Date" help="Start date for this vendor price" />
+    <field name="DateEnd" type="date" label="End Date" help="End date for this vendor price" />
+    <field name="ProductId" type="Product.Product" label="Product Variant" checkCompany="true" domain="[('ProductTmplId', '=', ProductTmplId)] if ProductTmplId else []" default="DefaultProductId" help="If not set, the vendor price will apply to all variants of this product." />
+    <field name="ProductTmplId" type="Product.Template" label="Product Template" checkCompany="true" index="true" ondelete="cascade" />
+    <field name="ProductVariantCount" type="integer" label="Variant Count" related="ProductTmplId.ProductVariantCount" />
+    <field name="Delay" type="integer" label="Delivery Lead Time" default="1" required="true" help="Lead time in days between the confirmation of the purchase order and the receipt of the products in your warehouse. Used by the scheduler for automatic computation of the purchase order planning." />
+    <field name="Discount" type="float" label="Discount (%)" digits="Discount" />
   </model>
 </buvi>

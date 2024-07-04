@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="ProviderCode" type="string" />
+    <field name="Reference" type="string" label="Reference" />
+    <field name="InvoiceIds" type="Account.Invoice" collection="true" />
+    <field name="SaleOrderIds" type="Sale.Order" collection="true" />
+    <field name="ProviderId" type="Payment.Provider" />
+  </model>
+
+  <model id="Payment.Provider" name="Payment.Provider" description="Payment Provider">
+    <field name="Name" type="string" label="Provider Name" required="true" translate="true" />
+    <field name="Code" type="string" label="Provider Code" required="true" />
+  </model>
+
+  <model id="Account.Invoice" name="Account.Invoice" description="Invoice">
+    <field name="PaymentReference" type="string" label="Payment Reference" />
+  </model>
+
+  <model id="Sale.Order" name="Sale.Order" description="Sale Order">
+    <field name="Reference" type="string" label="Reference" />
+  </model>
 </buvi>

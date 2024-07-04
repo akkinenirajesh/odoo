@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Ir.MailServer" name="Ir.MailServer" description="Ir.MailServer">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="SmtpAuthentication" type="string" label="Authentication" required="true" />
+        <field name="SmtpUser" type="string" label="Username" required="true" />
+        <field name="SmtpPassword" type="string" label="Password" />
+        <field name="SmtpHost" type="string" label="Host" required="true" />
+        <field name="SmtpPort" type="integer" label="Port" required="true" />
+        <field name="SmtpEncryption" type="string" label="Connection Security" required="true" />
+        <field name="FromFilter" type="string" label="From Filter" />
+        <field name="MicrosoftOutlookRefreshToken" type="string" label="Refresh Token" />
+        <field name="MicrosoftOutlookAccessToken" type="string" label="Access Token" />
+        <field name="MicrosoftOutlookAccessTokenExpiration" type="datetime" label="Access Token Expiration" />
+        <field name="IsMicrosoftOutlookConfigured" type="bool" label="Is Microsoft Outlook Configured" />
+        <field name="SmtpAuthenticationInfo" type="string" label="Authentication Info" />
+    </model>
+
+    <optionset id="Ir.MailServerSmtpAuthentication" name="Mail Server Smtp Authentication">
+        <option value="outlook" name="Outlook OAuth Authentication" />
+        <option value="plain" name="Plain Authentication" />
+        <option value="login" name="Login Authentication" />
+        <option value="ssl" name="SSL Authentication" />
+    </optionset>
 </buvi>

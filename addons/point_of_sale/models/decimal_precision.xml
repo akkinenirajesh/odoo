@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.DecimalPrecision" name="DecimalPrecision" description="Decimal Precision">
+        <field name="Id" type="integer" />
+        <field name="Name" type="string" label="Name" />
+        <field name="Digits" type="integer" label="Digits" />
+    </model>
 </buvi>

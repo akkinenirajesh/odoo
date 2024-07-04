@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Payment Method">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" />
+        <field name="Journal" type="Account.Journal" label="Journal" required="true" />
+        <field name="PaymentIcon" type="char" label="Payment Icon" />
+        <field name="PaymentIconUrl" type="char" label="Icon Url" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="ShowPaymentDetails" type="bool" label="Show Details" default="false" />
+        <field name="InvoicePaymentMethod" type="bool" label="Invoice Payment Method" default="false" />
+        <field name="UseForCustomer" type="bool" label="Use for Customer" default="true" />
+        <field name="CashControl" type="bool" label="Cash Control" default="false" />
+        <field name="IsCash" type="bool" label="Is Cash" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="PosMercuryConfigId" type="PosMercury.PosMercuryConfig" />
+    </model>
 </buvi>

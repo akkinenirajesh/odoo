@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.ProductAttribute" name="Website.ProductAttribute" description="Product Attribute">
+    <field name="Name" type="string" label="Attribute Name" required="true" translate="true" />
+    <field name="ValueIds" type="Website.ProductAttributeValue" collection="true" />
+    <field name="Visibility" type="string" />
+    <field name="CreateVariant" type="bool" default="true" />
+    <field name="DisplayType" type="string" />
+    <field name="Sequence" type="integer" />
+  </model>
+  <optionset id="Website.ProductAttributeValue" name="Product Attribute Value">
+    <option value="visible" name="Visible" />
+    <option value="hidden" name="Hidden" />
+  </optionset>
 </buvi>

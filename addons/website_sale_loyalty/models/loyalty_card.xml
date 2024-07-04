@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteSaleLoyalty.LoyaltyCard" name="LoyaltyCard" description="Loyalty Card">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="CardNumber" type="string" label="Card Number" required="true" />
+    <field name="Customer" type="Res.Partner" label="Customer" required="true" collection="true" />
+    <field name="Active" type="bool" label="Active" default="true" />
+  </model>
 </buvi>

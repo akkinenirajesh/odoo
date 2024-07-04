@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventBoothSaleExhibitor.EventBoothRegistration" name="EventBoothRegistration" description="Event Booth Registration">
+        <field name="SponsorName" type="string" label="Sponsor Name" />
+        <field name="SponsorEmail" type="string" label="Sponsor Email" />
+        <field name="SponsorMobile" type="string" label="Sponsor Mobile" />
+        <field name="SponsorPhone" type="string" label="Sponsor Phone" />
+        <field name="SponsorSubtitle" type="string" label="Sponsor Slogan" />
+        <field name="SponsorWebsiteDescription" type="html" label="Sponsor Description" />
+        <field name="SponsorImage512" type="image" label="Sponsor Logo" />
+    </model>
 </buvi>

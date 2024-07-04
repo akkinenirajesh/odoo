@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Acquirer" required="true" />
+        <field name="OgonePspid" type="string" label="PSPID" help="The ID solely used to identify the account with Ogone" required_if_provider="ogone" />
+        <field name="OgoneUserid" type="string" label="API User ID" help="The ID solely used to identify the API user with Ogone" required_if_provider="ogone" />
+        <field name="OgonePassword" type="string" label="API User Password" required_if_provider="ogone" groups="base.group_system" />
+        <field name="OgoneShakeyIn" type="string" label="SHA Key IN" required_if_provider="ogone" groups="base.group_system" />
+        <field name="OgoneShakeyOut" type="string" label="SHA Key OUT" required_if_provider="ogone" groups="base.group_system" />
+        <field name="OgoneHashFunction" type="selection" default="sha512" string="Hash function" required_if_provider="ogone">
+            <option value="sha1" name="SHA1" />
+            <option value="sha256" name="SHA256" />
+            <option value="sha512" name="SHA512" />
+        </field>
+    </model>
 </buvi>

@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleStock.StockRoute" name="StockRoute" description="Stock Route">
+    <field name="SaleSelectable" type="bool" label="Selectable on Sales Order Line" />
+    <inherit id="stock.stock.route" />
+  </model>
+
+  <model id="SaleStock.StockMove" name="StockMove" description="Stock Move">
+    <field name="SaleLineId" type="Sale.SaleOrderLine" label="Sale Line" collection="true" />
+    <inherit id="stock.stock.move" />
+  </model>
+
+  <model id="SaleStock.StockMoveLine" name="StockMoveLine" description="Stock Move Line">
+    <inherit id="stock.stock.move.line" />
+  </model>
+
+  <model id="SaleStock.ProcurementGroup" name="ProcurementGroup" description="Procurement Group">
+    <field name="SaleId" type="Sale.SaleOrder" label="Sale Order" collection="true" />
+    <inherit id="stock.procurement.group" />
+  </model>
+
+  <model id="SaleStock.StockRule" name="StockRule" description="Stock Rule">
+    <inherit id="stock.stock.rule" />
+  </model>
+
+  <model id="SaleStock.StockPicking" name="StockPicking" description="Stock Picking">
+    <field name="SaleId" type="Sale.SaleOrder" label="Sales Order" collection="true" />
+    <inherit id="stock.stock.picking" />
+  </model>
+
+  <model id="SaleStock.StockLot" name="StockLot" description="Stock Lot">
+    <field name="SaleOrderIds" type="Sale.SaleOrder" label="Sales Orders" collection="true" />
+    <field name="SaleOrderCount" type="integer" label="Sale order count" />
+    <inherit id="stock.stock.lot" />
+  </model>
 </buvi>

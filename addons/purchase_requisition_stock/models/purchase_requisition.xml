@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PurchaseRequisition.PurchaseRequisition" name="PurchaseRequisition" description="Purchase Requisition">
+        <field name="Warehouse" type="stock.warehouse" label="Warehouse" domain="[('company_id', '=', company_id)]" />
+        <field name="PickingType" type="stock.picking.type" label="Operation Type" required="true" domain="['|',('warehouse_id', '=', False), ('warehouse_id.company_id', '=', company_id)]" />
+    </model>
+
+    <model id="PurchaseRequisition.PurchaseRequisitionLine" name="PurchaseRequisitionLine" description="Purchase Requisition Line">
+        <field name="MoveDest" type="stock.move" label="Downstream Move" collection="true" />
+    </model>
 </buvi>

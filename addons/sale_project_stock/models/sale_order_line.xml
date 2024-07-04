@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleProjectStock.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="ProductUomQty" type="float" label="Quantity" />
+        <field name="ProductUom" type="Product.Uom" label="Unit of Measure" />
+        <field name="PriceUnit" type="float" label="Unit Price" />
+        <field name="TaxID" type="Account.Tax" label="Taxes" collection="true" />
+        <field name="Discount" type="float" label="Discount" />
+        <field name="PriceSubtotal" type="float" label="Subtotal" />
+        <field name="PriceTotal" type="float" label="Total" />
+        <field name="ProductDescription" type="string" label="Description" />
+        <field name="State" type="SaleProjectStock.SaleOrderLineState" />
+        <field name="Product" type="Product.Product" label="Product" />
+        <field name="IsService" type="bool" label="Is Service" />
+    </model>
+
+    <optionset id="SaleProjectStock.SaleOrderLineState" name="Sale Order Line State">
+        <option value="draft" name="Draft" />
+        <option value="confirm" name="Confirmed" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Canceled" />
+    </optionset>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseStock.ResCompany" name="ResCompany" description="ResCompany">
+    <field name="DaysToPurchase" type="float" label="Days to Purchase" help="Days needed to confirm a PO, define when a PO should be validated" />
+  </model>
 </buvi>

@@ -1,21 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="res.country" name="Res.Country" track_created="true" track_update="true">
-    <field name="AddressView" label="Input View" type="Ir.UiView" copied="true" on-delete="Clear"/>
-    <field name="CountryGroups" label="Country Groups" type="Res.CountryGroup" collection="true" copied="true"/>
-    <field name="States" label="States" type="Res.CountryState" collection="true"/>
-    <field name="Currency" label="Currency" type="Res.Currency" copied="true" on-delete="Clear"/>
-    <field name="AddressFormat" label="Layout in Reports" type="text" copied="true"/>
-    <field name="Code" label="Country Code" type="string" required="true" copied="true"/>
-    <field name="EbayAvailable" label="Use on eBay" type="bool" copied="true"/>
-    <field name="ImageUrl" label="Flag" type="string" readonly="true" transient="true"/>
-    <field name="Intrastat" label="Intrastat member" type="bool" copied="true"/>
-    <field name="IsStripeSupportedCountry" label="Is Stripe Supported Country" type="bool" readonly="true" transient="true"/>
-    <field name="Name" label="Country Name" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NamePosition" label="Customer Name Position" type="Res.CountryCustomerNamePosition" copied="true"/>
-    <field name="PhoneCode" label="Country Calling Code" type="integer" copied="true"/>
-    <field name="StateRequired" label="State Required" type="bool" copied="true"/>
-    <field name="VatLabel" label="Vat Label" type="string" copied="true" translatable="true"/>
-    <field name="ZipRequired" label="Zip Required" type="bool" copied="true"/>
-  </model>
+    <model id="Base.Currency" name="Base.Currency" description="Currency">
+        <field name="Name" type="string" label="Currency" size="3" required="true" help="Currency Code (ISO 4217)" />
+        <field name="IsoNumeric" type="integer" label="Currency numeric code" help="Currency Numeric Code (ISO 4217)." />
+        <field name="FullName" type="string" label="Name" />
+        <field name="Symbol" type="string" help="Currency sign, to be used when printing amounts." required="true" />
+        <field name="Rate" type="float" digits="0" label="Current Rate" help="The rate of the currency to the currency of rate 1." />
+        <field name="InverseRate" type="float" digits="0" readonly="true" help="The currency of rate 1 to the rate of the currency." />
+        <field name="RateString" type="string" />
+        <field name="RateIds" type="Base.CurrencyRate" collection="true" />
+        <field name="Rounding" type="float" digits="(12,6)" default="0.01" label="Rounding Factor" help="Amounts in this currency are rounded off to the nearest multiple of the rounding factor." />
+        <field name="DecimalPlaces" type="integer" help="Decimal places taken into account for operations on amounts in this currency. It is determined by the rounding factor." />
+        <field name="Active" type="bool" default="true" />
+        <field name="Position" type="selection" label="Symbol Position" help="Determines where the currency symbol should be placed after or before the amount." >
+            <option value="after" name="After Amount" />
+            <option value="before" name="Before Amount" />
+        </field>
+        <field name="Date" type="date" />
+        <field name="CurrencyUnitLabel" type="string" label="Currency Unit" />
+        <field name="CurrencySubunitLabel" type="string" label="Currency Subunit" />
+        <field name="IsCurrentCompanyCurrency" type="bool" />
+        <unique name="unique_name" fields="Name" message="The currency code must be unique!" />
+        <constraint name="rounding_gt_zero" fields="Rounding" message="The rounding factor must be greater than 0!" condition="Rounding&gt;0" />
+    </model>
+    <model id="Base.CurrencyRate" name="Base.CurrencyRate" description="Currency Rate">
+        <field name="Name" type="date" label="Date" required="true" index="true" />
+        <field name="Rate" type="float" digits="0" aggregator="avg" label="Technical Rate" help="The rate of the currency to the currency of rate 1" />
+        <field name="CompanyRate" type="float" digits="0" aggregator="avg" help="The currency of rate 1 to the rate of the currency." />
+        <field name="InverseCompanyRate" type="float" digits="0" aggregator="avg" help="The rate of the currency to the currency of rate 1 " />
+        <field name="CurrencyId" type="Base.Currency" readonly="true" required="true" />
+        <field name="CompanyId" type="Res.Company" />
+        <unique name="unique_name_per_day" fields="Name,CurrencyId,CompanyId" message="Only one currency rate per day allowed!" />
+        <constraint name="currency_rate_check" fields="Rate" message="The currency rate must be strictly positive." condition="Rate&gt;0" />
+    </model>
 </buvi>

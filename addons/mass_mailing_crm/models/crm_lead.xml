@@ -1,3 +1,129 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailingCrm.CrmLead" name="CrmLead" description="CRM Lead">
+        <field name="Name" type="string" label="Lead Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" relation="Partner" required="true" />
+        <field name="EmailFrom" type="string" label="Email From" />
+        <field name="Phone" type="string" label="Phone" />
+        <field name="Mobile" type="string" label="Mobile" />
+        <field name="Website" type="string" label="Website" />
+        <field name="Function" type="string" label="Job Title" />
+        <field name="Title" type="selection" selection="MassMailingCrm.TitleSelection" />
+        <field name="Industry" type="selection" selection="MassMailingCrm.IndustrySelection" />
+        <field name="CampaignId" type="MassMailingCrm.Campaign" label="Campaign" relation="Campaign" />
+        <field name="SourceId" type="MassMailingCrm.Source" label="Source" relation="Source" />
+        <field name="MediumId" type="MassMailingCrm.Medium" label="Medium" relation="Medium" />
+        <field name="PartnerName" type="string" label="Partner Name" />
+        <field name="Street" type="string" label="Street" />
+        <field name="Street2" type="string" label="Street 2" />
+        <field name="City" type="string" label="City" />
+        <field name="Zip" type="string" label="Zip" />
+        <field name="State" type="string" label="State" />
+        <field name="Latitude" type="float" />
+        <field name="Longitude" type="float" />
+        <field name="Customer" type="bool" label="Customer" />
+        <field name="Prospect" type="bool" label="Prospect" />
+        <field name="LeadSource" type="selection" selection="MassMailingCrm.LeadSourceSelection" />
+        <field name="CountryId" type="Core.Country" label="Country" relation="Country" />
+        <field name="TagIds" type="MassMailingCrm.Tag" label="Tags" relation="Tag" collection="true" />
+        <field name="ContactName" type="string" label="Contact Name" />
+        <field name="ContactEmail" type="string" label="Contact Email" />
+        <field name="ContactPhone" type="string" label="Contact Phone" />
+        <field name="ContactMobile" type="string" label="Contact Mobile" />
+        <field name="ContactTitle" type="string" label="Contact Title" />
+        <field name="ContactFunction" type="string" label="Contact Function" />
+        <field name="Description" type="text" label="Description" />
+        <field name="DateOpen" type="datetime" label="Date Opened" />
+        <field name="DateLastStageUpdate" type="datetime" label="Last Stage Update" />
+        <field name="DateConfirmation" type="datetime" label="Confirmation Date" />
+        <field name="DateClose" type="datetime" label="Closed Date" />
+        <field name="Probability" type="float" label="Probability" />
+        <field name="Priority" type="selection" selection="MassMailingCrm.PrioritySelection" />
+        <field name="Type" type="selection" selection="MassMailingCrm.TypeSelection" />
+        <field name="StageId" type="MassMailingCrm.Stage" label="Stage" relation="Stage" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" relation="Partner" />
+        <field name="TeamId" type="Core.Team" label="Sales Team" relation="Team" />
+        <field name="UserId" type="Core.User" label="Responsible" relation="User" />
+        <field name="AssignedUserId" type="Core.User" label="Assigned To" relation="User" />
+        <field name="SalesPersonId" type="Core.User" label="Salesperson" relation="User" />
+        <field name="LostReason" type="selection" selection="MassMailingCrm.LostReasonSelection" />
+        <field name="LostReasonComment" type="text" label="Reason for Loss" />
+        <field name="IsLost" type="bool" label="Lost" />
+        <field name="IsWon" type="bool" label="Won" />
+        <field name="ActivityTypeIds" type="MassMailingCrm.ActivityType" label="Activity Types" relation="ActivityType" collection="true" />
+        <field name="MailServerId" type="MassMailing.MailServer" relation="MailServer" />
+        <field name="EmailCampaignId" type="MassMailing.EmailCampaign" relation="EmailCampaign" />
+        <field name="IsBlacklisted" type="bool" label="Blacklisted" />
+        <field name="BlacklistReason" type="string" label="Blacklist Reason" />
+        <field name="AllowMailing" type="bool" label="Allow Mailing" default="true" />
+    </model>
+    <optionset id="MassMailingCrm.TitleSelection" name="Title Selection">
+        <option value="Mr" name="Mr" />
+        <option value="Ms" name="Ms" />
+        <option value="Mrs" name="Mrs" />
+        <option value="Miss" name="Miss" />
+        <option value="Dr" name="Dr" />
+        <option value="Prof" name="Prof" />
+    </optionset>
+    <optionset id="MassMailingCrm.IndustrySelection" name="Industry Selection">
+        <option value="Agriculture" name="Agriculture" />
+        <option value="Automotive" name="Automotive" />
+        <option value="Banking" name="Banking" />
+        <option value="Chemicals" name="Chemicals" />
+        <option value="Computer Software" name="Computer Software" />
+        <option value="Construction" name="Construction" />
+        <option value="Consulting" name="Consulting" />
+        <option value="Education" name="Education" />
+        <option value="Electronics" name="Electronics" />
+        <option value="Energy" name="Energy" />
+        <option value="Engineering" name="Engineering" />
+        <option value="Entertainment" name="Entertainment" />
+        <option value="Financial Services" name="Financial Services" />
+        <option value="Food & Beverage" name="Food & Beverage" />
+        <option value="Government" name="Government" />
+        <option value="Healthcare" name="Healthcare" />
+        <option value="Hospitality" name="Hospitality" />
+        <option value="Insurance" name="Insurance" />
+        <option value="Internet" name="Internet" />
+        <option value="Machinery" name="Machinery" />
+        <option value="Manufacturing" name="Manufacturing" />
+        <option value="Media" name="Media" />
+        <option value="Non-Profit" name="Non-Profit" />
+        <option value="Pharmaceuticals" name="Pharmaceuticals" />
+        <option value="Real Estate" name="Real Estate" />
+        <option value="Retail" name="Retail" />
+        <option value="Services" name="Services" />
+        <option value="Telecommunications" name="Telecommunications" />
+        <option value="Transportation" name="Transportation" />
+        <option value="Utilities" name="Utilities" />
+    </optionset>
+    <optionset id="MassMailingCrm.LeadSourceSelection" name="Lead Source Selection">
+        <option value="Website" name="Website" />
+        <option value="Referral" name="Referral" />
+        <option value="Email" name="Email" />
+        <option value="Phone" name="Phone" />
+        <option value="Partner" name="Partner" />
+        <option value="Event" name="Event" />
+        <option value="Campaign" name="Campaign" />
+        <option value="Other" name="Other" />
+    </optionset>
+    <optionset id="MassMailingCrm.PrioritySelection" name="Priority Selection">
+        <option value="0" name="Low" />
+        <option value="1" name="Medium" />
+        <option value="2" name="High" />
+    </optionset>
+    <optionset id="MassMailingCrm.TypeSelection" name="Type Selection">
+        <option value="lead" name="Lead" />
+        <option value="opportunity" name="Opportunity" />
+    </optionset>
+    <optionset id="MassMailingCrm.LostReasonSelection" name="Lost Reason Selection">
+        <option value="price" name="Price" />
+        <option value="competition" name="Competition" />
+        <option value="budget" name="Budget" />
+        <option value="no_need" name="No Need" />
+        <option value="internal_decision" name="Internal Decision" />
+        <option value="other" name="Other" />
+    </optionset>
 </buvi>

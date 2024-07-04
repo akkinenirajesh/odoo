@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="Margin" type="float" label="Margin" digits="Product Price" store="true" groups="base.group_user" />
+        <field name="MarginPercent" type="float" label="Margin (%)" digits="Product Price" store="true" groups="base.group_user" />
+        <field name="PurchasePrice" type="float" label="Cost" digits="Product Price" store="true" readonly="false" copy="false" groups="base.group_user" />
+        <field name="ProductId" type="Product.Product" relation="true" />
+        <field name="CompanyId" type="Core.Company" relation="true" />
+        <field name="CurrencyId" type="Core.Currency" relation="true" />
+        <field name="ProductUom" type="Product.Uom" relation="true" />
+        <field name="PriceSubtotal" type="float" />
+        <field name="ProductUomQty" type="float" />
+    </model>
 </buvi>

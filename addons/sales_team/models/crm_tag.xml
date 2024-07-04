@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SalesTeam.CrmTag" name="CrmTag" description="CRM Tag">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="Color" type="integer" label="Color" default="GetDefaultColor" />
+        <unique>
+            <field name="Name" />
+            <message>Tag name already exists!</message>
+        </unique>
+    </model>
 </buvi>

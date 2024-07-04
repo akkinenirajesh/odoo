@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="AnalyticDistribution" type="Dictionary" collection="true" />
+    <field name="SaleLineIds" type="Sale.SaleOrderLine" collection="true" />
+    <field name="Project" type="Project.Project" />
+    <field name="AnalyticAccount" type="Account.AnalyticAccount" />
+  </model>
 </buvi>

@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.DiscussChannelRtcSession" name="DiscussChannelRtcSession" description="Mail RTC session">
+        <field name="ChannelMemberId" type="Discuss.DiscussChannelMember" required="true" ondelete="cascade" />
+        <field name="ChannelId" type="Discuss.DiscussChannel" related="ChannelMemberId.ChannelId" store="true" readonly="true" />
+        <field name="PartnerId" type="Res.Partner" related="ChannelMemberId.PartnerId" label="Partner" />
+        <field name="GuestId" type="Mail.Guest" related="ChannelMemberId.GuestId" />
+        <field name="WriteDate" type="datetime" label="Last Updated On" index="true" />
+        <field name="IsScreenSharingOn" type="bool" label="Is sharing the screen" />
+        <field name="IsCameraOn" type="bool" label="Is sending user video" />
+        <field name="IsMuted" type="bool" label="Is microphone muted" />
+        <field name="IsDeaf" type="bool" label="Has disabled incoming sound" />
+        <unique>
+            <field name="ChannelMemberId" />
+            <message>There can only be one rtc session per channel member</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.View" name="View" description="Website View">
+    <field name="WebsiteId" type="Website.Website" ondelete="cascade" label="Website" />
+    <field name="PageIds" type="Website.Page" collection="true" />
+    <field name="ControllerPageIds" type="Website.ControllerPage" collection="true" />
+    <field name="FirstPageId" type="Website.Page" label="Website Page" help="First page linked to this view" />
+    <field name="Track" type="bool" label="Track" default="false" help="Allow to specify for one page of the website to be trackable or not" />
+    <field name="Visibility" type="Website.ViewVisibility" default="" />
+    <field name="VisibilityPassword" type="string" groups="base.group_system" copy="false" />
+    <field name="VisibilityPasswordDisplay" type="string" groups="Website.group_website_designer" compute="GetVisibilityPasswordDisplay" inverse="SetVisibilityPassword" />
+  </model>
+
+  <optionset id="Website.ViewVisibility" name="View Visibility">
+    <option value="" name="All" />
+    <option value="connected" name="Signed In" />
+    <option value="restricted_group" name="Restricted Group" />
+    <option value="password" name="With Password" />
+  </optionset>
 </buvi>

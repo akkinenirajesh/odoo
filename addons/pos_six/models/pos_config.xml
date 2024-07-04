@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <field name="EnforceHttps" type="bool" label="Enforce HTTPS" />
+        <field name="PaymentMethodIds" type="Pos.PaymentMethod" collection="true" />
+    </model>
+    <optionset id="Pos.PaymentMethod" name="Payment Method">
+        <option value="six" name="Six" />
+    </optionset>
 </buvi>

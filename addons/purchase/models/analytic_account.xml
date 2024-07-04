@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.AnalyticAccount" name="Purchase.AnalyticAccount" description="Analytic Account">
+        <field name="PurchaseOrderCount" type="integer" label="Purchase Order Count" readonly="true" />
+    </model>
 </buvi>

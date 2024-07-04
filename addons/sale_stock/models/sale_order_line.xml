@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="QtyDeliveredMethod" type="Selection" collection="true">
+            <option value="StockMove" name="Stock Moves" />
+        </field>
+        <field name="Route" type="Sale.SaleOrderLine.Route" />
+        <field name="MoveIds" type="Sale.SaleOrderLine.MoveIds" collection="true" />
+        <field name="VirtualAvailableAtDate" type="float" label="Virtual Available at Date" digits="Product Unit of Measure" />
+        <field name="ScheduledDate" type="datetime" label="Scheduled Date" />
+        <field name="ForecastExpectedDate" type="datetime" label="Forecast Expected Date" />
+        <field name="FreeQtyToday" type="float" label="Free Quantity Today" digits="Product Unit of Measure" />
+        <field name="QtyAvailableToday" type="float" label="Quantity Available Today" />
+        <field name="Warehouse" type="Stock.Warehouse" />
+        <field name="QtyToDeliver" type="float" label="Quantity to Deliver" digits="Product Unit of Measure" />
+        <field name="IsMTO" type="bool" label="Is MTO" />
+        <field name="DisplayQtyWidget" type="bool" label="Display Quantity Widget" />
+        <field name="IsStorable" type="bool" label="Is Storable" />
+        <field name="CustomerLead" type="float" label="Customer Lead" />
+    </model>
+
+    <relation id="Sale.SaleOrderLine.Route" name="Route" model="Stock.Route" description="Route" ondelete="restrict" check_company="true" domain="[('SaleSelectable', '=', True)]"/>
+    <relation id="Sale.SaleOrderLine.MoveIds" name="MoveIds" model="Stock.Move" description="Stock Moves" collection="true" />
+    <relation id="Stock.Move" name="Stock.Move" description="Stock Move"/>
+    <relation id="Stock.Warehouse" name="Stock.Warehouse" description="Warehouse" />
+    <relation id="Sale.SaleOrderLine.Product" name="Product" model="Product.Product" description="Product" />
+    <relation id="Stock.Route" name="Stock.Route" description="Route" />
+    <relation id="Product.Product" name="Product.Product" description="Product" />
+    <relation id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order" />
+    <relation id="Core.Country" name="Core.Country" description="Country" />
+    <relation id="Res.Partner" name="Res.Partner" description="Partner" />
+    <optionset id="Sale.SaleOrderLine.QtyDeliveredMethod" name="Qty Delivered Method" >
+        <option value="StockMove" name="Stock Moves" />
+    </optionset>
 </buvi>

@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Payment Method">
+    <field name="UsePaymentTerminal" type="selection" label="Payment Terminal" selection="pos.payment.terminal.types" required="true" />
+    <field name="AdyenTerminalIdentifier" type="string" label="Adyen Terminal Identifier" />
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the payment method without removing it." />
   </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+
+  <optionset id="Pos.PaymentTerminalTypes" name="Payment Terminal Types">
+    <option value="adyen" name="Adyen" />
+    <option value="other" name="Other" />
+  </optionset>
 </buvi>

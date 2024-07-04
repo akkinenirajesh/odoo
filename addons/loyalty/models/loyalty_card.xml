@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Loyalty.LoyaltyCard" name="Loyalty.LoyaltyCard" description="Loyalty Coupon">
+        <field name="ProgramId" type="Loyalty.LoyaltyProgram" ondelete="restrict" default="activeId" />
+        <field name="ProgramType" type="selection" relation="Loyalty.LoyaltyProgram" field="ProgramType" />
+        <field name="CompanyId" type="Res.Partner" relation="Loyalty.LoyaltyProgram" field="CompanyId" />
+        <field name="CurrencyId" type="Res.Currency" relation="Loyalty.LoyaltyProgram" field="CurrencyId" />
+        <field name="PartnerId" type="Res.Partner" index="true" />
+        <field name="Points" type="float" track="true" />
+        <field name="PointName" type="char" relation="Loyalty.LoyaltyProgram" field="PortalPointName" readonly="true" />
+        <field name="PointsDisplay" type="char" compute="ComputePointsDisplay" />
+        <field name="Code" type="char" required="true" default="GenerateCode" />
+        <field name="ExpirationDate" type="date" />
+        <field name="UseCount" type="integer" compute="ComputeUseCount" />
+        <unique>
+            <field name="Code" />
+            <message>A coupon/loyalty card must have a unique code.</message>
+        </unique>
+    </model>
 </buvi>

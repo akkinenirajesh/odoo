@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleTimesheet.ProjectUpdate" name="ProjectUpdate" description="Project Update">
+    <field name="AllowBillable" type="bool" label="Allow Billable" />
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" label="Analytic Account" />
+    <field name="ShowActivities" type="bool" label="Show Activities" />
+    <field name="ShowProfitability" type="bool" label="Show Profitability" />
+    <field name="ShowSold" type="bool" label="Show Sold" />
+    <field name="Services" type="SaleTimesheet.ProjectUpdateService" collection="true" />
+    <field name="Profitability" type="SaleTimesheet.ProjectUpdateProfitability" />
+    <field name="FormatValue" type="string" label="Format Value" />
+  </model>
+  <model id="SaleTimesheet.ProjectUpdateService" name="ProjectUpdateService" description="Project Update Service">
+    <field name="Name" type="string" label="Name" />
+    <field name="SoldValue" type="float" label="Sold Value" />
+    <field name="EffectiveValue" type="float" label="Effective Value" />
+    <field name="RemainingValue" type="float" label="Remaining Value" />
+    <field name="InvoicedValue" type="float" label="Invoiced Value" />
+    <field name="Unit" type="string" label="Unit" />
+    <field name="IsUnit" type="bool" label="Is Unit" />
+    <field name="IsHour" type="bool" label="Is Hour" />
+    <field name="Sol" type="Sale.OrderLine" />
+  </model>
+  <model id="SaleTimesheet.ProjectUpdateProfitability" name="ProjectUpdateProfitability" description="Project Update Profitability">
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" label="Analytic Account" />
+    <field name="Costs" type="SaleTimesheet.ProjectUpdateProfitabilityCosts" />
+    <field name="Revenues" type="SaleTimesheet.ProjectUpdateProfitabilityRevenues" />
+    <field name="Total" type="SaleTimesheet.ProjectUpdateProfitabilityTotal" />
+    <field name="Labels" type="SaleTimesheet.ProjectUpdateProfitabilityLabels" />
+  </model>
+  <model id="SaleTimesheet.ProjectUpdateProfitabilityCosts" name="ProjectUpdateProfitabilityCosts" description="Project Update Profitability Costs" />
+  <model id="SaleTimesheet.ProjectUpdateProfitabilityRevenues" name="ProjectUpdateProfitabilityRevenues" description="Project Update Profitability Revenues" />
+  <model id="SaleTimesheet.ProjectUpdateProfitabilityTotal" name="ProjectUpdateProfitabilityTotal" description="Project Update Profitability Total">
+    <field name="Costs" type="float" label="Costs" />
+    <field name="Revenues" type="float" label="Revenues" />
+    <field name="Margin" type="float" label="Margin" />
+    <field name="MarginPercentage" type="float" label="Margin Percentage" />
+  </model>
+  <model id="SaleTimesheet.ProjectUpdateProfitabilityLabels" name="ProjectUpdateProfitabilityLabels" description="Project Update Profitability Labels" />
 </buvi>

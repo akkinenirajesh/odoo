@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order">
+        <field name="UseSelfOrderOnlinePayment" type="bool" compute="ComputeUseSelfOrderOnlinePayment" store="true" readonly="true" />
+        <field name="OnlinePaymentMethodId" type="Pos.PaymentMethod" compute="ComputeOnlinePaymentMethodId" />
+        <field name="ConfigId" type="Pos.PosConfig" relation="one2many" collection="true" />
+    </model>
+
+    <optionset id="Pos.PaymentMethod" name="Payment Method" />
+    <optionset id="Pos.PosConfig" name="Point of Sale Configuration" />
 </buvi>

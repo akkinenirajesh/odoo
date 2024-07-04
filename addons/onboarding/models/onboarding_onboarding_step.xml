@@ -1,22 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="hr.referral.onboarding" name="Hr.ReferralOnboarding" track_created="true" track_update="true">
-    <field name="Company" label="Company" type="Res.Company" copied="true" on-delete="Clear"/>
-    <field name="Image" label="Image" type="binary" required="true" copied="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="Text" label="Text" type="text" required="true" copied="true"/>
-  </model>
-  <model id="onboarding.onboarding" name="Onboarding.Onboarding" track_created="true" track_update="true">
-    <field name="Steps" label="Onboarding steps" type="Onboarding.OnboardingStep" collection="true" copied="true"/>
-    <field name="CurrentProgress" label="Onboarding Progress" type="Onboarding.Progress" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="Progresss" label="Onboarding Progress Records" type="Onboarding.Progress" collection="true" readonly="true"/>
-    <field name="CurrentOnboardingState" label="Completion State" type="Onboarding.OnboardingCompletionState" readonly="true" transient="true"/>
-    <field name="IsOnboardingClosed" label="Was panel closed?" type="bool" readonly="true" transient="true"/>
-    <field name="IsPerCompany" label="Should be done per company?" type="bool" readonly="true" transient="true"/>
-    <field name="Name" label="Name of the onboarding" type="string" copied="true" translatable="true"/>
-    <field name="PanelCloseActionName" label="Closing action" type="string" copied="true"/>
-    <field name="RouteName" label="One word name" type="string" required="true" copied="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="TextCompleted" label="Message at completion" type="string" copied="true"/>
-  </model>
+    <model id="Onboarding.OnboardingStep" name="OnboardingStep" description="Onboarding Step">
+        <field name="OnboardingIds" type="Onboarding.Onboarding" collection="true" />
+        <field name="Title" type="string" label="Title" translate="true" />
+        <field name="Description" type="string" label="Description" translate="true" />
+        <field name="ButtonText" type="string" label="Button text" required="true" default="Let's do it" translate="true" help="Text on the panel's button to start this step" />
+        <field name="DoneIcon" type="string" label="Font Awesome Icon when completed" default="fa-star" />
+        <field name="DoneText" type="string" label="Text to show when step is completed" default="Step Completed!" translate="true" />
+        <field name="StepImage" type="binary" />
+        <field name="StepImageFilename" type="string" />
+        <field name="StepImageAlt" type="string" label="Alt Text for the Step Image" default="Onboarding Step Image" translate="true" help="Show when impossible to load the image" />
+        <field name="PanelStepOpenActionName" type="string" label="Opening action" help="Name of the onboarding step model action to execute when opening the step, e.g. action_open_onboarding_1_step_1" />
+        <field name="CurrentProgressStepId" type="Onboarding.ProgressStep" compute="ComputeCurrentProgress" help="Onboarding Progress Step for the current context (company)." />
+        <field name="CurrentStepState" type="selection" selection="Onboarding.OnboardingProgressStates" label="Completion State" compute="ComputeCurrentProgress" />
+        <field name="ProgressIds" type="Onboarding.ProgressStep" collection="true" readonly="true" help="All related Onboarding Progress Step Records (across companies)" />
+        <field name="IsPerCompany" type="bool" default="true" />
+        <field name="Sequence" type="integer" default="10" />
+    </model>
+
+    <optionset id="Onboarding.OnboardingProgressStates" name="Onboarding Progress States">
+        <option value="not_done" name="Not Done" />
+        <option value="just_done" name="Just Done" />
+        <option value="done" name="Done" />
+    </optionset>
 </buvi>

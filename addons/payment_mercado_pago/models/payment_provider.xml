@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Code" type="selection" label="Payment Provider" required="true">
+            <option value="mercado_pago" name="Mercado Pago" />
+        </field>
+        <field name="MercadoPagoAccessToken" type="string" label="Mercado Pago Access Token" required="true" groups="base.group_system" />
+    </model>
 </buvi>

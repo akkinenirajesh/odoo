@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.PosSession" name="PosSession" description="Point of Sale Session">
+    <field name="CompanyId" type="Core.Company" related="ConfigId.CompanyId" label="Company" readonly="true" />
+    <field name="ConfigId" type="PointOfSale.PosConfig" label="Point of Sale" required="true" index="true" />
+    <field name="Name" type="string" label="Session ID" required="true" readonly="true" default="/" />
+    <field name="UserId" type="Res.Users" label="Opened By" required="true" index="true" readonly="false" default="lambda self: self.env.uid" ondelete="restrict" />
+    <field name="CurrencyId" type="Res.Currency" related="ConfigId.CurrencyId" label="Currency" readonly="false" />
+    <field name="StartAt" type="datetime" label="Opening Date" readonly="true" />
+    <field name="StopAt" type="datetime" label="Closing Date" readonly="true" copy="false" />
+    <field name="State" type="PointOfSale.PosSessionState" label="Status" required="true" readonly="true" index="true" copy="false" default="OpeningControl" />
+    <field name="SequenceNumber" type="integer" label="Order Sequence Number" help="A sequence number that is incremented with each order" default="1" />
+    <field name="LoginNumber" type="integer" label="Login Sequence Number" help="A sequence number that is incremented each time a user resumes the pos session" default="0" />
+    <field name="OpeningNotes" type="text" label="Opening Notes" />
+    <field name="ClosingNotes" type="text" label="Closing Notes" />
+    <field name="CashControl" type="bool" label="Has Cash Control" compute="ComputeCashControl" />
+    <field name="CashJournalId" type="Account.Journal" label="Cash Journal" store="true" compute="ComputeCashJournal" />
+    <field name="CashRegisterBalanceEndReal" type="monetary" label="Ending Balance" readonly="true" />
+    <field name="CashRegisterBalanceStart" type="monetary" label="Starting Balance" readonly="true" />
+    <field name="CashRegisterBalanceEnd" type="monetary" label="Theoretical Closing Balance" help="Opening balance summed to all cash transactions." readonly="true" compute="ComputeCashBalance" />
+    <field name="CashRegisterDifference" type="monetary" label="Before Closing Difference" help="Difference between the theoretical closing balance and the real closing balance." readonly="true" compute="ComputeCashBalance" />
+    <field name="CashRealTransaction" type="monetary" label="Transaction" readonly="true" />
+    <field name="OrderIds" type="PointOfSale.PosOrder" collection="true" label="Orders" />
+    <field name="OrderCount" type="integer" compute="ComputeOrderCount" />
+    <field name="StatementLineIds" type="Account.BankStatementLine" collection="true" label="Cash Lines" readonly="true" />
+    <field name="FailedPickings" type="bool" compute="ComputePickingCount" />
+    <field name="PickingCount" type="integer" compute="ComputePickingCount" />
+    <field name="PickingIds" type="Stock.Picking" collection="true" />
+    <field name="Rescue" type="bool" label="Recovery Session" help="Auto-generated session for orphan orders, ignored in constraints" readonly="true" copy="false" />
+    <field name="MoveId" type="Account.Move" label="Journal Entry" index="true" />
+    <field name="PaymentMethodIds" type="PointOfSale.PosPaymentMethod" collection="true" label="Payment Methods" related="ConfigId.PaymentMethodIds" />
+    <field name="TotalPaymentsAmount" type="float" label="Total Payments Amount" compute="ComputeTotalPaymentsAmount" />
+    <field name="IsInCompanyCurrency" type="bool" label="Is Using Company Currency" compute="ComputeIsInCompanyCurrency" />
+    <field name="UpdateStockAtClosing" type="bool" label="Stock should be updated at closing" />
+    <field name="BankPaymentIds" type="Account.Payment" collection="true" label="Bank Payments" help="Account payments representing aggregated and bank split payments." />
+
+    <unique name="UniqName">
+      <field name="Name" />
+      <message>The name of this POS Session must be unique!</message>
+    </unique>
+  </model>
+
+  <optionset id="PointOfSale.PosSessionState" name="PosSessionState">
+    <option value="OpeningControl" name="Opening Control" />
+    <option value="Opened" name="In Progress" />
+    <option value="ClosingControl" name="Closing Control" />
+    <option value="Closed" name="Closed & Posted" />
+  </optionset>
 </buvi>

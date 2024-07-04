@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Lunch.LunchProductCategory" name="LunchProductCategory" description="Lunch Product Category">
+    <field name="Name" type="string" label="Product Category" required="true" translate="true" />
+    <field name="CompanyId" type="Res.Company" />
+    <field name="CurrencyId" type="Res.Currency" related="CompanyId.CurrencyId" />
+    <field name="ProductCount" type="integer" compute="ComputeProductCount" help="The number of products related to this category" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Image1920" type="image" default="defaultImage" />
+  </model>
+
+  <optionset id="Image.ImageMixin" name="Image Mixin" />
 </buvi>

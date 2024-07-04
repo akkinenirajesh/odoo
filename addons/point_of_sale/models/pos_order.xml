@@ -1,3 +1,137 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.PosOrder" name="PosOrder" description="Point of Sale Orders">
+        <field name="Name" type="string" label="Order Ref" required="true" readonly="true" />
+        <field name="LastOrderPreparationChange" type="string" label="Last preparation change" help="Last printed state of the order" />
+        <field name="DateOrder" type="datetime" label="Date" readonly="true" index="true" default="now" />
+        <field name="UserId" type="Res.Users" label="Responsible" help="Person who uses the cash register. It can be a reliever, a student or an interim employee." default="user.id" />
+        <field name="AmountTax" type="float" label="Taxes" digits="0" readonly="true" required="true" />
+        <field name="AmountTotal" type="float" label="Total" digits="0" readonly="true" required="true" />
+        <field name="AmountPaid" type="float" label="Paid" digits="0" required="true" />
+        <field name="AmountReturn" type="float" label="Returned" digits="0" required="true" readonly="true" />
+        <field name="Margin" type="monetary" label="Margin" />
+        <field name="MarginPercent" type="float" label="Margin (%)" digits="(12, 4)" />
+        <field name="IsTotalCostComputed" type="bool" help="Allows to know if all the total cost of the order lines have already been computed" />
+        <field name="Lines" type="PointOfSale.PosOrderLine" collection="true" label="Order Lines" />
+        <field name="CompanyId" type="Res.Company" label="Company" required="true" readonly="true" index="true" />
+        <field name="CountryCode" type="char" related="CompanyId.AccountFiscalCountryId.Code" />
+        <field name="PricelistId" type="Product.Pricelist" label="Pricelist" />
+        <field name="PartnerId" type="Res.Partner" label="Customer" change_default="true" index="btree_not_null" />
+        <field name="SequenceNumber" type="integer" label="Sequence Number" help="A session-unique sequence number for the order" default="1" />
+        <field name="SessionId" type="PointOfSale.PosSession" label="Session" required="true" index="true" domain="[('State', '=', 'opened')]" />
+        <field name="ConfigId" type="PointOfSale.PosConfig" related="SessionId.ConfigId" label="Point of Sale" readonly="false" store="true" />
+        <field name="CurrencyId" type="Res.Currency" related="ConfigId.CurrencyId" label="Currency" />
+        <field name="CurrencyRate" type="float" label="Currency Rate" compute="ComputeCurrencyRate" compute_sudo="true" store="true" digits="0" readonly="true" help="The rate of the currency to the currency of rate applicable at the date of the order" />
+        <field name="State" type="selection" label="Status" readonly="true" default="draft" index="true">
+            <option value="draft" name="New" />
+            <option value="cancel" name="Cancelled" />
+            <option value="paid" name="Paid" />
+            <option value="done" name="Posted" />
+            <option value="invoiced" name="Invoiced" />
+        </field>
+        <field name="AccountMove" type="Account.Move" label="Invoice" readonly="true" index="btree_not_null" />
+        <field name="PickingIds" type="Stock.Picking" collection="true" label="Pickings" />
+        <field name="PickingCount" type="integer" compute="ComputePickingCount" />
+        <field name="FailedPickings" type="bool" compute="ComputePickingCount" />
+        <field name="PickingTypeId" type="Stock.PickingType" related="SessionId.ConfigId.PickingTypeId" label="Operation Type" readonly="false" />
+        <field name="ProcurementGroupId" type="Procurement.Group" label="Procurement Group" />
+        <field name="Note" type="text" label="Internal Notes" />
+        <field name="NbPrint" type="integer" label="Number of Print" readonly="true" default="0" />
+        <field name="PosReference" type="char" label="Receipt Number" readonly="true" index="true" />
+        <field name="SaleJournal" type="Account.Journal" related="SessionId.ConfigId.JournalId" label="Sales Journal" store="true" readonly="true" ondelete="restrict" />
+        <field name="FiscalPositionId" type="Account.FiscalPosition" label="Fiscal Position" readonly="false" />
+        <field name="PaymentIds" type="PointOfSale.PosPayment" collection="true" label="Payments" readonly="true" />
+        <field name="SessionMoveId" type="Account.Move" label="Session Journal Entry" related="SessionId.MoveId" readonly="true" />
+        <field name="ToInvoice" type="bool" label="To invoice" />
+        <field name="ShippingDate" type="date" label="Shipping Date" />
+        <field name="IsInvoiced" type="bool" label="Is Invoiced" compute="ComputeIsInvoiced" />
+        <field name="IsTipped" type="bool" label="Is this already tipped?" readonly="true" />
+        <field name="TipAmount" type="float" label="Tip Amount" digits="0" readonly="true" />
+        <field name="RefundOrdersCount" type="integer" label="Number of Refund Orders" compute="ComputeRefundRelatedFields" help="Number of orders where items from this order were refunded" />
+        <field name="RefundedOrderId" type="PointOfSale.PosOrder" compute="ComputeRefundRelatedFields" help="Order from which items were refunded in this order" />
+        <field name="HasRefundableLines" type="bool" label="Has Refundable Lines" compute="ComputeHasRefundableLines" />
+        <field name="TicketCode" type="char" help="5 digits alphanumeric code to be used by portal user to request an invoice" />
+        <field name="TrackingNumber" type="char" label="Order Number" compute="ComputeTrackingNumber" search="SearchTrackingNumber" />
+        <field name="Uuid" type="char" label="Uuid" readonly="true" />
+    </model>
+
+    <model id="PointOfSale.PosOrderLine" name="PosOrderLine" description="Point of Sale Order Lines">
+        <field name="CompanyId" type="Res.Company" related="OrderId.CompanyId" store="true" />
+        <field name="Name" type="char" label="Line No" required="true" />
+        <field name="SkipChange" type="bool" label="Skip line when sending ticket to kitchen printers." />
+        <field name="Notice" type="char" label="Discount Notice" />
+        <field name="ProductId" type="Product.Product" label="Product" domain="[('SaleOk', '=', true)]" required="true" change_default="true" />
+        <field name="AttributeValueIds" type="Product.TemplateAttributeValue" collection="true" label="Selected Attributes" />
+        <field name="CustomAttributeValueIds" type="Product.AttributeCustomValue" collection="true" label="Custom Values" store="true" readonly="false" />
+        <field name="PriceUnit" type="float" label="Unit Price" digits="0" />
+        <field name="Qty" type="float" label="Quantity" digits="Product Unit of Measure" default="1" />
+        <field name="PriceSubtotal" type="float" label="Tax Excl." digits="0" readonly="true" store="true" compute="ComputeAmountLineAll" />
+        <field name="PriceSubtotalIncl" type="float" label="Tax Incl." digits="0" readonly="true" store="true" compute="ComputeAmountLineAll" />
+        <field name="PriceExtra" type="float" label="Price extra" />
+        <field name="PriceType" type="selection" label="Price Type" default="original">
+            <option value="original" name="Original" />
+            <option value="manual" name="Manual" />
+            <option value="automatic" name="Automatic" />
+        </field>
+        <field name="Margin" type="monetary" label="Margin" />
+        <field name="MarginPercent" type="float" label="Margin (%)" digits="(12, 4)" />
+        <field name="TotalCost" type="float" label="Total cost" digits="Product Price" readonly="true" />
+        <field name="IsTotalCostComputed" type="bool" help="Allows to know if the total cost has already been computed or not" />
+        <field name="Discount" type="float" label="Discount (%)" digits="0" default="0.0" />
+        <field name="OrderId" type="PointOfSale.PosOrder" label="Order Ref" required="true" index="true" />
+        <field name="TaxIds" type="Account.Tax" collection="true" label="Taxes" readonly="true" />
+        <field name="TaxIdsAfterFiscalPosition" type="Account.Tax" collection="true" compute="GetTaxIdsAfterFiscalPosition" label="Taxes to Apply" />
+        <field name="PackLotIds" type="PointOfSale.PosOrderLineLot" collection="true" label="Lot/serial Number" />
+        <field name="ProductUomId" type="Uom.Uom" label="Product UoM" related="ProductId.UomId" />
+        <field name="CurrencyId" type="Res.Currency" related="OrderId.CurrencyId" />
+        <field name="FullProductName" type="char" label="Full Product Name" />
+        <field name="CustomerNote" type="char" label="Customer Note" />
+        <field name="RefundOrderlineIds" type="PointOfSale.PosOrderLine" collection="true" label="Refund Order Lines" help="Orderlines in this field are the lines that refunded this orderline." />
+        <field name="RefundedOrderlineId" type="PointOfSale.PosOrderLine" label="Refunded Order Line" help="If this orderline is a refund, then the refunded orderline is specified in this field." />
+        <field name="RefundedQty" type="float" label="Refunded Quantity" compute="ComputeRefundQty" help="Number of items refunded in this orderline." />
+        <field name="Uuid" type="char" label="Uuid" readonly="true" />
+        <field name="Note" type="char" label="Internal Note" />
+        <field name="ComboParentId" type="PointOfSale.PosOrderLine" label="Combo Parent" />
+        <field name="ComboLineIds" type="PointOfSale.PosOrderLine" collection="true" label="Combo Lines" />
+        <field name="ComboLineId" type="PointOfSale.PosComboLine" label="Combo Line" />
+    </model>
+
+    <model id="PointOfSale.PosOrderLineLot" name="PosOrderLineLot" description="Specify product lot/serial number in pos order line">
+        <field name="PosOrderLineId" type="PointOfSale.PosOrderLine" />
+        <field name="OrderId" type="PointOfSale.PosOrder" related="PosOrderLineId.OrderId" readonly="false" />
+        <field name="LotName" type="char" label="Lot Name" />
+        <field name="ProductId" type="Product.Product" related="PosOrderLineId.ProductId" readonly="false" />
+    </model>
+
+    <model id="Account.AccountCashRounding" name="AccountCashRounding" description="Cash rounding strategy">
+        <field name="Id" type="integer" />
+        <field name="Name" type="string" label="Rounding Name" />
+        <field name="Rounding" type="float" label="Rounding Precision" />
+        <field name="RoundingMethod" type="selection" label="Rounding Method" default="HALF-UP">
+            <option value="HALF-UP" name="Round up to nearest 0.5" />
+            <option value="UP" name="Round Up" />
+            <option value="DOWN" name="Round Down" />
+            <option value="HALF-DOWN" name="Round down to nearest 0.5" />
+            <option value="HALF-EVEN" name="Round to nearest 0.5, even if halfway" />
+        </field>
+        <field name="Strategy" type="selection" label="Cash Rounding Strategy">
+            <option value="biggest_tax" name="Round on the biggest tax line" />
+            <option value="add_invoice_line" name="Add a rounding line on the invoice" />
+        </field>
+        <field name="LossAccountId" type="Account.Account" label="Loss Account" />
+        <field name="ProfitAccountId" type="Account.Account" label="Profit Account" />
+        <field name="Company" type="Res.Company" label="Company" />
+    </model>
+
+    <optionset id="PointOfSale.PosOrderLinePriceType" name="Pos Order Line Price Type">
+        <option value="original" name="Original" />
+        <option value="manual" name="Manual" />
+        <option value="automatic" name="Automatic" />
+    </optionset>
+
+    <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+        <option value="Accounts" name="Accounts" />
+        <option value="Taxes" name="Taxes" />
+        <option value="Products" name="Products" />
+    </optionset>
 </buvi>

@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentToken" name="Payment.PaymentToken" description="Payment Token">
+    <field name="ProviderCode" type="string" />
+    <field name="Active" type="bool" default="true" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" />
+    <field name="PartnerId" type="res.Partner" />
+    <field name="LastUsed" type="datetime" />
+    <field name="LastUsedFor" type="selection" selection="Payment.PaymentToken.get_last_used_for_selection" />
+    <field name="Name" type="string" compute="ComputeName" />
+    <field name="DisplayName" type="string" compute="ComputeDisplayName" />
+  </model>
+
+  <optionset id="Payment.PaymentToken.LastUsedFor" name="LastUsedFor">
+    <option value="transaction" name="Transaction" />
+    <option value="checkout" name="Checkout" />
+    <option value="recurring" name="Recurring Payment" />
+    <option value="subscription" name="Subscription" />
+    <option value="payout" name="Payout" />
+  </optionset>
 </buvi>

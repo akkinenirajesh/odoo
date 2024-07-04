@@ -1,3 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="ProviderReference" type="string" label="Provider Reference" />
+    <field name="ProviderCode" type="string" />
+    <field name="PaymentToken" type="string" />
+    <field name="PaymentMethodCode" type="string" />
+    <field name="Reference" type="string" />
+    <field name="CurrencyId" type="Core.Currency" />
+    <field name="Amount" type="float" />
+    <field name="PartnerName" type="string" />
+    <field name="PartnerEmail" type="string" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" />
+    <field name="State" type="Payment.TransactionState" />
+    <field name="ProviderId" type="Payment.Provider" />
+    <field name="Date" type="datetime" />
+    <field name="AcquirerReference" type="string" />
+    <field name="TransactionId" type="integer" />
+    <field name="Operation" type="string" />
+    <field name="Fees" type="float" />
+    <field name="DateValid" type="datetime" />
+    <field name="PartnerId" type="Res.Partner" />
+    <field name="PaymentDate" type="datetime" />
+    <field name="OrderId" type="integer" />
+    <field name="DateCreated" type="datetime" />
+    <field name="PaymentTokenId" type="Payment.Token" />
+    <field name="Signature" type="string" />
+    <field name="PaymentTransactionId" type="integer" />
+    <field name="LastSuccessDate" type="datetime" />
+    <field name="LastErrorDate" type="datetime" />
+    <field name="LastErrorDescription" type="string" />
+    <field name="LastErrorMessage" type="string" />
+    <field name="LastStateChange" type="datetime" />
+    <field name="LastSuccessMessage" type="string" />
+    <field name="LastSuccessDescription" type="string" />
+    <field name="LastTransactionDate" type="datetime" />
+    <field name="LastTransactionMessage" type="string" />
+    <field name="LastTransactionDescription" type="string" />
+    <field name="LastTransactionErrorCode" type="integer" />
+  </model>
+
+  <optionset id="Payment.TransactionState" name="Transaction State">
+    <option value="draft" name="Draft" />
+    <option value="authorized" name="Authorized" />
+    <option value="done" name="Done" />
+    <option value="pending" name="Pending" />
+    <option value="cancel" name="Cancelled" />
+    <option value="error" name="Error" />
+    <option value="refund" name="Refund" />
+    <option value="partial" name="Partial" />
+  </optionset>
 </buvi>

@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Provider" required="true"
+      selection="[('manual', 'Manual'), ('paypal', 'PayPal'), ('stripe', 'Stripe'), ('transfer', 'Bank Transfer'), ('custom', 'Custom')]"
+      ondelete="{&quot;custom&quot;: &quot;set default&quot;}" />
+    <field name="CustomMode" type="selection" label="Custom Mode"
+      selection="[('wire_transfer', 'Wire Transfer')]" />
+    <field name="QRCode" type="bool" label="Enable QR Codes"
+      help="Enable the use of QR-codes when paying by wire transfer." />
+    <field name="PendingMessage" type="html" label="Pending Message" />
+  </model>
 </buvi>

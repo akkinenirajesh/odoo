@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrProperty" name="Base.IrProperty" description="Company Property">
+        <field name="Name" type="string" label="Name" index="true" />
+        <field name="ResId" type="string" label="Resource" index="true" help="If not set, acts as a default value for new resources" />
+        <field name="CompanyId" type="Res.Company" label="Company" index="true" />
+        <field name="FieldsId" type="Ir.ModelFields" label="Field" required="true" ondelete="cascade" />
+        <field name="ValueFloat" type="float" />
+        <field name="ValueInteger" type="integer" />
+        <field name="ValueText" type="text" />
+        <field name="ValueBinary" type="binary" attachment="false" />
+        <field name="ValueReference" type="string" />
+        <field name="ValueDatetime" type="datetime" />
+        <field name="Type" type="Base.IrPropertyType" required="true" default="Many2One" index="true" />
+    </model>
+
+    <optionset id="Base.IrPropertyType" name="Property Type">
+        <option value="Char" name="Char" />
+        <option value="Float" name="Float" />
+        <option value="Boolean" name="Boolean" />
+        <option value="Integer" name="Integer" />
+        <option value="Text" name="Text" />
+        <option value="Binary" name="Binary" />
+        <option value="Many2One" name="Many2One" />
+        <option value="Date" name="Date" />
+        <option value="DateTime" name="DateTime" />
+        <option value="Selection" name="Selection" />
+        <option value="Html" name="Html" />
+    </optionset>
 </buvi>

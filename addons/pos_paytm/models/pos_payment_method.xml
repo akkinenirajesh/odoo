@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Payment Method">
+    <field name="PaytmTid" type="string" label="PayTM Terminal ID" help="Terminal model or Activation code \n ex: 70000123" />
+    <field name="ChannelId" type="string" label="PayTM Channel ID" default="EDC" />
+    <field name="AcceptPayment" type="Pos.AcceptPayment" />
+    <field name="AllowedPaymentModes" type="Pos.AllowedPaymentModes" />
+    <field name="PaytmMid" type="string" label="PayTM Merchant ID" help="Go to https://business.paytm.com/ and create the merchant account" />
+    <field name="PaytmMerchantKey" type="string" label="PayTM Merchant API Key" help="Merchant/AES key \n ex: B1o6Ivjy8L1@abc9" />
+    <field name="PaytmTestMode" type="bool" label="PayTM Test Mode" default="false" help="Turn it on when in Test Mode" />
+  </model>
+
+  <optionset id="Pos.AcceptPayment" name="Accept Payment">
+    <option value="auto" name="Automatically" />
+    <option value="manual" name="Manually" />
+  </optionset>
+
+  <optionset id="Pos.AllowedPaymentModes" name="Allowed Payment Modes">
+    <option value="all" name="All" />
+    <option value="card" name="Card" />
+    <option value="qr" name="QR" />
+  </optionset>
 </buvi>

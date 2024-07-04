@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventMeet.Event" name="Event" description="Event">
+    <field name="MeetingRooms" type="collection" collection="true" label="Meeting rooms" relation="WebsiteEventMeet.MeetingRoom" />
+    <field name="MeetingRoomCount" type="integer" label="Room count" />
+    <field name="MeetingRoomAllowCreation" type="bool" label="Allow Room Creation" default="false"
+      help="Let Visitors Create Rooms" />
+  </model>
 </buvi>

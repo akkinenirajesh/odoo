@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockRule" name="StockRule" description="Stock Rule">
+        <field name="Action" type="selection" selection="Stock.StockRuleAction" required="true"/>
+        <field name="Product" type="Product.Product" required="true"/>
+        <field name="ProductVariant" type="Product.ProductVariant" />
+        <field name="WarehouseId" type="Stock.Warehouse" required="true"/>
+        <field name="LocationId" type="Stock.Location" required="true" />
+        <field name="LocationSrcId" type="Stock.Location" required="true" />
+        <field name="PickingTypeId" type="Stock.PickingType" required="true" />
+        <field name="RouteId" type="Stock.Route" required="true" />
+        <field name="Company" type="Core.Company" required="true" />
+        <field name="Group" type="Stock.Group" required="true" />
+        <field name="ProcurementGroupId" type="Stock.ProcurementGroup" />
+        <field name="MinQty" type="float" label="Min. Quantity"/>
+        <field name="MaxQty" type="float" label="Max. Quantity"/>
+        <field name="Signal" type="bool" label="Signal"/>
+        <field name="Ignore" type="bool" label="Ignore"/>
+        <field name="HasError" type="bool" />
+        <field name="Inherit" type="bool" label="Inherit"/>
+        <field name="Delay" type="integer" label="Lead Time"/>
+        <field name="IgnoreVendorLeadTime" type="bool" label="Ignore Vendor Lead Time"/>
+        <field name="ProcurementType" type="selection" selection="Stock.ProcurementType"/>
+        <field name="DateExpire" type="datetime" label="Expiration Date"/>
+        <field name="DatePlanned" type="datetime" label="Planned Date"/>
+        <field name="DateStart" type="datetime" label="Start Date"/>
+        <field name="DateEnd" type="datetime" label="End Date"/>
+        <field name="Sequence" type="integer" label="Sequence" default="10"/>
+    </model>
+
+    <optionset id="Stock.StockRuleAction" name="Stock Rule Action">
+        <option value="buy" name="Buy"/>
+        <option value="manufacture" name="Manufacture"/>
+        <option value="pull" name="Pull"/>
+    </optionset>
+
+    <optionset id="Stock.ProcurementType" name="Procurement Type">
+        <option value="make_to_order" name="Make to Order"/>
+        <option value="make_to_stock" name="Make to Stock"/>
+        <option value="buy_to_order" name="Buy to Order"/>
+        <option value="buy_to_stock" name="Buy to Stock"/>
+    </optionset>
+
 </buvi>

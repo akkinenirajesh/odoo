@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.ProductDocument" name="Sale.ProductDocument" description="Product Document">
+        <field name="AttachedOnSale" type="Sale.AttachedOnSale" label="Sale : Visible at" required="true" default="Hidden"
+            help="Allows you to share the document with your customers within a sale.&#x0A;On quote: the document will be sent to and accessible by customers at any time.&#x0A;e.g. this option can be useful to share Product description files.&#x0A;On order confirmation: the document will be sent to and accessible by customers.&#x0A;e.g. this option can be useful to share User Manual or digital content bought&#x0A; on ecommerce."
+            groups="sales_team.group_sale_salesman" />
+    </model>
+    <optionset id="Sale.AttachedOnSale" name="Attached On Sale">
+        <option value="Hidden" name="Hidden" />
+        <option value="Quotation" name="On quote" />
+        <option value="SaleOrder" name="On confirmed order" />
+    </optionset>
 </buvi>

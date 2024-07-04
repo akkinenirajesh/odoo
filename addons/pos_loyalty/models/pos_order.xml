@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Orders">
+        <inherit id="Pos.PosOrder" />
+        <field name="ValidateCouponPrograms" method="ValidateCouponPrograms" />
+        <field name="ConfirmCouponPrograms" method="ConfirmCouponPrograms" />
+        <field name="CheckExistingLoyaltyCards" method="_CheckExistingLoyaltyCards" />
+        <field name="GetFieldsForOrderLine" method="_GetFieldsForOrderLine" />
+        <field name="AddMailAttachment" method="_AddMailAttachment" />
+        <field name="Lines" collection="true" type="Pos.PosOrderLine" />
+        <field name="ConfigId" type="Pos.PosConfig" />
+        <field name="RewardIdentifierCode" type="string" />
+        <field name="PointsCost" type="float" />
+        <field name="CouponId" type="Loyalty.LoyaltyCard" />
+        <field name="IsRewardLine" type="bool" />
+        <field name="RewardId" type="Loyalty.Reward" />
+    </model>
 </buvi>

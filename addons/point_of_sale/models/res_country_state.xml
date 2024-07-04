@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.ResCountryState" name="ResCountryState" description="Res Country State">
+    <field name="Id" type="int" invisible="true" />
+    <field name="Name" type="string" label="State Name" required="true" translate="true" />
+    <field name="Code" type="char" label="Code" />
+    <field name="Country" type="Core.Country" label="Country" />
+  </model>
 </buvi>

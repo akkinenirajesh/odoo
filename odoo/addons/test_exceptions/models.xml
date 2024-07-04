@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestExceptions.Model" name="TestExceptions.Model" description="Test Exception Model">
+    <field name="Name" type="string" label="Name" />
+  </model>
 </buvi>

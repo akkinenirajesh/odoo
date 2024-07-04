@@ -1,3 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.ResCompany" name="ResCompany" description="Company">
+        <field name="DropshipSequence" type="ir.Sequence" label="Dropship Sequence" />
+        <field name="DropshipPickingType" type="stock.PickingType" label="Dropship Picking Type" />
+    </model>
+
+    <model id="ir.Sequence" name="IrSequence" description="Sequence">
+        <field name="Name" type="string" label="Sequence Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Code" required="true" />
+        <field name="Company" type="ResCompany" label="Company" />
+        <field name="Prefix" type="string" label="Prefix" />
+        <field name="Padding" type="integer" label="Padding" />
+    </model>
+
+    <model id="stock.PickingType" name="StockPickingType" description="Picking Type">
+        <field name="Name" type="string" label="Picking Type Name" required="true" translate="true" />
+        <field name="Company" type="ResCompany" label="Company" />
+        <field name="Warehouse" type="stock.Warehouse" label="Warehouse" />
+        <field name="Sequence" type="ir.Sequence" label="Sequence" />
+        <field name="Code" type="string" label="Code" />
+        <field name="DefaultLocationSource" type="stock.Location" label="Default Source Location" />
+        <field name="DefaultLocationDestination" type="stock.Location" label="Default Destination Location" />
+        <field name="SequenceCode" type="string" label="Sequence Code" />
+        <field name="UseExistingLots" type="bool" label="Use Existing Lots" />
+    </model>
+
+    <model id="stock.Warehouse" name="StockWarehouse" description="Warehouse">
+        <field name="Name" type="string" label="Warehouse Name" required="true" translate="true" />
+    </model>
+
+    <model id="stock.Location" name="StockLocation" description="Location">
+        <field name="Name" type="string" label="Location Name" required="true" translate="true" />
+        <field name="Usage" type="string" label="Usage" />
+    </model>
+
+    <model id="stock.Rule" name="StockRule" description="Stock Rule">
+        <field name="Name" type="string" label="Rule Name" required="true" translate="true" />
+        <field name="Action" type="string" label="Action" />
+        <field name="LocationDestination" type="stock.Location" label="Destination Location" />
+        <field name="LocationSource" type="stock.Location" label="Source Location" />
+        <field name="ProcureMethod" type="string" label="Procure Method" />
+        <field name="Route" type="stock.Route" label="Route" />
+        <field name="PickingType" type="stock.PickingType" label="Picking Type" />
+        <field name="Company" type="ResCompany" label="Company" />
+    </model>
+
+    <model id="stock.Route" name="StockRoute" description="Route">
+        <field name="Name" type="string" label="Route Name" required="true" translate="true" />
+    </model>
 </buvi>

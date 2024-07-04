@@ -1,3 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <field name="Name" type="string" label="Point of Sale" required="true" help="An internal identification of the point of sale." />
+        <field name="PrinterIds" type="many2many" collection="true" label="Order Printers" relation="PointOfSale.PosConfigPrinterRel" target="PointOfSale.PosPrinter" />
+        <field name="IsOrderPrinter" type="bool" label="Order Printer" />
+        <field name="IsInstalledAccountAccountant" type="bool" label="Is the Full Accounting Installed" />
+        <field name="PickingTypeId" type="many2one" label="Operation Type" target="Stock.PickingType" required="true" ondelete="restrict" domain="[('Code', '=', 'outgoing'), ('WarehouseId.CompanyId', '=', Env.Company.Id)]" />
+        <field name="JournalId" type="many2one" label="Point of Sale Journal" target="Account.Journal" domain="[('Type', 'in', ('general', 'sale'))]" ondelete="restrict" help="Accounting journal used to post POS session journal entries and POS invoice payments." />
+        <field name="InvoiceJournalId" type="many2one" label="Invoice Journal" target="Account.Journal" domain="[('Type', '=', 'sale')]" help="Accounting journal used to create invoices." />
+        <field name="CurrencyId" type="many2one" target="Res.Currency" label="Currency" />
+        <field name="IfaceCashdrawer" type="bool" label="Cashdrawer" help="Automatically open the cashdrawer." />
+        <field name="IfaceElectronicScale" type="bool" label="Electronic Scale" help="Enables Electronic Scale integration." />
+        <field name="IfacePrintViaProxy" type="bool" label="Print via Proxy" help="Bypass browser printing and prints via the hardware proxy." />
+        <field name="IfaceScanViaProxy" type="bool" label="Scan via Proxy" help="Enable barcode scanning with a remotely connected barcode scanner and card swiping with a Vantiv card reader." />
+        <field name="IfaceBigScrollbars" type="bool" label="Large Scrollbars" help="For imprecise industrial touchscreens." />
+        <field name="IfacePrintAuto" type="bool" label="Automatic Receipt Printing" default="false" help="The receipt will automatically be printed at the end of each order." />
+        <field name="IfacePrintSkipScreen" type="bool" label="Skip Preview Screen" default="true" help="The receipt screen will be skipped if the receipt can be printed automatically." />
+        <field name="IfaceTaxIncluded" type="selection" label="Tax Display" default="total" required="true">
+            <option value="subtotal" name="Tax-Excluded Price" />
+            <option value="total" name="Tax-Included Price" />
+        </field>
+        <field name="IfaceStartCategId" type="many2one" label="Initial Category" target="PointOfSale.Category" help="The point of sale will display this product category by default. If no category is specified, all available products will be shown." />
+        <field name="IfaceAvailableCategIds" type="many2many" collection="true" label="Available PoS Product Categories" target="PointOfSale.Category" help="The point of sale will only display products which are within one of the selected category trees. If no category is specified, all available products will be shown" />
+        <field name="CustomerDisplayType" type="selection" label="Customer Facing Display" default="local" help="Show checkout to customers.">
+            <option value="none" name="None" />
+            <option value="local" name="The same device" />
+            <option value="remote" name="Another device" />
+            <option value="proxy" name="An IOT-connected screen" />
+        </field>
+        <field name="CustomerDisplayBgImg" type="image" label="Background Image" max_width="1920" max_height="1920" />
+        <field name="CustomerDisplayBgImgName" type="string" label="Background Image Name" />
+        <field name="RestrictPriceControl" type="bool" label="Restrict Price Modifications to Managers" help="Only users with Manager access rights for PoS app can modify the product prices on orders." />
+        <field name="IsMarginsCostsAccessibleToEveryUser" type="bool" label="Margins & Costs" default="false" help="When disabled, only PoS manager can view the margin and cost of product among the Product info." />
+        <field name="CashControl" type="bool" label="Advanced Cash Control" help="Check the amount of the cashbox at opening and closing." />
+        <field name="SetMaximumDifference" type="bool" label="Set Maximum Difference" help="Set a maximum difference allowed between the expected and counted money during the closing of the session." />
+        <field name="ReceiptHeader" type="text" label="Receipt Header" help="A short text that will be inserted as a header in the printed receipt." />
+        <field name="ReceiptFooter" type="text" label="Receipt Footer" help="A short text that will be inserted as a footer in the printed receipt." />
+        <field name="ProxyIp" type="string" label="IP Address" size="45" help="The hostname or ip address of the hardware proxy, Will be autodetected if left empty." />
+        <field name="Active" type="bool" default="true" />
+        <field name="Uuid" type="string" readonly="true" default="Uuid.NewGuid().ToString()" copy="false" help="A globally unique identifier for this pos configuration, used to prevent conflicts in client-generated data." />
+        <field name="SequenceId" type="many2one" label="Order IDs Sequence" target="Ir.Sequence" readonly="true" help="This sequence is automatically created by Odoo but you can change it to customize the reference numbers of your orders." copy="false" ondelete="restrict" />
+        <field name="SequenceLineId" type="many2one" label="Order Line IDs Sequence" target="Ir.Sequence" readonly="true" help="This sequence is automatically created by Odoo but you can change it to customize the reference numbers of your orders lines." copy="false" />
+        <field name="SessionIds" type="one2many" collection="true" label="Sessions" target="PointOfSale.Session" />
+        <field name="CurrentSessionId" type="many2one" label="Current Session" target="PointOfSale.Session" />
+        <field name="CurrentSessionState" type="string" />
+        <field name="NumberOfRescueSession" type="integer" label="Number of Rescue Session" />
+        <field name="LastSessionClosingCash" type="float" />
+        <field name="LastSessionClosingDate" type="date" />
+        <field name="PosSessionUsername" type="string" />
+        <field name="PosSessionState" type="string" />
+        <field name="PosSessionDuration" type="string" />
+        <field name="PricelistId" type="many2one" label="Default Pricelist" target="Product.Pricelist" help="The pricelist used if no customer is selected or if the customer has no Sale Pricelist configured if any." />
+        <field name="AvailablePricelistIds" type="many2many" collection="true" label="Available Pricelists" target="Product.Pricelist" help="Make several pricelists available in the Point of Sale. You can also apply a pricelist to specific customers from their contact form (in Sales tab). To be valid, this pricelist must be listed here as an available pricelist. Otherwise the default pricelist will apply." />
+        <field name="CompanyId" type="many2one" label="Company" target="Res.Company" required="true" default="Env.Company.Id" />
+        <field name="GroupPosManagerId" type="many2one" label="Point of Sale Manager Group" target="Res.Groups" default="Env.Ref('point_of_sale.group_pos_manager').Id" help="This field is there to pass the id of the pos manager group to the point of sale client." />
+        <field name="GroupPosUserId" type="many2one" label="Point of Sale User Group" target="Res.Groups" default="Env.Ref('point_of_sale.group_pos_user').Id" help="This field is there to pass the id of the pos user group to the point of sale client." />
+        <field name="IfaceTipproduct" type="bool" label="Product tips" />
+        <field name="TipProductId" type="many2one" label="Tip Product" target="Product.Product" help="This product is used as reference on customer receipts." />
+        <field name="FiscalPositionIds" type="many2many" collection="true" label="Fiscal Positions" target="Account.FiscalPosition" help="This is useful for restaurants with onsite and take-away services that imply specific tax rates." />
+        <field name="DefaultFiscalPositionId" type="many2one" label="Default Fiscal Position" target="Account.FiscalPosition" />
+        <field name="DefaultBillIds" type="many2many" collection="true" label="Coins/Bills" target="PointOfSale.Bill" />
+        <field name="UsePricelist" type="bool" label="Use a pricelist." />
+        <field name="TaxRegimeSelection" type="bool" label="Tax Regime Selection value" />
+        <field name="StartCategory" type="bool" label="Start Category" default="false" />
+        <field name="LimitCategories" type="bool" label="Restrict Categories" />
+        <field name="ModulePosRestaurant" type="bool" label="Is a Bar/Restaurant" />
+        <field name="ModulePosDiscount" type="bool" label="Global Discounts" />
+        <field name="ModulePosMercury" type="bool" label="Integrated Card Payments" />
+        <field name="IsPosbox" type="bool" label="PosBox" />
+        <field name="IsHeaderOrFooter" type="bool" label="Custom Header & Footer" />
+        <field name="ModulePosHr" type="bool" help="Show employee login screen" />
+        <field name="AmountAuthorizedDiff" type="float" label="Amount Authorized Difference" help="This field depicts the maximum difference allowed between the ending balance and the theoretical cash when closing a session, for non-POS managers. If this maximum is reached, the user will have an error message at the closing of his session saying that he needs to contact his manager." />
+        <field name="PaymentMethodIds" type="many2many" collection="true" label="Payment Methods" target="PointOfSale.PaymentMethod" />
+        <field name="CompanyHasTemplate" type="bool" label="Company has chart of accounts" />
+        <field name="CurrentUser" type="many2one" label="Current Session Responsible" target="Res.Users" />
+        <field name="OtherDevices" type="bool" label="Other Devices" help="Connect devices to your PoS without an IoT Box." />
+        <field name="RoundingMethod" type="many2one" label="Cash rounding" target="Account.CashRounding" />
+        <field name="CashRounding" type="bool" label="Cash Rounding" />
+        <field name="OnlyRoundCashMethod" type="bool" label="Only apply rounding on cash" />
+        <field name="HasActiveSession" type="bool" />
+        <field name="ManualDiscount" type="bool" label="Line Discounts" default="true" />
+        <field name="ShipLater" type="bool" label="Ship Later" />
+        <field name="WarehouseId" type="many2one" label="Warehouse" target="Stock.Warehouse" ondelete="restrict" />
+        <field name="RouteId" type="many2one" label="Spefic route for products delivered later." target="Stock.Route" />
+        <field name="PickingPolicy" type="selection" label="Shipping Policy" required="true" default="direct" help="If you deliver all products at once, the delivery order will be scheduled based on the greatest product lead time. Otherwise, it will be based on the shortest.">
+            <option value="direct" name="As soon as possible" />
+            <option value="one" name="When all products are ready" />
+        </field>
+        <field name="AutoValidateTerminalPayment" type="bool" default="true" help="Automatically validates orders paid with a payment terminal." />
+        <field name="TrustedConfigIds" type="many2many" collection="true" label="Trusted Point of Sale Configurations" target="PointOfSale.PosConfig" relation="PointOfSale.PosConfigTrustRelation" />
+        <field name="AccessToken" type="string" default="Uuid.NewGuid().ToString().Substring(0, 16)" />
+        <field name="ShowProductImages" type="bool" label="Show Product Images" help="Show product images in the Point of Sale interface." default="true" />
+        <field name="ShowCategoryImages" type="bool" label="Show Category Images" help="Show category images in the Point of Sale interface." default="true" />
+        <field name="NoteIds" type="many2many" collection="true" label="Note Models" target="PointOfSale.Note" help="The predefined notes of this point of sale." />
+        <field name="ModulePosSms" type="bool" label="SMS Enabled" help="Activate SMS feature for point_of_sale" />
+    </model>
+
+    <optionset id="PointOfSale.CustomerDisplayType" name="Customer Facing Display">
+        <option value="none" name="None" />
+        <option value="local" name="The same device" />
+        <option value="remote" name="Another device" />
+        <option value="proxy" name="An IOT-connected screen" />
+    </optionset>
+
+    <optionset id="PointOfSale.PickingPolicy" name="Shipping Policy">
+        <option value="direct" name="As soon as possible" />
+        <option value="one" name="When all products are ready" />
+    </optionset>
 </buvi>

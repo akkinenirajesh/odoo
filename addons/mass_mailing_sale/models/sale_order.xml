@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="State" type="selection" label="Status" required="true" selection="[('draft', 'Draft'), ('sent', 'Quotation'), ('sale', 'Sale Order'), ('done', 'Done'), ('cancel', 'Cancelled')]" />
+        <field name="PartnerId" type="Res.Partner" required="true" label="Customer" />
+        <field name="PartnerInvoiceId" type="Res.Partner" label="Invoice Address" />
+        <field name="PartnerShippingId" type="Res.Partner" label="Delivery Address" />
+        <field name="OrderLine" type="Sale.SaleOrderLine" collection="true" />
+        <field name="DateOrder" type="datetime" label="Order Date" />
+        <field name="ConfirmationDate" type="datetime" label="Confirmation Date" />
+        <field name="ValidityDate" type="datetime" label="Validity Date" />
+        <field name="PaymentTermId" type="Account.PaymentTerm" label="Payment Terms" />
+        <field name="AmountTotal" type="float" label="Total" />
+        <field name="AmountTax" type="float" label="Taxes" />
+        <field name="AmountUntaxed" type="float" label="Subtotal" />
+        <field name="InvoiceStatus" type="selection" label="Invoice Status" selection="[('upselling', 'Upselling'), ('invoiced', 'Fully Invoiced'), ('to invoice', 'To Invoice'), ('no', 'Nothing to Invoice')]" />
+        <field name="DeliveryStatus" type="selection" label="Delivery Status" selection="[('upselling', 'Upselling'), ('delivered', 'Fully Delivered'), ('to deliver', 'To Deliver'), ('no', 'Nothing to Deliver')]" />
+        <field name="TeamId" type="Crm.Team" label="Sales Team" />
+        <field name="CampaignId" type="Marketing.Campaign" label="Campaign" />
+        <field name="MediumId" type="Marketing.Medium" label="Medium" />
+        <field name="SourceId" type="Marketing.Source" label="Source" />
+        <field name="Note" type="text" label="Note" />
+        <field name="Pricelist" type="Product.Pricelist" label="Pricelist" />
+        <field name="PartnerShippingAddress" type="text" label="Shipping Address" />
+        <field name="PartnerInvoiceAddress" type="text" label="Invoice Address" />
+    </model>
 </buvi>

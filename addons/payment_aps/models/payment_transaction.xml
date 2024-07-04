@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="Reference" type="string" label="Reference" />
+    <field name="ProviderCode" type="string" label="Provider Code" />
+    <field name="ProviderReference" type="string" label="Provider Reference" />
+    <field name="Amount" type="float" label="Amount" />
+    <field name="Currency" type="Core.Currency" label="Currency" />
+    <field name="PartnerId" type="Res.Partner" label="Partner" />
+    <field name="PartnerLang" type="string" label="Partner Language" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" label="Payment Method" />
+    <field name="State" type="Payment.TransactionState" label="State" />
+    <field name="AcquirerId" type="Payment.Acquirer" label="Acquirer" />
+    <field name="Date" type="datetime" label="Date" />
+    <field name="Operation" type="Payment.TransactionOperation" label="Operation" />
+    <field name="PaymentTokenId" type="Payment.PaymentToken" label="Payment Token" />
+    <field name="ProviderSpecificValues" type="json" label="Provider Specific Values" />
+    <field name="TransactionValues" type="json" label="Transaction Values" />
+    <field name="AccessKey" type="string" label="Access Key" />
+    <field name="Signature" type="string" label="Signature" />
+    <field name="PaymentOption" type="string" label="Payment Option" />
+    <field name="FortId" type="string" label="Fort ID" />
+    <field name="ResponseMessage" type="string" label="Response Message" />
+    <field name="Status" type="string" label="Status" />
+    <field name="IsProcessed" type="bool" label="Is Processed" />
+    <field name="ProcessingValues" type="json" label="Processing Values" />
+  </model>
+
+  <optionset id="Payment.TransactionState" name="Transaction State">
+    <option value="draft" name="Draft" />
+    <option value="pending" name="Pending" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+    <option value="error" name="Error" />
+  </optionset>
+
+  <optionset id="Payment.TransactionOperation" name="Transaction Operation">
+    <option value="pay" name="Pay" />
+    <option value="refund" name="Refund" />
+  </optionset>
 </buvi>

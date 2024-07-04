@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.PartnerBank" name="ResPartnerBank" description="Partner Bank">
+    <field name="AbaRouting" type="string" label="ABA/Routing" help="American Bankers Association Routing Number" />
+    <field name="PartnerId" type="Res.Partner" relation="one2one" inverse="BankId" collection="false" />
+  </model>
 </buvi>

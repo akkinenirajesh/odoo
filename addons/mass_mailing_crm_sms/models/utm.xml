@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Utm.UtmCampaign" name="UtmCampaign" description="UtmCampaign">
+        <field name="AbTestingSmsWinnerSelection" type="Utm.UtmCampaignAbTestingSmsWinnerSelection" />
+    </model>
+
+    <optionset id="Utm.UtmCampaignAbTestingSmsWinnerSelection" name="UtmCampaignAbTestingSmsWinnerSelection">
+        <option value="crm_lead_count" name="Leads" />
+    </optionset>
 </buvi>

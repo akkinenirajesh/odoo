@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.WebsiteVisitor" name="Website.WebsiteVisitor" description="Website Visitor">
+        <field name="EventTrackVisitorIds" type="Website.WebsiteVisitor.EventTrackVisitor" collection="true" label="Track Visitors" groups="Event.GroupEventUser" />
+        <field name="EventTrackWishlistedIds" type="Event.EventTrack" collection="true" label="Wishlisted Tracks" compute="ComputeEventTrackWishlistedIds" compute_sudo="true" search="SearchEventTrackWishlistedIds" groups="Event.GroupEventUser" />
+        <field name="EventTrackWishlistedCount" type="integer" label="# Wishlisted" compute="ComputeEventTrackWishlistedIds" compute_sudo="true" groups="Event.GroupEventUser" />
+    </model>
 </buvi>

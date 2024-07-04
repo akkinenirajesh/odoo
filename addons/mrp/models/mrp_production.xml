@@ -1,3 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.MrpProduction" name="MrpProduction" description="Manufacturing Order">
+        <field name="Name" type="string" label="Reference" default="New" copy="false" readonly="true" />
+        <field name="Priority" type="selection" selection="ProcurementPriorities" label="Priority" default="0" help="Components will be reserved first for the MO with the highest priorities." />
+        <field name="BackorderSequence" type="integer" label="Backorder Sequence" default="0" copy="false" help="Backorder sequence, if equals to 0 means there is not related backorder" />
+        <field name="Origin" type="string" label="Source" copy="false" help="Reference of the document that generated this production order request." />
+        <field name="ProductId" type="Product.Product" label="Product" collection="true" domain="[('Type', '=', 'Consu')]" compute="ComputeProductId" store="true" copy="true" precompute="true" readonly="false" required="true" />
+        <field name="ProductVariantAttributes" type="Product.TemplateAttribute.Value" related="ProductId.ProductTemplateAttributeValueIds" />
+        <field name="ProductTracking" type="selection" selection="ProductTracking" related="ProductId.Tracking" />
+        <field name="ProductTmplId" type="Product.Template" label="Product Template" related="ProductId.ProductTmplId" />
+        <field name="ProductQty" type="float" label="Quantity To Produce" digits="Product Unit of Measure" readonly="false" required="true" tracking="true" precompute="true" compute="ComputeProductQty" store="true" copy="true" />
+        <field name="ProductUomId" type="Uom.Uom" label="Product Unit of Measure" readonly="false" required="true" compute="ComputeUomId" store="true" copy="true" domain="[('CategoryId', '=', ProductUomCategoryId)]" />
+        <field name="LotProducingId" type="Stock.Lot" label="Lot/Serial Number" copy="false" domain="[('ProductId', '=', ProductId)]" />
+        <field name="QtyProducing" type="float" label="Quantity Producing" digits="Product Unit of Measure" copy="false" />
+        <field name="ProductUomCategoryId" type="Uom.Uom" related="ProductId.UomId.CategoryId" />
+        <field name="ProductUomQty" type="float" label="Total Quantity" compute="ComputeProductUomQty" store="true" />
+        <field name="PickingTypeId" type="Stock.Picking.Type" label="Operation Type" copy="true" readonly="false" compute="ComputePickingTypeId" store="true" precompute="true" required="true" domain="[('Code', '=', 'MrpOperation')]" />
+        <field name="UseCreateComponentsLots" type="bool" related="PickingTypeId.UseCreateComponentsLots" />
+        <field name="LocationSrcId" type="Stock.Location" label="Components Location" compute="ComputeLocations" store="true" readonly="false" required="true" domain="[('Usage','=','Internal')]" help="Location where the system will look for components." />
+        <field name="WarehouseId" type="Stock.Warehouse" related="LocationSrcId.WarehouseId" />
+        <field name="LocationDestId" type="Stock.Location" label="Finished Products Location" compute="ComputeLocations" store="true" readonly="false" required="true" domain="[('Usage','=','Internal')]" help="Location where the system will stock the finished products." />
+        <field name="LocationFinalId" type="Stock.Location" label="Final Location from procurement" />
+        <field name="DateDeadline" type="datetime" label="Deadline" copy="false" store="true" readonly="true" compute="ComputeDateDeadline" help="Informative date allowing to define when the manufacturing order should be processed at the latest to fulfill delivery on time." />
+        <field name="DateStart" type="datetime" label="Start" copy="false" default="GetDefaultDateStart" help="Date you plan to start production or date you actually started production." index="true" required="true" />
+        <field name="DateFinished" type="datetime" label="End" copy="false" default="GetDefaultDateFinished" compute="ComputeDateFinished" store="true" help="Date you expect to finish production or actual date you finished production." />
+        <field name="DurationExpected" type="float" label="Expected Duration" help="Total expected duration (in minutes)" compute="ComputeDurationExpected" />
+        <field name="Duration" type="float" label="Real Duration" help="Total real duration (in minutes)" compute="ComputeDuration" />
+        <field name="BomId" type="Mrp.Bom" label="Bill of Material" readonly="false" domain="[&amp;, |, ('CompanyId', '=', False), ('CompanyId', '=', CompanyId), &amp;, |, ('ProductId','=',ProductId), &amp;, ('ProductTmplId.ProductVariantIds','=',ProductId), ('ProductId','=',False), ('Type', '=', 'Normal')]" compute="ComputeBomId" store="true" precompute="true" help="Bills of Materials, also called recipes, are used to autocomplete components and work order instructions." />
+        <field name="State" type="selection" selection="MrpProductionState" label="State" compute="ComputeState" copy="false" index="true" readonly="true" store="true" tracking="true" help=" * Draft: The MO is not confirmed yet.\n"
+             " * Confirmed: The MO is confirmed, the stock rules and the reordering of the components are trigerred.\n"
+             " * In Progress: The production has started (on the MO or on the WO).\n"
+             " * To Close: The production is done, the MO has to be closed.\n"
+             " * Done: The MO is closed, the stock moves are posted. \n"
+             " * Cancelled: The MO has been cancelled, can't be confirmed anymore." />
+        <field name="ReservationState" type="selection" selection="MrpProductionReservationState" label="MO Readiness" compute="ComputeReservationState" copy="false" index="true" readonly="true" store="true" tracking="true" help="Manufacturing readiness for this MO, as per bill of material configuration:\n\
+            * Ready: The material is available to start the production.\n\
+            * Waiting: The material is not available to start the production.\n" />
+        <field name="MoveRawIds" type="Stock.Move" label="Components" collection="true" compute="ComputeMoveRawIds" store="true" readonly="false" copy="false" domain="[('Scrapped', '=', False)]" />
+        <field name="MoveFinishedIds" type="Stock.Move" label="Finished Products" readonly="false" collection="true" compute="ComputeMoveFinishedIds" store="true" copy="false" domain="[('Scrapped', '=', False)]" />
+        <field name="MoveByproductIds" type="Stock.Move" compute="ComputeMoveByproductIds" inverse="SetMoveByproductIds" />
+        <field name="FinishedMoveLineIds" type="Stock.Move.Line" label="Finished Product" collection="true" compute="ComputeLines" inverse="InverseLines" />
+        <field name="WorkorderIds" type="Mrp.Workorder" label="Work Orders" copy="true" collection="true" compute="ComputeWorkorderIds" store="true" readonly="false" />
+        <field name="MoveDestIds" type="Stock.Move" label="Stock Movements of Produced Goods" collection="true" />
+        <field name="UnreserveVisible" type="bool" label="Allowed to Unreserve Production" compute="ComputeUnreserveVisible" help="Technical field to check when we can unreserve" />
+        <field name="ReserveVisible" type="bool" label="Allowed to Reserve Production" compute="ComputeUnreserveVisible" help="Technical field to check when we can reserve quantities" />
+        <field name="UserId" type="Res.Users" label="Responsible" default="Env.User" domain="[('GroupsId', 'in', Env.Ref('Mrp.GroupMrpUser').Id)]" />
+        <field name="CompanyId" type="Res.Company" label="Company" default="Env.Company" index="true" required="true" />
+        <field name="QtyProduced" type="float" label="Quantity Produced" compute="GetProducedQty" />
+        <field name="ProcurementGroupId" type="Procurement.Group" label="Procurement Group" copy="false" />
+        <field name="ProductDescriptionVariants" type="string" label="Custom Description" />
+        <field name="OrderpointId" type="Stock.Warehouse.Orderpoint" label="Orderpoint" copy="false" index="btree_not_null" />
+        <field name="PropagateCancel" type="bool" label="Propagate cancel and split" help="If checked, when the previous move of the move (which was generated by a next procurement) is cancelled or split, the move generated by this move will too" />
+        <field name="DelayAlertDate" type="datetime" label="Delay Alert Date" compute="ComputeDelayAlertDate" search="SearchDelayAlertDate" />
+        <field name="JsonPopover" type="string" label="JSON data for the popover widget" compute="ComputeJsonPopover" />
+        <field name="ScrapIds" type="Stock.Scrap" label="Scraps" collection="true" />
+        <field name="ScrapCount" type="integer" label="Scrap Move" compute="ComputeScrapMoveCount" />
+        <field name="UnbuildIds" type="Mrp.Unbuild" label="Unbuilds" collection="true" />
+        <field name="UnbuildCount" type="integer" label="Number of Unbuilds" compute="ComputeUnbuildCount" />
+        <field name="IsLocked" type="bool" label="Is Locked" default="GetDefaultIsLocked" copy="false" />
+        <field name="IsPlanned" type="bool" label="Its Operations are Planned" compute="ComputeIsPlanned" store="true" />
+        <field name="ShowFinalLots" type="bool" label="Show Final Lots" compute="ComputeShowLots" />
+        <field name="ProductionLocationId" type="Stock.Location" label="Production Location" compute="ComputeProductionLocation" store="true" />
+        <field name="PickingIds" type="Stock.Picking" label="Picking associated to this manufacturing order" collection="true" compute="ComputePickingIds" />
+        <field name="DeliveryCount" type="integer" label="Delivery Orders" compute="ComputePickingIds" />
+        <field name="Consumption" type="selection" selection="MrpProductionConsumption" required="true" readonly="true" default="Flexible" />
+        <field name="MrpProductionChildCount" type="integer" label="Number of generated MO" compute="ComputeMrpProductionChildCount" />
+        <field name="MrpProductionSourceCount" type="integer" label="Number of source MO" compute="ComputeMrpProductionSourceCount" />
+        <field name="MrpProductionBackorderCount" type="integer" label="Count of linked backorder" compute="ComputeMrpProductionBackorder" />
+        <field name="ShowLock" type="bool" label="Show Lock/unlock buttons" compute="ComputeShowLock" />
+        <field name="ComponentsAvailability" type="string" label="Component Status" compute="ComputeComponentsAvailability" help="Latest component availability status for this MO. If green, then the MO's readiness status is ready, as per BOM configuration." />
+        <field name="ComponentsAvailabilityState" type="selection" selection="MrpProductionComponentsAvailabilityState" compute="ComputeComponentsAvailability" search="SearchComponentsAvailabilityState" />
+        <field name="ProductionCapacity" type="float" compute="ComputeProductionCapacity" help="Quantity that can be produced with the current stock of components" />
+        <field name="ShowLotIds" type="bool" label="Display the serial number shortcut on the moves" compute="ComputeShowLotIds" />
+        <field name="ForecastedIssue" type="bool" compute="ComputeForecastedIssue" />
+        <field name="ShowAllocation" type="bool" compute="ComputeShowAllocation" help="Technical Field used to decide whether the button 'Allocation' should be displayed." />
+        <field name="AllowWorkorderDependencies" type="bool" label="Allow Work Order Dependencies" />
+        <field name="ShowProduce" type="bool" compute="ComputeShowProduce" help="Technical field to check if produce button can be shown" />
+        <field name="ShowProduceAll" type="bool" compute="ComputeShowProduce" help="Technical field to check if produce all button can be shown" />
+        <field name="IsOutdatedBom" type="bool" label="Outdated BoM" help="The BoM has been updated since creation of the MO" />
+        <field name="IsDelayed" type="bool" compute="ComputeIsDelayed" search="SearchIsDelayed" />
+        <unique name="NameUniq" field="Name, CompanyId" message="Reference must be unique per Company!" />
+        <constraint name="QtyPositive" condition="ProductQty &gt; 0" message="The quantity to produce must be positive!" />
+    </model>
+
+    <optionset id="Mrp.MrpProductionState" name="Mrp Production State">
+        <option value="Draft" name="Draft" />
+        <option value="Confirmed" name="Confirmed" />
+        <option value="Progress" name="In Progress" />
+        <option value="ToClose" name="To Close" />
+        <option value="Done" name="Done" />
+        <option value="Cancel" name="Cancelled" />
+    </optionset>
+
+    <optionset id="Mrp.MrpProductionReservationState" name="Mrp Production Reservation State">
+        <option value="Confirmed" name="Waiting" />
+        <option value="Assigned" name="Ready" />
+        <option value="Waiting" name="Waiting Another Operation" />
+    </optionset>
+
+    <optionset id="Mrp.MrpProductionConsumption" name="Mrp Production Consumption">
+        <option value="Flexible" name="Allowed" />
+        <option value="Warning" name="Allowed with warning" />
+        <option value="Strict" name="Blocked" />
+    </optionset>
+
+    <optionset id="Mrp.MrpProductionComponentsAvailabilityState" name="Mrp Production Components Availability State">
+        <option value="Available" name="Available" />
+        <option value="Expected" name="Expected" />
+        <option value="Late" name="Late" />
+        <option value="Unavailable" name="Not Available" />
+    </optionset>
+
+    <optionset id="Procurement.Priorities" name="Procurement Priorities">
+        <option value="0" name="Normal" />
+        <option value="1" name="Urgent" />
+        <option value="2" name="Very Urgent" />
+    </optionset>
+
+    <optionset id="Product.Tracking" name="Product Tracking">
+        <option value="none" name="No" />
+        <option value="lot" name="By Lots" />
+        <option value="serial" name="By Unique Serial Number" />
+    </optionset>
 </buvi>

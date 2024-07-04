@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.AccountMove" name="Account.AccountMove" description="Account Move">
+    <field name="Name" type="string" label="Number" required="true" readonly="true" />
+    <field name="State" type="selection" selection="Account.MoveState" default="draft" />
+    <field name="MoveType" type="selection" selection="Account.MoveType" />
+    <field name="Date" type="date" required="true" />
+    <field name="Ref" type="char" label="Reference" />
+    <field name="PartnerId" type="Res.Partner" required="true" label="Partner" ondelete="restrict" />
+    <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    <field name="Company" type="Res.Company" />
+    <field name="InvoiceUserId" type="Res.Users" label="Invoice User" />
+    <field name="InvoiceLineIds" type="Account.MoveLine" collection="true" />
+    <field name="TeamId" type="Crm.Team" label="Sales Team" />
+    <field name="CampaignId" type="Utm.Campaign" />
+    <field name="MediumId" type="Utm.Medium" />
+    <field name="SourceId" type="Utm.Source" />
+    <field name="SaleOrderCount" type="integer" label="Sale Order Count" readonly="true" />
+    <field name="TransactionIds" type="Account.BankStatementLine" collection="true" />
+    <field name="PartnerCredit" type="float" label="Partner Credit" readonly="true" />
+  </model>
+
+  <optionset id="Account.MoveState" name="Account Move State">
+    <option value="draft" name="Draft" />
+    <option value="posted" name="Posted" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
+
+  <optionset id="Account.MoveType" name="Account Move Type">
+    <option value="out_invoice" name="Customer Invoice" />
+    <option value="out_refund" name="Customer Credit Note" />
+    <option value="in_invoice" name="Vendor Bill" />
+    <option value="in_refund" name="Vendor Credit Note" />
+    <option value="entry" name="Journal Entry" />
+  </optionset>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteTrack" name="WebsiteTrack" description="Website Track">
+    <field name="ProductId" type="Product.Product" ondelete="cascade" readonly="true" index="btree_not_null" />
+  </model>
 </buvi>

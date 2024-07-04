@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="Name" type="string" label="Number" required="true" />
+        <field name="PartnerId" type="Core.ResPartner" label="Partner" required="true" />
+        <field name="InvoiceReference" type="string" label="Invoice Reference" readonly="true" />
+        <field name="KidNumber" type="string" label="KID Number" readonly="true" />
+    </model>
 </buvi>

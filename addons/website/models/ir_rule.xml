@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.IrRule" name="IrRule" description="IrRule">
+    <field name="Active" type="bool" default="true"
+      help="If false, the rule is not applied." />
+    <field name="Domain" type="char"
+      help="Domain used to select the records this rule applies to. You can use here domain syntax." />
+    <field name="Perms" type="char"
+      help="Permissions to apply on selected records." />
+    <field name="Groups" type="Core.Group" collection="true"
+      help="User groups who can access the selected records with these permissions." />
+    <field name="Website" type="Website.Website" />
+  </model>
 </buvi>

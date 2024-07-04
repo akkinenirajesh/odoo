@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.ResPartner" name="ResPartner" description="ResPartner">
+    <field name="SaleOrderCount" type="integer" label="Sale Order Count" />
+    <field name="SaleOrderIds" type="Sale.SaleOrder" collection="true" />
+    <field name="SaleWarn" type="Selection" label="Sales Warnings" default="no-message">
+      <option value="no-message" name="No Message" />
+      <option value="no-warning" name="No Warning" />
+      <option value="warning" name="Warning" />
+      <option value="block" name="Block" />
+    </field>
+    <field name="SaleWarnMsg" type="text" label="Message for Sales Order" />
+  </model>
 </buvi>

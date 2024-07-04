@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.ResPartnerIap" name="Mail.ResPartnerIap" description="Partner IAP">
+    <field name="PartnerId" type="Mail.ResPartner" label="Partner" required="true" collection="true" />
+    <field name="IapSearchDomain" type="string" label="Search Domain / Email" help="Domain used to find the company" />
+    <field name="IapEnrichInfo" type="text" label="IAP Enrich Info" help="IAP response stored as a JSON string" readonly="true" />
+    <unique>
+      <field name="PartnerId" />
+      <message>Only one partner IAP is allowed for one partner</message>
+    </unique>
+  </model>
 </buvi>

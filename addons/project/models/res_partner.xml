@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ResPartner" name="ResPartner" description="Inherits partner and adds Tasks information in the partner form">
+        <field name="ProjectIds" type="Project.Project" collection="true" label="Projects" />
+        <field name="TaskIds" type="Project.Task" collection="true" label="Tasks" />
+        <field name="TaskCount" type="integer" label="# Tasks" />
+        <field name="CompanyId" type="Core.Company" label="Company" />
+    </model>
 </buvi>

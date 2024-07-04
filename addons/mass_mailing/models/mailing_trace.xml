@@ -1,3 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MailingTrace" name="MailingTrace" description="Mailing Statistics">
+        <field name="TraceType" type="MassMailing.TraceType" required="true" default="mail"/>
+        <field name="MailMailId" type="Mail.Mail" label="Mail"/>
+        <field name="MailMailIdInt" type="integer" label="Mail ID (tech)"/>
+        <field name="Email" type="string" label="Email"/>
+        <field name="MessageId" type="string" label="Message-ID"/>
+        <field name="MediumId" type="Core.Medium" />
+        <field name="SourceId" type="Core.Source" />
+        <field name="Model" type="string" label="Document model" required="true"/>
+        <field name="ResId" type="reference" label="Document ID" collection="true" />
+        <field name="MassMailingId" type="MassMailing.Mailing" label="Mailing"/>
+        <field name="CampaignId" type="Marketing.Campaign" label="Campaign"/>
+        <field name="SentDateTime" type="datetime" label="Sent On"/>
+        <field name="OpenDateTime" type="datetime" label="Opened On"/>
+        <field name="ReplyDateTime" type="datetime" label="Replied On"/>
+        <field name="TraceStatus" type="MassMailing.TraceStatus" label="Status" default="outgoing"/>
+        <field name="FailureType" type="MassMailing.FailureType" label="Failure type"/>
+        <field name="FailureReason" type="text" label="Failure reason" readonly="true"/>
+        <field name="LinksClickIds" type="LinkTracker.LinkTrackerClick" collection="true" label="Links click"/>
+        <field name="LinksClickDateTime" type="datetime" label="Clicked On"/>
+    </model>
+
+    <optionset id="MassMailing.TraceType" name="Trace Type">
+        <option value="mail" name="Email" />
+    </optionset>
+
+    <optionset id="MassMailing.TraceStatus" name="Trace Status">
+        <option value="outgoing" name="Outgoing" />
+        <option value="process" name="Processing" />
+        <option value="pending" name="Sent" />
+        <option value="sent" name="Delivered" />
+        <option value="open" name="Opened" />
+        <option value="reply" name="Replied" />
+        <option value="bounce" name="Bounced" />
+        <option value="error" name="Exception" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
+
+    <optionset id="MassMailing.FailureType" name="Failure Type">
+        <option value="unknown" name="Unknown error" />
+        <option value="mail_bounce" name="Bounce" />
+        <option value="mail_email_invalid" name="Invalid email address" />
+        <option value="mail_email_missing" name="Missing email address" />
+        <option value="mail_from_invalid" name="Invalid from address" />
+        <option value="mail_from_missing" name="Missing from address" />
+        <option value="mail_smtp" name="Connection failed (outgoing mail server problem)" />
+        <option value="mail_bl" name="Blacklisted Address" />
+        <option value="mail_dup" name="Duplicated Email" />
+        <option value="mail_optout" name="Opted Out" />
+    </optionset>
 </buvi>

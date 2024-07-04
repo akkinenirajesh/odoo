@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.PickingType" name="Stock.PickingType" description="Picking Type">
+    <field name="Code" type="selection" label="Code" required="true">
+      <option value="incoming" name="Incoming" />
+      <option value="outgoing" name="Outgoing" />
+      <option value="internal" name="Internal" />
+      <option value="production" name="Production" />
+      <option value="repair_operation" name="Repair" />
+    </field>
+    <field name="CountRepairConfirmed" type="integer" label="Number of Repair Orders Confirmed" collection="true" />
+    <field name="CountRepairUnderRepair" type="integer" label="Number of Repair Orders Under Repair" collection="true" />
+    <field name="CountRepairReady" type="integer" label="Number of Repair Orders to Process" collection="true" />
+    <field name="DefaultRemoveLocationDestId" type="Stock.Location" label="Default Remove Destination Location" collection="true" />
+    <field name="DefaultRecycleLocationDestId" type="Stock.Location" label="Default Recycle Destination Location" collection="true" />
+    <field name="IsRepairable" type="bool" label="Create Repair Orders from Returns" default="false" collection="true" />
+    <field name="ReturnTypeOfIds" type="Stock.PickingType" label="Return Type Of Ids" collection="true" />
+  </model>
+  <model id="Stock.Picking" name="Stock.Picking" description="Picking">
+    <field name="IsRepairable" type="bool" label="Is Repairable" collection="true" />
+    <field name="RepairIds" type="Repair.Order" label="Repair Ids" collection="true" />
+    <field name="NbrRepairs" type="integer" label="Number of repairs linked to this picking" collection="true" />
+  </model>
 </buvi>

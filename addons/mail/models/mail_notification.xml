@@ -1,3 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailNotification" name="MailNotification" description="Message Notifications">
+        <field name="AuthorId" type="res.partner" label="Author" relation="true" ondelete="set null" />
+        <field name="MailMessageId" type="mail.message" label="Message" required="true" index="true" ondelete="cascade" />
+        <field name="MailMailId" type="mail.mail" label="Mail" help="Optional mail_mail ID. Used mainly to optimize searches." index="true" />
+        <field name="ResPartnerId" type="res.partner" label="Recipient" index="true" ondelete="cascade" />
+        <field name="NotificationType" type="selection" label="Notification Type" default="inbox" index="true" required="true">
+            <option value="inbox" name="Inbox" />
+            <option value="email" name="Email" />
+        </field>
+        <field name="NotificationStatus" type="selection" label="Status" default="ready" index="true">
+            <option value="ready" name="Ready to Send" />
+            <option value="process" name="Processing" />
+            <option value="pending" name="Sent" />
+            <option value="sent" name="Delivered" />
+            <option value="bounce" name="Bounced" />
+            <option value="exception" name="Exception" />
+            <option value="canceled" name="Cancelled" />
+        </field>
+        <field name="IsRead" type="bool" label="Is Read" index="true" />
+        <field name="ReadDate" type="datetime" label="Read Date" copy="false" />
+        <field name="FailureType" type="selection" label="Failure type">
+            <option value="unknown" name="Unknown error" />
+            <option value="mail_bounce" name="Bounce" />
+            <option value="mail_email_invalid" name="Invalid email address" />
+            <option value="mail_email_missing" name="Missing email address" />
+            <option value="mail_from_invalid" name="Invalid from address" />
+            <option value="mail_from_missing" name="Missing from address" />
+            <option value="mail_smtp" name="Connection failed (outgoing mail server problem)" />
+        </field>
+        <field name="FailureReason" type="text" label="Failure reason" copy="false" />
+        <unique name="unique_mail_message_id_res_partner_id_if_set">
+            <field name="MailMessageId" />
+            <field name="ResPartnerId" />
+            <message>A notification with the same message and recipient already exists.</message>
+        </unique>
+        <constraint name="notification_partner_required">
+            <condition>notification_type NOT IN ('email', 'inbox') OR res_partner_id IS NOT NULL</condition>
+            <message>Customer is required for inbox / email notification</message>
+        </constraint>
+    </model>
 </buvi>

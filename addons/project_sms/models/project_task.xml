@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.ProjectTask" name="Project.ProjectTask" description="Project Task">
+    <field name="PartnerId" type="res.partner" />
+    <field name="StageId" type="project.task.stage" />
+    <field name="SmsTemplateId" type="mail.template" />
+  </model>
+
+  <model id="Project.Task.Stage" name="Project.Task.Stage" description="Project Task Stage">
+    <field name="SmsTemplateId" type="mail.template" />
+  </model>
 </buvi>

@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteSnippetFilter" name="WebsiteSnippetFilter" description="Website Snippet Filter">
+    <field name="Id" type="int" label="ID" readonly="true" />
+    <field name="CreateUid" type="res.users" label="Created by" invisible="true" readonly="true" />
+    <field name="CreateOn" type="datetime" label="Created on" invisible="true" readonly="true" />
+    <field name="WriteUid" type="res.users" label="Last Updated by" invisible="true" readonly="true" />
+    <field name="WriteOn" type="datetime" label="Last Updated on" invisible="true" readonly="true" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Website Snippet Filter without removing it." />
+    <field name="Model" type="string" label="Model" />
+    <field name="Description" type="string" label="Description" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Domain" type="string" label="Domain" />
+    <field name="Fields" type="string" label="Fields" />
+    <field name="Order" type="integer" label="Order" />
+    <field name="IsSample" type="bool" label="Is Sample" />
+    <field name="HardcodedSample" type="string" label="Hardcoded Sample" />
+    <field name="ShowSample" type="bool" label="Show Sample" />
+  </model>
 </buvi>

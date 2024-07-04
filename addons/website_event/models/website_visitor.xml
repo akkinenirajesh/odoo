@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteVisitor" name="Website.WebsiteVisitor" description="Website Visitor">
+    <field name="PartnerId" type="Res.Partner" label="Partner" />
+    <field name="DisplayName" type="string" label="Name" />
+    <field name="Email" type="string" label="Email" />
+    <field name="Mobile" type="string" label="Mobile" />
+    <field name="EventRegistrationIds" type="Event.Registration" collection="true" label="Event Registrations" />
+    <field name="EventRegistrationCount" type="integer" label="# Registrations" />
+    <field name="EventRegisteredIds" type="Event.Event" collection="true" label="Registered Events" />
+  </model>
 </buvi>

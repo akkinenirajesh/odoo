@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sales Order Line">
+    <field name="SaleOrderOptionIds" type="Sale.SaleOrderOption" collection="true" />
+    <field name="Name" type="string" label="Name" />
+    <field name="ProductId" type="Product.Product" />
+    <field name="OrderId" type="Sale.SaleOrder" />
+    <field name="SaleOrderTemplateId" type="Sale.SaleOrderTemplate" />
+  </model>
+
+  <optionset id="Sale.SaleOrderOption" name="Sale Order Option" />
 </buvi>

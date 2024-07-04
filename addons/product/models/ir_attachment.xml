@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.IrAttachment" name="IrAttachment" description="Ir Attachment">
+        <field name="Name" type="string" label="Name" />
+        <field name="ResModel" type="string" />
+        <field name="ResField" type="string" />
+        <field name="ResId" type="integer" />
+        <field name="Datas" type="binary" />
+        <field name="Checksum" type="char" />
+        <field name="MimeType" type="char" />
+        <field name="FileFormat" type="char" />
+        <field name="FileHash" type="char" />
+        <field name="Description" type="text" />
+        <field name="CreateDate" type="datetime" />
+        <field name="CreateUid" type="res.users" />
+        <field name="WriteDate" type="datetime" />
+        <field name="WriteUid" type="res.users" />
+        <field name="ResPartnerId" type="res.partner" />
+        <field name="DisplayName" type="string" />
+        <field name="Url" type="char" />
+        <field name="CompanyId" type="res.company" />
+        <field name="PartnerId" type="res.partner" />
+        <field name="Public" type="bool" />
+        <field name="Days" type="integer" />
+        <field name="AccessLevel" type="selection" selection="[('none', 'No Access'), ('view', 'View Only'), ('download', 'Download Only'), ('view_download', 'View & Download'), ('read', 'Read Only'), ('edit', 'Edit')]">
+            <field name="Days" label="Days" />
+            <field name="PartnerId" label="Partner" />
+        </field>
+    </model>
 </buvi>

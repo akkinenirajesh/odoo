@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
-  </model>
+    <model id="Stock.Warehouse" name="Warehouse" description="Warehouse">
+        <field name="PosTypeId" type="Stock.PickingType" label="Point of Sale Operation Type" />
+    </model>
+
+    <optionset id="Stock.PickingType" name="Picking Type" />
 </buvi>

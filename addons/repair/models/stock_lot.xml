@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Repair.StockLot" name="Repair.StockLot" description="Stock Lot">
+    <field name="RepairLineIds" type="Repair.RepairOrder" collection="true" label="Repair Orders" compute="ComputeRepairLineIds" />
+    <field name="RepairPartCount" type="integer" label="Repair part count" compute="ComputeRepairLineIds" />
+    <field name="InRepairCount" type="integer" label="In repair count" compute="ComputeInRepairCount" />
+    <field name="RepairedCount" type="integer" label="Repaired count" compute="ComputeRepairedCount" />
+  </model>
 </buvi>

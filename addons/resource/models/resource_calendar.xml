@@ -1,3 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.ResourceCalendar" name="Resource.ResourceCalendar" description="Resource Working Time">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Active" type="bool" default="true"
+            help="If the active field is set to false, it will allow you to hide the Working Time without removing it." />
+        <field name="Company" type="Res.Company" label="Company"
+            collection="true" />
+        <field name="WorkingTime" type="Resource.ResourceCalendarAttendance"
+            collection="true" />
+        <field name="TimeOff" type="Resource.ResourceCalendarLeaves"
+            collection="true" />
+        <field name="GlobalTimeOff" type="Resource.ResourceCalendarLeaves"
+            collection="true" />
+        <field name="HoursPerDay" type="float" label="Average Hour per Day"
+            digits="(2, 2)" help="Average hours per day a resource is supposed to work with this calendar." />
+        <field name="Timezone" type="string" required="true" label="Timezone"
+            help="This field is used in order to define in which timezone the resources will work." />
+        <field name="TimezoneOffset" type="string" label="Timezone offset" />
+        <field name="CalendarIn2WeeksMode" type="bool" label="Calendar in 2 weeks mode" />
+        <field name="Explanation" type="string" label="Explanation" />
+    </model>
+
+    <optionset id="Resource.WeekType" name="WeekType">
+        <option value="First" name="First" />
+        <option value="Second" name="Second" />
+    </optionset>
+
+    <model id="Resource.ResourceCalendarAttendance" name="Resource.ResourceCalendarAttendance" description="Working Time">
+        <field name="Name" type="string" label="Name" />
+        <field name="DayOfWeek" type="integer" label="Day of Week" />
+        <field name="HourFrom" type="float" label="Hour From" />
+        <field name="HourTo" type="float" label="Hour To" />
+        <field name="DayPeriod" type="string" label="Day Period" />
+        <field name="WeekType" type="Resource.WeekType" />
+        <field name="DisplayType" type="string" label="Display Type" />
+        <field name="Calendar" type="Resource.ResourceCalendar" label="Calendar" />
+        <field name="Resource" type="Resource.Resource" label="Resource" />
+        <field name="DateFrom" type="date" label="Date From" />
+        <field name="DateTo" type="date" label="Date To" />
+        <field name="DurationDays" type="float" label="Duration (Days)" />
+        <field name="DurationHours" type="float" label="Duration (Hours)" />
+        <field name="Sequence" type="integer" label="Sequence" />
+    </model>
+
+    <model id="Resource.ResourceCalendarLeaves" name="Resource.ResourceCalendarLeaves" description="Time Off">
+        <field name="Name" type="string" label="Name" />
+        <field name="DateFrom" type="date" label="Date From" />
+        <field name="DateTo" type="date" label="Date To" />
+        <field name="TimeType" type="string" label="Time Type" />
+        <field name="Calendar" type="Resource.ResourceCalendar" label="Calendar" />
+        <field name="Resource" type="Resource.Resource" label="Resource" />
+        <field name="Company" type="Res.Company" label="Company" />
+    </model>
+
 </buvi>

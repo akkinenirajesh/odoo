@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockPickingBatch" name="StockPickingBatch" description="Batch Transfer">
+    <field name="Name" type="string" label="Batch Transfer" required="true" default="New" readonly="true" copy="false" />
+    <field name="UserId" type="Res.Users" label="Responsible" tracking="true" checkCompany="true" />
+    <field name="CompanyId" type="Res.Company" label="Company" required="true" readonly="true" index="true" default="Env.Company" />
+    <field name="PickingIds" type="Stock.Picking" label="Transfers" collection="true" checkCompany="true" domain="[('Id', 'in', AllowedPickingIds)]" />
+    <field name="ShowCheckAvailability" type="bool" label="Show Check Availability" />
+    <field name="ShowAllocation" type="bool" label="Show Allocation Button" />
+    <field name="AllowedPickingIds" type="Stock.Picking" label="Allowed Picking Ids" collection="true" />
+    <field name="MoveIds" type="Stock.Move" label="Stock Moves" collection="true" />
+    <field name="MoveLineIds" type="Stock.MoveLine" label="Stock Move Lines" collection="true" inverse="_SetMoveLineIds" />
+    <field name="State" type="selection" label="Status" default="Draft" readonly="true" copy="false" tracking="true" required="true" index="true">
+      <option value="Draft" name="Draft" />
+      <option value="InProgress" name="In progress" />
+      <option value="Done" name="Done" />
+      <option value="Cancel" name="Cancelled" />
+    </field>
+    <field name="PickingTypeId" type="Stock.PickingType" label="Operation Type" checkCompany="true" copy="false" index="true" />
+    <field name="PickingTypeCode" type="selection" label="Operation Type Code" related="PickingTypeId.Code" />
+    <field name="ScheduledDate" type="datetime" label="Scheduled Date" copy="false" store="true" readonly="false" compute="_ComputeScheduledDate" />
+    <field name="IsWave" type="bool" label="This batch is a wave" />
+    <field name="ShowLotsText" type="bool" label="Show Lots Text" />
+  </model>
 </buvi>

@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MailingSubscription" name="MailingSubscription" description="Mailing List Subscription">
+        <field name="ContactId" type="MassMailing.MailingContact" required="true" relation="cascade" />
+        <field name="ListId" type="MassMailing.MailingList" required="true" relation="cascade" />
+        <field name="OptOut" type="bool" default="false"
+            help="The contact has chosen not to receive mails anymore from this list" />
+        <field name="OptOutReasonId" type="MassMailing.MailingSubscriptionOptout" label="Reason"
+            relation="restrict" />
+        <field name="OptOutDateTime" type="datetime" label="Unsubscription Date"
+            compute="ComputeOptOutDateTime" readonly="false" store="true" />
+        <field name="MessageBounce" type="integer" related="ContactId.MessageBounce" store="false" readonly="false" />
+        <field name="IsBlacklisted" type="bool" related="ContactId.IsBlacklisted" store="false" readonly="false" />
+        <unique>
+            <field name="ContactId" />
+            <field name="ListId" />
+            <message>A mailing contact cannot subscribe to the same mailing list multiple times.</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPayment" name="PosPayment" description="Pos Payment">
+        <field name="RazorpayAuthCode" type="string" label="Razorpay APPR Code" />
+        <field name="RazorpayIssuerCardNo" type="string" label="Razorpay Issue Card No Last 4 digits" />
+        <field name="RazorpayIssuerBank" type="string" label="Razorpay Issuer Bank" />
+        <field name="RazorpayPaymentMethod" type="string" label="Razorpay Payment Method" />
+        <field name="RazorpayReferenceNo" type="string" label="Razorpay Merchant Reference No." />
+        <field name="RazorpayReverseRefNo" type="string" label="Razorpay Reverse Reference No." />
+        <field name="RazorpayCardScheme" type="string" label="Razorpay Card Scheme" />
+        <field name="RazorpayCardOwnerName" type="string" label="Razorpay Card Owner Name" />
+    </model>
 </buvi>

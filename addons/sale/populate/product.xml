@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.ProductProduct" name="ProductProduct" description="Product Product">
+        <inherit id="Product.Product" />
+        <field name="InvoicePolicy" type="Sale.InvoicePolicy" collection="true" />
+    </model>
+
+    <optionset id="Sale.InvoicePolicy" name="Invoice Policy">
+        <option value="order" name="Order" />
+        <option value="delivery" name="Delivery" />
+    </optionset>
 </buvi>

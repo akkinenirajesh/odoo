@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ResCurrency" name="ResCurrency" description="Currencies">
+    <field name="Name" type="string" label="Currency" required="true" translate="true" />
+    <field name="Symbol" type="char" label="Symbol" required="true" />
+    <field name="Position" type="selection" selection="Product.ResCurrency.PositionSelection" label="Symbol Position" />
+    <field name="DecimalPlaces" type="integer" label="Decimal Places" />
+    <field name="Rate" type="float" label="Rate" />
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the currency without removing it." />
+    <field name="RateType" type="selection" selection="Product.ResCurrency.RateTypeSelection" label="Rate Type" />
+    <field name="RoundTo" type="float" label="Rounding Amount" help="If set, the amount is rounded to the closest multiple of this value." />
+    <field name="Company" type="Core.Company" label="Company" />
+  </model>
+
+  <optionset id="Product.ResCurrency.PositionSelection" name="Position Selection">
+    <option value="after" name="After" />
+    <option value="before" name="Before" />
+  </optionset>
+
+  <optionset id="Product.ResCurrency.RateTypeSelection" name="Rate Type Selection">
+    <option value="fixed" name="Fixed" />
+    <option value="variable" name="Variable" />
+  </optionset>
 </buvi>

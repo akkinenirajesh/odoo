@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.EventType" name="Website.EventType" description="Event Type">
+        <field name="WebsiteMenu" type="bool" label="Display a dedicated menu on Website" />
+        <field name="CommunityMenu" type="bool" label="Community Menu" 
+            help="Display community tab on website" />
+    </model>
 </buvi>

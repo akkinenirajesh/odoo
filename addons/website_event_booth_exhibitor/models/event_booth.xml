@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventBoothExhibitor.EventBooth" name="EventBooth" description="Event Booth">
+    <field name="UseSponsor" type="bool" related="BoothCategory.UseSponsor" />
+    <field name="SponsorTypeId" type="WebsiteEventBoothExhibitor.SponsorType" related="BoothCategory.SponsorTypeId" />
+    <field name="SponsorId" type="WebsiteEventExhibitor.Sponsor" string="Sponsor" copy="false" />
+    <field name="SponsorName" type="string" string="Sponsor Name" related="SponsorId.Name" />
+    <field name="SponsorEmail" type="string" string="Sponsor Email" related="SponsorId.Email" />
+    <field name="SponsorMobile" type="string" string="Sponsor Mobile" related="SponsorId.Mobile" />
+    <field name="SponsorPhone" type="string" string="Sponsor Phone" related="SponsorId.Phone" />
+    <field name="SponsorSubtitle" type="string" string="Sponsor Slogan" related="SponsorId.Subtitle" />
+    <field name="SponsorWebsiteDescription" type="html" string="Sponsor Description" related="SponsorId.WebsiteDescription" />
+    <field name="SponsorImage512" type="image" string="Sponsor Logo" related="SponsorId.Image512" />
+  </model>
 </buvi>

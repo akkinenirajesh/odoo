@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpRepair.Repair" name="MrpRepair.Repair" description="Repair Order">
+        <field name="Name" type="string" label="Repair Order" required="true" translate="true" />
+        <field name="Product" type="Product.Product" label="Product" required="true" />
+        <field name="ProductUom" type="Product.Uom" label="Product Unit of Measure" required="true" />
+        <field name="ProductQty" type="float" label="Quantity" required="true" />
+        <field name="State" type="selection" label="Status" readonly="true" selection="RepairState" />
+        <field name="PartnerId" type="Partner.Partner" label="Customer" required="true" />
+        <field name="Description" type="text" label="Description" />
+        <field name="StartDate" type="datetime" label="Start Date" />
+        <field name="EndDate" type="datetime" label="End Date" />
+        <field name="Pricelist" type="Product.Pricelist" label="Pricelist" />
+        <field name="CurrencyId" type="Currency.Currency" label="Currency" required="true" />
+        <field name="Company" type="Res.Company" label="Company" required="true" />
+        <field name="PartnerInvoiceId" type="Partner.Partner" label="Invoice Address" />
+        <field name="PartnerShippingId" type="Partner.Partner" label="Shipping Address" />
+        <field name="MoveIds" type="Stock.Move" collection="true" />
+    </model>
+
+    <optionset id="MrpRepair.RepairState" name="Repair State">
+        <option value="draft" name="Draft" />
+        <option value="confirmed" name="Confirmed" />
+        <option value="ready" name="Ready" />
+        <option value="in_progress" name="In Progress" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
 </buvi>

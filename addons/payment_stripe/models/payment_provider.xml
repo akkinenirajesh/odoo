@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="Payment.PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Provider" required="true" collection="true">
+      <option value="stripe" name="Stripe" />
+    </field>
+    <field name="StripePublishableKey" type="string" label="Publishable Key" help="The key solely used to identify the account with Stripe" required="true" />
+    <field name="StripeSecretKey" type="string" label="Secret Key" required="true" groups="base.group_system" />
+    <field name="StripeWebhookSecret" type="string" label="Webhook Signing Secret" help="If a webhook is enabled on your Stripe account, this signing secret must be set to authenticate the messages sent from Stripe to Odoo." groups="base.group_system" />
+    <field name="SupportExpressCheckout" type="bool" compute="ComputeFeatureSupportFields" />
+    <field name="SupportManualCapture" type="selection" compute="ComputeFeatureSupportFields">
+      <option value="full_only" name="Full Only" />
+    </field>
+    <field name="SupportRefund" type="selection" compute="ComputeFeatureSupportFields">
+      <option value="partial" name="Partial" />
+    </field>
+    <field name="SupportTokenization" type="bool" compute="ComputeFeatureSupportFields" />
+    <constraint name="CheckStateOfConnectedAccountIsNeverTest" message="You cannot set the provider to Test Mode while it is linked with your Stripe account." />
+    <constraint name="CheckOnboardingOfEnabledProviderIsCompleted" message="You cannot set the provider state to Enabled until your onboarding to Stripe is completed." />
+  </model>
 </buvi>

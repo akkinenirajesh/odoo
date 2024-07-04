@@ -1,3 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Maintenance.MaintenanceStage" name="MaintenanceStage" description="Maintenance Stage">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="20" />
+        <field name="Fold" type="bool" label="Folded in Maintenance Pipe" />
+        <field name="Done" type="bool" label="Request Done" />
+    </model>
+
+    <model id="Maintenance.MaintenanceEquipmentCategory" name="MaintenanceEquipmentCategory" description="Maintenance Equipment Category" collection="true" >
+        <field name="Name" type="string" label="Category Name" required="true" translate="true" />
+        <field name="Company" type="Res.Company" label="Company" default="Env.Company" />
+        <field name="Technician" type="Res.Users" label="Responsible"  default="Env.Uid" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Note" type="html" label="Comments" translate="true" />
+        <field name="Equipment" type="Maintenance.MaintenanceEquipment" collection="true" />
+        <field name="EquipmentCount" type="integer" label="Equipment Count" computed="true" readonly="true" />
+        <field name="Maintenance" type="Maintenance.MaintenanceRequest" collection="true" />
+        <field name="MaintenanceCount" type="integer" label="Maintenance Count" computed="true" readonly="true" />
+        <field name="MaintenanceOpenCount" type="integer" label="Current Maintenance" computed="true" readonly="true" />
+        <field name="Alias" type="Mail.Alias" label="Alias" />
+        <field name="Fold" type="bool" label="Folded in Maintenance Pipe" computed="true" readonly="true" store="true" />
+    </model>
+
+    <model id="Maintenance.MaintenanceMixin" name="MaintenanceMixin" description="Maintenance Maintained Item" abstract="true" >
+        <field name="Company" type="Res.Company" label="Company" default="Env.Company" />
+        <field name="EffectiveDate" type="date" label="Effective Date" required="true" default="Env.Date.Today" help="This date will be used to compute the Mean Time Between Failure." />
+        <field name="MaintenanceTeam" type="Maintenance.MaintenanceTeam" label="Maintenance Team" computed="true" readonly="false" store="true" />
+        <field name="Technician" type="Res.Users" label="Technician" />
+        <field name="Maintenance" type="Maintenance.MaintenanceRequest" collection="true" />
+        <field name="MaintenanceCount" type="integer" label="Maintenance Count" computed="true" readonly="true" store="true" />
+        <field name="MaintenanceOpenCount" type="integer" label="Current Maintenance" computed="true" readonly="true" store="true" />
+        <field name="ExpectedMTBF" type="integer" label="Expected MTBF" help="Expected Mean Time Between Failure" />
+        <field name="MTBF" type="integer" label="MTBF" computed="true" readonly="true" help="Mean Time Between Failure, computed based on done corrective maintenances." />
+        <field name="MTTR" type="integer" label="MTTR" computed="true" readonly="true" help="Mean Time To Repair" />
+        <field name="EstimatedNextFailure" type="date" label="Estimated time before next failure (in days)" computed="true" readonly="true" help="Computed as Latest Failure Date + MTBF" />
+        <field name="LatestFailureDate" type="date" label="Latest Failure Date" computed="true" readonly="true" />
+    </model>
+
+    <model id="Maintenance.MaintenanceEquipment" name="MaintenanceEquipment" description="Maintenance Equipment" collection="true" >
+        <field name="Name" type="string" label="Equipment Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Owner" type="Res.Users" label="Owner" />
+        <field name="Category" type="Maintenance.MaintenanceEquipmentCategory" label="Equipment Category" />
+        <field name="Vendor" type="Res.Partner" label="Vendor" />
+        <field name="VendorReference" type="string" label="Vendor Reference" />
+        <field name="Location" type="string" label="Location" />
+        <field name="Model" type="string" label="Model" />
+        <field name="SerialNumber" type="string" label="Serial Number" />
+        <field name="AssignDate" type="date" label="Assigned Date" />
+        <field name="Cost" type="float" label="Cost" />
+        <field name="Note" type="html" label="Note" />
+        <field name="WarrantyDate" type="date" label="Warranty Expiration Date" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="ScrapDate" type="date" label="Scrap Date" />
+        <field name="Maintenance" type="Maintenance.MaintenanceRequest" collection="true" />
+    </model>
+
+    <model id="Maintenance.MaintenanceRequest" name="MaintenanceRequest" description="Maintenance Request" collection="true" >
+        <field name="Subjects" type="string" label="Subjects" required="true" />
+        <field name="Company" type="Res.Company" label="Company" required="true" default="Env.Company" />
+        <field name="Description" type="html" label="Description" />
+        <field name="RequestDate" type="date" label="Request Date" default="Env.Date.Today" help="Date requested for the maintenance to happen." />
+        <field name="CreatedByUser" type="Res.Users" label="Created by User" default="Env.Uid" />
+        <field name="Category" type="Maintenance.MaintenanceEquipmentCategory" label="Category" related="Equipment.Category" readonly="true" store="true" />
+        <field name="Equipment" type="Maintenance.MaintenanceEquipment" label="Equipment" ondelete="restrict" />
+        <field name="Technician" type="Res.Users" label="Technician" computed="true" readonly="false" store="true" />
+        <field name="Stage" type="Maintenance.MaintenanceStage" label="Stage" ondelete="restrict" default="Env.GetDefaultStage" />
+        <field name="Priority" type="selection" label="Priority" options="PriorityOptionSet" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="CloseDate" type="date" label="Close Date" help="Date the maintenance was finished. " />
+        <field name="KanbanState" type="selection" label="Kanban State" required="true" default="normal" options="KanbanStateOptionSet" />
+        <field name="Archive" type="bool" label="Archive" default="false" help="Set archive to true to hide the maintenance request without deleting it." />
+        <field name="MaintenanceType" type="selection" label="Maintenance Type" default="corrective" options="MaintenanceTypeOptionSet" />
+        <field name="ScheduledDate" type="datetime" label="Scheduled Date" help="Date the maintenance team plans the maintenance.  It should not differ much from the Request Date. " />
+        <field name="Team" type="Maintenance.MaintenanceTeam" label="Team" required="true" computed="true" readonly="false" store="true" />
+        <field name="Duration" type="float" label="Duration" help="Duration in hours." />
+        <field name="Done" type="bool" related="Stage.Done" />
+        <field name="InstructionType" type="selection" label="Instruction" default="text" options="InstructionTypeOptionSet" />
+        <field name="InstructionPdf" type="binary" label="PDF" />
+        <field name="InstructionGoogleSlide" type="string" label="Google Slide" help="Paste the url of your Google Slide. Make sure the access to the document is public." />
+        <field name="InstructionText" type="html" label="Text" />
+        <field name="Recurrent" type="bool" label="Recurrent" computed="true" readonly="false" store="true" />
+        <field name="RepeatEvery" type="integer" label="Repeat Every" default="1" />
+        <field name="RepeatUnit" type="selection" label="Repeat Unit" default="week" options="RepeatUnitOptionSet" />
+        <field name="RepeatType" type="selection" label="Until" default="forever" options="RepeatTypeOptionSet" />
+        <field name="RepeatUntil" type="date" label="End Date" />
+    </model>
+
+    <model id="Maintenance.MaintenanceTeam" name="MaintenanceTeam" description="Maintenance Teams" collection="true" >
+        <field name="TeamName" type="string" label="Team Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Company" type="Res.Company" label="Company" default="Env.Company" />
+        <field name="TeamMembers" type="Res.Users" collection="true" />
+        <field name="ColorIndex" type="integer" label="Color Index" default="0" />
+        <field name="Request" type="Maintenance.MaintenanceRequest" collection="true" />
+        <field name="Equipment" type="Maintenance.MaintenanceEquipment" collection="true" />
+        <field name="Requests" type="Maintenance.MaintenanceRequest" collection="true" computed="true" readonly="true" />
+        <field name="NumberOfRequests" type="integer" label="Number of Requests" computed="true" readonly="true" />
+        <field name="NumberOfRequestsScheduled" type="integer" label="Number of Requests Scheduled" computed="true" readonly="true" />
+        <field name="NumberOfRequestsHighPriority" type="integer" label="Number of Requests in High Priority" computed="true" readonly="true" />
+        <field name="NumberOfRequestsBlocked" type="integer" label="Number of Requests Blocked" computed="true" readonly="true" />
+        <field name="NumberOfRequestsUnscheduled" type="integer" label="Number of Requests Unscheduled" computed="true" readonly="true" />
+    </model>
+
+    <optionset id="Maintenance.PriorityOptionSet" name="PriorityOptionSet">
+        <option value="0" name="Very Low" />
+        <option value="1" name="Low" />
+        <option value="2" name="Normal" />
+        <option value="3" name="High" />
+    </optionset>
+
+    <optionset id="Maintenance.KanbanStateOptionSet" name="KanbanStateOptionSet">
+        <option value="normal" name="In Progress" />
+        <option value="blocked" name="Blocked" />
+        <option value="done" name="Ready for next stage" />
+    </optionset>
+
+    <optionset id="Maintenance.MaintenanceTypeOptionSet" name="MaintenanceTypeOptionSet">
+        <option value="corrective" name="Corrective" />
+        <option value="preventive" name="Preventive" />
+    </optionset>
+
+    <optionset id="Maintenance.InstructionTypeOptionSet" name="InstructionTypeOptionSet">
+        <option value="pdf" name="PDF" />
+        <option value="google_slide" name="Google Slide" />
+        <option value="text" name="Text" />
+    </optionset>
+
+    <optionset id="Maintenance.RepeatUnitOptionSet" name="RepeatUnitOptionSet">
+        <option value="day" name="Days" />
+        <option value="week" name="Weeks" />
+        <option value="month" name="Months" />
+        <option value="year" name="Years" />
+    </optionset>
+
+    <optionset id="Maintenance.RepeatTypeOptionSet" name="RepeatTypeOptionSet">
+        <option value="forever" name="Forever" />
+        <option value="until" name="Until" />
+    </optionset>
 </buvi>

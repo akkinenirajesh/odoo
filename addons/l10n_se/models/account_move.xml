@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="Name" type="string" label="Number" required="true" />
+    <field name="Ref" type="string" label="Reference" />
+    <field name="MoveType" type="string" label="Type" required="true" />
+    <field name="State" type="string" label="State" />
+    <field name="JournalId" type="Account.AccountJournal" />
+    <field name="PartnerId" type="Res.Partner" label="Partner" />
+    <field name="PaymentReference" type="string" label="Payment Reference" />
+    <field name="CountryCode" type="Core.Country" label="Country" />
+    <field name="L10nSeInvoiceOcrLength" type="integer" label="OCR Length" />
+    <field name="L10nSeDefaultVendorPaymentRef" type="string" label="Default Vendor Payment Ref" />
+    <field name="L10nSeCheckVendorOcr" type="bool" label="Check Vendor OCR" />
+  </model>
 </buvi>

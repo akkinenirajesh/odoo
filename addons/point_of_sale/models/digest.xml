@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.Digest" name="Digest" description="Digest">
+    <field name="KpiPosTotal" type="bool" label="POS Sales" />
+    <field name="KpiPosTotalValue" type="monetary" compute="ComputeKpiPosTotalValue" />
+  </model>
+  <optionset id="PointOfSale.DigestKpiAction" name="Digest Kpi Action">
+    <option value="point_of_sale.action_pos_sale_graph&menu_id=%s" name="POS Sales Graph" />
+  </optionset>
 </buvi>

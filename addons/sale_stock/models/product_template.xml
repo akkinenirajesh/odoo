@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.ProductTemplate" name="Sale.ProductTemplate" description="Product Template">
+    <field name="Type" type="Sale.ProductType" label="Product Type" required="true" translate="true" />
+    <field name="IsStorable" type="bool" label="Storable Product" />
+    <field name="ExpensePolicy" type="Sale.ExpensePolicy" label="Expense Policy" />
+    <field name="ServiceType" type="Sale.ServiceType" label="Service Type" />
+  </model>
+
+  <optionset id="Sale.ProductType" name="Product Type">
+    <option value="Consumable" name="Consumable" />
+    <option value="Service" name="Service" />
+    <option value="Storable" name="Storable Product" />
+  </optionset>
+
+  <optionset id="Sale.ExpensePolicy" name="Expense Policy">
+    <option value="no" name="No" />
+    <option value="cost" name="Cost" />
+    <option value="cost_plus" name="Cost + Percentage" />
+    <option value="fixed" name="Fixed Price" />
+  </optionset>
+
+  <optionset id="Sale.ServiceType" name="Service Type">
+    <option value="manual" name="Manual" />
+    <option value="timesheet" name="Timesheet" />
+    <option value="contract" name="Contract" />
+  </optionset>
 </buvi>

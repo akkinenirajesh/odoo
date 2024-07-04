@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.AccountMoveLine" name="Account.AccountMoveLine" description="Account Move Line">
+        <field name="IsDownpayment" type="bool" />
+        <field name="SaleLineIds" type="Sale.SaleOrderLine" collection="true" label="Sales Order Lines" readonly="true" copy="false" />
+    </model>
 </buvi>

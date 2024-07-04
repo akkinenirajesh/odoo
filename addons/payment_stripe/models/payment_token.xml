@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentToken" name="Payment.PaymentToken" description="Payment Token">
+        <field name="StripePaymentMethod" type="string" label="Stripe Payment Method ID" readonly="true" />
+        <field name="StripeMandate" type="string" label="Stripe Mandate" readonly="true" />
+    </model>
 </buvi>

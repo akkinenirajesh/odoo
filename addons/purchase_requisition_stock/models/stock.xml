@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseRequisitionStock.StockRule" name="StockRule" description="Stock Rule">
+    <field name="PartnerRef" type="string" label="Partner Ref" />
+    <field name="RequisitionId" type="integer" label="Requisition Id" />
+    <field name="CurrencyId" type="integer" label="Currency Id" />
+  </model>
+  <model id="PurchaseRequisitionStock.StockMove" name="StockMove" description="Stock Move">
+    <field name="RequisitionLineIds" type="PurchaseRequisition.PurchaseRequisitionLine" collection="true" />
+  </model>
 </buvi>

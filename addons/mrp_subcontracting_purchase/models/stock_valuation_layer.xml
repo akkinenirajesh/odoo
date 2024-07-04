@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
+  <model id="MrpSubcontractingPurchase.StockValuationLayer" name="StockValuationLayer" description="Stock Valuation Layer">
+    <field name="StockMoveId" type="MrpSubcontractingPurchase.StockMove" relation="one2many" collection="true" />
+    <field name="Value" type="float" label="Value" />
   </model>
+  <model id="MrpSubcontractingPurchase.StockMove" name="StockMove" description="Stock Move">
+    <field name="ProductionId" type="MrpSubcontractingPurchase.MrpProduction" relation="one2many" collection="true" />
+  </model>
+  <model id="MrpSubcontractingPurchase.MrpProduction" name="MrpProduction" description="MRP Production">
+    <field name="SubcontractorId" type="ResPartner" relation="one2many" collection="true" />
+    <field name="State" type="selection" selection="ProductionState" />
+    <field name="MoveRawIds" type="MrpSubcontractingPurchase.StockMove" relation="one2many" collection="true" />
+    <field name="ProductUomQty" type="float" label="Product UOM Quantity" />
+  </model>
+  <model id="ResPartner" name="ResPartner" description="Res Partner" />
+  <optionset id="MrpSubcontractingPurchase.ProductionState" name="Production State">
+    <option value="draft" name="Draft" />
+    <option value="confirmed" name="Confirmed" />
+    <option value="done" name="Done" />
+  </optionset>
 </buvi>

@@ -1,3 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSale.ProductTemplate" name="ProductTemplate" description="Product Template">
+        <field name="Name" type="string" label="Product Name" required="true" translate="true" />
+        <field name="ListPrice" type="float" label="Sale Price" />
+        <field name="StandardPrice" type="float" label="Standard Price" />
+        <field name="Cost" type="float" label="Cost" />
+        <field name="DefaultCode" type="string" label="Internal Reference" />
+        <field name="Description" type="html" label="Description" translate="true" />
+        <field name="DescriptionSale" type="html" label="Sale Description" translate="true" />
+        <field name="DescriptionPurchase" type="html" label="Purchase Description" translate="true" />
+        <field name="WebsiteDescription" type="html" label="Website Description" translate="true" sanitizeOverridable="true" sanitizeAttributes="false" sanitizeForm="false" />
+        <field name="DescriptionEcommerce" type="html" label="Ecommerce Description" translate="true" sanitizeOverridable="true" sanitizeAttributes="false" sanitizeForm="false" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the product without removing it." />
+        <field name="CategId" type="Product.ProductCategory" label="Product Category" required="true" />
+        <field name="Type" type="Product.ProductType" label="Product Type" />
+        <field name="UOMId" type="Product.UOM" label="Unit of Measure" required="true" />
+        <field name="UOMName" type="string" label="Unit of Measure" />
+        <field name="UOMPoId" type="Product.UOM" label="Purchase Unit of Measure" />
+        <field name="UOMPoName" type="string" label="Purchase Unit of Measure" />
+        <field name="SaleOk" type="bool" label="Can be Sold" />
+        <field name="PurchaseOk" type="bool" label="Can be Purchased" />
+        <field name="Image" type="image" label="Image" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Weight" type="float" label="Weight" />
+        <field name="Volume" type="float" label="Volume" />
+        <field name="Barcode" type="string" label="Barcode" />
+        <field name="TrackQty" type="Product.Tracking" label="Inventory Tracking" />
+        <field name="TrackService" type="bool" label="Track Services" />
+        <field name="TrackWarranty" type="bool" label="Track Warranty" />
+        <field name="IsProductVariant" type="bool" label="Is Product Variant" />
+        <field name="IsCustom" type="bool" label="Is Custom" />
+        <field name="IsPublished" type="bool" label="Published" />
+        <field name="WebsiteSizeX" type="integer" label="Size X" default="1" />
+        <field name="WebsiteSizeY" type="integer" label="Size Y" default="1" />
+        <field name="WebsiteRibbonId" type="Product.Ribbon" label="Ribbon" />
+        <field name="WebsiteSequence" type="integer" label="Website Sequence" help="Determine the display order in the Website E-commerce" default="0" copy="false" index="true" />
+        <field name="PublicCategIds" type="Product.PublicCategory" collection="true" label="Website Product Category" help="The product will be available in each mentioned eCommerce category. Go to Shop > Edit Click on the page and enable 'Categories' to view all eCommerce categories." />
+        <field name="ProductTemplateImageIds" type="Product.Image" collection="true" label="Extra Product Media" copy="true" />
+        <field name="BaseUnitCount" type="float" label="Base Unit Count" help="Display base unit price on your eCommerce pages. Set to 0 to hide it for this product." />
+        <field name="BaseUnitId" type="Website.BaseUnit" label="Custom Unit of Measure" help="Define a custom unit to display in the price per unit of measure field." />
+        <field name="BaseUnitPrice" type="float" label="Price Per Unit" />
+        <field name="BaseUnitName" type="string" label="Base Unit Name" help="Displays the custom unit for the products if defined or the selected unit of measure otherwise." />
+        <field name="CompareListPrice" type="float" label="Compare to Price" help="The amount will be displayed strikethroughed on the eCommerce product page" />
+        <field name="AlternativeProductIds" type="Product.ProductTemplate" collection="true" label="Alternative Products" help="Suggest alternatives to your customer (upsell strategy). Those products show up on the product page." />
+        <field name="AccessoryProductIds" type="Product.Product" collection="true" label="Accessory Products" help="Accessories show up when the customer reviews the cart before payment (cross-sell strategy)." />
+    </model>
+
+    <optionset id="Product.Tracking" name="Inventory Tracking">
+        <option value="None" name="No Tracking" />
+        <option value="Serial" name="By Serial Number" />
+        <option value="Lot" name="By Lots" />
+    </optionset>
+    <optionset id="Product.ProductType" name="Product Type">
+        <option value="Product" name="Storable Product" />
+        <option value="Consu" name="Consumable Product" />
+        <option value="Service" name="Service" />
+    </optionset>
 </buvi>

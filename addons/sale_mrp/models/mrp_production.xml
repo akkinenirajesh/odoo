@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpProduction" name="MrpProduction" description="MRP Production" inherit="mrp.mrp_production">
+    <field name="SaleOrderCount" type="integer" label="Count of Source SO" groups="sales_team.group_sale_salesman" compute="ComputeSaleOrderCount"/>
+  </model>
 </buvi>

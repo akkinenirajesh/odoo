@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestWebsite.Website" name="Website" description="Website">
+    <field name="NameTranslated" type="string" translate="true" />
+  </model>
+  <model id="TestWebsite.TestModel" name="TestModel" description="Website Model Test">
+    <field name="Name" type="string" required="true" />
+    <field name="Submodels" type="TestWebsite.TestSubModel" collection="true" />
+  </model>
+  <model id="TestWebsite.TestSubModel" name="TestSubModel" description="Website Submodel Test">
+    <field name="Name" type="string" required="true" />
+    <field name="TestModelId" type="TestWebsite.TestModel" />
+    <field name="TagId" type="TestWebsite.TestTag" />
+  </model>
+  <model id="TestWebsite.TestTag" name="TestTag" description="Website Tag Test">
+    <field name="Name" type="string" required="true" />
+  </model>
+  <model id="TestWebsite.TestModelMultiWebsite" name="TestModelMultiWebsite" description="Multi Website Model Test">
+    <field name="Name" type="string" required="true" />
+    <field name="WebsiteId" type="TestWebsite.Website" ondelete="cascade" />
+  </model>
+  <model id="TestWebsite.TestModelExposed" name="TestModelExposed" description="Website Model Test Exposed">
+    <field name="Name" type="string" />
+  </model>
 </buvi>

@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="LinkTracker.LinkTracker" name="LinkTracker" description="Link Tracker">
+    <field name="Url" type="string" label="Target URL" required="true" />
+    <field name="AbsoluteUrl" type="string" label="Absolute URL" compute="ComputeAbsoluteUrl" />
+    <field name="ShortUrl" type="string" label="Tracked URL" compute="ComputeShortUrl" />
+    <field name="RedirectedUrl" type="string" label="Redirected URL" compute="ComputeRedirectedUrl" />
+    <field name="ShortUrlHost" type="string" label="Host of the short URL" compute="ComputeShortUrlHost" />
+    <field name="Title" type="string" label="Page Title" store="true" />
+    <field name="Label" type="string" label="Button label" />
+    <field name="LinkCodeIds" type="LinkTracker.LinkTrackerCode" collection="true" />
+    <field name="Code" type="string" label="Short URL code" compute="ComputeCode" />
+    <field name="LinkClickIds" type="LinkTracker.LinkTrackerClick" collection="true" />
+    <field name="Count" type="integer" label="Number of Clicks" compute="ComputeCount" store="true" />
+    <field name="Campaign" type="Utm.Campaign" />
+    <field name="Medium" type="Utm.Medium" />
+    <field name="Source" type="Utm.Source" />
+    <unique>
+      <field name="Url" />
+      <field name="Campaign" />
+      <field name="Medium" />
+      <field name="Source" />
+      <field name="Label" />
+      <message>Combinations of Link Tracker values (URL, campaign, medium, source, and label) must be unique.</message>
+    </unique>
+  </model>
+  <model id="LinkTracker.LinkTrackerCode" name="LinkTrackerCode" description="Link Tracker Code">
+    <field name="Code" type="string" label="Short URL Code" required="true" store="true" />
+    <field name="Link" type="LinkTracker.LinkTracker" required="true" ondelete="cascade" />
+    <unique>
+      <field name="Code" />
+      <message>Code must be unique.</message>
+    </unique>
+  </model>
+  <model id="LinkTracker.LinkTrackerClick" name="LinkTrackerClick" description="Link Tracker Click">
+    <field name="Campaign" type="Utm.Campaign" related="Link.Campaign" store="true" />
+    <field name="Link" type="LinkTracker.LinkTracker" required="true" ondelete="cascade" />
+    <field name="Ip" type="string" label="Internet Protocol" />
+    <field name="Country" type="Core.Country" label="Country" />
+  </model>
 </buvi>

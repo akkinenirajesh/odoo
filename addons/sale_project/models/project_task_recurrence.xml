@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.ProjectTaskRecurrence" name="Sale.ProjectTaskRecurrence" description="Project Task Recurrence">
+        <field name="SaleLineId" type="Sale.SaleOrderLine" collection="true" />
+    </model>
 </buvi>

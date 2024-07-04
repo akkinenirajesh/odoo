@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebEditor.ConverterTest" name="ConverterTest" description="Web Editor Converter Test">
+    <field name="Char" type="string" />
+    <field name="Integer" type="integer" />
+    <field name="Float" type="float" />
+    <field name="Numeric" type="float" digits="(16,2)" />
+    <field name="Many2one" type="WebEditor.ConverterTestSub" />
+    <field name="Binary" type="binary" attachment="false" />
+    <field name="Date" type="date" />
+    <field name="Datetime" type="datetime" />
+    <field name="SelectionStr" type="string" label="Lorsqu'un pancake prend l'avion à destination de Toronto et qu'il fait une escale technique à St Claude, on dit:" optionset="WebEditor.ConverterTestSelectionStr">
+      <option value="A" name="Qu'il n'est pas arrivé à Toronto" />
+      <option value="B" name="Qu'il était supposé arriver à Toronto" />
+      <option value="C" name="Qu'est-ce qu'il fout ce maudit pancake, tabernacle ?" />
+      <option value="D" name="La réponse D" />
+    </field>
+    <field name="Html" type="html" />
+    <field name="Text" type="text" />
+  </model>
+  <optionset id="WebEditor.ConverterTestSelectionStr" name="ConverterTestSelectionStr" />
+  <model id="WebEditor.ConverterTestSub" name="ConverterTestSub" description="Web Editor Converter Subtest">
+    <field name="Name" type="string" />
+  </model>
 </buvi>

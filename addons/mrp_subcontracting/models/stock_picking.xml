@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpSubcontracting.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="MoveLineIdsWithoutPackage" type="MrpSubcontracting.StockPicking.MoveLineIdsWithoutPackage" collection="true"
+            domain="[ '&', '|', ('LocationDestId.Usage', '!=', 'production'), ('MoveId.PickingCode', '!=', 'outgoing'), '|', ('PackageLevelId', '=', False), ('PickingTypeEntirePacks', '=', False) ]" />
+        <field name="DisplayActionRecordComponents" type="string" label="Display Action Record Components"
+            selection="[ ('hide', 'Hide'), ('facultative', 'Facultative'), ('mandatory', 'Mandatory') ]" />
+        <field name="LocationId" type="Stock.Location" />
+    </model>
+
+    <optionset id="MrpSubcontracting.StockPicking.MoveLineIdsWithoutPackage" name="Stock Picking Move Line Ids Without Package">
+        <option value="MrpSubcontracting.StockMove" name="Stock Move" />
+    </optionset>
 </buvi>

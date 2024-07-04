@@ -1,55 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.warehouse" name="Stock.Warehouse" track_created="true" track_update="true">
-    <field name="IntrastatRegion" label="Intrastat region" type="Account.IntrastatCode" copied="true" on-delete="Clear"/>
-    <field name="Company" label="Company" type="Res.Company" required="true" readonly="true" copied="true" on-delete="Restrict"/>
-    <field name="CompanyCountry" label="Fiscal Country" type="Res.Country" readonly="true" transient="true" related-field="Company.AccountFiscalCountry"/>
-    <field name="Partner" label="Address" type="Res.Partner" copied="true" on-delete="Clear"/>
-    <field name="LotStock" label="Location Stock" type="Stock.Location" required="true" copied="true" on-delete="Restrict"/>
-    <field name="PbmLoc" label="Picking before Manufacturing Location" type="Stock.Location" copied="true" on-delete="Clear"/>
-    <field name="SamLoc" label="Stock after Manufacturing Location" type="Stock.Location" copied="true" on-delete="Clear"/>
-    <field name="ViewLocation" label="View Location" type="Stock.Location" required="true" copied="true" on-delete="Restrict"/>
-    <field name="WhInputStockLoc" label="Input Location" type="Stock.Location" copied="true" on-delete="Clear"/>
-    <field name="WhOutputStockLoc" label="Output Location" type="Stock.Location" copied="true" on-delete="Clear"/>
-    <field name="WhPackStockLoc" label="Packing Location" type="Stock.Location" copied="true" on-delete="Clear"/>
-    <field name="WhQcStockLoc" label="Quality Control Location" type="Stock.Location" copied="true" on-delete="Clear"/>
-    <field name="InType" label="In Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="IntType" label="Internal Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="ManuType" label="Manufacturing Operation Type" type="Stock.PickingType" copied="true" on-delete="Clear"/>
-    <field name="OutType" label="Out Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="PackType" label="Pack Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="PbmType" label="Picking Before Manufacturing Operation Type" type="Stock.PickingType" copied="true" on-delete="Clear"/>
-    <field name="PickType" label="Pick Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="PosType" label="Point of Sale Operation Type" type="Stock.PickingType" copied="true" on-delete="Clear"/>
-    <field name="RepairType" label="Repair Operation Type" type="Stock.PickingType" copied="true" on-delete="Clear"/>
-    <field name="SamType" label="Stock After Manufacturing Operation Type" type="Stock.PickingType" copied="true" on-delete="Clear"/>
-    <field name="SubcontractingResupplyType" label="Subcontracting Resupply Operation Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="SubcontractingType" label="Subcontracting Operation Type" type="Stock.PickingType" on-delete="Clear"/>
-    <field name="CrossdockRoute" label="Crossdock Route" type="Stock.Route" on-delete="Restrict"/>
-    <field name="DeliveryRoute" label="Delivery Route" type="Stock.Route" on-delete="Restrict"/>
-    <field name="PbmRoute" label="Picking Before Manufacturing Route" type="Stock.Route" on-delete="Restrict"/>
-    <field name="ReceptionRoute" label="Receipt Route" type="Stock.Route" on-delete="Restrict"/>
-    <field name="ResupplyRoutes" label="Resupply Routes" type="Stock.Route" collection="true"/>
-    <field name="Routes" label="Routes" type="Stock.Route" collection="true"/>
-    <field name="SubcontractingRoute" label="Resupply Subcontractor" type="Stock.Route" on-delete="Restrict"/>
-    <field name="BuyPull" label="Buy rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="ManufactureMtoPull" label="Manufacture MTO Rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="ManufacturePull" label="Manufacture Rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="MtoPull" label="MTO rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="PbmMtoPull" label="Picking Before Manufacturing MTO Rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="SamRule" label="Stock After Manufacturing Rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="SubcontractingMtoPull" label="Subcontracting MTO Rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="SubcontractingPull" label="Subcontracting MTS Rule" type="Stock.Rule" on-delete="Clear"/>
-    <field name="ResupplyWhs" label="Resupply From" type="Stock.Warehouse" collection="true" copied="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="BuyToResupply" label="Buy to Resupply" type="bool" copied="true"/>
-    <field name="Code" label="Short Name" type="string" required="true" copied="true"/>
-    <field name="DeliverySteps" label="Outgoing Shipments" type="Stock.WarehouseOutgoingShipments" required="true" copied="true"/>
-    <field name="ManufactureSteps" label="Manufacture" type="Stock.WarehouseManufacture" required="true" copied="true"/>
-    <field name="ManufactureToResupply" label="Manufacture to Resupply" type="bool" copied="true"/>
-    <field name="Name" label="Warehouse" type="string" required="true" copied="true"/>
-    <field name="ReceptionSteps" label="Incoming Shipments" type="Stock.WarehouseIncomingShipments" required="true" copied="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="SubcontractingToResupply" label="Resupply Subcontractors" type="bool" copied="true"/>
-  </model>
+    <model id="Stock.ProductProduct" name="ProductProduct" description="Product Product">
+        <field name="IsStorable" type="bool" label="Is Storable" />
+        <field name="Tracking" type="selection" label="Tracking" selection="Stock.ProductTracking" />
+    </model>
+
+    <optionset id="Stock.ProductTracking" name="Product Tracking">
+        <option value="none" name="None" />
+        <option value="lot" name="Lot" />
+        <option value="serial" name="Serial" />
+    </optionset>
 </buvi>

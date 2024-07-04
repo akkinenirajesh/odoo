@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSale.ProductRibbon" name="ProductRibbon" description="Product ribbon">
+        <field name="Name" type="string" label="Ribbon Name" required="true" translate="true" size="20" />
+        <field name="BgColor" type="string" label="Background Color" required="true" default="#000000" />
+        <field name="TextColor" type="string" label="Text Color" required="true" default="#FFFFFF" />
+        <field name="Position" type="Selection" label="Position" required="true" default="left">
+            <option value="left" name="Left" />
+            <option value="right" name="Right" />
+        </field>
+    </model>
 </buvi>

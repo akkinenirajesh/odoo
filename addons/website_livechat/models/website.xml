@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Website" name="Website" description="Website">
+        <field name="ChannelId" type="ImLivechat.Channel" label="Website Live Chat Channel" />
+    </model>
+    
+    <optionset id="ImLivechat.Channel" name="Livechat Channel" />
 </buvi>

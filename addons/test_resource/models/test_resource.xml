@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.ResourceTest" name="ResourceTest" description="Test Resource Model">
+        <field name="Name" type="string" label="Name" />
+        <field name="ResourceMixinId" type="Resource.ResourceMixin" />
+    </model>
 </buvi>

@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.Alias" name="Alias" description="Email Aliases">
+    <field name="AliasName" type="string" label="Alias Name" copy="false" help="The name of the email alias, e.g. 'jobs' if you want to catch emails for &lt;jobs@example.odoo.com&gt;" />
+    <field name="AliasFullName" type="string" label="Alias Email" compute="ComputeAliasFullName" store="true" index="btree_not_null" />
+    <field name="DisplayName" type="string" label="Display Name" compute="ComputeDisplayName" />
+    <field name="AliasDomain" type="Mail.AliasDomain" label="Alias Domain" ondelete="restrict" default="GetCompanyAliasDomain" />
+    <field name="AliasDomainName" type="string" label="Alias domain name" related="AliasDomain.Name" />
+    <field name="AliasedModel" type="Ir.Model" label="Aliased Model" required="true" ondelete="cascade" help="The model (Odoo Document Kind) to which this alias corresponds. Any incoming email that does not reply to an existing record will cause the creation of a new record of this model (e.g. a Project Task)." domain="[('Field.Name', '=', 'MessageIds')]" />
+    <field name="AliasDefaults" type="text" label="Default Values" required="true" default="{}" help="A Python dictionary that will be evaluated to provide default values when creating new records for this alias." />
+    <field name="AliasForceThreadId" type="integer" label="Record Thread ID" help="Optional ID of a thread (record) to which all incoming messages will be attached, even if they did not reply to it. If set, this will disable the creation of new records completely." />
+    <field name="AliasParentModel" type="Ir.Model" label="Parent Model" help="Parent model holding the alias. The model holding the alias reference is not necessarily the model given by alias_model_id (example: project (parent_model) and task (model))" />
+    <field name="AliasParentThreadId" type="integer" label="Parent Record Thread ID" help="ID of the parent record holding the alias (example: project holding the task creation alias)" />
+    <field name="AliasContact" type="selection" label="Alias Contact Security" options="AliasContactSecurityOptions" default="Everyone" required="true" help="Policy to post a message on the document using the mailgateway.\n- everyone: everyone can post\n- partners: only authenticated partners\n- followers: only followers of the related document or members of following channels" />
+    <field name="AliasIncomingLocal" type="bool" label="Local-part based incoming detection" default="false" />
+    <field name="AliasBouncedContent" type="html" label="Custom Bounced Message" translate="true" help="If set, this content will automatically be sent out to unauthorized users instead of the default message." />
+    <field name="AliasStatus" type="selection" label="Alias status" options="AliasStatusOptions" compute="ComputeAliasStatus" store="true" help="Alias status assessed on the last message received." />
+  </model>
+
+  <optionset id="Mail.AliasContactSecurityOptions" name="Alias Contact Security Options">
+    <option value="Everyone" name="Everyone" />
+    <option value="Partners" name="Authenticated Partners" />
+    <option value="Followers" name="Followers only" />
+  </optionset>
+
+  <optionset id="Mail.AliasStatusOptions" name="Alias Status Options">
+    <option value="NotTested" name="Not Tested" />
+    <option value="Valid" name="Valid" />
+    <option value="Invalid" name="Invalid" />
+  </optionset>
+
 </buvi>

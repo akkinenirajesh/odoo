@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountAnalyticLine" name="AccountAnalyticLine" description="Account Analytic Line">
+        <field name="SoLine" type="Sale.SaleOrderLine" label="Sales Order Item" domain="[('QtyDeliveredMethod', '=', 'analytic')]" index="btree_not_null" collection="true" />
+    </model>
+
+    <model id="Account.AccountAnalyticApplicability" name="AccountAnalyticApplicability" description="Analytic Plan's Applicabilities">
+        <field name="BusinessDomain" type="selection" label="Business Domain">
+            <option value="sale_order" name="Sale Order" />
+        </field>
+    </model>
 </buvi>

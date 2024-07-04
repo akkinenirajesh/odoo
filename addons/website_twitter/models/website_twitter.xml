@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteTwitter" name="WebsiteTwitter" description="Website Twitter">
+    <field name="TwitterApiKey" type="string" label="X API key" help="X API Key" groups="base.group_system" />
+    <field name="TwitterApiSecret" type="string" label="X API secret" help="X API Secret" groups="base.group_system" />
+    <field name="TwitterScreenName" type="string" label="Get favorites from this screen name" />
+  </model>
+  <model id="Website.WebsiteTwitterTweet" name="WebsiteTwitterTweet" description="Website Twitter Tweet" collection="true">
+    <field name="WebsiteId" type="Website.WebsiteTwitter" relation="one2many" />
+    <field name="Tweet" type="text" />
+    <field name="TweetId" type="integer" />
+    <field name="ScreenName" type="string" />
+  </model>
 </buvi>

@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockQuantPackage" name="Stock.StockQuantPackage" description="Stock Quant Package">
+    <field name="PackageTypeId" type="Stock.PackageType" />
+    <field name="QuantIds" type="Stock.StockQuant" collection="true" />
+    <field name="Weight" type="float" digits="Stock Weight" label="Weight" help="Total weight of all the products contained in the package." />
+    <field name="WeightUomName" type="string" label="Weight unit of measure label" readonly="true" />
+    <field name="WeightIsKg" type="bool" label="Technical field indicating whether weight uom is kg or not (i.e. lb)" />
+    <field name="WeightUomRounding" type="float" label="Technical field indicating weight's number of decimal places" />
+    <field name="ShippingWeight" type="float" label="Shipping Weight" help="Total weight of the package." />
+  </model>
 </buvi>

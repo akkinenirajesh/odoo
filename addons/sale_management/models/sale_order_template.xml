@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleManagement.SaleOrderTemplate" name="SaleOrderTemplate" description="Quotation Template">
+    <field name="Active" type="bool" default="true" help="If unchecked, it will allow you to hide the quotation template without removing it." />
+    <field name="Company" type="Res.Company" />
+    <field name="Name" type="string" label="Quotation Template" required="true" />
+    <field name="Note" type="html" label="Terms and conditions" translate="true" />
+    <field name="Sequence" type="integer" default="10" />
+    <field name="MailTemplate" type="Mail.Template" label="Confirmation Mail" help="This e-mail template will be sent on confirmation. Leave empty to send nothing." collection="true" />
+    <field name="NumberOfDays" type="integer" label="Quotation Duration" help="Number of days for the validity date computation of the quotation" />
+    <field name="RequireSignature" type="bool" label="Online Signature" help="Request a online signature to the customer in order to confirm orders automatically." />
+    <field name="RequirePayment" type="bool" label="Online Payment" help="Request an online payment to the customer in order to confirm orders automatically." />
+    <field name="PrepaymentPercent" type="float" label="Prepayment percentage" help="The percentage of the amount needed to be paid to confirm quotations." />
+    <field name="SaleOrderTemplateLine" type="SaleManagement.SaleOrderTemplateLine" collection="true" />
+    <field name="SaleOrderTemplateOption" type="SaleManagement.SaleOrderTemplateOption" collection="true" />
+    <field name="Journal" type="Account.Journal" label="Invoicing Journal" help="If set, SO with this template will invoice in this journal; otherwise the sales journal with the lowest sequence is used." />
+  </model>
 </buvi>

@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductAttributeCustomValue" name="ProductAttributeCustomValue" description="Product Attribute Custom Value">
+        <field name="Name" type="string" label="Name" compute="ComputeName" />
+        <field name="CustomProductTemplateAttributeValueId" type="Product.ProductTemplateAttributeValue" required="true" ondelete="restrict" />
+        <field name="CustomValue" type="string" label="Custom Value" />
+    </model>
+    
+    <optionset id="Product.ProductTemplateAttributeValue" name="ProductTemplateAttributeValue" collection="true" />
 </buvi>

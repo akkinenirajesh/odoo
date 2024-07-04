@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.ProductTag" name="ProductTag" description="Product Tag">
+    <field name="VisibleOnEcommerce" type="bool" label="Visible on eCommerce" default="true"
+      help="Whether the tag is displayed on the eCommerce." />
+    <field name="Image" type="image" label="Image" max_width="200" max_height="200" />
+  </model>
 </buvi>

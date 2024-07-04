@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="Pos Payment Method">
+    <field name="VivaWalletMerchantId" type="string" label="Merchant ID"
+      help="Used when connecting to Viva Wallet: https://developer.vivawallet.com/getting-started/find-your-account-credentials/merchant-id-and-api-key/" />
+    <field name="VivaWalletApiKey" type="string" label="API Key"
+      help="Used when connecting to Viva Wallet: https://developer.vivawallet.com/getting-started/find-your-account-credentials/merchant-id-and-api-key/" />
+    <field name="VivaWalletClientId" type="string" label="Client ID"
+      help="Used when connecting to Viva Wallet: https://developer.vivawallet.com/getting-started/find-your-account-credentials/pos-apis-credentials/#find-your-pos-apis-credentials" />
+    <field name="VivaWalletClientSecret" type="string" label="Client secret" />
+    <field name="VivaWalletTerminalId" type="string" label="Terminal ID"
+      help="[Terminal ID of the Viva Wallet terminal], for example: 16002169" />
+    <field name="VivaWalletBearerToken" type="string" default="Bearer Token" />
+    <field name="VivaWalletWebhookVerificationKey" type="string" />
+    <field name="VivaWalletLatestResponse" type="json" />
+    <field name="VivaWalletTestMode" type="bool" label="Test mode"
+      help="Run transactions in the test environment." />
+    <field name="VivaWalletWebhookEndpoint" type="string" readonly="true"
+      compute="ComputeVivaWalletWebhookEndpoint" />
+  </model>
 </buvi>

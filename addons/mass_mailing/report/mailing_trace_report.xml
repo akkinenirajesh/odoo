@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailing.MailingTraceReport" name="MailingTraceReport" description="Mass Mailing Statistics">
+    <field name="Id" type="int" label="Id" readonly="true" />
+    <field name="Name" type="string" label="Mass Mail" readonly="true" />
+    <field name="MailingType" type="MassMailing.MailingType" label="Type" default="Mail" required="true" />
+    <field name="Campaign" type="string" label="Mailing Campaign" readonly="true" />
+    <field name="ScheduledDate" type="datetime" label="Scheduled Date" readonly="true" />
+    <field name="State" type="MassMailing.MailingState" label="Status" readonly="true" />
+    <field name="EmailFrom" type="string" label="From" readonly="true" />
+    <field name="Scheduled" type="int" readonly="true" />
+    <field name="Processing" type="int" readonly="true" />
+    <field name="Pending" type="int" readonly="true" />
+    <field name="Sent" type="int" readonly="true" />
+    <field name="Delivered" type="int" readonly="true" />
+    <field name="Error" type="int" readonly="true" />
+    <field name="Opened" type="int" readonly="true" />
+    <field name="Replied" type="int" readonly="true" />
+    <field name="Bounced" type="int" readonly="true" />
+    <field name="Canceled" type="int" readonly="true" />
+    <field name="Clicked" type="int" readonly="true" />
+  </model>
+  <optionset id="MassMailing.MailingType" name="Mailing Type">
+    <option value="Mail" name="Mail" />
+  </optionset>
+  <optionset id="MassMailing.MailingState" name="Mailing State">
+    <option value="Draft" name="Draft" />
+    <option value="Test" name="Tested" />
+    <option value="Done" name="Sent" />
+  </optionset>
 </buvi>

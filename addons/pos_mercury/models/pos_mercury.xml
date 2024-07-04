@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosMercury.BarcodeRule" name="BarcodeRule" description="Barcode Rule">
+    <field name="Type" type="selection" label="Type" default="default" selection="BarcodeRule.Types">
+      <option value="credit" name="Credit Card" />
+    </field>
+    <relation inherit="barcode.rule" />
+  </model>
+
+  <model id="PosMercury.PosMercuryConfiguration" name="PosMercuryConfiguration" description="Point of Sale Vantiv Configuration">
+    <field name="Name" type="string" label="Name" required="true" help="Name of this Vantiv configuration" />
+    <field name="MerchantId" type="string" label="Merchant ID" required="true" help="ID of the merchant to authenticate him on the payment provider server" />
+    <field name="MerchantPwd" type="string" label="Merchant Password" required="true" help="Password of the merchant to authenticate him on the payment provider server" />
+  </model>
+
+  <model id="PosMercury.PoSPayment" name="PoSPayment" description="POS Payment">
+    <field name="MercuryCardNumber" type="string" label="Card Number" help="The last 4 numbers of the card used to pay" />
+    <field name="MercuryPrefixedCardNumber" type="string" label="Card Number Prefix" readonly="true" help="The card number used for the payment." />
+    <field name="MercuryCardBrand" type="string" label="Card Brand" help="The brand of the payment card (e.g. Visa, AMEX, ...)" />
+    <field name="MercuryCardOwnerName" type="string" label="Card Owner Name" />
+    <field name="MercuryRefNo" type="string" label="Vantiv reference number" help="Payment reference number from Vantiv Pay" />
+    <field name="MercuryRecordNo" type="string" label="Vantiv record number" help="Payment record number from Vantiv Pay" />
+    <field name="MercuryInvoiceNo" type="string" label="Vantiv invoice number" help="Invoice number from Vantiv Pay" />
+    <relation inherit="pos.payment" />
+  </model>
+
+  <model id="PosMercury.PoSPaymentMethod" name="PoSPaymentMethod" description="POS Payment Method">
+    <field name="PosMercuryConfigId" type="PosMercury.PosMercuryConfiguration" label="Vantiv Credentials" help="The configuration of Vantiv used for this journal" />
+    <relation inherit="pos.payment.method" />
+  </model>
+
+  <optionset id="BarcodeRule.Types" name="Barcode Rule Types">
+    <option value="credit" name="Credit Card" />
+  </optionset>
 </buvi>

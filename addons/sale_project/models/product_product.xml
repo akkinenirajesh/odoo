@@ -1,3 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleProject.ProductProduct" name="ProductProduct" description="Product Product">
+    <field name="ServiceTracking" type="SaleProject.ServiceTracking" label="Service Tracking" />
+    <field name="ProjectID" type="Project.Project" relation="many2one" />
+    <field name="ProjectTemplateID" type="Project.ProjectTemplate" relation="many2one" />
+    <field name="ServicePolicy" type="SaleProject.ServicePolicy" label="Service Policy" />
+    <field name="InvoicePolicy" type="SaleProject.InvoicePolicy" label="Invoice Policy" />
+    <field name="ServiceType" type="SaleProject.ServiceType" label="Service Type" />
+    <field name="Type" type="SaleProject.ProductType" label="Product Type" />
+  </model>
+
+  <optionset id="SaleProject.ServiceTracking" name="Service Tracking">
+    <option value="no" name="No" />
+    <option value="task_global_project" name="Task in Global Project" />
+    <option value="task_in_project" name="Task in Project" />
+    <option value="project_only" name="Project Only" />
+  </optionset>
+
+  <optionset id="SaleProject.ServicePolicy" name="Service Policy">
+    <option value="general" name="General" />
+    <option value="timesheet" name="Timesheet" />
+    <option value="cost_plus" name="Cost Plus" />
+  </optionset>
+
+  <optionset id="SaleProject.InvoicePolicy" name="Invoice Policy">
+    <option value="order" name="Order" />
+    <option value="delivery" name="Delivery" />
+  </optionset>
+
+  <optionset id="SaleProject.ServiceType" name="Service Type">
+    <option value="product" name="Product" />
+    <option value="service" name="Service" />
+  </optionset>
+
+  <optionset id="SaleProject.ProductType" name="Product Type">
+    <option value="service" name="Service" />
+    <option value="consu" name="Consumable" />
+    <option value="product" name="Storable Product" />
+  </optionset>
 </buvi>

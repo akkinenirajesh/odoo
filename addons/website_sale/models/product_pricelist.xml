@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.ProductPricelist" name="Website.ProductPricelist" description="Product Pricelist">
+    <field name="WebsiteId" type="Website.Website" label="Website" ondelete="restrict" default="DefaultWebsite" domain="[('CompanyId', '=?', CompanyId)]" tracking="20"
+      help="If you want a pricelist to be available on a website, you must fill in this field or make it selectable. Otherwise, the pricelist will not apply to any website." />
+    <field name="Code" type="string" label="E-commerce Promotional Code" groups="base.group_user" />
+    <field name="Selectable" type="bool" help="Allow the end user to choose this price list" />
+    <field name="CompanyId" type="Core.Company" />
+    <constraint name="WebsiteIsInCompany" message="Only the company's websites are allowed. Leave the Company field empty or select a website from that company.">
+      <field name="WebsiteId" />
+      <field name="CompanyId" />
+    </constraint>
+  </model>
+  <model id="Website.Website" name="Website.Website" description="Website">
+    <field name="CompanyId" type="Core.Company" />
+  </model>
+  <model id="Core.Company" name="Core.Company" description="Company">
+    <field name="Name" type="string" />
+  </model>
 </buvi>

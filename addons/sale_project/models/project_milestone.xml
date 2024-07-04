@@ -1,5 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Sale.ProjectMilestone" name="Sale.ProjectMilestone" description="Project Milestone">
+        <field name="AllowBillable" type="bool" related="Project.Project.AllowBillable" />
+        <field name="ProjectPartnerId" type="res.partner" related="Project.Project.PartnerId" />
+        <field name="SaleLineId" type="Sale.OrderLine" label="Sales Order Item" collection="true" default="_defaultSaleLineId" help="Sales Order Item that will be updated once the milestone is reached.">
+            <domain>[('OrderPartnerId', '=?', ProjectPartnerId), ('QtyDeliveredMethod', '=', 'Milestones')]</domain>
+        </field>
+        <field name="QuantityPercentage" type="float" label="Quantity (%)" compute="_computeQuantityPercentage" store="true" help="Percentage of the ordered quantity that will automatically be delivered once the milestone is reached." />
+        <field name="SaleLineDisplayName" type="string" label="Sale Line Display Name" related="Sale.OrderLine.DisplayName" />
+        <field name="ProductUom" type="product.uom" related="Sale.OrderLine.ProductUom" />
+        <field name="ProductUomQty" type="float" label="Quantity" compute="_computeProductUomQty" readonly="false" />
+    </model>
+
+    <optionset id="Sale.QtyDeliveredMethod" name="Qty Delivered Method">
+        <option value="milestones" name="Milestones" />
+    </optionset>
 </buvi>

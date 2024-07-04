@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosOrderLine" name="PosOrderLine" description="POS Order Line">
+    <inherit id="Pos.PosOrderLine" extend="true">
+      <field name="IsRewardLine" type="bool" label="Is Reward Line" help="Whether this line is part of a reward or not." />
+      <field name="RewardId" type="Loyalty.Reward" label="Reward" ondelete="restrict" help="The reward associated with this line." />
+      <field name="CouponId" type="Loyalty.Card" label="Coupon" ondelete="restrict" help="The coupon used to claim that reward." />
+      <field name="RewardIdentifierCode" type="string" help="Technical field used to link multiple reward lines from the same reward together." />
+      <field name="PointsCost" type="float" help="How many point this reward cost on the coupon." />
+    </inherit>
+  </model>
 </buvi>

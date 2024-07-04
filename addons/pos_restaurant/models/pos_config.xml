@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <field name="IfaceSplitBill" type="bool" label="Bill Splitting" help="Enables Bill Splitting in the Point of Sale." />
+        <field name="IfacePrintBill" type="bool" label="Bill Printing" help="Allows to print the Bill before payment." />
+        <field name="FloorIds" type="collection" collection="true" label="Restaurant Floors" help="The restaurant floors served by this point of sale." />
+        <field name="SetTipAfterPayment" type="bool" label="Set Tip After Payment" help="Adjust the amount authorized by payment terminals to add a tip after the customers left or at the end of the day." />
+        <field name="ModulePosRestaurantAppointment" type="bool" label="Table Booking" />
+        <field name="Takeaway" type="bool" label="Takeaway" help="Allow to create orders for takeaway customers." />
+        <field name="TakeawayFpId" type="Core.FiscalPosition" label="Alternative Fiscal Position" help="This is useful for restaurants with onsite and take-away services that imply specific tax rates." />
+    </model>
 </buvi>

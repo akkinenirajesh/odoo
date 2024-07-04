@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+    <field name="SelfOrderingUrl" type="string" compute="ComputeSelfOrderingUrl" />
+    <field name="SelfOrderingTakeaway" type="bool" label="Self Takeaway" />
+    <field name="SelfOrderingMode" type="Pos.SelfOrderingMode" label="Self Ordering Mode" required="true" default="Nothing" />
+    <field name="SelfOrderingServiceMode" type="Pos.SelfOrderingServiceMode" label="Service" required="true" default="Counter" />
+    <field name="SelfOrderingDefaultLanguageId" type="Res.Lang" label="Default Language"
+      help="Default language for the kiosk mode"
+      default="lambda self: Env.GetContext('res.lang').Search(new object[] { "code", "=", Env.Lang }, 1)" />
+    <field name="SelfOrderingAvailableLanguageIds" type="Res.Lang" collection="true" label="Available Languages"
+      help="Languages available for the kiosk mode"
+      default="lambda self: Env.GetContext('res.lang').GetInstalled()" />
+    <field name="SelfOrderingImageHomeIds" type="Ir.Attachment" collection="true" label="Add images"
+      help="Image to display on the self order screen" />
+    <field name="SelfOrderingDefaultUserId" type="Res.Users" label="Default User"
+      help="Access rights of this user will be used when visiting self order website when no session is open."
+      default="lambda self: Env.GetContext('res.users').Search(new object[] { "or", new object[] { "company_id", "=", Env.Company.Id }, new object[] { "company_id", "=", false } })" />
+    <field name="SelfOrderingPayAfter" type="Pos.SelfOrderingPayAfter" label="Pay After:" required="true" default="Meal"
+      help="Choose when the customer will pay" />
+    <field name="SelfOrderingImageBrand" type="image" label="Self Order Kiosk Image Brand"
+      help="Image to display on the self order screen" max_width="1200" max_height="250" />
+    <field name="SelfOrderingImageBrandName" type="string" label="Self Order Kiosk Image Brand Name"
+      help="Name of the image to display on the self order screen" />
+    <field name="HasPaper" type="bool" label="Has paper" default="true" />
+    <field name="Status" type="string" compute="ComputeStatus" store="false" />
+  </model>
+
+  <optionset id="Pos.SelfOrderingMode" name="Self Ordering Mode">
+    <option value="Nothing" name="Disable" />
+    <option value="Consultation" name="QR menu" />
+    <option value="Mobile" name="QR menu + Ordering" />
+    <option value="Kiosk" name="Kiosk" />
+  </optionset>
+
+  <optionset id="Pos.SelfOrderingServiceMode" name="Self Ordering Service Mode">
+    <option value="Counter" name="Pickup zone" />
+    <option value="Table" name="Table" />
+  </optionset>
+
+  <optionset id="Pos.SelfOrderingPayAfter" name="Self Ordering Pay After">
+    <option value="Meal" name="Meal" />
+    <option value="Each" name="Each Order" />
+  </optionset>
 </buvi>

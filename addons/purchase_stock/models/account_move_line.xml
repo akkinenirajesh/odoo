@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseStock.AccountMoveLine" name="Account.AccountMoveLine" description="Account Move Line">
+    <field name="PurchaseLineId" type="Purchase.PurchaseLine" relation="many2one" collection="true" ondelete="cascade" />
+    <field name="Quantity" type="float" />
+    <field name="ProductUomId" type="Product.Uom" relation="many2one" collection="true" />
+    <field name="ProductId" type="Product.Product" relation="many2one" collection="true" />
+    <field name="CompanyCurrencyId" type="Res.Currency" relation="many2one" collection="true" />
+    <field name="CurrencyId" type="Res.Currency" relation="many2one" collection="true" />
+    <field name="CurrencyRate" type="float" />
+    <field name="AccountCurrencyId" type="Res.Currency" relation="many2one" collection="true" />
+    <field name="AccountCurrencyRate" type="float" />
+    <field name="AccountBalance" type="float" />
+    <field name="AccountId" type="Account.Account" relation="many2one" collection="true" />
+    <field name="PartnerId" type="Res.Partner" relation="many2one" collection="true" />
+    <field name="MoveId" type="Account.Move" relation="many2one" collection="true" />
+    <field name="Name" type="string" />
+    <field name="AnalyticDistribution" type="Account.AnalyticDistribution" />
+    <field name="Date" type="date" />
+    <field name="MoveType" type="string" />
+  </model>
 </buvi>

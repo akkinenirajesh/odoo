@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Utm.UtmCampaign" name="UtmCampaign" description="Utm Campaign">
+    <field name="AbTestingWinnerSelection" type="Selection"
+            label="AB Testing Winner Selection">
+      <option value="crm_lead_count" name="Leads" />
+    </field>
+    <inherit id="base.utm_campaign" extend="true" />
+  </model>
 </buvi>

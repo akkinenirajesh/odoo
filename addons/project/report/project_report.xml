@@ -1,3 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ReportProjectTaskUser" name="ReportProjectTaskUser" description="Tasks Analysis">
+        <field name="Name" type="string" label="Task" readonly="true" />
+        <field name="UserIds" type="res.users" collection="true" relation="project_task_user_rel" label="Assignees" readonly="true" />
+        <field name="CreateDate" type="datetime" label="Create Date" readonly="true" />
+        <field name="DateAssign" type="datetime" label="Assignment Date" readonly="true" />
+        <field name="DateEnd" type="datetime" label="Ending Date" readonly="true" />
+        <field name="DateDeadline" type="datetime" label="Deadline" readonly="true" />
+        <field name="DateLastStageUpdate" type="datetime" label="Last Stage Update" readonly="true" />
+        <field name="ProjectId" type="project.project" label="Project" readonly="true" />
+        <field name="WorkingDaysClose" type="float" digits="(16, 2)" label="Working Days to Close" readonly="true" aggregator="avg" />
+        <field name="WorkingDaysOpen" type="float" digits="(16, 2)" label="Working Days to Assign" readonly="true" aggregator="avg" />
+        <field name="DelayEndingsDays" type="float" digits="(16, 2)" label="Days to Deadline" aggregator="avg" readonly="true" />
+        <field name="Nbr" type="integer" label="# of Tasks" readonly="true" />
+        <field name="WorkingHoursOpen" type="float" digits="(16, 2)" label="Working Hours to Assign" readonly="true" aggregator="avg" />
+        <field name="WorkingHoursClose" type="float" digits="(16, 2)" label="Working Hours to Close" readonly="true" aggregator="avg" />
+        <field name="RatingLastValue" type="float" label="Last Rating (1-5)" aggregator="avg" readonly="true" groups="project.group_project_rating" />
+        <field name="RatingAvg" type="float" label="Average Rating (1-5)" readonly="true" aggregator="avg" groups="project.group_project_rating" />
+        <field name="Priority" type="selection" readonly="true" label="Priority">
+            <option value="0" name="Low" />
+            <option value="1" name="High" />
+        </field>
+        <field name="State" type="selection" readonly="true" label="State">
+            <option value="01_in_progress" name="In Progress" />
+            <option value="1_done" name="Done" />
+            <option value="04_waiting_normal" name="Waiting" />
+            <option value="03_approved" name="Approved" />
+            <option value="1_canceled" name="Cancelled" />
+            <option value="02_changes_requested" name="Changes Requested" />
+        </field>
+        <field name="IsClosed" type="bool" label="Closed state" readonly="true" />
+        <field name="CompanyId" type="res.company" label="Company" readonly="true" />
+        <field name="PartnerId" type="res.partner" label="Customer" readonly="true" />
+        <field name="StageId" type="project.task.type" label="Stage" readonly="true" />
+        <field name="TaskId" type="project.task" label="Tasks" readonly="true" />
+        <field name="Active" type="bool" readonly="true" />
+        <field name="TagIds" type="project.tags" collection="true" relation="project_tags_project_task_rel" label="Tags" readonly="true" />
+        <field name="ParentId" type="project.task" label="Parent Task" readonly="true" />
+        <field name="PersonalStageTypeIds" type="project.task.type" collection="true" relation="project_task_user_rel" label="Personal Stage" readonly="true" />
+        <field name="MilestoneId" type="project.milestone" readonly="true" />
+        <field name="MessageIsFollower" type="bool" related="TaskId.MessageIsFollower" />
+        <field name="DependentIds" type="project.task" collection="true" relation="task_dependencies_rel" label="Block" readonly="true" domain="[('AllowTaskDependencies', '=', true), ('Id', '!=', Id)]" />
+        <field name="Description" type="text" readonly="true" />
+    </model>
 </buvi>

@@ -1,3 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Website" name="Website" description="Website">
+        <field name="EnabledPortalReorderButton" type="bool" label="Re-order From Portal" />
+        <field name="SalespersonId" type="Res.Users" label="Salesperson" relation="many2one" domain="[('Share', '=', False)]" />
+        <field name="SalesteamId" type="Crm.Team" label="Sales Team" relation="many2one" ondelete="set null" />
+        <field name="ShowLineSubtotalsTaxSelection" type="Website.ShowLineSubtotalsTaxSelection" required="true" />
+        <field name="AddToCartAction" type="Website.AddToCartAction" default="stay" />
+        <field name="AuthSignupUninvited" type="string" default="b2c" />
+        <field name="AccountOnCheckout" type="Website.AccountOnCheckout" default="optional" />
+        <field name="CartRecoveryMailTemplateId" type="Mail.Template" label="Cart Recovery Email" relation="many2one" domain="[('Model', '=', 'Sale.Order')]" />
+        <field name="ContactUsButtonUrl" type="string" label="Contact Us Button URL" translate="true" default="/contactus" />
+        <field name="CartAbandonedDelay" type="float" label="Abandoned Delay" default="10.0" />
+        <field name="SendAbandonedCartEmail" type="bool" label="Send email to customers who abandoned their cart." />
+        <field name="ShopPpg" type="integer" label="Number of products in the grid on the shop" default="20" />
+        <field name="ShopPpr" type="integer" label="Number of grid columns on the shop" default="4" />
+        <field name="ShopDefaultSort" type="Website.ShopDefaultSort" required="true" />
+        <field name="ShopExtraFieldIds" type="Website.SaleExtraField" relation="one2many" collection="true" />
+        <field name="ProductPageImageLayout" type="Website.ProductPageImageLayout" required="true" />
+        <field name="ProductPageImageWidth" type="Website.ProductPageImageWidth" required="true" />
+        <field name="ProductPageImageSpacing" type="Website.ProductPageImageSpacing" required="true" />
+        <field name="EcommerceAccess" type="Website.EcommerceAccess" required="true" />
+        <field name="ProductPageGridColumns" type="integer" default="2" />
+        <field name="PreventZeroPriceSale" type="bool" label="Hide 'Add To Cart' when price = 0" />
+        <field name="PreventZeroPriceSaleText" type="string" label="Text to show instead of price" translate="true" default="Not Available For Sale" />
+        <field name="FiscalPositionId" type="Account.FiscalPosition" relation="many2one" computed="true" />
+        <field name="PricelistId" type="Product.Pricelist" label="Default Pricelist if any" relation="many2one" computed="true" />
+        <field name="CurrencyId" type="Res.Currency" label="Default Currency" relation="many2one" computed="true" />
+        <field name="PricelistIds" type="Product.Pricelist" relation="one2many" collection="true" computed="true" />
+        <field name="AllPricelistIds" type="Product.Pricelist" relation="one2many" collection="true" inverse_name="WebsiteId" />
+    </model>
+
+    <optionset id="Website.ShowLineSubtotalsTaxSelection" name="Show Line Subtotals Tax Display">
+        <option value="tax_excluded" name="Tax Excluded" />
+        <option value="tax_included" name="Tax Included" />
+    </optionset>
+    <optionset id="Website.AddToCartAction" name="Add To Cart Action">
+        <option value="stay" name="Stay on Product Page" />
+        <option value="go_to_cart" name="Go to cart" />
+        <option value="force_dialog" name="Let the user decide (dialog)" />
+    </optionset>
+    <optionset id="Website.AccountOnCheckout" name="Customer Accounts">
+        <option value="optional" name="Optional" />
+        <option value="disabled" name="Disabled (buy as guest)" />
+        <option value="mandatory" name="Mandatory (no guest checkout)" />
+    </optionset>
+    <optionset id="Website.ShopDefaultSort" name="Shop Default Sort">
+        <option value="website_sequence asc" name="Featured" />
+        <option value="create_date desc" name="Newest Arrivals" />
+        <option value="name asc" name="Name (A-Z)" />
+        <option value="list_price asc" name="Price - Low to High" />
+        <option value="list_price desc" name="Price - High to Low" />
+    </optionset>
+    <optionset id="Website.ProductPageImageLayout" name="Product Page Image Layout">
+        <option value="carousel" name="Carousel" />
+        <option value="grid" name="Grid" />
+    </optionset>
+    <optionset id="Website.ProductPageImageWidth" name="Product Page Image Width">
+        <option value="none" name="Hidden" />
+        <option value="50_pc" name="50 %" />
+        <option value="66_pc" name="66 %" />
+        <option value="100_pc" name="100 %" />
+    </optionset>
+    <optionset id="Website.ProductPageImageSpacing" name="Product Page Image Spacing">
+        <option value="none" name="None" />
+        <option value="small" name="Small" />
+        <option value="medium" name="Medium" />
+        <option value="big" name="Big" />
+    </optionset>
+    <optionset id="Website.EcommerceAccess" name="Ecommerce Access">
+        <option value="everyone" name="All users" />
+        <option value="logged_in" name="Logged in users" />
+    </optionset>
 </buvi>

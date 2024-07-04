@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.StockPickingType" name="StockPickingType" description="Stock Picking Type">
+        <field name="Code" type="Selection" label="Code" required="true">
+            <option value="incoming" name="Receipts" />
+            <option value="outgoing" name="Deliveries" />
+            <option value="internal" name="Internal Transfers" />
+            <option value="mrp_operation" name="Manufacturing" />
+        </field>
+        <field name="CountMoTodo" type="integer" label="Number of Manufacturing Orders to Process" />
+        <field name="CountMoWaiting" type="integer" label="Number of Manufacturing Orders Waiting" />
+        <field name="CountMoLate" type="integer" label="Number of Manufacturing Orders Late" />
+        <field name="UseCreateComponentsLots" type="bool" label="Create New Lots/Serial Numbers for Components"
+            help="Allow to create new lot/serial numbers for the components" />
+        <field name="AutoPrintDoneProductionOrder" type="bool" label="Auto Print Done Production Order"
+            help="If this checkbox is ticked, Odoo will automatically print the production order of a MO when it is done." />
+        <field name="AutoPrintDoneMrpProductLabels" type="bool" label="Auto Print Produced Product Labels"
+            help="If this checkbox is ticked, Odoo will automatically print the product labels of a MO when it is done." />
+        <field name="MrpProductLabelToPrint" type="Selection" label="Product Label to Print" default="pdf">
+            <option value="pdf" name="PDF" />
+            <option value="zpl" name="ZPL" />
+        </field>
+        <field name="AutoPrintDoneMrpLot" type="bool" label="Auto Print Produced Lot Label"
+            help="If this checkbox is ticked, Odoo will automatically print the lot/SN label of a MO when it is done." />
+        <field name="DoneMrpLotLabelToPrint" type="Selection" label="Lot/SN Label to Print" default="pdf">
+            <option value="pdf" name="PDF" />
+            <option value="zpl" name="ZPL" />
+        </field>
+        <field name="AutoPrintMrpReceptionReport" type="bool" label="Auto Print Allocation Report"
+            help="If this checkbox is ticked, Odoo will automatically print the allocation report of a MO when it is done and has assigned moves." />
+        <field name="AutoPrintMrpReceptionReportLabels" type="bool" label="Auto Print Allocation Report Labels"
+            help="If this checkbox is ticked, Odoo will automatically print the allocation report labels of a MO when it is done." />
+        <field name="AutoPrintGeneratedMrpLot" type="bool" label="Auto Print Generated Lot/SN Label"
+            help="Automatically print the lot/SN label when the 'Create a new serial/lot number' button is used." />
+        <field name="GeneratedMrpLotLabelToPrint" type="Selection" label="Generated Lot/SN Label to Print" default="pdf">
+            <option value="pdf" name="PDF" />
+            <option value="zpl" name="ZPL" />
+        </field>
+    </model>
+    <model id="Mrp.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="HasKits" type="bool" />
+        <field name="ProductionCount" type="integer" label="Count of MO generated" />
+        <field name="ProductionIds" type="Many2many" collection="true" relation="mrp.production" />
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.EventTag" name="EventTag" description="Event Tag">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the Event Tag without removing it." />
+        <field name="Website" type="Website.Website" relation="many2one" required="true" help="Website to which this tag applies" />
+    </model>
 </buvi>

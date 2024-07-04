@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MailPlugin.ResPartner" name="ResPartner" description="ResPartner">
+    <field name="IapEnrichInfo" type="text" label="IAP Enrich Info" help="IAP response stored as a JSON string" compute="ComputePartnerIapInfo" />
+    <field name="IapSearchDomain" type="char" label="Search Domain / Email" compute="ComputePartnerIapInfo" />
+  </model>
 </buvi>

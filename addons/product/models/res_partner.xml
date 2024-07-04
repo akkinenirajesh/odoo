@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ResPartner" name="ResPartner" description="Partner">
+    <field name="PropertyProductPricelist" type="Product.Pricelist" label="Pricelist"
+      compute="ComputeProductPricelist" inverse="InverseProductPricelist"
+      help="This pricelist will be used, instead of the default one, for sales to the current partner"
+      companyDependent="false" />
+    <field name="Country" type="Core.Country" label="Country" />
+  </model>
 </buvi>

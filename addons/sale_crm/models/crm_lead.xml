@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleCrm.CrmLead" name="CrmLead" description="CRM Lead">
+    <field name="SaleAmountTotal" type="decimal" label="Sum of Orders" help="Untaxed Total of Confirmed Orders" currencyField="CompanyCurrency" />
+    <field name="QuotationCount" type="integer" label="Number of Quotations" />
+    <field name="SaleOrderCount" type="integer" label="Number of Sale Orders" />
+    <field name="OrderIds" type="Core.SaleOrder" collection="true" />
+  </model>
 </buvi>

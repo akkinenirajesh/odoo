@@ -1,3 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Report.PaperFormat" name="Report.PaperFormat" description="Paper Format Config">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Default" type="bool" label="Default paper format?" />
+    <field name="Format" type="selection" label="Paper size" default="A4"
+      help="Select Proper Paper size">
+      <option value="A0" name="A0  5   841 x 1189 mm" />
+      <option value="A1" name="A1  6   594 x 841 mm" />
+      <option value="A2" name="A2  7   420 x 594 mm" />
+      <option value="A3" name="A3  8   297 x 420 mm" />
+      <option value="A4" name="A4  0   210 x 297 mm, 8.26 x 11.69 inches" />
+      <option value="A5" name="A5  9   148 x 210 mm" />
+      <option value="A6" name="A6  10  105 x 148 mm" />
+      <option value="A7" name="A7  11  74 x 105 mm" />
+      <option value="A8" name="A8  12  52 x 74 mm" />
+      <option value="A9" name="A9  13  37 x 52 mm" />
+      <option value="B0" name="B0  14  1000 x 1414 mm" />
+      <option value="B1" name="B1  15  707 x 1000 mm" />
+      <option value="B2" name="B2  17  500 x 707 mm" />
+      <option value="B3" name="B3  18  353 x 500 mm" />
+      <option value="B4" name="B4  19  250 x 353 mm" />
+      <option value="B5" name="B5  1   176 x 250 mm, 6.93 x 9.84 inches" />
+      <option value="B6" name="B6  20  125 x 176 mm" />
+      <option value="B7" name="B7  21  88 x 125 mm" />
+      <option value="B8" name="B8  22  62 x 88 mm" />
+      <option value="B9" name="B9  23  33 x 62 mm" />
+      <option value="B10" name="B10    16  31 x 44 mm" />
+      <option value="C5E" name="C5E 24  163 x 229 mm" />
+      <option value="Comm10E" name="Comm10E 25  105 x 241 mm, U.S. Common 10 Envelope" />
+      <option value="DLE" name="DLE 26 110 x 220 mm" />
+      <option value="Executive" name="Executive 4   7.5 x 10 inches, 190.5 x 254 mm" />
+      <option value="Folio" name="Folio 27  210 x 330 mm" />
+      <option value="Ledger" name="Ledger  28  431.8 x 279.4 mm" />
+      <option value="Legal" name="Legal    3   8.5 x 14 inches, 215.9 x 355.6 mm" />
+      <option value="Letter" name="Letter 2 8.5 x 11 inches, 215.9 x 279.4 mm" />
+      <option value="Tabloid" name="Tabloid 29 279.4 x 431.8 mm" />
+      <option value="custom" name="Custom" />
+    </field>
+    <field name="MarginTop" type="float" label="Top Margin (mm)" default="40" />
+    <field name="MarginBottom" type="float" label="Bottom Margin (mm)" default="20" />
+    <field name="MarginLeft" type="float" label="Left Margin (mm)" default="7" />
+    <field name="MarginRight" type="float" label="Right Margin (mm)" default="7" />
+    <field name="PageHeight" type="integer" label="Page height (mm)" />
+    <field name="PageWidth" type="integer" label="Page width (mm)" />
+    <field name="Orientation" type="selection" label="Orientation" default="Landscape">
+      <option value="Landscape" name="Landscape" />
+      <option value="Portrait" name="Portrait" />
+    </field>
+    <field name="HeaderLine" type="bool" label="Display a header line" default="false" />
+    <field name="HeaderSpacing" type="integer" label="Header spacing" default="35" />
+    <field name="DisableShrinking" type="bool" label="Disable smart shrinking" />
+    <field name="Dpi" type="integer" label="Output DPI" required="true" default="90" />
+    <field name="ReportIds" type="one2many" collection="true"
+      relation="Ir.Actions.Report" label="Associated reports"
+      help="Explicitly associated reports" />
+    <field name="PrintPageWidth" type="float" label="Print page width (mm)" readonly="true" />
+    <field name="PrintPageHeight" type="float" label="Print page height (mm)" readonly="true" />
+  </model>
 </buvi>

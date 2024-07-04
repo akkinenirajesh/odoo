@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="L10nSaUuid" type="string" label="Document UUID (SA)" copy="false" help="Universally unique identifier of the Invoice" />
+    <field name="L10nSaInvoiceSignature" type="string" label="Unsigned XML Signature" copy="false" />
+    <field name="L10nSaChainIndex" type="integer" label="ZATCA chain index" copy="false" readonly="true" help="Invoice index in chain, set if and only if an in-chain XML was submitted and did not error" />
+    <field name="L10nSaQrCodeStr" type="string" compute="ComputeQrCodeStr" />
+    <field name="EdiShowCancelButton" type="bool" compute="ComputeEdiShowCancelButton" />
+    <field name="ShowResetToDraftButton" type="bool" compute="ComputeShowResetToDraftButton" />
+    <field name="L10nSaLatestSubmissionHash" type="binary" />
+  </model>
+  <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="L10nGccInvoiceTaxAmount" type="decimal" compute="ComputeTaxAmount" />
+  </model>
 </buvi>

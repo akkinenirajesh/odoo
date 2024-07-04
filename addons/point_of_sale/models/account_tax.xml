@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+    <field name="AmountType" type="Account.TaxAmountType" label="Amount Type" />
+    <field name="Amount" type="float" label="Amount" />
+    <field name="TypeTaxUse" type="Account.TaxTypeUse" />
+    <field name="TaxGroupId" type="Account.TaxGroup" label="Tax Group" />
+    <field name="PriceInclude" type="bool" label="Price Include" />
+    <field name="IncludeBaseAmount" type="bool" label="Include Base Amount" />
+    <field name="IsBaseAffected" type="bool" label="Is Base Affected" />
+    <field name="RepartitionLineIds" type="Account.TaxRepartitionLine" collection="true" />
+    <field name="Company" type="Res.Company" label="Company" />
+  </model>
+
+  <optionset id="Account.TaxAmountType" name="Tax Amount Type">
+    <option value="percent" name="Percent" />
+    <option value="fixed" name="Fixed" />
+  </optionset>
+
+  <optionset id="Account.TaxTypeUse" name="Tax Type Use">
+    <option value="sale" name="Sale" />
+    <option value="purchase" name="Purchase" />
+    <option value="none" name="None" />
+  </optionset>
+
+  <optionset id="Account.TaxGroup" name="Tax Group">
+    <option value="tax_group_1" name="Tax Group 1" />
+    <option value="tax_group_2" name="Tax Group 2" />
+    <option value="tax_group_3" name="Tax Group 3" />
+  </optionset>
+
+  <optionset id="Account.TaxRepartitionLine" name="Tax Repartition Line">
+    <option value="line_1" name="Line 1" />
+    <option value="line_2" name="Line 2" />
+    <option value="line_3" name="Line 3" />
+  </optionset>
 </buvi>

@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailMessage" name="MailMessage" description="Mail Message">
+    <field name="Model" type="string" label="Model" required="true" />
+    <field name="ResId" type="integer" label="Res ID" required="true" />
+    <field name="ParentMessageId" type="integer" label="Parent Message ID" />
+    <field name="Subject" type="string" label="Subject" />
+    <field name="Body" type="html" label="Body" />
+    <field name="AuthorId" type="integer" label="Author ID" />
+    <field name="RecipientIds" type="integer" collection="true" label="Recipient IDs" />
+    <field name="MessageDate" type="datetime" label="Message Date" />
+    <field name="MessageRead" type="bool" label="Message Read" />
+    <field name="NotificationType" type="string" label="Notification Type" />
+    <field name="AttachmentIds" type="integer" collection="true" label="Attachment IDs" />
+  </model>
 </buvi>

@@ -1,3 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Project.Task" name="Project.Task" description="Task">
+    <field name="Active" type="bool" default="true" exportStringTranslation="false" />
+    <field name="Name" type="string" label="Title" tracking="true" required="true" index="trigram" />
+    <field name="Description" type="html" label="Description" sanitizeAttributes="false" />
+    <field name="Priority" type="Selection" label="Priority" tracking="true" index="true"
+      default="0">
+      <option value="0" name="Low" />
+      <option value="1" name="High" />
+    </field>
+    <field name="Sequence" type="integer" label="Sequence" default="10" exportStringTranslation="false" />
+    <field name="StageId" type="Project.TaskType" label="Stage" store="true" readonly="false" ondelete="restrict"
+      tracking="true" index="true" default="_getDefaultStageId" groupExpand="_readGroupStageIds"
+      domain="[('ProjectIds', '=', ProjectId)]" />
+    <field name="TagIds" type="Project.Tags" label="Tags" collection="true" />
+    <field name="State" type="Selection" label="State" copy="false" default="01_in_progress" required="true"
+      store="true" index="true" readonly="false" recursive="true" tracking="true" compute="_computeState"
+      inverse="_inverseState" />
+    <field name="IsClosed" type="bool" label="Closed state" compute="_computeIsClosed"
+      search="_searchIsClosed" />
+    <field name="CreateDate" type="datetime" label="Created On" readonly="true" index="true" />
+    <field name="WriteDate" type="datetime" label="Last Updated On" readonly="true" />
+    <field name="DateEnd" type="datetime" label="Ending Date" index="true" copy="false" />
+    <field name="DateAssign" type="datetime" label="Assigning Date" copy="false" readonly="true"
+      help="Date on which this task was last assigned (or unassigned). Based on this, you can get statistics on the time it usually takes to assign tasks." />
+    <field name="DateDeadline" type="datetime" label="Deadline" index="true" tracking="true" />
+    <field name="DateLastStageUpdate" type="datetime" label="Last Stage Update" index="true" copy="false"
+      readonly="true"
+      help="Date on which the state of your task has last been modified.\nBased on this information you can identify tasks that are stalling and get statistics on the time it usually takes to move tasks from one stage/state to another." />
+    <field name="ProjectId" type="Project.Project" label="Project" store="true" precompute="true"
+      readonly="false" index="true" tracking="true" changeDefault="true"
+      domain="['|', ('CompanyId', '=', False), ('CompanyId', '=?', CompanyId)]"
+      compute="_computeProjectId" />
+    <field name="DisplayInProject" type="bool" compute="_computeDisplayInProject" store="true"
+      readonly="false" exportStringTranslation="false" />
+    <field name="ShowDisplayInProject" type="bool" compute="_computeShowDisplayInProject" />
+    <field name="TaskProperties" type="Properties" label="Properties" definition="ProjectId.TaskPropertiesDefinition"
+      copy="true" />
+    <field name="AllocatedHours" type="float" label="Allocated Time" tracking="true" />
+    <field name="SubtaskAllocatedHours" type="float" label="Sub-tasks Allocated Time"
+      compute="_computeSubtaskAllocatedHours" exportStringTranslation="false"
+      help="Sum of the hours allocated for all the sub-tasks (and their own sub-tasks) linked to this task. Usually less than or equal to the allocated hours of this task." />
+    <field name="UserIds" type="Res.Users" label="Assignees" collection="true"
+      context="{&quot;active_test&quot;: false}" tracking="true" default="_defaultUserIds"
+      domain="[('Share', '=', False), ('Active', '=', True)]" />
+    <field name="PortalUserNames" type="char" compute="_computePortalUserNames" computeSudo="true"
+      search="_searchPortalUserNames" exportStringTranslation="false" />
+    <field name="PersonalStageTypeIds" type="Project.TaskType" label="Personal Stages" collection="true"
+      ondelete="restrict" groupExpand="_readGroupPersonalStageTypeIds" copy="false"
+      domain="[('UserId', '=', uid)]" exportStringTranslation="false" />
+    <field name="PersonalStageId" type="Project.TaskStagePersonal" label="Personal Stage State"
+      computeSudo="false" compute="_computePersonalStageId"
+      help="The current user's personal stage." />
+    <field name="PersonalStageTypeId" type="Project.TaskType" label="Personal Stage"
+      compute="_computePersonalStageTypeId" inverse="_inversePersonalStageTypeId" store="false"
+      search="_searchPersonalStageTypeId" default="_defaultPersonalStageTypeId"
+      help="The current user's personal task stage." domain="[('UserId', '=', uid)]" />
+    <field name="PartnerId" type="Res.Partner" label="Customer" recursive="true" tracking="true"
+      compute="_computePartnerId" store="true" readonly="false"
+      domain="['|', ('CompanyId', '=?', CompanyId), ('CompanyId', '=', False)]" />
+    <field name="EmailCc" type="char"
+      help="Email addresses that were in the CC of the incoming emails from this task and that are not currently linked to an existing customer." />
+    <field name="CompanyId" type="Res.Company" label="Company" store="true" readonly="false" recursive="true"
+      copy="true" default="_defaultCompanyId" compute="_computeCompanyId" />
+    <field name="Color" type="integer" label="Color Index" exportStringTranslation="false" />
+    <field name="RatingActive" type="bool" label="Project Rating Status" related="ProjectId.RatingActive" />
+    <field name="AttachmentIds" type="ir.Attachment" label="Attachments that don't come from a message"
+      collection="true" exportStringTranslation="false" compute="_computeAttachmentIds" />
+    <field name="DisplayedImageId" type="ir.Attachment" label="Cover Image"
+      domain="[('ResModel', '=', 'project.task'), ('ResId', '=', id), ('MimeType', 'ilike', 'image')]" />
+    <field name="ParentId" type="Project.Task" label="Parent Task" index="true"
+      domain="['!', ('Id', 'child_of', id)]" tracking="true" />
+    <field name="ChildIds" type="Project.Task" label="Sub-tasks" collection="true"
+      domain="[('RecurringTask', '=', False)]" exportStringTranslation="false" />
+    <field name="SubtaskCount" type="integer" label="Sub-task Count" compute="_computeSubtaskCount"
+      exportStringTranslation="false" />
+    <field name="ClosedSubtaskCount" type="integer" label="Closed Sub-tasks Count"
+      compute="_computeSubtaskCount" exportStringTranslation="false" />
+    <field name="ProjectPrivacyVisibility" type="Selection" label="Project Visibility"
+      related="ProjectId.PrivacyVisibility" />
+    <field name="WorkingHoursOpen" type="float" label="Working Hours to Assign" digits="(16, 2)"
+      store="true" aggregator="avg" compute="_computeElapsed" />
+    <field name="WorkingHoursClose" type="float" label="Working Hours to Close" digits="(16, 2)"
+      store="true" aggregator="avg" compute="_computeElapsed" />
+    <field name="WorkingDaysOpen" type="float" label="Working Days to Assign" store="true"
+      aggregator="avg" compute="_computeElapsed" />
+    <field name="WorkingDaysClose" type="float" label="Working Days to Close" store="true"
+      aggregator="avg" compute="_computeElapsed" />
+    <field name="WebsiteMessageIds" type="One2many"
+      domain="[('Model', '=', _name), ('MessageType', 'in', ['email', 'comment', 'email_outgoing'])]"
+      exportStringTranslation="false" />
+    <field name="AllowMilestones" type="bool" related="ProjectId.AllowMilestones"
+      exportStringTranslation="false" />
+    <field name="MilestoneId" type="Project.Milestone" label="Milestone"
+      domain="[('ProjectId', '=', ProjectId)]" compute="_computeMilestoneId" readonly="false"
+      store="true" tracking="true" index="btree_not_null"
+      help="Deliver your services automatically when a milestone is reached by linking it to a sales order item." />
+    <field name="HasLateAndUnreachedMilestone" type="bool"
+      compute="_computeHasLateAndUnreachedMilestone"
+      search="_searchHasLateAndUnreachedMilestone" exportStringTranslation="false" />
+    <field name="AllowTaskDependencies" type="bool" related="ProjectId.AllowTaskDependencies"
+      exportStringTranslation="false" />
+    <field name="DependOnIds" type="Project.Task" label="Blocked By" collection="true"
+      domain="[('ProjectId', '!=', False), ('Id', '!=', id)]" copy="false" tracking="true" />
+    <field name="DependOnCount" type="integer" label="Depending on Tasks" compute="_computeDependOnCount"
+      computeSudo="true" />
+    <field name="DependentIds" type="Project.Task" label="Block" collection="true"
+      domain="[('ProjectId', '!=', False), ('Id', '!=', id)]" copy="false"
+      exportStringTranslation="false" />
+    <field name="DependentTasksCount" type="integer" label="Dependent Tasks"
+      compute="_computeDependentTasksCount" exportStringTranslation="false" />
+    <field name="DisplayParentTaskButton" type="bool" compute="_computeDisplayParentTaskButton"
+      computeSudo="true" exportStringTranslation="false" />
+    <field name="CurrentUserSameCompanyPartner" type="bool"
+      compute="_computeCurrentUserSameCompanyPartner" computeSudo="true"
+      exportStringTranslation="false" />
+    <field name="DisplayFollowButton" type="bool" compute="_computeDisplayFollowButton"
+      computeSudo="true" exportStringTranslation="false" />
+    <field name="RecurringTask" type="bool" label="Recurrent" />
+    <field name="RecurringCount" type="integer" label="Tasks in Recurrence"
+      compute="_computeRecurringCount" />
+    <field name="RecurrenceId" type="Project.TaskRecurrence" copy="false" />
+    <field name="RepeatInterval" type="integer" label="Repeat Every" default="1"
+      compute="_computeRepeat" computeSudo="true" readonly="false" />
+    <field name="RepeatUnit" type="Selection" label="Repeat Every" default="week"
+      compute="_computeRepeat" computeSudo="true" readonly="false">
+      <option value="day" name="Days" />
+      <option value="week" name="Weeks" />
+      <option value="month" name="Months" />
+      <option value="year" name="Years" />
+    </field>
+    <field name="RepeatType" type="Selection" label="Until" default="forever"
+      compute="_computeRepeat" computeSudo="true" readonly="false">
+      <option value="forever" name="Forever" />
+      <option value="until" name="Until" />
+    </field>
+    <field name="RepeatUntil" type="date" label="End Date" compute="_computeRepeat" computeSudo="true"
+      readonly="false" />
+    <field name="AnalyticAccountId" type="Account.AnalyticAccount" label="Analytic account"
+      ondelete="set null" compute="_computeAnalyticAccountId" store="true" readonly="false"
+      domain="[('CompanyId', '=?', CompanyId)]"
+      help="Analytic account to which this task and its timesheets are linked.\nTrack the costs and revenues of your task by setting its analytic account on your related documents (e.g. sales orders, invoices, purchase orders, vendor bills, expenses etc.).\nBy default, the analytic account of the project is set. However, it can be changed on each task individually if necessary." />
+    <field name="DisplayName" type="char" compute="_computeDisplayName" inverse="_inverseDisplayName"
+      help="""Use these keywords in the title to set new tasks:\n
+            #tags Set tags on the task
+            @user Assign the task to a user
+            ! Set the task a high priority\n
+            Make sure to use the right format and order e.g. Improve the configuration screen #feature #v16 @Mitchell !""",
+    />
+  </model>
+  <optionset id="Project.TaskType" name="Task Type"
+    help="The stages are used to manage your project tasks. They help you organize the tasks by status and track their progress."
+    parent="Project.ProjectTaskStage">
+    <option value="1_done" name="Done" />
+    <option value="1_canceled" name="Cancelled" />
+  </optionset>
 </buvi>

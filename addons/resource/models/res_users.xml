@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.ResUsers" name="Resource.ResUsers" description="Users">
+        <field name="ResourceIds" collection="true" type="Resource.Resource" />
+        <field name="ResourceCalendarId" type="Resource.ResourceCalendar" label="Default Working Hours" />
+        <field name="LoginDate" type="datetime" />
+        <field name="Timezone" type="string" label="Timezone" />
+    </model>
 </buvi>

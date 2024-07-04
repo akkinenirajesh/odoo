@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.IrMailServer" name="IrMailServer" description="Mail Server">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" help="Activate/deactivate this mail server. Deactivating it will prevent it from being used." />
+        <field name="ServerName" type="string" label="SMTP Server" required="true" />
+        <field name="ServerPort" type="integer" label="SMTP Port" default="25" />
+        <field name="ServerLogin" type="string" label="Login" />
+        <field name="ServerPassword" type="password" label="Password" />
+        <field name="UseTLS" type="bool" label="Use TLS" />
+        <field name="UseStartTLS" type="bool" label="Use STARTTLS" />
+        <field name="FromFilter" type="string" label="Sender Email Filter" help="Comma separated list of senders to match. '*' matches any email. 'domain.com' matches any email from domain.com. 'user@domain.com' matches only that user. " />
+        <field name="Signature" type="text" label="Signature" />
+        <field name="BounceAddress" type="string" label="Bounce Address" />
+        <field name="MailTemplateIds" type="Mail.MailTemplate" collection="true" label="Mail template using this mail server" readonly="true" />
+    </model>
+    <optionset id="Mail.MailServerState" name="Mail Server State">
+        <option value="Ready" name="Ready" />
+        <option value="Blocked" name="Blocked" />
+    </optionset>
 </buvi>

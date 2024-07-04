@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteSaleLoyalty.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+    <field name="RewardId" type="WebsiteSaleLoyalty.LoyaltyReward" />
+    <field name="ShowInCart" type="bool" compute="ComputeShowInCart" />
+  </model>
+
+  <optionset id="WebsiteSaleLoyalty.LoyaltyRewardType" name="Loyalty Reward Type">
+    <option value="discount" name="Discount" />
+  </optionset>
 </buvi>

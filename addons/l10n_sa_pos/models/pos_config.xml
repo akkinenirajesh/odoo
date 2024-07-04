@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+    <field name="Company" type="Core.Company" required="true" />
+    <field name="Name" type="string" label="Point of Sale Name" required="true" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide this Point of Sale without removing it." />
+    <field name="CashControl" type="bool" label="Enable Cash Control"
+      help="Check this box to manage cash in and cash out operations." />
+    <field name="AutoConfirm" type="bool" label="Auto-Confirm Orders"
+      help="Confirm orders immediately, without customer confirmation. This is useful when using the Point of Sale for self-service kiosks." />
+    <field name="FiscalPosition" type="Account.FiscalPosition"
+      help="Fiscal position to apply when using this Point of Sale." />
+    <field name="Invoice" type="bool" label="Generate Invoice"
+      help="Generate invoice instead of sales order when validating orders on this Point of Sale. If this option is enabled, the invoice will be validated automatically and no invoice confirmation will be sent." />
+    <field name="Journal" type="Account.Journal" label="Journal"
+      help="The journal to use for orders created through this Point of Sale." />
+    <field name="PaymentMethods" type="Selection" label="Payment Methods"
+      help="Payment methods accepted by this Point of Sale. The configuration of these methods can be accessed from the Payment Method menu."
+      collection="true">
+      <option value="Cash" name="Cash" />
+      <option value="Bank" name="Bank" />
+      <option value="Card" name="Card" />
+    </field>
+    <field name="Receipt" type="string" label="Receipt Layout"
+      help="Select the template that will be used to print receipts." />
+    <field name="UseReceipt" type="bool" label="Print Receipt"
+      help="When this box is checked, a receipt will be printed after each order." />
+    <field name="InvoicePolicy" type="Selection" label="Invoice Policy"
+      help="Choose how you want to handle the invoices."
+      collection="true">
+      <option value="order" name="Invoice every order" />
+      <option value="delivery" name="Invoice after delivery" />
+    </field>
+  </model>
 </buvi>

@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SalePdfQuoteBuilder.ProductDocument" name="ProductDocument" description="Product Document">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Description" type="text" label="Description" translate="true" />
+    <field name="Type" type="Product.DocumentType" />
+    <field name="Datas" type="binary" label="File" />
+    <field name="Mimetype" type="char" label="Mimetype" />
+    <field name="AttachedOnSale" type="SalePdfQuoteBuilder.AttachedOnSale" label="Attach on Sale" />
+    <field name="Url" type="char" label="URL" />
+    <field name="Website" type="char" label="Website" />
+    <field name="CompanyID" type="Core.Company" label="Company" />
+    <field name="DocumentURL" type="char" compute="ComputeDocumentUrl" readonly="true" />
+    <field name="DocumentName" type="char" compute="ComputeDocumentName" readonly="true" />
+    <field name="DocumentSize" type="integer" compute="ComputeDocumentSize" readonly="true" />
+  </model>
+
+  <optionset id="SalePdfQuoteBuilder.AttachedOnSale" name="Attached on Sale">
+    <option value="quote" name="Quote" />
+    <option value="order" name="Order" />
+    <option value="inside" name="Inside quote pdf" />
+  </optionset>
 </buvi>

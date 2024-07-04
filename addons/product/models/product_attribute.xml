@@ -1,3 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductAttribute" name="ProductAttribute" description="Product Attribute">
+        <field name="Name" type="string" label="Attribute" required="true" translate="true" />
+        <field name="CreateVariant" type="Product.ProductAttributeCreateVariant" default="Always" />
+        <field name="DisplayType" type="Product.ProductAttributeDisplayType" default="Radio" />
+        <field name="Sequence" type="integer" label="Sequence" help="Determine the display order" index="true" />
+        <field name="ValueIds" type="Product.ProductAttributeValue" collection="true" />
+        <field name="TemplateValueIds" type="Product.ProductTemplateAttributeValue" collection="true" />
+        <field name="AttributeLineIds" type="Product.ProductTemplateAttributeLine" collection="true" />
+        <field name="ProductTmplIds" type="Product.ProductTemplate" collection="true" />
+        <field name="NumberRelatedProducts" type="integer" />
+    </model>
+
+    <optionset id="Product.ProductAttributeCreateVariant" name="Product Attribute Create Variant">
+        <option value="Always" name="Instantly" />
+        <option value="Dynamically" name="Dynamically" />
+        <option value="NoVariant" name="Never (option)" />
+    </optionset>
+
+    <optionset id="Product.ProductAttributeDisplayType" name="Product Attribute Display Type">
+        <option value="Radio" name="Radio" />
+        <option value="Pills" name="Pills" />
+        <option value="Select" name="Select" />
+        <option value="Color" name="Color" />
+        <option value="Multi" name="Multi-checkbox (option)" />
+    </optionset>
 </buvi>

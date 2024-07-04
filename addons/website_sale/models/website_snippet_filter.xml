@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteSnippetFilter" name="Website.WebsiteSnippetFilter" description="Website Snippet Filter">
+    <field name="ProductCrossSelling" type="bool" label="About cross selling products" 
+      help="True only for product filters that require a product_id because they relate to cross selling" />
+  </model>
 </buvi>

@@ -1,3 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestReadGroup.OnDate" name="TestReadGroup.OnDate" description="Group Test Read On Date">
+    <field name="Date" type="date" label="Date" />
+    <field name="Value" type="integer" label="Value" />
+  </model>
+  <model id="TestReadGroup.AggregateBoolean" name="TestReadGroup.AggregateBoolean" description="Group Test Read Boolean Aggregate">
+    <field name="Key" type="integer" />
+    <field name="BoolAnd" type="bool" default="false" aggregator="bool_and" />
+    <field name="BoolOr" type="bool" default="false" aggregator="bool_or" />
+    <field name="BoolArray" type="bool" default="false" aggregator="array_agg" />
+  </model>
+  <model id="TestReadGroup.Aggregate" name="TestReadGroup.Aggregate" description="Group Test Aggregate">
+    <field name="Key" type="integer" />
+    <field name="Value" type="integer" label="Value" />
+    <field name="NumericValue" type="float" digits="(4, 2)" />
+    <field name="PartnerId" type="Res.Partner" collection="true" />
+    <field name="DisplayName" type="string" />
+  </model>
+  <model id="TestReadGroup.OnSelection" name="TestReadGroup.OnSelection" description="Group Test Read On Selection">
+    <field name="State" type="selection" selection="TestReadGroup.OnSelection.StateSelection" group_expand="ExpandStates" />
+    <field name="StaticExpand" type="selection" selection="TestReadGroup.OnSelection.StaticExpandSelection" group_expand="true" />
+    <field name="DynamicExpand" type="selection" selection="TestReadGroup.OnSelection.DynamicExpandSelection" group_expand="true" />
+    <field name="NoExpand" type="selection" selection="TestReadGroup.OnSelection.NoExpandSelection" />
+    <field name="Value" type="integer" />
+  </model>
+  <model id="TestReadGroup.FillTemporal" name="TestReadGroup.FillTemporal" description="Group Test Fill Temporal">
+    <field name="Date" type="date" />
+    <field name="Datetime" type="datetime" />
+    <field name="Value" type="integer" />
+  </model>
+  <model id="TestReadGroup.Order" name="TestReadGroup.Order" description="Sales order">
+    <field name="LineIds" type="TestReadGroup.OrderLine" collection="true" />
+    <field name="Date" type="date" />
+  </model>
+  <model id="TestReadGroup.OrderLine" name="TestReadGroup.OrderLine" description="Sales order line">
+    <field name="OrderId" type="TestReadGroup.Order" collection="true" />
+    <field name="Value" type="integer" />
+    <field name="Date" type="date" related="OrderId.Date" />
+  </model>
+  <model id="TestReadGroup.User" name="TestReadGroup.User" description="User">
+    <field name="Name" type="string" required="true" />
+    <field name="TaskIds" type="TestReadGroup.Task" collection="true" />
+  </model>
+  <model id="TestReadGroup.Task" name="TestReadGroup.Task" description="Project task">
+    <field name="Name" type="string" required="true" />
+    <field name="UserIds" type="TestReadGroup.User" collection="true" />
+    <field name="Date" type="date" />
+  </model>
+  <model id="Res.Partner" name="Res.Partner" description="Partner">
+    <field name="Date" type="date" />
+  </model>
+  <model id="TestReadGroup.RelatedBar" name="TestReadGroup.RelatedBar" description="RelatedBar">
+    <field name="Name" type="string" aggregator="count_distinct" />
+    <field name="FooIds" type="TestReadGroup.RelatedFoo" collection="true" />
+    <field name="FooNamesSudo" type="string" related="FooIds.Name" />
+    <field name="BaseIds" type="TestReadGroup.RelatedBase" collection="true" />
+    <field name="ComputedBaseIds" type="TestReadGroup.RelatedBase" collection="true" />
+  </model>
+  <model id="TestReadGroup.RelatedFoo" name="TestReadGroup.RelatedFoo" description="RelatedFoo">
+    <field name="Name" type="string" />
+    <field name="BarId" type="TestReadGroup.RelatedBar" collection="true" />
+    <field name="BarNameSudo" type="string" related="BarId.Name" />
+    <field name="BarName" type="string" related="BarId.Name" related_sudo="false" />
+    <field name="BarBaseIds" type="TestReadGroup.RelatedBase" collection="true" related="BarId.BaseIds" />
+  </model>
+  <model id="TestReadGroup.RelatedBase" name="TestReadGroup.RelatedBase" description="RelatedBase">
+    <field name="Name" type="string" />
+    <field name="Value" type="integer" />
+    <field name="FooId" type="TestReadGroup.RelatedFoo" collection="true" />
+    <field name="FooIdName" type="string" related="FooId.Name" related_sudo="false" />
+    <field name="FooIdNameSudo" type="string" related="FooId.Name" />
+    <field name="FooIdBarIdName" type="string" related="FooId.BarId.Name" />
+    <field name="FooIdBarName" type="string" related="FooId.BarName" />
+    <field name="FooIdBarNameSudo" type="string" related="FooId.BarNameSudo" />
+  </model>
+  <model id="TestReadGroup.RelatedInherits" name="TestReadGroup.RelatedInherits" description="RelatedInherits">
+    <field name="BaseId" type="TestReadGroup.RelatedBase" collection="true" required="true" ondelete="cascade" />
+  </model>
+  <optionset id="TestReadGroup.OnSelection.StateSelection" name="StateSelection">
+    <option value="a" name="A" />
+    <option value="b" name="B" />
+  </optionset>
+  <optionset id="TestReadGroup.OnSelection.StaticExpandSelection" name="StaticExpandSelection">
+    <option value="c" name="C" />
+    <option value="b" name="B" />
+    <option value="a" name="A" />
+  </optionset>
+  <optionset id="TestReadGroup.OnSelection.DynamicExpandSelection" name="DynamicExpandSelection">
+    <option value="c" name="C" />
+    <option value="b" name="B" />
+    <option value="a" name="A" />
+  </optionset>
+  <optionset id="TestReadGroup.OnSelection.NoExpandSelection" name="NoExpandSelection">
+    <option value="c" name="C" />
+    <option value="b" name="B" />
+    <option value="a" name="A" />
+  </optionset>
 </buvi>

@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="WebsiteId" type="Website" related="SaleId.WebsiteId" label="Website" help="Website where this order has been placed, for eCommerce orders." store="true" readonly="true"/>
+    </model>
 </buvi>

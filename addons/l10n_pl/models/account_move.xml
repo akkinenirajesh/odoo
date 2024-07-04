@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="L10nPlVatBSpv" type="bool" label="B_SPV" help="Transfer of a single-purpose voucher effected by a taxable person acting on his/its own behalf" />
+    <field name="L10nPlVatBSpvDostawa" type="bool" label="B_SPV_Dostawa" help="Supply of goods and/or services covered by a single-purpose voucher to a taxpayer" />
+    <field name="L10nPlVatBmpvProwizja" type="bool" label="B_MPV_Prowizja" help="Supply of agency and other services pertaining to the transfer of a single-purpose voucher" />
+  </model>
 </buvi>

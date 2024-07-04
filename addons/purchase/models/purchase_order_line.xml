@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.PurchaseOrderLine" name="PurchaseOrderLine" description="Purchase Order Line">
+        <field name="Name" type="string" label="Description" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="ProductQty" type="float" label="Quantity" digits="Product Unit of Measure" required="true" />
+        <field name="ProductUomQty" type="float" label="Total Quantity" />
+        <field name="DatePlanned" type="datetime" label="Expected Arrival" index="true" help="Delivery date expected from vendor. This date respectively defaults to vendor pricelist lead time then today's date." />
+        <field name="Discount" type="float" label="Discount (%)" digits="Discount" />
+        <field name="TaxesId" type="many2many" label="Taxes" collection="true" relation="Account.Tax" context="{active_test: false}" />
+        <field name="ProductUom" type="many2one" label="Unit of Measure" relation="Uom.Uom" domain="[('category_id', '=', product_uom_category_id)]" />
+        <field name="ProductUomCategoryId" type="many2one" relation="Uom.UomCategory" related="ProductId.UomId.CategoryId" />
+        <field name="ProductId" type="many2one" label="Product" relation="Product.Product" domain="[('purchase_ok', '=', True)]" change_default="true" index="btree_not_null" />
+        <field name="ProductType" type="selection" related="ProductId.Type" readonly="true" />
+        <field name="PriceUnit" type="float" label="Unit Price" required="true" digits="Product Price" aggregator="avg" />
+        <field name="PriceUnitDiscounted" type="float" label="Unit Price (Discounted)" />
+        <field name="PriceSubtotal" type="monetary" label="Subtotal" aggregator="none" />
+        <field name="PriceTotal" type="monetary" label="Total" />
+        <field name="PriceTax" type="float" label="Tax" />
+        <field name="OrderId" type="many2one" label="Order Reference" relation="Purchase.Order" required="true" ondelete="cascade" />
+        <field name="CompanyId" type="many2one" label="Company" relation="Res.Company" related="OrderId.CompanyId" readonly="true" />
+        <field name="State" type="selection" related="OrderId.State" />
+        <field name="InvoiceLines" type="one2many" label="Bill Lines" relation="Account.MoveLine" readonly="true" copy="false" collection="true" />
+        <field name="QtyInvoiced" type="float" label="Billed Qty" digits="Product Unit of Measure" />
+        <field name="QtyReceivedMethod" type="selection" label="Received Qty Method" help="According to product configuration, the received quantity can be automatically computed by mechanism:\n  - Manual: the quantity is set manually on the line\n  - Stock Moves: the quantity comes from confirmed pickings" options="{'manual': 'Manual'}" />
+        <field name="QtyReceived" type="float" label="Received Qty" digits="Product Unit of Measure" />
+        <field name="QtyReceivedManual" type="float" label="Manual Received Qty" digits="Product Unit of Measure" copy="false" />
+        <field name="QtyToInvoice" type="float" label="To Invoice Quantity" digits="Product Unit of Measure" readonly="true" />
+        <field name="PartnerId" type="many2one" label="Partner" relation="Res.Partner" related="OrderId.PartnerId" readonly="true" />
+        <field name="CurrencyId" type="many2one" label="Currency" relation="Res.Currency" related="OrderId.CurrencyId" readonly="true" />
+        <field name="DateOrder" type="datetime" label="Order Date" related="OrderId.DateOrder" readonly="true" />
+        <field name="DateApprove" type="datetime" label="Confirmation Date" related="OrderId.DateApprove" readonly="true" />
+        <field name="ProductPackagingId" type="many2one" label="Packaging" relation="Product.Packaging" domain="[('purchase', '=', True), ('product_id', '=', product_id)]" check_company="true" />
+        <field name="ProductPackagingQty" type="float" label="Packaging Quantity" />
+        <field name="TaxCalculationRoundingMethod" type="selection" label="Tax calculation rounding method" related="CompanyId.TaxCalculationRoundingMethod" readonly="true" />
+        <field name="DisplayType" type="selection" label="Display Type" options="{'line_section': 'Section', 'line_note': 'Note'}" default="False" help="Technical field for UX purpose." />
+        <sqlconstraint name="accountable_required_fields" expr="display_type IS NOT NULL OR (product_id IS NOT NULL AND product_uom IS NOT NULL AND date_planned IS NOT NULL)" message="Missing required fields on accountable purchase order line." />
+        <sqlconstraint name="non_accountable_null_fields" expr="display_type IS NULL OR (product_id IS NULL AND price_unit = 0 AND product_uom_qty = 0 AND product_uom IS NULL AND date_planned is NULL)" message="Forbidden values on non-accountable purchase order line" />
+    </model>
 </buvi>

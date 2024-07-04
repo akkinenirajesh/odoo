@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosMrp.PosOrderLine" name="PosMrp.PosOrderLine" description="Pos Order Line" inherit="Pos.PosOrderLine">
+    <field name="Qty" type="float" />
+    <field name="Product" type="Product.Product" relation="true" />
+  </model>
+  <model id="PosMrp.PosOrder" name="PosMrp.PosOrder" description="Pos Order" inherit="Pos.PosOrder">
+    <field name="PickingIds" type="Stock.Picking" collection="true" />
+  </model>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Acquirer" selection="[('buckaroo', 'Buckaroo')]" ondelete="{'buckaroo': 'set default'}" />
+    <field name="BuckarooWebsiteKey" type="char" label="Website Key" help="The key solely used to identify the website with Buckaroo" requiredIfProvider="buckaroo" />
+    <field name="BuckarooSecretKey" type="char" label="Buckaroo Secret Key" requiredIfProvider="buckaroo" groups="base.group_system" />
+  </model>
 </buvi>

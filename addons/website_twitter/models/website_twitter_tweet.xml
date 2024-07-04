@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteTwitterTweet" name="WebsiteTwitterTweet" description="Website X">
+    <field name="WebsiteId" type="Website.Website" label="Website" ondelete="cascade" />
+    <field name="ScreenName" type="string" label="Screen Name" />
+    <field name="Tweet" type="text" label="Posts" />
+    <field name="TweetId" type="float" label="X ID" digits="(0,0)" />
+  </model>
 </buvi>

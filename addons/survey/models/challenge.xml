@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Gamification.Challenge" name="Challenge" description="Challenge">
+        <field name="ChallengeCategory" type="Gamification.ChallengeCategory" label="Challenge Category" />
+    </model>
+
+    <optionset id="Gamification.ChallengeCategory" name="Challenge Category">
+        <option value="certification" name="Certifications" />
+    </optionset>
 </buvi>

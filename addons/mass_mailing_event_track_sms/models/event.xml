@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Event.Event" name="Event" description="Event">
+    <field name="ActionMassMailingTrackSpeakers" type="action" />
+  </model>
 </buvi>

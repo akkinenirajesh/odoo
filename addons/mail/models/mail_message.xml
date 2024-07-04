@@ -1,3 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.Message" name="Message" description="Message">
+    <field name="Subject" type="string" label="Subject" />
+    <field name="Date" type="datetime" label="Date" default="DateTime.Now" />
+    <field name="Body" type="html" label="Contents" default="" sanitizeStyle="true" />
+    <field name="Preview" type="string" label="Preview" compute="ComputePreview"
+      help="The text-only beginning of the body used as email preview." />
+    <field name="LinkPreviewIds" type="mail.link.preview" collection="true" label="Link Previews"
+      groups="base.group_erp_manager" />
+    <field name="ReactionIds" type="mail.message.reaction" collection="true" label="Reactions"
+      groups="base.group_system" />
+    <field name="AttachmentIds" type="ir.attachment" collection="true" label="Attachments" />
+    <field name="ParentId" type="mail.message" label="Parent Message" ondelete="set null" />
+    <field name="ChildIds" type="mail.message" collection="true" label="Child Messages" />
+    <field name="Model" type="string" label="Related Document Model" />
+    <field name="ResId" type="many2oneReference" label="Related Document ID" modelField="Model" />
+    <field name="RecordName" type="string" label="Message Record Name" />
+    <field name="RecordAliasDomainId" type="mail.alias.domain" label="Alias Domain" ondelete="set null" />
+    <field name="RecordCompanyId" type="res.company" label="Company" ondelete="set null" />
+    <field name="MessageType" type="selection" label="Type" required="true" default="Comment"
+      help="Used to categorize message generator"
+      options="Email,Comment,EmailOutgoing,Notification,AutoComment,UserNotification" />
+    <field name="Subtype" type="mail.message.subtype" label="Subtype" ondelete="set null" />
+    <field name="MailActivityTypeId" type="mail.activity.type" label="Mail Activity Type"
+      ondelete="set null" />
+    <field name="IsInternal" type="bool" label="Employee Only"
+      help="Hide to public / portal users, independently from subtype configuration." />
+    <field name="EmailFrom" type="string" label="From"
+      help="Email address of the sender. This field is set when no matching partner is found and replaces the author_id field in the chatter." />
+    <field name="Author" type="res.partner" label="Author" ondelete="set null" />
+    <field name="AuthorAvatar" type="binary" label="Author's avatar" related="Author.Avatar128"
+      readonly="False" />
+    <field name="AuthorGuestId" type="mail.guest" label="Guest" />
+    <field name="IsCurrentUserOrGuestAuthor" type="bool" label="Is Current User or Guest Author"
+      compute="ComputeIsCurrentUserOrGuestAuthor" />
+    <field name="PartnerIds" type="res.partner" collection="true" label="Recipients"
+      context="active_test: False" />
+    <field name="NotifiedPartnerIds" type="res.partner" collection="true" label="Partners with Need Action"
+      context="active_test: False" depends="NotificationIds" copy="False" />
+    <field name="NeedAction" type="bool" label="Need Action" compute="ComputeNeedAction"
+      search="SearchNeedAction" />
+    <field name="HasError" type="bool" label="Has error" compute="ComputeHasError"
+      search="SearchHasError" />
+    <field name="NotificationIds" type="mail.notification" collection="true" label="Notifications"
+      autoJoin="true" copy="False" depends="NotifiedPartnerIds" />
+    <field name="StarredPartnerIds" type="res.partner" collection="true" label="Favorited By" />
+    <field name="PinnedAt" type="datetime" label="Pinned"
+      help="Datetime at which the message has been pinned" />
+    <field name="Starred" type="bool" label="Starred" compute="ComputeStarred"
+      search="SearchStarred" computeSudo="False"
+      help="Current user has a starred notification linked to this message" />
+    <field name="TrackingValueIds" type="mail.tracking.value" collection="true" label="Tracking values"
+      groups="base.group_system"
+      help="Tracked values are stored in a separate model. This field allow to reconstruct "
+      "the tracking and to generate statistics on the model." />
+    <field name="ReplyToForceNew" type="bool" label="No threading for answers"
+      help="If true, answers do not go in the original document discussion thread. Instead, it will check for the reply_to in tracking message-id and redirected accordingly. This has an impact on the generated message-id." />
+    <field name="MessageId" type="string" label="Message-Id" index="btree" readonly="true"
+      copy="False" />
+    <field name="ReplyTo" type="string" label="Reply-To"
+      help="Reply email address. Setting the reply_to bypasses the automatic thread creation." />
+    <field name="MailServerId" type="ir.mail_server" label="Outgoing mail server" />
+    <field name="EmailLayoutXmlid" type="string" label="Layout" copy="False" />
+    <field name="EmailAddSignature" type="bool" label="Add Signature" default="true" />
+    <field name="MailIds" type="mail.mail" collection="true" label="Mails"
+      groups="base.group_system" />
+  </model>
+  <optionset id="Mail.MessageType" name="Message Type">
+    <option value="Email" name="Incoming Email" />
+    <option value="Comment" name="Comment" />
+    <option value="EmailOutgoing" name="Outgoing Email" />
+    <option value="Notification" name="System notification" />
+    <option value="AutoComment" name="Automated Targeted Notification" />
+    <option value="UserNotification" name="User Specific Notification" />
+  </optionset>
 </buvi>

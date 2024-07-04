@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Provider" required="true" />
+    <field name="RazorpayKeyId" type="string" label="Razorpay Key Id" required="if_provider=razorpay" help="The key solely used to identify the account with Razorpay." />
+    <field name="RazorpayKeySecret" type="string" label="Razorpay Key Secret" required="if_provider=razorpay" groups="base.group_system" />
+    <field name="RazorpayWebhookSecret" type="string" label="Razorpay Webhook Secret" required="if_provider=razorpay" groups="base.group_system" />
+    <field name="SupportManualCapture" type="selection"  default="full_only" />
+    <field name="SupportRefund" type="selection" default="partial" />
+    <field name="SupportTokenization" type="bool"  default="true" />
+  </model>
+  <optionset id="Payment.PaymentProviderCode" name="Payment Provider Code">
+    <option value="razorpay" name="Razorpay" />
+    <option value="paypal" name="Paypal" />
+    <option value="stripe" name="Stripe" />
+  </optionset>
+  <optionset id="Payment.SupportManualCapture" name="Support Manual Capture">
+    <option value="full_only" name="Full Only" />
+    <option value="partial_only" name="Partial Only" />
+    <option value="none" name="None" />
+  </optionset>
+  <optionset id="Payment.SupportRefund" name="Support Refund">
+    <option value="partial" name="Partial" />
+    <option value="full" name="Full" />
+    <option value="none" name="None" />
+  </optionset>
 </buvi>

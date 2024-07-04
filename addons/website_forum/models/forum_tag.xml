@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="forum.post.vote" name="Forum.PostVote" track_created="true" track_update="true">
-    <field name="Forum" label="Forum" type="Forum.Forum" related-field="Post.Forum"/>
-    <field name="Post" label="Post" type="Forum.Post" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Recipient" label="To" type="Res.Users" related-field="Post.CreateUid"/>
-    <field name="User" label="User" type="Res.Users" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Vote" label="Vote" type="Forum.PostVoteVote" required="true" copied="true"/>
+  <model id="Website.ForumTag" name="ForumTag" description="Forum Tag">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="ForumId" type="Website.Forum" label="Forum" required="true" collection="true" />
+    <field name="Posts" type="Website.ForumPost" collection="true" relation="many2many" />
+    <field name="PostsCount" type="integer" label="Number of Posts" />
+    <field name="WebsiteUrl" type="string" label="Link to questions with the tag" />
+    <unique>
+      <field name="Name" />
+      <field name="ForumId" />
+      <message>Tag name already exists!</message>
+    </unique>
   </model>
 </buvi>

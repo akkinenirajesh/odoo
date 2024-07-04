@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="l10n_pe.ResCity" name="l10n_pe.ResCity" description="City">
+    <field name="L10nPeCode" type="string" label="Code" help="This code will help with the identification of each city in Peru." />
+  </model>
 </buvi>

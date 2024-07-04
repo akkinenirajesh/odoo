@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.ResPartner" name="ResPartner" description="Res Partner">
+        <field name="PosOrderCount" type="integer" label="Number of POS Orders" />
+        <field name="PosOrderIds" type="PointOfSale.PosOrder" collection="true" />
+        <field name="Street" type="string" label="Street" />
+        <field name="City" type="string" label="City" />
+        <field name="StateId" type="Core.State" />
+        <field name="CountryId" type="Core.Country" />
+        <field name="Vat" type="string" label="VAT" />
+        <field name="Lang" type="string" label="Language" />
+        <field name="Phone" type="string" label="Phone" />
+        <field name="Zip" type="string" label="Zip" />
+        <field name="Mobile" type="string" label="Mobile" />
+        <field name="Email" type="string" label="Email" />
+        <field name="Barcode" type="string" label="Barcode" />
+        <field name="WriteDate" type="datetime" label="Last Update" />
+        <field name="PropertyAccountPositionId" type="Account.AccountPosition" />
+        <field name="PropertyProductPricelist" type="Product.Pricelist" />
+        <field name="ParentName" type="string" label="Parent Company" />
+    </model>
 </buvi>

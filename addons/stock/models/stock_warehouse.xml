@@ -1,3 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.Warehouse" name="Stock.Warehouse" description="Warehouse">
+    <field name="Name" type="string" label="Warehouse" required="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Company" type="Res.Company" label="Company" required="true" />
+    <field name="Partner" type="Res.Partner" label="Address" />
+    <field name="ViewLocation" type="Stock.Location" label="View Location"
+      domain="[('Usage', '=', 'view'), ('Company', '=', Company)]" required="true" />
+    <field name="LotStock" type="Stock.Location" label="Location Stock"
+      domain="[('Usage', '=', 'internal'), ('Company', '=', Company)]" required="true" />
+    <field name="Code" type="string" label="Short Name" required="true" size="5"
+      help="Short name used to identify your warehouse" />
+    <field name="Routes" type="Stock.Route" collection="true"
+      domain="[('WarehouseSelectable', '=', True), '|', ('Company', '=', False), ('Company', '=', Company)]"
+      help="Defaults routes through the warehouse" />
+    <field name="IncomingShipments" type="Stock.WarehouseReceptionSteps"
+      default="OneStep" required="true"
+      help="Default incoming route to follow" />
+    <field name="OutgoingShipments" type="Stock.WarehouseDeliverySteps"
+      default="ShipOnly" required="true"
+      help="Default outgoing route to follow" />
+    <field name="InputLocation" type="Stock.Location" />
+    <field name="QualityControlLocation" type="Stock.Location" />
+    <field name="OutputLocation" type="Stock.Location" />
+    <field name="PackingLocation" type="Stock.Location" />
+    <field name="MtoPull" type="Stock.Rule" />
+    <field name="PickType" type="Stock.PickingType" />
+    <field name="PackType" type="Stock.PickingType" />
+    <field name="OutType" type="Stock.PickingType" />
+    <field name="InType" type="Stock.PickingType" />
+    <field name="InternalType" type="Stock.PickingType" />
+    <field name="QualityControlType" type="Stock.PickingType" />
+    <field name="StorageType" type="Stock.PickingType" />
+    <field name="CrossDockType" type="Stock.PickingType" />
+    <field name="CrossdockRoute" type="Stock.Route" />
+    <field name="ReceiptRoute" type="Stock.Route" />
+    <field name="DeliveryRoute" type="Stock.Route" />
+    <field name="ResupplyFrom" type="Stock.Warehouse" collection="true"
+      help="Routes will be created automatically to resupply this warehouse from the warehouses ticked" />
+    <field name="ResupplyRoutes" type="Stock.Route" collection="true"
+      help="Routes will be created for these resupply warehouses and you can select them on products and product categories" />
+    <field name="Sequence" type="integer" default="10"
+      help="Gives the sequence of this line when displaying the warehouses." />
+    <unique name="warehouse_name_uniq">
+      <field name="Name" />
+      <field name="Company" />
+      <message>The name of the warehouse must be unique per company!</message>
+    </unique>
+    <unique name="warehouse_code_uniq">
+      <field name="Code" />
+      <field name="Company" />
+      <message>The short name of the warehouse must be unique per company!</message>
+    </unique>
+  </model>
+
+  <optionset id="Stock.WarehouseReceptionSteps" name="Warehouse Reception Steps">
+    <option value="OneStep" name="Receive goods directly (1 step)" />
+    <option value="TwoSteps" name="Receive goods in input and then stock (2 steps)" />
+    <option value="ThreeSteps" name="Receive goods in input, then quality and then stock (3 steps)" />
+  </optionset>
+
+  <optionset id="Stock.WarehouseDeliverySteps" name="Warehouse Delivery Steps">
+    <option value="ShipOnly" name="Deliver goods directly (1 step)" />
+    <option value="PickShip" name="Send goods in output and then deliver (2 steps)" />
+    <option value="PickPackShip" name="Pack goods, send goods in output and then deliver (3 steps)" />
+  </optionset>
 </buvi>

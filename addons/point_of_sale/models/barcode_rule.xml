@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.BarcodeRule" name="BarcodeRule" description="Barcode Rule">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Code" type="string" label="Code" required="true" />
+    <field name="Product" type="Product.Product" label="Product" required="true" />
+    <field name="Type" type="PointOfSale.BarcodeRuleType" />
+    <field name="Active" type="bool" default="true"
+      help="Set active to false to hide the Barcode Rule without removing it." />
+  </model>
+
+  <optionset id="PointOfSale.BarcodeRuleType" name="Barcode Rule Type">
+    <option value="product" name="Product" />
+    <option value="weight" name="Weighted Product" />
+    <option value="price" name="Priced Product" />
+    <option value="discount" name="Discounted Product" />
+    <option value="client" name="Client" />
+    <option value="cashier" name="Cashier" />
+  </optionset>
 </buvi>

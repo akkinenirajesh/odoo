@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrExports" name="IrExports" description="Exports">
+        <field name="Name" type="string" label="Export Name" />
+        <field name="Resource" type="string" index="true" />
+        <field name="ExportFields" collection="true" relation="Base.IrExportsLine" />
+    </model>
+
+    <model id="Base.IrExportsLine" name="IrExportsLine" description="Exports Line">
+        <field name="Name" type="string" label="Field Name" />
+        <field name="ExportId" type="Base.IrExports" />
+    </model>
 </buvi>

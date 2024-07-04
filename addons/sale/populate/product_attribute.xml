@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Sale.ProductAttribute" name="Sale.ProductAttribute" description="Product Attribute">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="CreateVariant" type="bool" label="Create Variants"
+      help="If checked, variants will be automatically generated when adding values for this attribute." />
+    <field name="DisplayType" type="string" label="Display Type" />
+    <field name="AttributeType" type="string" label="Attribute Type" />
+    <field name="Values" type="Sale.ProductAttributeValue" collection="true" />
   </model>
+
+  <optionset id="Sale.ProductAttributeValue" name="Sale.ProductAttributeValue" description="Product Attribute Value">
+    <option value="radio" name="Radio" />
+    <option value="select" name="Select" />
+    <option value="color" name="Color" />
+  </optionset>
 </buvi>

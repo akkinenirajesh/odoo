@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteCrmPartnerAssign.CrmLead" name="CrmLead" description="CRM Lead">
+    <field name="PartnerLatitude" type="float" label="Geo Latitude" digits="(10, 7)" />
+    <field name="PartnerLongitude" type="float" label="Geo Longitude" digits="(10, 7)" />
+    <field name="PartnerAssignedId" type="Res.Partner" label="Assigned Partner" tracking="true" domain="['|', ('Company', '=', False), ('Company', '=', Company)]" help="Partner this case has been forwarded/assigned to." index="btree_not_null" />
+    <field name="PartnerDeclinedIds" type="Res.Partner" collection="true" label="Partner not interested" />
+    <field name="DatePartnerAssign" type="date" label="Partner Assignment Date" compute="ComputeDatePartnerAssign" copy="true" readonly="false" store="true" help="Last date this case was forwarded/assigned to a partner" />
+  </model>
 </buvi>

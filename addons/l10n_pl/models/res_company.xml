@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="L10nPl.Company" name="Company" description="Company">
+    <field name="L10nPlReportsTaxOfficeId" type="L10nPl.L10nPlTaxOffice" label="Tax Office" groups="Account.GroupAccountUser" />
   </model>
 </buvi>

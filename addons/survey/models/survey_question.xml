@@ -1,3 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Survey.SurveyQuestion" name="SurveyQuestion" description="Survey Question">
+    <field name="Title" type="string" label="Title" required="true" translate="true" />
+    <field name="Description" type="html" label="Description" translate="true" sanitize="true" sanitizeOverridable="true" help="Use this field to add additional explanations about your question or to illustrate it with pictures or a video" />
+    <field name="QuestionPlaceholder" type="string" label="Placeholder" translate="true" compute="ComputeQuestionPlaceholder" store="true" readonly="false" />
+    <field name="BackgroundImage" type="image" label="Background Image" compute="ComputeBackgroundImage" store="true" readonly="false" />
+    <field name="BackgroundImageUrl" type="string" label="Background Url" compute="ComputeBackgroundImageUrl" />
+    <field name="Survey" type="Survey.Survey" label="Survey" ondelete="cascade" />
+    <field name="ScoringType" type="selection" label="Scoring Type" related="Survey.ScoringType" readonly="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="10" />
+    <field name="SessionAvailable" type="bool" label="Live Session available" related="Survey.SessionAvailable" readonly="true" />
+    <field name="IsPage" type="bool" label="Is a page?" />
+    <field name="QuestionIds" type="Survey.SurveyQuestion" label="Questions" collection="true" compute="ComputeQuestionIds" />
+    <field name="QuestionsSelection" type="selection" label="Questions Selection" related="Survey.QuestionsSelection" readonly="true" help="If randomized is selected, add the number of random questions next to the section." />
+    <field name="RandomQuestionsCount" type="integer" label="# Questions Randomly Picked" default="1" help="Used on randomized sections to take X random questions from all the questions of that section." />
+    <field name="Page" type="Survey.SurveyQuestion" label="Page" compute="ComputePageId" store="true" />
+    <field name="QuestionType" type="selection" label="Question Type" compute="ComputeQuestionType" readonly="false" store="true">
+      <option value="SimpleChoice" name="Multiple choice: only one answer" />
+      <option value="MultipleChoice" name="Multiple choice: multiple answers allowed" />
+      <option value="TextBox" name="Multiple Lines Text Box" />
+      <option value="CharBox" name="Single Line Text Box" />
+      <option value="NumericalBox" name="Numerical Value" />
+      <option value="Scale" name="Scale" />
+      <option value="Date" name="Date" />
+      <option value="Datetime" name="Datetime" />
+      <option value="Matrix" name="Matrix" />
+    </field>
+    <field name="IsScoredQuestion" type="bool" label="Scored" compute="ComputeIsScoredQuestion" readonly="false" store="true" copy="true" help="Include this question as part of quiz scoring. Requires an answer and answer score to be taken into account." />
+    <field name="HasImageOnlySuggestedAnswer" type="bool" label="Has image only suggested answer" compute="ComputeHasImageOnlySuggestedAnswer" />
+    <field name="AnswerNumericalBox" type="float" label="Correct numerical answer" help="Correct number answer for this question." />
+    <field name="AnswerDate" type="date" label="Correct date answer" help="Correct date answer for this question." />
+    <field name="AnswerDatetime" type="datetime" label="Correct datetime answer" help="Correct date and time answer for this question." />
+    <field name="AnswerScore" type="float" label="Score" help="Score value for a correct answer to this question." />
+    <field name="SaveAsEmail" type="bool" label="Save as user email" compute="ComputeSaveAsEmail" readonly="false" store="true" copy="true" help="If checked, this option will save the user's answer as its email address." />
+    <field name="SaveAsNickname" type="bool" label="Save as user nickname" compute="ComputeSaveAsNickname" readonly="false" store="true" copy="true" help="If checked, this option will save the user's answer as its nickname." />
+    <field name="SuggestedAnswerIds" type="Survey.SurveyQuestionAnswer" label="Types of answers" collection="true" copy="true" help='Labels used for proposed choices: simple choice, multiple choice and columns of matrix' />
+    <field name="MatrixSubtype" type="selection" label="Matrix Type" default="Simple">
+      <option value="Simple" name="One choice per row" />
+      <option value="Multiple" name="Multiple choices per row" />
+    </field>
+    <field name="MatrixRowIds" type="Survey.SurveyQuestionAnswer" label="Matrix Rows" collection="true" copy="true" help='Labels used for proposed choices: rows of matrix' />
+    <field name="ScaleMin" type="integer" label="Scale Minimum Value" default="0" />
+    <field name="ScaleMax" type="integer" label="Scale Maximum Value" default="10" />
+    <field name="ScaleMinLabel" type="string" label="Scale Minimum Label" translate="true" />
+    <field name="ScaleMidLabel" type="string" label="Scale Middle Label" translate="true" />
+    <field name="ScaleMaxLabel" type="string" label="Scale Maximum Label" translate="true" />
+    <field name="IsTimeLimited" type="bool" label="The question is limited in time" help="Currently only supported for live sessions." />
+    <field name="IsTimeCustomized" type="bool" label="Customized speed rewards" />
+    <field name="TimeLimit" type="integer" label="Time limit (seconds)" />
+    <field name="CommentsAllowed" type="bool" label="Show Comments Field" />
+    <field name="CommentsMessage" type="string" label="Comment Message" translate="true" />
+    <field name="CommentCountAsAnswer" type="bool" label="Comment is an answer" />
+    <field name="ValidationRequired" type="bool" label="Validate entry" compute="ComputeValidationRequired" readonly="false" store="true" />
+    <field name="ValidationEmail" type="bool" label="Input must be an email" />
+    <field name="ValidationLengthMin" type="integer" label="Minimum Text Length" default="0" />
+    <field name="ValidationLengthMax" type="integer" label="Maximum Text Length" default="0" />
+    <field name="ValidationMinFloatValue" type="float" label="Minimum value" default="0.0" />
+    <field name="ValidationMaxFloatValue" type="float" label="Maximum value" default="0.0" />
+    <field name="ValidationMinDate" type="date" label="Minimum Date" />
+    <field name="ValidationMaxDate" type="date" label="Maximum Date" />
+    <field name="ValidationMinDatetime" type="datetime" label="Minimum Datetime" />
+    <field name="ValidationMaxDatetime" type="datetime" label="Maximum Datetime" />
+    <field name="ValidationErrorMsg" type="string" label="Validation Error" translate="true" />
+    <field name="ConstrMandatory" type="bool" label="Mandatory Answer" />
+    <field name="ConstrErrorMsg" type="string" label="Error message" translate="true" />
+    <field name="UserInputLineIds" type="Survey.SurveyUserInputLine" label="Answers" collection="true" domain="[('Skipped', '=', False)]" groups="survey.group_survey_user" />
+    <field name="TriggeringQuestionIds" type="Survey.SurveyQuestion" label="Triggering Questions" collection="true" compute="ComputeTriggeringQuestionIds" store="false" help="Questions containing the triggering answer(s) to display the current question." />
+    <field name="AllowedTriggeringQuestionIds" type="Survey.SurveyQuestion" label="Allowed Triggering Questions" collection="true" copy="false" compute="ComputeAllowedTriggeringQuestionIds" />
+    <field name="IsPlacedBeforeTrigger" type="bool" label="Is misplaced?" help="Is this question placed before any of its trigger questions?" compute="ComputeAllowedTriggeringQuestionIds" />
+    <field name="TriggeringAnswerIds" type="Survey.SurveyQuestionAnswer" label="Triggering Answers" collection="true" copy="false" store="true" readonly="false" help="Picking any of these answers will trigger this question.\nLeave the field empty if the question should always be displayed." domain="[('Question.Survey', '=', Survey), '&', ('Question.QuestionType', 'in', ['SimpleChoice', 'MultipleChoice']), '|', ('Question.Sequence', '&lt;', Sequence), '&', ('Question.Sequence', '=', Sequence), ('Question.Id', '&lt;', Id)]" />
+    <unique>
+      <field name="Title" />
+      <message>A question with the same title already exists in this survey.</message>
+    </unique>
+  </model>
+  <model id="Survey.SurveyQuestionAnswer" name="SurveyQuestionAnswer" description="Survey Label">
+    <field name="Question" type="Survey.SurveyQuestion" label="Question" ondelete="cascade" index="btree_not_null" />
+    <field name="MatrixQuestion" type="Survey.SurveyQuestion" label="Question (as matrix row)" ondelete="cascade" index="btree_not_null" />
+    <field name="QuestionType" type="selection" related="Question.QuestionType" />
+    <field name="Sequence" type="integer" label="Label Sequence order" default="10" />
+    <field name="ScoringType" type="selection" related="Question.ScoringType" />
+    <field name="Value" type="string" label="Suggested value" translate="true" />
+    <field name="ValueImage" type="image" label="Image" max_width="1024" max_height="1024" />
+    <field name="ValueImageFilename" type="string" label="Image Filename" />
+    <field name="ValueLabel" type="string" label="Value Label" compute="ComputeValueLabel" help="Answer label as either the value itself if not empty or a letter representing the index of the answer otherwise." />
+    <field name="IsCorrect" type="bool" label="Correct" />
+    <field name="AnswerScore" type="float" label="Score" help="A positive score indicates a correct choice; a negative or null score indicates a wrong answer" />
+  </model>
 </buvi>

@@ -1,3 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestImpex.Boolean" name="Boolean" description="Export: boolean">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="bool" />
+    </model>
+    <model id="TestImpex.Integer" name="Integer" description="Export: integer">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.Float" name="Float" description="Export: float">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="float" />
+    </model>
+    <model id="TestImpex.Decimal" name="Decimal" description="Export: decimal">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="float" digits="16,3" />
+    </model>
+    <model id="TestImpex.StringBounded" name="StringBounded" description="Export: string.bounded">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="string" size="16" />
+    </model>
+    <model id="TestImpex.StringRequired" name="StringRequired" description="Export: string.required">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="string" required="true" />
+    </model>
+    <model id="TestImpex.String" name="String" description="Export: string">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="string" />
+    </model>
+    <model id="TestImpex.Date" name="Date" description="Export: date">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="date" />
+    </model>
+    <model id="TestImpex.Datetime" name="Datetime" description="Export: datetime">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="datetime" />
+    </model>
+    <model id="TestImpex.Text" name="Text" description="Export: text">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="text" />
+    </model>
+    <model id="TestImpex.Selection" name="Selection" description="Export: selection">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="selection">
+            <option value="1" name="Foo" />
+            <option value="2" name="Bar" />
+            <option value="3" name="Qux" />
+            <option value="4" name="" />
+        </field>
+    </model>
+    <optionset id="TestImpex.SelectionFunction" name="Selection Function">
+        <option value="0" name="Corge" />
+        <option value="1" name="Grault" />
+        <option value="2" name="Wheee" />
+        <option value="3" name="Moog" />
+    </optionset>
+    <model id="TestImpex.SelectionFunction" name="SelectionFunction" description="Export: selection.function">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="selection" optionset="TestImpex.SelectionFunction" />
+    </model>
+    <model id="TestImpex.Many2one" name="Many2one" description="Export: many2one">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="TestImpex.Integer" />
+    </model>
+    <model id="TestImpex.One2many" name="One2many" description="Export: one2many">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="TestImpex.One2manyChild" collection="true" />
+    </model>
+    <model id="TestImpex.One2manyChild" name="One2manyChild" description="Export One to Many Child">
+        <field name="Parent" type="TestImpex.One2many" />
+        <field name="Str" type="string" />
+        <field name="M2o" type="TestImpex.Integer" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.Many2many" name="Many2many" description="Export: many2many">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="TestImpex.Many2manyOther" collection="true" />
+    </model>
+    <model id="TestImpex.Many2manyOther" name="Many2manyOther" description="Export Many to Many Other">
+        <field name="Str" type="string" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.Function" name="Function" description="Export: function">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.Reference" name="Reference" description="Export: reference">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="reference" options="[('TestImpex.Integer', 'integer')]" />
+    </model>
+    <model id="TestImpex.One2manyMultiple" name="One2manyMultiple" description="Export One To Many Multiple">
+        <field name="Parent" type="TestImpex.One2manyRecursive" />
+        <field name="Const" type="integer" default="36" />
+        <field name="Child1" type="TestImpex.One2manyChild1" collection="true" />
+        <field name="Child2" type="TestImpex.One2manyChild2" collection="true" />
+    </model>
+    <model id="TestImpex.One2manyMultipleChild" name="One2manyMultipleChild" description="Export One To Many Multiple Child">
+        <field name="Parent" type="TestImpex.One2manyMultiple" />
+        <field name="Str" type="string" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.One2manyChild1" name="One2manyChild1" description="Export One to Many Child 1" inherit="TestImpex.One2manyMultipleChild">
+        <field name="Parent" type="TestImpex.One2manyMultiple" />
+        <field name="Str" type="string" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.One2manyChild2" name="One2manyChild2" description="Export One To Many Child 2" inherit="TestImpex.One2manyMultipleChild">
+        <field name="Parent" type="TestImpex.One2manyMultiple" />
+        <field name="Str" type="string" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.SelectionWithDefault" name="SelectionWithDefault" description="Export Selection With Default">
+        <field name="Const" type="integer" default="4" />
+        <field name="Value" type="selection" default="2">
+            <option value="1" name="Foo" />
+            <option value="2" name="Bar" />
+        </field>
+    </model>
+    <model id="TestImpex.One2manyRecursive" name="One2manyRecursive" description="Export One To Many Recursive">
+        <field name="Value" type="integer" />
+        <field name="Child" type="TestImpex.One2manyMultiple" collection="true" />
+    </model>
+    <model id="TestImpex.Unique" name="Unique" description="Export Unique">
+        <field name="Value" type="integer" />
+        <field name="Value2" type="integer" />
+        <field name="Value3" type="integer" />
+        <unique>
+            <field name="Value" />
+            <message>The value must be unique</message>
+        </unique>
+        <unique>
+            <field name="Value2" />
+            <field name="Value3" />
+            <message>The values must be unique</message>
+        </unique>
+    </model>
+    <model id="TestImpex.InheritsParent" name="InheritsParent" description="Export inherits parent">
+        <field name="ValueParent" type="integer" />
+    </model>
+    <model id="TestImpex.InheritsChild" name="InheritsChild" description="Export inherits child" inherit="TestImpex.InheritsParent">
+        <field name="Parent" type="TestImpex.InheritsParent" />
+        <field name="Value" type="integer" />
+    </model>
+    <model id="TestImpex.M2oStr" name="M2oStr" description="Export m2o str">
+        <field name="Child" type="TestImpex.M2oStrChild" />
+    </model>
+    <model id="TestImpex.M2oStrChild" name="M2oStrChild" description="Export m2o str child">
+        <field name="Name" type="string" />
+    </model>
+    <model id="TestImpex.WithRequiredField" name="WithRequiredField" description="Export with required field">
+        <field name="Name" type="string" />
+        <field name="Value" type="integer" required="true" />
+    </model>
+    <model id="TestImpex.Many2oneRequiredSubfield" name="Many2oneRequiredSubfield" description="Export many2one required subfield">
+        <field name="Name" type="TestImpex.WithRequiredField" />
+    </model>
 </buvi>

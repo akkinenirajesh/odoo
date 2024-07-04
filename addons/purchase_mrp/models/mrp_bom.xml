@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseMrp.MrpBom" name="PurchaseMrp.MrpBom" description="Bill of Material">
+    <inherit id="Mrp.MrpBom" />
+    <field name="BomLineIds" collection="true" />
+    <field name="ByproductIds" collection="true" />
+    <field name="OperationIds" collection="true" />
+  </model>
+  <model id="PurchaseMrp.MrpBomLine" name="PurchaseMrp.MrpBomLine" description="Bill of Material Line">
+    <inherit id="Mrp.MrpBomLine" />
+    <field name="CostShare" type="float" label="Cost Share (%)" digits="(5, 2)" help="The percentage of the component repartition cost when purchasing a kit. The total of all components' cost have to be equal to 100." />
+  </model>
 </buvi>

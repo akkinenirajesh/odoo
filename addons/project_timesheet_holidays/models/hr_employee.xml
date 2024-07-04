@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.TimesheetHolidays.Employee" name="Project.TimesheetHolidays.Employee" description="Employee">
+        <field name="Active" type="bool" default="true"
+            help="Set active to false to hide the Employee without removing it." />
+        <field name="ResourceCalendar" type="Resource.Calendar" label="Working Time" />
+        <field name="Company" type="Res.Company" label="Company" />
+    </model>
 </buvi>

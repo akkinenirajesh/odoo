@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
+  <model id="PurchaseStock.StockValuationLayer" name="StockValuationLayer" description="Stock Valuation Layer">
+    <field name="Value" type="decimal" label="Value" />
+    <field name="Quantity" type="decimal" label="Quantity" />
+    <field name="Product" type="Product.Product" collection="true" />
+    <field name="ProductUom" type="Product.Uom" />
+    <field name="Cost" type="decimal" label="Cost" />
+    <field name="Cost2" type="decimal" label="Cost 2" />
   </model>
 </buvi>

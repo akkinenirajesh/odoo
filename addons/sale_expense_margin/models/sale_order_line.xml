@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="ExpenseId" type="Hr.Expense" label="Expense" relation="true" />
+        <field name="IsExpense" type="bool" />
+        <field name="PurchasePrice" type="decimal" />
+    </model>
 </buvi>

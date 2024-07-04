@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.StockWarehouseOrderpoint" name="StockWarehouseOrderpoint" description="Stock Warehouse Orderpoint">
+    <field name="ShowBom" type="bool" label="Show BoM column" compute="ComputeShowBom" />
+    <field name="BomId" type="Mrp.Bom" label="Bill of Materials" check_company="true"
+      domain="[('Type', '=', 'normal'), '&', '|', ('CompanyId', '=', CompanyId), ('CompanyId', '=', False), '|', ('ProductId', '=', ProductId), '&', ('ProductId', '=', False), ('ProductTmplId', '=', ProductTmplId)]" />
+    <field name="ManufacturingVisibilityDays" type="float" default="0.0"
+      help="Visibility Days applied on the manufacturing routes." />
+  </model>
+  <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+    <option value="Accounts" name="Accounts" />
+    <option value="Taxes" name="Taxes" />
+    <option value="Products" name="Products" />
+  </optionset>
 </buvi>

@@ -1,13 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="project.tags" name="Project.Tags" track_created="true" track_update="true">
-    <field name="Projects" label="Projects" type="Project.Project" collection="true" copied="true"/>
-    <field name="Tasks" label="Tasks" type="Project.Task" collection="true" copied="true"/>
-    <field name="Color" label="Color" type="integer" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true" translatable="true"/>
-  </model>
-  <model id="repair.tags" name="Repair.Tags" track_created="true" track_update="true">
-    <field name="Color" label="Color Index" type="integer" copied="true"/>
-    <field name="Name" label="Tag Name" type="string" required="true" copied="true"/>
-  </model>
+    <model id="WebsiteForum.Challenge" name="Challenge" description="Challenge">
+        <field name="ChallengeCategory" type="selection" label="Challenge Category" required="true" translate="true">
+            <option value="forum" name="Website / Forum" />
+        </field>
+    </model>
 </buvi>

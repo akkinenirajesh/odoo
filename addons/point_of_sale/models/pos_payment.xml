@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.PosPayment" name="PosPayment" description="Point of Sale Payments">
+    <field name="Name" type="string" label="Label" readonly="true" />
+    <field name="PosOrderId" type="PointOfSale.PosOrder" label="Order" required="true" />
+    <field name="Amount" type="monetary" label="Amount" required="true" readonly="true" help="Total amount of the payment." />
+    <field name="PaymentMethodId" type="PointOfSale.PosPaymentMethod" label="Payment Method" required="true" />
+    <field name="PaymentDate" type="datetime" label="Date" required="true" readonly="true" />
+    <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    <field name="CurrencyRate" type="float" label="Conversion Rate" help="Conversion rate from company currency to order currency." />
+    <field name="PartnerId" type="Res.Partner" label="Customer" />
+    <field name="SessionId" type="PointOfSale.PosSession" label="Session" collection="true" />
+    <field name="CompanyId" type="Res.Company" label="Company" collection="true" />
+    <field name="CardType" type="string" label="Type of card used" />
+    <field name="CardholderName" type="string" label="Cardholder Name" />
+    <field name="TransactionId" type="string" label="Payment Transaction ID" />
+    <field name="PaymentStatus" type="string" label="Payment Status" />
+    <field name="Ticket" type="string" label="Payment Receipt Info" />
+    <field name="IsChange" type="bool" label="Is this payment change?" default="false" />
+    <field name="AccountMoveId" type="Account.AccountMove" />
+    <field name="Uuid" type="string" label="Uuid" readonly="true" copy="false" />
+  </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="StockSms.Company" name="Company" description="Company">
+        <field name="StockMoveSmsValidation" type="bool" label="SMS Confirmation" default="true" />
+        <field name="StockSmsConfirmationTemplateId" type="Sms.Template" label="SMS Template" collection="true" domain="[('Model', '=', 'Stock.Picking')]" />
+        <field name="HasReceivedWarningStockSms" type="bool" />
+    </model>
+    <optionset id="Sms.Template" name="SMS Template" />
 </buvi>

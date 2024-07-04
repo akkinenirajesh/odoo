@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order">
+        <field name="OnlinePaymentMethodId" type="Pos.PaymentMethod" compute="ComputeOnlinePaymentMethodId" />
+        <field name="NextOnlinePaymentAmount" type="float" label="Next online payment amount to pay" digits="0" />
+        <field name="AmountUnpaid" type="float" compute="ComputeAmountUnpaid" />
+    </model>
+
+    <model id="Pos.Payment" name="Payment" description="Payment">
+        <field name="PosOrderId" type="Pos.PosOrder" relation="many2one" collection="true" />
+        <field name="OnlineAccountPaymentId" type="string" />
+    </model>
+
+    <model id="Pos.Config" name="Config" description="Point of Sale Configuration">
+        <field name="PaymentMethodIds" type="Pos.PaymentMethod" relation="many2many" collection="true" />
+        <field name="TrustedConfigIds" type="Pos.Config" relation="many2many" collection="true" />
+        <field name="ModulePosRestaurant" type="bool" />
+    </model>
+
+    <model id="Pos.PaymentMethod" name="PaymentMethod" description="Payment Method">
+        <field name="Name" type="string" />
+    </model>
 </buvi>

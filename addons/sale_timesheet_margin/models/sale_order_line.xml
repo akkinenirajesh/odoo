@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+        <field name="AnalyticLineIds" type="Account.AnalyticLine" collection="true" />
+        <field name="QtyDeliveredMethod" type="selection" selection="Sale.QtyDeliveredMethodSelection" />
+        <field name="ProductId" type="Product.Product" />
+        <field name="PurchasePrice" type="float" />
+        <field name="Company" type="Res.Company" />
+        <field name="ProductUom" type="Product.Uom" />
+        <field name="ProjectTimeMode" type="Product.Uom" />
+        <field name="CostCurrency" type="Res.Currency" />
+    </model>
+
+    <optionset id="Sale.QtyDeliveredMethodSelection" name="Qty Delivered Method Selection">
+        <option value="timesheet" name="Timesheet" />
+    </optionset>
 </buvi>

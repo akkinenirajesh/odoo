@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.Company" name="Purchase.Company" description="Company">
+        <field name="POLead" type="float" label="Purchase Lead Time" required="true"
+            help="Margin of error for vendor lead times. When the system generates Purchase Orders for procuring products, they will be scheduled that many days earlier to cope with unexpected vendor delays." default="0.0" />
+        <field name="POLock" type="Purchase.CompanyPOLock" label="Purchase Order Modification" default="edit"
+            help="Purchase Order Modification used when you want to purchase order editable after confirm" />
+        <field name="PODoubleValidation" type="Purchase.CompanyPODoubleValidation" label="Levels of Approvals" default="one_step"
+            help="Provide a double validation mechanism for purchases" />
+        <field name="PODoubleValidationAmount" type="monetary" label="Double validation amount" default="5000"
+            help="Minimum amount for which a double validation is required" />
+    </model>
+
+    <optionset id="Purchase.CompanyPOLock" name="Purchase Order Modification">
+        <option value="edit" name="Allow to edit purchase orders" />
+        <option value="lock" name="Confirmed purchase orders are not editable" />
+    </optionset>
+
+    <optionset id="Purchase.CompanyPODoubleValidation" name="Levels of Approvals">
+        <option value="one_step" name="Confirm purchase orders in one step" />
+        <option value="two_step" name="Get 2 levels of approvals to confirm a purchase order" />
+    </optionset>
 </buvi>

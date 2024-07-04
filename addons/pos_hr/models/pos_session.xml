@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosSession" name="PosSession" description="Point of Sale Session">
+        <field name="ConfigId" type="Pos.PosConfig" required="true" />
+        <field name="State" type="selection" selection="Pos.PosSessionState" default="opened" />
+        <field name="StartAt" type="datetime" label="Start Date" readonly="true" />
+        <field name="StopAt" type="datetime" label="Stop Date" readonly="true" />
+        <field name="User" type="res.users" label="Responsible" required="true" />
+        <field name="CashRegister" type="pos.cashregister" readonly="true" />
+        <field name="SequenceNumber" type="integer" label="Sequence Number" readonly="true" />
+        <field name="IsClosing" type="bool" label="Closing Session" />
+        <field name="Name" type="string" label="Session Name" />
+        <field name="ConfigName" type="string" label="Config Name" />
+        <field name="Closed" type="bool" label="Closed" default="false" />
+        <field name="Sales" type="float" label="Total Sales" readonly="true" />
+        <field name="Payments" type="float" label="Total Payments" readonly="true" />
+        <field name="Refund" type="float" label="Total Refunds" readonly="true" />
+        <field name="Currency" type="res.currency" label="Currency" readonly="true" />
+        <field name="JournalId" type="account.journal" label="Journal" readonly="true" />
+        <field name="JournalEntryId" type="account.move" label="Journal Entry" readonly="true" />
+        <field name="OrderCount" type="integer" label="Number of Orders" readonly="true" />
+        <field name="InvoiceCount" type="integer" label="Number of Invoices" readonly="true" />
+        <field name="CashIn" type="float" label="Cash In" />
+        <field name="CashOut" type="float" label="Cash Out" />
+        <field name="StatementLines" type="collection" collection="true" field="Pos.PosSessionStatementLine" />
+        <field name="TotalCash" type="float" label="Total Cash" readonly="true" />
+        <field name="Note" type="text" label="Note" />
+        <field name="Lines" type="collection" collection="true" field="Pos.PosSessionLine" />
+        <field name="ConfigModulePosHr" type="bool" label="Pos HR Module" readonly="true" />
+        <field name="PosConfigModulePosHr" type="bool" label="Pos HR Module" readonly="true" />
+    </model>
+
+    <optionset id="Pos.PosSessionState" name="Pos Session State">
+        <option value="opened" name="Opened" />
+        <option value="closed" name="Closed" />
+    </optionset>
 </buvi>

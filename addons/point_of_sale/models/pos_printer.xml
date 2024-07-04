@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.PosPrinter" name="PosPrinter" description="Point of Sale Printer">
+    <field name="Name" type="string" label="Printer Name" required="true" default="Printer" help="An internal identification of the printer" />
+    <field name="PrinterType" type="string" label="Printer Type" default="iot" collection="true">
+      <option value="iot" name="Use a printer connected to the IoT Box" />
+    </field>
+    <field name="ProxyIP" type="string" label="Proxy IP Address" help="The IP Address or hostname of the Printer's hardware proxy" />
+    <field name="ProductCategories" type="PointOfSale.PosCategory" collection="true" label="Printed Product Categories" />
+    <field name="Company" type="Res.Company" label="Company" required="true" />
+  </model>
 </buvi>

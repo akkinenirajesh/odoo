@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseMrp.StockMove" name="StockMove" description="Stock Move">
+    <field name="PurchaseLineId" type="Purchase.PurchaseLine" collection="true" relation="purchase_line_id" />
+    <field name="BomLineId" type="Mrp.BomLine" collection="true" relation="bom_line_id" />
+    <field name="ProductId" type="Product.Product" collection="true" relation="product_id" />
+    <field name="CompanyId" type="Res.Company" collection="true" relation="company_id" />
+  </model>
 </buvi>

@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Resource.ResourceCalendar" name="ResourceCalendar" description="Resource Calendar">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Company" type="Core.Company" label="Company" />
+        <field name="AttendanceIds" type="Resource.ResourceCalendarAttendance" collection="true" />
+    </model>
+
+    <optionset id="Resource.ResourceCalendarAttendance" name="Resource Calendar Attendance">
+        <option value="Monday" name="Monday" />
+        <option value="Tuesday" name="Tuesday" />
+        <option value="Wednesday" name="Wednesday" />
+        <option value="Thursday" name="Thursday" />
+        <option value="Friday" name="Friday" />
+        <option value="Saturday" name="Saturday" />
+        <option value="Sunday" name="Sunday" />
+    </optionset>
 </buvi>

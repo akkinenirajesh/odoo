@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.BusPresence" name="Mail.BusPresence" description="Bus Presence">
+    <field name="UserId" type="res.users" label="User" />
+    <field name="GuestId" type="mail.guest" label="Guest" ondelete="cascade" />
+    <field name="Active" type="bool" default="true" />
+    <field name="LastSeen" type="datetime" />
+    <field name="LastPresence" type="datetime" />
+    <field name="Connected" type="bool" />
+    <field name="Client" type="string" />
+    <field name="Channel" type="string" />
+    <field name="Lang" type="selection" selection="res.lang.Lang.get_language_selection" label="Language" />
+    <unique>
+      <field name="UserId" />
+      <field name="GuestId" />
+      <message>A bus presence for a user or a guest already exists.</message>
+    </unique>
+  </model>
 </buvi>

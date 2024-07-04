@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="PosSessionId" type="PointOfSale.PosSession" relation="true" />
+        <field name="PosOrderId" type="PointOfSale.PosOrder" relation="true" />
+    </model>
+
+    <model id="PointOfSale.StockPickingType" name="StockPickingType" description="Stock Picking Type">
+        <field name="UseCreateLots" type="bool" />
+        <field name="UseExistingLots" type="bool" />
+    </model>
+
+    <model id="Procurement.ProcurementGroup" name="ProcurementGroup" description="Procurement Group">
+        <field name="PosOrderId" type="PointOfSale.PosOrder" relation="true" />
+    </model>
+
+    <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+        <field name="Picked" type="bool" />
+    </model>
 </buvi>

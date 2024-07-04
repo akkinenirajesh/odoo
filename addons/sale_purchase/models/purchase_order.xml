@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="SalePurchase.PurchaseOrder" name="SalePurchase.PurchaseOrder" description="Purchase Order">
+        <field name="SaleOrderCount" type="integer" label="Number of Source Sale" groups="SalesTeam.GroupSaleSalesman" />
+        <field name="OrderLines" collection="true" type="SalePurchase.PurchaseOrderLine" />
+    </model>
+
+    <model id="SalePurchase.PurchaseOrderLine" name="SalePurchase.PurchaseOrderLine" description="Purchase Order Line">
+        <field name="SaleOrderId" type="Sale.SaleOrder" label="Sale Order" readonly="true" />
+        <field name="SaleLineId" type="Sale.SaleOrderLine" label="Origin Sale Item" />
+    </model>
 </buvi>

@@ -1,3 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.MrpBom" name="Mrp.MrpBom" description="Bill of Material">
+        <field name="Code" type="string" label="Reference" />
+        <field name="Active" type="bool" default="true" />
+        <field name="Type" type="Mrp.MrpBomType" required="true" />
+        <field name="ProductTemplateId" type="Product.ProductTemplate" label="Product"
+            domain="[('type', '=', 'consu')]" required="true" />
+        <field name="ProductId" type="Product.Product" label="Product Variant"
+            domain="['&', ('ProductTemplateId', '=', ProductTemplateId), ('type', '=', 'consu')]"
+            help="If a product variant is defined the BOM is available only for this product." />
+        <field name="BomLineIds" type="Mrp.MrpBomLine" collection="true" label="BoM Lines" />
+        <field name="ByproductIds" type="Mrp.MrpByProduct" collection="true" label="By-products" />
+        <field name="ProductQty" type="float" label="Quantity" required="true" default="1.0"
+            digits="Product Unit of Measure"
+            help="This should be the smallest quantity that this product can be produced in. If the BOM contains operations, make sure the work center capacity is accurate." />
+        <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" required="true"
+            help="Unit of Measure (Unit of Measure) is the unit of measurement for the inventory control"
+            domain="[('category_id', '=', ProductUomCategoryId)]" />
+        <field name="ProductUomCategoryId" type="Uom.UomCategory" related="ProductTemplateId.UomId.category_id" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="OperationIds" type="Mrp.MrpRoutingWorkcenter" collection="true" label="Operations" />
+        <field name="ReadyToProduce" type="Mrp.MrpBomReadyToProduce" default="all_available" required="true" />
+        <field name="PickingTypeId" type="Stock.PickingType" label="Operation Type"
+            domain="[('code', '=', 'mrp_operation')]"
+            help="When a procurement has a ‘produce’ route with a operation type set, it will try to create "
+                 "a Manufacturing Order for that product using a BoM of the same operation type. That allows "
+                 "to define stock rules which trigger different manufacturing orders with different BoMs." />
+        <field name="CompanyId" type="Res.Company" label="Company" default="env.company" />
+        <field name="Consumption" type="Mrp.MrpBomConsumption" default="warning" required="true"
+            help="Defines if you can consume more or less components than the quantity defined on the BoM:\n"
+                 "  * Allowed: allowed for all manufacturing users.\n"
+                 "  * Allowed with warning: allowed for all manufacturing users with summary of consumption differences when closing the manufacturing order.\n"
+                 "  Note that in the case of component Manual Consumption, where consumption is registered manually exclusively, consumption warnings will still be issued when appropriate also.\n"
+                 "  * Blocked: only a manager can close a manufacturing order when the BoM consumption is not respected."
+            label="Flexible Consumption" />
+        <field name="PossibleProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue" collection="true"
+            compute="ComputePossibleProductTemplateAttributeValueIds" />
+        <field name="AllowOperationDependencies" type="bool" label="Operation Dependencies"
+            help="Create operation level dependencies that will influence both planning and the status of work orders upon MO confirmation. If this feature is ticked, and nothing is specified, Odoo will assume that all operations can be started simultaneously." />
+        <field name="ProduceDelay" type="integer" label="Manufacturing Lead Time" default="0"
+            help="Average lead time in days to manufacture this product. In the case of multi-level BOM, the manufacturing lead times of the components will be added. In case the product is subcontracted, this can be used to determine the date at which components should be sent to the subcontractor." />
+        <field name="DaysToPrepareMo" type="integer" label="Days to prepare Manufacturing Order" default="0"
+            help="Create and confirm Manufacturing Orders this many days in advance, to have enough time to replenish components or manufacture semi-finished products.\n"
+                 "Note that security lead times will also be considered when appropriate." />
+        <unique>
+            <field name="Code" />
+            <field name="ProductTemplateId" />
+            <message>A BOM with the same code and product template already exists.</message>
+        </unique>
+        <constraint name="QtyPositive" expression="product_qty &gt; 0" message="The quantity to produce must be positive!" />
+    </model>
+
+    <optionset id="Mrp.MrpBomType" name="BoM Type">
+        <option value="normal" name="Manufacture this product" />
+        <option value="phantom" name="Kit" />
+    </optionset>
+
+    <optionset id="Mrp.MrpBomReadyToProduce" name="Manufacturing Readiness">
+        <option value="all_available" name="When all components are available" />
+        <option value="asap" name="When components for 1st operation are available" />
+    </optionset>
+
+    <optionset id="Mrp.MrpBomConsumption" name="Flexible Consumption">
+        <option value="flexible" name="Allowed" />
+        <option value="warning" name="Allowed with warning" />
+        <option value="strict" name="Blocked" />
+    </optionset>
+
+    <model id="Mrp.MrpBomLine" name="Mrp.MrpBomLine" description="Bill of Material Line">
+        <field name="ProductId" type="Product.Product" label="Component" required="true" />
+        <field name="ProductTemplateId" type="Product.ProductTemplate" related="ProductId.ProductTemplateId" store="true" />
+        <field name="CompanyId" type="Res.Company" related="BomId.CompanyId" store="true" />
+        <field name="ProductQty" type="float" label="Quantity" required="true" default="1.0"
+            digits="Product Unit of Measure" />
+        <field name="ProductUomId" type="Uom.Uom" label="Product Unit of Measure" required="true"
+            help="Unit of Measure (Unit of Measure) is the unit of measurement for the inventory control"
+            domain="[('category_id', '=', ProductUomCategoryId)]" />
+        <field name="ProductUomCategoryId" type="Uom.UomCategory" related="ProductId.UomId.category_id" />
+        <field name="Sequence" type="integer" label="Sequence" default="1"
+            help="Gives the sequence order when displaying." />
+        <field name="BomId" type="Mrp.MrpBom" label="Parent BoM" required="true" />
+        <field name="ParentProductTemplateId" type="Product.ProductTemplate" related="BomId.ProductTemplateId" />
+        <field name="PossibleBomProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue"
+            collection="true" related="BomId.PossibleProductTemplateAttributeValueIds" />
+        <field name="BomProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue"
+            collection="true" label="Apply on Variants"
+            domain="[('id', 'in', PossibleBomProductTemplateAttributeValueIds)]"
+            help="BOM Product Variants needed to apply this line." />
+        <field name="AllowedOperationIds" type="Mrp.MrpRoutingWorkcenter" collection="true" related="BomId.OperationIds" />
+        <field name="OperationId" type="Mrp.MrpRoutingWorkcenter" label="Consumed in Operation"
+            domain="[('id', 'in', AllowedOperationIds)]"
+            help="The operation where the components are consumed, or the finished products created." />
+        <field name="ChildBomId" type="Mrp.MrpBom" label="Sub BoM" compute="ComputeChildBomId" />
+        <field name="ChildLineIds" type="Mrp.MrpBomLine" collection="true" label="BOM lines of the referred bom"
+            compute="ComputeChildLineIds" />
+        <field name="AttachmentsCount" type="integer" label="Attachments Count" compute="ComputeAttachmentsCount" />
+        <field name="Tracking" type="selection" related="ProductId.Tracking" />
+        <field name="ManualConsumption" type="bool" label="Manual Consumption" default="false"
+            help="When activated, then the registration of consumption for that component is recorded manually exclusively.\n"
+                 "If not activated, and any of the components consumption is edited manually on the manufacturing order, Odoo assumes manual consumption also." />
+        <constraint name="BomQtyZero" expression="product_qty &gt;= 0" message="All product quantities must be greater or equal to 0.\n"
+            help="Lines with 0 quantities can be used as optional lines. \n"
+            help="You should install the mrp_byproduct module if you want to manage extra products on BoMs!" />
+    </model>
+
+    <model id="Mrp.MrpByProduct" name="Mrp.MrpByProduct" description="Byproduct">
+        <field name="ProductId" type="Product.Product" label="By-product" required="true" />
+        <field name="CompanyId" type="Res.Company" related="BomId.CompanyId" store="true" />
+        <field name="ProductQty" type="float" label="Quantity" required="true" default="1.0"
+            digits="Product Unit of Measure" />
+        <field name="ProductUomCategoryId" type="Uom.UomCategory" related="ProductId.UomId.category_id" />
+        <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" required="true"
+            domain="[('category_id', '=', ProductUomCategoryId)]" />
+        <field name="BomId" type="Mrp.MrpBom" label="BoM" required="true" />
+        <field name="AllowedOperationIds" type="Mrp.MrpRoutingWorkcenter" collection="true" related="BomId.OperationIds" />
+        <field name="OperationId" type="Mrp.MrpRoutingWorkcenter" label="Produced in Operation"
+            domain="[('id', 'in', AllowedOperationIds)]" />
+        <field name="PossibleBomProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue"
+            collection="true" related="BomId.PossibleProductTemplateAttributeValueIds" />
+        <field name="BomProductTemplateAttributeValueIds" type="Product.ProductTemplateAttributeValue"
+            collection="true" label="Apply on Variants"
+            domain="[('id', 'in', PossibleBomProductTemplateAttributeValueIds)]"
+            help="BOM Product Variants needed to apply this line." />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="CostShare" type="float" label="Cost Share (%)" digits="(5, 2)"
+            help="The percentage of the final production cost for this by-product line (divided between the quantity produced)."
+                 "The total of all by-products' cost share must be less than or equal to 100." />
+    </model>
 </buvi>

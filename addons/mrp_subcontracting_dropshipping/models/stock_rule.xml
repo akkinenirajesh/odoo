@@ -1,3 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockRule" name="StockRule" description="Stock Rule">
+        <field name="LocationDestId" type="Stock.Location" label="Destination Location" required="true" />
+        <field name="LocationSrcId" type="Stock.Location" label="Source Location" required="true" />
+        <field name="Action" type="selection" selection="Stock.StockRuleActionSelection" label="Action" required="true" />
+        <field name="ProcurementGroupId" type="Procurement.Group" label="Procurement Group" required="true" />
+        <field name="ProcurementRuleId" type="Procurement.Rule" label="Procurement Rule" required="true" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" />
+        <field name="ProductUom" type="Product.Uom" label="Unit of Measure" required="true" />
+        <field name="RouteId" type="Stock.Route" label="Route" required="true" />
+        <field name="Signal" type="selection" selection="Stock.StockRuleSignalSelection" label="Signal" required="true" />
+        <field name="UseExisting" type="bool" label="Use Existing" default="false" />
+        <field name="Propagate" type="bool" label="Propagate" default="false" />
+        <field name="AutoCreate" type="bool" label="Auto Create" default="true" />
+        <field name="Group" type="bool" label="Group" default="false" />
+        <field name="IgnoreStock" type="bool" label="Ignore Stock" default="false" />
+        <field name="MoveDest" type="bool" label="Move Destination" default="false" />
+        <field name="MoveSrc" type="bool" label="Move Source" default="false" />
+        <field name="Owner" type="res.Partner" label="Owner" />
+        <field name="PartnerId" type="res.Partner" label="Partner" />
+        <field name="MinQty" type="float" label="Minimum Quantity" default="0" />
+        <field name="MaxQty" type="float" label="Maximum Quantity" default="0" />
+        <field name="LeadTime" type="float" label="Lead Time" default="0" />
+        <field name="Priority" type="selection" selection="Stock.StockRulePrioritySelection" label="Priority" default="1" />
+        <field name="Name" type="string" label="Name" default="" />
+        <field name="Note" type="string" label="Note" default="" />
+        <field name="Company" type="Core.Company" label="Company" default="" />
+        <field name="Sequence" type="integer" label="Sequence" default="0" />
+        <field name="PickingType" type="Stock.PickingType" label="Picking Type" />
+        <field name="DateCreated" type="date" label="Date Created" />
+        <field name="DateUpdated" type="date" label="Date Updated" />
+        <field name="LastStockMove" type="Stock.Move" label="Last Stock Move" />
+        <field name="LastStockPicking" type="Stock.Picking" label="Last Stock Picking" />
+        <field name="LastPurchaseOrder" type="Purchase.Order" label="Last Purchase Order" />
+        <field name="LastSaleOrder" type="Sale.Order" label="Last Sale Order" />
+        <field name="LastMrpProduction" type="Mrp.Production" label="Last MRP Production" />
+    </model>
+
+    <optionset id="Stock.StockRuleActionSelection" name="Stock Rule Action Selection">
+        <option value="Buy" name="Buy" />
+        <option value="Manufacture" name="Manufacture" />
+        <option value="Drop Ship" name="Drop Ship" />
+        <option value="None" name="None" />
+    </optionset>
+
+    <optionset id="Stock.StockRuleSignalSelection" name="Stock Rule Signal Selection">
+        <option value="always" name="Always" />
+        <option value="once" name="Once" />
+        <option value="none" name="None" />
+    </optionset>
+
+    <optionset id="Stock.StockRulePrioritySelection" name="Stock Rule Priority Selection">
+        <option value="1" name="Very High" />
+        <option value="2" name="High" />
+        <option value="3" name="Medium" />
+        <option value="4" name="Low" />
+        <option value="5" name="Very Low" />
+    </optionset>
 </buvi>

@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MrpSubcontractingDropshipping.ResCompany" name="ResCompany" description="Company">
+        <field name="DropshipSubcontractorPickTypeId" type="Stock.PickingType" relation="one2many" />
+        <field name="SubcontractingLocationId" type="Stock.Location" relation="one2many" />
+    </model>
+
+    <optionset id="Stock.PickingType" name="Picking Type">
+        <option value="incoming" name="Incoming" />
+        <option value="outgoing" name="Outgoing" />
+        <option value="internal" name="Internal" />
+        <option value="dropship" name="Dropship" />
+    </optionset>
 </buvi>

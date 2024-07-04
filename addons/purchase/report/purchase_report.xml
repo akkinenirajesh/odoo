@@ -1,3 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Purchase.PurchaseReport" name="Purchase.PurchaseReport" description="Purchase Report">
+    <field name="OrderId" type="Purchase.PurchaseOrder" relation="true" />
+    <field name="Id" type="integer" />
+    <field name="DateOrder" type="datetime" label="Order Date" />
+    <field name="State" type="selection" label="Status" options="Purchase.PurchaseOrderStatus" />
+    <field name="DateApprove" type="datetime" label="Confirmation Date" />
+    <field name="PartnerId" type="Res.Partner" label="Vendor" />
+    <field name="UserId" type="Res.Users" label="Purchase Representative" />
+    <field name="CompanyId" type="Res.Company" label="Company" />
+    <field name="FiscalPositionId" type="Account.FiscalPosition" label="Fiscal Position" />
+    <field name="ProductId" type="Product.Product" label="Product" />
+    <field name="ProductTmplId" type="Product.Template" label="Product Template" />
+    <field name="CategoryId" type="Product.Category" label="Product Category" />
+    <field name="CurrencyId" type="Res.Currency" label="Currency" />
+    <field name="ProductUom" type="Uom.Uom" label="Reference Unit of Measure" />
+    <field name="Delay" type="float" label="Days to Confirm" help="Amount of time between purchase approval and order by date." />
+    <field name="DelayPass" type="float" label="Days to Receive" help="Amount of time between date planned and order by date for each purchase order line." />
+    <field name="NbrLines" type="integer" label="# of Lines" />
+    <field name="PriceTotal" type="float" label="Total" />
+    <field name="PriceAverage" type="float" label="Average Cost" digits="Product Price" />
+    <field name="CountryId" type="Res.Country" label="Partner Country" />
+    <field name="CommercialPartnerId" type="Res.Partner" label="Commercial Entity" />
+    <field name="Weight" type="float" label="Gross Weight" />
+    <field name="Volume" type="float" label="Volume" />
+    <field name="UntaxedTotal" type="float" label="Untaxed Total" />
+    <field name="QtyOrdered" type="float" label="Qty Ordered" />
+    <field name="QtyReceived" type="float" label="Qty Received" />
+    <field name="QtyBilled" type="float" label="Qty Billed" />
+    <field name="QtyToBeBilled" type="float" label="Qty to be Billed" />
+  </model>
+
+  <optionset id="Purchase.PurchaseOrderStatus" name="Purchase Order Status">
+    <option value="draft" name="Draft RFQ" />
+    <option value="sent" name="RFQ Sent" />
+    <option value="to approve" name="To Approve" />
+    <option value="purchase" name="Purchase Order" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
 </buvi>

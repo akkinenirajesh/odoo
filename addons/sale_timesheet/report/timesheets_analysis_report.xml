@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleTimesheet.TimesheetsAnalysisReport" name="TimesheetsAnalysisReport" description="Timesheets Analysis Report">
+        <field name="Order" type="Sale.SaleOrder" label="Sales Order" readonly="true" />
+        <field name="SoLine" type="Sale.SaleOrderLine" label="Sales Order Item" readonly="true" />
+        <field name="TimesheetInvoiceType" type="Selection" label="Billable Type" readonly="true" options="SaleTimesheet.TimesheetInvoiceTypes" />
+        <field name="TimesheetInvoice" type="Account.AccountMove" label="Invoice" readonly="true" help="Invoice created from the timesheet" />
+        <field name="TimesheetRevenues" type="float" label="Timesheet Revenues" readonly="true" help="Number of hours spent multiplied by the unit price per hour/day." />
+        <field name="Margin" type="float" label="Margin" readonly="true" help="Timesheets revenues minus the costs" />
+        <field name="BillableTime" type="float" label="Billable Time" readonly="true" help="Number of hours/days linked to a SOL." />
+        <field name="NonBillableTime" type="float" label="Non-billable Time" readonly="true" help="Number of hours/days not linked to a SOL." />
+    </model>
+
+    <optionset id="SaleTimesheet.TimesheetInvoiceTypes" name="Timesheet Invoice Types">
+        <option value="product" name="Product" />
+        <option value="timesheet" name="Timesheet" />
+    </optionset>
 </buvi>

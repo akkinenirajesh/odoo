@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MassMailing.IrMailServer" name="IrMailServer" description="Mail Server">
+    <field name="ActiveMailingIds" type="MassMailing.Mailing" collection="true" label="Active mailing using this mail server" readonly="true" domain="[('State', '!=', 'done'), ('Active', '=', True)]" />
+  </model>
 </buvi>

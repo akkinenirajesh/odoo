@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailingSms.Mailing" name="MassMailingSms.Mailing" description="Mailing">
+        <field name="MailingType" type="MassMailingSms.MailingType" />
+        <field name="SmsSubject" type="string" label="Title" readonly="false" translate="false"
+            help="For an email, the subject your recipients will see in their inbox.\nFor an SMS, the internal title of the message." />
+        <field name="BodyPlaintext" type="text" label="SMS Body" store="true" readonly="false" />
+        <field name="SmsTemplateId" type="Sms.Template" label="SMS Template" ondelete="set null" />
+        <field name="SmsHasInsufficientCredit" type="bool" label="Insufficient IAP credits" />
+        <field name="SmsHasUnregisteredAccount" type="bool" label="Unregistered IAP account" />
+        <field name="SmsForceSend" type="bool" label="Send Directly" help="Immediately send the SMS Mailing instead of queuing up. Use at your own risk." />
+        <field name="SmsAllowUnsubscribe" type="bool" label="Include opt-out link" default="false" />
+        <field name="AbTestingSmsWinnerSelection" type="MassMailingSms.AbTestingSmsWinnerSelection" related="CampaignId.AbTestingSmsWinnerSelection" readonly="false" copy="true" />
+        <field name="AbTestingMailingsSmsCount" type="integer" related="CampaignId.AbTestingMailingsSmsCount" />
+        <field name="MediumId" type="Utm.Medium" />
+    </model>
+
+    <optionset id="MassMailingSms.MailingType" name="Mailing Type">
+        <option value="sms" name="SMS" />
+    </optionset>
+
+    <optionset id="MassMailingSms.AbTestingSmsWinnerSelection" name="A/B Testing SMS Winner Selection">
+        <option value="clicks_ratio" name="Clicks Ratio" />
+    </optionset>
 </buvi>

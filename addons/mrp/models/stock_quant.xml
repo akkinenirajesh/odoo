@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.StockQuant" name="Mrp.StockQuant" description="Stock Quant">
+        <field name="ProductId" type="Mrp.Product" collection="true" />
+        <constraint name="CheckKits" error="You should update the components quantity instead of directly updating the quantity of the kit product." />
+    </model>
 </buvi>

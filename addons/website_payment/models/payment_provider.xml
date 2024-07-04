@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Website" type="Website.Website" label="Website" check_company="true" ondelete="restrict" />
+    </model>
 </buvi>

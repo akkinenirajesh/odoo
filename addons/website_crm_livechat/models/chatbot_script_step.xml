@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.ChatbotScriptStep" name="Website.ChatbotScriptStep" description="Chatbot Script Step">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="Type" type="Website.ChatbotScriptStepType" />
+    <field name="ScriptId" type="Website.ChatbotScript" />
+    <field name="Description" type="text" label="Description" />
+    <field name="Message" type="text" label="Message" />
+    <field name="Response" type="text" label="Response" />
+    <field name="Delay" type="integer" label="Delay" />
+    <field name="Options" type="text" label="Options" />
+    <field name="Condition" type="text" label="Condition" />
+    <field name="Action" type="text" label="Action" />
+    <field name="Target" type="text" label="Target" />
+    <field name="Value" type="text" label="Value" />
+    <field name="LivechatVisitor" type="Website.LivechatVisitor" relation="many2one" collection="false" />
+  </model>
+
+  <optionset id="Website.ChatbotScriptStepType" name="Chatbot Script Step Type">
+    <option value="Message" name="Message" />
+    <option value="Delay" name="Delay" />
+    <option value="Options" name="Options" />
+    <option value="Condition" name="Condition" />
+    <option value="Action" name="Action" />
+  </optionset>
 </buvi>

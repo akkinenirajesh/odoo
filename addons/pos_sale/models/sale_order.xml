@@ -1,5 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="PosSale.SaleOrder" name="PosSale.SaleOrder" description="Sale Order">
+    <field name="Name" type="string" label="Order Reference" required="true" />
+    <field name="PartnerId" type="ResPartner" label="Customer" required="true" />
+    <field name="PricelistId" type="ProductPricelist" label="Pricelist" />
+    <field name="FiscalPositionId" type="AccountFiscalPosition" label="Fiscal Position" />
+    <field name="State" type="selection" selection="SaleOrderState" />
+    <field name="OrderLine" type="SaleOrderLine" collection="true" />
+    <field name="AmountTotal" type="float" label="Total" />
+    <field name="AmountUntaxed" type="float" label="Subtotal" />
+    <field name="AmountUnpaid" type="float" label="Amount To Pay In POS" />
+    <field name="UserId" type="ResUsers" label="Salesperson" />
+    <field name="PickingIds" type="StockPicking" collection="true" />
+    <field name="PartnerShippingId" type="ResPartner" label="Delivery Address" />
+    <field name="PartnerInvoiceId" type="ResPartner" label="Invoice Address" />
+    <field name="DateOrder" type="datetime" label="Order Date" />
+    <field name="PosOrderLineIds" type="PosOrderLine" collection="true" readonly="true" groups="point_of_sale.group_pos_user" label="Order lines Transfered to Point of Sale" />
+    <field name="PosOrderCount" type="integer" readonly="true" groups="point_of_sale.group_pos_user" label="Pos Order Count" />
   </model>
+  <optionset id="SaleOrderState" name="Sale Order State">
+    <option value="draft" name="Draft" />
+    <option value="sent" name="Quotation Sent" />
+    <option value="sale" name="Sales Order" />
+    <option value="done" name="Sales Done" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
+  <model id="PosSale.SaleOrderLine" name="PosSale.SaleOrderLine" description="Sale Order Line">
+    <field name="Discount" type="float" label="Discount" />
+    <field name="DisplayName" type="string" label="Description" />
+    <field name="PriceTotal" type="float" label="Total" />
+    <field name="PriceUnit" type="float" label="Unit Price" />
+    <field name="ProductId" type="ProductProduct" label="Product" />
+    <field name="ProductUomQty" type="float" label="Quantity" />
+    <field name="QtyDelivered" type="float" label="Delivered" />
+    <field name="QtyInvoiced" type="float" label="Invoiced" />
+    <field name="QtyToInvoice" type="float" label="To Invoice" />
+    <field name="DisplayType" type="selection" selection="SaleOrderLineDisplayType" />
+    <field name="Name" type="string" label="Product Name" />
+    <field name="TaxId" type="AccountTax" label="Taxes" collection="true" />
+    <field name="PosOrderLineIds" type="PosOrderLine" collection="true" readonly="true" groups="point_of_sale.group_pos_user" label="Order lines Transfered to Point of Sale" />
+  </model>
+  <optionset id="SaleOrderLineDisplayType" name="Sale Order Line Display Type">
+    <option value="line_note" name="Note" />
+    <option value="line_section" name="Section" />
+  </optionset>
 </buvi>

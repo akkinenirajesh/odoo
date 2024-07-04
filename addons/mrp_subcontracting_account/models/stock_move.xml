@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="MrpSubcontractingAccount.StockMove" name="StockMove" description="Stock Move">
+    <field name="IsSubcontract" type="bool" />
+    <field name="ProductionId" type="Mrp.MrpProduction" collection="true" />
+    <field name="ProductTmplId" type="Product.ProductTemplate" />
+    <field name="ProductAccountId" type="Account.Account" />
+    <field name="ProductUomId" type="Product.Uom" />
+    <field name="CompanyId" type="Res.Company" />
+    <field name="MoveRawIds" type="Stock.StockMove" collection="true" />
+    <field name="StockValuationLayerIds" type="Stock.StockValuationLayer" collection="true" />
+    <field name="RawMaterialProductionId" type="Mrp.MrpProduction" />
   </model>
 </buvi>

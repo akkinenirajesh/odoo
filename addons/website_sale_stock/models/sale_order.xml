@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="WebsiteSaleStock.SaleOrder" name="WebsiteSaleStock.SaleOrder" description="Sale Order">
+    <field name="WarehouseId" type="Stock.Warehouse" relation="many2one" />
+    <field name="ShopWarning" type="string" label="Shop Warning" />
   </model>
 </buvi>

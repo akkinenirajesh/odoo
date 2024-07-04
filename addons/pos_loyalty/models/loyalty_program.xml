@@ -1,3 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosLoyalty.LoyaltyProgram" name="PosLoyalty.LoyaltyProgram" description="Loyalty Program">
+    <field name="Name" type="string" label="Loyalty Program Name" required="true" translate="true" />
+    <field name="Trigger" type="PosLoyalty.LoyaltyProgramTrigger" label="Trigger" required="true" />
+    <field name="AppliesOn" type="PosLoyalty.LoyaltyProgramAppliesOn" label="Applies On" required="true" />
+    <field name="ProgramType" type="PosLoyalty.LoyaltyProgramType" label="Program Type" required="true" />
+    <field name="PricelistIds" type="Product.Pricelist" collection="true" label="Pricelists" help="Select the pricelists the program applies to." />
+    <field name="DateFrom" type="datetime" label="Start Date" help="Start date for the loyalty program." />
+    <field name="DateTo" type="datetime" label="End Date" help="End date for the loyalty program." />
+    <field name="LimitUsage" type="bool" label="Limit Usage" help="Limit the number of times the program can be used." />
+    <field name="MaxUsage" type="integer" label="Max Usage" help="Maximum number of times the program can be used." />
+    <field name="IsNominative" type="bool" label="Nominative" help="Nominative loyalty program, each customer has a unique loyalty card." />
+    <field name="PortalVisible" type="bool" label="Visible in Customer Portal" help="Whether the loyalty program is visible in the customer portal." />
+    <field name="PortalPointName" type="string" label="Point Name" help="Name of the points used in the customer portal." />
+    <field name="TriggerProductIds" type="Product.Product" collection="true" label="Trigger Products" help="Products that trigger the loyalty program." />
+    <field name="RuleIds" type="PosLoyalty.LoyaltyRule" collection="true" label="Rules" help="Rules for the loyalty program." />
+    <field name="RewardIds" type="PosLoyalty.LoyaltyReward" collection="true" label="Rewards" help="Rewards for the loyalty program." />
+    <field name="CommunicationPlanIds" type="PosLoyalty.LoyaltyMail" collection="true" label="Communication Plans" help="Communication plans for the loyalty program." />
+    <field name="PosConfigIds" type="Pos.PosConfig" collection="true" label="Point of Sales" help="Restrict publishing to those shops." readonly="true" />
+    <field name="PosOrderCount" type="integer" label="PoS Order Count" readonly="true" />
+    <field name="PosOk" type="bool" label="Point of Sale" default="true" />
+    <field name="PosReportPrintId" type="Ir.ActionsReport" label="Print Report" readonly="false"
+      help="This is used to print the generated gift cards from PoS." />
+    <field name="MailTemplateId" type="Mail.Template" label="Email Template" readonly="false"
+      help="This is used to send the generated gift cards from PoS." />
+  </model>
+
+  <optionset id="PosLoyalty.LoyaltyProgramTrigger" name="Loyalty Program Trigger">
+    <option value="purchase_amount" name="Purchase Amount" />
+    <option value="purchase_quantity" name="Purchase Quantity" />
+    <option value="product" name="Product" />
+  </optionset>
+
+  <optionset id="PosLoyalty.LoyaltyProgramAppliesOn" name="Loyalty Program Applies On">
+    <option value="product" name="Products" />
+    <option value="order" name="Orders" />
+    <option value="customer" name="Customers" />
+  </optionset>
+
+  <optionset id="PosLoyalty.LoyaltyProgramType" name="Loyalty Program Type">
+    <option value="points" name="Points" />
+    <option value="gift_card" name="Gift Card" />
+    <option value="ewallet" name="E-Wallet" />
+  </optionset>
 </buvi>

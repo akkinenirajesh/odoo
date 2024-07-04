@@ -1,5 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="WebsiteSaleComparison.ProductTemplateAttributeLine" name="WebsiteSaleComparison.ProductTemplateAttributeLine" description="Product Template Attribute Line">
+        <field name="AttributeId" type="Product.Attribute" required="true" />
+        <field name="ValueIds" type="Product.AttributeValue" collection="true" />
+        <field name="DisplayType" type="WebsiteSaleComparison.DisplayType" label="Display Type" default="text" />
+        <field name="Sequence" type="integer" label="Sequence" default="10" />
+        <field name="ProductTemplateId" type="Product.Template" />
+        <field name="ShowOnWebsite" type="bool" label="Show on Website" default="true" />
+    </model>
+
+    <optionset id="WebsiteSaleComparison.DisplayType" name="Display Type">
+        <option value="text" name="Text" />
+        <option value="color" name="Color" />
+        <option value="image" name="Image" />
+        <option value="custom" name="Custom" />
+    </optionset>
 </buvi>

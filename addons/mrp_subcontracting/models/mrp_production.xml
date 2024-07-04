@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.MrpProduction" name="MrpProduction" description="Manufacturing Orders">
+        <field name="Name" type="string" label="Manufacturing Order" required="true" translate="true"/>
+        <field name="MoveLineRawIds" type="stock.stockMoveLine" collection="true" string="Detail Component" readonly="false"/>
+        <field name="SubcontractingHasBeenRecorded" type="bool" string="Has been recorded?" copy="false"/>
+        <field name="SubcontractorId" type="res.partner" string="Subcontractor" help="Used to restrict access to the portal user through Record Rules"/>
+        <field name="BomProductIds" type="product.product" collection="true" string="BoM Products" help="List of Products used in the BoM, used to filter the list of products in the subcontracting portal view"/>
+        <field name="IncomingPicking" type="stock.picking" related="MoveFinishedIds.MoveDestIds.PickingId"/>
+    </model>
 </buvi>

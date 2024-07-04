@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.PackageType" name="PackageType" description="Stock package type">
+        <field name="Name" type="string" label="Package Type" required="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="1" help="The first in the sequence is the default one." />
+        <field name="Height" type="float" label="Height" help="Packaging Height" />
+        <field name="Width" type="float" label="Width" help="Packaging Width" />
+        <field name="PackagingLength" type="float" label="Length" help="Packaging Length" />
+        <field name="BaseWeight" type="float" label="Weight" help="Weight of the package type" />
+        <field name="MaxWeight" type="float" label="Max Weight" help="Maximum weight shippable in this packaging" />
+        <field name="Barcode" type="string" label="Barcode" copy="false" />
+        <field name="WeightUomName" type="string" label="Weight unit of measure label" readonly="true" />
+        <field name="LengthUomName" type="string" label="Length unit of measure label" readonly="true" />
+        <field name="Company" type="res.company" label="Company" />
+        <field name="StorageCategoryCapacityIds" type="stock.storage.category.capacity" collection="true" label="Storage Category Capacity" copy="true" />
+    </model>
 </buvi>

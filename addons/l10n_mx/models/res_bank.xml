@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Bank" name="Bank" description="Bank">
+    <field name="L10nMxEdiCode" type="string" label="ABM Code"
+      help="Three-digit number assigned by the ABM to identify banking institutions (ABM is an acronym for Asociación de Bancos de México)" />
+    <field name="FiscalCountryCodes" type="string" store="false"
+      default="_get_fiscal_country_codes" />
+  </model>
+
+  <model id="Res.PartnerBank" name="ResPartnerBank" description="Partner Bank">
+    <field name="L10nMxEdiClabe" type="string" label="CLABE"
+      help="Standardized banking cipher for Mexico. More info wikipedia.org/wiki/CLABE" />
+    <field name="FiscalCountryCodes" type="string" store="false"
+      default="_get_fiscal_country_codes" />
+  </model>
 </buvi>

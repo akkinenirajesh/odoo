@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailCannedResponse" name="MailCannedResponse" description="Canned Response">
+        <field name="Source" type="string" label="Shortcut" required="true" index="trigram"
+            help="Canned response that will automatically be substituted with longer content in your messages. Type ':' followed by the name of your shortcut (e.g. :hello) to use in your messages." />
+        <field name="Substitution" type="text" label="Substitution" required="true"
+            help="Content that will automatically replace the shortcut of your choosing. This content can still be adapted before sending your message." />
+        <field name="Description" type="string" label="Description" />
+        <field name="LastUsed" type="datetime" label="Last Used" help="Last time this canned_response was used" />
+        <field name="GroupIds" type="res.groups" label="Authorized Groups" collection="true" />
+        <field name="IsShared" type="bool" label="Determines if the canned_response is currently shared with other users"
+            compute="ComputeIsShared" store="true" />
+        <field name="IsEditable" type="bool" label="Determines if the canned response can be edited by the current user"
+            compute="ComputeIsEditable" />
+    </model>
 </buvi>

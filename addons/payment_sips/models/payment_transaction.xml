@@ -1,3 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+        <field name="Reference" type="string" label="Reference" required="true" />
+        <field name="Amount" type="float" label="Amount" required="true" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" required="true" />
+        <field name="ProviderCode" type="string" label="Provider Code" required="true" />
+        <field name="ProviderId" type="Payment.PaymentProvider" label="Payment Provider" required="true" />
+        <field name="ProviderReference" type="string" label="Provider Reference" />
+        <field name="PaymentMethodId" type="Payment.PaymentMethod" label="Payment Method" />
+        <field name="State" type="Payment.TransactionState" label="State" required="true" />
+        <field name="Date" type="datetime" label="Date" required="true" />
+        <field name="PartnerId" type="Core.Partner" label="Partner" required="true" />
+        <field name="OrderId" type="Sale.Order" label="Order" required="true" />
+        <field name="PaymentTokenId" type="Payment.PaymentToken" label="Payment Token" />
+        <field name="AcquirerReference" type="string" label="Acquirer Reference" />
+        <field name="TransactionNote" type="text" label="Transaction Note" />
+        <field name="Fees" type="float" label="Fees" />
+        <field name="OperationType" type="Payment.OperationType" label="Operation Type" required="true" />
+        <field name="IsOffline" type="bool" label="Is Offline" />
+        <field name="IsRecurring" type="bool" label="Is Recurring" />
+        <field name="IsMulti" type="bool" label="Is Multi" />
+        <field name="IsRefund" type="bool" label="Is Refund" />
+        <field name="CurrencyRate" type="float" label="Currency Rate" />
+        <field name="DateValid" type="datetime" label="Date Valid" />
+        <field name="DateInvoice" type="datetime" label="Date Invoice" />
+        <field name="DateValidate" type="datetime" label="Date Validate" />
+        <field name="DateCancel" type="datetime" label="Date Cancel" />
+        <field name="DateRefund" type="datetime" label="Date Refund" />
+        <field name="DateError" type="datetime" label="Date Error" />
+        <field name="DateDone" type="datetime" label="Date Done" />
+        <field name="DatePending" type="datetime" label="Date Pending" />
+        <field name="LastSuccessDate" type="datetime" label="Last Success Date" />
+        <field name="LastFailureDate" type="datetime" label="Last Failure Date" />
+        <field name="LastAttemptDate" type="datetime" label="Last Attempt Date" />
+        <field name="LastSuccessRef" type="string" label="Last Success Ref" />
+        <field name="LastFailureRef" type="string" label="Last Failure Ref" />
+        <field name="LastAttemptRef" type="string" label="Last Attempt Ref" />
+        <field name="LastFailureReason" type="string" label="Last Failure Reason" />
+        <field name="LastSuccessAmount" type="float" label="Last Success Amount" />
+        <field name="LastFailureAmount" type="float" label="Last Failure Amount" />
+        <field name="LastAttemptAmount" type="float" label="Last Attempt Amount" />
+        <field name="LastAttemptCode" type="string" label="Last Attempt Code" />
+        <field name="LastAttemptNote" type="text" label="Last Attempt Note" />
+        <field name="NextAttemptDate" type="datetime" label="Next Attempt Date" />
+        <field name="NextAttemptRef" type="string" label="Next Attempt Ref" />
+        <field name="NextAttemptCode" type="string" label="Next Attempt Code" />
+        <field name="NextAttemptNote" type="text" label="Next Attempt Note" />
+        <field name="NumberOfAttempt" type="integer" label="Number Of Attempt" />
+        <field name="IsProcessed" type="bool" label="Is Processed" />
+        <field name="IsReported" type="bool" label="Is Reported" />
+        <field name="IsConfirmed" type="bool" label="Is Confirmed" />
+        <field name="IsCancel" type="bool" label="Is Cancel" />
+        <field name="IsError" type="bool" label="Is Error" />
+        <field name="IsPending" type="bool" label="Is Pending" />
+        <field name="IsDone" type="bool" label="Is Done" />
+        <field name="IsRefunded" type="bool" label="Is Refunded" />
+        <field name="IsCancelled" type="bool" label="Is Cancelled" />
+        <field name="IsSuccessful" type="bool" label="Is Successful" />
+        <field name="IsFailed" type="bool" label="Is Failed" />
+        <field name="IsPendingPayment" type="bool" label="Is Pending Payment" />
+        <field name="IsPendingRefund" type="bool" label="Is Pending Refund" />
+        <field name="IsPendingCancel" type="bool" label="Is Pending Cancel" />
+        <field name="IsPendingError" type="bool" label="Is Pending Error" />
+        <field name="IsPendingDone" type="bool" label="Is Pending Done" />
+        <field name="IsPendingRefunded" type="bool" label="Is Pending Refunded" />
+        <field name="IsPendingCancelled" type="bool" label="Is Pending Cancelled" />
+        <field name="IsPendingSuccessful" type="bool" label="Is Pending Successful" />
+        <field name="IsPendingFailed" type="bool" label="Is Pending Failed" />
+        <field name="IsCompleted" type="bool" label="Is Completed" />
+        <field name="IsIncomplete" type="bool" label="Is Incomplete" />
+        <field name="IsApproved" type="bool" label="Is Approved" />
+        <field name="IsRejected" type="bool" label="Is Rejected" />
+        <field name="IsAuthorized" type="bool" label="Is Authorized" />
+        <field name="IsCaptured" type="bool" label="Is Captured" />
+        <field name="IsReleased" type="bool" label="Is Released" />
+        <field name="IsVoided" type="bool" label="Is Voided" />
+        <field name="IsPartiallyRefunded" type="bool" label="Is Partially Refunded" />
+        <field name="IsFullyRefunded" type="bool" label="Is Fully Refunded" />
+        <field name="IsPartiallyCancelled" type="bool" label="Is Partially Cancelled" />
+        <field name="IsFullyCancelled" type="bool" label="Is Fully Cancelled" />
+        <field name="IsConfirmedRefund" type="bool" label="Is Confirmed Refund" />
+        <field name="IsConfirmedCancel" type="bool" label="Is Confirmed Cancel" />
+        <field name="IsConfirmedError" type="bool" label="Is Confirmed Error" />
+        <field name="IsConfirmedDone" type="bool" label="Is Confirmed Done" />
+        <field name="IsConfirmedRefunded" type="bool" label="Is Confirmed Refunded" />
+        <field name="IsConfirmedCancelled" type="bool" label="Is Confirmed Cancelled" />
+        <field name="IsConfirmedSuccessful" type="bool" label="Is Confirmed Successful" />
+        <field name="IsConfirmedFailed" type="bool" label="Is Confirmed Failed" />
+        <field name="IsConfirmedCompleted" type="bool" label="Is Confirmed Completed" />
+        <field name="IsConfirmedIncomplete" type="bool" label="Is Confirmed Incomplete" />
+        <field name="IsConfirmedApproved" type="bool" label="Is Confirmed Approved" />
+        <field name="IsConfirmedRejected" type="bool" label="Is Confirmed Rejected" />
+        <field name="IsConfirmedAuthorized" type="bool" label="Is Confirmed Authorized" />
+        <field name="IsConfirmedCaptured" type="bool" label="Is Confirmed Captured" />
+        <field name="IsConfirmedReleased" type="bool" label="Is Confirmed Released" />
+        <field name="IsConfirmedVoided" type="bool" label="Is Confirmed Voided" />
+        <field name="IsConfirmedPartiallyRefunded" type="bool" label="Is Confirmed Partially Refunded" />
+        <field name="IsConfirmedFullyRefunded" type="bool" label="Is Confirmed Fully Refunded" />
+        <field name="IsConfirmedPartiallyCancelled" type="bool" label="Is Confirmed Partially Cancelled" />
+        <field name="IsConfirmedFullyCancelled" type="bool" label="Is Confirmed Fully Cancelled" />
+        <field name="IsPendingConfirmed" type="bool" label="Is Pending Confirmed" />
+        <field name="IsPendingApproved" type="bool" label="Is Pending Approved" />
+        <field name="IsPendingRejected" type="bool" label="Is Pending Rejected" />
+        <field name="IsPendingAuthorized" type="bool" label="Is Pending Authorized" />
+        <field name="IsPendingCaptured" type="bool" label="Is Pending Captured" />
+        <field name="IsPendingReleased" type="bool" label="Is Pending Released" />
+        <field name="IsPendingVoided" type="bool" label="Is Pending Voided" />
+        <field name="IsPendingPartiallyRefunded" type="bool" label="Is Pending Partially Refunded" />
+        <field name="IsPendingFullyRefunded" type="bool" label="Is Pending Fully Refunded" />
+        <field name="IsPendingPartiallyCancelled" type="bool" label="Is Pending Partially Cancelled" />
+        <field name="IsPendingFullyCancelled" type="bool" label="Is Pending Fully Cancelled" />
+        <field name="IsPendingCompleted" type="bool" label="Is Pending Completed" />
+        <field name="IsPendingIncomplete" type="bool" label="Is Pending Incomplete" />
+        <field name="IsConfirmedPending" type="bool" label="Is Confirmed Pending" />
+        <field name="IsConfirmedPendingPayment" type="bool" label="Is Confirmed Pending Payment" />
+        <field name="IsConfirmedPendingRefund" type="bool" label="Is Confirmed Pending Refund" />
+        <field name="IsConfirmedPendingCancel" type="bool" label="Is Confirmed Pending Cancel" />
+        <field name="IsConfirmedPendingError" type="bool" label="Is Confirmed Pending Error" />
+        <field name="IsConfirmedPendingDone" type="bool" label="Is Confirmed Pending Done" />
+        <field name="IsConfirmedPendingRefunded" type="bool" label="Is Confirmed Pending Refunded" />
+        <field name="IsConfirmedPendingCancelled" type="bool" label="Is Confirmed Pending Cancelled" />
+        <field name="IsConfirmedPendingSuccessful" type="bool" label="Is Confirmed Pending Successful" />
+        <field name="IsConfirmedPendingFailed" type="bool" label="Is Confirmed Pending Failed" />
+        <field name="IsConfirmedPendingCompleted" type="bool" label="Is Confirmed Pending Completed" />
+        <field name="IsConfirmedPendingIncomplete" type="bool" label="Is Confirmed Pending Incomplete" />
+        <field name="IsPendingConfirmedPayment" type="bool" label="Is Pending Confirmed Payment" />
+        <field name="IsPendingConfirmedRefund" type="bool" label="Is Pending Confirmed Refund" />
+        <field name="IsPendingConfirmedCancel" type="bool" label="Is Pending Confirmed Cancel" />
+        <field name="IsPendingConfirmedError" type="bool" label="Is Pending Confirmed Error" />
+        <field name="IsPendingConfirmedDone" type="bool" label="Is Pending Confirmed Done" />
+        <field name="IsPendingConfirmedRefunded" type="bool" label="Is Pending Confirmed Refunded" />
+        <field name="IsPendingConfirmedCancelled" type="bool" label="Is Pending Confirmed Cancelled" />
+        <field name="IsPendingConfirmedSuccessful" type="bool" label="Is Pending Confirmed Successful" />
+        <field name="IsPendingConfirmedFailed" type="bool" label="Is Pending Confirmed Failed" />
+        <field name="IsPendingConfirmedCompleted" type="bool" label="Is Pending Confirmed Completed" />
+        <field name="IsPendingConfirmedIncomplete" type="bool" label="Is Pending Confirmed Incomplete" />
+        <field name="IsPendingConfirmedApproved" type="bool" label="Is Pending Confirmed Approved" />
+        <field name="IsPendingConfirmedRejected" type="bool" label="Is Pending Confirmed Rejected" />
+        <field name="IsPendingConfirmedAuthorized" type="bool" label="Is Pending Confirmed Authorized" />
+        <field name="IsPendingConfirmedCaptured" type="bool" label="Is Pending Confirmed Captured" />
+        <field name="IsPendingConfirmedReleased" type="bool" label="Is Pending Confirmed Released" />
+        <field name="IsPendingConfirmedVoided" type="bool" label="Is Pending Confirmed Voided" />
+        <field name="IsPendingConfirmedPartiallyRefunded" type="bool" label="Is Pending Confirmed Partially Refunded" />
+        <field name="IsPendingConfirmedFullyRefunded" type="bool" label="Is Pending Confirmed Fully Refunded" />
+        <field name="IsPendingConfirmedPartiallyCancelled" type="bool" label="Is Pending Confirmed Partially Cancelled" />
+        <field name="IsPendingConfirmedFullyCancelled" type="bool" label="Is Pending Confirmed Fully Cancelled" />
+        <field name="IsConfirmedPendingPayment" type="bool" label="Is Confirmed Pending Payment" />
+        <field name="IsConfirmedPendingRefund" type="bool" label="Is Confirmed Pending Refund" />
+        <field name="IsConfirmedPendingCancel" type="bool" label="Is Confirmed Pending Cancel" />
+        <field name="IsConfirmedPendingError" type="bool" label="Is Confirmed Pending Error" />
+        <field name="IsConfirmedPendingDone" type="bool" label="Is Confirmed Pending Done" />
+        <field name="IsConfirmedPendingRefunded" type="bool" label="Is Confirmed Pending Refunded" />
+        <field name="IsConfirmedPendingCancelled" type="bool" label="Is Confirmed Pending Cancelled" />
+        <field name="IsConfirmedPendingSuccessful" type="bool" label="Is Confirmed Pending Successful" />
+        <field name="IsConfirmedPendingFailed" type="bool" label="Is Confirmed Pending Failed" />
+        <field name="IsConfirmedPendingCompleted" type="bool" label="Is Confirmed Pending Completed" />
+        <field name="IsConfirmedPendingIncomplete" type="bool" label="Is Confirmed Pending Incomplete" />
+        <field name="IsPendingConfirmedApproved" type="bool" label="Is Pending Confirmed Approved" />
+        <field name="IsPendingConfirmedRejected" type="bool" label="Is Pending Confirmed Rejected" />
+        <field name="IsPendingConfirmedAuthorized" type="bool" label="Is Pending Confirmed Authorized" />
+        <field name="IsPendingConfirmedCaptured" type="bool" label="Is Pending Confirmed Captured" />
+        <field name="IsPendingConfirmedReleased" type="bool" label="Is Pending Confirmed Released" />
+        <field name="IsPendingConfirmedVoided" type="bool" label="Is Pending Confirmed Voided" />
+        <field name="IsPendingConfirmedPartiallyRefunded" type="bool" label="Is Pending Confirmed Partially Refunded" />
+        <field name="IsPendingConfirmedFullyRefunded" type="bool" label="Is Pending Confirmed Fully Refunded" />
+        <field name="IsPendingConfirmedPartiallyCancelled" type="bool" label="Is Pending Confirmed Partially Cancelled" />
+        <field name="IsPendingConfirmedFullyCancelled" type="bool" label="Is Pending Confirmed Fully Cancelled" />
+    </model>
+    <optionset id="Payment.TransactionState" name="Transaction State">
+        <option value="draft" name="Draft" />
+        <option value="pending" name="Pending" />
+        <option value="done" name="Done" />
+        <option value="cancel" name="Cancel" />
+        <option value="error" name="Error" />
+    </optionset>
+    <optionset id="Payment.OperationType" name="Operation Type">
+        <option value="payment" name="Payment" />
+        <option value="refund" name="Refund" />
+    </optionset>
 </buvi>

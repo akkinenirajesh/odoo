@@ -1,5 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="SaleTimesheet.ProjectProject" name="ProjectProject" description="Project">
+        <field name="Name" type="string" label="Project Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the project without removing it." />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="PartnerId" type="Res.Partner" label="Customer" />
+        <field name="PricingType" type="SaleTimesheet.ProjectPricingType" label="Pricing" />
+        <field name="SaleLineEmployeeIds" type="SaleTimesheet.ProjectSaleLineEmployeeMap" collection="true" />
+        <field name="TimesheetProductId" type="Product.Product" label="Timesheet Product" />
+        <field name="WarningEmployeeRate" type="bool" />
+        <field name="AllocatedHours" type="float" />
+        <field name="BillingType" type="SaleTimesheet.ProjectBillingType" default="NotBillable" required="true" />
+        <field name="AllowTimesheets" type="bool" label="Allow Timesheets" help="If timesheets are allowed on the project." />
+        <field name="AllowBillable" type="bool" label="Billable" help="Set to True to allow the project to be invoiced. If timesheets are not allowed, the project is not billable, regardless of this setting." />
+        <field name="SaleLineId" type="Sale.OrderLine" label="Sales Order Item" />
+        <field name="SaleOrderLineCount" type="integer" />
+        <field name="SaleOrderCount" type="integer" />
+        <field name="AnalyticAccountId" type="Account.AnalyticAccount" />
+    </model>
+
+    <optionset id="SaleTimesheet.ProjectPricingType" name="Pricing Type">
+        <option value="TaskRate" name="Task Rate" />
+        <option value="FixedRate" name="Project Rate" />
+        <option value="EmployeeRate" name="Employee Rate" />
+    </optionset>
+
+    <optionset id="SaleTimesheet.ProjectBillingType" name="Billing Type">
+        <option value="NotBillable" name="Not Billable" />
+        <option value="Manually" name="Billed Manually" />
+    </optionset>
+
+    <model id="SaleTimesheet.ProjectSaleLineEmployeeMap" name="ProjectSaleLineEmployeeMap">
+        <field name="ProjectId" type="SaleTimesheet.ProjectProject" />
+        <field name="SaleLineId" type="Sale.OrderLine" />
+        <field name="EmployeeId" type="Hr.Employee" />
+    </model>
 </buvi>

@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Purchase.PurchaseOrderGroup" name="Purchase.PurchaseOrderGroup" description="Technical model to group PO for call to tenders">
+    <field name="OrderIds" type="Purchase.PurchaseOrder" collection="true" />
+  </model>
+  <model id="Purchase.PurchaseOrder" name="Purchase.PurchaseOrder" description="Purchase Order" inherit="Purchase.PurchaseOrder">
+    <field name="RequisitionId" type="Purchase.PurchaseRequisition" label="Agreement" copy="false" />
+    <field name="RequisitionType" type="selection" related="RequisitionId.RequisitionType" />
+    <field name="PurchaseGroupId" type="Purchase.PurchaseOrderGroup" />
+    <field name="AlternativePOIds" type="Purchase.PurchaseOrder" related="PurchaseGroupId.OrderIds" readonly="false" collection="true" domain="[('Id', '!=', Id), ('State', 'in', ['Draft', 'Sent', 'To Approve'])]" label="Alternative POs" check_company="true" help="Other potential purchase orders for purchasing products" />
+    <field name="HasAlternatives" type="bool" label="Has Alternatives" compute="ComputeHasAlternatives" help="Whether or not this purchase order is linked to another purchase order as an alternative." />
+  </model>
+  <model id="Purchase.PurchaseOrderLine" name="Purchase.PurchaseOrderLine" description="Purchase Order Line" inherit="Purchase.PurchaseOrderLine">
+    <field name="PriceTotalCC" type="monetary" label="Company Total" currency_field="CompanyCurrencyId" store="true" />
+    <field name="CompanyCurrencyId" type="Core.Currency" related="CompanyId.CurrencyId" label="Company Currency" />
   </model>
 </buvi>

@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpProduction" name="MrpProduction" description="MrpProduction">
+    <field name="ProductionId" type="integer" />
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Product" type="Mrp.MrpProductionProduct" label="Product" required="true" />
+    <field name="ProductQty" type="float" label="Quantity" />
+    <field name="ProductUoM" type="Core.UoM" label="UoM" required="true" />
+    <field name="State" type="selection" selection="Mrp.ProductionStateSelection" />
+    <field name="FinishedLots" type="Mrp.MrpProductionFinishedLots" collection="true" />
+    <field name="MoveRawIds" type="Mrp.MrpProductionMoveRawIds" collection="true" />
+    <field name="SkipExpired" type="bool" label="Skip Expired" />
+  </model>
+
+  <optionset id="Mrp.ProductionStateSelection" name="Production State Selection">
+    <option value="draft" name="Draft" />
+    <option value="confirmed" name="Confirmed" />
+    <option value="ready" name="Ready" />
+    <option value="progress" name="In Progress" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
 </buvi>

@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.IrUiMenu" name="Base.IrUiMenu" description="Menu">
+    <field name="Name" type="string" label="Menu" required="true" translate="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Sequence" type="integer" default="10" />
+    <field name="ChildId" type="Base.IrUiMenu" collection="true" />
+    <field name="ParentId" type="Base.IrUiMenu" />
+    <field name="ParentPath" type="string" />
+    <field name="GroupsId" type="Res.Groups" collection="true" />
+    <field name="CompleteName" type="string" label="Full Path" compute="ComputeCompleteName" />
+    <field name="WebIcon" type="string" label="Web Icon File" />
+    <field name="Action" type="reference" selection="[('Ir.Actions.Report', 'Ir.Actions.Report'), ('Ir.Actions.ActWindow', 'Ir.Actions.ActWindow'), ('Ir.Actions.ActUrl', 'Ir.Actions.ActUrl'), ('Ir.Actions.Server', 'Ir.Actions.Server'), ('Ir.Actions.Client', 'Ir.Actions.Client')]" />
+    <field name="WebIconData" type="binary" label="Web Icon Image" attachment="true" />
+  </model>
 </buvi>

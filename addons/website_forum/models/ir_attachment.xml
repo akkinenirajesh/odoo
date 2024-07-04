@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Forum.IrAttachment" name="Website.Forum.IrAttachment" description="Attachment">
+        <inherit id="Base.IrAttachment" />
+        <field name="ResModel" type="string" />
+        <field name="ResId" type="integer" />
+        <field name="CanUseFullEditor" type="bool" collection="true" />
+    </model>
 </buvi>

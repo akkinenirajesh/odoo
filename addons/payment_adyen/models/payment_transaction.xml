@@ -1,3 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+        <field name="Amount" type="float" label="Amount" required="true" />
+        <field name="CurrencyId" type="Core.Currency" label="Currency" required="true" />
+        <field name="PartnerId" type="Res.Partner" label="Partner" required="true" />
+        <field name="PartnerEmail" type="string" label="Partner Email" required="true" />
+        <field name="PartnerName" type="string" label="Partner Name" required="true" />
+        <field name="PartnerPhone" type="string" label="Partner Phone" required="true" />
+        <field name="ProviderCode" type="string" label="Provider Code" required="true" />
+        <field name="ProviderId" type="Payment.Provider" label="Provider" required="true" />
+        <field name="ProviderReference" type="string" label="Provider Reference" required="true" />
+        <field name="Reference" type="string" label="Reference" required="true" />
+        <field name="TokenId" type="Payment.Token" label="Token" />
+        <field name="Operation" type="string" label="Operation" required="true" />
+        <field name="State" type="string" label="State" required="true" />
+        <field name="PaymentState" type="string" label="Payment State" required="true" />
+        <field name="PaymentMethodId" type="Payment.PaymentMethod" label="Payment Method" required="true" />
+        <field name="SourceTransactionId" type="Payment.PaymentTransaction" label="Source Transaction" />
+        <field name="Date" type="datetime" label="Date" />
+        <field name="DateCreated" type="datetime" label="Date Created" />
+        <field name="DateValidated" type="datetime" label="Date Validated" />
+        <field name="IsRefund" type="bool" label="Is Refund" />
+        <field name="Tokenize" type="bool" label="Tokenize" />
+        <field name="CaptureManually" type="bool" label="Capture Manually" />
+        <field name="AcquirerRef" type="string" label="Acquirer Reference" />
+        <field name="AcquirerFees" type="float" label="Acquirer Fees" />
+        <field name="FeesCurrencyId" type="Core.Currency" label="Fees Currency" />
+        <field name="SignedAmount" type="float" label="Signed Amount" />
+        <field name="PaymentDate" type="datetime" label="Payment Date" />
+        <field name="IsProcessed" type="bool" label="Is Processed" />
+        <field name="Error" type="string" label="Error" />
+        <field name="Note" type="text" label="Note" />
+        <field name="TransactionEmails" type="string" label="Transaction Emails" />
+        <field name="AdditionalInfo" type="text" label="Additional Info" />
+    </model>
 </buvi>

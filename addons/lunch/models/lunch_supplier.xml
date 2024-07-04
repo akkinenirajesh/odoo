@@ -1,3 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Lunch.LunchSupplier" name="LunchSupplier" description="Lunch Supplier">
+    <field name="PartnerId" type="Res.Partner" label="Vendor" required="true" />
+    <field name="Name" type="string" label="Name" />
+    <field name="Email" type="string" />
+    <field name="EmailFormatted" type="string" />
+    <field name="Phone" type="string" />
+    <field name="Street" type="string" />
+    <field name="Street2" type="string" />
+    <field name="ZipCode" type="string" />
+    <field name="City" type="string" />
+    <field name="StateId" type="Res.Country.State" />
+    <field name="CountryId" type="Res.Country" />
+    <field name="CompanyId" type="Res.Company" />
+    <field name="ResponsibleId" type="Res.Users" label="Responsible"
+      domain="[('GroupsId', 'in', Env.Ref('lunch.group_lunch_manager').Id)]" default="Env.User"
+      help="The responsible is the person that will order lunch for everyone. It will be used as the 'from' when sending the automatic email." />
+    <field name="SendBy" type="Lunch.SendOrder" label="Send Order By" default="Phone" />
+    <field name="AutomaticEmailTime" type="float" label="Order Time" default="12.0" required="true" />
+    <field name="CronId" type="Ir.Cron" ondelete="cascade" required="true" />
+    <field name="Mon" type="bool" default="true" />
+    <field name="Tue" type="bool" default="true" />
+    <field name="Wed" type="bool" default="true" />
+    <field name="Thu" type="bool" default="true" />
+    <field name="Fri" type="bool" default="true" />
+    <field name="Sat" type="bool" />
+    <field name="Sun" type="bool" />
+    <field name="RecurrencyEndDate" type="date" label="Until" help="This field is used in order to " />
+    <field name="AvailableLocationIds" type="Lunch.Location" collection="true" label="Location" />
+    <field name="AvailableToday" type="bool" label="This is True when if the supplier is available today"
+      compute="_ComputeAvailableToday" search="_SearchAvailableToday" />
+    <field name="OrderDeadlinePassed" type="bool" compute="_ComputeOrderDeadlinePassed" />
+    <field name="Tz" type="Timezone" label="Timezone" required="true" default="Env.User.Tz ?? 'UTC'" />
+    <field name="Active" type="bool" default="true" />
+    <field name="Moment" type="Lunch.Moment" default="Am" required="true" />
+    <field name="Delivery" type="Lunch.Delivery" default="NoDelivery" />
+    <field name="ToppingLabel1" type="string" label="Extra 1 Label" required="true" default="Extras" />
+    <field name="ToppingLabel2" type="string" label="Extra 2 Label" required="true" default="Beverages" />
+    <field name="ToppingLabel3" type="string" label="Extra 3 Label" required="true" default="Extra Label 3" />
+    <field name="ToppingIds1" type="Lunch.Topping" collection="true" domain="[('ToppingCategory', '=', 1)]" />
+    <field name="ToppingIds2" type="Lunch.Topping" collection="true" domain="[('ToppingCategory', '=', 2)]" />
+    <field name="ToppingIds3" type="Lunch.Topping" collection="true" domain="[('ToppingCategory', '=', 3)]" />
+    <field name="ToppingQuantity1" type="Lunch.ToppingQuantity" label="Extra 1 Quantity" default="0_More" required="true" />
+    <field name="ToppingQuantity2" type="Lunch.ToppingQuantity" label="Extra 2 Quantity" default="0_More" required="true" />
+    <field name="ToppingQuantity3" type="Lunch.ToppingQuantity" label="Extra 3 Quantity" default="0_More" required="true" />
+    <field name="ShowOrderButton" type="bool" compute="_ComputeButtons" />
+    <field name="ShowConfirmButton" type="bool" compute="_ComputeButtons" />
+    <constraint name="AutomaticEmailTimeRange" check="AutomaticEmailTime >= 0 AND AutomaticEmailTime <= 12"
+      message="Automatic Email Sending Time should be between 0 and 12" />
+  </model>
+
+  <optionset id="Lunch.SendOrder" name="Send Order">
+    <option value="Phone" name="Phone" />
+    <option value="Mail" name="Email" />
+  </optionset>
+
+  <optionset id="Lunch.Moment" name="Moment">
+    <option value="Am" name="AM" />
+    <option value="Pm" name="PM" />
+  </optionset>
+
+  <optionset id="Lunch.Delivery" name="Delivery">
+    <option value="Delivery" name="Delivery" />
+    <option value="NoDelivery" name="No Delivery" />
+  </optionset>
+
+  <optionset id="Lunch.ToppingQuantity" name="Topping Quantity">
+    <option value="0_More" name="None or More" />
+    <option value="1_More" name="One or More" />
+    <option value="1" name="Only One" />
+  </optionset>
 </buvi>

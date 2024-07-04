@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.warn.insufficient.qty.repair" name="Stock.WarnInsufficientQtyRepair" track_created="true" track_update="true">
-    <field name="Product" label="Product" type="Product.Product" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Repair" label="Repair" type="Repair.Order" copied="true" on-delete="Clear"/>
-    <field name="Location" label="Location" type="Stock.Location" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Quants" label="Quant" type="Stock.Quant" collection="true" readonly="true" transient="true"/>
-    <field name="ProductUomName" label="Unit of Measure" type="string" required="true" copied="true"/>
-    <field name="Quantity" label="Quantity" type="float" required="true" copied="true"/>
-  </model>
+    <model id="Repair.SaleOrder" name="Repair.SaleOrder" description="Sale Order">
+        <field name="RepairOrderIds" type="Repair.RepairOrder" collection="true" label="Repair Order" groups="Stock.GroupStockUser" />
+        <field name="RepairCount" type="integer" label="Repair Order(s)" groups="Stock.GroupStockUser" />
+    </model>
+
+    <model id="Repair.SaleOrderLine" name="Repair.SaleOrderLine" description="Sale Order Line">
+    </model>
 </buvi>

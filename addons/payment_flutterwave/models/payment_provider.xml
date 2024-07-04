@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Provider" required="true"
+      selection="[('manual', 'Manual'), ('transfer', 'Bank Transfer'), ('paypal', 'PayPal'), ('stripe', 'Stripe'), ('ogone', 'OGone'), ('payzen', 'Payzen'), ('adyen', 'Adyen'), ('hipay', 'HiPay'), ('system', 'System'), ('free', 'Free'), ('multisafepay', 'MultiSafepay'), ('payulatam', 'PayU Latam'), ('payway', 'PayWay'), ('mollie', 'Mollie'), ('sisow', 'Sisow'), '('flutterwave', 'Flutterwave')]"
+      ondelete="{flutterwave: set default}" />
+    <field name="FlutterwavePublicKey" type="string" label="Flutterwave Public Key"
+      help="The key solely used to identify the account with Flutterwave."
+      required_if_provider="flutterwave" />
+    <field name="FlutterwaveSecretKey" type="string" label="Flutterwave Secret Key"
+      required_if_provider="flutterwave" groups="base.group_system" />
+    <field name="FlutterwaveWebhookSecret" type="string" label="Flutterwave Webhook Secret"
+      required_if_provider="flutterwave" groups="base.group_system" />
+    <field name="SupportTokenization" type="bool" readonly="true" />
+  </model>
 </buvi>

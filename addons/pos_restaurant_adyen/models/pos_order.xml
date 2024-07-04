@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosOrder" name="PosOrder" description="Point of Sale Order">
+    <field name="ConfigId" type="Pos.PosConfig" required="true" />
+    <field name="PaymentIds" type="Pos.Payment" collection="true" />
+    <field name="SetTipAfterPayment" type="bool" label="Set Tip After Payment" />
+  </model>
+
+  <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+    <field name="SetTipAfterPayment" type="bool" label="Set Tip After Payment" />
+  </model>
+
+  <model id="Pos.Payment" name="Payment" description="Payment">
+    <field name="PaymentMethodId" type="Pos.PaymentMethod" required="true" />
+    <field name="UsePaymentTerminal" type="string" label="Use Payment Terminal" />
+  </model>
+
+  <model id="Pos.PaymentMethod" name="PaymentMethod" description="Payment Method">
+    <field name="UsePaymentTerminal" type="string" label="Use Payment Terminal" />
+  </model>
+
+  <optionset id="Pos.UsePaymentTerminal" name="Use Payment Terminal">
+    <option value="adyen" name="Adyen" />
+  </optionset>
 </buvi>

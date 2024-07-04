@@ -1,5 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="SaleTimesheet.ProductTemplate" name="SaleTimesheet.ProductTemplate" description="Product Template">
+        <field name="ServiceType" type="selection" selection="SaleTimesheet.ProductTemplateServiceType" ondelete="set manual" />
+        <field name="ProjectId" type="Sale.Project" label="Project" relation="one2many" domain="['|', ('CompanyId', '=', False), '&', ('CompanyId', '=?', CompanyId), ('CompanyId', '=', CurrentCompanyId), ('AllowBillable', '=', True), ('PricingType', '=', 'TaskRate'), ('AllowTimesheets', 'in', [ServicePolicy == 'DeliveredTimesheet', True])]" />
+        <field name="ProjectTemplateId" type="Sale.ProjectTemplate" label="Project Template" relation="one2many" domain="['|', ('CompanyId', '=', False), '&', ('CompanyId', '=?', CompanyId), ('CompanyId', '=', CurrentCompanyId), ('AllowBillable', '=', True), ('AllowTimesheets', 'in', [ServicePolicy == 'DeliveredTimesheet', True])]" />
+        <field name="ServiceUpsellThreshold" type="float" label="Threshold" default="1" help="Percentage of time delivered compared to the prepaid amount that must be reached for the upselling opportunity activity to be triggered." />
+        <field name="ServiceUpsellThresholdRatio" type="char" compute="ComputeServiceUpsellThresholdRatio" />
+        <field name="VisibleExpensePolicy" type="bool" compute="ComputeVisibleExpensePolicy" />
+        <field name="UomId" type="Uom.Uom" label="Unit of Measure" />
+        <field name="UomPoId" type="Uom.Uom" label="Purchase Unit of Measure" />
+    </model>
+
+    <optionset id="SaleTimesheet.ProductTemplateServiceType" name="Product Template Service Type">
+        <option value="Timesheet" name="Timesheets on project (one fare per SO/Project)" />
+    </optionset>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.POSOrder" name="POSOrder" description="POS Order">
+        <field name="DateOrder" type="datetime" label="Order Date" />
+        <field name="CompanyId" type="Core.Company" />
+    </model>
 </buvi>

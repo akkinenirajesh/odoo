@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosSession" name="PosSession" description="Point of Sale Session">
+        <field name="State" type="selection" label="Status" readonly="true" selection="[('opened','Opened'),('closed','Closed'),('closing_control','Closing Control'),('done','Posted')]" default="opened" />
+        <field name="ConfigId" type="Pos.PosConfig" label="Point of Sale" required="true" />
+        <field name="User" type="Res.Users" label="Cashier" required="true" />
+        <field name="CashRegisterId" type="Account.CashRegister" label="Cash Register" required="true" />
+        <field name="StartAt" type="datetime" label="Start Date" readonly="true" />
+        <field name="StopAt" type="datetime" label="Stop Date" readonly="true" />
+        <field name="CurrencyId" type="Res.Currency" label="Currency" required="true" />
+        <field name="CurrencyRate" type="float" label="Currency Rate" readonly="true" />
+        <field name="Name" type="string" label="Session Name" required="true" readonly="true" />
+        <field name="SequenceNumber" type="integer" label="Sequence Number" readonly="true" />
+        <field name="ResPartnerId" type="Res.Partner" label="Customer" readonly="true" />
+        <field name="OpeningBalance" type="float" label="Opening Balance" />
+        <field name="ClosingBalance" type="float" label="Closing Balance" readonly="true" />
+        <field name="GlobalDiscountTotal" type="float" label="Global Discount Total" readonly="true" />
+        <field name="MoveId" type="Account.Move" label="Accounting Entry" readonly="true" />
+        <field name="MoveLineIds" type="Account.MoveLine" collection="true" readonly="true" />
+        <field name="OrderId" type="Pos.Order" collection="true" readonly="true" />
+        <field name="StatementIds" type="Account.BankStatementLine" collection="true" readonly="true" />
+        <field name="Note" type="text" label="Notes" readonly="true" />
+        <field name="UserHasPosOrder" type="bool" readonly="true" />
+        <field name="IsProcessed" type="bool" readonly="true" />
+        <field name="IsClosed" type="bool" readonly="true" />
+    </model>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleLoyalty.SaleOrder" name="SaleOrder" description="Sale Order">
+        <field name="DisabledAutoRewards" type="WebsiteSaleLoyalty.LoyaltyReward" collection="true" label="Disabled Auto Rewards" />
+        <field name="WebsiteId" type="Website.Website" label="Website" />
+    </model>
 </buvi>

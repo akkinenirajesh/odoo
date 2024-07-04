@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountFiscalPosition" name="AccountFiscalPosition" description="Account Fiscal Position">
+    <inherit id="Account.AccountFiscalPosition" />
+    <field name="LoadPosSelfData" type="function" method="LoadPosSelfData" />
+  </model>
 </buvi>

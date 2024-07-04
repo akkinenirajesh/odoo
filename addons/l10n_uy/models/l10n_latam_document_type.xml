@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="L10nUy.L10nLatamDocumentType" name="L10nLatamDocumentType" description="Latin American Document Type">
+    <field name="Country" type="Core.Country" required="true" />
+    <field name="Code" type="string" label="Code" required="true" translate="true" />
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Description" type="string" label="Description" translate="true" />
+    <field name="DocumentType" type="string" label="Document Type" translate="true" />
+    <field name="DocumentCategory" type="Selection" label="Document Category" collection="true">
+      <option value="invoice" name="Invoice" />
+      <option value="debit_note" name="Debit Note" />
+      <option value="credit_note" name="Credit Note" />
+      <option value="refund" name="Refund" />
+      <option value="receipt" name="Receipt" />
+      <option value="delivery_note" name="Delivery Note" />
+    </field>
+    <field name="InternalType" type="Selection" label="Internal Type" collection="true">
+      <option value="invoice" name="Invoice" />
+      <option value="debit_note" name="Debit Note" />
+      <option value="credit_note" name="Credit Note" />
+      <option value="refund" name="Refund" />
+      <option value="receipt" name="Receipt" />
+      <option value="delivery_note" name="Delivery Note" />
+    </field>
+    <field name="SequenceId" type="Core.IrSequence" label="Sequence" />
+    <field name="InternalSequenceId" type="Core.IrSequence" label="Internal Sequence" />
+    <field name="ElectronicFormat" type="Selection" label="Electronic Format" collection="true">
+      <option value="ubl" name="UBL" />
+      <option value="pdf" name="PDF" />
+    </field>
+    <field name="NumberPattern" type="string" label="Number Pattern" />
+    <field name="NumberPatternRegex" type="string" label="Number Pattern Regex" />
+    <field name="DocumentNumber" type="string" label="Document Number" />
+  </model>
 </buvi>

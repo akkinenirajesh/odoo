@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.IrDefault" name="Base.IrDefault" description="Default Values">
+    <field name="FieldId" type="Base.IrModelFields" label="Field" required="true" />
+    <field name="UserId" type="Res.Users" label="User" />
+    <field name="CompanyId" type="Res.Company" label="Company" />
+    <field name="Condition" type="string" label="Condition"
+      help="If set, applies the default upon condition." />
+    <field name="JsonValue" type="string" label="Default Value (JSON format)" required="true" />
+  </model>
 </buvi>

@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.StockWarehouse" name="StockWarehouse" description="Stock Warehouse">
+        <field name="ManufactureToResupply" type="bool" label="Manufacture to Resupply" default="true"
+            help="When products are manufactured, they can be manufactured in this warehouse." />
+        <field name="ManufacturePullId" type="Mrp.StockRule" label="Manufacture Rule" />
+        <field name="ManufactureMtoPullId" type="Mrp.StockRule" label="Manufacture MTO Rule" />
+        <field name="PbmMtoPullId" type="Mrp.StockRule" label="Picking Before Manufacturing MTO Rule" />
+        <field name="SamRuleId" type="Mrp.StockRule" label="Stock After Manufacturing Rule" />
+        <field name="ManuTypeId" type="Stock.PickingType" label="Manufacturing Operation Type"
+            domain="[('Code', '=', 'mrp_operation'), ('Company', '=', Company)]" />
+        <field name="PbmTypeId" type="Stock.PickingType" label="Picking Before Manufacturing Operation Type" />
+        <field name="SamTypeId" type="Stock.PickingType" label="Stock After Manufacturing Operation Type" />
+        <field name="ManufactureSteps" type="selection" label="Manufacture"
+            selection="[('mrp_one_step', 'Manufacture (1 step)'), ('Pbm', 'Pick components and then manufacture (2 steps)'), ('PbmSam', 'Pick components, manufacture and then store products (3 steps)')]"
+            default="mrp_one_step" required="true"
+            help="Produce: Move the components to the production location\
+            directly and start the manufacturing process.\nPick / Produce: Unload\
+            the components from the Stock to Input location first, and then\
+            transfer it to the Production location." />
+        <field name="PbmRouteId" type="Stock.Route" label="Picking Before Manufacturing Route" />
+        <field name="PbmLocId" type="Stock.Location" label="Picking before Manufacturing Location" />
+        <field name="SamLocId" type="Stock.Location" label="Stock after Manufacturing Location" />
+    </model>
+
+    <optionset id="Mrp.ManufactureSteps" name="Manufacture Steps">
+        <option value="mrp_one_step" name="Manufacture (1 step)" />
+        <option value="Pbm" name="Pick components and then manufacture (2 steps)" />
+        <option value="PbmSam" name="Pick components, manufacture and then store products (3 steps)" />
+    </optionset>
 </buvi>

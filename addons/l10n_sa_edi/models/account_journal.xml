@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="L10nSaEdi.AccountJournal" name="AccountJournal" description="Account Journal">
+    <field name="L10nSaCsr" type="binary" label="CSR" attachment="true" copy="false" groups="base.group_system" help="The Certificate Signing Request that is submitted to the Compliance API" />
+    <field name="L10nSaCsrErrors" type="html" label="Onboarding Errors" copy="false" />
+    <field name="L10nSaComplianceCsidJson" type="char" label="CCSID JSON" copy="false" groups="base.group_system" help="Compliance CSID data received from the Compliance CSID API in dumped json format" />
+    <field name="L10nSaProductionCsidJson" type="char" label="PCSID JSON" copy="false" groups="base.group_system" help="Production CSID data received from the Production CSID API in dumped json format" />
+    <field name="L10nSaProductionCsidValidity" type="datetime" label="PCSID Expiration" help="Production CSID expiration date" compute="_L10nSaComputeProductionCsidValidity" store="true" />
+    <field name="L10nSaComplianceChecksPassed" type="bool" label="Compliance Checks Done" default="false" copy="false" help="Specifies if the Compliance Checks have been completed successfully" />
+    <field name="L10nSaChainSequenceId" type="Core.IrSequence" label="ZATCA account.move chain sequence" readonly="true" copy="false" />
+    <field name="L10nSaSerialNumber" type="char" label="Serial Number" copy="false" help="The serial number of the Taxpayer solution unit. Provided by ZATCA" />
+    <field name="L10nSaLatestSubmissionHash" type="char" label="Latest Submission Hash" copy="false" help="Hash of the latest submitted invoice to be used as the Previous Invoice Hash (KSA-13)" />
+  </model>
+
+  <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+    <option value="Accounts" name="Accounts" />
+    <option value="Taxes" name="Taxes" />
+    <option value="Products" name="Products" />
+  </optionset>
 </buvi>

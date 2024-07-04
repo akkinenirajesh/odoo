@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ProjectStage" name="ProjectStage" description="Project Stage">
+        <field name="SmsTemplateId" type="Project.SmsTemplate" label="SMS Template" collection="true"
+            help="If set, an SMS Text Message will be automatically sent to the customer when the project reaches this stage." />
+    </model>
+    <model id="Project.SmsTemplate" name="SmsTemplate" description="SMS Template">
+        <field name="Name" type="string" label="Template Name" required="true" translate="true" />
+        <field name="Model" type="string" label="Model" required="true" translate="true" />
+        <field name="Message" type="text" label="Message" required="true" translate="true" />
+    </model>
 </buvi>

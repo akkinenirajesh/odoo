@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.ResPartner" name="Mrp.ResPartner" description="Res Partner">
+        <field name="PropertyStockSubcontractor" type="Stock.Location" label="Subcontractor Location" company_dependent="true" help="The stock location used as source and destination when sending goods to this contact during a subcontracting process." />
+        <field name="IsSubcontractor" type="bool" store="false" search="SearchIsSubcontractor" compute="ComputeIsSubcontractor" />
+        <field name="BomIds" type="Mrp.Bom" collection="true" compute="ComputeBomIds" label="BoMs for which the Partner is one of the subcontractors" />
+        <field name="ProductionIds" type="Mrp.Production" collection="true" compute="ComputeProductionIds" label="MRP Productions for which the Partner is the subcontractor" />
+        <field name="PickingIds" type="Stock.Picking" collection="true" compute="ComputePickingIds" label="Stock Pickings for which the Partner is the subcontractor" />
+    </model>
 </buvi>

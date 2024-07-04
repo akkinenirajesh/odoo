@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="l10n_pe_pos.ResPartner" name="ResPartner" description="Res Partner">
+        <field name="CityId" type="Core.City" />
+        <field name="L10nLatamIdentificationTypeId" type="l10n_latam.L10nLatamIdentificationType" />
+        <field name="L10nPeDistrict" type="l10n_pe_pos.L10nPeDistrict" />
+    </model>
 </buvi>

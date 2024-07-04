@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="PosLoyalty.ResPartner" name="ResPartner" description="Res Partner">
+    <field name="LoyaltyCardCount" type="integer" label="Loyalty Card Count" />
   </model>
 </buvi>

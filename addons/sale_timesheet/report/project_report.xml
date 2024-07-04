@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleTimesheet.ReportProjectTaskUser" name="SaleTimesheet.ReportProjectTaskUser" description="Report Project Task User">
+        <field name="RemainingHoursSo" type="float" label="Time Remaining on SO" readonly="true" groups="HrTimesheet.GroupHrTimesheetUser" />
+    </model>
 </buvi>

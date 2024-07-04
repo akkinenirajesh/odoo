@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Resource.ResCompany" name="Resource.ResCompany" description="Company">
+    <field name="ResourceCalendarIds" type="Resource.ResourceCalendar" collection="true" label="Working Hours" />
+    <field name="ResourceCalendarId" type="Resource.ResourceCalendar" label="Default Working Hours" />
+  </model>
 </buvi>

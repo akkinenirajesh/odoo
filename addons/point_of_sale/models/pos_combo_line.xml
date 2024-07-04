@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PointOfSale.PosComboLine" name="PosComboLine" description="Product Combo Items">
+    <field name="ProductId" type="Product.Product" label="Product" required="true" />
+    <field name="ComboPrice" type="float" label="Extra Price" default="0.0" />
+    <field name="LstPrice" type="float" label="Original Price" related="ProductId.LstPrice" />
+    <field name="ComboId" type="PointOfSale.PosCombo" />
+  </model>
 </buvi>

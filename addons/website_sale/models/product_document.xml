@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ProductDocument" name="Website.ProductDocument" description="Product Document">
+        <field name="ShownOnProductPage" type="bool" label="Publish on website" />
+    </model>
 </buvi>

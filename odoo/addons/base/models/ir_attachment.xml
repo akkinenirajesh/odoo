@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Base.IrAttachment" name="IrAttachment" description="Attachment">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Description" type="text" label="Description" />
+        <field name="ResName" type="string" label="Resource Name" readonly="true" />
+        <field name="ResModel" type="string" label="Resource Model" readonly="true" />
+        <field name="ResField" type="string" label="Resource Field" readonly="true" />
+        <field name="ResID" type="many2one" relation="ResModel" readonly="true" />
+        <field name="CompanyID" type="many2one" relation="ResCompany" label="Company" default="Env.Company" />
+        <field name="Type" type="selection" selection="AttachmentType" label="Type" required="true" default="Binary" />
+        <field name="Url" type="string" label="Url" index="btree_not_null" />
+        <field name="Public" type="bool" label="Is public document" />
+        <field name="AccessToken" type="string" label="Access Token" groups="Base.GroupUser" />
+        <field name="Raw" type="binary" label="File Content (raw)" readonly="true" />
+        <field name="Datas" type="binary" label="File Content (base64)" readonly="true" />
+        <field name="DbDatas" type="binary" label="Database Data" attachment="false" />
+        <field name="StoreFileName" type="string" label="Stored Filename" index="true" />
+        <field name="FileSize" type="integer" label="File Size" readonly="true" />
+        <field name="Checksum" type="string" label="Checksum/SHA1" readonly="true" />
+        <field name="MimeType" type="string" label="Mime Type" readonly="true" />
+        <field name="IndexContent" type="text" label="Indexed Content" readonly="true" prefetch="false" />
+    </model>
+
+    <optionset id="Base.AttachmentType" name="Attachment Type">
+        <option value="Url" name="URL" />
+        <option value="Binary" name="File" />
+    </optionset>
 </buvi>

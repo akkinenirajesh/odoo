@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.IrModelField" name="Mail.IrModelField" description="Ir Model Field">
+        <field name="Tracking" type="integer" label="Enable Ordered Tracking"
+            help="If set every modification done to this field is tracked. Value is used to order tracking values." />
+    </model>
 </buvi>

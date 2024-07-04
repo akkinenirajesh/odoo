@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSale.SaleReport" name="SaleReport" description="Sale Report">
+        <field name="WebsiteId" type="Website.Website" readonly="true" />
+        <field name="IsAbandonedCart" type="bool" label="Abandoned Cart" readonly="true" />
+    </model>
 </buvi>

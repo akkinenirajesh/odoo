@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.StockMoveLine" name="Mrp.StockMoveLine" description="Stock Move Line">
+        <field name="LotName" type="string" />
+        <field name="LotId" type="Mrp.ProductLot" />
+        <field name="LocationId" type="Stock.Location" />
+        <field name="MoveId" type="Stock.StockMove" />
+    </model>
+    <optionset id="Mrp.ProductLot" name="Product Lot">
+        <option value="id" name="id" />
+    </optionset>
 </buvi>

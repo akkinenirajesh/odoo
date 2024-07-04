@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailPush" name="MailPush" description="Push Notifications">
+        <field name="MailPushDeviceId" type="Mail.MailPushDevice" required="true" />
+        <field name="Payload" type="text" />
+    </model>
+
+    <optionset id="Mail.MailPushDevice" name="Push Devices">
+    </optionset>
 </buvi>

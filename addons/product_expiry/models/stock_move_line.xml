@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockMoveLine" name="StockMoveLine" description="Stock Move Line">
+    <field name="ExpirationDate" type="datetime" label="Expiration Date" help="This is the date on which the goods with this Serial Number may become dangerous and must not be consumed." />
+    <field name="IsExpired" type="bool" related="Lot.ProductExpiryAlert" />
+    <field name="UseExpirationDate" type="bool" related="Product.UseExpirationDate" />
+  </model>
 </buvi>

@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.DecimalPrecision" name="Product.DecimalPrecision" description="Decimal Precision">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Digits" type="integer" label="Digits" required="true" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the Decimal Precision without removing it." />
+    </model>
 </buvi>

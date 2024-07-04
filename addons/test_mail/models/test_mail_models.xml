@@ -1,3 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestMail.MailTestSimple" name="MailTestSimple" description="Simple Chatter Model">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+    </model>
+    <model id="TestMail.MailTestSimpleWithMainAttachment" name="MailTestSimpleWithMainAttachment" description="Simple Chatter Model With Main Attachment Management">
+        <inherit id="TestMail.MailTestSimple" />
+        <inherit id="Mail.MailThreadMainAttachment" />
+    </model>
+    <model id="TestMail.MailTestSimpleUnfollow" name="MailTestSimpleUnfollow" description="Simple Chatter Model">
+        <inherit id="Mail.MailThread" />
+        <field name="Name" type="string" />
+        <field name="CompanyId" type="Res.Company" />
+        <field name="EmailFrom" type="string" />
+        <field name="PartnerUnfollowEnabled" type="bool" default="true" />
+    </model>
+    <model id="TestMail.MailTestAliasOptional" name="MailTestAliasOptional" description="Chatter Model using Optional Alias Mixin">
+        <inherit id="Mail.MailAliasMixinOptional" />
+        <field name="Name" type="string" />
+        <field name="CompanyId" type="Res.Company" default="Env.Company" />
+        <field name="EmailFrom" type="string" />
+    </model>
+    <model id="TestMail.MailTestGateway" name="MailTestGateway" description="Simple Chatter Model for Mail Gateway">
+        <inherit id="Mail.MailThreadBlacklist" />
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="CustomField" type="string" />
+    </model>
+    <model id="TestMail.MailTestGatewayCompany" name="MailTestGatewayCompany" description="Simple Chatter Model for Mail Gateway with company">
+        <inherit id="TestMail.MailTestGateway" />
+        <field name="CompanyId" type="Res.Company" label="Company" />
+    </model>
+    <model id="TestMail.MailTestGatewayMainAttachment" name="MailTestGatewayMainAttachment" description="Simple Chatter Model for Mail Gateway with company">
+        <inherit id="TestMail.MailTestGateway" />
+        <inherit id="Mail.MailThreadMainAttachment" />
+        <field name="CompanyId" type="Res.Company" label="Company" />
+    </model>
+    <model id="TestMail.MailTestGatewayGroups" name="MailTestGatewayGroups" description="Channel/Group-like Chatter Model for Mail Gateway">
+        <inherit id="Mail.MailThreadBlacklist" />
+        <inherit id="Mail.MailAliasMixin" />
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="CustomField" type="string" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" />
+    </model>
+    <model id="TestMail.MailTestStandard" name="MailTestStandard" description="Standard Chatter Model">
+        <inherit id="Mail.MailThread" />
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="UserId" type="Res.Users" label="Responsible" track="true" />
+        <field name="ContainerId" type="TestMail.MailTestContainer" track="true" />
+        <field name="CompanyId" type="Res.Company" />
+        <field name="TrackFieldsToFilter" type="string" />
+        <field name="TrackEnableDefaultLog" type="bool" default="false" />
+    </model>
+    <model id="TestMail.MailTestActivity" name="MailTestActivity" description="Activity Model">
+        <inherit id="Mail.MailThread" />
+        <inherit id="Mail.MailActivityMixin" />
+        <field name="Name" type="string" />
+        <field name="Date" type="date" />
+        <field name="EmailFrom" type="string" />
+        <field name="Active" type="bool" default="true" />
+    </model>
+    <model id="TestMail.MailTestTicket" name="MailTestTicket" description="Ticket-like model">
+        <inherit id="Mail.MailThread" />
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" track="true" />
+        <field name="MobileNumber" type="string" />
+        <field name="PhoneNumber" type="string" />
+        <field name="Count" type="integer" default="1" />
+        <field name="Datetime" type="datetime" default="Env.Datetime.Now" />
+        <field name="MailTemplate" type="Mail.MailTemplate" label="Template" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" track="2" />
+        <field name="UserId" type="Res.Users" label="Responsible" track="1" />
+        <field name="ContainerId" type="TestMail.MailTestContainer" track="true" />
+    </model>
+    <model id="TestMail.MailTestTicketEL" name="MailTestTicketEL" description="Ticket-like model with exclusion list">
+        <inherit id="TestMail.MailTestTicket" />
+        <inherit id="Mail.MailThreadBlacklist" />
+        <field name="EmailFrom" type="string" label="Email" readonly="false" store="true" />
+    </model>
+    <model id="TestMail.MailTestTicketMC" name="MailTestTicketMC" description="Ticket-like model">
+        <inherit id="TestMail.MailTestTicket" />
+        <field name="CompanyId" type="Res.Company" label="Company" default="Env.Company" />
+        <field name="ContainerId" type="TestMail.MailTestContainerMC" track="true" />
+    </model>
+    <model id="TestMail.MailTestContainer" name="MailTestContainer" description="Project-like model with alias">
+        <inherit id="Mail.MailThread" />
+        <inherit id="Mail.MailAliasMixin" />
+        <field name="Name" type="string" />
+        <field name="Description" type="text" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" />
+    </model>
+    <model id="TestMail.MailTestContainerMC" name="MailTestContainerMC" description="Project-like model with alias (MC)">
+        <inherit id="TestMail.MailTestContainer" />
+        <field name="CompanyId" type="Res.Company" label="Company" default="Env.Company" />
+    </model>
+    <model id="TestMail.MailTestComposerMixin" name="MailTestComposerMixin" description="Invite-like Wizard">
+        <inherit id="Mail.MailComposerMixin" />
+        <field name="Name" type="string" label="Name" />
+        <field name="AuthorId" type="Res.Partner" />
+        <field name="Description" type="html" label="Description" render_engine="qweb" render_options="{'post_process': True}" sanitize="false" />
+        <field name="SourceIds" type="TestMail.MailTestComposerSource" collection="true" label="Invite source" />
+    </model>
+    <model id="TestMail.MailTestComposerSource" name="MailTestComposerSource" description="Invite-like Source">
+        <inherit id="Mail.MailThreadBlacklist" />
+        <field name="Name" type="string" label="Name" />
+        <field name="CustomerId" type="Res.Partner" label="Main customer" />
+        <field name="EmailFrom" type="string" label="Email" readonly="false" store="true" />
+    </model>
+    <model id="TestMail.MailTestMailTrackingDuration" name="MailTestMailTrackingDuration" description="Fake model to test the mixin mail.tracking.duration.mixin">
+        <inherit id="Mail.MailThread" />
+        <inherit id="Mail.MailTrackingDurationMixin" />
+        <field name="Name" type="string" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" track="true" />
+    </model>
 </buvi>

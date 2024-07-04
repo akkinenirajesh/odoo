@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosPaymentMethod" name="PosPaymentMethod" description="POS Payment Method">
+        <field name="IsOnlinePayment" type="bool" label="Online Payment" />
+        <field name="Name" type="string" label="Payment Method" required="true" translate="true" />
+        <field name="JournalId" type="Account.Journal" />
+        <field name="PaymentAccountId" type="Account.Account" />
+        <field name="CashControl" type="bool" label="Cash Control"
+            help="This option allows you to manage cash in your POS boxes" />
+        <field name="InvoiceMethod" type="Selection" label="Invoicing Method"
+            selection="[('manual','Manual'),('pay_later', 'Pay Later'), ('cash', 'Cash'),('default', 'Default')]">
+        </field>
+        <field name="Barcode" type="string" label="Barcode"
+            help="Barcode to quickly pay with this payment method. It can be used in combination with the Barcode reader." />
+        <field name="Default" type="bool" label="Default"
+            help="This payment method will be selected by default when the customer pays" />
+        <field name="Active" type="bool" label="Active" />
+        <field name="Sequence" type="integer" label="Sequence"
+            help="Determines the order of the payment method in the POS Interface." />
+        <field name="Code" type="char" label="Payment Method Code"
+            help="A unique identifier for this payment method." />
+        <field name="PartnerTip" type="bool" label="Partner Tip"
+            help="Allow your customers to tip the cashier" />
+        <field name="JournalId" type="Account.Journal" label="Journal" required="true" />
+    </model>
 </buvi>

@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Event.Event" name="Event" description="Event">
+    <field name="Id" type="integer" />
+    <field name="Name" type="string" label="Event Name" required="true" translate="true" />
+    <field name="StartDate" type="date" label="Start Date" />
+    <field name="EndDate" type="date" label="End Date" />
+    <field name="State" type="selection" label="State" selection="Event.StateSelection" />
+    <field name="Attendees" type="many2many" relation="Event.Attendee" collection="true" />
+    <field name="MassMailing" type="many2one" relation="MassMailing.Mailing" />
+  </model>
+
+  <optionset id="Event.StateSelection" name="Event State Selection">
+    <option value="draft" name="Draft" />
+    <option value="confirmed" name="Confirmed" />
+    <option value="done" name="Done" />
+  </optionset>
 </buvi>

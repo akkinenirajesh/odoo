@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PrivacyLookup.ResPartner" name="ResPartner" description="Res Partner">
+        <field name="Email" type="string" label="Email" />
+        <field name="Name" type="string" label="Name" />
+    </model>
 </buvi>

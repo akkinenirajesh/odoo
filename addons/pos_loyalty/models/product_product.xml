@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosLoyalty.ProductProduct" name="PosLoyalty.ProductProduct" description="Product Product">
+        <field name="AllProductTagIds" type="collection" relation="account.account.tag" collection="true" />
+    </model>
 </buvi>

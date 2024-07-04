@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+    <field name="Name" type="string" label="Tax Name" required="true" translate="true" />
+    <field name="AmountType" type="Selection" label="Amount Type" selection="Account.TaxAmountType" default="Percent" />
+    <field name="Amount" type="float" label="Amount" />
+    <field name="Description" type="string" label="Description" />
+    <field name="Sequence" type="integer" label="Sequence" help="The order in which taxes are displayed on invoices." />
+    <field name="Type" type="Selection" selection="Account.TaxType" required="true" label="Tax Type" />
+    <field name="PriceInclude" type="bool" label="Price Included" help="Check this option if the tax amount is included in the price." />
+    <field name="Company" type="Core.Company" label="Company" relation="true" />
+    <field name="TagIds" type="Account.AccountTag" collection="true" />
+    <field name="ChildrenTaxIds" type="Account.AccountTax" collection="true" />
+    <field name="InvoiceReversalTaxIds" type="Account.AccountTax" collection="true" />
+    <field name="Active" type="bool" default="true" />
+    <field name="IncludeBaseAmount" type="bool" label="Include Base Amount" default="false"
+      help="If selected, include the base amount in the tax calculation." />
+    <field name="Analytic" type="bool" label="Analytic" default="false"
+      help="If selected, analytic accounts can be assigned." />
+    <field name="TaxGroup" type="string" />
+    <field name="Country" type="Core.Country" label="Country"
+      help="Country for which this tax is available." />
+    <field name="IncludeBaseAmount" type="bool" label="Include Base Amount" help="If selected, include the base amount in the tax calculation." />
+    <field name="Analytic" type="bool" label="Analytic" help="If selected, analytic accounts can be assigned." />
+    <field name="TaxGroup" type="string" />
+    <field name="Country" type="Core.Country" label="Country" help="Country for which this tax is available." />
+    <field name="TaxExempt" type="bool" label="Tax Exempt" help="When you create new invoices, this tax can be selected as an exemption tax." />
+    <field name="CashBasis" type="bool" label="Cash Basis" help="Check this option to enable cash basis for this tax." />
+  </model>
+
+  <optionset id="Account.TaxAmountType" name="Tax Amount Type">
+    <option value="Percent" name="Percentage" />
+    <option value="Fixed" name="Fixed Amount" />
+  </optionset>
+
+  <optionset id="Account.TaxType" name="Tax Type">
+    <option value="Sale" name="Sale" />
+    <option value="Purchase" name="Purchase" />
+  </optionset>
 </buvi>

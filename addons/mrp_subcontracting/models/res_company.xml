@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Mrp.ResCompany" name="Mrp.ResCompany" description="ResCompany">
+        <field name="SubcontractingLocationId" type="Stock.Location" />
+    </model>
 </buvi>

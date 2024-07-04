@@ -1,5 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Sale.ProductTemplate" name="Sale.ProductTemplate" description="Product Template">
+        <field name="ServiceType" type="Sale.ServiceType" label="Track Service" />
+        <field name="SaleLineWarn" type="Base.WarningMessage" label="Sales Order Line" required="true" />
+        <field name="SaleLineWarnMsg" type="text" label="Message for Sales Order Line" />
+        <field name="ExpensePolicy" type="Sale.ExpensePolicy" label="Re-Invoice Expenses" default="No" />
+        <field name="VisibleExpensePolicy" type="bool" label="Re-Invoice Policy visible" />
+        <field name="SalesCount" type="float" label="Sold" />
+        <field name="InvoicePolicy" type="Sale.InvoicePolicy" label="Invoicing Policy" />
+        <field name="OptionalProductIds" type="Sale.ProductTemplate" collection="true" label="Optional Products" />
+    </model>
+
+    <optionset id="Sale.ServiceType" name="Service Type">
+        <option value="Manual" name="Manually set quantities on order" />
+    </optionset>
+
+    <optionset id="Sale.ExpensePolicy" name="Expense Policy">
+        <option value="No" name="No" />
+        <option value="Cost" name="At cost" />
+        <option value="SalesPrice" name="Sales price" />
+    </optionset>
+
+    <optionset id="Sale.InvoicePolicy" name="Invoice Policy">
+        <option value="Order" name="Ordered quantities" />
+        <option value="Delivery" name="Delivered quantities" />
+    </optionset>
 </buvi>

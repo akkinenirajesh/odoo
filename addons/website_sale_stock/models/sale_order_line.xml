@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleStock.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <field name="ShopWarning" type="string" label="Shop Warning" />
+        <field name="Product" type="Product.Product" relation="many2one" />
+    </model>
 </buvi>

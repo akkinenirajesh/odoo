@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PointOfSale.ResUsers" name="ResUsers" description="Res Users">
+        <field name="Id" type="integer" />
+        <field name="Name" type="string" label="Name" />
+        <field name="PartnerId" type="Core.Partner" />
+        <field name="GroupsId" type="Core.Group" collection="true" />
+    </model>
 </buvi>

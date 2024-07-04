@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MassMailing" name="MassMailing" description="Mass Mailing">
+        <field name="UseLeads" type="bool" label="Use Leads" compute="ComputeUseLeads" />
+        <field name="CrmLeadCount" type="integer" label="Leads/Opportunities Count" compute="ComputeCrmLeadCount" />
+    </model>
+
+    <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+        <option value="Accounts" name="Accounts" />
+        <option value="Taxes" name="Taxes" />
+        <option value="Products" name="Products" />
+    </optionset>
 </buvi>

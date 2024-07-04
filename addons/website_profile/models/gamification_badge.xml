@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.GamificationBadge" name="GamificationBadge" description="Gamification Badge">
+        <field name="Name" type="string" label="Badge Name" required="true" translate="true" />
+        <field name="Description" type="text" label="Badge Description" translate="true" />
+        <field name="Icon" type="binary" label="Badge Icon" />
+        <field name="Color" type="integer" label="Badge Color" />
+        <field name="Points" type="integer" label="Badge Points" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Published" type="bool" label="Published" default="true" />
+        <field name="WebsitePublished" type="bool" label="Website Published" default="true" />
+        <field name="WebsiteId" type="Website.Website" label="Website" required="true" />
+        <field name="WebsiteUrl" type="string" label="Website URL" />
+        <field name="WebsitePath" type="string" label="Website Path" />
+        <field name="Rule" type="Gamification.Rule" label="Rule" />
+        <field name="Condition" type="Gamification.Condition" label="Condition" />
+        <field name="BadgeType" type="Gamification.BadgeType" label="Badge Type" required="true" />
+        <field name="IsDefault" type="bool" label="Is Default" />
+        <field name="DisplayOrder" type="integer" label="Display Order" />
+        <field name="GroupName" type="string" label="Group Name" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="IsHidden" type="bool" label="Is Hidden" />
+        <field name="BadgeImage" type="binary" label="Badge Image" />
+        <field name="BadgeImageUrl" type="string" label="Badge Image URL" />
+        <field name="BadgeImageSmall" type="binary" label="Badge Image Small" />
+        <field name="BadgeImageSmallUrl" type="string" label="Badge Image Small URL" />
+        <field name="BadgeImageMedium" type="binary" label="Badge Image Medium" />
+        <field name="BadgeImageMediumUrl" type="string" label="Badge Image Medium URL" />
+        <field name="BadgeImageLarge" type="binary" label="Badge Image Large" />
+        <field name="BadgeImageLargeUrl" type="string" label="Badge Image Large URL" />
+        <field name="BadgeImageExtraLarge" type="binary" label="Badge Image Extra Large" />
+        <field name="BadgeImageExtraLargeUrl" type="string" label="Badge Image Extra Large URL" />
+    </model>
 </buvi>

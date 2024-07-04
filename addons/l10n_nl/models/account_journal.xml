@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountJournal" name="AccountJournal" description="Account Journal" inherit="Account.AccountJournal">
+    <field name="Company" type="Core.Company" />
+    <field name="Code" type="string" />
+  </model>
 </buvi>

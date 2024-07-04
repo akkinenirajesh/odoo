@@ -1,3 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="base.base" name="Base" description="Base" abstract="true"/>
+  <model id="_unknown._unknown" name="_unknown" description="Unknown" abstract="true"/>
+  <model id="ir.ir_model" name="IrModel" description="Models">
+    <field name="Name" type="string" label="Model Description" required="true" translate="true"/>
+    <field name="Model" type="string" required="true" default="x_"/>
+    <field name="Order" type="string" label="Order" required="true" default="Id" help="SQL expression for ordering records in the model; e.g. &quot;x_sequence asc, id desc&quot;"/>
+    <field name="Info" type="text" label="Information"/>
+    <field name="FieldId" type="ir.ir_model_fields" collection="true" label="Fields" required="true" copy="true" default="[{'Name': 'x_name', 'FieldDescription': 'Name', 'Ttype': 'char', 'Copied': True}]"/>
+    <field name="InheritedModelIds" type="ir.ir_model" collection="true" label="Inherited models" help="The list of models that extends the current model." compute="_InheritedModels"/>
+    <field name="State" type="selection" label="Type" default="manual" readonly="true">
+      <option value="manual" name="Custom Object"/>
+      <option value="base" name="Base Object"/>
+    </field>
+    <field name="AccessIds" type="ir.ir_model_access" collection="true" label="Access"/>
+    <field name="RuleIds" type="ir.ir_rule" collection="true" label="Record Rules"/>
+    <field name="Transient" type="bool" label="Transient Model"/>
+    <field name="Modules" type="string" label="In Apps" help="List of modules in which the object is defined or inherited" compute="_InModules"/>
+    <field name="ViewIds" type="ir.ir_ui_view" collection="true" label="Views" compute="_ViewIds"/>
+    <field name="Count" type="integer" label="Count (Incl. Archived)" help="Total number of records in this model" compute="_ComputeCount"/>
+    <unique name="obj_name_uniq" columns="Model" msg="Each model must have a unique name."/>
+  </model>
+  <model id="ir.ir_model_fields" name="IrModelFields" description="Fields">
+    <field name="Name" type="string" label="Field Name" required="true" default="x_" index="true"/>
+    <field name="CompleteName" type="string" index="true"/>
+    <field name="Model" type="string" label="Model Name" required="true" index="true" help="The technical name of the model this field belongs to"/>
+    <field name="Relation" type="string" label="Related Model" help="For relationship fields, the technical name of the target model"/>
+    <field name="RelationField" type="string" help="For one2many fields, the field on the target model that implement the opposite many2one relationship"/>
+    <field name="RelationFieldId" type="ir.ir_model_fields" ondelete="cascade" label="Relation field" compute="_ComputeRelationFieldId" store="true"/>
+    <field name="ModelId" type="ir.ir_model" label="Model" required="true" index="true" ondelete="cascade" help="The model this field belongs to"/>
+    <field name="FieldDescription" type="string" label="Field Label" required="true" default="" translate="true"/>
+    <field name="Help" type="text" label="Field Help" translate="true"/>
+    <field name="Ttype" type="selection" label="Field Type" required="true">
+      <option value="char" name="Char"/>
+      <option value="text" name="Text"/>
+      <option value="html" name="HTML"/>
+      <option value="binary" name="Binary"/>
+      <option value="boolean" name="Boolean"/>
+      <option value="integer" name="Integer"/>
+      <option value="float" name="Float"/>
+      <option value="date" name="Date"/>
+      <option value="datetime" name="Datetime"/>
+      <option value="selection" name="Selection"/>
+      <option value="many2one" name="Many2one"/>
+      <option value="one2many" name="One2many"/>
+      <option value="many2many" name="Many2many"/>
+      <option value="reference" name="Reference"/>
+      <option value="monetary" name="Monetary"/>
+    </field>
+    <field name="Selection" type="string" label="Selection Options (Deprecated)" compute="_ComputeSelection" inverse="_InverseSelection"/>
+    <field name="SelectionIds" type="ir.ir_model_fields_selection" collection="true" label="Selection Options" copy="true"/>
+    <field name="Copied" type="bool" label="Copied" compute="_ComputeCopied" store="true" readonly="false" help="Whether the value is copied when duplicating a record."/>
+    <field name="Related" type="string" label="Related Field Definition" help="The corresponding related field, if any. This must be a dot-separated list of field names."/>
+    <field name="RelatedFieldId" type="ir.ir_model_fields" label="Related Field" ondelete="cascade" compute="_ComputeRelatedFieldId" store="true"/>
+    <field name="Required" type="bool" label="Required"/>
+    <field name="Readonly" type="bool" label="Readonly"/>
+    <field name="Index" type="bool" label="Indexed"/>
+    <field name="Translate" type="bool" label="Translatable" help="Whether values for this field can be translated (enables the translation mechanism for that field)"/>
+    <field name="Size" type="integer" label="Size"/>
+    <field name="State" type="selection" label="Type" default="manual" required="true" readonly="true" index="true">
+      <option value="manual" name="Custom Field"/>
+      <option value="base" name="Base Field"/>
+    </field>
+    <field name="OnDelete" type="selection" label="On Delete" default="set null" help="On delete property for many2one fields">
+      <option value="cascade" name="Cascade"/>
+      <option value="set null" name="Set NULL"/>
+      <option value="restrict" name="Restrict"/>
+    </field>
+    <field name="Domain" type="string" default="[]" help="The optional domain to restrict possible values for relationship fields, specified as a Python expression defining a list of triplets. For example: [('color','=','red')]"/>
+    <field name="Groups" type="res.res_groups" collection="true" label="Groups"/>
+    <field name="GroupExpand" type="bool" label="Expand Groups" help="If checked, all the records of the target model will be included in a grouped result (e.g. 'Group By' filters, Kanban columns, etc.). Note that it can significantly reduce performance if the target model of the field contains a lot of records; usually used on models with few records (e.g. Stages, Job Positions, Event Types, etc.)."/>
+    <field name="Selectable" type="bool" label="Selectable" default="true"/>
+    <field name="Modules" type="string" label="In Apps" help="List of modules in which the field is defined" compute="_InModules"/>
+    <field name="RelationTable" type="string" help="Used for custom many2many fields to define a custom relation table name"/>
+    <field name="Column1" type="string" label="Column 1" help="Column referring to the record in the model table"/>
+    <field name="Column2" type="string" label="Column 2" help="Column referring to the record in the comodel table"/>
+    <field name="Compute" type="text" help="Code to compute the value of the field.\nIterate on the recordset 'self' and assign the field's value:\n\n    for record in self:\n        record['size'] = len(record.name)\n\nModules time, datetime, dateutil are available."/>
+    <field name="Depends" type="string" label="Dependencies" help="Dependencies of compute method; a list of comma-separated field names, like\n\n    name, partner_id.name"/>
+    <field name="Store" type="bool" label="Stored" default="true" help="Whether the value is stored in the database."/>
+    <field name="CurrencyField" type="string" label="Currency field" help="Name of the Many2one field holding the res.currency"/>
+    <field name="Sanitize" type="bool" label="Sanitize HTML" default="true"/>
+    <field name="SanitizeOverridable" type="bool" label="Sanitize HTML overridable" default="false"/>
+    <field name="SanitizeTags" type="bool" label="Sanitize HTML Tags" default="true"/>
+    <field name="SanitizeAttributes" type="bool" label="Sanitize HTML Attributes" default="true"/>
+    <field name="SanitizeStyle" type="bool" label="Sanitize HTML Style" default="false"/>
+    <field name="SanitizeForm" type="bool" label="Sanitize HTML Form" default="true"/>
+    <field name="StripStyle" type="bool" label="Strip Style Attribute" default="false"/>
+    <field name="StripClasses" type="bool" label="Strip Class Attribute" default="false"/>
+    <unique name="name_unique" columns="Model, Name" msg="Field names must be unique per model."/>
+    <constraint name="size_gt_zero" columns="Size" msg="Size of the field cannot be negative." check="(Size >= 0)"/>
+    <constraint name="name_manual_field" columns="State, Name" msg="Custom fields must have a name that starts with 'x_'!" check="(State != 'manual' OR Name LIKE 'x\\_%')"/>
+  </model>
+  <model id="ir.ir_model_inherit" name="ModelInherit" description="Model Inheritance Tree" log_access="false">
+    <field name="ModelId" type="ir.ir_model" required="true" ondelete="cascade"/>
+    <field name="ParentId" type="ir.ir_model" required="true" ondelete="cascade"/>
+    <field name="ParentFieldId" type="ir.ir_model_fields" ondelete="cascade"/>
+    <unique name="uniq" columns="ModelId, ParentId" msg="Models inherits from another only once"/>
+  </model>
+  <model id="ir.ir_model_fields_selection" name="IrModelSelection" description="Fields Selection">
+    <field name="FieldId" type="ir.ir_model_fields" required="true" ondelete="cascade" index="true" domain="[('Ttype', 'in', ['selection', 'reference'])]"/>
+    <field name="Value" type="string" required="true"/>
+    <field name="Name" type="string" required="true" translate="true"/>
+    <field name="Sequence" type="integer" default="1000"/>
+    <unique name="selection_field_uniq" columns="FieldId, Value" msg="Selections values must be unique per field"/>
+  </model>
+  <model id="ir.ir_model_constraint" name="IrModelConstraint" description="Model Constraint">
+    <field name="Name" type="string" label="Constraint" required="true" index="true" help="PostgreSQL constraint or foreign key name."/>
+    <field name="Definition" type="string" help="PostgreSQL constraint definition"/>
+    <field name="Message" type="string" help="Error message returned when the constraint is violated." translate="true"/>
+    <field name="Model" type="ir.ir_model" label="Model" required="true" ondelete="cascade" index="true"/>
+    <field name="Module" type="ir.ir_module_module" label="Module" required="true" index="true" ondelete="cascade"/>
+    <field name="Type" type="string" label="Constraint Type" required="true" size="1" index="true" help="Type of the constraint: `f` for a foreign key, `u` for other constraints."/>
+    <field name="WriteDate" type="datetime"/>
+    <field name="CreateDate" type="datetime"/>
+    <unique name="module_name_uniq" columns="Name, Module" msg="Constraints with the same name are unique per module."/>
+  </model>
+  <model id="ir.ir_model_relation" name="IrModelRelation" description="Relation Model">
+    <field name="Name" type="string" label="Relation Name" required="true" index="true" help="PostgreSQL table name implementing a many2many relation."/>
+    <field name="Model" type="ir.ir_model" label="Model" required="true" index="true" ondelete="cascade"/>
+    <field name="Module" type="ir.ir_module_module" label="Module" required="true" index="true" ondelete="cascade"/>
+    <field name="WriteDate" type="datetime"/>
+    <field name="CreateDate" type="datetime"/>
+  </model>
+  <model id="ir.ir_model_access" name="IrModelAccess" description="Model Access">
+    <field name="Name" type="string" required="true" index="true"/>
+    <field name="Active" type="bool" default="true" help="If you uncheck the active field, it will disable the ACL without deleting it (if you delete a native ACL, it will be re-created when you reload the module)."/>
+    <field name="ModelId" type="ir.ir_model" label="Model" required="true" index="true" ondelete="cascade"/>
+    <field name="GroupId" type="res.res_groups" label="Group" ondelete="restrict" index="true"/>
+    <field name="PermRead" type="bool" label="Read Access"/>
+    <field name="PermWrite" type="bool" label="Write Access"/>
+    <field name="PermCreate" type="bool" label="Create Access"/>
+    <field name="PermUnlink" type="bool" label="Delete Access"/>
+  </model>
+  <model id="ir.ir_model_data" name="IrModelData" description="Model Data">
+    <field name="Name" type="string" label="External Identifier" required="true" help="External Key/Identifier that can be used for data integration with third-party systems"/>
+    <field name="CompleteName" type="string" label="Complete ID" compute="_ComputeCompleteName"/>
+    <field name="Model" type="string" label="Model Name" required="true"/>
+    <field name="Module" type="string" default="" required="true"/>
+    <field name="ResId" type="reference" label="Record ID" help="ID of the target record in the database" model_field="Model"/>
+    <field name="Noupdate" type="bool" label="Non Updatable" default="false"/>
+    <field name="Reference" type="string" label="Reference" compute="_ComputeReference" readonly="true"/>
+    <constraint name="name_nospaces" columns="Name" msg="External IDs cannot contain spaces." check="(Name NOT LIKE '% %')"/>
+  </model>
+  <model id="wizard.ir_model_menu_create" name="WizardModelMenu" description="Create Menu Wizard" transient="true">
+    <field name="MenuId" type="ir.ir_ui_menu" label="Parent Menu" required="true" ondelete="cascade"/>
+    <field name="Name" type="string" label="Menu Name" required="true"/>
+  </model>
+  <optionset id="Account.AccountTagApplicability" name="Account Tag Applicability">
+    <option value="Accounts" name="Accounts"/>
+    <option value="Taxes" name="Taxes"/>
+    <option value="Products" name="Products"/>
+  </optionset>
+  <model id="Account.AccountTag" name="AccountTag" description="Account Tag">
+    <field name="Name" type="string" label="Tag Name" required="true" translate="true"/>
+    <field name="Applicability" type="Account.AccountTagApplicability"/>
+    <field name="Color" type="integer" label="Color Index"/>
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the Account Tag without removing it."/>
+    <field name="TaxNegate" type="bool" label="Negate Tax Balance" help="Check this box to negate the absolute value of the balance of the lines associated with this tag in tax report computation."/>
+    <field name="Country" type="Core.Country" label="Country" help="Country for which this tag is available, when applied on taxes"/>
+    <unique name="unique_account_tag" columns="Name, Applicability, Country" msg="A tag with the same name and applicability already exists in this country."/>
+  </model>
 </buvi>

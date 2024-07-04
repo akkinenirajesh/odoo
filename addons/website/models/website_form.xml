@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.WebsiteFormConfig" name="Website.WebsiteFormConfig" description="Website Config">
+    <inherit id="Website.Website" />
+  </model>
+
+  <model id="Ir.Model" name="Ir.Model" description="Models">
+    <inherit id="Ir.Model" />
+    <field name="WebsiteFormAccess" type="bool" label="Allowed to use in forms" help="Enable the form builder feature for this model." />
+    <field name="WebsiteFormDefaultFieldId" type="Ir.ModelFields" label="Field for custom form data" domain="[('Model', '=', Model), ('Ttype', '=', 'text')]" help="Specify the field which will contain meta and custom form fields datas." />
+    <field name="WebsiteFormLabel" type="string" label="Label for form action" help="Form action label. Ex: crm.lead could be 'Send an e-mail' and project.issue could be 'Create an Issue'." />
+    <field name="WebsiteformKey" type="string" help="Used in FormBuilder Registry" />
+  </model>
+
+  <model id="Ir.ModelFields" name="Ir.ModelFields" description="Fields">
+    <inherit id="Ir.ModelFields" />
+    <field name="WebsiteFormBlacklisted" type="bool" label="Blacklisted in web forms" default="true" index="true" help="Blacklist this field for web forms" />
+  </model>
 </buvi>

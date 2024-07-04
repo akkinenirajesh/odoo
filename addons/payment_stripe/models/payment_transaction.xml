@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="ProviderCode" type="string" />
+    <field name="ProviderId" type="Core.ResPartner" relation="true" />
+    <field name="ProviderReference" type="string" />
+    <field name="Operation" type="string" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" relation="true" />
+    <field name="PaymentMethodCode" type="string" />
+    <field name="TokenId" type="Payment.PaymentToken" relation="true" />
+    <field name="PartnerId" type="Core.ResPartner" relation="true" />
+    <field name="PartnerName" type="string" />
+    <field name="PartnerEmail" type="string" />
+    <field name="PartnerPhone" type="string" />
+    <field name="PartnerAddress" type="string" />
+    <field name="PartnerCity" type="string" />
+    <field name="PartnerZip" type="string" />
+    <field name="PartnerStateId" type="Core.State" relation="true" />
+    <field name="PartnerCountryId" type="Core.Country" relation="true" />
+    <field name="Amount" type="float" />
+    <field name="CurrencyId" type="Core.Currency" relation="true" />
+    <field name="Reference" type="string" />
+    <field name="State" type="string" />
+    <field name="Tokenize" type="bool" />
+    <field name="Date" type="datetime" />
+  </model>
 </buvi>

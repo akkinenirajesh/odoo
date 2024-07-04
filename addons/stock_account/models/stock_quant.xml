@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockQuant" name="StockQuant" description="Stock Quant">
+    <field name="Value" type="decimal" label="Value" groups="Stock.GroupStockManager" compute="ComputeValue" />
+    <field name="CurrencyId" type="Core.Currency" compute="ComputeValue" groups="Stock.GroupStockManager" />
+    <field name="AccountingDate" type="date" label="Accounting Date" 
+      help="Date at which the accounting entries will be created in case of automated inventory valuation. If empty, the inventory date will be used." />
+    <field name="CostMethod" type="selection" related="ProductCategId.PropertyCostMethod" />
+  </model>
 </buvi>

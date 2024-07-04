@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailGroupMessage" name="MailGroupMessage" description="Mailing List Message">
+    <field name="Subject" type="string" label="Subject" />
+    <field name="AttachmentIds" type="Mail.Attachment" collection="true" />
+    <field name="AuthorId" type="Res.Users" />
+    <field name="EmailFrom" type="string" />
+    <field name="EmailFromNormalized" type="string" label="Normalized From" />
+    <field name="Body" type="html" />
+    <field name="MailGroupId" type="Mail.MailGroup" label="Group" required="true" />
+    <field name="MailMessageId" type="Mail.Message" label="Mail Message" required="true" />
+    <field name="GroupMessageParentId" type="Mail.MailGroupMessage" label="Parent" />
+    <field name="GroupMessageChildIds" type="Mail.MailGroupMessage" collection="true" label="Children" />
+    <field name="AuthorModeration" type="Mail.AuthorModerationStatus" label="Author Moderation Status" />
+    <field name="IsGroupModerated" type="bool" label="Is Group Moderated" />
+    <field name="ModerationStatus" type="Mail.ModerationStatus" label="Status" default="PendingModeration" />
+    <field name="ModeratorId" type="Res.Users" label="Moderated By" />
+    <field name="CreateDate" type="datetime" label="Posted" />
+  </model>
+
+  <optionset id="Mail.AuthorModerationStatus" name="Author Moderation Status">
+    <option value="Ban" name="Banned" />
+    <option value="Allow" name="Whitelisted" />
+  </optionset>
+
+  <optionset id="Mail.ModerationStatus" name="Moderation Status">
+    <option value="PendingModeration" name="Pending Moderation" />
+    <option value="Accepted" name="Accepted" />
+    <option value="Rejected" name="Rejected" />
+  </optionset>
 </buvi>

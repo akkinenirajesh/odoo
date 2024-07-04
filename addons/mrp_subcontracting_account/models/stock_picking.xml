@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.Picking" name="Stock.Picking" description="Picking">
+        <field name="SubcontractedProductions" type="Stock.Production" collection="true" />
+    </model>
+
+    <optionset id="Stock.Production" name="Production">
+        <option value="Production" name="Production" />
+    </optionset>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+    <field name="PartnerId" type="Res.Partner" />
+    <field name="LocationId" type="Stock.Location" />
+    <field name="LocationDestId" type="Stock.Location" />
+    <field name="GroupId" type="Stock.Move" collection="true" />
+  </model>
 </buvi>

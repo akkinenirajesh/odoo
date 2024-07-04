@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
+    <model id="Report.PosOrder" name="Report.PosOrder" description="POS Order Report">
+        <field name="EmployeeId" type="Hr.Employee" label="Employee" readonly="true" />
+    </model>
 </buvi>

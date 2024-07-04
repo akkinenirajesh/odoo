@@ -1,3 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Loyalty.LoyaltyReward" name="LoyaltyReward" description="Loyalty Reward">
+        <field name="Active" type="bool" default="true" />
+        <field name="ProgramId" type="Loyalty.LoyaltyProgram" required="true" collection="true" />
+        <field name="ProgramType" type="selection" related="ProgramId.ProgramType" />
+        <field name="CompanyId" type="Core.Company" related="ProgramId.CompanyId" store="true" />
+        <field name="CurrencyId" type="Core.Currency" related="ProgramId.CurrencyId" />
+        <field name="Description" type="string" readonly="false" store="true" translate="true" />
+        <field name="RewardType" type="selection">
+            <option value="product" name="Free Product" />
+            <option value="discount" name="Discount" />
+        </field>
+        <field name="UserHasDebug" type="bool" compute="ComputeUserHasDebug" />
+        <field name="Discount" type="float" label="Discount" default="10" />
+        <field name="DiscountMode" type="selection" required="true" default="percent">
+            <option value="percent" name="%" />
+            <option value="perOrder" name="Symbol" />
+            <option value="perPoint" name="Symbol per point" />
+        </field>
+        <field name="DiscountApplicability" type="selection" default="order">
+            <option value="order" name="Order" />
+            <option value="cheapest" name="Cheapest Product" />
+            <option value="specific" name="Specific Products" />
+        </field>
+        <field name="DiscountProductDomain" type="string" default="[]" />
+        <field name="DiscountProductIds" type="Product.Product" string="Discounted Products" collection="true" />
+        <field name="DiscountProductCategoryId" type="Product.ProductCategory" string="Discounted Prod. Categories" />
+        <field name="DiscountProductTagId" type="Product.ProductTag" string="Discounted Prod. Tag" />
+        <field name="AllDiscountProductIds" type="Product.Product" compute="ComputeAllDiscountProductIds" collection="true" />
+        <field name="RewardProductDomain" type="string" compute="ComputeRewardProductDomain" />
+        <field name="DiscountMaxAmount" type="monetary" label="Max Discount" currency="CurrencyId"
+            help="This is the max amount this reward may discount, leave to 0 for no limit." />
+        <field name="DiscountLineProductId" type="Product.Product" copy="false" collection="true"
+            help="Product used in the sales order to apply the discount. Each reward has its own product for reporting purpose" />
+        <field name="IsGlobalDiscount" type="bool" compute="ComputeIsGlobalDiscount" />
+        <field name="RewardProductId" type="Product.Product" string="Product" />
+        <field name="RewardProductTagId" type="Product.ProductTag" string="Product Tag" />
+        <field name="MultiProduct" type="bool" compute="ComputeMultiProduct" />
+        <field name="RewardProductIds" type="Product.Product" string="Reward Products" compute="ComputeMultiProduct"
+            help="These are the products that can be claimed with this rule." collection="true" />
+        <field name="RewardProductQty" type="integer" default="1" />
+        <field name="RewardProductUomId" type="Uom.Uom" compute="ComputeRewardProductUomId" />
+        <field name="RequiredPoints" type="float" label="Points needed" default="1" />
+        <field name="PointName" type="string" related="ProgramId.PortalPointName" readonly="true" />
+        <field name="ClearWallet" type="bool" default="false" />
+        <sql_constraint name="required_points_positive" expr="RequiredPoints &gt; 0"
+            message="The required points for a reward must be strictly positive." />
+        <sql_constraint name="product_qty_positive" expr="RewardType != 'product' OR RewardProductQty &gt; 0"
+            message="The reward product quantity must be strictly positive." />
+        <sql_constraint name="discount_positive" expr="RewardType != 'discount' OR Discount &gt; 0"
+            message="The discount must be strictly positive." />
+    </model>
+    <optionset id="Loyalty.LoyaltyRewardType" name="Loyalty Reward Type">
+        <option value="product" name="Free Product" />
+        <option value="discount" name="Discount" />
+    </optionset>
+    <optionset id="Loyalty.LoyaltyDiscountMode" name="Loyalty Discount Mode">
+        <option value="percent" name="%" />
+        <option value="perOrder" name="Symbol" />
+        <option value="perPoint" name="Symbol per point" />
+    </optionset>
+    <optionset id="Loyalty.LoyaltyDiscountApplicability" name="Loyalty Discount Applicability">
+        <option value="order" name="Order" />
+        <option value="cheapest" name="Cheapest Product" />
+        <option value="specific" name="Specific Products" />
+    </optionset>
 </buvi>

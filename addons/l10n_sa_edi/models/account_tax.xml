@@ -1,3 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Account.AccountTax" name="AccountTax" description="Account Tax">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="Amount" type="float" label="Amount" />
+    <field name="Description" type="char" label="Description" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="TypeTaxUse" type="Account.TaxUse" label="Tax Use" />
+    <field name="TaxGroup" type="Account.TaxGroup" label="Tax Group" />
+    <field name="IncludeBaseAmount" type="bool" label="Include Base Amount" help="Whether the tax amount includes the base amount." />
+    <field name="PriceInclude" type="bool" label="Price Includes Tax" />
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the Account Tax without removing it." />
+    <field name="L10nSaIsRetention" type="bool" label="Is Retention" help="Determines whether or not a tax counts as a Withholding Tax" />
+    <field name="L10nSaExemptionReasonCode" type="Account.ExemptionReasonCode" label="Exemption Reason Code" help="Tax Exemption Reason Code (ZATCA)" />
+  </model>
+
+  <optionset id="Account.TaxUse" name="Tax Use">
+    <option value="Sale" name="Sale" />
+    <option value="Purchase" name="Purchase" />
+    <option value="None" name="None" />
+  </optionset>
+
+  <optionset id="Account.ExemptionReasonCode" name="Exemption Reason Code">
+    <option value="VATEX-SA-29" name="VATEX-SA-29 Financial services mentioned in Article 29 of the VAT Regulations." />
+    <option value="VATEX-SA-29-7" name="VATEX-SA-29-7 Life insurance services mentioned in Article 29 of the VAT." />
+    <option value="VATEX-SA-30" name="VATEX-SA-30 Real estate transactions mentioned in Article 30 of the VAT Regulations." />
+    <option value="VATEX-SA-32" name="VATEX-SA-32 Export of goods." />
+    <option value="VATEX-SA-33" name="VATEX-SA-33 Export of Services." />
+    <option value="VATEX-SA-34-1" name="VATEX-SA-34-1 The international transport of Goods." />
+    <option value="VATEX-SA-34-2" name="VATEX-SA-34-1 The international transport of Passengers." />
+    <option value="VATEX-SA-34-3" name="VATEX-SA-34-3 Services directly connected and incidental to a Supply of international passenger transport." />
+    <option value="VATEX-SA-34-4" name="VATEX-SA-34-4 Supply of a qualifying means of transport." />
+    <option value="VATEX-SA-34-5" name="VATEX-SA-34-5 Any services relating to Goods or passenger transportation, as defined in article twenty five of these Regulations." />
+    <option value="VATEX-SA-35" name="VATEX-SA-35 Medicines and medical equipment." />
+    <option value="VATEX-SA-36" name="VATEX-SA-36 Qualifying metals." />
+    <option value="VATEX-SA-EDU" name="VATEX-SA-EDU Private education to citizen." />
+    <option value="VATEX-SA-HEA" name="VATEX-SA-HEA Private healthcare to citizen." />
+    <option value="VATEX-SA-OOS" name="VATEX-SA-OOS Not subject to VAT." />
+  </optionset>
 </buvi>

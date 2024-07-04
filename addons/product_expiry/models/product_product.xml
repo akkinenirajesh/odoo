@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.Product" name="Product" description="Product">
+    <field name="UseExpirationDate" type="bool" label="Use Expiration Date"
+      help="When this box is ticked, you have the possibility to specify dates to manage product expiration, on the product and on the corresponding lot/serial numbers" />
+    <field name="ExpirationTime" type="integer" label="Expiration Date"
+      help="Number of days after the receipt of the products (from the vendor or in stock after production) after which the goods may become dangerous and must not be consumed. It will be computed on the lot/serial number." />
+    <field name="UseTime" type="integer" label="Best Before Date"
+      help="Number of days before the Expiration Date after which the goods starts deteriorating, without being dangerous yet. It will be computed on the lot/serial number." />
+    <field name="RemovalTime" type="integer" label="Removal Date"
+      help="Number of days before the Expiration Date after which the goods should be removed from the stock. It will be computed on the lot/serial number." />
+    <field name="AlertTime" type="integer" label="Alert Date"
+      help="Number of days before the Expiration Date after which an alert should be raised on the lot/serial number. It will be computed on the lot/serial number." />
+  </model>
+  <model id="Product.ProductTemplate" name="ProductTemplate" description="Product Template">
+    <field name="UseExpirationDate" type="bool" label="Use Expiration Date"
+      help="When this box is ticked, you have the possibility to specify dates to manage product expiration, on the product and on the corresponding lot/serial numbers" />
+    <field name="ExpirationTime" type="integer" label="Expiration Date"
+      help="Number of days after the receipt of the products (from the vendor or in stock after production) after which the goods may become dangerous and must not be consumed. It will be computed on the lot/serial number." />
+    <field name="UseTime" type="integer" label="Best Before Date"
+      help="Number of days before the Expiration Date after which the goods starts deteriorating, without being dangerous yet. It will be computed on the lot/serial number." />
+    <field name="RemovalTime" type="integer" label="Removal Date"
+      help="Number of days before the Expiration Date after which the goods should be removed from the stock. It will be computed on the lot/serial number." />
+    <field name="AlertTime" type="integer" label="Alert Date"
+      help="Number of days before the Expiration Date after which an alert should be raised on the lot/serial number. It will be computed on the lot/serial number." />
+  </model>
 </buvi>

@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
-  </model>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="Stock.Location" name="Stock.Location" description="Stock Location">
+        <field name="ValuationInAccountId" type="Account.Account" label="Stock Valuation Account (Incoming)" collection="true">
+            <domain>[('account_type', 'not in', ('asset_receivable', 'liability_payable', 'asset_cash', 'liability_credit_card')), ('deprecated', '=', False)]</domain>
+            <help>Used for real-time inventory valuation. When set on a virtual location (non internal type), this account will be used to hold the value of products being moved from an internal location into this location, instead of the generic Stock Output Account set on the product. This has no effect for internal locations.</help>
+        </field>
+        <field name="ValuationOutAccountId" type="Account.Account" label="Stock Valuation Account (Outgoing)" collection="true">
+            <domain>[('account_type', 'not in', ('asset_receivable', 'liability_payable', 'asset_cash', 'liability_credit_card')), ('deprecated', '=', False)]</domain>
+            <help>Used for real-time inventory valuation. When set on a virtual location (non internal type), this account will be used to hold the value of products being moved out of this location and into an internal location, instead of the generic Stock Output Account set on the product. This has no effect for internal locations.</help>
+        </field>
+    </model>
 </buvi>

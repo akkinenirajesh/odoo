@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sms.SmsTracker" name="Sms.SmsTracker" description="Link SMS to mailing/sms tracking models">
+    <field name="SmsUuid" type="string" label="SMS uuid" required="true" />
+    <field name="MailNotificationId" type="Mail.Notification" collection="true" />
+  </model>
+  <optionset id="Sms.SmsStateToNotificationStatus" name="Sms State To Notification Status">
+    <option value="canceled" name="Canceled" />
+    <option value="process" name="Process" />
+    <option value="error" name="Error" />
+    <option value="outgoing" name="Outgoing" />
+    <option value="sent" name="Sent" />
+    <option value="pending" name="Pending" />
+  </optionset>
 </buvi>

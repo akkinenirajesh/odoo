@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+    <field name="CarrierPrice" type="float" label="Shipping Cost" />
+    <field name="DeliveryType" type="selection" label="Delivery Type" relation="Delivery.Carrier" />
+    <field name="CarrierId" type="Core.ResPartner" label="Carrier" relation="Delivery.Carrier" />
+    <field name="Weight" type="float" label="Total Weight" digits="Stock Weight" store="true" help="Total weight of the products in the picking." />
+    <field name="CarrierTrackingRef" type="char" label="Tracking Reference" copy="false" />
+    <field name="CarrierTrackingUrl" type="char" label="Tracking URL" />
+    <field name="WeightUomName" type="char" label="Weight Unit Of Measure Label" readonly="true" />
+    <field name="PackageIds" type="many2many" label="Packages" collection="true" relation="Stock.QuantPackage" />
+    <field name="WeightBulk" type="float" label="Bulk Weight" help="Total weight of products which are not in a package." />
+    <field name="ShippingWeight" type="float" label="Weight For Shipping" help="Total weight of packages and products not in a package. Packages with no shipping weight specified will default to their products' total weight. This is the weight used to compute the cost of the shipping." />
+    <field name="IsReturnPicking" type="bool" label="Is Return Picking" />
+    <field name="ReturnLabelIds" type="one2many" label="Return Labels" collection="true" relation="Ir.Attachment" />
+    <field name="DestinationCountryCode" type="char" label="Destination Country" relation="Core.Country" />
+  </model>
 </buvi>

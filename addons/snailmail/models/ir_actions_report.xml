@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Snailmail.IrActionsReport" name="IrActionsReport" description="Ir Actions Report">
+    <inherit id="ir.actions.report" />
+    <field name="RetrieveAttachment" type="function" method="RetrieveAttachment" />
+    <field name="GetPaperFormat" type="function" method="GetPaperFormat" />
+  </model>
 </buvi>

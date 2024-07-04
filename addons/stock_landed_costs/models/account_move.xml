@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="LandedCostsIds" type="stock.landed.cost" collection="true" label="Landed Costs"/>
+    <field name="LandedCostsVisible" type="bool" compute="ComputeLandedCostsVisible"/>
+  </model>
+  <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    <field name="ProductType" type="selection" relation="product.product" field="Type" readonly="true"/>
+    <field name="IsLandedCostsLine" type="bool"/>
   </model>
 </buvi>

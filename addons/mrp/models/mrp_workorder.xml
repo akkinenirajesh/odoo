@@ -1,3 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.MrpWorkorder" name="Mrp.MrpWorkorder" description="Work Order">
+    <field name="Name" type="string" label="Work Order" required="true" />
+    <field name="Barcode" type="string" compute="ComputeBarcode" store="true" />
+    <field name="WorkcenterId" type="Mrp.MrpWorkcenter" label="Work Center" required="true" checkCompany="true" />
+    <field name="WorkingState" type="selection" string="Workcenter Status" related="WorkcenterId.WorkingState" />
+    <field name="ProductId" type="Product.Product" readonly="true" store="true" checkCompany="true" related="ProductionId.ProductId" />
+    <field name="ProductTracking" type="selection" related="ProductId.Tracking" />
+    <field name="ProductUomId" type="Uom.Uom" label="Unit of Measure" required="true" readonly="true" />
+    <field name="ProductionId" type="Mrp.MrpProduction" label="Manufacturing Order" required="true" checkCompany="true" readonly="true" index="btree" />
+    <field name="ProductionAvailability" type="selection" string="Stock Availability" readonly="true" related="ProductionId.ReservationState" store="true" />
+    <field name="ProductionState" type="selection" string="Production State" readonly="true" related="ProductionId.State" />
+    <field name="ProductionBomId" type="Mrp.MrpBom" related="ProductionId.BomId" />
+    <field name="QtyProduction" type="float" label="Original Production Quantity" readonly="true" related="ProductionId.ProductQty" />
+    <field name="CompanyId" type="Core.Company" related="ProductionId.CompanyId" />
+    <field name="QtyProducing" type="float" label="Currently Produced Quantity" compute="ComputeQtyProducing" inverse="SetQtyProducing" digits="Product Unit of Measure" />
+    <field name="QtyRemaining" type="float" label="Quantity To Be Produced" compute="ComputeQtyRemaining" digits="Product Unit of Measure" />
+    <field name="QtyProduced" type="float" label="Quantity" default="0.0" readonly="true" digits="Product Unit of Measure" copy="false" />
+    <field name="IsProduced" type="bool" string="Has Been Produced" compute="ComputeIsProduced" />
+    <field name="State" type="selection" string="Status" compute="ComputeState" store="true" default="pending" copy="false" readonly="true" recursive="true" index="true">
+      <option value="pending" name="Waiting for another WO" />
+      <option value="waiting" name="Waiting for components" />
+      <option value="ready" name="Ready" />
+      <option value="progress" name="In Progress" />
+      <option value="done" name="Finished" />
+      <option value="cancel" name="Cancelled" />
+    </field>
+    <field name="LeaveId" type="Resource.CalendarLeaves" checkCompany="true" copy="false" />
+    <field name="DateStart" type="datetime" label="Start" compute="ComputeDates" inverse="SetDates" store="true" copy="false" />
+    <field name="DateFinished" type="datetime" label="End" compute="ComputeDates" inverse="SetDates" store="true" copy="false" />
+    <field name="DurationExpected" type="float" label="Expected Duration" digits="(16, 2)" compute="ComputeDurationExpected" readonly="false" store="true" />
+    <field name="Duration" type="float" label="Real Duration" compute="ComputeDuration" inverse="SetDuration" readonly="false" store="true" copy="false" />
+    <field name="DurationUnit" type="float" label="Duration Per Unit" compute="ComputeDuration" aggregator="avg" readonly="true" store="true" />
+    <field name="DurationPercent" type="integer" label="Duration Deviation (%)" compute="ComputeDuration" aggregator="avg" readonly="true" store="true" />
+    <field name="Progress" type="float" label="Progress Done (%)" digits="(16, 2)" compute="ComputeProgress" />
+    <field name="OperationId" type="Mrp.RoutingWorkcenter" label="Operation" checkCompany="true" />
+    <field name="Worksheet" type="binary" related="OperationId.Worksheet" readonly="true" />
+    <field name="WorksheetType" type="selection" string="Worksheet Type" related="OperationId.WorksheetType" readonly="true" />
+    <field name="WorksheetGoogleSlide" type="char" label="Worksheet URL" related="OperationId.WorksheetGoogleSlide" readonly="true" />
+    <field name="OperationNote" type="html" label="Description" related="OperationId.Note" readonly="true" />
+    <field name="MoveRawIds" type="Stock.Move" name="Raw Moves" domain="[('rawMaterialProductionId', '!=', False), ('productionId', '=', False)]" collection="true" />
+    <field name="MoveFinishedIds" type="Stock.Move" name="Finished Moves" domain="[('rawMaterialProductionId', '=', False), ('productionId', '!=', False)]" collection="true" />
+    <field name="MoveLineIds" type="Stock.MoveLine" name="Moves to Track" help="Inventory moves for which you must scan a lot number at this work order" collection="true" />
+    <field name="FinishedLotId" type="Stock.Lot" label="Lot/Serial Number" related="ProductionId.LotProducingId" domain="[('productId', '=', productId), ('companyId', '=', companyId)]" readonly="false" checkCompany="true" />
+    <field name="TimeIds" type="Mrp.WorkcenterProductivity" copy="false" collection="true" />
+    <field name="IsUserWorking" type="bool" string="Is the Current User Working" compute="ComputeWorkingUsers" />
+    <field name="WorkingUserIds" type="Res.Users" string="Working user on this work order." compute="ComputeWorkingUsers" collection="true" />
+    <field name="LastWorkingUserId" type="Res.Users" string="Last user that worked on this work order." compute="ComputeWorkingUsers" collection="true" />
+    <field name="CostsHour" type="float" label="Cost per hour" default="0.0" aggregator="avg" />
+    <field name="ScrapIds" type="Stock.Scrap" collection="true" />
+    <field name="ScrapCount" type="integer" label="Scrap Move" compute="ComputeScrapMoveCount" />
+    <field name="ProductionDate" type="datetime" label="Production Date" related="ProductionId.DateStart" store="true" />
+    <field name="JsonPopover" type="char" label="Popover Data JSON" compute="ComputeJsonPopover" />
+    <field name="ShowJsonPopover" type="bool" label="Show Popover?" compute="ComputeJsonPopover" />
+    <field name="Consumption" type="selection" related="ProductionId.Consumption" />
+    <field name="QtyReportedFromPreviousWo" type="float" label="Carried Quantity" digits="Product Unit of Measure" copy="false" />
+    <field name="IsPlanned" type="bool" related="ProductionId.IsPlanned" />
+    <field name="AllowWorkorderDependencies" type="bool" related="ProductionId.AllowWorkorderDependencies" />
+    <field name="BlockedByWorkorderIds" type="Mrp.MrpWorkorder" name="Blocked By" domain="[('allowWorkorderDependencies', '=', True), ('id', '!=', id), ('productionId', '=', productionId)]" collection="true" />
+    <field name="NeededByWorkorderIds" type="Mrp.MrpWorkorder" name="Blocks" domain="[('allowWorkorderDependencies', '=', True), ('id', '!=', id), ('productionId', '=', productionId)]" collection="true" />
+  </model>
+  <optionset id="Mrp.WorkorderState" name="Work Order State">
+    <option value="pending" name="Waiting for another WO" />
+    <option value="waiting" name="Waiting for components" />
+    <option value="ready" name="Ready" />
+    <option value="progress" name="In Progress" />
+    <option value="done" name="Finished" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
 </buvi>

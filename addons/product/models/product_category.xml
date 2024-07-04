@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.ProductCategory" name="ProductCategory" description="Product Category">
+        <field name="Name" type="string" label="Name" required="true" index="trigram" />
+        <field name="CompleteName" type="string" label="Complete Name" compute="ComputeCompleteName" store="true" recursive="true" />
+        <field name="Parent" type="Product.ProductCategory" label="Parent Category" index="true" ondelete="cascade" />
+        <field name="ParentPath" type="string" index="true" />
+        <field name="Child" type="Product.ProductCategory" collection="true" label="Child Categories" />
+        <field name="ProductCount" type="integer" label="# Products" compute="ComputeProductCount" help="The number of products under this category (Does not consider the children categories)" />
+        <field name="ProductPropertiesDefinition" type="PropertiesDefinition" label="Product Properties" />
+    </model>
+    <optionset id="Product.ProductCategoryApplicability" name="ProductCategory Applicability">
+        <option value="Products" name="Products" />
+    </optionset>
 </buvi>

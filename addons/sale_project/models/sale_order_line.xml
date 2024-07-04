@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleProject.SaleOrderLine" name="SaleProject.SaleOrderLine" description="Sale Order Line">
+        <field name="QtyDeliveredMethod" type="selection" selection="SaleProject.QtyDeliveredMethod" />
+        <field name="ProjectId" type="SaleProject.Project" relation="true" />
+        <field name="TaskId" type="SaleProject.Task" relation="true" />
+        <field name="ReachedMilestonesIds" type="SaleProject.Milestone" collection="true" />
+    </model>
+    <optionset id="SaleProject.QtyDeliveredMethod" name="Qty Delivered Method">
+        <option value="Milestones" name="Milestones" />
+    </optionset>
 </buvi>

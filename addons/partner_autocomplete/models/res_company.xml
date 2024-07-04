@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PartnerAutocomplete.ResCompany" name="PartnerAutocomplete.ResCompany" description="Res Company">
+        <field name="PartnerGid" type="integer" label="Company database ID" related="PartnerId.PartnerGid" store="true" />
+        <field name="IapEnrichAutoDone" type="bool" label="Enrich Done" />
+        <field name="PartnerId" type="Core.Partner" />
+        <field name="Email" type="string" />
+        <field name="Website" type="string" />
+        <field name="Vat" type="string" />
+    </model>
 </buvi>

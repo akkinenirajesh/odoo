@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.Company" name="Company" description="Company">
+        <field name="LunchMinimumThreshold" type="float" />
+        <field name="LunchNotifyMessage" type="html" label="Lunch Notify Message" 
+                default="""Your lunch has been delivered.
+Enjoy your meal!""" translate="true"/>
+    </model>
 </buvi>

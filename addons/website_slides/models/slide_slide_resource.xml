@@ -1,100 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="slide.slide" name="Slide.Slide" track_created="true" track_update="true">
-    <field name="MessageFollowers" label="Followers" type="Mail.Followers" collection="true"/>
-    <field name="Messages" label="Messages" type="Mail.Message" collection="true"/>
-    <field name="WebsiteMessages" label="Website Messages" type="Mail.Message" collection="true"/>
-    <field name="Ratings" label="Ratings" type="Rating.Rating" collection="true"/>
-    <field name="MessagePartners" label="Followers (Partners)" type="Res.Partner" collection="true" transient="true"/>
-    <field name="Partners" label="Subscribers" type="Res.Partner" collection="true"/>
-    <field name="User" label="Uploaded by" type="Res.Users" copied="true" on-delete="Clear"/>
-    <field name="Channel" label="Course" type="Slide.Channel" required="true" copied="true" on-delete="Cascade"/>
-    <field name="Embeds" label="External Slide Embeds" type="Slide.Embed" collection="true"/>
-    <field name="Questions" label="Questions" type="Slide.Question" collection="true" copied="true"/>
-    <field name="Category" label="Section" type="Slide.Slide" readonly="true" on-delete="Clear"/>
-    <field name="Slides" label="Content" type="Slide.Slide" collection="true"/>
-    <field name="SlidePartners" label="Subscribers information" type="Slide.SlidePartner" collection="true"/>
-    <field name="UserMembership" label="Subscriber information" type="Slide.SlidePartner" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="SlideResources" label="Additional Resource for this slide" type="Slide.SlideResource" collection="true" copied="true"/>
-    <field name="Tags" label="Tags" type="Slide.Tag" collection="true" copied="true"/>
-    <field name="Survey" label="Certification" type="Survey.Survey" copied="true" on-delete="Clear"/>
-    <field name="Website" label="Website" type="Website." readonly="true" transient="true" related-field="Channel.Website"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="BinaryContent" label="File" type="binary" copied="true"/>
-    <field name="CanPublish" label="Can Publish" type="bool" readonly="true" transient="true"/>
-    <field name="CanSelfMarkCompleted" label="Can Mark Completed" type="bool" readonly="true" transient="true"/>
-    <field name="CanSelfMarkUncompleted" label="Can Mark Uncompleted" type="bool" readonly="true" transient="true"/>
-    <field name="ChannelAllowComment" label="Allows comment" type="bool" readonly="true" transient="true" related-field="Channel.AllowComment"/>
-    <field name="CommentsCount" label="Number of comments" type="integer" readonly="true" transient="true"/>
-    <field name="CompletionTime" label="Duration" type="float" copied="true"/>
-    <field name="DatePublished" label="Publish Date" type="datetime" readonly="true"/>
-    <field name="Description" label="Description" type="html" copied="true" translatable="true"/>
-    <field name="Dislikes" label="Dislikes" type="integer" readonly="true"/>
-    <field name="DocumentBinaryContent" label="PDF Content" type="binary" transient="true" related-field="BinaryContent"/>
-    <field name="DocumentGoogleUrl" label="Document Link" type="string" transient="true" related-field="Url"/>
-    <field name="EmbedCode" label="Embed Code" type="html" readonly="true" transient="true"/>
-    <field name="EmbedCodeExternal" label="External Embed Code" type="html" readonly="true" transient="true"/>
-    <field name="EmbedCount" label="# of Embeds" type="integer" readonly="true" transient="true"/>
-    <field name="GoogleDrive" label="Google Drive ID of the external URL" type="string" readonly="true" transient="true"/>
-    <field name="HasMessage" label="Has Message" type="bool" readonly="true" transient="true"/>
-    <field name="HtmlContent" label="HTML Content" type="html" copied="true" translatable="true"/>
-    <field name="Image1024" label="Image 1024" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="Image128" label="Image 128" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="Image1920" label="Image" type="binary" copied="true"/>
-    <field name="Image256" label="Image 256" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="Image512" label="Image 512" type="binary" readonly="true" related-field="Image1920"/>
-    <field name="ImageBinaryContent" label="Image Content" type="binary" transient="true" related-field="BinaryContent"/>
-    <field name="ImageGoogleUrl" label="Image Link" type="string" transient="true" related-field="Url"/>
-    <field name="IsCategory" label="Is a category" type="bool" copied="true"/>
-    <field name="IsNewSlide" label="Is New Slide" type="bool" readonly="true" transient="true"/>
-    <field name="IsPreview" label="Allow Preview" type="bool" copied="true"/>
-    <field name="IsPublished" label="Is Published" type="bool" indexed="true"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
-    <field name="Likes" label="Likes" type="integer" readonly="true"/>
-    <field name="MessageAttachmentCount" label="Attachment Count" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasError" label="Message Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageHasErrorCounter" label="Number of errors" type="integer" readonly="true" transient="true"/>
-    <field name="MessageHasSmsError" label="SMS Delivery error" type="bool" readonly="true" transient="true"/>
-    <field name="MessageIsFollower" label="Is Follower" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedaction" label="Action Needed" type="bool" readonly="true" transient="true"/>
-    <field name="MessageNeedactionCounter" label="Number of Actions" type="integer" readonly="true" transient="true"/>
-    <field name="Name" label="Title" type="string" required="true" copied="true" translatable="true"/>
-    <field name="NbrArticle" label="Number of Articles" type="integer" readonly="true"/>
-    <field name="NbrCertification" label="Number of Certifications" type="integer" readonly="true"/>
-    <field name="NbrDocument" label="Number of Documents" type="integer" readonly="true"/>
-    <field name="NbrInfographic" label="Number of Images" type="integer" readonly="true"/>
-    <field name="NbrQuiz" label="Number of Quizs" type="integer" readonly="true"/>
-    <field name="NbrVideo" label="Number of Videos" type="integer" readonly="true"/>
-    <field name="PublicViews" label="# of Public Views" type="integer" readonly="true"/>
-    <field name="QuestionsCount" label="Numbers of Questions" type="integer" readonly="true" transient="true"/>
-    <field name="QuizFirstAttemptReward" label="Reward: first attempt" type="integer" copied="true"/>
-    <field name="QuizFourthAttemptReward" label="Reward: every attempt after the third try" type="integer" copied="true"/>
-    <field name="QuizSecondAttemptReward" label="Reward: second attempt" type="integer" copied="true"/>
-    <field name="QuizThirdAttemptReward" label="Reward: third attempt" type="integer" copied="true"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="SlideCategory" label="Category" type="Slide.SlidesCategory" required="true" copied="true"/>
-    <field name="SlideIconClass" label="Slide Icon fa-class" type="string" readonly="true" transient="true"/>
-    <field name="SlideResourceDownloadable" label="Allow Download" type="bool" copied="true"/>
-    <field name="SlideType" label="Slide Type" type="Slide.SlidesSlideType" copied="true"/>
-    <field name="SlideViews" label="# of Website Views" type="integer" readonly="true"/>
-    <field name="SourceType" label="Source Type" type="Slide.SlidesSourceType" required="true" copied="true"/>
-    <field name="TotalSlides" label="Total Slides" type="integer" readonly="true"/>
-    <field name="TotalViews" label="# Total Views" type="integer" readonly="true"/>
-    <field name="Url" label="External URL" type="string" copied="true"/>
-    <field name="UserHasCompleted" label="Is Member" type="bool" readonly="true" transient="true"/>
-    <field name="UserHasCompletedCategory" label="Is Category Completed" type="bool" readonly="true" transient="true"/>
-    <field name="UserVote" label="User vote" type="integer" readonly="true" transient="true"/>
-    <field name="VideoSourceType" label="Video Source" type="Slide.SlidesVideoSource" readonly="true" transient="true"/>
-    <field name="VideoUrl" label="Video Link" type="string" transient="true" related-field="Url"/>
-    <field name="Vimeo" label="Video Vimeo ID" type="string" readonly="true" transient="true"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
-    <field name="WebsitePublished" label="Visible on current website" type="bool" transient="true" related-field="IsPublished"/>
-    <field name="WebsiteShareUrl" label="Share URL" type="string" readonly="true" transient="true"/>
-    <field name="WebsiteUrl" label="Website URL" type="string" readonly="true" transient="true"/>
-    <field name="Youtube" label="Video YouTube ID" type="string" readonly="true" transient="true"/>
-  </model>
+    <model id="Website.SlideSlideResource" name="Website.SlideSlideResource" description="Additional resource for a particular slide">
+        <field name="SlideId" type="Website.SlideSlide" required="true" ondelete="cascade" />
+        <field name="ResourceType" type="Website.SlideSlideResourceType" required="true" />
+        <field name="Name" type="string" label="Name" compute="ComputeName" store="true" readonly="false" />
+        <field name="Data" type="binary" label="Resource" compute="ComputeResetResources" store="true" readonly="false" />
+        <field name="FileName" type="string" store="true" />
+        <field name="Link" type="string" label="Link" compute="ComputeResetResources" store="true" readonly="false" />
+        <field name="DownloadUrl" type="string" label="Download URL" compute="ComputeDownloadUrl" />
+        <field name="Sequence" type="integer" label="Sequence" />
+    </model>
+
+    <optionset id="Website.SlideSlideResourceType" name="Slide Slide Resource Type">
+        <option value="File" name="File" />
+        <option value="Url" name="Link" />
+    </optionset>
 </buvi>

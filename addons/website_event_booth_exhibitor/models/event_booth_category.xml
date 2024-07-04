@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventBoothExhibitor.EventBoothCategory" name="EventBoothCategory" description="Event Booth Category">
+    <field name="UseSponsor" type="bool" label="Create Sponsor" help="If set, when booking a booth a sponsor will be created for the user" />
+    <field name="SponsorTypeId" type="WebsiteEventBoothExhibitor.EventSponsorType" label="Sponsor Level" />
+    <field name="ExhibitorType" type="selection" label="Sponsor Type" />
+  </model>
+  <optionset id="WebsiteEventBoothExhibitor.EventSponsorType" name="Event Sponsor Type">
+    <option value="gold" name="Gold" />
+    <option value="silver" name="Silver" />
+    <option value="bronze" name="Bronze" />
+    <option value="other" name="Other" />
+  </optionset>
 </buvi>

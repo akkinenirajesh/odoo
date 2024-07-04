@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.Website" name="Website" description="Website">
+        <inherit id="Website.Website" />
+        <field name="Company" type="Core.Company" />
+        <method name="DisplayPartnerB2BFields" access="private">
+            <return type="bool" />
+            <code language="c#">
+                return this.Company.Country.Code == "PE" || Env.Call("website", "_display_partner_b2b_fields");
+            </code>
+        </method>
+    </model>
 </buvi>

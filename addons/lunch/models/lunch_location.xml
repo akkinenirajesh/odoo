@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.LunchLocation" name="LunchLocation" description="Lunch Locations">
+        <field name="Name" type="string" label="Location Name" required="true" translate="true" />
+        <field name="Address" type="text" label="Address" />
+        <field name="Company" type="Res.Company" label="Company" collection="true" default="Env.Company" />
+    </model>
 </buvi>

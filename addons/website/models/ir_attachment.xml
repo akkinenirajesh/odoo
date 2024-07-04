@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.Attachment" name="Website.Attachment" description="Attachment">
+    <field name="Key" type="string" />
+    <field name="WebsiteId" type="Website.Website" />
+  </model>
 </buvi>

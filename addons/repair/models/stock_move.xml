@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Repair.StockMove" name="Repair.StockMove" description="Stock Move">
+    <field name="RepairId" type="Repair.RepairOrder" relation="true" />
+    <field name="RepairLineType" type="Repair.RepairLineType" />
+    <field name="ForecastAvailability" type="float" />
+    <field name="ForecastExpectedDate" type="datetime" />
+    <field name="PickingTypeId" type="Stock.PickingType" relation="true" />
+    <field name="LocationDestId" type="Stock.Location" relation="true" />
+    <field name="SaleLineId" type="Sale.OrderLine" relation="true" />
+  </model>
+
+  <optionset id="Repair.RepairLineType" name="Repair Line Type">
+    <option value="Add" name="Add" />
+    <option value="Remove" name="Remove" />
+    <option value="Recycle" name="Recycle" />
+  </optionset>
 </buvi>

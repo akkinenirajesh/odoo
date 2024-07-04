@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrderTemplate" name="SaleOrderTemplate" description="Sale Order Template">
+    <field name="SaleHeader" type="binary" label="Header pages" default="Env.Company.SaleHeader" />
+    <field name="SaleHeaderName" type="string" default="Env.Company.SaleHeaderName" />
+    <field name="SaleFooter" type="binary" label="Footer pages" default="Env.Company.SaleFooter" />
+    <field name="SaleFooterName" type="string" default="Env.Company.SaleFooterName" />
+  </model>
 </buvi>

@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sms.IrActionsServer" name="IrActionsServer" description="Server Actions">
+    <field name="State" type="selection" label="State">
+      <option value="sms" name="Send SMS" />
+      <option value="followers" name="Followers" />
+    </field>
+    <field name="SmsTemplateId" type="Sms.SmsTemplate" label="SMS Template" collection="true" />
+    <field name="SmsMethod" type="selection" label="Send SMS As">
+      <option value="sms" name="SMS (without note)" />
+      <option value="comment" name="SMS (with note)" />
+      <option value="note" name="Note only" />
+    </field>
+    <field name="AvailableModelIds" type="Core.IrModel" collection="true" />
+  </model>
+  <optionset id="Sms.SmsMethod" name="Send SMS As">
+    <option value="sms" name="SMS (without note)" />
+    <option value="comment" name="SMS (with note)" />
+    <option value="note" name="Note only" />
+  </optionset>
 </buvi>

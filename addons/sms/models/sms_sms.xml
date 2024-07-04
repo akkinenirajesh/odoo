@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sms.Sms" name="Sms.Sms" description="Outgoing SMS">
+        <field name="Uuid" type="string" label="UUID" required="true" readonly="true" default="Uuid.NewGuid().ToString()" help="Alternate way to identify a SMS record, used for delivery reports" />
+        <field name="Number" type="string" label="Number" />
+        <field name="Body" type="text" label="Body" />
+        <field name="PartnerId" type="Res.Partner" label="Customer" />
+        <field name="MailMessageId" type="Mail.Message" collection="true" />
+        <field name="State" type="Sms.SmsState" required="true" default="Outgoing" readonly="true" />
+        <field name="FailureType" type="Sms.SmsFailureType" readonly="true" />
+        <field name="SmsTrackerId" type="Sms.Tracker" collection="true" compute="ComputeSmsTrackerId" />
+        <field name="ToDelete" type="bool" label="Marked for deletion" default="false" help="Will automatically be deleted, while notifications will not be deleted in any case." />
+        <unique>
+            <field name="Uuid" />
+            <message>UUID must be unique</message>
+        </unique>
+    </model>
+    <optionset id="Sms.SmsState" name="SMS Status">
+        <option value="Outgoing" name="In Queue" />
+        <option value="Process" name="Processing" />
+        <option value="Pending" name="Sent" />
+        <option value="Sent" name="Delivered" />
+        <option value="Error" name="Error" />
+        <option value="Canceled" name="Cancelled" />
+    </optionset>
+    <optionset id="Sms.SmsFailureType" name="Failure Type">
+        <option value="Unknown" name="Unknown error" />
+        <option value="SmsNumberMissing" name="Missing Number" />
+        <option value="SmsNumberFormat" name="Wrong Number Format" />
+        <option value="SmsCountryNotSupported" name="Country Not Supported" />
+        <option value="SmsRegistrationNeeded" name="Country-specific Registration Required" />
+        <option value="SmsCredit" name="Insufficient Credit" />
+        <option value="SmsServer" name="Server Error" />
+        <option value="SmsAcc" name="Unregistered Account" />
+        <option value="SmsBlacklist" name="Blacklisted" />
+        <option value="SmsDuplicate" name="Duplicate" />
+        <option value="SmsOptout" name="Opted Out" />
+    </optionset>
 </buvi>

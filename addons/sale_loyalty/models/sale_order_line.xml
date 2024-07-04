@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrderLine" name="Sale.SaleOrderLine" description="Sale Order Line">
+    <field name="IsRewardLine" type="bool" label="Is a program reward line" compute="ComputeIsRewardLine" />
+    <field name="RewardId" type="Loyalty.Reward" relation="many2one" readonly="true" />
+    <field name="CouponId" type="Loyalty.Card" relation="many2one" readonly="true" />
+    <field name="RewardIdentifierCode" type="string" help="Technical field used to link multiple reward lines from the same reward together." />
+    <field name="PointsCost" type="float" help="How much point this reward costs on the loyalty card." />
+  </model>
 </buvi>

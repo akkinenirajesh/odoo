@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+        <field name="Country_Code" type="Core.Country" label="Country Code" />
+        <field name="Partner_Type" type="selection" label="Partner Type"
+                collection="true" options="Account.PartnerType" />
+        <field name="Payment_Receipt_Title" type="string" label="Payment Receipt Title" />
+    </model>
+    <optionset id="Account.PartnerType" name="Partner Type">
+        <option value="supplier" name="Supplier" />
+        <option value="customer" name="Customer" />
+    </optionset>
 </buvi>

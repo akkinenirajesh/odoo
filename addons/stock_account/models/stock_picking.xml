@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockPicking" name="StockPicking" description="Stock Picking">
+        <field name="CountryCode" type="string" label="Country Code" related="Company.AccountFiscalCountry.Code" />
+    </model>
 </buvi>

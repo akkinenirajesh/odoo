@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="TestConvert.TestModel" name="TestModel" description="Test Convert Model">
+    <field name="Name" type="string" label="Name" translate="true" />
+    <field name="UseredIds" type="TestConvert.Usered" collection="true" />
+  </model>
+  <model id="TestConvert.Usered" name="Usered" description="z test model ignore">
+    <field name="Name" type="string" />
+    <field name="UserId" type="Res.Users" />
+    <field name="TestId" type="TestConvert.TestModel" />
+    <field name="Tz" type="string" />
+  </model>
 </buvi>

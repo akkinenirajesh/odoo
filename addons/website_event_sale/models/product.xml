@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventSale.Product" name="Product" description="Product">
+    <field name="EventTicketIds" type="WebsiteEventSale.EventEventTicket" collection="true" label="Event Tickets" />
+  </model>
+
+  <model id="WebsiteEventSale.ProductTemplate" name="ProductTemplate" description="Product Template">
+  </model>
 </buvi>

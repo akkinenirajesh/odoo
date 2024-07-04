@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockMove" name="StockMove" description="Stock Move">
+        <field name="PickingId" type="Stock.StockPicking" relation="one2many" collection="true" />
+        <field name="BatchId" type="Stock.StockPickingBatch" />
+        <field name="State" type="selection" selection="Stock.PickingState" />
+    </model>
+
+    <optionset id="Stock.PickingState" name="Picking State">
+        <option value="draft" name="Draft" />
+        <option value="cancel" name="Cancelled" />
+        <option value="assigned" name="Assigned" />
+        <option value="done" name="Done" />
+    </optionset>
 </buvi>

@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="WebsiteEventCrm.EventRegistration" name="WebsiteEventCrm.EventRegistration" description="Event Registration">
+    <field name="RegistrationAnswerIds" type="WebsiteEventCrm.EventRegistrationAnswer" collection="true" />
+  </model>
+
+  <optionset id="WebsiteEventCrm.EventRegistrationAnswer" name="EventRegistrationAnswer">
+    <option value="SimpleChoice" name="SimpleChoice" />
+    <option value="TextBox" name="TextBox" />
+  </optionset>
 </buvi>

@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailTestCC" name="MailTestCC" description="Test Email CC Thread">
+        <field name="Name" type="string" label="Name" />
+        <field name="PartnerId" type="Core.Partner" relation="many2one" />
+        <field name="Email" type="string" />
+        <field name="DisplayName" type="string" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="IsEmail" type="bool" label="Is Email" default="true" />
+        <field name="IsPartner" type="bool" label="Is Partner" default="false" />
+        <field name="IsReadOnly" type="bool" label="Readonly" />
+        <field name="IsGuest" type="bool" label="Is Guest" />
+        <field name="NotificationType" type="selection" label="Notification Type"
+            options="[['email','Email'],['mail','Mail']]">
+        </field>
+        <field name="CustomMailTemplate" type="Core.MailTemplate" relation="many2one" label="Custom Email Template" />
+        <field name="MessageIds" type="Core.MailMessage" relation="many2many" collection="true" label="Message Ids" />
+        <field name="ThreadId" type="Core.MailThread" relation="many2one" label="Thread Id" />
+        <field name="NotificationStatus" type="selection" label="Notification Status"
+            options="[['waiting','Waiting'],['done','Done']]">
+        </field>
+    </model>
 </buvi>

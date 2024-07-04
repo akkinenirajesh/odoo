@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrderCouponPoints" name="SaleOrderCouponPoints" description="Sale Order Coupon Points - Keeps track of how a sale order impacts a coupon">
+    <field name="OrderId" type="Sale.SaleOrder" required="true" ondelete="cascade" />
+    <field name="CouponId" type="Loyalty.LoyaltyCard" required="true" ondelete="cascade" />
+    <field name="Points" type="float" required="true" />
+    <unique>
+      <field name="OrderId" />
+      <field name="CouponId" />
+      <message>The coupon points entry already exists.</message>
+    </unique>
+  </model>
 </buvi>

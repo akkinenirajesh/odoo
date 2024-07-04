@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+        <field name="PosOrderIds" type="collection" label="POS Orders" relation="PointOfSale.PosOrder" />
+        <field name="PosPaymentIds" type="collection" label="POS Payments" relation="PointOfSale.PosPayment" />
+        <field name="PosRefundedInvoiceIds" type="collection" relation="Account.AccountMove" collection="true" label="Refunded Invoices" />
+        <field name="ReversedPosOrderId" type="reference" relation="PointOfSale.PosOrder" label="Reversed POS Order" 
+            help="The pos order that was reverted after closing the session to create an invoice for it." />
+    </model>
+
+    <model id="Account.AccountMoveLine" name="AccountMoveLine" description="Account Move Line">
+    </model>
 </buvi>

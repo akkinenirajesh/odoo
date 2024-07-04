@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Calendar.CalendarAttendee" name="CalendarAttendee" description="Calendar Attendee">
+    <field name="EventId" type="Calendar.CalendarEvent" required="true" relation="true" />
+    <field name="PartnerId" type="Res.Partner" required="true" relation="true" />
+    <field name="State" type="selection" required="true" selection="Calendar.AttendeeState" />
+    <field name="DisplayName" type="string" required="true" />
+    <field name="Email" type="string" required="true" />
+    <field name="Status" type="string" required="true" />
+    <field name="Response" type="selection" required="true" selection="Calendar.AttendeeResponse" />
+    <field name="Rsvp" type="bool" required="true" />
+    <field name="MeetingRequest" type="bool" required="true" />
+    <field name="AllDay" type="bool" required="true" />
+  </model>
+
+  <optionset id="Calendar.AttendeeState" name="Attendee State">
+    <option value="needsAction" name="NeedsAction" />
+    <option value="accepted" name="Accepted" />
+    <option value="declined" name="Declined" />
+    <option value="tentative" name="Tentative" />
+  </optionset>
+
+  <optionset id="Calendar.AttendeeResponse" name="Attendee Response">
+    <option value="organizer" name="Organizer" />
+    <option value="tentativelyAccept" name="TentativelyAccept" />
+    <option value="accept" name="Accept" />
+    <option value="decline" name="Decline" />
+  </optionset>
 </buvi>

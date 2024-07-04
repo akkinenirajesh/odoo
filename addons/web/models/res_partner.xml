@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Web.ResPartner" name="ResPartner" description="Partner">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Title" type="Selection" selection="Web.PartnerTitle" label="Title" />
+        <field name="Street" type="string" label="Street" />
+        <field name="City" type="string" label="City" />
+        <field name="Zip" type="string" label="Zip" />
+        <field name="State" type="Core.State" label="State" />
+        <field name="Country" type="Core.Country" label="Country" />
+        <field name="Email" type="string" label="Email" />
+        <field name="Phone" type="string" label="Phone" />
+        <field name="Mobile" type="string" label="Mobile" />
+        <field name="Website" type="string" label="Website" />
+        <field name="CommercialCompanyName" type="string" label="Company Name" />
+        <field name="Function" type="string" label="Function" />
+        <field name="Avatar" type="binary" label="Avatar" />
+    </model>
+
+    <optionset id="Web.PartnerTitle" name="Partner Title">
+        <option value="Mr" name="Mr" />
+        <option value="Mrs" name="Mrs" />
+        <option value="Miss" name="Miss" />
+        <option value="Ms" name="Ms" />
+    </optionset>
 </buvi>

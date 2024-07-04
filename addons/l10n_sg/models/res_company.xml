@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Res.Company" name="ResCompany" description="Companies">
+        <field name="L10nSgUniqueEntityNumber" type="string" label="UEN" related="PartnerId.L10nSgUniqueEntityNumber" readonly="false" />
+    </model>
 </buvi>

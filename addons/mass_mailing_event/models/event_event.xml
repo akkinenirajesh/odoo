@@ -1,3 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Event.Event" name="Event" description="Event">
+    <field name="Name" type="string" label="Event Name" required="true" translate="true" />
+    <field name="StartDate" type="datetime" label="Start Date" required="true" />
+    <field name="EndDate" type="datetime" label="End Date" required="true" />
+    <field name="State" type="selection" label="State" selection="Event.StateSelection" />
+    <field name="Registration" type="selection" label="Registration" selection="Event.RegistrationSelection" />
+    <field name="RegistrationDeadline" type="datetime" label="Registration Deadline" />
+    <field name="AttendeeIds" type="many2many" collection="true" relation="Event.EventAttendee" label="Attendees" />
+  </model>
+
+  <optionset id="Event.StateSelection" name="Event State Selection">
+    <option value="draft" name="Draft" />
+    <option value="confirmed" name="Confirmed" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
+
+  <optionset id="Event.RegistrationSelection" name="Event Registration Selection">
+    <option value="open" name="Open" />
+    <option value="closed" name="Closed" />
+  </optionset>
 </buvi>

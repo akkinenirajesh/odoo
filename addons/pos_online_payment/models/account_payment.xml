@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Account.AccountPayment" name="AccountPayment" description="Account Payment">
+        <field name="PosOrderId" type="Pos.PosOrder" label="POS Order" help="The Point of Sale order linked to this payment" readonly="true" />
+    </model>
 </buvi>

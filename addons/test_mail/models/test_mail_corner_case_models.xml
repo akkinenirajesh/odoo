@@ -1,3 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="TestMail.MailPerformanceThread" name="MailPerformanceThread" description="Performance: mail.thread">
+        <field name="Name" type="string" />
+        <field name="Value" type="integer" />
+        <field name="ValuePc" type="float" compute="ValuePcCompute" store="true" />
+        <field name="Track" type="string" default="test" tracking="true" />
+        <field name="PartnerId" type="Res.Partner" label="Customer" />
+    </model>
+    <model id="TestMail.MailPerformanceTracking" name="MailPerformanceTracking" description="Performance: multi tracking">
+        <field name="Name" type="string" required="true" tracking="true" />
+        <field name="Field0" type="string" tracking="true" />
+        <field name="Field1" type="string" tracking="true" />
+        <field name="Field2" type="string" tracking="true" />
+    </model>
+    <model id="TestMail.MailTestFieldType" name="MailTestFieldType" description="Test Field Type">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="Datetime" type="datetime" default="DatetimeNow" />
+        <field name="CustomerId" type="Res.Partner" label="Customer" />
+        <field name="Type" type="selection" selection="TestMail.MailTestFieldTypeTypeSelection" />
+        <field name="UserId" type="Res.Users" label="Responsible" tracking="true" />
+    </model>
+    <optionset id="TestMail.MailTestFieldTypeTypeSelection" name="Mail Test Field Type Type Selection">
+        <option value="first" name="First" />
+        <option value="second" name="Second" />
+    </optionset>
+    <model id="TestMail.MailTestLang" name="MailTestLang" description="Lang Chatter Model">
+        <field name="Name" type="string" />
+        <field name="EmailFrom" type="string" />
+        <field name="CustomerId" type="Res.Partner" />
+        <field name="Lang" type="string" label="Lang" />
+    </model>
+    <model id="TestMail.MailTestTrackAllM2M" name="MailTestTrackAllM2M" description="Sub-model: pseudo tags for tracking">
+        <field name="Name" type="string" label="Name" />
+    </model>
+    <model id="TestMail.MailTestTrackAllO2M" name="MailTestTrackAllO2M" description="Sub-model: pseudo tags for tracking">
+        <field name="Name" type="string" label="Name" />
+        <field name="MailTrackAllId" type="TestMail.MailTestTrackAll" />
+    </model>
+    <model id="TestMail.MailTestTrackAll" name="MailTestTrackAll" description="Test tracking on all field types">
+        <field name="BooleanField" type="bool" label="Boolean" tracking="1" />
+        <field name="CharField" type="string" label="Char" tracking="2" />
+        <field name="CompanyId" type="Res.Company" />
+        <field name="CurrencyId" type="Res.Currency" related="CompanyId.CurrencyId" />
+        <field name="DateField" type="date" label="Date" tracking="3" />
+        <field name="DatetimeField" type="datetime" label="Datetime" tracking="4" />
+        <field name="FloatField" type="float" label="Float" tracking="5" />
+        <field name="HtmlField" type="html" label="Html" tracking="false" />
+        <field name="IntegerField" type="integer" label="Integer" tracking="7" />
+        <field name="Many2ManyField" type="TestMail.MailTestTrackAllM2M" label="Many2Many" collection="true" tracking="8" />
+        <field name="Many2OneFieldId" type="Res.Partner" label="Many2one" tracking="9" />
+        <field name="MonetaryField" type="monetary" label="Monetary" tracking="10" />
+        <field name="One2ManyField" type="TestMail.MailTestTrackAllO2M" label="One2Many" collection="true" tracking="11" />
+        <field name="SelectionField" type="selection" label="Selection" selection="TestMail.MailTestTrackAllSelectionFieldSelection" tracking="12" />
+        <field name="TextField" type="text" label="Text" tracking="13" />
+        <field name="Name" type="string" label="Name" />
+    </model>
+    <optionset id="TestMail.MailTestTrackAllSelectionFieldSelection" name="Mail Test Track All Selection Field Selection">
+        <option value="first" name="FIRST" />
+        <option value="second" name="SECOND" />
+    </optionset>
+    <model id="TestMail.MailTestTrackCompute" name="MailTestTrackCompute" description="Test tracking with computed fields">
+        <field name="PartnerId" type="Res.Partner" tracking="true" />
+        <field name="PartnerName" type="string" related="PartnerId.Name" store="true" tracking="true" />
+        <field name="PartnerEmail" type="string" related="PartnerId.Email" store="true" tracking="true" />
+        <field name="PartnerPhone" type="string" related="PartnerId.Phone" tracking="true" />
+    </model>
+    <model id="TestMail.MailTestTrackGroups" name="MailTestTrackGroups" description="Test tracking with groups">
+        <field name="Name" type="string" tracking="1" />
+        <field name="PartnerId" type="Res.Partner" tracking="2" groups="Base.GroupUser" />
+        <field name="Secret" type="string" tracking="3" groups="Base.GroupUser" />
+    </model>
+    <model id="TestMail.MailTestTrackMonetary" name="MailTestTrackMonetary" description="Test tracking monetary field">
+        <field name="CompanyId" type="Res.Company" />
+        <field name="CompanyCurrency" type="Res.Currency" string="Currency" related="CompanyId.CurrencyId" readonly="true" tracking="true" />
+        <field name="Revenue" type="monetary" label="Revenue" currency_field="CompanyCurrency" tracking="true" />
+    </model>
+    <model id="TestMail.MailTestTrackSelection" name="MailTestTrackSelection" description="Test Selection Tracking">
+        <field name="Name" type="string" />
+        <field name="SelectionType" type="selection" selection="TestMail.MailTestTrackSelectionSelectionTypeSelection" tracking="true" />
+    </model>
+    <optionset id="TestMail.MailTestTrackSelectionSelectionTypeSelection" name="Mail Test Track Selection Selection Type Selection">
+        <option value="first" name="First" />
+        <option value="second" name="Second" />
+    </optionset>
+    <model id="TestMail.MailTestMultiCompany" name="MailTestMultiCompany" description="This model can be used in multi company tests, with attachments support for checking record update in MC">
+        <field name="Name" type="string" />
+        <field name="CompanyId" type="Res.Company" />
+    </model>
+    <model id="TestMail.MailTestMultiCompanyRead" name="MailTestMultiCompanyRead" description="Just mail.test.simple, but multi company and supporting posting even if the user has no write access.">
+        <field name="Name" type="string" />
+        <field name="CompanyId" type="Res.Company" />
+    </model>
+    <model id="TestMail.MailTestMultiCompanyWithActivity" name="MailTestMultiCompanyWithActivity" description="This model can be used in multi company tests with activity">
+        <field name="Name" type="string" />
+        <field name="CompanyId" type="Res.Company" />
+    </model>
+    <model id="TestMail.MailTestNotMailThread" name="MailTestNotMailThread" description="Models not inheriting from mail.thread but using some cross models capabilities of mail.">
+        <field name="Name" type="string" />
+        <field name="CompanyId" type="Res.Company" />
+        <field name="CustomerId" type="Res.Partner" />
+    </model>
 </buvi>

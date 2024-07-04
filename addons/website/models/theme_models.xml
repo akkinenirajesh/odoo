@@ -1,3 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ThemeIrAsset" name="Website.ThemeIrAsset" description="Theme Asset">
+        <field name="Key" type="string" />
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Bundle" type="string" label="Bundle" required="true" />
+        <field name="Directive" type="Website.ThemeIrAssetDirective" label="Directive" required="true" />
+        <field name="Path" type="string" label="Path" required="true" />
+        <field name="Target" type="string" label="Target" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="Sequence" type="integer" label="Sequence" default="0" required="true" />
+        <field name="CopyIds" type="Website.IrAsset" collection="true" label="Assets using a copy of me" />
+    </model>
+
+    <optionset id="Website.ThemeIrAssetDirective" name="Theme Ir Asset Directive">
+        <option value="Append" name="Append" />
+        <option value="Prepend" name="Prepend" />
+        <option value="After" name="After" />
+        <option value="Before" name="Before" />
+        <option value="Remove" name="Remove" />
+        <option value="Replace" name="Replace" />
+        <option value="Include" name="Include" />
+    </optionset>
+
+    <model id="Website.ThemeIrUiView" name="Website.ThemeIrUiView" description="Theme UI View">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Key" type="string" label="Key" />
+        <field name="Type" type="string" label="Type" />
+        <field name="Priority" type="integer" label="Priority" default="0" required="true" />
+        <field name="Mode" type="Website.ThemeIrUiViewMode" label="Mode" />
+        <field name="Active" type="bool" label="Active" default="true" />
+        <field name="Arch" type="html" label="Arch" translate="true" />
+        <field name="ArchFs" type="string" label="Arch Fs" />
+        <field name="InheritId" type="Website.IrUiView" label="Inherit Id" />
+        <field name="CopyIds" type="Website.IrUiView" collection="true" label="Views using a copy of me" />
+        <field name="CustomizeShow" type="bool" label="Customize Show" />
+    </model>
+
+    <optionset id="Website.ThemeIrUiViewMode" name="Theme Ir Ui View Mode">
+        <option value="primary" name="Base View" />
+        <option value="extension" name="Extension View" />
+    </optionset>
+
+    <model id="Website.ThemeIrAttachment" name="Website.ThemeIrAttachment" description="Theme Attachments">
+        <field name="Name" type="string" label="Name" required="true" />
+        <field name="Key" type="string" label="Key" required="true" />
+        <field name="Url" type="string" label="Url" />
+        <field name="CopyIds" type="Website.IrAttachment" collection="true" label="Attachment using a copy of me" />
+    </model>
+
+    <model id="Website.ThemeWebsiteMenu" name="Website.ThemeWebsiteMenu" description="Website Theme Menu">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Url" type="string" label="Url" default="" />
+        <field name="PageId" type="Website.ThemeWebsitePage" label="Page Id" />
+        <field name="NewWindow" type="bool" label="New Window" />
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="ParentId" type="Website.ThemeWebsiteMenu" label="Parent Id" />
+        <field name="MegaMenuContent" type="html" label="Mega Menu Content" />
+        <field name="MegaMenuClasses" type="string" label="Mega Menu Classes" />
+        <field name="UseMainMenuAsParent" type="bool" label="Use Main Menu As Parent" default="true" />
+        <field name="CopyIds" type="Website.WebsiteMenu" collection="true" label="Menu using a copy of me" />
+    </model>
+
+    <model id="Website.ThemeWebsitePage" name="Website.ThemeWebsitePage" description="Website Theme Page">
+        <field name="Url" type="string" label="Url" />
+        <field name="ViewId" type="Website.ThemeIrUiView" label="View Id" required="true" />
+        <field name="WebsiteIndexed" type="bool" label="Page Indexed" default="true" />
+        <field name="IsPublished" type="bool" label="Is Published" />
+        <field name="HeaderOverlay" type="bool" label="Header Overlay" />
+        <field name="HeaderColor" type="string" label="Header Color" />
+        <field name="HeaderVisible" type="bool" label="Header Visible" default="true" />
+        <field name="FooterVisible" type="bool" label="Footer Visible" default="true" />
+        <field name="CopyIds" type="Website.WebsitePage" collection="true" label="Page using a copy of me" />
+    </model>
 </buvi>

@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mrp.MrpProduction" name="MrpProduction" description="Manufacturing Order">
+        <field name="ExtraCost" type="float" label="Extra Unit Cost" copy="false" />
+        <field name="ShowValuation" type="bool" compute="ComputeShowValuation" />
+        <field name="AnalyticAccountIds" type="collection" collection="true" relation="Account.AccountAnalyticAccount" compute="ComputeAnalyticAccountIds" store="true" />
+        <field name="AnalyticDistribution" type="collection" collection="true" relation="Account.AccountAnalyticDistribution" compute="ComputeAnalyticDistribution" />
+    </model>
 </buvi>

@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Pos.PosConfig" name="PosConfig" description="Point of Sale Configuration">
+        <field name="CrmTeam" type="Crm.Team" label="Sales Team" ondelete="set null" help="This Point of sale's sales will be related to this Sales Team." />
+        <field name="DownPaymentProduct" type="Product.Product" label="Down Payment Product" help="This product will be used as down payment on a sale order." />
+    </model>
 </buvi>

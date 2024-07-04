@@ -1,3 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockMoveLine" name="StockMoveLine" description="Product Moves (Stock Move Line)">
+        <field name="Picking" type="Stock.StockPicking" label="Transfer" required="true" collection="true" />
+        <field name="StockOperation" type="Stock.StockMove" label="Stock Operation" required="true" collection="true" />
+        <field name="Company" type="Res.Company" label="Company" required="true" />
+        <field name="Product" type="Product.Product" label="Product" required="true" collection="true" />
+        <field name="UnitOfMeasure" type="Uom.Uom" label="Unit of Measure" required="true" collection="true" />
+        <field name="ProductUomCategory" type="Uom.UomCategory" />
+        <field name="ProductCategory" type="Product.ProductCategory" label="Product Category" />
+        <field name="Quantity" type="float" label="Quantity" required="true" />
+        <field name="QuantityInProductUom" type="float" label="Quantity in Product UoM" required="true" />
+        <field name="Picked" type="bool" label="Picked" />
+        <field name="SourcePackage" type="Stock.QuantPackage" label="Source Package" collection="true" />
+        <field name="PackageLevel" type="Stock.PackageLevel" />
+        <field name="Lot" type="Stock.Lot" label="Lot/Serial Number" collection="true" />
+        <field name="LotName" type="string" label="Lot/Serial Number Name" />
+        <field name="DestinationPackage" type="Stock.QuantPackage" label="Destination Package" collection="true" />
+        <field name="Date" type="datetime" label="Date" required="true" />
+        <field name="ScheduledDate" type="datetime" label="Scheduled Date" />
+        <field name="FromOwner" type="Res.Partner" label="From Owner" />
+        <field name="From" type="Stock.Location" label="From" required="true" collection="true" />
+        <field name="To" type="Stock.Location" label="To" required="true" collection="true" />
+        <field name="SourceLocationType" type="selection" label="Source Location Type" />
+        <field name="DestinationLocationType" type="selection" label="Destination Location Type" />
+        <field name="LotsVisible" type="bool" />
+        <field name="PickingPartner" type="Res.Partner" />
+        <field name="PickingCode" type="selection" />
+        <field name="OperationType" type="Stock.PickingType" />
+        <field name="UseCreateLots" type="bool" />
+        <field name="UseExistingLots" type="bool" />
+        <field name="EntirePacks" type="bool" />
+        <field name="State" type="selection" />
+        <field name="IsInventory" type="bool" />
+        <field name="IsLocked" type="bool" />
+        <field name="ConsumeLineIds" type="Stock.StockMoveLine" collection="true" relation="many2many" />
+        <field name="ProduceLineIds" type="Stock.StockMoveLine" collection="true" relation="many2many" />
+        <field name="Reference" type="string" />
+        <field name="Tracking" type="selection" />
+        <field name="Origin" type="string" label="Source" />
+        <field name="DescriptionPicking" type="text" label="Description picking" />
+        <field name="Quant" type="Stock.Quant" label="Pick From" collection="true" />
+        <field name="ReservedPackagingQuantity" type="float" label="Reserved Packaging Quantity" />
+        <field name="PickingLocation" type="Stock.Location" />
+        <field name="PickingLocationDest" type="Stock.Location" />
+    </model>
 </buvi>

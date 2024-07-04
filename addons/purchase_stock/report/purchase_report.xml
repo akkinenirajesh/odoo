@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Purchase.PurchaseReport" name="PurchaseReport" description="Purchase Report">
+        <field name="PickingTypeId" type="Stock.Warehouse" label="Warehouse" readonly="true" />
+        <field name="EffectiveDate" type="datetime" label="Effective Date" />
+    </model>
 </buvi>

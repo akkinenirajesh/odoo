@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleTimesheet.AccountAnalyticLine" name="AccountAnalyticLine" description="Account Analytic Line">
+        <field name="TimesheetInvoiceType" type="Selection" label="Billable Type" readonly="true" collection="true" compute="ComputeTimesheetInvoiceType" />
+        <field name="CommercialPartnerId" type="res.partner" readonly="true" compute="ComputeCommercialPartner" />
+        <field name="TimesheetInvoiceId" type="account.move" string="Invoice" readonly="true" copy="false" help="Invoice created from the timesheet" index="true" />
+        <field name="SoLine" type="sale.order.line" readonly="false" collection="true" domain="DomainSoLine" compute="ComputeSoLine" help="Sales order item to which the time spent will be added in order to be invoiced to your customer. Remove the sales order item for the timesheet entry to be non-billable." />
+        <field name="OrderId" type="sale.order" readonly="true" related="SoLine.OrderId" collection="true" store="true" index="true" />
+        <field name="IsSoLineEdited" type="bool" string="Is Sales Order Item Manually Edited" />
+        <field name="AllowBillable" type="bool" related="ProjectId.AllowBillable" />
+        <field name="SaleOrderState" type="Selection" related="OrderId.State" />
+        <field name="Name" type="string" label="Name" translate="true" required="true" />
+        <field name="Amount" type="float" label="Amount" />
+        <field name="Project" type="project.project" string="Project" />
+        <field name="ProjectId" type="project.project" string="Project" related="Project.Id" />
+        <field name="Task" type="project.task" string="Task" />
+        <field name="TaskId" type="project.task" string="Task" related="Task.Id" />
+        <field name="Employee" type="hr.employee" string="Employee" />
+        <field name="EmployeeId" type="hr.employee" string="Employee" related="Employee.Id" />
+        <field name="UnitAmount" type="float" string="Unit Amount" />
+        <field name="Date" type="date" string="Date" />
+    </model>
+
+    <optionset id="SaleTimesheet.TimesheetInvoiceTypes" name="Timesheet Invoice Types">
+        <option value="billable_time" name="Billed on Timesheets" />
+        <option value="billable_fixed" name="Billed at a Fixed price" />
+        <option value="billable_milestones" name="Billed on Milestones" />
+        <option value="billable_manual" name="Billed Manually" />
+        <option value="non_billable" name="Non-Billable" />
+        <option value="timesheet_revenues" name="Timesheet Revenues" />
+        <option value="service_revenues" name="Service Revenues" />
+        <option value="other_revenues" name="Materials" />
+        <option value="other_costs" name="Materials" />
+    </optionset>
 </buvi>

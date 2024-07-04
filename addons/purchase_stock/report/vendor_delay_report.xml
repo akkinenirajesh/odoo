@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PurchaseStock.VendorDelayReport" name="VendorDelayReport" description="Vendor Delay Report">
+        <field name="PartnerId" type="Res.Partner" label="Vendor" readonly="true" />
+        <field name="ProductId" type="Product.Product" label="Product" readonly="true" />
+        <field name="CategoryId" type="Product.Category" label="Product Category" readonly="true" />
+        <field name="Date" type="datetime" label="Effective Date" readonly="true" />
+        <field name="QtyTotal" type="float" label="Total Quantity" readonly="true" />
+        <field name="QtyOnTime" type="float" label="On-Time Quantity" readonly="true" />
+        <field name="OnTimeRate" type="float" label="On-Time Delivery Rate" readonly="true" />
+    </model>
 </buvi>

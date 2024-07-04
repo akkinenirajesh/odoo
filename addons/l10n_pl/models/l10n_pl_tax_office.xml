@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="l10n_pl.l10n_pl_TaxOffice" name="l10n_pl.l10n_pl_TaxOffice" description="Tax Office in Poland">
+    <field name="Code" type="string" label="Code" required="true" />
+    <field name="Name" type="string" label="Description" required="true" />
+    <unique>
+      <field name="Code" />
+      <message>The code of the tax office must be unique !</message>
+    </unique>
+  </model>
 </buvi>

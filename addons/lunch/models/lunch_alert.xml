@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Lunch.LunchAlert" name="LunchAlert" description="Lunch Alert">
+    <field name="Name" type="string" label="Alert Name" required="true" translate="true" />
+    <field name="Message" type="html" label="Message" required="true" translate="true" />
+    <field name="Mode" type="Lunch.LunchAlertMode" label="Display" default="Alert" />
+    <field name="Recipients" type="Lunch.LunchAlertRecipients" label="Recipients" default="Everyone" />
+    <field name="NotificationTime" type="float" label="Notification Time" default="10.0" />
+    <field name="NotificationMoment" type="Lunch.LunchAlertMoment" label="Notification Moment" default="AM" required="true" />
+    <field name="Tz" type="Core.Timezone" label="Timezone" required="true" default="lambda self: self.Env.User.Tz or 'UTC'" />
+    <field name="CronId" type="Ir.Cron" label="Cron" ondelete="cascade" required="true" readonly="true" />
+    <field name="Until" type="date" label="Show Until" />
+    <field name="Mon" type="bool" label="Monday" default="true" />
+    <field name="Tue" type="bool" label="Tuesday" default="true" />
+    <field name="Wed" type="bool" label="Wednesday" default="true" />
+    <field name="Thu" type="bool" label="Thursday" default="true" />
+    <field name="Fri" type="bool" label="Friday" default="true" />
+    <field name="Sat" type="bool" label="Saturday" default="true" />
+    <field name="Sun" type="bool" label="Sunday" default="true" />
+    <field name="AvailableToday" type="bool" label="Is Displayed Today" readonly="true" compute="ComputeAvailableToday" search="SearchAvailableToday" />
+    <field name="Active" type="bool" label="Active" default="true" />
+    <field name="LocationIds" type="Lunch.Location" label="Location" collection="true" />
+    <constraint name="NotificationTimeRange" msg="Notification time must be between 0 and 12">
+      <expression>(NotificationTime &gt;= 0 and NotificationTime &lt;= 12)</expression>
+    </constraint>
+  </model>
+
+  <optionset id="Lunch.LunchAlertMode" name="Lunch Alert Mode">
+    <option value="Alert" name="Alert in app" />
+    <option value="Chat" name="Chat notification" />
+  </optionset>
+
+  <optionset id="Lunch.LunchAlertRecipients" name="Lunch Alert Recipients">
+    <option value="Everyone" name="Everyone" />
+    <option value="LastWeek" name="Employee who ordered last week" />
+    <option value="LastMonth" name="Employee who ordered last month" />
+    <option value="LastYear" name="Employee who ordered last year" />
+  </optionset>
+
+  <optionset id="Lunch.LunchAlertMoment" name="Lunch Alert Moment">
+    <option value="AM" name="AM" />
+    <option value="PM" name="PM" />
+  </optionset>
 </buvi>

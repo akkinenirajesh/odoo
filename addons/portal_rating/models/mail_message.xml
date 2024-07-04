@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailMessage" name="MailMessage" description="Mail Message">
+    <field name="Rating" type="Mail.Rating" collection="true" />
+    <field name="RatingValue" type="decimal" />
+    <field name="RatingStats" type="json" />
+  </model>
+
+  <optionset id="Mail.Rating" name="Rating">
+    <option value="rating" name="Rating" />
+    <option value="rating_value" name="RatingValue" />
+  </optionset>
 </buvi>

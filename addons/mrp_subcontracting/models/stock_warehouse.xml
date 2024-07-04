@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="report.stock.report_stock_rule" name="Report.StockReportStockRule">
+  <model id="MrpSubcontracting.StockWarehouse" name="StockWarehouse" description="Stock Warehouse">
+    <field name="SubcontractingToResupply" type="bool" label="Resupply Subcontractors" default="true" />
+    <field name="SubcontractingMtoPullId" type="MrpSubcontracting.StockRule" label="Subcontracting MTO Rule" relation="one2one" collection="true" />
+    <field name="SubcontractingPullId" type="MrpSubcontracting.StockRule" label="Subcontracting MTS Rule" relation="one2one" collection="true" />
+    <field name="SubcontractingRouteId" type="Stock.StockRoute" label="Resupply Subcontractor" relation="one2one" collection="true" />
+    <field name="SubcontractingTypeId" type="Stock.StockPickingType" label="Subcontracting Operation Type" relation="one2one" collection="true" />
+    <field name="SubcontractingResupplyTypeId" type="Stock.StockPickingType" label="Subcontracting Resupply Operation Type" relation="one2one" collection="true" />
   </model>
 </buvi>

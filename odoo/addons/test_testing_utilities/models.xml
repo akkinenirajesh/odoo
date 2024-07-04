@@ -1,3 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Test_Testing_Utilities.A" name="A" description="Testing Utilities A">
+    <field name="F1" type="string" required="true" />
+    <field name="F2" type="integer" default="42" />
+    <field name="F3" type="integer" />
+    <field name="F4" type="integer" compute="ComputeF4" />
+    <field name="F5" type="integer" />
+    <field name="F6" type="integer" />
+  </model>
+  <model id="Test_Testing_Utilities.B" name="B" description="Testing Utilities Readonly">
+    <field name="F1" type="integer" default="1" readonly="true" />
+    <field name="F2" type="integer" compute="ComputeF2" />
+  </model>
+  <model id="Test_Testing_Utilities.C" name="C" description="Testing Utilities C">
+    <field name="Name" type="string" label="name" required="true" />
+    <field name="F2" type="Test_Testing_Utilities.M2O" />
+  </model>
+  <model id="Test_Testing_Utilities.M2O" name="M2O" description="Testing Utilities Many To One">
+    <field name="Name" type="string" required="true" />
+  </model>
+  <model id="Test_Testing_Utilities.D" name="D" description="Testing Utilities D">
+    <field name="F" type="Test_Testing_Utilities.M2O" required="true" />
+    <field name="F2" type="string" />
+  </model>
+  <model id="Test_Testing_Utilities.E" name="E" description="Testing Utilities E">
+    <field name="M2M" type="Test_Testing_Utilities.Sub2" collection="true" />
+    <field name="Count" type="integer" compute="M2MCount" inverse="SetCount" />
+  </model>
+  <model id="Test_Testing_Utilities.Sub2" name="Sub2" description="Testing Utilities Subtraction 2">
+    <field name="Name" type="string" />
+    <field name="M2OIds" type="Test_Testing_Utilities.M2O" collection="true" />
+  </model>
+  <model id="Test_Testing_Utilities.F" name="F" description="Testing Utilities F">
+    <field name="M2M" type="Test_Testing_Utilities.Sub2" collection="true" />
+    <field name="M2O" type="Test_Testing_Utilities.Sub2" />
+  </model>
+  <model id="Test_Testing_Utilities.G" name="G" description="Testing Utilities G">
+    <field name="M2M" type="Test_Testing_Utilities.Sub3" collection="true" readonly="true" />
+  </model>
+  <model id="Test_Testing_Utilities.Sub3" name="Sub3" description="Testing Utilities Subtraction 3">
+    <field name="Name" type="string" />
+  </model>
+  <model id="Test_Testing_Utilities.Parent" name="Parent" description="Testing Utilities Parent">
+    <field name="Value" type="integer" default="1" />
+    <field name="V" type="integer" />
+    <field name="Subs" type="Test_Testing_Utilities.Sub" collection="true" />
+  </model>
+  <model id="Test_Testing_Utilities.Sub" name="Sub" description="Testing Utilities Subtraction">
+    <field name="Name" type="string" compute="ComputeName" />
+    <field name="Value" type="integer" default="2" />
+    <field name="V" type="integer" />
+    <field name="ParentId" type="Test_Testing_Utilities.Parent" />
+    <field name="HasParent" type="bool" />
+  </model>
+  <model id="Test_Testing_Utilities.Ref" name="Ref" description="Testing Utilities ref">
+    <field name="Value" type="integer" default="1" />
+    <field name="Subs" type="Test_Testing_Utilities.RefSub" collection="true" />
+    <field name="X" type="integer" />
+  </model>
+  <model id="Test_Testing_Utilities.RefSub" name="RefSub" description="Testing Utilities Subtraction">
+    <field name="A" type="integer" />
+    <field name="B" type="integer" />
+    <field name="C" type="integer" />
+    <field name="Z" type="integer" />
+    <field name="ParentId" type="Test_Testing_Utilities.Ref" />
+  </model>
+  <model id="Test_Testing_Utilities.Default" name="Default" description="Testing Utilities Default">
+    <field name="Value" type="integer" default="1" />
+    <field name="V" type="integer" />
+    <field name="Subs" type="Test_Testing_Utilities.Sub3" collection="true" />
+  </model>
+  <model id="Test_Testing_Utilities.O2MRecursive" name="O2MRecursive" description="Test_Testing_Utilities.Recursive">
+    <field name="OneToManyId" type="Test_Testing_Utilities.O2MRecursive" readonly="true" />
+    <field name="ManyToOneIds" type="Test_Testing_Utilities.O2MRecursive" collection="true" readonly="true" />
+  </model>
+  <model id="Test_Testing_Utilities.OnchangeParent" name="OnchangeParent" description="Testing Utilities Onchange Parent">
+    <field name="LineIds" type="Test_Testing_Utilities.OnchangeLine" collection="true" />
+  </model>
+  <model id="Test_Testing_Utilities.OnchangeLine" name="OnchangeLine" description="Testing Utilities Onchange Line">
+    <field name="Parent" type="Test_Testing_Utilities.OnchangeParent" />
+    <field name="Dummy" type="float" />
+    <field name="Flag" type="bool" store="false" />
+  </model>
+  <model id="Test_Testing_Utilities.OnchangeCount" name="OnchangeCount" description="Test_Testing_Utilities.OnchangeCount">
+    <field name="Count" type="integer" />
+    <field name="LineIds" type="Test_Testing_Utilities.OnchangeCountSub" collection="true" />
+  </model>
+  <model id="Test_Testing_Utilities.OnchangeCountSub" name="OnchangeCountSub" description="Test_Testing_Utilities.OnchangeCountSub">
+    <field name="Parent" type="Test_Testing_Utilities.OnchangeCount" />
+    <field name="Name" type="string" />
+  </model>
+  <model id="O2mReadonlySubfieldParent" name="O2mReadonlySubfieldParent" description="O2mReadonlySubfieldParent">
+    <field name="LineIds" type="O2mReadonlySubfieldChild" collection="true" />
+  </model>
+  <model id="O2mReadonlySubfieldChild" name="O2mReadonlySubfieldChild" description="O2mReadonlySubfieldChild">
+    <field name="Name" type="string" />
+    <field name="ParentId" type="O2mReadonlySubfieldParent" />
+    <field name="F" type="integer" compute="ComputeF" readonly="true" />
+  </model>
+  <model id="Test_Testing_Utilities.ReqBool" name="ReqBool" description="Test_Testing_Utilities.ReqBool">
+    <field name="FBool" type="bool" required="true" />
+  </model>
+  <model id="O2mChangesParent" name="O2mChangesParent" description="O2mChangesParent">
+    <field name="Name" type="string" />
+    <field name="LineIds" type="O2mChangesChildren" collection="true" />
+  </model>
+  <model id="O2mChangesChildren" name="O2mChangesChildren" description="O2mChangesChildren">
+    <field name="Name" type="string" />
+    <field name="V" type="integer" />
+    <field name="LineIds" type="O2mChangesChildrenLines" collection="true" />
+    <field name="ParentId" type="O2mChangesParent" />
+  </model>
+  <model id="O2mChangesChildrenLines" name="O2mChangesChildrenLines" description="O2mChangesChildren.Lines">
+    <field name="ParentId" type="O2mChangesChildren" />
+    <field name="V" type="integer" />
+    <field name="Vv" type="integer" />
+  </model>
+  <model id="ResConfigTest" name="ResConfigTest" description="Config test" inherit="res.config.settings">
+    <field name="Param1" type="integer" label="Test parameter 1" config_parameter="resConfigTest.parameter1" default="1000" />
+    <field name="Param2" type="res.config" config_parameter="resConfigTest.parameter2" />
+  </model>
 </buvi>

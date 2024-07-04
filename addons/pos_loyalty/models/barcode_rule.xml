@@ -1,3 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosLoyalty.BarcodeRule" name="BarcodeRule" description="Barcode Rule">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Barcode" required="true" />
+        <field name="Action" type="PosLoyalty.BarcodeRuleAction" label="Action" required="true" />
+        <field name="Value" type="float" label="Value" />
+        <field name="Product" type="Product.Product" label="Product" />
+        <field name="ProductCateg" type="Product.ProductCategory" label="Product Category" />
+        <field name="Partner" type="Res.Partner" label="Partner" />
+        <field name="Program" type="PosLoyalty.Program" label="Program" required="true" />
+        <field name="Type" type="PosLoyalty.BarcodeRuleType" label="Type" required="true" />
+        <field name="Coupon" type="bool" label="Coupon" />
+        <field name="ConditionType" type="PosLoyalty.BarcodeRuleConditionType" label="Condition Type" required="true" />
+        <field name="ConditionValue" type="float" label="Condition Value" />
+        <field name="Condition" type="string" label="Condition" />
+        <field name="Active" type="bool" default="true" label="Active" />
+        <field name="Points" type="float" label="Points" />
+    </model>
+
+    <optionset id="PosLoyalty.BarcodeRuleAction" name="Barcode Rule Action">
+        <option value="discount" name="Discount" />
+        <option value="points" name="Points" />
+        <option value="product" name="Product" />
+        <option value="coupon" name="Coupon" />
+        <option value="free_product" name="Free Product" />
+    </optionset>
+
+    <optionset id="PosLoyalty.BarcodeRuleType" name="Barcode Rule Type">
+        <option value="code" name="Code" />
+        <option value="coupon" name="Coupon" />
+    </optionset>
+
+    <optionset id="PosLoyalty.BarcodeRuleConditionType" name="Barcode Rule Condition Type">
+        <option value="quantity" name="Quantity" />
+        <option value="amount" name="Amount" />
+        <option value="product" name="Product" />
+    </optionset>
 </buvi>

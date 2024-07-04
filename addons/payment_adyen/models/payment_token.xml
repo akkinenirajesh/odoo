@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentToken" name="PaymentToken" description="Payment Token">
+        <field name="AdyenShopperReference" type="string" label="Shopper Reference" help="The unique reference of the partner owning this token" readonly="true" />
+    </model>
 </buvi>

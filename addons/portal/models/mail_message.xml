@@ -1,69 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="ir.actions.act_window.view" name="Ir.ActionsActWindowView" track_created="true" track_update="true">
-    <field name="ActWindow" label="Action" type="Ir.ActionsActWindow" copied="true" on-delete="Cascade"/>
-    <field name="View" label="View" type="Ir.UiView" copied="true" on-delete="Clear"/>
-    <field name="Multi" label="On Multiple Doc." type="bool" copied="true"/>
-    <field name="Sequence" label="Sequence" type="integer" copied="true"/>
-    <field name="ViewMode" label="View Type" type="Ir.ActionWindowViewViewType" required="true" copied="true"/>
-  </model>
-  <model id="ir.ui.view" name="Ir.UiView" track_created="true" track_update="true">
-    <field name="Model" label="Model of the view" type="Ir.Model" transient="true" on-delete="Clear"/>
-    <field name="ModelData" label="Model Data" type="Ir.ModelData" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="InheritChildrens" label="Views which inherit from this one" type="Ir.UiView" collection="true"/>
-    <field name="Inherit" label="Inherited View" type="Ir.UiView" indexed="true" copied="true" on-delete="Restrict"/>
-    <field name="Groups" label="Groups" type="Res.Groups" collection="true" copied="true"/>
-    <field name="ThemeTemplate" label="Theme Template" type="Theme.IrUiView" on-delete="Clear"/>
-    <field name="Website" label="Website" type="Website." copied="true" on-delete="Cascade"/>
-    <field name="ControllerPages" label="Controller Page" type="Website.ControllerPage" collection="true"/>
-    <field name="FirstPage" label="Website Page" type="Website.Page" readonly="true" transient="true" on-delete="Clear"/>
-    <field name="Pages" label="Page" type="Website.Page" collection="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Arch" label="View Architecture" type="text" transient="true"/>
-    <field name="ArchBase" label="Base View Architecture" type="text" transient="true"/>
-    <field name="ArchDb" label="Arch Blob" type="text" copied="true" translatable="true"/>
-    <field name="ArchFs" label="Arch Filename" type="string" copied="true"/>
-    <field name="ArchPrev" label="Previous View Architecture" type="text" copied="true"/>
-    <field name="ArchUpdated" label="Modified Architecture" type="bool" copied="true"/>
-    <field name="CustomizeShow" label="Show As Optional Inherit" type="bool" copied="true"/>
-    <field name="IsSeoOptimized" label="SEO optimized" type="bool" readonly="true" transient="true"/>
-    <field name="Key" label="Key" type="string" indexed="true" copied="true"/>
-    <field name="Mode" label="View inheritance mode" type="Ir.ViewViewInheritanceMode" required="true" copied="true"/>
-    <field name="Model" label="Model" type="string" indexed="true" copied="true"/>
-    <field name="Name" label="View Name" type="string" required="true" copied="true"/>
-    <field name="Priority" label="Sequence" type="integer" required="true" copied="true"/>
-    <field name="SeoName" label="Seo name" type="string" copied="true" translatable="true"/>
-    <field name="Track" label="Track" type="bool" copied="true"/>
-    <field name="Type" label="View Type" type="Ir.ViewViewType" copied="true"/>
-    <field name="Visibility" label="Visibility" type="Ir.ViewVisibility" copied="true"/>
-    <field name="VisibilityPassword" label="Visibility Password" type="string"/>
-    <field name="VisibilityPasswordDisplay" label="Visibility Password Display" type="string" transient="true"/>
-    <field name="WebsiteMetaDescription" label="Website meta description" type="text" copied="true" translatable="true"/>
-    <field name="WebsiteMetaKeywords" label="Website meta keywords" type="string" copied="true" translatable="true"/>
-    <field name="WebsiteMetaOgImg" label="Website opengraph image" type="string" copied="true"/>
-    <field name="WebsiteMetaTitle" label="Website meta title" type="string" copied="true" translatable="true"/>
-    <field name="Xml" label="External ID" type="string" readonly="true" transient="true"/>
-  </model>
-  <model id="report.stock.label_lot_template_view" name="Report.StockLabelLotTemplateView">
-  </model>
-  <model id="report.stock.label_product_product_view" name="Report.StockLabelProductProductView">
-  </model>
-  <model id="crm.reveal.view" name="Crm.RevealView" track_created="true" track_update="true">
-    <field name="RevealRule" label="Lead Generation Rule" type="Crm.RevealRule" indexed="true" copied="true" on-delete="Clear"/>
-    <field name="RevealIp" label="IP Address" type="string" copied="true"/>
-    <field name="RevealState" label="State" type="Crm.CrmRevealViewState" indexed="true" copied="true"/>
-  </model>
-  <model id="theme.ir.ui.view" name="Theme.IrUiView" track_created="true" track_update="true">
-    <field name="Copys" label="Views using a copy of me" type="Ir.UiView" collection="true" readonly="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="Arch" label="Arch" type="text" copied="true" translatable="true"/>
-    <field name="ArchFs" label="Arch Fs" type="string" copied="true"/>
-    <field name="CustomizeShow" label="Customize Show" type="bool" copied="true"/>
-    <field name="Inherit" label="Inherit" type="reference" copied="true"/>
-    <field name="Key" label="Key" type="string" copied="true"/>
-    <field name="Mode" label="Mode" type="Theme.ThemeUiViewMode" copied="true"/>
-    <field name="Name" label="Name" type="string" required="true" copied="true"/>
-    <field name="Priority" label="Priority" type="integer" required="true" copied="true"/>
-    <field name="Type" label="Type" type="string" copied="true"/>
-  </model>
+    <model id="Portal.MailMessage" name="MailMessage" description="Mail Message">
+        <field name="AttachmentIds" type="many2many" collection="true" relation="Attachment.Attachment" label="Attachments" />
+        <field name="AuthorAvatarUrl" type="string" label="Author Avatar Url" />
+        <field name="AuthorId" type="many2one" relation="Res.Users" label="Author" />
+        <field name="Body" type="text" label="Body" />
+        <field name="Date" type="datetime" label="Date" />
+        <field name="Id" type="integer" label="ID" />
+        <field name="IsInternal" type="bool" label="Internal" />
+        <field name="IsMessageSubtypeNote" type="bool" label="Is Note" />
+        <field name="PublishedDateStr" type="string" label="Published Date" />
+        <field name="SubtypeId" type="many2one" relation="Mail.MessageSubtype" label="Subtype" />
+    </model>
 </buvi>

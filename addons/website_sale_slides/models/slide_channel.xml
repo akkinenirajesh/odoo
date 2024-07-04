@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleSlides.SlideChannel" name="SlideChannel" description="Slide Channel">
+        <field name="Enroll" type="WebsiteSaleSlides.SlideChannelEnroll" />
+        <field name="ProductId" type="Product.Product" label="Product" collection="true" domain="[('ServiceTracking', '=', 'course')]" default="GetDefaultProductId" />
+        <field name="ProductSaleRevenues" type="decimal" label="Total revenues" readonly="true" groups="SalesTeam.GroupSaleSalesman" />
+        <field name="CurrencyId" type="Core.Currency" related="ProductId.CurrencyId" />
+        <constraint name="ProductIdCheck" message="Product is required for on payment channels." 
+                    condition="[('Enroll', '=', 'payment'), ('ProductId', '=', None)]" />
+    </model>
+
+    <optionset id="WebsiteSaleSlides.SlideChannelEnroll" name="SlideChannel Enroll">
+        <option value="invite" name="Invite" />
+        <option value="payment" name="On payment" />
+    </optionset>
 </buvi>

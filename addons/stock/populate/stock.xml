@@ -1,5 +1,115 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_product" name="Stock.ForecastedProductProduct">
+  <model id="Stock.Warehouse" name="Stock.Warehouse" description="Warehouse">
+    <field name="Company" type="Core.Company" required="true" />
+    <field name="Name" type="string" label="Warehouse Name" required="true" />
+    <field name="Code" type="string" label="Code" />
+    <field name="ReceptionSteps" type="Stock.WarehouseReceptionSteps" />
+    <field name="DeliverySteps" type="Stock.WarehouseDeliverySteps" />
+  </model>
+  <optionset id="Stock.WarehouseReceptionSteps" name="Warehouse Reception Steps">
+    <option value="OneStep" name="One Step" />
+    <option value="TwoSteps" name="Two Steps" />
+    <option value="ThreeSteps" name="Three Steps" />
+  </optionset>
+  <optionset id="Stock.WarehouseDeliverySteps" name="Warehouse Delivery Steps">
+    <option value="ShipOnly" name="Ship Only" />
+    <option value="PickShip" name="Pick & Ship" />
+    <option value="PickPackShip" name="Pick, Pack & Ship" />
+  </optionset>
+  <model id="Stock.StorageCategory" name="Stock.StorageCategory" description="Storage Category">
+    <field name="Name" type="string" label="Category Name" required="true" />
+    <field name="MaxWeight" type="float" label="Maximum Weight" />
+    <field name="AllowNewProduct" type="Stock.StorageCategoryAllowNewProduct" />
+  </model>
+  <optionset id="Stock.StorageCategoryAllowNewProduct" name="Allow New Product">
+    <option value="Empty" name="Empty" />
+    <option value="Same" name="Same" />
+    <option value="Mixed" name="Mixed" />
+  </optionset>
+  <model id="Stock.Location" name="Stock.Location" description="Location">
+    <field name="Name" type="string" label="Location Name" required="true" />
+    <field name="Usage" type="Stock.LocationUsage" />
+    <field name="RemovalStrategy" type="Stock.RemovalStrategy" />
+    <field name="Company" type="Core.Company" />
+    <field name="StorageCategory" type="Stock.StorageCategory" />
+    <field name="ParentLocation" type="Stock.Location" collection="true" />
+  </model>
+  <optionset id="Stock.LocationUsage" name="Location Usage">
+    <option value="Internal" name="Internal" />
+    <option value="View" name="View" />
+    <option value="Customer" name="Customer" />
+    <option value="Supplier" name="Supplier" />
+  </optionset>
+  <optionset id="Stock.RemovalStrategy" name="Removal Strategy">
+    <option value="FIFO" name="FIFO" />
+    <option value="LIFO" name="LIFO" />
+    <option value="Nearest" name="Nearest" />
+  </optionset>
+  <model id="Stock.PutawayRule" name="Stock.PutawayRule" description="Putaway Rule">
+    <field name="Company" type="Core.Company" />
+    <field name="Product" type="Product.Product" />
+    <field name="Category" type="Product.Category" />
+    <field name="LocationIn" type="Stock.Location" />
+    <field name="LocationOut" type="Stock.Location" />
+    <field name="Sequence" type="integer" />
+    <field name="Sublocation" type="Stock.PutawayRuleSublocation" />
+    <field name="StorageCategory" type="Stock.StorageCategory" />
+  </model>
+  <optionset id="Stock.PutawayRuleSublocation" name="Sublocation">
+    <option value="No" name="No" />
+    <option value="LastUsed" name="Last Used" />
+    <option value="ClosestLocation" name="Closest Location" />
+  </optionset>
+  <model id="Stock.WarehouseOrderpoint" name="Stock.WarehouseOrderpoint" description="Warehouse Orderpoint">
+    <field name="Active" type="bool" default="true" />
+    <field name="Warehouse" type="Stock.Warehouse" />
+    <field name="Company" type="Core.Company" />
+    <field name="Product" type="Product.Product" />
+    <field name="Location" type="Stock.Location" />
+    <field name="ProductMinQuantity" type="float" />
+    <field name="ProductMaxQuantity" type="float" />
+    <field name="QuantityMultiple" type="float" />
+  </model>
+  <model id="Stock.Quant" name="Stock.Quant" description="Quant">
+    <field name="Location" type="Stock.Location" required="true" />
+    <field name="Product" type="Product.Product" required="true" />
+    <field name="InventoryQuantity" type="float" />
+  </model>
+  <model id="Stock.PickingType" name="Stock.PickingType" description="Picking Type">
+    <field name="Company" type="Core.Company" />
+    <field name="Code" type="Stock.PickingTypeCode" />
+    <field name="Name" type="string" label="Picking Type Name" required="true" />
+    <field name="SequenceCode" type="string" label="Sequence Code" />
+    <field name="Warehouse" type="Stock.Warehouse" />
+    <field name="DefaultLocationSource" type="Stock.Location" />
+    <field name="DefaultLocationDestination" type="Stock.Location" />
+  </model>
+  <optionset id="Stock.PickingTypeCode" name="Picking Type Code">
+    <option value="Incoming" name="Incoming" />
+    <option value="Outgoing" name="Outgoing" />
+    <option value="Internal" name="Internal" />
+  </optionset>
+  <model id="Stock.Picking" name="Stock.Picking" description="Picking">
+    <field name="Priority" type="bool" />
+    <field name="ScheduledDate" type="datetime" />
+    <field name="PickingType" type="Stock.PickingType" />
+    <field name="Partner" type="Res.Partner" />
+    <field name="Owner" type="Res.Partner" />
+    <field name="Location" type="Stock.Location" />
+    <field name="LocationDestination" type="Stock.Location" />
+  </model>
+  <model id="Stock.Move" name="Stock.Move" description="Move">
+    <field name="Product" type="Product.Product" required="true" />
+    <field name="ProductUom" type="Product.Uom" required="true" />
+    <field name="ProductQuantity" type="float" />
+    <field name="Sequence" type="integer" />
+    <field name="Picking" type="Stock.Picking" collection="true" />
+    <field name="Location" type="Stock.Location" />
+    <field name="LocationDestination" type="Stock.Location" />
+    <field name="Name" type="string" />
+    <field name="Date" type="datetime" />
+    <field name="Company" type="Core.Company" />
+    <field name="PriceUnit" type="float" />
   </model>
 </buvi>

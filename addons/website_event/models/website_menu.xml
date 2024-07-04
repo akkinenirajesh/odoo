@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.WebsiteMenu" name="WebsiteMenu" description="Website Menu">
+        <field name="Name" type="string" label="Menu Name" required="true" translate="true"/>
+        <field name="ParentID" type="Website.WebsiteMenu" relation="parent"/>
+        <field name="Url" type="char" label="URL" />
+        <field name="Sequence" type="integer" label="Sequence" default="0"/>
+        <field name="NewWindow" type="bool" label="Open in new window" default="false"/>
+        <field name="IsActive" type="bool" label="Active" default="true" help="Uncheck this box to hide the menu without removing it."/>
+        <field name="WebsiteIDs" type="Website.Website" collection="true" label="Websites" help="The menu is only displayed on the selected websites."/>
+        <field name="ShowInMenu" type="bool" label="Show in Menu" default="true" help="Enable to show the menu on the website."/>
+    </model>
 </buvi>

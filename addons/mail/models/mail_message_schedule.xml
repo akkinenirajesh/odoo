@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailMessageSchedule" name="MailMessageSchedule" description="Scheduled Messages">
+        <field name="MailMessageId" type="Mail.MailMessage" required="true" ondelete="cascade" />
+        <field name="NotificationParameters" type="text" label="Notification Parameter" />
+        <field name="ScheduledDateTime" type="datetime" label="Scheduled Send Date" required="true"
+            help="Datetime at which notification should be sent." />
+    </model>
 </buvi>

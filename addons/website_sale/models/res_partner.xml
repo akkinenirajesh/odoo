@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSale.ResPartner" name="ResPartner" description="ResPartner">
+        <field name="LastWebsiteSOId" type="Sale.SaleOrder" label="Last Online Sales Order" relation="true" />
+    </model>
 </buvi>

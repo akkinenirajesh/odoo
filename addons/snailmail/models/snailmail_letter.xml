@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Snailmail.SnailmailLetter" name="SnailmailLetter" description="Snailmail Letter">
+    <field name="UserId" type="res.users" label="Sent by" />
+    <field name="Model" type="string" label="Model" required="true" />
+    <field name="ResId" type="integer" label="Document ID" required="true" />
+    <field name="PartnerId" type="res.partner" label="Recipient" required="true" />
+    <field name="CompanyId" type="res.company" label="Company" required="true" readonly="true"
+      default="lambda self: self.Env.Company.Id" />
+    <field name="ReportTemplate" type="ir.actions.report" label="Optional report to print and attach" />
+    <field name="AttachmentId" type="ir.attachment" label="Attachment" ondelete="cascade" index="btree_not_null" />
+    <field name="AttachmentDatas" type="binary" label="Document" related="AttachmentId.Datas" />
+    <field name="AttachmentFname" type="string" label="Attachment Filename" related="AttachmentId.Name" />
+    <field name="Color" type="bool" label="Color" default="lambda self: self.Env.Company.SnailmailColor" />
+    <field name="Cover" type="bool" label="Cover Page" default="lambda self: self.Env.Company.SnailmailCover" />
+    <field name="Duplex" type="bool" label="Both side" default="lambda self: self.Env.Company.SnailmailDuplex" />
+    <field name="State" type="selection" label="Status" readonly="true" copy="false" default="pending" required="true"
+      help="When a letter is created, the status is 'Pending'.&#x0A;If the letter is correctly sent, the status goes in 'Sent',&#x0A;If not, it will got in state 'Error' and the error message will be displayed in the field 'Error Message'."
+      options="SnailmailLetter.States" />
+    <field name="ErrorCode" type="selection" label="Error" options="SnailmailLetter.ErrorCodes" />
+    <field name="InfoMsg" type="string" label="Information" />
+    <field name="Reference" type="string" label="Related Record" compute="ComputeReference" readonly="true" store="false" />
+    <field name="MessageId" type="mail.message" label="Snailmail Status Message" index="btree_not_null" />
+    <field name="NotificationIds" type="mail.notification" collection="true" label="Notifications" />
+    <field name="Street" type="string" label="Street" />
+    <field name="Street2" type="string" label="Street2" />
+    <field name="Zip" type="string" label="Zip" />
+    <field name="City" type="string" label="City" />
+    <field name="StateId" type="res.country.state" label="State" />
+    <field name="CountryId" type="res.country" label="Country" />
+  </model>
+
+  <optionset id="Snailmail.SnailmailLetter.States" name="SnailmailLetter States">
+    <option value="pending" name="In Queue" />
+    <option value="sent" name="Sent" />
+    <option value="error" name="Error" />
+    <option value="canceled" name="Cancelled" />
+  </optionset>
+
+  <optionset id="Snailmail.SnailmailLetter.ErrorCodes" name="SnailmailLetter Error Codes">
+    <option value="MISSING_REQUIRED_FIELDS" name="MISSING_REQUIRED_FIELDS" />
+    <option value="CREDIT_ERROR" name="CREDIT_ERROR" />
+    <option value="TRIAL_ERROR" name="TRIAL_ERROR" />
+    <option value="NO_PRICE_AVAILABLE" name="NO_PRICE_AVAILABLE" />
+    <option value="FORMAT_ERROR" name="FORMAT_ERROR" />
+    <option value="UNKNOWN_ERROR" name="UNKNOWN_ERROR" />
+    <option value="ATTACHMENT_ERROR" name="ATTACHMENT_ERROR" />
+  </optionset>
 </buvi>

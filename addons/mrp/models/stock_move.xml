@@ -1,3 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mrp.StockMoveLine" name="Mrp.StockMoveLine" inherit="Stock.StockMoveLine" description="Stock Move Line">
+    <field name="WorkorderId" type="Mrp.Workorder" label="Work Order" check_company="true" />
+    <field name="ProductionId" type="Mrp.Production" label="Production Order" check_company="true" />
+    <field name="DescriptionBomLine" type="string" related="MoveId.DescriptionBomLine" />
+  </model>
+
+  <model id="Mrp.StockMove" name="Mrp.StockMove" inherit="Stock.StockMove" description="Stock Move">
+    <field name="CreatedProductionId" type="Mrp.Production" label="Created Production Order" check_company="true" index="true" />
+    <field name="ProductionId" type="Mrp.Production" label="Production Order for finished products" check_company="true" index="btree_not_null" />
+    <field name="RawMaterialProductionId" type="Mrp.Production" label="Production Order for components" check_company="true" index="btree_not_null" />
+    <field name="UnbuildId" type="Mrp.Unbuild" label="Disassembly Order" check_company="true" />
+    <field name="ConsumeUnbuildId" type="Mrp.Unbuild" label="Consumed Disassembly Order" check_company="true" />
+    <field name="AllowedOperationIds" type="Mrp.RoutingWorkcenter" related="RawMaterialProductionId.BomId.OperationIds" collection="true" />
+    <field name="OperationId" type="Mrp.RoutingWorkcenter" label="Operation To Consume" check_company="true" domain="[('Id', 'in', AllowedOperationIds)]" />
+    <field name="WorkorderId" type="Mrp.Workorder" label="Work Order To Consume" copy="false" check_company="true" index="btree_not_null" />
+    <field name="BomLineId" type="Mrp.BomLine" label="BoM Line" check_company="true" />
+    <field name="ByproductId" type="Mrp.BomByproduct" label="By-products" check_company="true" help="By-product line that generated the move in a manufacturing order" />
+    <field name="UnitFactor" type="float" label="Unit Factor" compute="ComputeUnitFactor" store="true" />
+    <field name="IsDone" type="bool" label="Done" compute="ComputeIsDone" store="true" />
+    <field name="OrderFinishedLotId" type="Stock.Lot" label="Finished Lot/Serial Number" related="RawMaterialProductionId.LotProducingId" store="true" index="btree_not_null" />
+    <field name="ShouldConsumeQty" type="float" label="Quantity To Consume" compute="ComputeShouldConsumeQty" digits="Product Unit of Measure" />
+    <field name="CostShare" type="float" label="Cost Share (%)" digits="(5, 2)" help="The percentage of the final production cost for this by-product. The total of all by-products' cost share must be smaller or equal to 100." />
+    <field name="ProductQtyAvailable" type="float" label="Product On Hand Quantity" related="ProductId.QtyAvailable" depends="ProductId" />
+    <field name="ProductVirtualAvailable" type="float" label="Product Forecasted Quantity" related="ProductId.VirtualAvailable" depends="ProductId" />
+    <field name="DescriptionBomLine" type="string" label="Kit" compute="ComputeDescriptionBomLine" />
+    <field name="ManualConsumption" type="bool" label="Manual Consumption" compute="ComputeManualConsumption" store="true" help="When activated, then the registration of consumption for that component is recorded manually exclusively.\nIf not activated, and any of the components consumption is edited manually on the manufacturing order, Odoo assumes manual consumption also." />
+  </model>
 </buvi>

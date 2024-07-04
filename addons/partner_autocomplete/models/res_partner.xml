@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Res.Partner" name="Res.Partner" description="Partner">
+    <field name="PartnerGid" type="integer" label="Company database ID" />
+    <field name="AdditionalInfo" type="string" label="Additional info" />
+  </model>
 </buvi>

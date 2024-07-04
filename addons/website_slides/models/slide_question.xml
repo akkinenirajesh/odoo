@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSlides.SlideQuestion" name="SlideQuestion" description="Content Quiz Question">
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="Question" type="string" label="Question Name" required="true" translate="true" />
+        <field name="SlideId" type="WebsiteSlides.SlideSlide" label="Content" required="true" collection="true" />
+        <field name="AnswerIds" type="WebsiteSlides.SlideAnswer" label="Answer" collection="true" />
+        <field name="AnswersValidationError" type="string" label="Error on Answers" />
+        <field name="AttemptsCount" type="integer" label="Attempts Count" />
+        <field name="AttemptsAvg" type="float" label="Attempts Average" />
+        <field name="DoneCount" type="integer" label="Done Count" />
+    </model>
+    <model id="WebsiteSlides.SlideAnswer" name="SlideAnswer" description="Slide Question's Answer">
+        <field name="Sequence" type="integer" label="Sequence" />
+        <field name="QuestionId" type="WebsiteSlides.SlideQuestion" label="Question" required="true" collection="true" />
+        <field name="TextValue" type="string" label="Answer" required="true" translate="true" />
+        <field name="IsCorrect" type="bool" label="Is Correct Answer" />
+        <field name="Comment" type="text" label="Comment" translate="true" help="This comment will be displayed to the user if they select this answer" />
+    </model>
 </buvi>

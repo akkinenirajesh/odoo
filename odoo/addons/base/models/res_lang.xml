@@ -1,23 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="res.currency" name="Res.Currency" track_created="true" track_update="true">
-    <field name="Rates" label="Rates" type="Res.CurrencyRate" collection="true"/>
-    <field name="Active" label="Active" type="bool" copied="true"/>
-    <field name="CurrencySubunitLabel" label="Currency Subunit" type="string" copied="true"/>
-    <field name="CurrencyUnitLabel" label="Currency Unit" type="string" copied="true"/>
-    <field name="Date" label="Date" type="date" readonly="true" transient="true"/>
-    <field name="DecimalPlaces" label="Decimal Places" type="integer" readonly="true"/>
-    <field name="DisplayRoundingWarning" label="Display Rounding Warning" type="bool" readonly="true" transient="true"/>
-    <field name="EbayAvailable" label="Use on eBay" type="bool" copied="true"/>
-    <field name="FiscalCountryCodes" label="Fiscal Country Codes" type="string" copied="true" transient="true"/>
-    <field name="FullName" label="Name" type="string" copied="true"/>
-    <field name="InverseRate" label="Inverse Rate" type="float" readonly="true" transient="true"/>
-    <field name="IsCurrentCompanyCurrency" label="Is Current Company Currency" type="bool" readonly="true" transient="true"/>
-    <field name="Name" label="Currency" type="string" required="true" copied="true"/>
-    <field name="Position" label="Symbol Position" type="Res.CurrencySymbolPosition" copied="true"/>
-    <field name="Rate" label="Current Rate" type="float" readonly="true" transient="true"/>
-    <field name="RateString" label="Rate String" type="string" readonly="true" transient="true"/>
-    <field name="Rounding" label="Rounding Factor" type="float" copied="true"/>
-    <field name="Symbol" label="Symbol" type="string" required="true" copied="true"/>
-  </model>
+    <model id="Base.ResLang" name="ResLang" description="Languages">
+        <field name="Name" type="string" label="Language Name" required="true" translate="true" />
+        <field name="Code" type="string" label="Locale Code" required="true" help="This field is used to set/get locales for user" />
+        <field name="IsoCode" type="string" label="ISO Code" help="This ISO code is the name of po files to use for translations" />
+        <field name="UrlCode" type="string" label="URL Code" required="true" help="The Lang Code displayed in the URL" />
+        <field name="Active" type="bool" />
+        <field name="Direction" type="selection" label="Text Direction" required="true" default="ltr"
+            options="Base.TextDirection">
+        </field>
+        <field name="DateFormat" type="string" label="Date Format" required="true" default="%m/%d/%Y" />
+        <field name="TimeFormat" type="string" label="Time Format" required="true" default="%H:%M:%S" />
+        <field name="WeekStart" type="selection" label="First Day of Week" required="true" default="7"
+            options="Base.WeekStart">
+        </field>
+        <field name="Grouping" type="string" label="Separator Format" required="true" default="[]"
+            help="The Separator Format should be like [,n] where 0 < n :starting from Unit digit. -1 will end the separation. e.g. [3,2,-1] will represent 106500 to be 1,06,500; [1,2,-1] will represent it to be 106,50,0;[3] will represent it as 106,500. Provided ',' as the thousand separator in each case." />
+        <field name="DecimalPoint" type="string" label="Decimal Separator" required="true" default="." trim="false" />
+        <field name="ThousandsSep" type="string" label="Thousands Separator" default="," trim="false" />
+        <field name="FlagImage" type="image" label="Image" />
+        <field name="FlagImageUrl" type="string" compute="ComputeFlagImageUrl" />
+        <unique>
+            <field name="Name" />
+            <message>The name of the language must be unique!</message>
+        </unique>
+        <unique>
+            <field name="Code" />
+            <message>The code of the language must be unique!</message>
+        </unique>
+        <unique>
+            <field name="UrlCode" />
+            <message>The URL code of the language must be unique!</message>
+        </unique>
+    </model>
+
+    <optionset id="Base.TextDirection" name="Text Direction">
+        <option value="ltr" name="Left-to-Right" />
+        <option value="rtl" name="Right-to-Left" />
+    </optionset>
+
+    <optionset id="Base.WeekStart" name="First Day of Week">
+        <option value="1" name="Monday" />
+        <option value="2" name="Tuesday" />
+        <option value="3" name="Wednesday" />
+        <option value="4" name="Thursday" />
+        <option value="5" name="Friday" />
+        <option value="6" name="Saturday" />
+        <option value="7" name="Sunday" />
+    </optionset>
 </buvi>

@@ -1,3 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentTransaction" name="Payment.PaymentTransaction" description="Payment Transaction">
+    <field name="Amount" type="float" label="Amount" required="true" />
+    <field name="CurrencyId" type="Core.Currency" label="Currency" required="true" />
+    <field name="PartnerId" type="Core.Partner" label="Partner" />
+    <field name="PartnerName" type="string" label="Partner Name" />
+    <field name="PartnerEmail" type="string" label="Partner Email" />
+    <field name="PartnerPhone" type="string" label="Partner Phone" />
+    <field name="PartnerCountryId" type="Core.Country" label="Partner Country" />
+    <field name="PaymentMethodId" type="Payment.PaymentMethod" label="Payment Method" />
+    <field name="Operation" type="string" label="Operation" />
+    <field name="ProviderCode" type="string" label="Provider Code" />
+    <field name="ProviderId" type="Payment.PaymentProvider" label="Provider" />
+    <field name="ProviderReference" type="string" label="Provider Reference" />
+    <field name="TokenId" type="Payment.PaymentToken" label="Token" />
+    <field name="Tokenize" type="bool" label="Tokenize" />
+    <field name="Reference" type="string" label="Reference" />
+    <field name="State" type="string" label="State" />
+    <field name="Date" type="date" label="Date" />
+    <field name="AcquirerReference" type="string" label="Acquirer Reference" />
+    <field name="PaymentDate" type="datetime" label="Payment Date" />
+    <field name="Fees" type="float" label="Fees" />
+    <field name="ExtraFees" type="float" label="Extra Fees" />
+    <field name="TransactionId" type="string" label="Transaction ID" />
+    <field name="MandateId" type="string" label="Mandate ID" />
+    <field name="ErrorMessage" type="string" label="Error Message" />
+    <field name="ErrorCode" type="string" label="Error Code" />
+    <field name="Signature" type="string" label="Signature" />
+    <field name="DateValid" type="datetime" label="Date Valid" />
+    <field name="PaymentOption" type="string" label="Payment Option" />
+    <field name="OperationType" type="string" label="Operation Type" />
+  </model>
+
+  <optionset id="Payment.PaymentTransactionOperationType" name="Payment Transaction Operation Type">
+    <option value="online_direct" name="Online Direct" />
+    <option value="online_token" name="Online Token" />
+    <option value="offline" name="Offline" />
+    <option value="validation" name="Validation" />
+    <option value="capture" name="Capture" />
+    <option value="refund" name="Refund" />
+    <option value="void" name="Void" />
+  </optionset>
+
 </buvi>

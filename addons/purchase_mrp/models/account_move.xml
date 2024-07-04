@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseMrp.AccountMoveLine" name="Account.AccountMoveLine" description="Account Move Line">
+    <field name="ProductId" type="Product.Product" />
+  </model>
 </buvi>

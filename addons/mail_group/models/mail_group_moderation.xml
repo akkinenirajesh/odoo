@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailGroupModeration" name="MailGroupModeration" description="Mailing List black/white list">
+    <field name="Email" type="string" label="Email" required="true" />
+    <field name="Status" type="selection" label="Status" required="true" default="ban">
+      <option value="allow" name="Always Allow" />
+      <option value="ban" name="Permanent Ban" />
+    </field>
+    <field name="MailGroupId" type="Mail.MailGroup" label="Group" required="true" relation="cascade" />
+    <unique>
+      <field name="MailGroupId" />
+      <field name="Email" />
+      <message>You can create only one rule for a given email address in a group.</message>
+    </unique>
+  </model>
 </buvi>

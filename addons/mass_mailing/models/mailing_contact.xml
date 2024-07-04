@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="MassMailing.MassMailingContact" name="MassMailingContact" description="Mailing Contact">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="FirstName" type="string" label="First Name" />
+        <field name="LastName" type="string" label="Last Name" />
+        <field name="CompanyName" type="string" label="Company Name" />
+        <field name="Title" type="res.partner.title" label="Title" />
+        <field name="Email" type="string" label="Email" />
+        <field name="ListIds" type="mailing.list" collection="true" label="Mailing Lists" />
+        <field name="SubscriptionIds" type="mailing.subscription" collection="true" label="Subscription Information" />
+        <field name="Country" type="res.country" label="Country" />
+        <field name="TagIds" type="res.partner.category" collection="true" label="Tags" />
+        <field name="OptOut" type="bool" label="Opt Out"
+                help="Opt out flag for a specific mailing list. This field should not be used in a view without a unique and active mailing list context." />
+    </model>
 </buvi>

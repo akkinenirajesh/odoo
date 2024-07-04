@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PosHr.HrEmployee" name="PosHr.HrEmployee" description="Employee">
+        <field name="Name" type="string" label="Employee Name" required="true" translate="true" />
+        <field name="UserId" type="Res.Users" label="User" required="true" />
+        <field name="WorkContactId" type="Res.Partner" label="Work Contact" />
+        <field name="Barcode" type="string" label="Barcode" />
+        <field name="Pin" type="char" label="PIN" />
+        <field name="Company" type="Res.Company" label="Company" />
+        <field name="IsManager" type="bool" label="Manager" />
+        <field name="Roles" type="selection" label="Roles" selection="PosHr.EmployeeRoles" />
+    </model>
+    <optionset id="PosHr.EmployeeRoles" name="Employee Roles">
+        <option value="Cashier" name="Cashier" />
+        <option value="Manager" name="Manager" />
+    </optionset>
 </buvi>

@@ -1,3 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Survey.Survey" name="Survey" description="Survey">
+    <field name="SurveyType" type="Survey.SurveyType" label="Survey Type" required="true" default="Custom" />
+    <field name="AllowedSurveyTypes" type="json" label="Allowed survey types" />
+    <field name="Title" type="string" label="Survey Title" required="true" translate="true" />
+    <field name="Color" type="integer" label="Color Index" default="0" />
+    <field name="Description" type="html" label="Description" translate="true" sanitize="true" sanitizeOverridable="true" help="The description will be displayed on the home page of the survey. You can use this to give the purpose and guidelines to your candidates before they start it." />
+    <field name="DescriptionDone" type="html" label="End Message" translate="true" help="This message will be displayed when survey is completed" />
+    <field name="BackgroundImage" type="image" label="Background Image" />
+    <field name="BackgroundImageURL" type="char" label="Background Url" />
+    <field name="Active" type="bool" label="Active" default="true" />
+    <field name="UserId" type="Res.Users" label="Responsible" domain="[('Share', '=', False)]" collection="true" tracking="true" />
+    <field name="RestrictUserIds" type="Res.Users" label="Restricted to" domain="[('Share', '=', False)]" collection="true" tracking="true" />
+    <field name="QuestionAndPageIds" type="Survey.Question" label="Sections and Questions" collection="true" copy="true" />
+    <field name="PageIds" type="Survey.Question" label="Pages" />
+    <field name="QuestionIds" type="Survey.Question" label="Questions" />
+    <field name="QuestionCount" type="integer" label="# Questions" />
+    <field name="QuestionsLayout" type="Survey.QuestionsLayout" label="Pagination" required="true" default="PagePerQuestion" />
+    <field name="QuestionsSelection" type="Survey.QuestionsSelection" label="Question Selection" required="true" default="All" help="If randomized is selected, you can configure the number of random questions by section. This mode is ignored in live session." />
+    <field name="ProgressionMode" type="Survey.ProgressionMode" label="Display Progress as" default="Percent" help="If Number is selected, it will display the number of questions answered on the total number of question to answer." />
+    <field name="UserInputIds" type="Survey.UserInput" label="User responses" collection="true" readonly="true" />
+    <field name="AccessMode" type="Survey.AccessMode" label="Access Mode" default="Public" required="true" />
+    <field name="AccessToken" type="char" label="Access Token" copy="false" />
+    <field name="UsersLoginRequired" type="bool" label="Require Login" help="If checked, users have to login before answering even with a valid token." />
+    <field name="UsersCanGoBack" type="bool" label="Users can go back" help="If checked, users can go back to previous pages." />
+    <field name="UsersCanSignup" type="bool" label="Users can signup" />
+    <field name="AnswerCount" type="integer" label="Registered" />
+    <field name="AnswerDoneCount" type="integer" label="Attempts" />
+    <field name="AnswerScoreAvg" type="float" label="Avg Score (%)" />
+    <field name="AnswerDurationAvg" type="float" label="Average Duration" help="Average duration of the survey (in hours)" />
+    <field name="SuccessCount" type="integer" label="Success" />
+    <field name="SuccessRatio" type="integer" label="Success Ratio (%)" />
+    <field name="ScoringType" type="Survey.ScoringType" label="Scoring" required="true" store="true" readonly="false" precompute="true" />
+    <field name="ScoringSuccessMin" type="float" label="Required Score (%)" default="80.0" />
+    <field name="ScoringMaxObtainable" type="float" label="Maximum obtainable score" />
+    <field name="IsAttemptsLimited" type="bool" label="Limited number of attempts" help="Check this option if you want to limit the number of attempts per user" store="true" readonly="false" />
+    <field name="AttemptsLimit" type="integer" label="Number of attempts" default="1" />
+    <field name="IsTimeLimited" type="bool" label="The survey is limited in time" />
+    <field name="TimeLimit" type="float" label="Time limit (minutes)" default="10" />
+    <field name="Certification" type="bool" label="Is a Certification" readonly="false" store="true" precompute="true" />
+    <field name="CertificationMailTemplateId" type="Mail.Template" label="Certified Email Template" domain="[('Model', '=', 'Survey.UserInput')]" help="Automated email sent to the user when they succeed the certification, containing their certification document." />
+    <field name="CertificationReportLayout" type="Survey.CertificationReportLayout" label="Certification template" default="ModernPurple" />
+    <field name="CertificationGiveBadge" type="bool" label="Give Badge" readonly="false" store="true" copy="false" />
+    <field name="CertificationBadgeId" type="Gamification.Badge" label="Certification Badge" copy="false" />
+    <field name="CertificationBadgeIdDummy" type="Gamification.Badge" label="Certification Badge" />
+    <field name="SessionAvailable" type="bool" label="Live session available" />
+    <field name="SessionState" type="Survey.SessionState" label="Session State" copy="false" />
+    <field name="SessionCode" type="char" label="Session Code" default="_get_default_session_code()" copy="false" help="This code will be used by your attendees to reach your session. Feel free to customize it however you like!" />
+    <field name="SessionLink" type="char" label="Session Link" />
+    <field name="SessionQuestionId" type="Survey.Question" label="Current Question" copy="false" help="The current question of the survey session." />
+    <field name="SessionStartTime" type="datetime" label="Current Session Start Time" copy="false" />
+    <field name="SessionQuestionStartTime" type="datetime" label="Current Question Start Time" copy="false" help="The time at which the current question has started, used to handle the timer for attendees." />
+    <field name="SessionAnswerCount" type="integer" label="Answers Count" />
+    <field name="SessionQuestionAnswerCount" type="integer" label="Question Answers Count" />
+    <field name="SessionShowLeaderboard" type="bool" label="Show Session Leaderboard" help="Whether or not we want to show the attendees leaderboard for this survey." />
+    <field name="SessionSpeedRating" type="bool" label="Reward quick answers" help="Attendees get more points if they answer quickly" />
+    <field name="SessionSpeedRatingTimeLimit" type="integer" label="Time limit (seconds)" help="Default time given to receive additional points for right answers" />
+    <field name="HasConditionalQuestions" type="bool" label="Contains conditional questions" />
+    <constraint name="access_token_unique" unique="true" fields="AccessToken" message="Access token should be unique" />
+    <constraint name="session_code_unique" unique="true" fields="SessionCode" message="Session code should be unique" />
+    <constraint name="certification_check" check="ScoringType != 'NoScoring' OR Certification = False" message="You can only create certifications for surveys that have a scoring mechanism." />
+    <constraint name="scoring_success_min_check" check="ScoringSuccessMin IS NULL OR (ScoringSuccessMin >= 0 AND ScoringSuccessMin <= 100)" message="The percentage of success has to be defined between 0 and 100." />
+    <constraint name="time_limit_check" check="(IsTimeLimited = False) OR (TimeLimit IS NOT NULL AND TimeLimit > 0)" message="The time limit needs to be a positive number if the survey is time limited." />
+    <constraint name="attempts_limit_check" check="(IsAttemptsLimited = False) OR (AttemptsLimit IS NOT NULL AND AttemptsLimit > 0)" message="The attempts limit needs to be a positive number if the survey has a limited number of attempts." />
+    <constraint name="badge_uniq" unique="true" fields="CertificationBadgeId" message="The badge for each survey should be unique!" />
+    <constraint name="session_speed_rating_has_time_limit" check="SessionSpeedRating != TRUE OR SessionSpeedRatingTimeLimit IS NOT NULL AND SessionSpeedRatingTimeLimit > 0" message="A positive default time limit is required when the session rewards quick answers." />
+  </model>
+  <optionset id="Survey.SurveyType" name="Survey Type">
+    <option value="Survey" name="Survey" />
+    <option value="LiveSession" name="Live session" />
+    <option value="Assessment" name="Assessment" />
+    <option value="Custom" name="Custom" />
+  </optionset>
+  <optionset id="Survey.QuestionsLayout" name="Pagination">
+    <option value="PagePerQuestion" name="One page per question" />
+    <option value="PagePerSection" name="One page per section" />
+    <option value="OnePage" name="One page with all the questions" />
+  </optionset>
+  <optionset id="Survey.QuestionsSelection" name="Question Selection">
+    <option value="All" name="All questions" />
+    <option value="Random" name="Randomized per Section" />
+  </optionset>
+  <optionset id="Survey.ProgressionMode" name="Display Progress as">
+    <option value="Percent" name="Percentage left" />
+    <option value="Number" name="Number" />
+  </optionset>
+  <optionset id="Survey.AccessMode" name="Access Mode">
+    <option value="Public" name="Anyone with the link" />
+    <option value="Token" name="Invited people only" />
+  </optionset>
+  <optionset id="Survey.ScoringType" name="Scoring">
+    <option value="NoScoring" name="No scoring" />
+    <option value="ScoringWithAnswersAfterPage" name="Scoring with answers after each page" />
+    <option value="ScoringWithAnswers" name="Scoring with answers at the end" />
+    <option value="ScoringWithoutAnswers" name="Scoring without answers" />
+  </optionset>
+  <optionset id="Survey.CertificationReportLayout" name="Certification template">
+    <option value="ModernPurple" name="Modern Purple" />
+    <option value="ModernBlue" name="Modern Blue" />
+    <option value="ModernGold" name="Modern Gold" />
+    <option value="ClassicPurple" name="Classic Purple" />
+    <option value="ClassicBlue" name="Classic Blue" />
+    <option value="ClassicGold" name="Classic Gold" />
+  </optionset>
+  <optionset id="Survey.SessionState" name="Session State">
+    <option value="Ready" name="Ready" />
+    <option value="InProgress" name="In Progress" />
+  </optionset>
 </buvi>

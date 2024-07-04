@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Product.Pricelist" name="Pricelist" description="Pricelist">
+        <field name="Name" type="string" label="Pricelist Name" required="true" translate="true" />
+        <field name="Active" type="bool" default="true" help="If unchecked, it will allow you to hide the pricelist without removing it." />
+        <field name="Sequence" type="integer" default="16" />
+        <field name="Currency" type="Res.Currency" required="true" />
+        <field name="Company" type="Res.Company" />
+        <field name="CountryGroups" type="Res.CountryGroup" collection="true" />
+        <field name="DiscountPolicy" type="Product.PricelistDiscountPolicy" />
+        <field name="Items" type="Product.PricelistItem" collection="true" />
+        <field name="DisplayName" type="string" compute="ComputeDisplayName" />
+    </model>
+
+    <optionset id="Product.PricelistDiscountPolicy" name="Pricelist Discount Policy">
+        <option value="WithDiscount" name="Discount included in the price" />
+        <option value="WithoutDiscount" name="Show public price & discount to the customer" />
+    </optionset>
 </buvi>

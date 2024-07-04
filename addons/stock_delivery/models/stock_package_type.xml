@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.PackageType" name="Stock.PackageType" description="Package Type">
+    <field name="Name" type="string" label="Name" required="true" translate="true" />
+    <field name="ShipperPackageCode" type="string" label="Carrier Code" />
+    <field name="PackageCarrierType" type="Stock.PackageCarrierType" label="Carrier" default="none" />
+    <field name="LengthUomName" type="string" label="Length UoM Name" />
+  </model>
+
+  <optionset id="Stock.PackageCarrierType" name="Package Carrier Type">
+    <option value="none" name="No carrier integration" />
+  </optionset>
 </buvi>

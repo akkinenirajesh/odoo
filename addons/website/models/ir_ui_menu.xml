@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.IrUiMenu" name="IrUiMenu" description="IrUiMenu">
+    <field name="Name" type="string" label="Menu Name" required="true" translate="true" />
+    <field name="Parent" type="Website.IrUiMenu" collection="true" label="Parent Menu" />
+    <field name="Action" type="string" label="Action" />
+    <field name="Sequence" type="integer" label="Sequence" />
+    <field name="WebIcon" type="string" label="Web Icon" />
+    <field name="WebIconData" type="string" label="Web Icon Data" />
+    <field name="Groups" type="res.groups" collection="true" label="Allowed Groups" />
+    <field name="Active" type="bool" default="true" help="Uncheck to hide menu without deleting it" />
+  </model>
 </buvi>

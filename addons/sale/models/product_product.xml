@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.ProductProduct" name="Sale.ProductProduct" description="Product Product">
+    <field name="SalesCount" type="float" label="Sold" digits="Product Unit of Measure" />
+    <field name="ProductCatalogProductIsInSaleOrder" type="bool"
+      compute="ComputeProductIsInSaleOrder" search="SearchProductIsInSaleOrder" />
+  </model>
+  <optionset id="Sale.SaleReportState" name="Sale Report State">
+    <option value="draft" name="Draft" />
+    <option value="sent" name="Sent" />
+    <option value="sale" name="Sale" />
+    <option value="done" name="Done" />
+    <option value="cancel" name="Cancelled" />
+  </optionset>
 </buvi>

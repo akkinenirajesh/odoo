@@ -1,3 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="SaleTimesheet.ProjectSaleLineEmployeeMap" name="ProjectSaleLineEmployeeMap" description="Project Sales line, employee mapping">
+    <field name="ProjectId" type="Project.Project" label="Project" required="true" />
+    <field name="EmployeeId" type="HR.Employee" label="Employee" required="true" domain="[('Id', 'not in', ExistingEmployeeIds)]" />
+    <field name="ExistingEmployeeIds" type="HR.Employee" collection="true" compute="ComputeExistingEmployeeIds" export_string_translation="false" />
+    <field name="SaleLineId" type="Sale.OrderLine" label="Sales Order Item" compute="ComputeSaleLineId" store="true" readonly="false" domain="[('OrderPartnerId', '=?', PartnerId)]" />
+    <field name="SaleOrderId" type="Sale.Order" related="ProjectId.SaleOrderId" export_string_translation="false" />
+    <field name="CompanyId" type="Res.Company" string="Company" related="ProjectId.CompanyId" export_string_translation="false" />
+    <field name="PartnerId" type="Res.Partner" related="ProjectId.PartnerId" export_string_translation="false" />
+    <field name="PriceUnit" type="float" label="Unit Price" compute="ComputePriceUnit" store="true" readonly="true" />
+    <field name="CurrencyId" type="Res.Currency" string="Currency" compute="ComputeCurrencyId" store="true" readonly="false" />
+    <field name="Cost" type="monetary" currency_field="CostCurrencyId" compute="ComputeCost" store="true" readonly="false" help="This cost overrides the employee's default employee hourly wage in employee's HR Settings" />
+    <field name="DisplayCost" type="monetary" currency_field="CostCurrencyId" compute="ComputeDisplayCost" inverse="InverseDisplayCost" string="Hourly Cost" groups="project.group_project_manager,hr.group_hr_user" />
+    <field name="CostCurrencyId" type="Res.Currency" string="Cost Currency" related="EmployeeId.CurrencyId" readonly="true" export_string_translation="false" />
+    <field name="IsCostChanged" type="bool" string="Is Cost Manually Changed" compute="ComputeIsCostChanged" store="true" export_string_translation="false" />
+    <unique>
+      <field name="ProjectId" />
+      <field name="EmployeeId" />
+      <message>An employee cannot be selected more than once in the mapping. Please remove duplicate(s) and try again.</message>
+    </unique>
+  </model>
 </buvi>

@@ -1,3 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockRule" name="StockRule" description="Stock Rule">
+    <field name="Name" type="string" label="Name" />
+    <field name="Active" type="bool" label="Active" />
+    <field name="LocationId" type="Stock.Location" required="true" />
+    <field name="LocationSrcId" type="Stock.Location" />
+    <field name="LocationDestId" type="Stock.Location" required="true" />
+    <field name="ProductProductId" type="Product.Product" required="true" />
+    <field name="ProductUomId" type="Product.Uom" required="true" />
+    <field name="Action" type="selection" label="Action" selection="Stock.StockRuleAction" required="true" />
+    <field name="ProcureMethod" type="selection" label="Procurement Method" selection="Stock.StockRuleProcureMethod" required="true" />
+    <field name="MinQty" type="float" label="Min Quantity" />
+    <field name="MaxQty" type="float" label="Max Quantity" />
+    <field name="PickingTypeIds" type="selection" label="Picking Type" selection="Stock.PickingType" collection="true" />
+    <field name="RouteId" type="Stock.Route" />
+    <field name="GroupGroupId" type="Stock.ProcurementGroup" />
+  </model>
+
+  <optionset id="Stock.StockRuleAction" name="Stock Rule Action">
+    <option value="procure_manually" name="Procure Manually" />
+    <option value="procure_mrp" name="Procure via MRP" />
+    <option value="procure_purchase" name="Procure via Purchase" />
+  </optionset>
+
+  <optionset id="Stock.StockRuleProcureMethod" name="Stock Rule Procure Method">
+    <option value="make_to_stock" name="Make to Stock" />
+    <option value="make_to_order" name="Make to Order" />
+  </optionset>
+
+  <optionset id="Stock.PickingType" name="Picking Type">
+    <option value="incoming" name="Receipts" />
+    <option value="outgoing" name="Deliveries" />
+    <option value="internal" name="Internal Transfers" />
+  </optionset>
 </buvi>

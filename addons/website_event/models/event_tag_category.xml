@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.EventTagCategory" name="EventTagCategory" description="Event Tag Category">
+        <field name="Name" type="string" label="Tag Name" required="true" translate="true" />
+        <field name="Color" type="integer" label="Color Index" />
+        <field name="Active" type="bool" default="true" help="Set active to false to hide the Event Tag Category without removing it." />
+        <field name="IsPublished" type="bool" default="true" />
+    </model>
 </buvi>

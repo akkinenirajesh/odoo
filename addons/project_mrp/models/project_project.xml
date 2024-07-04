@@ -1,3 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.Project" name="Project" description="Project">
+        <field name="ProductionCount" type="integer" label="Production Count" groups="Mrp.GroupMrpUser" relation="analytic_account_id.production_count" />
+        <field name="WorkorderCount" type="integer" label="Workorder Count" groups="Mrp.GroupMrpUser" relation="analytic_account_id.workorder_count" />
+        <field name="BomCount" type="integer" label="Bom Count" groups="Mrp.GroupMrpUser" relation="analytic_account_id.bom_count" />
+    </model>
 </buvi>

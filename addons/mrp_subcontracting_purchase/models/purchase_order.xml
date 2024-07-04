@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="MrpSubcontractingPurchase.PurchaseOrder" name="PurchaseOrder" description="Purchase Order">
+    <field name="SubcontractingResupplyPickingCount" type="integer" label="Count of Subcontracting Resupply" help="Count of Subcontracting Resupply for component" />
+  </model>
 </buvi>

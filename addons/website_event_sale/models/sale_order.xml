@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteEventSale.SaleOrder" name="SaleOrder" description="Sale Order">
+        <inherit id="Sale.SaleOrder" />
+        <field name="EventTicketId" type="WebsiteEventSale.EventTicket" collection="true" />
+    </model>
+
+    <model id="WebsiteEventSale.SaleOrderLine" name="SaleOrderLine" description="Sale Order Line">
+        <inherit id="Sale.SaleOrderLine" />
+        <field name="EventTicketId" type="WebsiteEventSale.EventTicket" />
+        <field name="EventId" type="Event.Event" />
+    </model>
+
+    <model id="WebsiteEventSale.EventTicket" name="EventTicket" description="Event Ticket">
+        <field name="Name" type="string" label="Ticket Name" required="true" translate="true" />
+        <field name="ProductTemplateId" type="Product.ProductTemplate" label="Product" />
+        <field name="EventId" type="Event.Event" label="Event" />
+        <field name="SeatsAvailable" type="integer" label="Available Seats" />
+        <field name="SeatsLimited" type="bool" label="Seats Limited" />
+        <field name="Price" type="float" label="Price" />
+    </model>
 </buvi>

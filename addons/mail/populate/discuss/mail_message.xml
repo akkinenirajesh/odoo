@@ -1,3 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.Message" name="MailMessage" description="Mail Message">
+        <field name="AuthorId" type="Res.Partner" label="Author" />
+        <field name="Body" type="text" label="Body" />
+        <field name="MessageType" type="selection" label="Message Type" options="Mail.MessageType" default="Comment" />
+        <field name="Model" type="string" label="Model" />
+        <field name="ResId" type="integer" label="Resource ID" />
+        <field name="Read" type="bool" label="Read" default="false" />
+        <field name="Date" type="datetime" label="Date" />
+        <field name="EmailFrom" type="char" label="Email From" />
+        <field name="Subject" type="char" label="Subject" />
+        <field name="ReplyTo" type="char" label="Reply To" />
+        <field name="NotificationType" type="selection" label="Notification Type" options="Mail.NotificationType" default="Email" />
+        <field name="ParentMessageId" type="Mail.Message" label="Parent Message" />
+        <field name="MessageSource" type="selection" label="Message Source" options="Mail.MessageSource" default="Chat" />
+        <field name="MessageSourceId" type="integer" label="Message Source ID" />
+        <field name="AttachmentIds" type="Mail.Attachment" collection="true" label="Attachments" />
+        <field name="ChannelId" type="Discuss.Channel" label="Channel" />
+        <field name="IsPinned" type="bool" label="Is Pinned" default="false" />
+        <field name="AuthorAvatar" type="binary" label="Author Avatar" />
+        <field name="AuthorDisplayName" type="string" label="Author Display Name" />
+        <field name="AuthorLogin" type="string" label="Author Login" />
+        <field name="AuthorEmail" type="string" label="Author Email" />
+        <field name="AuthorPartner" type="Res.Partner" label="Author Partner" />
+    </model>
+
+    <optionset id="Mail.MessageType" name="Message Type">
+        <option value="Comment" name="Comment" />
+        <option value="Email" name="Email" />
+        <option value="Note" name="Note" />
+    </optionset>
+
+    <optionset id="Mail.NotificationType" name="Notification Type">
+        <option value="Email" name="Email" />
+        <option value="Inbox" name="Inbox" />
+    </optionset>
+
+    <optionset id="Mail.MessageSource" name="Message Source">
+        <option value="Chat" name="Chat" />
+        <option value="Email" name="Email" />
+    </optionset>
 </buvi>

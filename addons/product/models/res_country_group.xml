@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ResCountryGroup" name="ResCountryGroup" description="Res Country Group">
+    <field name="Pricelists" type="Product.Pricelist" collection="true" label="Pricelists" />
+  </model>
 </buvi>

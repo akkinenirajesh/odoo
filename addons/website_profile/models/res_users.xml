@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Website.Users" name="Website.Users" description="Website Users">
+    <field name="Karma" type="integer" label="Karma" />
+    <field name="Country" type="Core.Country" label="Country" />
+    <field name="City" type="string" label="City" />
+    <field name="Website" type="string" label="Website" />
+    <field name="WebsiteDescription" type="text" label="Website Description" />
+    <field name="WebsitePublished" type="bool" label="Website Published" />
+  </model>
 </buvi>

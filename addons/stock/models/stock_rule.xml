@@ -1,3 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Stock.StockRule" name="StockRule" description="Stock Rule">
+        <field name="Name" type="string" label="Name" required="true" translate="true"
+            help="This field will fill the packing origin and the name of its moves" />
+        <field name="Active" type="bool" default="true"
+            help="If unchecked, it will allow you to hide the rule without removing it." />
+        <field name="GroupPropagationOption" type="Stock.GroupPropagationOption"
+            label="Propagation of Procurement Group" default="Propagate" />
+        <field name="GroupId" type="Procurement.Group" label="Fixed Procurement Group" />
+        <field name="Action" type="Stock.Action" required="true" index="true" />
+        <field name="Sequence" type="integer" default="20" />
+        <field name="CompanyId" type="Res.Company" label="Company"
+            default="lambda self: self.Env.Company.Id" domain="[('Id', '=?', RouteCompanyId)]" />
+        <field name="LocationDestId" type="Stock.Location" label="Destination Location" required="true" checkCompany="true" index="true" />
+        <field name="LocationSrcId" type="Stock.Location" label="Source Location" checkCompany="true" index="true" />
+        <field name="LocationDestFromRule" type="bool" label="Destination location origin from rule" default="false"
+            help="When set to True the destination location of the stock.move will be the rule."
+            "Otherwise, it takes it from the picking type." />
+        <field name="RouteId" type="Stock.Route" label="Route" required="true" onDelete="cascade" index="true" />
+        <field name="RouteCompanyId" type="Res.Company" label="Route Company"
+            related="RouteId.CompanyId" />
+        <field name="ProcureMethod" type="Stock.ProcureMethod" label="Supply Method"
+            default="MakeToStock" required="true"
+            help="Take From Stock: the products will be taken from the available stock of the source location.\n"
+            "Trigger Another Rule: the system will try to find a stock rule to bring the products in the source location. The available stock will be ignored.\n"
+            "Take From Stock, if Unavailable, Trigger Another Rule: the products will be taken from the available stock of the source location."
+            "If there is no stock available, the system will try to find a  rule to bring the products in the source location." />
+        <field name="RouteSequence" type="integer" label="Route Sequence" related="RouteId.Sequence" store="true" computeSudo="true" />
+        <field name="PickingTypeId" type="Stock.PickingType" label="Operation Type"
+            required="true" checkCompany="true" domain="[('Code', '=?', PickingTypeCodeDomain)]" />
+        <field name="PickingTypeCodeDomain" type="string" compute="_ComputePickingTypeCodeDomain" />
+        <field name="Delay" type="integer" label="Lead Time" default="0"
+            help="The expected date of the created transfer will be computed based on this lead time." />
+        <field name="PartnerAddressId" type="Res.Partner" label="Partner Address" checkCompany="true"
+            help="Address where goods should be delivered. Optional." />
+        <field name="PropagateCancel" type="bool" label="Cancel Next Move" default="false"
+            help="When ticked, if the move created by this rule is cancelled, the next move will be cancelled too." />
+        <field name="PropagateCarrier" type="bool" label="Propagation of carrier" default="false"
+            help="When ticked, carrier of shipment will be propagated." />
+        <field name="WarehouseId" type="Stock.Warehouse" label="Warehouse" checkCompany="true" index="true" />
+        <field name="PropagateWarehouseId" type="Stock.Warehouse" label="Warehouse to Propagate"
+            help="The warehouse to propagate on the created move/procurement, which can be different of the warehouse this rule is for (e.g for resupplying rules from another warehouse)" />
+        <field name="Auto" type="Stock.Auto" label="Automatic Move"
+            default="Manual" required="true"
+            help="The 'Manual Operation' value will create a stock move after the current one. "
+            "With 'Automatic No Step Added', the location is replaced in the original move." />
+        <field name="RuleMessage" type="html" compute="_ComputeActionMessage" />
+    </model>
+    <optionset id="Stock.Action" name="Action">
+        <option value="Pull" name="Pull From" />
+        <option value="Push" name="Push To" />
+        <option value="PullPush" name="Pull & Push" />
+    </optionset>
+    <optionset id="Stock.GroupPropagationOption" name="Group Propagation Option">
+        <option value="None" name="Leave Empty" />
+        <option value="Propagate" name="Propagate" />
+        <option value="Fixed" name="Fixed" />
+    </optionset>
+    <optionset id="Stock.ProcureMethod" name="Procure Method">
+        <option value="MakeToStock" name="Take From Stock" />
+        <option value="MakeToOrder" name="Trigger Another Rule" />
+        <option value="MTSElseMTO" name="Take From Stock, if unavailable, Trigger Another Rule" />
+    </optionset>
+    <optionset id="Stock.Auto" name="Auto">
+        <option value="Manual" name="Manual Operation" />
+        <option value="Transparent" name="Automatic No Step Added" />
+    </optionset>
 </buvi>

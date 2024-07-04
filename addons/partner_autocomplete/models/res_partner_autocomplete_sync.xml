@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="PartnerAutocomplete.ResPartnerAutocompleteSync" name="ResPartnerAutocompleteSync" description="Partner Autocomplete Sync">
+        <field name="PartnerId" type="Res.Partner" label="Partner" ondelete="cascade" />
+        <field name="Synched" type="bool" label="Is Synched" default="false" />
+    </model>
 </buvi>

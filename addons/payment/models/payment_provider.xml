@@ -1,3 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="Name" type="string" label="Name" required="true" translate="true" />
+        <field name="Sequence" type="integer" label="Sequence" help="Define the display order" />
+        <field name="Code" type="selection" label="Code" help="The technical code of this payment provider." required="true">
+            <option value="none" name="No Provider Set" />
+        </field>
+        <field name="State" type="selection" label="State" help="In test mode, a fake payment is processed through a test payment interface.\nThis mode is advised when setting up the provider." required="true" copy="false">
+            <option value="disabled" name="Disabled" />
+            <option value="enabled" name="Enabled" />
+            <option value="test" name="Test Mode" />
+        </field>
+        <field name="IsPublished" type="bool" label="Published" help="Whether the provider is visible on the website or not. Tokens remain functional but are only visible on manage forms." />
+        <field name="Company" type="Core.Company" label="Company" required="true" index="true" />
+        <field name="MainCurrency" type="Core.Currency" help="The main currency of the company, used to display monetary fields." related="Company.Currency" />
+        <field name="PaymentMethods" type="many2many" label="Supported Payment Methods" collection="true" />
+        <field name="AllowTokenization" type="bool" label="Allow Saving Payment Methods" help="This controls whether customers can save their payment methods as payment tokens.\nA payment token is an anonymous link to the payment method details saved in the\nprovider's database, allowing the customer to reuse it for a next purchase." />
+        <field name="CaptureManually" type="bool" label="Capture Amount Manually" help="Capture the amount from Odoo, when the delivery is completed.\nUse this if you want to charge your customers cards only when\nyou are sure you can ship the goods to them." />
+        <field name="AllowExpressCheckout" type="bool" label="Allow Express Checkout" help="This controls whether customers can use express payment methods. Express checkout enables customers to pay with Google Pay and Apple Pay from which address information is collected at payment." />
+        <field name="RedirectFormView" type="Core.UiView" label="Redirect Form Template" help="The template rendering a form submitted to redirect the user when making a payment" domain="[('Type', '=', 'qweb')]" ondelete="restrict" />
+        <field name="InlineFormView" type="Core.UiView" label="Inline Form Template" help="The template rendering the inline payment form when making a direct payment" domain="[('Type', '=', 'qweb')]" ondelete="restrict" />
+        <field name="TokenInlineFormView" type="Core.UiView" label="Token Inline Form Template" help="The template rendering the inline payment form when making a payment by token." domain="[('Type', '=', 'qweb')]" ondelete="restrict" />
+        <field name="ExpressCheckoutFormView" type="Core.UiView" label="Express Checkout Form Template" help="The template rendering the express payment methods' form." domain="[('Type', '=', 'qweb')]" ondelete="restrict" />
+        <field name="AvailableCountries" type="many2many" label="Countries" help="The countries in which this payment provider is available. Leave blank to make it available in all countries." collection="true" />
+        <field name="AvailableCurrencies" type="many2many" label="Currencies" help="The currencies available with this payment provider. Leave empty not to restrict any." collection="true" compute="ComputeAvailableCurrencyIds" store="true" readonly="false" />
+        <field name="MaximumAmount" type="monetary" label="Maximum Amount" help="The maximum payment amount that this payment provider is available for. Leave blank to make it available for any payment amount." currency_field="MainCurrency" />
+        <field name="PreMsg" type="html" label="Help Message" help="The message displayed to explain and help the payment process" translate="true" />
+        <field name="PendingMsg" type="html" label="Pending Message" help="The message displayed if the order pending after the payment process" translate="true" default="Your payment has been successfully processed but is waiting for approval." />
+        <field name="AuthMsg" type="html" label="Authorize Message" help="The message displayed if payment is authorized" translate="true" default="Your payment has been authorized." />
+        <field name="DoneMsg" type="html" label="Done Message" help="The message displayed if the order is successfully done after the payment process" translate="true" default="Your payment has been successfully processed." />
+        <field name="CancelMsg" type="html" label="Cancelled Message" help="The message displayed if the order is cancelled during the payment process" translate="true" default="Your payment has been cancelled." />
+        <field name="SupportTokenization" type="bool" label="Tokenization Supported" compute="ComputeFeatureSupportFields" />
+        <field name="SupportManualCapture" type="selection" label="Manual Capture Supported" compute="ComputeFeatureSupportFields">
+            <option value="full_only" name="Full Only" />
+            <option value="partial" name="Partial" />
+        </field>
+        <field name="SupportExpressCheckout" type="bool" label="Express Checkout Supported" compute="ComputeFeatureSupportFields" />
+        <field name="SupportRefund" type="selection" label="Type of Refund Supported" compute="ComputeFeatureSupportFields">
+            <option value="full_only" name="Full Only" />
+            <option value="partial" name="Partial" />
+        </field>
+        <field name="Image128" type="image" label="Image" max_width="128" max_height="128" />
+        <field name="Color" type="integer" label="Color" help="The color of the card in kanban view" compute="ComputeColor" store="true" />
+        <field name="Module" type="Core.IrModuleModule" label="Corresponding Module" />
+        <field name="ModuleState" type="selection" label="Installation State" related="Module.State" />
+        <field name="ModuleToBuy" type="bool" label="Odoo Enterprise Module" related="Module.ToBuy" />
+    </model>
 </buvi>

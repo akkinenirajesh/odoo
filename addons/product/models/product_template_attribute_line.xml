@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductTemplateAttributeLine" name="ProductTemplateAttributeLine" description="Product Template Attribute Line">
+    <field name="Active" type="bool" default="true" />
+    <field name="ProductTmplId" type="Product.ProductTemplate" relation="product.template" required="true" index="true" />
+    <field name="Sequence" type="integer" label="Sequence" default="10" />
+    <field name="AttributeId" type="Product.ProductAttribute" relation="product.attribute" required="true" index="true" />
+    <field name="ValueIds" type="Product.ProductAttributeValue" collection="true" relation="product.attribute.value" domain="[('AttributeId', '=', AttributeId)]" />
+    <field name="ValueCount" type="integer" compute="ComputeValueCount" store="true" />
+    <field name="ProductTemplateValueIds" type="Product.ProductTemplateAttributeValue" collection="true" relation="product.template.attribute.value" />
+  </model>
 </buvi>

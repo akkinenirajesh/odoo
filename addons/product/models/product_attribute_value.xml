@@ -1,3 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Product.ProductAttributeValue" name="Product.ProductAttributeValue" description="Attribute Value">
+    <field name="Name" type="string" label="Value" required="true" translate="true" />
+    <field name="Sequence" type="integer" label="Sequence" help="Determine the display order" index="true" />
+    <field name="Attribute" type="Product.ProductAttribute" label="Attribute" help="The attribute cannot be changed once the value is used on at least one product." ondelete="cascade" required="true" index="true" />
+    <field name="Lines" type="Product.ProductTemplateAttributeLine" collection="true" copy="false" />
+    <field name="IsUsedOnProducts" type="bool" label="Used on Products" compute="ComputeIsUsedOnProducts" />
+    <field name="DefaultExtraPrice" type="float" />
+    <field name="IsCustom" type="bool" label="Free text" help="Allow customers to set their own value" />
+    <field name="HtmlColor" type="string" label="Color" help="Here you can set a specific HTML color index (e.g. #ff0000) to display the color if the attribute type is 'Color'." />
+    <field name="DisplayType" type="Selection" related="Attribute.DisplayType" />
+    <field name="Color" type="integer" label="Color Index" default="GetDefaultColor" />
+    <field name="Image" type="Image" label="Image" help="You can upload an image that will be used as the color of the attribute value." max_width="70" max_height="70" />
+    <field name="Active" type="bool" default="true" />
+  </model>
 </buvi>

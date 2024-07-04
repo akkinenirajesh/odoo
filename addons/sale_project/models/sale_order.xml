@@ -1,3 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Sale.SaleOrder" name="Sale.SaleOrder" description="Sale Order">
+    <field name="Tasks" type="many2many" collection="true" label="Tasks associated with this sale" related="OrderLines.ProductId.ProjectId" />
+    <field name="TasksCount" type="integer" label="Tasks" related="Tasks.Count" />
+    <field name="VisibleProject" type="bool" label="Display project" readonly="true" />
+    <field name="Projects" type="many2many" collection="true" label="Projects" related="OrderLines.ProductId.ProjectId" />
+    <field name="ProjectCount" type="integer" label="Number of Projects" related="Projects.Count" />
+    <field name="MilestoneCount" type="integer" />
+    <field name="IsProductMilestone" type="bool" />
+    <field name="ShowCreateProjectButton" type="bool" label="Show Create Project Button" />
+    <field name="ShowProjectButton" type="bool" label="Show Project Button" />
+    <field name="ShowTaskButton" type="bool" label="Show Task Button" />
+  </model>
+  <optionset id="Product.ServicePolicy" name="Service Policy">
+    <option value="delivered_milestones" name="Delivered Milestones" />
+  </optionset>
 </buvi>

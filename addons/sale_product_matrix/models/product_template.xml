@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Sale.ProductTemplate" name="Sale.ProductTemplate" description="Product Template">
+        <field name="ProductAddMode" type="Sale.ProductAddMode" label="Add product mode" default="Configurator" />
+        <field name="HasConfigurableAttributes" type="bool" />
+    </model>
+
+    <optionset id="Sale.ProductAddMode" name="Product Add Mode">
+        <option value="Configurator" name="Product Configurator" />
+        <option value="Matrix" name="Order Grid Entry" />
+    </optionset>
 </buvi>

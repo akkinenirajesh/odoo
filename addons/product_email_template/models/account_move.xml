@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
+  <model id="Account.AccountMove" name="AccountMove" description="Account Move">
+    <field name="InvoiceValidateSendEmail" type="method" return="bool" />
+    <field name="Post" type="method" return="Account.AccountMove" param="soft" type="bool" default="true" />
   </model>
 </buvi>

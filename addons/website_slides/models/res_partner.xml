@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSlides.ResPartner" name="ResPartner" description="Partner">
+        <field name="SlideChannelIds" type="WebsiteSlides.SlideChannel" collection="true" label="eLearning Courses"  groups="WebsiteSlides.group_website_slides_officer" />
+        <field name="SlideChannelCompletedIds" type="WebsiteSlides.SlideChannel" collection="true" label="Completed Courses" groups="WebsiteSlides.group_website_slides_officer" />
+        <field name="SlideChannelCount" type="integer" label="Course Count" groups="WebsiteSlides.group_website_slides_officer" />
+        <field name="SlideChannelCompanyCount" type="integer" label="Company Course Count" groups="WebsiteSlides.group_website_slides_officer" />
+    </model>
 </buvi>

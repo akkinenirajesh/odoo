@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Project.ProjectCollaborator" name="ProjectCollaborator" description="Collaborators in project shared">
+        <field name="ProjectId" type="Project.Project" label="Project Shared" required="true" readonly="true" />
+        <field name="PartnerId" type="Res.Partner" label="Collaborator" required="true" readonly="true" />
+        <field name="PartnerEmail" type="string" label="Partner Email" readonly="true" />
+        <field name="LimitedAccess" type="bool" label="Limited Access" default="false" />
+        <unique>
+            <field name="ProjectId" />
+            <field name="PartnerId" />
+            <message>A collaborator cannot be selected more than once in the project sharing access. Please remove duplicate(s) and try again.</message>
+        </unique>
+    </model>
 </buvi>

@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Website.ForumPostVote" name="Website.ForumPostVote" description="Post Vote">
+        <field name="PostId" type="Website.ForumPost" label="Post" required="true" ondelete="cascade" />
+        <field name="UserId" type="Res.Users" label="User" required="true" default="Env.UserId" ondelete="cascade" />
+        <field name="Vote" type="selection" label="Vote" required="true" default="1" >
+            <option value="1" name="1" />
+            <option value="-1" name="-1" />
+            <option value="0" name="0" />
+        </field>
+        <field name="CreateDate" type="datetime" label="Create Date" index="true" readonly="true" />
+        <field name="ForumId" type="Website.ForumForum" label="Forum" related="PostId.ForumId" store="true" readonly="false" />
+        <field name="RecipientId" type="Res.Users" label="To" related="PostId.CreateUserId" store="true" readonly="false" />
+        <unique>
+            <field name="PostId" />
+            <field name="UserId" />
+            <message>Vote already exists!</message>
+        </unique>
+    </model>
 </buvi>

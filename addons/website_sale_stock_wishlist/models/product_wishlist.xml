@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="WebsiteSaleStockWishlist.ProductWishlist" name="ProductWishlist" description="Product Wishlist">
+        <field name="StockNotification" type="bool" default="false" required="true" />
+        <field name="ProductId" type="Product.Product" />
+        <field name="PartnerId" type="Res.Partner" />
+    </model>
 </buvi>

@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Stock.StockWarehouseOrderpoint" name="StockWarehouseOrderpoint" description="Stock Warehouse Orderpoint">
+    <field name="LocationId" type="Stock.StockLocation" />
+    <field name="PartnerId" type="Res.Partner" />
+    <field name="ProductId" type="Product.Product" />
+    <field name="Name" type="string" label="Name" />
+    <field name="ProductQty" type="float" />
+    <field name="LeadTime" type="float" />
+    <field name="MinQty" type="float" />
+    <field name="MaxQty" type="float" />
+    <field name="OrderpointQty" type="float" />
+    <field name="VendorId" type="Res.Partner" />
+    <field name="RouteId" type="Stock.Route" />
+    <field name="ProcurementRuleId" type="Stock.ProcurementRule" />
+    <field name="Active" type="bool" default="true" />
+    <field name="IsSubcontractor" type="bool" default="false" />
+  </model>
 </buvi>

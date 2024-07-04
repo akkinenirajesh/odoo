@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PurchaseStock.StockPicking" name="StockPicking" description="Stock Picking">
+    <field name="PurchaseId" type="Purchase.PurchaseOrder" relation="true" readonly="true" label="Purchase Orders" />
+  </model>
+
+  <model id="PurchaseStock.StockWarehouse" name="StockWarehouse" description="Stock Warehouse">
+    <field name="BuyToResupply" type="bool" default="true" label="Buy to Resupply" help="When products are bought, they can be delivered to this warehouse" />
+    <field name="BuyPullId" type="Stock.StockRule" relation="true" copy="false" label="Buy rule" />
+  </model>
+
+  <model id="PurchaseStock.ReturnPicking" name="ReturnPicking" description="Return Picking">
+    <field name="PartnerId" type="Res.Partner" relation="true" />
+  </model>
+
+  <model id="PurchaseStock.Orderpoint" name="Orderpoint" description="Orderpoint">
+    <field name="ShowSupplier" type="bool" label="Show supplier column" compute="ComputeShowSupplier" />
+    <field name="SupplierId" type="Product.Supplierinfo" relation="true" label="Supplier" check_company="true" domain="['|', ('ProductId', '=', ProductId), '&', ('ProductId', '=', False), ('ProductTmplId', '=', ProductTmplId)]" />
+    <field name="VendorId" type="Res.Partner" relation="true" label="Vendor" store="true" />
+    <field name="PurchaseVisibilityDays" type="float" default="0.0" label="Visibility Days" help="Visibility Days applied on the purchase routes." />
+    <field name="ProductSupplierId" type="Res.Partner" relation="true" label="Product Supplier" compute="ComputeProductSupplierId" store="true" />
+    <field name="DaysToOrder" type="float" compute="ComputeDaysToOrder" />
+  </model>
+
+  <model id="PurchaseStock.StockLot" name="StockLot" description="Stock Lot">
+    <field name="PurchaseOrderIds" type="Purchase.PurchaseOrder" relation="true" collection="true" label="Purchase Orders" readonly="true" store="false" />
+    <field name="PurchaseOrderCount" type="integer" label="Purchase order count" compute="ComputePurchaseOrderIds" />
+  </model>
 </buvi>

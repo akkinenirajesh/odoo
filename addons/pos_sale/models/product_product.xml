@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="PosSale.ProductProduct" name="PosSale.ProductProduct" description="Product Product">
+    <field name="InvoicePolicy" type="selection" selection="PosSale.ProductInvoicePolicy" />
+    <field name="OptionalProductIds" type="many2many" collection="true" relation="PosSale.ProductProduct" />
+    <field name="Type" type="selection" selection="Product.ProductTypes" />
+  </model>
+
+  <optionset id="PosSale.ProductInvoicePolicy" name="Product Invoice Policy">
+    <option value="order" name="Ordered Quantities" />
+    <option value="delivery" name="Delivered Quantities" />
+  </optionset>
 </buvi>

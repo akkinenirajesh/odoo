@@ -1,3 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+        <field name="CustomMode" type="Selection" label="Custom Mode" selection="Payment.PaymentProviderCustomMode" />
+    </model>
+
+    <optionset id="Payment.PaymentProviderCustomMode" name="Payment Provider Custom Mode">
+        <option value="Onsite" name="On Site" />
+    </optionset>
 </buvi>

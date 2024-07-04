@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Lunch.CashmoveReport" name="Lunch.CashmoveReport" description="Cashmoves report">
+        <field name="Id" type="integer" label="ID" />
+        <field name="Amount" type="float" label="Amount" />
+        <field name="Date" type="date" label="Date" />
+        <field name="CurrencyId" type="res.currency" label="Currency" />
+        <field name="UserId" type="res.users" label="User" />
+        <field name="Description" type="text" label="Description" />
+    </model>
 </buvi>

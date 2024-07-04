@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Payment.PaymentProvider" name="PaymentProvider" description="Payment Provider">
+    <field name="Code" type="selection" label="Payment Method" required="true" >
+      <option value="asiapay" name="AsiaPay" />
+    </field>
+    <field name="AsiapayBrand" type="selection" label="Asiapay Brand" help="The brand associated to your AsiaPay account." >
+      <option value="paydollar" name="PayDollar" />
+      <option value="pesopay" name="PesoPay" />
+      <option value="siampay" name="SiamPay" />
+      <option value="bimopay" name="BimoPay" />
+    </field>
+    <field name="AsiapayMerchantId" type="char" label="AsiaPay Merchant ID" help="The Merchant ID solely used to identify your AsiaPay account." />
+    <field name="AsiapaySecureHashSecret" type="char" label="AsiaPay Secure Hash Secret" groups="base.group_system" />
+    <field name="AsiapaySecureHashFunction" type="selection" label="AsiaPay Secure Hash Function" help="The secure hash function associated to your AsiaPay account." >
+      <option value="sha1" name="SHA1" />
+      <option value="sha256" name="SHA256" />
+      <option value="sha512" name="SHA512" />
+    </field>
+    <field name="AvailableCurrencyIds" type="many2many" collection="true" label="Available Currencies" />
+    <field name="State" type="selection" label="State" >
+      <option value="enabled" name="Enabled" />
+      <option value="disabled" name="Disabled" />
+      <option value="test" name="Test" />
+    </field>
+  </model>
 </buvi>

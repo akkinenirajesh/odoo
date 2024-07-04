@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleWishlist.ProductWishlist" name="WebsiteSaleWishlist.ProductWishlist" description="Product Wishlist">
+        <field name="PartnerId" type="Res.Partner" label="Owner" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" />
+        <field name="CurrencyId" type="Res.Currency" related="WebsiteId.CurrencyId" readonly="true" />
+        <field name="PricelistId" type="Product.Pricelist" label="Pricelist" help="Pricelist when added" />
+        <field name="Price" type="monetary" currency_field="CurrencyId" label="Price" help="Price of the product when it has been added in the wishlist" />
+        <field name="WebsiteId" type="Website" ondelete="cascade" required="true" />
+        <field name="Active" type="bool" default="true" required="true" />
+        <unique>
+            <field name="ProductId" />
+            <field name="PartnerId" />
+            <message>Duplicated wishlisted product for this partner.</message>
+        </unique>
+    </model>
+
+    <model id="Res.Partner" name="Res.Partner" description="Partner">
+        <field name="WishlistIds" type="WebsiteSaleWishlist.ProductWishlist" collection="true" label="Wishlist" domain="[('Active', '=', True)]" />
+    </model>
+
+    <model id="Product.Template" name="Product.Template" description="Product Template">
+    </model>
+
+    <model id="Product.Product" name="Product.Product" description="Product">
+    </model>
 </buvi>

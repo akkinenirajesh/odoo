@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.MailGroupMember" name="MailGroupMember" description="Mailing List Member">
+    <field name="Email" type="string" label="Email" required="false" readonly="false" store="true" />
+    <field name="EmailNormalized" type="string" label="Normalized Email" index="true" store="true" />
+    <field name="MailGroupId" type="Mail.MailGroup" label="Group" required="true" ondelete="cascade" />
+    <field name="PartnerId" type="Res.Partner" label="Partner" ondelete="cascade" />
+    <unique>
+      <field name="PartnerId" />
+      <field name="MailGroupId" />
+      <message>This partner is already subscribed to the group.</message>
+    </unique>
+  </model>
 </buvi>

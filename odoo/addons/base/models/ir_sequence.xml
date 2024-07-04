@@ -1,3 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Base.IrSequence" name="Base.IrSequence" description="Sequence">
+    <field name="Name" type="string" label="Sequence Name" required="true" translate="true" />
+    <field name="Code" type="string" label="Sequence Code" />
+    <field name="Implementation" type="Base.IrSequenceImplementation" required="true" default="Standard" />
+    <field name="Active" type="bool" default="true" help="Set active to false to hide the Sequence without removing it." />
+    <field name="Prefix" type="string" help="Prefix value of the record for the sequence" />
+    <field name="Suffix" type="string" help="Suffix value of the record for the sequence" />
+    <field name="NumberNext" type="integer" label="Next Number" required="true" default="1" help="Next number of this sequence" />
+    <field name="NumberNextActual" type="integer" compute="GetNumberNextActual" inverse="SetNumberNextActual"
+        label="Actual Next Number"
+        help="Next number that will be used. This number can be incremented frequently so the displayed value might already be obsolete" />
+    <field name="NumberIncrement" type="integer" label="Step" required="true" default="1"
+        help="The next number of the sequence will be incremented by this number" />
+    <field name="Padding" type="integer" label="Sequence Size" required="true" default="0"
+        help="Odoo will automatically adds some '0' on the left of the 'Next Number' to get the required padding size." />
+    <field name="Company" type="Res.Company" label="Company" collection="true" />
+    <field name="UseDateRange" type="bool" label="Use subsequences per date_range" />
+    <field name="DateRangeIds" type="Base.IrSequenceDateRange" collection="true" relation="true" />
+  </model>
+  <optionset id="Base.IrSequenceImplementation" name="Sequence Implementation">
+    <option value="Standard" name="Standard" />
+    <option value="NoGap" name="No gap" />
+  </optionset>
+  <model id="Base.IrSequenceDateRange" name="Base.IrSequenceDateRange" description="Sequence Date Range">
+    <field name="DateFrom" type="date" label="From" required="true" />
+    <field name="DateTo" type="date" label="To" required="true" />
+    <field name="Sequence" type="Base.IrSequence" collection="true" relation="true" />
+    <field name="NumberNext" type="integer" label="Next Number" required="true" default="1" help="Next number of this sequence" />
+    <field name="NumberNextActual" type="integer" compute="GetNumberNextActual" inverse="SetNumberNextActual"
+        label="Actual Next Number"
+        help="Next number that will be used. This number can be incremented frequently so the displayed value might already be obsolete" />
+  </model>
 </buvi>

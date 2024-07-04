@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Mail.MailTestProperties" name="MailTestProperties" description="Mail Test Properties">
+        <field name="Name" type="string" label="Name" />
+        <field name="Parent" type="Mail.MailTestProperties" collection="true" />
+        <field name="Properties" type="Properties" definition="Parent.DefinitionProperties" />
+        <field name="DefinitionProperties" type="PropertiesDefinition" />
+    </model>
 </buvi>

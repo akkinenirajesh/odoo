@@ -1,3 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSlidesForum.Forum" name="Forum" description="Forum">
+        <field name="SlideChannelIds" type="WebsiteSlides.SlideChannel" collection="true" label="Courses" help="Edit the course linked to this forum on the course form." />
+        <field name="SlideChannelId" type="WebsiteSlides.SlideChannel" label="Course" />
+        <field name="Visibility" type="selection" related="SlideChannelId.Visibility" help="Forum linked to a Course, the visibility is the one applied on the course." />
+        <field name="Image1920" type="image" label="Image" />
+    </model>
 </buvi>

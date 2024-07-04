@@ -1,3 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Mail.ResPartner" name="Mail.ResPartner" description="ResPartner">
+    <field name="ChannelIds" type="Mail.DiscussChannel" collection="true" label="Channels" copy="False" />
+  </model>
+  <optionset id="Mail.DiscussChannel" name="DiscussChannel" />
 </buvi>

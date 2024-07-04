@@ -1,5 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
-  <model id="stock.forecasted_product_template" name="Stock.ForecastedProductTemplate">
-  </model>
+    <model id="WebsiteSaleSlides.SaleOrder" name="WebsiteSaleSlides.SaleOrder" description="Sale Order">
+        <field name="Name" type="string" label="Order Reference" required="true" readonly="true" />
+        <field name="PartnerId" type="Core.Partner" label="Customer" required="true" readonly="true" />
+        <field name="PartnerInvoiceId" type="Core.Partner" label="Invoice Address" readonly="true" />
+        <field name="PartnerShippingId" type="Core.Partner" label="Delivery Address" readonly="true" />
+        <field name="OrderLines" type="WebsiteSaleSlides.SaleOrderLine" collection="true" />
+        <field name="State" type="selection" selection="Sale.OrderState" />
+        <field name="ConfirmationDate" type="datetime" label="Confirmation Date" readonly="true" />
+    </model>
+
+    <optionset id="Sale.OrderState" name="Order State">
+        <option value="draft" name="Draft" />
+        <option value="sent" name="Quotation Sent" />
+        <option value="sale" name="Sales Order" />
+        <option value="done" name="Locked" />
+        <option value="cancel" name="Cancelled" />
+    </optionset>
+
+    <model id="WebsiteSaleSlides.SaleOrderLine" name="WebsiteSaleSlides.SaleOrderLine" description="Sale Order Line">
+        <field name="OrderId" type="WebsiteSaleSlides.SaleOrder" label="Order" required="true" readonly="true" />
+        <field name="ProductId" type="Product.Product" label="Product" required="true" readonly="true" />
+        <field name="ProductUom" type="Product.Uom" label="Unit of Measure" readonly="true" />
+        <field name="Name" type="string" label="Description" required="true" readonly="true" />
+        <field name="PriceUnit" type="float" label="Unit Price" required="true" readonly="true" />
+        <field name="Quantity" type="float" label="Quantity" required="true" readonly="true" />
+        <field name="PriceSubtotal" type="float" label="Subtotal" readonly="true" />
+    </model>
+
+    <model id="WebsiteSaleSlides.SlideChannel" name="WebsiteSaleSlides.SlideChannel" description="Slide Channel">
+        <field name="Name" type="string" label="Channel Name" required="true" />
+        <field name="ProductId" type="Product.Product" label="Course" required="true" />
+        <field name="Enroll" type="selection" selection="WebsiteSaleSlides.SlideChannelEnroll" />
+        <field name="Members" type="Core.Partner" collection="true" />
+    </model>
+
+    <optionset id="WebsiteSaleSlides.SlideChannelEnroll" name="Slide Channel Enroll">
+        <option value="payment" name="Payment" />
+        <option value="free" name="Free" />
+    </optionset>
 </buvi>

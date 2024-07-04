@@ -1,3 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="WebsiteSaleLoyalty.LoyaltyProgram" name="LoyaltyProgram" description="Loyalty Program">
+        <field name="EcommerceOk" type="bool" label="Available on Website" default="true" />
+    </model>
 </buvi>

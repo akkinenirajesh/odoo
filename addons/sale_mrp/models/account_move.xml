@@ -1,3 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="SaleMrp.AccountMoveLine" name="Account.AccountMoveLine" description="Account Move Line">
+        <field name="SaleLineIds" type="Sale.SaleOrderLine" collection="true" />
+        <field name="ProductUomId" type="Product.Uom" />
+        <field name="Quantity" type="float" />
+        <field name="ProductId" type="Product.Product" />
+        <field name="MoveId" type="Account.AccountMove" />
+        <field name="MoveType" type="string" />
+        <field name="DisplayType" type="string" />
+        <field name="Balance" type="float" />
+        <field name="Company" type="Res.Company" />
+    </model>
 </buvi>

@@ -1,3 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+    <model id="Onboarding.OnboardingProgress" name="Onboarding.OnboardingProgress" description="Onboarding Progress Tracker">
+        <field name="OnboardingState" type="Selection" label="Onboarding progress" store="true" compute="ComputeOnboardingState" />
+        <field name="IsOnboardingClosed" type="bool" label="Was panel closed?" />
+        <field name="CompanyId" type="Res.Company" relation="true" />
+        <field name="OnboardingId" type="Onboarding.Onboarding" relation="true" required="true" />
+        <field name="ProgressStepIds" type="Onboarding.ProgressStep" collection="true" label="Progress Steps Trackers" />
+    </model>
+
+    <optionset id="Onboarding.OnboardingProgressState" name="Onboarding Progress States">
+        <option value="NotDone" name="Not done" />
+        <option value="JustDone" name="Just done" />
+        <option value="Done" name="Done" />
+    </optionset>
 </buvi>

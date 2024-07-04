@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+xml
 <buvi>
+  <model id="Pos.PosConfig" name="PosConfig" description="POS Configuration">
+    <field name="IfaceDiscount" type="bool" label="Order Discounts"
+      help="Allow the cashier to give discounts on the whole order." />
+    <field name="DiscountPc" type="float" label="Discount Percentage"
+      help="The default discount percentage when clicking on the Discount button" default="10.0" />
+    <field name="DiscountProductId" type="Product.Product" label="Discount Product"
+      relation="many2one" domain="[('SaleOk', '=', True)]"
+      help="The product used to apply the discount on the ticket." />
+  </model>
 </buvi>

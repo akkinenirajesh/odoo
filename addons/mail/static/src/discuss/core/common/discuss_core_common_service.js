@@ -137,21 +137,19 @@ export class DiscussCoreCommon {
         return channel;
     }
 
-    /**
-     * @param {[number]} partnerIds
-     * @param {boolean} inChatWindow
-     */
-    async startChat(partnerIds, inChatWindow) {
+    /** @param {[number]} partnerIds */
+    async startChat(partnerIds) {
         const partners_to = [...new Set([this.store.self.id, ...partnerIds])];
         if (partners_to.length === 1) {
-            const chat = await this.store.joinChat(partners_to[0], inChatWindow);
-            chat.open(inChatWindow);
+            const chat = await this.store.joinChat(partners_to[0], true);
+            this.store.ChatWindow?.get({ thread: undefined })?.close();
+            chat.open();
         } else if (partners_to.length === 2) {
             const correspondentId = partners_to.find(
                 (partnerId) => partnerId !== this.store.self.id
             );
-            const chat = await this.store.joinChat(correspondentId, inChatWindow);
-            chat.open(inChatWindow);
+            const chat = await this.store.joinChat(correspondentId, true);
+            chat.open();
         } else {
             await this.createGroupChat({ partners_to });
         }
@@ -167,7 +165,7 @@ export class DiscussCoreCommon {
             return;
         }
         const temporaryId = messageData.temporary_id;
-        messageData.temporary_id = null;
+        delete messageData.temporary_id;
         const message = this.store.Message.insert(messageData, { html: true });
         if (message.notIn(channel.messages)) {
             if (!channel.loadNewer) {

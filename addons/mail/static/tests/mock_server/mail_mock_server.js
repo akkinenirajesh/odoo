@@ -472,8 +472,9 @@ async function discuss_inbox_messages(request) {
     const res = MailMessage._message_fetch(domain, search_term, before, after, around, limit);
     return {
         ...res,
-        messages: MailMessage._message_format_personalize(
-            res.messages.map((message) => message.id)
+        messages: MailMessage._message_format(
+            res.messages.map((message) => message.id),
+            makeKwArgs({ for_current_user: true, add_followers: true })
         ),
     };
 }
@@ -745,7 +746,7 @@ export async function mail_thread_data(request) {
     const { request_list, thread_model, thread_id } = await parseRequestParams(request);
     const records = this.env[thread_model].search([["id", "=", thread_id]]);
     const store = new mailDataHelpers.Store();
-    MailThread._to_store.call(this.env[thread_model], [...records], store, request_list);
+    MailThread._thread_to_store.call(this.env[thread_model], [...records], store, request_list);
     return store.get_result();
 }
 
@@ -921,7 +922,7 @@ class Store {
         values = kwargs.values;
         delete kwargs.values;
         let model_name;
-        if (data instanceof models.ServerModel) {
+        if (data instanceof models.Model) {
             if (values) {
                 throw new Error(`expected empty values with recordset ${data}: ${values}`);
             }
